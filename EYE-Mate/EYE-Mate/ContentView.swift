@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var str = ""
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                .font(.pretendardSemiBold16)
+            
+            TextField("Enter your email", text: $str)
+                .padding()
+                .background(Color.textFieldGray)
+            
+            Text("Email \(str)")
         }
         .padding()
     }
