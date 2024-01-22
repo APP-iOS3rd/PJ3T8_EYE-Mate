@@ -11,7 +11,7 @@ import SwiftUI
 struct EYE_MateApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Main()
         }
     }
 }

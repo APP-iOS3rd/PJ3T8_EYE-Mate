@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DE0302A2B5E3AE600BAD518 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE030292B5E3AE600BAD518 /* Home.swift */; };
+		1DE0302C2B5E3AF300BAD518 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* Community.swift */; };
 		52EE56C32B5E2AF200C6D423 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* Record.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSense.swift */; };
 		52EE56C72B5E2B0B00C6D423 /* VisionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTest.swift */; };
@@ -18,7 +20,7 @@
 		52EE56DA2B5E2D4F00C6D423 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* Account.swift */; };
 		52EE56DC2B5E2E8F00C6D423 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56DB2B5E2E8F00C6D423 /* ButtonStyle.swift */; };
 		71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */; };
-		71027A582B5DEAE000879DA7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* ContentView.swift */; };
+		71027A582B5DEAE000879DA7 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* Main.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
 		713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DE030292B5E3AE600BAD518 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		1DE0302B2B5E3AF300BAD518 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSense.swift; sourceTree = "<group>"; };
 		52EE56C62B5E2B0B00C6D423 /* VisionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTest.swift; sourceTree = "<group>"; };
@@ -47,7 +51,7 @@
 		52EE56DB2B5E2E8F00C6D423 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
-		71027A572B5DEAE000879DA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71027A572B5DEAE000879DA7 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		71027A592B5DEAE200879DA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		52EE56BE2B5E29B100C6D423 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1DE030292B5E3AE600BAD518 /* Home.swift */,
 				52EE56C12B5E2AA600C6D423 /* Record */,
 				52EE56C02B5E2A7C00C6D423 /* EyeSense */,
 				52EE56BF2B5E2A2500C6D423 /* VisionTest */,
@@ -119,6 +124,7 @@
 		52EE56CB2B5E2B3200C6D423 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				1DE0302B2B5E3AF300BAD518 /* Community.swift */,
 				52EE56CD2B5E2B6100C6D423 /* FreeBoard */,
 				52EE56CC2B5E2B5300C6D423 /* FAQ */,
 			);
@@ -196,7 +202,7 @@
 				713F4EF42B5E075F00694F05 /* Resources */,
 				713F4EEF2B5E06EE00694F05 /* Literal */,
 				71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */,
-				71027A572B5DEAE000879DA7 /* ContentView.swift */,
+				71027A572B5DEAE000879DA7 /* Main.swift */,
 				52EE56DD2B5E2EA700C6D423 /* Styles */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
 				52EE56CB2B5E2B3200C6D423 /* Community */,
@@ -333,9 +339,10 @@
 				52EE56DA2B5E2D4F00C6D423 /* Account.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* Profile.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
-				71027A582B5DEAE000879DA7 /* ContentView.swift in Sources */,
+				71027A582B5DEAE000879DA7 /* Main.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMap.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSense.swift in Sources */,
+				1DE0302A2B5E3AE600BAD518 /* Home.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* Record.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* Movement.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
@@ -343,6 +350,7 @@
 				52EE56D12B5E2C8900C6D423 /* FAQ.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionTest.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* ButtonStyle.swift in Sources */,
+				1DE0302C2B5E3AF300BAD518 /* Community.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
