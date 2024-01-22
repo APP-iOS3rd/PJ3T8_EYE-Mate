@@ -30,6 +30,8 @@ extension Font {
     //Medium
     static let pretendardMedium_10: Font = .custom("Pretendard-Medium", size: 10) // 탭바
     static let pretendardMedium_12: Font = .custom("Pretendard-Medium", size: 12)
+    static let pretendardMedium_16: Font = .custom("Pretendard-Medium", size: 16)
+    static let pretendardMedium_18: Font = .custom("Pretendard-Medium", size: 18)
     static let pretendardMedium_20: Font = .custom("Pretendard-Medium", size: 20)
     static let pretendardMedium_22: Font = .custom("Pretendard-Medium", size: 22)
     

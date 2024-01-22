@@ -15,7 +15,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
-                .font(.pretendardSemiBold16)
+                .font(.pretendardSemiBold_16)
             
             TextField("Enter your email", text: $str)
                 .padding()

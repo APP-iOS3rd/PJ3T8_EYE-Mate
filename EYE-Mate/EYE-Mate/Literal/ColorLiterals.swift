@@ -11,7 +11,7 @@ import SwiftUI
 extension Color {
     // 회색배경 TextField
     static let textFieldGray = Color(hex: "#EEEEEE")
-    // 회색Btn
+    // 회색 Btn
     static let btnGray  = Color(hex: "#DBDBDB")
     // 회색TabBar
     static let tabGray = Color(hex: "#C4C4C4")

@@ -16,6 +16,7 @@
 		52EE56D52B5E2D0300C6D423 /* EyeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D42B5E2D0300C6D423 /* EyeMap.swift */; };
 		52EE56D72B5E2D0A00C6D423 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D62B5E2D0A00C6D423 /* Profile.swift */; };
 		52EE56DA2B5E2D4F00C6D423 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* Account.swift */; };
+		52EE56DC2B5E2E8F00C6D423 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56DB2B5E2E8F00C6D423 /* ButtonStyle.swift */; };
 		71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */; };
 		71027A582B5DEAE000879DA7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* ContentView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		52EE56D42B5E2D0300C6D423 /* EyeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeMap.swift; sourceTree = "<group>"; };
 		52EE56D62B5E2D0A00C6D423 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52EE56D92B5E2D4F00C6D423 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		52EE56DB2B5E2E8F00C6D423 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
 		71027A572B5DEAE000879DA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		52EE56DD2B5E2EA700C6D423 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56DB2B5E2E8F00C6D423 /* ButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		71027A492B5DEAE000879DA7 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +197,7 @@
 				713F4EEF2B5E06EE00694F05 /* Literal */,
 				71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */,
 				71027A572B5DEAE000879DA7 /* ContentView.swift */,
+				52EE56DD2B5E2EA700C6D423 /* Styles */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
 				52EE56CB2B5E2B3200C6D423 /* Community */,
 				52EE56C82B5E2B1500C6D423 /* Movement */,
@@ -331,6 +342,7 @@
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQ.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionTest.swift in Sources */,
+				52EE56DC2B5E2E8F00C6D423 /* ButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
