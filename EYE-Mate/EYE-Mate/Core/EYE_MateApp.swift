@@ -16,7 +16,7 @@ struct EYE_MateApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            Main()
+            MainView()
         }
     }
 }
