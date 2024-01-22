@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonStyle: View {
+struct CustomBtn: View {
     let title: String
     let background: Color
     let fontStyle: Font
@@ -32,6 +32,6 @@ struct ButtonStyle: View {
 }
 
 #Preview {
-    ButtonStyle(title: "Value", background: .customGreen, fontStyle: .pretendardMedium_18){
+    CustomBtn(title: "Value", background: .customGreen, fontStyle: .pretendardMedium_18){
     }
 }

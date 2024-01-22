@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Main: View {
+struct MainView: View {
 
     var body: some View {
         TabView {
@@ -42,5 +42,5 @@ struct Main: View {
 }
 
 #Preview {
-    Main()
+    MainView()
 }

@@ -1,18 +1,18 @@
 //
-//  Home.swift
+//  Movement.swift
 //  EYE-Mate
 //
-//  Created by Taejun Ha on 1/22/24.
+//  Created by 이민영 on 2024/01/22.
 //
 
 import SwiftUI
 
-struct Home: View {
+struct MovementView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    Home()
+    MovementView()
 }

@@ -1,18 +1,18 @@
 //
-//  VisionTest.swift
+//  Home.swift
 //  EYE-Mate
 //
-//  Created by 이민영 on 2024/01/22.
+//  Created by Taejun Ha on 1/22/24.
 //
 
 import SwiftUI
 
-struct VisionTest: View {
+struct HomeView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    VisionTest()
+    HomeView()
 }
