@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52EE56C32B5E2AF200C6D423 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* Record.swift */; };
+		52EE56C52B5E2AFF00C6D423 /* EyeSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSense.swift */; };
+		52EE56C72B5E2B0B00C6D423 /* VisionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTest.swift */; };
+		52EE56CA2B5E2B2A00C6D423 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C92B5E2B2A00C6D423 /* Movement.swift */; };
+		52EE56CF2B5E2C8100C6D423 /* FreeBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56CE2B5E2C8100C6D423 /* FreeBoard.swift */; };
+		52EE56D12B5E2C8900C6D423 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D02B5E2C8900C6D423 /* FAQ.swift */; };
+		52EE56D52B5E2D0300C6D423 /* EyeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D42B5E2D0300C6D423 /* EyeMap.swift */; };
+		52EE56D72B5E2D0A00C6D423 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D62B5E2D0A00C6D423 /* Profile.swift */; };
+		52EE56DA2B5E2D4F00C6D423 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* Account.swift */; };
 		71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */; };
 		71027A582B5DEAE000879DA7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* ContentView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
@@ -25,6 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52EE56C22B5E2AF200C6D423 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		52EE56C42B5E2AFF00C6D423 /* EyeSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSense.swift; sourceTree = "<group>"; };
+		52EE56C62B5E2B0B00C6D423 /* VisionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTest.swift; sourceTree = "<group>"; };
+		52EE56C92B5E2B2A00C6D423 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		52EE56CE2B5E2C8100C6D423 /* FreeBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoard.swift; sourceTree = "<group>"; };
+		52EE56D02B5E2C8900C6D423 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
+		52EE56D42B5E2D0300C6D423 /* EyeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeMap.swift; sourceTree = "<group>"; };
+		52EE56D62B5E2D0A00C6D423 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		52EE56D92B5E2D4F00C6D423 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
 		71027A572B5DEAE000879DA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +72,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52EE56BE2B5E29B100C6D423 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56C12B5E2AA600C6D423 /* Record */,
+				52EE56C02B5E2A7C00C6D423 /* EyeSense */,
+				52EE56BF2B5E2A2500C6D423 /* VisionTest */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52EE56BF2B5E2A2500C6D423 /* VisionTest */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56C62B5E2B0B00C6D423 /* VisionTest.swift */,
+			);
+			path = VisionTest;
+			sourceTree = "<group>";
+		};
+		52EE56C02B5E2A7C00C6D423 /* EyeSense */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56C42B5E2AFF00C6D423 /* EyeSense.swift */,
+			);
+			path = EyeSense;
+			sourceTree = "<group>";
+		};
+		52EE56C12B5E2AA600C6D423 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56C22B5E2AF200C6D423 /* Record.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		52EE56C82B5E2B1500C6D423 /* Movement */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56C92B5E2B2A00C6D423 /* Movement.swift */,
+			);
+			path = Movement;
+			sourceTree = "<group>";
+		};
+		52EE56CB2B5E2B3200C6D423 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56CD2B5E2B6100C6D423 /* FreeBoard */,
+				52EE56CC2B5E2B5300C6D423 /* FAQ */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		52EE56CC2B5E2B5300C6D423 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56D02B5E2C8900C6D423 /* FAQ.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		52EE56CD2B5E2B6100C6D423 /* FreeBoard */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56CE2B5E2C8100C6D423 /* FreeBoard.swift */,
+			);
+			path = FreeBoard;
+			sourceTree = "<group>";
+		};
+		52EE56D22B5E2CA800C6D423 /* EyeMap */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56D42B5E2D0300C6D423 /* EyeMap.swift */,
+			);
+			path = EyeMap;
+			sourceTree = "<group>";
+		};
+		52EE56D32B5E2CF400C6D423 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56D62B5E2D0A00C6D423 /* Profile.swift */,
+				52EE56D82B5E2D3F00C6D423 /* Account */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		52EE56D82B5E2D3F00C6D423 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56D92B5E2D4F00C6D423 /* Account.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		71027A492B5DEAE000879DA7 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +187,11 @@
 				713F4EEF2B5E06EE00694F05 /* Literal */,
 				71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */,
 				71027A572B5DEAE000879DA7 /* ContentView.swift */,
+				52EE56BE2B5E29B100C6D423 /* Home */,
+				52EE56CB2B5E2B3200C6D423 /* Community */,
+				52EE56C82B5E2B1500C6D423 /* Movement */,
+				52EE56D22B5E2CA800C6D423 /* EyeMap */,
+				52EE56D32B5E2CF400C6D423 /* Profile */,
 				71027A592B5DEAE200879DA7 /* Assets.xcassets */,
 				71027A5B2B5DEAE200879DA7 /* Preview Content */,
 			);
@@ -203,10 +318,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52EE56CF2B5E2C8100C6D423 /* FreeBoard.swift in Sources */,
+				52EE56DA2B5E2D4F00C6D423 /* Account.swift in Sources */,
+				52EE56D72B5E2D0A00C6D423 /* Profile.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* ContentView.swift in Sources */,
+				52EE56D52B5E2D0300C6D423 /* EyeMap.swift in Sources */,
+				52EE56C52B5E2AFF00C6D423 /* EyeSense.swift in Sources */,
+				52EE56C32B5E2AF200C6D423 /* Record.swift in Sources */,
+				52EE56CA2B5E2B2A00C6D423 /* Movement.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
+				52EE56D12B5E2C8900C6D423 /* FAQ.swift in Sources */,
+				52EE56C72B5E2B0B00C6D423 /* VisionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
