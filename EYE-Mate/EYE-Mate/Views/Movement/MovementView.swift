@@ -9,7 +9,23 @@ import SwiftUI
 
 struct MovementView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                    VStack {
+                        HStack{
+                            VStack(alignment: .leading, spacing: 12){
+                                Text("EYE-Mate")
+                                    .font(.pretendardSemiBold_22)
+                                Text("눈 운동")
+                                    .font(.pretendardBold_32)
+                            }
+                            Spacer()
+                            Circle()
+                                .foregroundColor(Color.blue)
+                                .frame(width: 50, height: 50)
+                        }
+                            .frame(height: 112)
+                            .padding(.horizontal, 24)
+                        Spacer()
+                    }
     }
 }
 
