@@ -25,21 +25,21 @@ struct FAQRowCellView: View {
                             .foregroundStyle(.white)
                     }
                     .padding(.trailing, 8)
-                
-                
+
+
                 // MARK: - faqTitle 추후에 Firebase에서 받아오기
                 // 자주 묻는 질문 제목
                 Text("\(faqTitle)")
                     .font(.pretendardRegular_16)
-                
+
                 Spacer()
-                
+
                 Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                     .font(.title3)
             }
             .padding(15)
             .background(isExpanded ? Color.btnGray : .white)
-            
+
             // FAQ Answer
             if isExpanded{
                 HStack(alignment: .top){
@@ -53,12 +53,12 @@ struct FAQRowCellView: View {
                         }
                         .padding(.trailing, 8)
 
-                    
+
                     // MARK: - faqAnswer 추후에 Firebase에서 받아오기
                     // 자주 묻는 질문 답변
                     Text("\(faqAnswer)")
                         .font(.pretendardRegular_14)
-                    
+
                     Spacer()
                 }
                 .padding(15)
