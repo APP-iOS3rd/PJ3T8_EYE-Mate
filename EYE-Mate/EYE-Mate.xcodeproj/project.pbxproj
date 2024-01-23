@@ -62,6 +62,7 @@
 		52EE56D92B5E2D4F00C6D423 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
 		52FB98902B5F861B00F6A284 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
+		52FB98922B5FA4A800F6A284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
@@ -225,6 +226,7 @@
 		71027A542B5DEAE000879DA7 /* EYE-Mate */ = {
 			isa = PBXGroup;
 			children = (
+				52FB98922B5FA4A800F6A284 /* Info.plist */,
 				71EC7F262B5E819400C0149C /* Extensions */,
 				71EC7F232B5E7F9900C0149C /* Models */,
 				71EC7F222B5E7EA600C0149C /* Core */,

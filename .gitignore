@@ -110,3 +110,4 @@ iOSInjectionProject/
 **/.DS_Store
 **/APIKEY-Info.plist
 **/GoogleService-Info.plist
+**/Info.plist
