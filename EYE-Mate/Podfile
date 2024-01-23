@@ -14,6 +14,7 @@ target 'EYE-Mate' do
   pod 'FirebaseFirestore'
   pod 'FirebaseStorage'
   pod 'Kingfisher', '~> 7.0'
+  pod 'lottie-ios'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
