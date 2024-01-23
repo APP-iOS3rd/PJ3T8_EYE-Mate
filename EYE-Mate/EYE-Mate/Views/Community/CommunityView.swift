@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum CommunityTopTapViewItem : String, CaseIterable {
-    case faq = "FAQ"
-    case freeboard = "자유"
-}
-
 struct CommunityView: View {
     
     @State private var selectedPicker: CommunityTopTapViewItem = .faq
@@ -19,25 +14,30 @@ struct CommunityView: View {
     
     var body: some View {
         VStack {
+            // 상단 Title
             VStack(alignment: .leading, spacing: 0) {
                 Text("EYE-Mate")
-                //.font(.pretendardBold_22)
+                // .font(.pretendardBold_22)
                     .font(.system(size: 22, weight: .heavy))
                 
                 HStack{
                     Text("게시판")
-                    //.font(.pretendardBold_32)
+                    // .font(.pretendardBold_32)
                         .font(.system(size: 32, weight: .heavy))
                     Spacer()
                     
+                    
+                    // MARK: - profileImage 추후에 Firebase에서 Image 받아오기
                     Image(systemName: "person.crop.circle.fill")
                         .font(.largeTitle)
                 }
             }
             .padding(8)
             
+            // 상단 TabView
             communityTopTabView()
             
+            // 선택된 상단 Tab의 View Switching
             switch selectedPicker {
             case .faq:
                 FAQView()
@@ -47,6 +47,7 @@ struct CommunityView: View {
         }
     }
     
+    // 상단 TabView(FAQ, 자유)
     @ViewBuilder
     func communityTopTabView() -> some View {
         HStack {
@@ -72,6 +73,14 @@ struct CommunityView: View {
             }
         }
     }
+}
+
+
+// MARK: - 상단 탭뷰 Item Enum
+
+enum CommunityTopTapViewItem : String, CaseIterable {
+    case faq = "FAQ"
+    case freeboard = "자유"
 }
 
 #Preview {
