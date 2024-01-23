@@ -33,7 +33,7 @@ struct HomeViewCellView: View {
                             { ZStack {
                         Circle()
                             .foregroundColor(Color.customGreen)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 35, height: 35)
                         Text(">")
                             .foregroundStyle(.white)
                     }
