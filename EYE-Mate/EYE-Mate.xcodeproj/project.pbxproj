@@ -136,12 +136,12 @@
 				71AD79822B5FB37C0010B423 /* MenuModel.swift */,
 				52EE56C12B5E2AA600C6D423 /* Record */,
 				52EE56C02B5E2A7C00C6D423 /* EyeSense */,
-				52EE56BF2B5E2A2500C6D423 /* VisionTest */,
+				52EE56BF2B5E2A2500C6D423 /* TestViews */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		52EE56BF2B5E2A2500C6D423 /* VisionTest */ = {
+		52EE56BF2B5E2A2500C6D423 /* TestViews */ = {
 			isa = PBXGroup;
 			children = (
 				52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */,
@@ -149,7 +149,7 @@
 				710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */,
 				710D40932B5FD8A9006C9FED /* SightTestView.swift */,
 			);
-			path = VisionTest;
+			path = TestViews;
 			sourceTree = "<group>";
 		};
 		52EE56C02B5E2A7C00C6D423 /* EyeSense */ = {
