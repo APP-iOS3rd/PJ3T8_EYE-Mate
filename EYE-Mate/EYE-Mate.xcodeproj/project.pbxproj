@@ -12,8 +12,6 @@
 		43A9BBC7C51E5E20BA9CF7D2 /* Pods_EYE_Mate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
-		5296A14F2B5F5FC500299A0A /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5296A14E2B5F5FC500299A0A /* APIKEY.plist */; };
-		52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
 		52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */; };
@@ -29,6 +27,10 @@
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
+		710D408E2B5FD160006C9FED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
+		710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D408F2B5FD885006C9FED /* ColorTestView.swift */; };
+		710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */; };
+		710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightTestView.swift */; };
 		713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */; };
 		713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF22B5E070700694F05 /* FontLiterals.swift */; };
 		713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */; };
@@ -55,8 +57,6 @@
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
 		5296A1452B5F3EBC00299A0A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		5296A14E2B5F5FC500299A0A /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
-		52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseView.swift; sourceTree = "<group>"; };
 		52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -68,13 +68,17 @@
 		52EE56D92B5E2D4F00C6D423 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
 		52FB98902B5F861B00F6A284 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
-		52FB98922B5FA4A800F6A284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
 		71027A572B5DEAE000879DA7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		71027A592B5DEAE200879DA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		710D408B2B5FD156006C9FED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		710D408D2B5FD160006C9FED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		710D408F2B5FD885006C9FED /* ColorTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestView.swift; sourceTree = "<group>"; };
+		710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestView.swift; sourceTree = "<group>"; };
+		710D40932B5FD8A9006C9FED /* SightTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestView.swift; sourceTree = "<group>"; };
 		713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
 		713F4EF22B5E070700694F05 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
@@ -139,6 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */,
+				710D408F2B5FD885006C9FED /* ColorTestView.swift */,
+				710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */,
+				710D40932B5FD8A9006C9FED /* SightTestView.swift */,
 			);
 			path = VisionTest;
 			sourceTree = "<group>";
@@ -224,8 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				71027A542B5DEAE000879DA7 /* EYE-Mate */,
-				52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */,
-				5296A14E2B5F5FC500299A0A /* APIKEY.plist */,
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
 				DDE618B35681A265D0724720 /* Frameworks */,
@@ -243,7 +248,8 @@
 		71027A542B5DEAE000879DA7 /* EYE-Mate */ = {
 			isa = PBXGroup;
 			children = (
-				52FB98922B5FA4A800F6A284 /* Info.plist */,
+				710D408D2B5FD160006C9FED /* GoogleService-Info.plist */,
+				710D408B2B5FD156006C9FED /* Info.plist */,
 				71EC7F262B5E819400C0149C /* Extensions */,
 				71EC7F232B5E7F9900C0149C /* Models */,
 				71EC7F222B5E7EA600C0149C /* Core */,
@@ -405,13 +411,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				710D408E2B5FD160006C9FED /* GoogleService-Info.plist in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
 				713F4F0C2B5E082700694F05 /* Pretendard-Bold.otf in Resources */,
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
-				5296A14F2B5F5FC500299A0A /* APIKEY.plist in Resources */,
-				52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
@@ -474,6 +479,8 @@
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* OnBoardingViewModel.swift in Sources */,
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
+				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
+				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71AD79852B5FB3FF0010B423 /* HomeViewModel.swift in Sources */,
@@ -485,6 +492,7 @@
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
+				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
@@ -631,7 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = 8383VR3NFP;
+				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -736,7 +744,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = 8383VR3NFP;
+				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
