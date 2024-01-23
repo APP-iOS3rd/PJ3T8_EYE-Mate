@@ -27,7 +27,6 @@ struct HomeView: View {
                     .padding(.top, -30)
                 
                 HomeViewCellListView()
-                
             }
         }
     }

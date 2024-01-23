@@ -18,25 +18,29 @@ struct OnboardingView: View {
     
     var body: some View {
         TabView{
-            VStack{
-                Text(onboardingViewModel.title)
-                    .font(.pretendardBold_16)
-                    .foregroundColor(.customGreen)
-                Spacer()
-                    .frame(height: 5)
-                Text(onboardingViewModel.subTitle)
-                    .font(.pretendardMedium_20)
-                    .foregroundColor(.customGreen)
+            NavigationLink(destination: EyeSenseView()) {
+                VStack{
+                    Text(onboardingViewModel.title)
+                        .font(.pretendardBold_16)
+                        .foregroundColor(.customGreen)
+                    Spacer()
+                        .frame(height: 5)
+                    Text(onboardingViewModel.subTitle)
+                        .font(.pretendardMedium_20)
+                        .foregroundColor(.customGreen)
+                }
             }
-            VStack{
-                Text(onboardingViewModel.title)
-                    .font(.pretendardBold_16)
-                    .foregroundColor(.customGreen)
-                Spacer()
-                    .frame(height: 5)
-                Text(onboardingViewModel.subTitle)
-                    .font(.pretendardMedium_20)
-                    .foregroundColor(.customGreen)
+            NavigationLink(destination: EyeSenseView()) {
+                VStack{
+                    Text(onboardingViewModel.title)
+                        .font(.pretendardBold_16)
+                        .foregroundColor(.customGreen)
+                    Spacer()
+                        .frame(height: 5)
+                    Text(onboardingViewModel.subTitle)
+                        .font(.pretendardMedium_20)
+                        .foregroundColor(.customGreen)
+                }
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
