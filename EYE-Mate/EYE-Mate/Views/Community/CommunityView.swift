@@ -9,7 +9,24 @@ import SwiftUI
 
 struct CommunityView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            VStack(alignment: .leading) {
+                Text("EYE-Mate")
+                    //.font(.pretendardBold_22)
+                    .font(.system(size: 22, weight: .heavy))
+                
+                HStack{
+                    Text("게시판")
+                    //.font(.pretendardBold_32)
+                        .font(.system(size: 32, weight: .heavy))
+                    Spacer()
+                    
+                    Image(systemName: "person.crop.circle.fill")
+                        .font(.largeTitle)
+                }
+            }
+            .padding(8)
+        }
     }
 }
 
