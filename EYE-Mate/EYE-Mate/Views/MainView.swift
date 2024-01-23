@@ -7,40 +7,41 @@
 
 import SwiftUI
 
-struct Main: View {
+struct MainView: View {
 
     var body: some View {
         TabView {
-            Home()
+            HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("홈")
                         .font(.pretendardMedium_10)
                 }
-            Movement()
+            MovementView()
                 .tabItem {
                     Image(systemName: "eyes")
                     Text("눈운동")
                         .font(.pretendardMedium_10)
                 }
-            Community()
+            CommunityView()
                 .tabItem {
                     Image(systemName: "message.fill")
                     Text("게시판")
                         .font(.pretendardMedium_10)
                 }
-            EyeMap()
+            EyeMapView()
                 .tabItem {
-                    Image(systemName: "map")
+                    Image(systemName: "map.fill")
+                        .imageScale(.small)
                     Text("내주변")
                         .font(.pretendardMedium_10)
                 }
         }
-        .font(.headline)
         .accentColor(.customGreen)
+        .padding(0)
     }
 }
 
 #Preview {
-    Main()
+    MainView()
 }

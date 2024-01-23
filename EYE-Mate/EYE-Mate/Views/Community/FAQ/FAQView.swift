@@ -1,5 +1,5 @@
 //
-//  FreeBoard.swift
+//  FAQ.swift
 //  EYE-Mate
 //
 //  Created by 이민영 on 2024/01/22.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct FreeBoard: View {
+struct FAQView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    FreeBoard()
+    FAQView()
 }

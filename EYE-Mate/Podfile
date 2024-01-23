@@ -5,6 +5,9 @@ target 'EYE-Mate' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+  # pod 의 모든 warning 무시
+  inhibit_all_warnings!
+
   # Pods for EYE-Mate
   pod 'NMapsMap'
   pod 'FirebaseAuth'
@@ -14,9 +17,9 @@ target 'EYE-Mate' do
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
-     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-     end
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
     end
-   end
+  end
 end
