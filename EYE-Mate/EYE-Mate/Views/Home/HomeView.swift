@@ -39,20 +39,38 @@ struct HomeView: View {
 private struct HomeViewCellListView: View {
     var body: some View {
         HStack(spacing: 10) {
-            HomeViewCellView(item: .init(isAction: false, img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
-                .padding(.leading, 10)
-            HomeViewCellView(item: .init(isAction: false, img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
-                .padding(.trailing, 10)
+            NavigationLink(destination: RecordView()) {
+                HomeViewCellView(item: .init(isAction: false, img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
+                    .padding(.leading, 10)
+                    .foregroundColor(.black)
+            }
+            NavigationLink(destination: ColorTestView()) {
+                HomeViewCellView(item: .init(isAction: false, img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
+                    .padding(.trailing, 10)
+                    .foregroundColor(.black)
+            }
         }
         VStack {
-            HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest1"), title: "눈 운동", subTitle: "슉슉 무브무브"))
-                .padding([.leading, .trailing], 10)
-            HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest2"), title: "눈 운동", subTitle: "슉슉 무브무브"))
-                .padding([.leading, .trailing], 10)
-            HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest3"), title: "눈 운동", subTitle: "슉슉 무브무브"))
-                .padding([.leading, .trailing], 10)
-            HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest4"), title: "눈 운동", subTitle: "슉슉 무브무브"))
-                .padding([.leading, .trailing], 10)
+            NavigationLink(destination: VisionTestView()) {
+                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest1"), title: "시력 검사", subTitle: "슉슉 무브무브"))
+                    .padding([.leading, .trailing], 10)
+                    .foregroundColor(.black)
+            }
+            NavigationLink(destination: ColorTestView()) {
+                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest2"), title: "색채 검사", subTitle: "슉슉 무브무브"))
+                    .padding([.leading, .trailing], 10)
+                    .foregroundColor(.black)
+            }
+            NavigationLink(destination: AstigmatismTestView()) {
+                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest3"), title: "난시 검사", subTitle: "슉슉 무브무브"))
+                    .padding([.leading, .trailing], 10)
+                    .foregroundColor(.black)
+            }
+            NavigationLink(destination: SightTestView()) {
+                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest4"), title: "시야 검사", subTitle: "슉슉 무브무브"))
+                    .padding([.leading, .trailing], 10)
+                    .foregroundColor(.black)
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ struct HomeViewCellView: View {
                     .frame(width: 50, height: 50)
                     .padding(.leading, 20)
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(item.title)
                         .font(.pretendardSemiBold_20)
                     Text(item.subTitle)
