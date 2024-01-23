@@ -34,7 +34,7 @@ struct StartMovementRow: View {
                     .font(.pretendardSemiBold_12)
             }.padding(.leading, 12)
             Spacer()
-            NavigationLink(destination: EightMovementView()) {
+            NavigationLink(destination: EightLottieView()) {
                 EmptyView()
             }
             .opacity(0.0)
