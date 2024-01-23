@@ -14,7 +14,7 @@ struct FAQView: View {
     var body: some View {
         VStack {
             // FAQ 검색바
-            searchBar()
+            SearchBar()
             
             // FAQ 목록
             ScrollView {
@@ -31,7 +31,7 @@ struct FAQView: View {
     }
     
     @ViewBuilder
-    func searchBar() -> some View {
+    func SearchBar() -> some View {
         HStack{
             TextField("어떤 질문을 찾으시나요?", text: $searchText)
                 .frame(maxWidth: .infinity)
