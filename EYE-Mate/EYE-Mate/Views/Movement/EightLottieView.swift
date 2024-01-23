@@ -7,12 +7,13 @@
 
 import SwiftUI
 import UIKit
+import Lottie
 
 struct EightLottieView: View {
     var body: some View {
            VStack {
-               Text("8자 운동")
-                   .font(.pretendardSemiBold_20)
+               LottieView(animation: .named("eight_movement"))
+                   .looping()
            }.onAppear{
                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscape))
