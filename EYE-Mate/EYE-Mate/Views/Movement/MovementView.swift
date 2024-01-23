@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct HorizontalDivider: View {
+    let color: Color
+    let height: CGFloat
+    
+    init(color: Color, height: CGFloat = 0.5) {
+        self.color = color
+        self.height = height
+    }
+    
+    var body: some View {
+        color
+            .frame(height: height)
+    }
+}
+
 struct MovementView: View {
     var body: some View {
                     VStack {
@@ -24,6 +39,7 @@ struct MovementView: View {
                         }
                             .frame(height: 112)
                             .padding(.horizontal, 24)
+                        HorizontalDivider(color: Color.customGreen, height: 4)
                         Spacer()
                     }
     }
