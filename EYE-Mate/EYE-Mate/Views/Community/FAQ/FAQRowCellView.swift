@@ -27,7 +27,7 @@ struct FAQRowCellView: View {
                     .padding(.trailing, 8)
 
 
-                // MARK: - faqTitle 추후에 Firebase에서 받아오기
+                // MARK: faqTitle 추후에 Firebase에서 받아온걸로 교체
                 // 자주 묻는 질문 제목
                 Text("\(faqTitle)")
                     .font(.pretendardRegular_16)
@@ -54,7 +54,7 @@ struct FAQRowCellView: View {
                         .padding(.trailing, 8)
 
 
-                    // MARK: - faqAnswer 추후에 Firebase에서 받아오기
+                    // MARK: faqAnswer 추후에 Firebase에서 받아온걸로 교체
                     // 자주 묻는 질문 답변
                     Text("\(faqAnswer)")
                         .font(.pretendardRegular_14)

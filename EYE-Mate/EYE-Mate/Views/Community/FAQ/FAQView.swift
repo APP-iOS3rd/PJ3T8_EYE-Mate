@@ -14,23 +14,8 @@ struct FAQView: View {
     var body: some View {
         VStack {
             // FAQ 검색바
-            HStack{
-                TextField("어떤 질문을 찾으시나요?", text: $searchText)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 15)
-                    .overlay(alignment: .trailing){
-                        Image(systemName: "magnifyingglass")
-                            .font(.title)
-                            .foregroundStyle(Color.customGreen)
-                    }
-            }
-            .padding(.horizontal, 15)
-            .overlay{
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .stroke(Color.customGreen)
-            }
+            searchBar()
             
-            // MARK: - FAQ목록 추후에 Firebase에서 받아오기
             // FAQ 목록
             ScrollView {
                 LazyVStack {
@@ -39,6 +24,32 @@ struct FAQView: View {
             }
         }
         .padding(.horizontal, 20)
+        .onAppear{
+            // MARK: FAQ목록 추후에 Firebase에서 받아오기
+            // 처음에 화면 나타났을 때는 키워드가 없으므로 모든 FAQ 받아옴(Pagination 필요)
+        }
+    }
+    
+    @ViewBuilder
+    func searchBar() -> some View {
+        HStack{
+            TextField("어떤 질문을 찾으시나요?", text: $searchText)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 15)
+                .overlay(alignment: .trailing){
+                    Image(systemName: "magnifyingglass")
+                        .font(.title)
+                        .foregroundStyle(Color.customGreen)
+                }
+        }
+        .padding(.horizontal, 15)
+        .overlay{
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(Color.customGreen)
+        }
+        .onSubmit {
+            // MARK: Firebase에서 검색 키워드에 따라 FAQ목록 받아오기(Pagination 필요)
+        }
     }
     
     @ViewBuilder
