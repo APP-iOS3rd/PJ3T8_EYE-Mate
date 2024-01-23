@@ -16,6 +16,7 @@ struct MapView: View {
         ZStack {
             NaverMap()
                 .ignoresSafeArea(.all, edges: .top)
+                
         }
         .onAppear {
             Coordinator.shared.checkIfLocationServiceIsEnabled()
@@ -43,7 +44,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     // 클래스 상단에 변수 설정을 해줘야 한다.
     @Published var coord: (Double, Double) = (0.0, 0.0)
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
-    
+    @Published var hospitals: [(Double, Double)] = []
     var locationManager: CLLocationManager?
     
     let view = NMFNaverMapView(frame: .zero)
@@ -55,7 +56,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         view.mapView.positionMode = .direction
         view.mapView.isNightModeEnabled = true
         
-        view.mapView.zoomLevel = 15
+        view.mapView.zoomLevel = 13
         view.mapView.minZoomLevel = 10 // 최소 줌 레벨
         view.mapView.maxZoomLevel = 17 // 최대 줌 레벨
         
@@ -119,6 +120,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
             fetchUserLocation()
             fetchApiData()
             
+            
         @unknown default:
             break
         }
@@ -129,7 +131,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         if let locationManager = locationManager {
             let lat = locationManager.location?.coordinate.latitude
             let lng = locationManager.location?.coordinate.longitude
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: view.mapView.zoomLevel)
             cameraUpdate.animation = .easeIn
             cameraUpdate.animationDuration = 1
             
@@ -168,10 +170,19 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 print("Error: JSON data parsing failed")
                 return
             }
+
+            DispatchQueue.main.async {
+                let resultArray = output.result.place.list
+                resultArray.forEach { element in
+                    self.hospitals.append((Double(element.y) ?? 0.0, Double(element.x) ?? 0.0))
+                    
+                    let marker = NMFMarker()
+                    marker.position = NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0)
+                    marker.mapView = self.view.mapView
+                }
+            }
+        
             
-            print("Places:", output.result.place.list)
-            print("Places count:", output.result.place.list.count)
-           
         }.resume()
     }
 }
