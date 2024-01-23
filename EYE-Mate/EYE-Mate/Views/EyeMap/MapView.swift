@@ -117,7 +117,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
             userLocation = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
             
             fetchUserLocation()
-            
+            fetchApiData()
             
         @unknown default:
             break
@@ -144,6 +144,35 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
             view.mapView.moveCamera(cameraUpdate)
             
         }
+    }
+    
+    func fetchApiData() {
+        // 현재 내 위치에서 안과 정보 받아오기
+        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=%EC%95%88%EA%B3%BC&type=all&searchCoord=\(String(userLocation.1));\(String(userLocation.0))&page=1&displayCount=20&isPlaceRecommendationReplace=true&lang=ko") else { return }
+        
+        // Request
+        let request = URLRequest(url: url)
+        
+        let session = URLSession(configuration: .default)
+        // Task
+        session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            guard error == nil else {
+                print("Error occur: error calling GET - \\(String(describing: error))")
+                return
+            }
+            guard let data = data, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                return
+            }
+            guard let output = try? JSONDecoder().decode(tempPlaces.self, from: data) else {
+                print("Error: JSON data parsing failed")
+                return
+            }
+            
+            print("Places:", output.result.place.list)
+            print("Places count:", output.result.place.list.count)
+           
+        }.resume()
     }
 }
 
