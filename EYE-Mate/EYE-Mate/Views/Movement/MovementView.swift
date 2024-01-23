@@ -22,6 +22,30 @@ struct HorizontalDivider: View {
     }
 }
 
+struct StartMovementRow: View {
+    var body: some View {
+        HStack {
+            Rectangle()
+                .foregroundColor(Color.blue)
+                .frame(width: 72, height: 72)
+            VStack(alignment: .leading, spacing: 12){
+                Text("8자 운동")
+                    .font(.pretendardSemiBold_20)
+                Text("점을 따라 눈을 움직이세요!")
+                    .font(.pretendardSemiBold_12)
+            }.padding(.leading, 12)
+            Spacer()
+            Circle()
+                .foregroundColor(Color.blue)
+                .frame(width: 44, height: 44)
+        }
+        .padding(16)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.25), radius: 4, x: 2, y: 2)
+    }
+}
+
 struct MovementView: View {
     var body: some View {
         VStack(spacing: 0) {
@@ -56,9 +80,29 @@ struct MovementView: View {
                                     .font(.pretendardSemiBold_20)
                             }
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                            List {
+                                ForEach(0..<3) { index in
+                                   StartMovementRow()
+                                }
+                                .listRowInsets(EdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                            }
+                            .padding(.horizontal, -10)
+                            .padding(.vertical, 0)
+                            .listStyle(PlainListStyle())
+                            .frame(maxHeight: .infinity)
+                            .scrollDisabled(true)
+                            .scrollContentBackground(.hidden)
+                            Spacer()
+                            VStack(alignment: .leading) {
+                                Text("추후 다른 운동 업데이트 예정입니다.")
+                                    .font(.pretendardMedium_18)
+                                    .foregroundColor(Color.warningGray)
+                            }
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
                             Spacer()
                         }
-                        .frame(width: .infinity)
                         .padding(.horizontal, 32)
                         .padding(.top, 16)
                         .background(Color.textFieldGray)
