@@ -25,8 +25,7 @@ struct HorizontalDivider: View {
 struct StartMovementRow: View {
     var body: some View {
         HStack {
-            Rectangle()
-                .foregroundColor(Color.blue)
+            Image("eight-movement")
                 .frame(width: 72, height: 72)
             VStack(alignment: .leading, spacing: 12){
                 Text("8자 운동")
@@ -35,9 +34,16 @@ struct StartMovementRow: View {
                     .font(.pretendardSemiBold_12)
             }.padding(.leading, 12)
             Spacer()
-            Circle()
-                .foregroundColor(Color.blue)
-                .frame(width: 44, height: 44)
+            Button(action: {
+                print("눈 운동 시작")
+            }) {
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.white)
+            }
+            .padding()
+            .background(Color.customGreen)
+            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+            .frame(width: 44, height: 44)
         }
         .padding(16)
         .background(Color.white)
@@ -91,10 +97,8 @@ struct MovementView: View {
                             .padding(.horizontal, -10)
                             .padding(.vertical, 0)
                             .listStyle(PlainListStyle())
-                            .frame(maxHeight: .infinity)
                             .scrollDisabled(true)
                             .scrollContentBackground(.hidden)
-                            Spacer()
                             VStack(alignment: .leading) {
                                 Text("추후 다른 운동 업데이트 예정입니다.")
                                     .font(.pretendardMedium_18)
