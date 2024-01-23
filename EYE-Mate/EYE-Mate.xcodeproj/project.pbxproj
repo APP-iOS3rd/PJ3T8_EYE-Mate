@@ -11,7 +11,6 @@
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
 		43A9BBC7C51E5E20BA9CF7D2 /* Pods_EYE_Mate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
-		52DC8CD62B5EAA080022B017 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC8CD42B5EAA080022B017 /* APIKEY.plist */; };
 		52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
@@ -38,6 +37,12 @@
 		713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F042B5E082700694F05 /* Pretendard-Black.otf */; };
 		713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F052B5E082700694F05 /* Pretendard-Regular.otf */; };
 		713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */; };
+		71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797C2B5FA6180010B423 /* OnboardingView.swift */; };
+		71AD797F2B5FA7070010B423 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */; };
+		71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */; };
+		71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79822B5FB37C0010B423 /* MenuModel.swift */; };
+		71AD79852B5FB3FF0010B423 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */; };
+		71AD79872B5FC9090010B423 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79862B5FC9090010B423 /* UserModel.swift */; };
 		71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */; };
 		71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC7F272B5E81AB00C0149C /* Bundle+.swift */; };
 /* End PBXBuildFile section */
@@ -46,7 +51,6 @@
 		1DE030292B5E3AE600BAD518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
-		52DC8CD42B5EAA080022B017 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseView.swift; sourceTree = "<group>"; };
@@ -75,6 +79,12 @@
 		713F4F042B5E082700694F05 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		713F4F052B5E082700694F05 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		71AD797C2B5FA6180010B423 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellView.swift; sourceTree = "<group>"; };
+		71AD79822B5FB37C0010B423 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		71AD79862B5FC9090010B423 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		71EC7F272B5E81AB00C0149C /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		81015EAD6440554DEAA04A01 /* Pods-EYE-Mate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.release.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +116,11 @@
 			isa = PBXGroup;
 			children = (
 				1DE030292B5E3AE600BAD518 /* HomeView.swift */,
+				71AD797C2B5FA6180010B423 /* OnboardingView.swift */,
+				71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */,
+				71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */,
+				71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */,
+				71AD79822B5FB37C0010B423 /* MenuModel.swift */,
 				52EE56C12B5E2AA600C6D423 /* Record */,
 				52EE56C02B5E2A7C00C6D423 /* EyeSense */,
 				52EE56BF2B5E2A2500C6D423 /* VisionTest */,
@@ -226,7 +241,6 @@
 				71027A592B5DEAE200879DA7 /* Assets.xcassets */,
 				713F4EEF2B5E06EE00694F05 /* Literal */,
 				71027A5B2B5DEAE200879DA7 /* Preview Content */,
-				52DC8CD42B5EAA080022B017 /* APIKEY.plist */,
 				52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */,
 			);
 			path = "EYE-Mate";
@@ -299,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */,
+				71AD79862B5FC9090010B423 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,7 +399,6 @@
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
-				52DC8CD62B5EAA080022B017 /* APIKEY.plist in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */,
@@ -446,22 +460,28 @@
 			files = (
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
+				71AD797F2B5FA7070010B423 /* OnBoardingViewModel.swift in Sources */,
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
+				71AD79852B5FB3FF0010B423 /* HomeViewModel.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
+				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
+				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
+				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
