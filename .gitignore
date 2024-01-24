@@ -108,6 +108,6 @@ iOSInjectionProject/
 
 # 프로젝트의 모든 경로에서 파일을 포함하지 않도록 함
 **/.DS_Store
-**/APIKEY-Info.plist
+**/APIKEY.plist
 **/GoogleService-Info.plist
 **/Info.plist
