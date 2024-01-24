@@ -35,18 +35,14 @@ struct StartMovementRow: View {
             }.padding(.leading, 12)
             Spacer()
             NavigationLink(destination: EightLottieView()) {
-                EmptyView()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.white)
             }
-            .opacity(0.0)
             .buttonStyle(PlainButtonStyle())
             .padding()
             .background(Color.customGreen)
             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             .frame(width: 44, height: 44)
-            .overlay {
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.white)
-            }
         }
         .padding(16)
         .background(Color.white)
@@ -56,6 +52,8 @@ struct StartMovementRow: View {
 }
 
 struct MovementView: View {
+    @State private var tempData: [Int] = [1, 2, 3]
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -89,19 +87,15 @@ struct MovementView: View {
                         .font(.pretendardSemiBold_20)
                 }
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                List {
-                    ForEach(0..<3) { index in
-                        StartMovementRow()
-                    }
-                    .listRowInsets(EdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 10))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+                ForEach(0..<3) { index in
+                    StartMovementRow()
                 }
                 .padding(.horizontal, -10)
                 .padding(.vertical, 0)
                 .listStyle(PlainListStyle())
                 .scrollDisabled(true)
                 .scrollContentBackground(.hidden)
+                Spacer()
                 VStack(alignment: .leading) {
                     Text("추후 다른 운동 업데이트 예정입니다.")
                         .font(.pretendardMedium_18)
