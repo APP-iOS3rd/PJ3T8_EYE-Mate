@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OnBoardingViewModel: Hashable {
+struct OnBoardingViewModel {
     var title: String
     var subTitle: String
     
