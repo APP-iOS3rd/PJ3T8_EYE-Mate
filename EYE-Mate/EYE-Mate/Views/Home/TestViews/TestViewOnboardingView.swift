@@ -34,7 +34,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -42,8 +42,8 @@ struct VisionTestOnboardingView: View {
                             .frame(width: .infinity)
                             .shadow(radius: 3, x: 1, y: 1)
                     )
-                    .padding(.bottom, 35)
                     .padding(.leading, 20)
+                    .padding(.vertical)
                 }
                 
                 GeometryReader { geometry in
@@ -55,7 +55,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -63,8 +63,8 @@ struct VisionTestOnboardingView: View {
                             .frame(maxHeight: 436)
                             .shadow(radius: 3, x: 1, y: 1)
                     )
-                    .padding(.bottom, 35)
                     .padding(.leading, 20)
+                    .padding(.vertical)
                 }
                 
             }
@@ -86,7 +86,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -94,8 +94,8 @@ struct VisionTestOnboardingView: View {
                             .frame(width: .infinity)
                             .shadow(radius: 3, x: 1, y: 1)
                     )
-                    .padding(.bottom, 35)
                     .padding(.leading, 20)
+                    .padding(.vertical)
                 }
                 
                 GeometryReader { geometry in
@@ -110,7 +110,7 @@ struct VisionTestOnboardingView: View {
                             .padding(.horizontal, 40)
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -118,8 +118,8 @@ struct VisionTestOnboardingView: View {
                             .frame(width: .infinity)
                             .shadow(radius: 3, x: 1, y: 1)
                     )
-                    .padding(.bottom, 35)
                     .padding(.leading, 20)
+                    .padding(.vertical)
                 }
                 
                 GeometryReader { geometry in
@@ -131,7 +131,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -139,8 +139,8 @@ struct VisionTestOnboardingView: View {
                             .frame(width: .infinity)
                             .shadow(radius: 3, x: 1, y: 1)
                     )
-                    .padding(.bottom, 35)
                     .padding(.leading, 20)
+                    .padding(.vertical)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
@@ -151,5 +151,5 @@ struct VisionTestOnboardingView: View {
 }
 
 #Preview {
-    VisionTestOnboardingView(image: [Image("Component1"), Image("Component2"), Image("Component3")])
+    VisionTestOnboardingView(image: [Image("Component1"), Image("Component4")])
 }
