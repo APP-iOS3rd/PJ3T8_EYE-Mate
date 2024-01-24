@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D130F4A2B5F774F00258F71 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D130F482B5F774F00258F71 /* APIKEY.plist */; };
+		1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5983992B61596600762E4B /* CreateNewPostView.swift */; };
 		1D98EC682B5FB50E00CC3AB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */; };
 		1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */; };
 		1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		1D130F482B5F774F00258F71 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1D37B15C2B61118C00007DF8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D5983992B61596600762E4B /* CreateNewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostView.swift; sourceTree = "<group>"; };
 		1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQRowCellView.swift; sourceTree = "<group>"; };
 		1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				52EE56CE2B5E2C8100C6D423 /* FreeBoardView.swift */,
 				1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */,
 				1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */,
+				1D5983992B61596600762E4B /* CreateNewPostView.swift */,
 			);
 			path = FreeBoard;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
+				1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
