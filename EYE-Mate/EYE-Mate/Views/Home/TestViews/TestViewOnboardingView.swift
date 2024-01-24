@@ -30,7 +30,8 @@ struct VisionTestOnboardingView: View {
                         Spacer()
                         img[0]
                             .resizable()
-                            .frame(width: 332, height: 119)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
                         Spacer()
                     }
                     .frame(width: geometry.size.width / 1.12)
@@ -48,12 +49,10 @@ struct VisionTestOnboardingView: View {
                 GeometryReader { geometry in
                     VStack {
                         Spacer()
-                        Text("오른쪽 눈을 먼저 검사해요!")
-                            .font(.pretendardRegular_24)
-                        Spacer()
                         img[1]
                             .resizable()
-                            .frame(width: 254, height: 176)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
                         Spacer()
                     }
                     .frame(width: geometry.size.width / 1.12)
@@ -83,7 +82,8 @@ struct VisionTestOnboardingView: View {
                         Spacer()
                         img[0]
                             .resizable()
-                            .frame(width: 332, height: 119)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
                         Spacer()
                     }
                     .frame(width: geometry.size.width / 1.12)
@@ -106,7 +106,8 @@ struct VisionTestOnboardingView: View {
                         Spacer()
                         img[1]
                             .resizable()
-                            .frame(width: 254, height: 176)
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.horizontal, 40)
                         Spacer()
                     }
                     .frame(width: geometry.size.width / 1.12)
@@ -126,7 +127,8 @@ struct VisionTestOnboardingView: View {
                         Spacer()
                         img[2]
                             .resizable()
-                            .frame(width: 313, height: 384)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
                         Spacer()
                     }
                     .frame(width: geometry.size.width / 1.12)
