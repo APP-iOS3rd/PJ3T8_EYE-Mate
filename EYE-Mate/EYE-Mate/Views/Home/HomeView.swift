@@ -13,7 +13,7 @@ struct HomeView: View {
     private var onboardingModel = OnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!")
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack(alignment: .leading){
                 CustomNavigationTitle(title: "홈", userImg: Image(systemName: "person.fill"))
                 
@@ -64,7 +64,7 @@ private struct HomeViewTextView: View {
 private struct HomeViewCellListView: View {
     var body: some View {
         HStack(spacing: 10) {
-            NavigationLink(destination: RecordView()) {
+            NavigationLink(destination: RecordView().navigationBarBackButtonHidden()) {
                 HomeViewCellView(item: .init(isAction: false, img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
                     .padding(.leading, 10)
                     .foregroundColor(.black)
