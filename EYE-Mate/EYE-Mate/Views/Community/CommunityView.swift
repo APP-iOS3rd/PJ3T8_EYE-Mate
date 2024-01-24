@@ -17,13 +17,11 @@ struct CommunityView: View {
             // 상단 Title
             VStack(alignment: .leading) {
                 Text("EYE-Mate")
-                // .font(.pretendardBold_22)
-                    .font(.system(size: 22, weight: .heavy))
+                 .font(.pretendardBold_22)
                 
                 HStack{
                     Text("게시판")
-                    // .font(.pretendardBold_32)
-                        .font(.system(size: 32, weight: .heavy))
+                     .font(.pretendardBold_32)
                     
                     Spacer()
                     

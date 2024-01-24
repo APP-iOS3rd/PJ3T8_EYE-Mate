@@ -15,10 +15,11 @@ struct PostCardView: View {
                 // postTitle, Date
                 HStack(spacing: 8) {
                     Text("\(post)")
-                        .font(.pretendardSemiBold_18)
+                        .font(.pretendardSemiBold_14)
+                        .lineLimit(1)
                     
                     Text("10월 11일")
-                        .font(.pretendardRegular_12)
+                        .font(.pretendardRegular_10)
                         .foregroundStyle(.gray)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -27,7 +28,7 @@ struct PostCardView: View {
                 Text("전문의의 정확한 검진 없이 안약을 과다 사용하면 오히려 눈 건강..")
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.pretendardRegular_14)
+                    .font(.pretendardRegular_12)
                     .padding(.top, 2)
                     .padding(.bottom, 4)
                     
@@ -36,16 +37,18 @@ struct PostCardView: View {
                     Image(systemName: "heart")
                         .foregroundStyle(Color.customRed)
                         .padding(.trailing, -8)
+                        .font(.system(size: 15))
                     
                     Text("41")
-                        .font(.pretendardRegular_16)
+                        .font(.pretendardRegular_12)
                     
                     Image(systemName: "message")
                         .foregroundStyle(Color.customGreen)
                         .padding(.trailing, -6)
+                        .font(.system(size: 15))
                     
                     Text("43")
-                        .font(.pretendardRegular_16)
+                        .font(.pretendardRegular_12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
