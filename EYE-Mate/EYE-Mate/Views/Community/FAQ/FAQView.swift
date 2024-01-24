@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FAQView: View {
     @State private var searchText: String = ""
-    @State private var fetchFAQ: [String] = ["갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다."]
+    @State private var fetchFAQ: [String] = ["갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다."]
     @State private var expandedFAQIndex: Int?
     var body: some View {
         VStack {
@@ -22,6 +22,7 @@ struct FAQView: View {
                     FAQs()
                 }
             }
+            .scrollIndicators(.never)
         }
         .padding(.top, 15)
         .padding(.horizontal, 20)
