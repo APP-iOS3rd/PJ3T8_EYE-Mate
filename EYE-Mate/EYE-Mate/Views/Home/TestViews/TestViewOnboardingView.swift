@@ -10,10 +10,12 @@ import SwiftUI
 struct VisionTestOnboardingView: View {
     var title: String
     var img: [Image]
+    var thirdTitle: String
     
-    init(title: String = "핸드폰과 거리를\n40cm~50cm 떨어트려주세요!", image: [Image]) {
+    init(title: String = "핸드폰과 거리를\n40cm~50cm 떨어트려주세요!", image: [Image], thirdTitle: String = "") {
         self.title = title
         self.img = image
+        self.thirdTitle = thirdTitle
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.customGreen)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(.customGreen).withAlphaComponent(0.3)
     }
@@ -125,6 +127,10 @@ struct VisionTestOnboardingView: View {
                 GeometryReader { geometry in
                     VStack {
                         Spacer()
+                        Text(thirdTitle)
+                            .multilineTextAlignment(.center)
+                            .font(.pretendardRegular_20)
+                        Spacer()
                         img[2]
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -151,5 +157,5 @@ struct VisionTestOnboardingView: View {
 }
 
 #Preview {
-    VisionTestOnboardingView(image: [Image("Component1"), Image("Component4")])
+    VisionTestOnboardingView(image: [Image("Component1"), Image("Component2"), Image("Component3")])
 }
