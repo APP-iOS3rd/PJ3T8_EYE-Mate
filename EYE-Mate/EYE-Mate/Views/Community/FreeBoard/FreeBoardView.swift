@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FreeBoardView: View {
-    @State private var recentsPosts: [String] = []
+    @State private var recentsPosts: [String] = ["안약 과다 사용", "안약 과다 사용2", "안약 과다 사용3", "안약 과다 사용4", "안약 과다 사용5", "안약 과다 사용6", "안약 과다 사용7"]
     @State private var createNewPost: Bool = false
     var body: some View {
         NavigationStack {
-            ReusablePostsView()
+            ReusablePostsView(posts: $recentsPosts)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .overlay(alignment: .bottomTrailing){
                     Button {
@@ -27,8 +27,8 @@ struct FreeBoardView: View {
                                     .foregroundStyle(.white)
                             }
                     }
+                    .padding()
                 }
-                .padding(15)
         }
     }
 }

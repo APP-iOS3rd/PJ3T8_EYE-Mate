@@ -13,9 +13,9 @@ struct CommunityView: View {
     @Namespace private var animation
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             // 상단 Title
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading) {
                 Text("EYE-Mate")
                 // .font(.pretendardBold_22)
                     .font(.system(size: 22, weight: .heavy))
@@ -24,15 +24,16 @@ struct CommunityView: View {
                     Text("게시판")
                     // .font(.pretendardBold_32)
                         .font(.system(size: 32, weight: .heavy))
+                    
                     Spacer()
                     
-                    
-                    // MARK: - profileImage 추후에 Firebase에서 Image 받아오기
+                    // MARK: profileImage 추후에 Firebase에서 Image 받아오기
                     Image(systemName: "person.crop.circle.fill")
                         .font(.largeTitle)
                 }
             }
-            .padding(8)
+            .padding(.horizontal, 20)
+            .padding(.vertical)
             
             // 상단 TabView
             communityTopTabView()

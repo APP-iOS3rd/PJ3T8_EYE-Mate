@@ -23,6 +23,7 @@ struct FAQView: View {
                 }
             }
         }
+        .padding(.top, 15)
         .padding(.horizontal, 20)
         .onAppear{
             // MARK: FAQ목록 추후에 Firebase에서 받아오기

@@ -12,13 +12,14 @@
 import SwiftUI
 
 struct ReusablePostsView: View {
-//    @Binding var posts: [String]
-    var posts: [String] = ["안약 과다 사용","안약 과다 사용2","안약 과다 사용3","안약 과다 사용4","안약 과다 사용5"]
+    @Binding var posts: [String] // 게시물 목록 Data (추후에 Firebase에서 받아와야함)
     var body: some View {
+        // 게시물 목록
         ScrollView {
             LazyVStack {
                 Posts()
             }
+            .padding(.top, 10)
         }
         .scrollIndicators(.never)
         .refreshable {
@@ -32,11 +33,15 @@ struct ReusablePostsView: View {
     @ViewBuilder
     func Posts() -> some View {
         ForEach(posts, id: \.self) { post in
-            Text(post)
+            Button{
+                
+            }label: {
+                PostCardView(post: post)
+            }
         }
     }
 }
-
-#Preview {
-    ReusablePostsView()
-}
+//
+//#Preview {
+//    ReusablePostsView()
+//}
