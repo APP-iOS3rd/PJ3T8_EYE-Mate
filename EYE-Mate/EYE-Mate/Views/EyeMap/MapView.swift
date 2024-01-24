@@ -11,17 +11,33 @@ import CoreLocation
 struct MapView: View {
     // Coordinator 클래스
     @StateObject var coordinator: Coordinator = Coordinator.shared
+    @State var updateBtn: Bool = false
     
     var body: some View {
-        ZStack {
+        
+        ZStack(alignment: .top) {
             NaverMap()
                 .ignoresSafeArea(.all, edges: .top)
-                
+            Button{
+                updateBtn.toggle()
+                if updateBtn {
+                    Coordinator.shared.fetchApiData()
+                }
+            } label: {
+                Text("\(Image(systemName: "arrow.clockwise")) 현 지도에서 검색")
+                    .foregroundColor(.white)
+                    .font(.pretendardSemiBold_14)
+                    .frame(width: 129.0, height: 34.0)
+                    .background(Color.customGreen)
+                    .opacity(0.8)
+                    .cornerRadius(20.0)
+            }
         }
         .onAppear {
             Coordinator.shared.checkIfLocationServiceIsEnabled()
         }
     }
+    
 }
 
 struct NaverMap: UIViewRepresentable {
@@ -45,6 +61,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     @Published var coord: (Double, Double) = (0.0, 0.0)
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
+    var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
     
     let view = NMFNaverMapView(frame: .zero)
@@ -78,6 +95,9 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
         // 카메라의 위치가 변경되면 호출되는 함수
+        let cameraPosition = mapView.cameraPosition
+        coord = (cameraPosition.target.lat, cameraPosition.target.lng)
+        
     }
     
     // 뷰 함수
@@ -114,19 +134,19 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         case .authorizedAlways, .authorizedWhenInUse:
             print("Success")
             
-            coord = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
             userLocation = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
+            
+            coord = userLocation
             
             fetchUserLocation()
             fetchApiData()
-            
             
         @unknown default:
             break
         }
     }
     
-    
+    // MARK: - 사용자 실제 위치 기준 icon 설정
     func fetchUserLocation() {
         if let locationManager = locationManager {
             let lat = locationManager.location?.coordinate.latitude
@@ -144,13 +164,14 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
             locationOverlay.iconHeight = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
             locationOverlay.anchor = CGPoint(x: 0.5, y: 1)
             view.mapView.moveCamera(cameraUpdate)
-            
         }
     }
     
+    // MARK: - 위치 주변 안과 정보 받아오기
     func fetchApiData() {
-        // 현재 내 위치에서 안과 정보 받아오기
-        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=%EC%95%88%EA%B3%BC&type=all&searchCoord=\(String(userLocation.1));\(String(userLocation.0))&page=1&displayCount=20&isPlaceRecommendationReplace=true&lang=ko") else { return }
+        // 모든 hospitals, coord 전부 latitude, longitude 순서
+        // query = longitude, latitude 순서
+        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=%EC%95%88%EA%B3%BC&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=20&isPlaceRecommendationReplace=true&lang=ko") else { return }
         
         // Request
         let request = URLRequest(url: url)
@@ -170,19 +191,26 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 print("Error: JSON data parsing failed")
                 return
             }
-
+            
             DispatchQueue.main.async {
+                // 이전 마커 지우기
                 let resultArray = output.result.place.list
+                if self.hospitalsMarkers.count > 1 {
+                    self.hospitalsMarkers.forEach { element in
+                        element.mapView = nil
+                    }
+                }
+                
+                // 위치 기준 새로운 마커 생성
                 resultArray.forEach { element in
                     self.hospitals.append((Double(element.y) ?? 0.0, Double(element.x) ?? 0.0))
                     
                     let marker = NMFMarker()
                     marker.position = NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0)
                     marker.mapView = self.view.mapView
+                    self.hospitalsMarkers.append(marker)
                 }
             }
-        
-            
         }.resume()
     }
 }
