@@ -35,6 +35,7 @@ struct List: Codable {
     let thumUrls: [String] // 썸네일 이미지
     let x, y: String
     let description: String
+    let distance: String
 }
 
 // MARK: - BusinessStatus

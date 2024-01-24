@@ -22,6 +22,7 @@ struct MapView: View {
                 updateBtn.toggle()
                 if updateBtn {
                     Coordinator.shared.fetchApiData()
+                    updateBtn = false
                 }
             } label: {
                 Text("\(Image(systemName: "arrow.clockwise")) 현 지도에서 검색")
@@ -73,7 +74,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         view.mapView.positionMode = .direction
         view.mapView.isNightModeEnabled = true
         
-        view.mapView.zoomLevel = 13
+        view.mapView.zoomLevel = 14
         view.mapView.minZoomLevel = 10 // 최소 줌 레벨
         view.mapView.maxZoomLevel = 17 // 최대 줌 레벨
         
@@ -171,7 +172,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     func fetchApiData() {
         // 모든 hospitals, coord 전부 latitude, longitude 순서
         // query = longitude, latitude 순서
-        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=%EC%95%88%EA%B3%BC&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=20&isPlaceRecommendationReplace=true&lang=ko") else { return }
+        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=%EC%95%88%EA%B3%BC&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=40&isPlaceRecommendationReplace=true&lang=ko") else { return }
         
         // Request
         let request = URLRequest(url: url)
@@ -193,8 +194,14 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
             }
             
             DispatchQueue.main.async {
+                // 거리에 따른 정렬
+                var array = output.result.place.list
+                array.sort { return Double($0.distance) ?? 0.0 < Double($1.distance) ?? 0.0 }
+                // 내 주변 20개 보여주기
+                let resultArray = Array(array[0...19])
+                print(resultArray)
+                
                 // 이전 마커 지우기
-                let resultArray = output.result.place.list
                 if self.hospitalsMarkers.count > 1 {
                     self.hospitalsMarkers.forEach { element in
                         element.mapView = nil
