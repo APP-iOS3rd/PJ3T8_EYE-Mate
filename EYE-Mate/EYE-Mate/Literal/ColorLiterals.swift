@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    // 회색배경 TextField
+    // 회색 배경 TextField
     static let textFieldGray = Color(hex: "#EEEEEE")
     // 회색 Btn
     static let btnGray  = Color(hex: "#DBDBDB")

@@ -756,6 +756,7 @@ PODS:
   - GTMSessionFetcher/Core (3.2.0)
   - Kingfisher (7.10.2)
   - leveldb-library (1.22.2)
+  - lottie-ios (4.4.0)
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
     - nanopb/encode (= 2.30909.1)
@@ -772,6 +773,7 @@ DEPENDENCIES:
   - FirebaseFirestore
   - FirebaseStorage
   - Kingfisher (~> 7.0)
+  - lottie-ios
   - NMapsMap
 
 SPEC REPOS:
@@ -794,6 +796,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kingfisher
     - leveldb-library
+    - lottie-ios
     - nanopb
     - NMapsGeometry
     - NMapsMap
@@ -819,12 +822,13 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 41b9ef0b4c08a6db4b7eb51a21ae5183ec99a2c8
   Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
+  lottie-ios: ef1be1f90d54255f08e09d767950e43714661178
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
   NMapsMap: a5b909a31b6f3d27a670f6eb2ddc913c38975474
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 5bfee3b0faa07f903c4850f68666a041a65f23cc
+PODFILE CHECKSUM: 52652e8b50ecbb989bbc8483eb51412f4f7faf7f
 
 COCOAPODS: 1.14.2
