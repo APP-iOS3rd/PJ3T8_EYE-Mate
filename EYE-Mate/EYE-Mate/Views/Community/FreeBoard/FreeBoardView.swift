@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct FreeBoardView: View {
+    @State private var recentsPosts: [String] = ["안약 과다 사용", "안약 과다 사용2", "안약 과다 사용3", "안약 과다 사용4", "안약 과다 사용5", "안약 과다 사용6", "안약 과다 사용7"]
+    @State private var createNewPost: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ReusablePostsView(posts: $recentsPosts)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .overlay(alignment: .bottomTrailing){
+                    Button {
+                        createNewPost.toggle()
+                    } label: {
+                        Circle()
+                            .foregroundStyle(Color.customGreen)
+                            .frame(maxHeight: 60)
+                            .overlay{
+                                Image(systemName: "square.and.pencil")
+                                    .font(.system(size: 26, weight: .bold))
+                                    .foregroundStyle(.white)
+                            }
+                    }
+                    .padding()
+                }
+        }
     }
 }
 
