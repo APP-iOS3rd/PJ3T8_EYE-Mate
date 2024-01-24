@@ -26,6 +26,7 @@ struct FreeBoardView: View {
                                     .font(.system(size: 26, weight: .bold))
                                     .foregroundStyle(.white)
                             }
+                            .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 0, x: 2, y: 2)
                     }
                     .padding()
                 }
