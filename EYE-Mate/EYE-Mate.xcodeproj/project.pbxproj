@@ -32,6 +32,8 @@
 		710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */; };
 		710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightTestView.swift */; };
 		710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */; };
+		710D40982B60DE97006C9FED /* VisionTestOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40972B60DE97006C9FED /* VisionTestOnboardingView.swift */; };
+		710D409A2B61059D006C9FED /* WaringText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40992B61059D006C9FED /* WaringText.swift */; };
 		713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */; };
 		713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF22B5E070700694F05 /* FontLiterals.swift */; };
 		713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */; };
@@ -81,6 +83,8 @@
 		710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestView.swift; sourceTree = "<group>"; };
 		710D40932B5FD8A9006C9FED /* SightTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestView.swift; sourceTree = "<group>"; };
 		710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
+		710D40972B60DE97006C9FED /* VisionTestOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestOnboardingView.swift; sourceTree = "<group>"; };
+		710D40992B61059D006C9FED /* WaringText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaringText.swift; sourceTree = "<group>"; };
 		713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
 		713F4EF22B5E070700694F05 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
@@ -130,10 +134,10 @@
 			children = (
 				1DE030292B5E3AE600BAD518 /* HomeView.swift */,
 				71AD797C2B5FA6180010B423 /* OnboardingView.swift */,
-				71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */,
-				71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */,
 				71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */,
+				71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */,
 				71AD79822B5FB37C0010B423 /* MenuModel.swift */,
+				71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */,
 				52EE56C12B5E2AA600C6D423 /* Record */,
 				52EE56C02B5E2A7C00C6D423 /* EyeSense */,
 				52EE56BF2B5E2A2500C6D423 /* TestViews */,
@@ -145,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */,
+				710D40972B60DE97006C9FED /* VisionTestOnboardingView.swift */,
 				710D408F2B5FD885006C9FED /* ColorTestView.swift */,
 				710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */,
 				710D40932B5FD8A9006C9FED /* SightTestView.swift */,
@@ -226,6 +231,7 @@
 				52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */,
 				5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */,
 				710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */,
+				710D40992B61059D006C9FED /* WaringText.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -492,7 +498,9 @@
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
+				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
+				710D40982B60DE97006C9FED /* VisionTestOnboardingView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,
