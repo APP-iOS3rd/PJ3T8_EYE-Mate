@@ -90,15 +90,14 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         checkLocationAuthorization()
     }
     
+    // 카메라 이동이 시작되기 전 호출되는 함수
     func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
-        // 카메라 이동이 시작되기 전 호출되는 함수
     }
     
+    // 카메라 위치가 변경되면 호출되는 함수
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-        // 카메라의 위치가 변경되면 호출되는 함수
         let cameraPosition = mapView.cameraPosition
         coord = (cameraPosition.target.lat, cameraPosition.target.lng)
-        
     }
     
     // 뷰 함수
@@ -210,11 +209,17 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 
                 // 위치 기준 새로운 마커 생성
                 resultArray.forEach { element in
+                    
                     self.hospitals.append((Double(element.y) ?? 0.0, Double(element.x) ?? 0.0))
                     
+                    // let marker = NMFMarker(position: NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0), iconImage: NMFOverlayImage(name: "cross.circle"))
                     let marker = NMFMarker()
                     marker.position = NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0)
+                    marker.iconImage = NMFOverlayImage(name: "hospital_mark")
+                    marker.width = 50
+                    marker.height = 50
                     marker.mapView = self.view.mapView
+                    
                     self.hospitalsMarkers.append(marker)
                 }
             }
