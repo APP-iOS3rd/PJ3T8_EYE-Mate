@@ -12,7 +12,7 @@ import FirebaseCore
 struct EYE_MateApp: App {
     
     init() {
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
     }
     var body: some Scene {
         WindowGroup {
