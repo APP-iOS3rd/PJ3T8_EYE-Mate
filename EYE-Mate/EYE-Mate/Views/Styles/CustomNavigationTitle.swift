@@ -11,28 +11,25 @@ struct CustomNavigationTitle: View {
     var title: String
     var userImg: Image
     
-    init(title: String, userImg: Image) {
+    init(title: String, userImg: Image = Image(systemName: "person.fill")) {
         self.title = title
         self.userImg = userImg
     }
     
     var body: some View {
-            VStack(alignment: .leading) {
-                Text("EYE-Mate")
-                    .font(.pretendardSemiBold_22)
-                
-                HStack {
+            HStack {
+                VStack {
+                    Text("EYE-Mate")
+                        .font(.pretendardSemiBold_22)
                     Text(title)
                         .font(.pretendardBold_32)
-                    
-                    Spacer()
-                    
-                    NavigationLink(destination: ProfileView()) {
-                        userImg
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        
-                    }
+                }
+                Spacer()
+                
+                NavigationLink(destination: ProfileView()) {
+                    userImg
+                        .resizable()
+                        .frame(width: 50, height: 50)
                 }
             }
             .padding([.leading, .trailing], 20)
@@ -40,5 +37,5 @@ struct CustomNavigationTitle: View {
 }
 
 #Preview {
-    CustomNavigationTitle(title: "홈", userImg: Image("person.fill"))
+    CustomNavigationTitle(title: "홈")
 }
