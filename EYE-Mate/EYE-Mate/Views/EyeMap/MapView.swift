@@ -12,7 +12,6 @@ struct MapView: View {
     // Coordinator 클래스
     @StateObject var coordinator: Coordinator = Coordinator.shared
     @State var updateBtn: Bool = false
-    @State var flag = false
     
     var body: some View {
         
@@ -36,7 +35,12 @@ struct MapView: View {
                         .cornerRadius(20.0)
                 }
                 Spacer()
-                MapModalView()
+                
+                if coordinator.sheetFlag {
+                    MapModalView()
+                        .transition(.move(edge: .bottom))
+                    
+                }
             }
             .padding(.bottom, 20)
         }
@@ -69,6 +73,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
     @Published var placeInfo: [String: String] = [:]
+    @Published var sheetFlag = false
     
     var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
@@ -86,6 +91,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         view.mapView.minZoomLevel = 10 // 최소 줌 레벨
         view.mapView.maxZoomLevel = 17 // 최대 줌 레벨
         
+        view.mapView.isZoomGestureEnabled = true
         view.showLocationButton = true
         view.showZoomControls = true // 줌 확대, 축소 버튼 활성화
         view.showCompass = false
@@ -106,6 +112,13 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
         let cameraPosition = mapView.cameraPosition
         coord = (cameraPosition.target.lat, cameraPosition.target.lng)
+    }
+    
+    // 지도 터치하면 호출되는 함수(마커가 터치될 땐 호출 X)
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        withAnimation(.linear(duration: 0.25)) {
+            sheetFlag = false
+        }
     }
     
     // 뷰 함수
@@ -235,12 +248,15 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                         self.placeInfo["name"] = resultArray[placeIdx].name
                         self.placeInfo["status"] = resultArray[placeIdx].businessStatus.status.text
                         self.placeInfo["statusDetail"] = resultArray[placeIdx].businessStatus.status.detailInfo
-                        self.placeInfo["thumUrls"] = resultArray[placeIdx].thumUrls.first ?? "none"
+                        self.placeInfo["image"] = resultArray[placeIdx].thumUrls.first ?? nil
                         self.placeInfo["reviewCount"] = String(resultArray[placeIdx].reviewCount)
                         self.placeInfo["placeReviewCount"] = String(resultArray[placeIdx].placeReviewCount)
                         self.placeInfo["address"] = resultArray[placeIdx].address
                         self.placeInfo["tel"] = resultArray[placeIdx].tel
-
+                        withAnimation(.linear(duration: 0.25)) {
+                            self.sheetFlag = true
+                        }
+                        
                         return true // 이벤트 소비, -mapView:didTapMap:point 이벤트는 발생하지 않음
                     }
                     marker.tag = UInt(markNumber)

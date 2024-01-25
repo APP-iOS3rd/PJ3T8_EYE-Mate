@@ -50,22 +50,22 @@ struct MapModalView: View {
                 }
                 
                 Spacer()
-                if coordinator.placeInfo["thumUrls"] != "none"{
-                    AsyncImage (
-                        url: URL(string: coordinator.placeInfo["thumUrls"] ?? ""),
-                        content: { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 90, height: 90)
-                                .cornerRadius(10)
-                        },
-                        placeholder: {
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 90, height: 90)
-                        }
-                    )
-                    .padding(.bottom, 20)
+                AsyncImage(url: URL(string: coordinator.placeInfo["image"] ?? "")) { phase in
+                    if let image = phase.image {
+                        image // Displays the loaded image.
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 90, height: 90)
+                            .cornerRadius(10)
+                    } else if phase.error != nil {
+                        Color.customGreen // Indicates an error.
+                            .frame(width: 90, height: 90)
+                            .cornerRadius(10)
+                    } else {
+                        Color.white // Indicates an error.
+                            .frame(width: 90, height: 90)
+                            .cornerRadius(10)
+                    }
                 }
             }
             .padding(15)
