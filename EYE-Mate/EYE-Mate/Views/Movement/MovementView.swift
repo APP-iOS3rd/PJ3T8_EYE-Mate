@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+extension View {
+    func toastView(toast: Binding<Toast?>) -> some View {
+        self.modifier(ToastModifier(toast: toast))
+    }
+}
+
 struct HorizontalDivider: View {
     let color: Color
     let height: CGFloat
@@ -53,6 +59,7 @@ struct StartMovementRow: View {
 
 struct MovementView: View {
     @State private var tempData: [Int] = [1, 2, 3]
+    @State private var toast: Toast? = nil
 
     var body: some View {
         VStack(spacing: 0) {
@@ -102,12 +109,18 @@ struct MovementView: View {
                         .foregroundColor(Color.warningGray)
                 }
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
+                // FIXME: 임시 토스트 발생 버튼
+                Button {
+                    toast = Toast()
+                } label: {
+                    Text("Toast")
+                }
                 Spacer()
             }
             .padding(.horizontal, 32)
             .padding(.top, 16)
             .background(Color.textFieldGray)
-        }
+        }.toastView(toast: $toast)
     }
 }
 
