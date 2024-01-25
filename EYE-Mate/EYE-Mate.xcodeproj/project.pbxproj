@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D130F4A2B5F774F00258F71 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D130F482B5F774F00258F71 /* APIKEY.plist */; };
-		1D98EC682B5FB50E00CC3AB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */; };
 		1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */; };
 		1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */; };
 		1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */; };
@@ -35,14 +33,17 @@
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
-		710D408E2B5FD160006C9FED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
+		7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
+		7107A3EB2B624F2B00944077 /* VisionTestConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EA2B624F2B00944077 /* VisionTestConditionView.swift */; };
+		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
+		7107A3EF2B62548D00944077 /* DistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceModel.swift */; };
 		710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D408F2B5FD885006C9FED /* ColorTestView.swift */; };
 		710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */; };
 		710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightTestView.swift */; };
 		710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */; };
 		710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */; };
 		710D409A2B61059D006C9FED /* WaringText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40992B61059D006C9FED /* WaringText.swift */; };
-		710D409C2B613AC5006C9FED /* TestTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D409B2B613AC5006C9FED /* TestTextView.swift */; };
+		710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D409B2B613AC5006C9FED /* ExplanationTextView.swift */; };
 		713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */; };
 		713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF22B5E070700694F05 /* FontLiterals.swift */; };
 		713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */; };
@@ -54,18 +55,16 @@
 		713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F042B5E082700694F05 /* Pretendard-Black.otf */; };
 		713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F052B5E082700694F05 /* Pretendard-Regular.otf */; };
 		713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */; };
-		71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797C2B5FA6180010B423 /* OnboardingView.swift */; };
-		71AD797F2B5FA7070010B423 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */; };
+		71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */; };
+		71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */; };
 		71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */; };
 		71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79822B5FB37C0010B423 /* MenuModel.swift */; };
-		71AD79852B5FB3FF0010B423 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */; };
 		71AD79872B5FC9090010B423 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79862B5FC9090010B423 /* UserModel.swift */; };
 		71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */; };
 		71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC7F272B5E81AB00C0149C /* Bundle+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D130F482B5F774F00258F71 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQRowCellView.swift; sourceTree = "<group>"; };
 		1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
@@ -94,6 +93,9 @@
 		71027A572B5DEAE000879DA7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		71027A592B5DEAE200879DA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7107A3EA2B624F2B00944077 /* VisionTestConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestConditionView.swift; sourceTree = "<group>"; };
+		7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFaceAndDevice.swift; sourceTree = "<group>"; };
+		7107A3EE2B62548D00944077 /* DistanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceModel.swift; sourceTree = "<group>"; };
 		710D408B2B5FD156006C9FED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		710D408D2B5FD160006C9FED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		710D408F2B5FD885006C9FED /* ColorTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestView.swift; sourceTree = "<group>"; };
@@ -102,7 +104,7 @@
 		710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
 		710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewOnboardingView.swift; sourceTree = "<group>"; };
 		710D40992B61059D006C9FED /* WaringText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaringText.swift; sourceTree = "<group>"; };
-		710D409B2B613AC5006C9FED /* TestTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTextView.swift; sourceTree = "<group>"; };
+		710D409B2B613AC5006C9FED /* ExplanationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationTextView.swift; sourceTree = "<group>"; };
 		713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
 		713F4EF22B5E070700694F05 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
@@ -114,11 +116,10 @@
 		713F4F042B5E082700694F05 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		713F4F052B5E082700694F05 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
-		71AD797C2B5FA6180010B423 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnboardingView.swift; sourceTree = "<group>"; };
+		71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnBoardingViewModel.swift; sourceTree = "<group>"; };
 		71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellView.swift; sourceTree = "<group>"; };
 		71AD79822B5FB37C0010B423 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
-		71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		71AD79862B5FC9090010B423 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		71EC7F272B5E81AB00C0149C /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
@@ -159,11 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				1DE030292B5E3AE600BAD518 /* HomeView.swift */,
-				71AD797C2B5FA6180010B423 /* OnboardingView.swift */,
-				71AD797E2B5FA7070010B423 /* OnBoardingViewModel.swift */,
-				71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */,
-				71AD79822B5FB37C0010B423 /* MenuModel.swift */,
-				71AD79842B5FB3FF0010B423 /* HomeViewModel.swift */,
+				7107A3F62B625D0800944077 /* Menu */,
 				52EE56C12B5E2AA600C6D423 /* Record */,
 				52EE56C02B5E2A7C00C6D423 /* EyeSense */,
 				52EE56BF2B5E2A2500C6D423 /* TestViews */,
@@ -174,12 +171,12 @@
 		52EE56BF2B5E2A2500C6D423 /* TestViews */ = {
 			isa = PBXGroup;
 			children = (
-				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
-				710D409B2B613AC5006C9FED /* TestTextView.swift */,
-				52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */,
-				710D408F2B5FD885006C9FED /* ColorTestView.swift */,
-				710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */,
-				710D40932B5FD8A9006C9FED /* SightTestView.swift */,
+				7107A3F12B625BC900944077 /* Common */,
+				7107A3F02B625B5600944077 /* Distance */,
+				7107A3F22B625BFB00944077 /* Vision */,
+				7107A3F32B625C6800944077 /* Color */,
+				7107A3F42B625C7500944077 /* Astigmatism */,
+				7107A3F52B625C7D00944077 /* Sight */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -188,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */,
+				71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */,
+				71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */,
 			);
 			path = EyeSense;
 			sourceTree = "<group>";
@@ -263,7 +262,6 @@
 				52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */,
 				5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */,
 				710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */,
-				710D40992B61059D006C9FED /* WaringText.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -275,6 +273,7 @@
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
 				DDE618B35681A265D0724720 /* Frameworks */,
+				710D409D2B620039006C9FED /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,6 +308,75 @@
 				71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7107A3F02B625B5600944077 /* Distance */ = {
+			isa = PBXGroup;
+			children = (
+				7107A3EE2B62548D00944077 /* DistanceModel.swift */,
+				7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */,
+			);
+			path = Distance;
+			sourceTree = "<group>";
+		};
+		7107A3F12B625BC900944077 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				710D409B2B613AC5006C9FED /* ExplanationTextView.swift */,
+				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
+				710D40992B61059D006C9FED /* WaringText.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7107A3F22B625BFB00944077 /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */,
+				7107A3EA2B624F2B00944077 /* VisionTestConditionView.swift */,
+			);
+			path = Vision;
+			sourceTree = "<group>";
+		};
+		7107A3F32B625C6800944077 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				710D408F2B5FD885006C9FED /* ColorTestView.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		7107A3F42B625C7500944077 /* Astigmatism */ = {
+			isa = PBXGroup;
+			children = (
+				710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */,
+			);
+			path = Astigmatism;
+			sourceTree = "<group>";
+		};
+		7107A3F52B625C7D00944077 /* Sight */ = {
+			isa = PBXGroup;
+			children = (
+				710D40932B5FD8A9006C9FED /* SightTestView.swift */,
+			);
+			path = Sight;
+			sourceTree = "<group>";
+		};
+		7107A3F62B625D0800944077 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */,
+				71AD79822B5FB37C0010B423 /* MenuModel.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		710D409D2B620039006C9FED /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		713F4EEF2B5E06EE00694F05 /* Literal */ = {
@@ -453,7 +521,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				710D408E2B5FD160006C9FED /* GoogleService-Info.plist in Resources */,
+				7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
 				713F4F0C2B5E082700694F05 /* Pretendard-Bold.otf in Resources */,
 				3329BC022B6102370099EDC4 /* eight-movement.json in Resources */,
@@ -466,7 +534,6 @@
 				713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */,
 				713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */,
 				713F4F0A2B5E082700694F05 /* Pretendard-Medium.otf in Resources */,
-				1D98EC682B5FB50E00CC3AB2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,14 +589,14 @@
 				336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
-				71AD797F2B5FA7070010B423 /* OnBoardingViewModel.swift in Sources */,
+				71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */,
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
-				710D409C2B613AC5006C9FED /* TestTextView.swift in Sources */,
+				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
-				71AD79852B5FB3FF0010B423 /* HomeViewModel.swift in Sources */,
+				7107A3EB2B624F2B00944077 /* VisionTestConditionView.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
 				1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */,
@@ -538,6 +605,7 @@
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
+				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
 				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
@@ -546,7 +614,8 @@
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
-				71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */,
+				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
+				7107A3EF2B62548D00944077 /* DistanceModel.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
@@ -701,6 +770,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EYE-Mate/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 저에게 허락해주십쇼!!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -784,7 +854,7 @@
 					"-weak_framework",
 					"\"SwiftUI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -806,6 +876,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EYE-Mate/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 저에게 허락해주십쇼!!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -889,7 +960,7 @@
 					"-weak_framework",
 					"\"SwiftUI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
