@@ -14,6 +14,7 @@ class DistanceModel: ObservableObject {
         
     }
     
+    @MainActor
     func inputDistance(_ distance: Int) {
         self.distance = distance
     }

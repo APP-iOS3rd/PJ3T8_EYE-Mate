@@ -60,7 +60,9 @@ struct DistanceFaceAndDevice: UIViewRepresentable {
             //5. Calculate The Average Distance Of The Eyes To The Camera
             let averageDistance = (leftEyeDistanceFromCamera.length() + rightEyeDistanceFromCamera.length()) / 2
             let averageDistanceCM = (Int(round(averageDistance * 100)))
-            parent.distance.inputDistance(averageDistanceCM)
+            Task {
+                await parent.distance.inputDistance(averageDistanceCM)
+            }
         }
     }
 
