@@ -654,6 +654,7 @@
 				INFOPLIST_FILE = "EYE-Mate/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -759,6 +760,7 @@
 				INFOPLIST_FILE = "EYE-Mate/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
