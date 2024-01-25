@@ -12,7 +12,7 @@ struct AstigmatismTestView: View {
         //TODO: - 커스텀 네비게이션 바
         CustomNavigationTitle(title: "난시 검사", userImg: Image(systemName: "person.fill"))
         //TODO: - 텍스트 뷰
-        TestTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
+        ExplanationTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
         Spacer()
         //TODO: - 온보딩 화면
         VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")

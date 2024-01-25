@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
-    var onboardingViewModel: OnBoardingViewModel
+struct EyeSenseOnboardingView: View {
+    var onboardingViewModel: EyeSenseOnBoardingViewModel
     
-    init(onboardingViewModel: OnBoardingViewModel) {
+    init(onboardingViewModel: EyeSenseOnBoardingViewModel) {
         self.onboardingViewModel = onboardingViewModel
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.customGreen)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(.customGreen).withAlphaComponent(0.3)
@@ -50,5 +50,5 @@ struct OnboardingView: View {
 }
 
 #Preview {
-    OnboardingView(onboardingViewModel: OnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!"))
+    EyeSenseOnboardingView(onboardingViewModel: EyeSenseOnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!"))
 }
