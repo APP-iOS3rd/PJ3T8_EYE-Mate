@@ -9,23 +9,22 @@ import SwiftUI
 
 struct MapModalView: View {
     @ObservedObject var coordinator: Coordinator = Coordinator.shared
-    @State private var isHover = false
     
     var body: some View {
         
         RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.white.shadow(.drop(color: .gray, radius: 10, x: 2, y: 2)))
-                    .stroke(Color.customGreen, lineWidth: 2)
-                    .overlay(
-                        HStack {
-                            InfoView(coordinator: coordinator)
-                            Spacer()
-                            ActionAreaView(coordinator: coordinator)
-                        }
-                        .padding(15)
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: 160)
-                    .padding(.horizontal, 20)
+            .fill(Color.white.shadow(.drop(color: .gray, radius: 10, x: 2, y: 2)))
+            .stroke(Color.customGreen, lineWidth: 2)
+            .overlay(
+                HStack {
+                    InfoView(coordinator: coordinator)
+                    Spacer()
+                    ActionAreaView(coordinator: coordinator)
+                }
+                .padding(15)
+            )
+            .frame(maxWidth: .infinity, maxHeight: 160)
+            .padding(.horizontal, 20)
     }
 }
 

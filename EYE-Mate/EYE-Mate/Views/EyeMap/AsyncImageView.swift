@@ -6,28 +6,33 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct AsyncImageView: View {
     var url: URL?
-
+    
     var body: some View {
-        AsyncImage(url: url) { phase in
-            switch phase {
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .modifier(MapImgModifier())
-            case .failure(_):
-                Color.customGreen
-                    .modifier(MapImgModifier())
-            case .empty:
-                Color.black
-                    .modifier(MapImgModifier())
-            @unknown default:
-                Color.white
-                    .modifier(MapImgModifier())
-            }
+        if let url = url {
+            KFImage(url)
+                .placeholder { //플레이스 홀더 설정
+                    ProgressView()
+                        .modifier(MapImgModifier())
+                }.retry(maxCount: 3, interval: .seconds(5)) //재시도
+                .onSuccess {r in //성공
+                    print("succes: \(r)")
+                }
+                .onFailure { e in //실패
+                    print("failure: \(e)")
+                }
+                .resizable()
+                .scaledToFill()
+                .modifier(MapImgModifier())
+        }
+        
+        else {
+            Color.white // Indicates an error.
+                .modifier(MapImgModifier())
         }
     }
+    
 }
