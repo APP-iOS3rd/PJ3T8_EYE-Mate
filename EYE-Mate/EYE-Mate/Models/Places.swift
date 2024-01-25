@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Places
-struct tempPlaces: Codable {
+struct Places: Codable {
     let result: Result
 }
 
@@ -20,11 +20,11 @@ struct Result: Codable {
 
 // MARK: - Place
 struct Place: Codable {
-    let list: [List]
+    let list: [placeList]
 }
 
 // MARK: - List
-struct List: Codable {
+struct placeList: Codable {
     let index, rank, id, name: String
     let tel: String // 전화번호
     let category: [String] // 병원,의원 안과
@@ -34,18 +34,18 @@ struct List: Codable {
     let reviewCount, placeReviewCount: Int
     let thumUrls: [String] // 썸네일 이미지
     let x, y: String
-    let description: String
     let distance: String
+    
 }
 
 // MARK: - BusinessStatus
 struct BusinessStatus: Codable {
-    let status: Status // 현재 "진료중", "진료 종료" 상태
+    let status: Status
     let businessHours, breakTime, lastOrder: String
 }
 
 // MARK: - Status
 struct Status: Codable {
-    let description: String
+    let text: String// 현재 "진료중", "진료 종료" 상태
     let detailInfo: String // "17:30에 종료"
 }

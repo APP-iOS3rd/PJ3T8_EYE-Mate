@@ -12,27 +12,33 @@ struct MapView: View {
     // Coordinator 클래스
     @StateObject var coordinator: Coordinator = Coordinator.shared
     @State var updateBtn: Bool = false
+    @State var flag = false
     
     var body: some View {
         
         ZStack(alignment: .top) {
             NaverMap()
                 .ignoresSafeArea(.all, edges: .top)
-            Button{
-                updateBtn.toggle()
-                if updateBtn {
-                    Coordinator.shared.fetchApiData()
-                    updateBtn = false
+            VStack{
+                Button{
+                    updateBtn.toggle()
+                    if updateBtn {
+                        Coordinator.shared.fetchApiData()
+                        updateBtn = false
+                    }
+                } label: {
+                    Text("\(Image(systemName: "arrow.clockwise")) 현 지도에서 검색")
+                        .foregroundColor(.white)
+                        .font(.pretendardSemiBold_14)
+                        .frame(width: 129.0, height: 34.0)
+                        .background(Color.customGreen)
+                        .opacity(0.8)
+                        .cornerRadius(20.0)
                 }
-            } label: {
-                Text("\(Image(systemName: "arrow.clockwise")) 현 지도에서 검색")
-                    .foregroundColor(.white)
-                    .font(.pretendardSemiBold_14)
-                    .frame(width: 129.0, height: 34.0)
-                    .background(Color.customGreen)
-                    .opacity(0.8)
-                    .cornerRadius(20.0)
+                Spacer()
+                MapModalView()
             }
+            .padding(.bottom, 20)
         }
         .onAppear {
             Coordinator.shared.checkIfLocationServiceIsEnabled()
@@ -62,6 +68,8 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     @Published var coord: (Double, Double) = (0.0, 0.0)
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
+    @Published var placeInfo: [String: String] = [:]
+    
     var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
     
@@ -187,7 +195,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 print("Error: HTTP request failed")
                 return
             }
-            guard let output = try? JSONDecoder().decode(tempPlaces.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Places.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
@@ -198,7 +206,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 array.sort { return Double($0.distance) ?? 0.0 < Double($1.distance) ?? 0.0 }
                 // 내 주변 20개 보여주기
                 let resultArray = Array(array[0...19])
-                print(resultArray)
+                //                print(resultArray)
                 
                 // 이전 마커 지우기
                 if self.hospitalsMarkers.count > 1 {
@@ -208,18 +216,34 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 }
                 
                 // 위치 기준 새로운 마커 생성
+                var markNumber: Int = -1 // 마커 식별자 테그
+                var placeIdx: Int = 0
                 resultArray.forEach { element in
-                    
+                    markNumber += 1
                     self.hospitals.append((Double(element.y) ?? 0.0, Double(element.x) ?? 0.0))
                     
-                    // let marker = NMFMarker(position: NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0), iconImage: NMFOverlayImage(name: "cross.circle"))
                     let marker = NMFMarker()
                     marker.position = NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0)
                     marker.iconImage = NMFOverlayImage(name: "hospital_mark")
                     marker.width = 50
                     marker.height = 50
                     marker.mapView = self.view.mapView
-                    
+                    marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
+                        // 눌렀을때 정보 나오게
+                        print(resultArray[Int(marker.tag)])
+                        placeIdx = Int(marker.tag)
+                        self.placeInfo["name"] = resultArray[placeIdx].name
+                        self.placeInfo["status"] = resultArray[placeIdx].businessStatus.status.text
+                        self.placeInfo["statusDetail"] = resultArray[placeIdx].businessStatus.status.detailInfo
+                        self.placeInfo["thumUrls"] = resultArray[placeIdx].thumUrls.first ?? "none"
+                        self.placeInfo["reviewCount"] = String(resultArray[placeIdx].reviewCount)
+                        self.placeInfo["placeReviewCount"] = String(resultArray[placeIdx].placeReviewCount)
+                        self.placeInfo["address"] = resultArray[placeIdx].address
+                        self.placeInfo["tel"] = resultArray[placeIdx].tel
+
+                        return true // 이벤트 소비, -mapView:didTapMap:point 이벤트는 발생하지 않음
+                    }
+                    marker.tag = UInt(markNumber)
                     self.hospitalsMarkers.append(marker)
                 }
             }
