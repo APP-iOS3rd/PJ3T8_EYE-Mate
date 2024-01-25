@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MapModalView: View {
     @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @State private var isHover = false
+    
     var body: some View {
         
         RoundedRectangle(cornerRadius: 20)
@@ -18,7 +20,7 @@ struct MapModalView: View {
                         HStack {
                             InfoView(coordinator: coordinator)
                             Spacer()
-                            AsyncImageView(url: URL(string: coordinator.placeInfo[Key.image.rawValue] ?? ""))
+                            ActionAreaView(coordinator: coordinator)
                         }
                         .padding(15)
                     )

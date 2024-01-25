@@ -12,7 +12,7 @@ struct MapView: View {
     // Coordinator 클래스
     @StateObject var coordinator: Coordinator = Coordinator.shared
     @State var updateBtn: Bool = false
-    
+    @State private var isHover = false
     var body: some View {
         
         ZStack(alignment: .top) {
