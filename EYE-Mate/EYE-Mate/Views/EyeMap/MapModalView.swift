@@ -13,8 +13,13 @@ struct MapModalView: View {
     var body: some View {
         
         RoundedRectangle(cornerRadius: 20)
-            .fill(Color.white.shadow(.drop(color: .gray, radius: 10, x: 2, y: 2)))
-            .stroke(Color.customGreen, lineWidth: 2)
+            .stroke(Color.customGreen, lineWidth: 3)
+            .cornerRadius(20)
+            .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white)
+                        .shadow(radius: 5, x: 2, y: 2)
+                )
             .overlay(
                 HStack {
                     InfoView(coordinator: coordinator)
