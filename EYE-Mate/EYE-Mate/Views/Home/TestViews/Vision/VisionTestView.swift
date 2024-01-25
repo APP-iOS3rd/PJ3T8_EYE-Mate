@@ -20,23 +20,8 @@ struct VisionTestView: View {
             VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component3")])
             Spacer()
             //TODO: - 테스트 시작 버튼
-            RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(.customGreen)
-                .frame(maxWidth: .infinity, maxHeight: 40)
-                .overlay{
-                    Button( action: {
-                        isPresentedTestView.toggle()
-                        print(isPresentedTestView)
-                    }, label: {
-                        Text("테스트 시작하기")
-                            .font(.pretendardBold_14)
-                            .foregroundColor(.white)
-                    })
-                    .navigationDestination(isPresented: $isPresentedTestView) {
-                        VisionTestConditionView()
-                    }
-                }
-                .padding(.horizontal, 15)
+            CustomBtn(title: "테스트 시작하기", background: .customGreen, fontStyle: .pretendardBold_16, action: {})
+                .frame(maxHeight: 75)
             Spacer()
             //TODO: - 경고 문구
             WaringText()
