@@ -9,10 +9,9 @@ import NMapsMap
 import CoreLocation
 
 struct MapView: View {
-    // Coordinator 클래스
     @StateObject var coordinator: Coordinator = Coordinator.shared
     @State var updateBtn: Bool = false
-
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -33,6 +32,7 @@ struct MapView: View {
                         .background(Color.customGreen)
                         .opacity(0.8)
                         .cornerRadius(20.0)
+                        .padding()
                 }
                 
                 Spacer()

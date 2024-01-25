@@ -22,6 +22,11 @@ enum Key: String {
     case lng = "lng"
 }
 
+enum encodingPlace: String {
+    case hosiptal = "%EC%95%88%EA%B3%BC"
+    case optician = "%EC%95%88%EA%B2%BD%EC%9B%90"
+}
+
 struct NaverMap: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
@@ -45,12 +50,10 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     @Published var hospitals: [(Double, Double)] = []
     @Published var placeInfo: [String: String] = [:]
     @Published var sheetFlag = false
-    
+    var queryPlace: String = encodingPlace.hosiptal.rawValue
     var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
-    
     let view = NMFNaverMapView(frame: .zero)
-    
     
     override init() {
         super.init()
@@ -161,7 +164,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     // MARK: - 위치 주변 안과 정보 받아오기
     func fetchApiData() {
         // query = longitude, latitude 순서
-        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=%EC%95%88%EA%B3%BC&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=40&isPlaceRecommendationReplace=true&lang=ko") else { return }
+        guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=\(queryPlace)&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=40&isPlaceRecommendationReplace=true&lang=ko") else { return }
         
         // Request
         let request = URLRequest(url: url)
