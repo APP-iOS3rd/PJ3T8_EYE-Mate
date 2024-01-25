@@ -18,6 +18,8 @@ enum Key: String {
     case placeReviewCount = "placeReviewCount"
     case address = "address"
     case tel = "tel"
+    case lat = "lat"
+    case lng = "lng"
 }
 
 struct NaverMap: UIViewRepresentable {
@@ -219,6 +221,8 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                         self.placeInfo[Key.placeReviewCount.rawValue] = String(resultArray[placeIdx].placeReviewCount)
                         self.placeInfo[Key.address.rawValue] = resultArray[placeIdx].address
                         self.placeInfo[Key.tel.rawValue] = resultArray[placeIdx].tel
+                        self.placeInfo[Key.lat.rawValue] = resultArray[placeIdx].y
+                        self.placeInfo[Key.lng.rawValue] = resultArray[placeIdx].x
                         withAnimation(.linear(duration: 0.25)) {
                             self.sheetFlag = true
                         }
