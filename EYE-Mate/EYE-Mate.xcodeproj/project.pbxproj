@@ -33,7 +33,6 @@
 		52FB98D12B623CDA00F6A284 /* MapButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */; };
 		52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D22B6240D200F6A284 /* ActionAreaView.swift */; };
 		52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */; };
-		52FB98D72B62C44F00F6A284 /* MapTopTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D62B62C44F00F6A284 /* MapTopTabView.swift */; };
 		71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */; };
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
@@ -80,7 +79,6 @@
 		52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonStyle.swift; sourceTree = "<group>"; };
 		52FB98D22B6240D200F6A284 /* ActionAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAreaView.swift; sourceTree = "<group>"; };
 		52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabBarView.swift; sourceTree = "<group>"; };
-		52FB98D62B62C44F00F6A284 /* MapTopTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTopTabView.swift; sourceTree = "<group>"; };
 		58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				52FB98CE2B62331900F6A284 /* MapImgModifier.swift */,
 				52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */,
 				52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */,
-				52FB98D62B62C44F00F6A284 /* MapTopTabView.swift */,
 			);
 			path = EyeMap;
 			sourceTree = "<group>";
@@ -486,7 +483,6 @@
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
-				52FB98D72B62C44F00F6A284 /* MapTopTabView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImgModifier.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,

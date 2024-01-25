@@ -43,7 +43,7 @@ struct MapTabBarView: View {
                 .padding(.vertical)
                 
                 // 상단 TabView
-                MapTopTabView2(selectedPicker: $selectedPicker)
+                MapTopTabView()
                 
                 // 선택된 상단 Tab의 View Switching
                 switch selectedPicker {
