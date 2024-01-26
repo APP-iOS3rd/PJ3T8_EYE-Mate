@@ -7,7 +7,8 @@
 
 import Foundation
 
-class DistanceModel: ObservableObject {
+//MARK: - 테스트마다 조건을 확인하는 모델
+class TestConditionViewModel: ObservableObject {
     @Published var distance: Int = 0
     
     init() {
@@ -16,6 +17,7 @@ class DistanceModel: ObservableObject {
     
     @MainActor
     func inputDistance(_ distance: Int) {
+        print("\(distance)")
         self.distance = distance
     }
 }

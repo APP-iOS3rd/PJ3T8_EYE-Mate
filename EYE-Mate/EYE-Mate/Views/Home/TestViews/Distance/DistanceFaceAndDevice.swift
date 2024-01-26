@@ -10,10 +10,10 @@ import SwiftUI
 
 struct DistanceFaceAndDevice: UIViewRepresentable {
     
-    @ObservedObject var distance: DistanceModel
+    @ObservedObject var model: TestConditionViewModel
     
-    init(distance: DistanceModel) {
-        self.distance = distance
+    init(model: TestConditionViewModel) {
+        self.model = model
     }
     
     class Coordinator: NSObject, ARSCNViewDelegate {
@@ -61,7 +61,7 @@ struct DistanceFaceAndDevice: UIViewRepresentable {
             let averageDistance = (leftEyeDistanceFromCamera.length() + rightEyeDistanceFromCamera.length()) / 2
             let averageDistanceCM = (Int(round(averageDistance * 100)))
             Task {
-                await parent.distance.inputDistance(averageDistanceCM)
+                await parent.model.inputDistance(averageDistanceCM)
             }
         }
     }
