@@ -16,7 +16,7 @@ struct AsyncImageView: View {
             KFImage(url)
                 .placeholder { //플레이스 홀더 설정
                     ProgressView()
-                        .modifier(MapImgModifier())
+                        .modifier(MapImageModifier())
                 }.retry(maxCount: 3, interval: .seconds(5)) //재시도
                 .onSuccess {r in //성공
                     print("succes: \(r)")
@@ -26,12 +26,12 @@ struct AsyncImageView: View {
                 }
                 .resizable()
                 .scaledToFill()
-                .modifier(MapImgModifier())
+                .modifier(MapImageModifier())
         }
         
         else {
             Color.white // Indicates an error.
-                .modifier(MapImgModifier())
+                .modifier(MapImageModifier())
         }
     }
     

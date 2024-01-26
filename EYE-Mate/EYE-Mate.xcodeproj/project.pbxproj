@@ -37,7 +37,7 @@
 		52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98C02B62226800F6A284 /* MapViewModel.swift */; };
 		52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98CA2B62321B00F6A284 /* InfoView.swift */; };
 		52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */; };
-		52FB98CF2B62331900F6A284 /* MapImgModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98CE2B62331900F6A284 /* MapImgModifier.swift */; };
+		52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98CE2B62331900F6A284 /* MapImageModifier.swift */; };
 		52FB98D12B623CDA00F6A284 /* MapButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */; };
 		52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D22B6240D200F6A284 /* ActionAreaView.swift */; };
 		52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */; };
@@ -105,7 +105,7 @@
 		52FB98C02B62226800F6A284 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		52FB98CA2B62321B00F6A284 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
-		52FB98CE2B62331900F6A284 /* MapImgModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapImgModifier.swift; sourceTree = "<group>"; };
+		52FB98CE2B62331900F6A284 /* MapImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapImageModifier.swift; sourceTree = "<group>"; };
 		52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonStyle.swift; sourceTree = "<group>"; };
 		52FB98D22B6240D200F6A284 /* ActionAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAreaView.swift; sourceTree = "<group>"; };
 		52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabBarView.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 				52FB98D22B6240D200F6A284 /* ActionAreaView.swift */,
 				52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */,
 				52FB98C02B62226800F6A284 /* MapViewModel.swift */,
-				52FB98CE2B62331900F6A284 /* MapImgModifier.swift */,
+				52FB98CE2B62331900F6A284 /* MapImageModifier.swift */,
 				52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */,
 				52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */,
 			);
@@ -566,8 +566,8 @@
 				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
 				1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
-				52FB98CF2B62331900F6A284 /* MapImgModifier.swift in Sources */,
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
+				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
