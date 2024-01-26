@@ -13,60 +13,6 @@ extension View {
     }
 }
 
-struct HorizontalDivider: View {
-    let color: Color
-    let height: CGFloat
-
-    init(color: Color, height: CGFloat = 0.5) {
-        self.color = color
-        self.height = height
-    }
-
-    var body: some View {
-        color
-            .frame(height: height)
-    }
-}
-
-struct StartMovementRow: View {
-    @Binding var showToast: Bool
-
-    @State var isNavigateEightLottieView : Bool = false
-
-    var body: some View {
-        HStack {
-            Image("eight-movement")
-                .frame(width: 72, height: 72)
-            VStack(alignment: .leading, spacing: 12){
-                Text("8자 운동")
-                    .font(.pretendardSemiBold_20)
-                Text("점을 따라 눈을 움직이세요!")
-                    .font(.pretendardSemiBold_12)
-            }.padding(.leading, 12)
-            Spacer()
-            Button {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscape))
-                isNavigateEightLottieView = true
-            } label: {
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.white)
-            }.navigationDestination(isPresented: $isNavigateEightLottieView) {
-                EightLottieView(showToast: $showToast)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .padding()
-            .background(Color.customGreen)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-            .frame(width: 44, height: 44)
-        }
-        .padding(16)
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.25), radius: 4, x: 2, y: 2)
-    }
-}
-
 struct MovementView: View {
     @State private var tempData: [Int] = [1, 2, 3]
     @State private var toast: Toast? = nil
@@ -89,7 +35,6 @@ struct MovementView: View {
                 }
                 .frame(height: 112)
                 .padding(.horizontal, 24)
-
                 HorizontalDivider(color: Color.customGreen, height: 4)
                 VStack(alignment: .leading, spacing: 16) {
                     VStack(alignment: .leading) {

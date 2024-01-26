@@ -14,11 +14,13 @@
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
-		336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BC2B5F872500078CF0 /* EightMovementView.swift */; };
 		336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* EightLottieView.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
+		33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A382B638BBA005296AC /* StartMovementRow.swift */; };
+		33DD0A3B2B638F3A005296AC /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A3A2B638F3A005296AC /* StatefulPreviewWrapper.swift */; };
+		33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
@@ -75,11 +77,13 @@
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
-		336529BC2B5F872500078CF0 /* EightMovementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightMovementView.swift; sourceTree = "<group>"; };
 		336529BE2B600B9100078CF0 /* EightLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightLottieView.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		33DD0A382B638BBA005296AC /* StartMovementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMovementRow.swift; sourceTree = "<group>"; };
+		33DD0A3A2B638F3A005296AC /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
+		33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDivider.swift; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
 		5296A1452B5F3EBC00299A0A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -176,6 +180,14 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		33DD0A372B638A8B005296AC /* EightLottie */ = {
+			isa = PBXGroup;
+			children = (
+				336529BE2B600B9100078CF0 /* EightLottieView.swift */,
+			);
+			path = EightLottie;
+			sourceTree = "<group>";
+		};
 		52EE56BE2B5E29B100C6D423 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,9 +236,11 @@
 		52EE56C82B5E2B1500C6D423 /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				33DD0A372B638A8B005296AC /* EightLottie */,
+				33DD0A302B6246A1005296AC /* Toast */,
 				52EE56C92B5E2B2A00C6D423 /* MovementView.swift */,
-				336529BC2B5F872500078CF0 /* EightMovementView.swift */,
-				336529BE2B600B9100078CF0 /* EightLottieView.swift */,
+				33DD0A382B638BBA005296AC /* StartMovementRow.swift */,
+				33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -370,7 +384,6 @@
 		71EC7F212B5E7E3700C0149C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				33DD0A302B6246A1005296AC /* Toast */,
 				71027A572B5DEAE000879DA7 /* MainView.swift */,
 				52EE56DD2B5E2EA700C6D423 /* Styles */,
 				52EE56CB2B5E2B3200C6D423 /* Community */,
@@ -378,6 +391,7 @@
 				52EE56D32B5E2CF400C6D423 /* Profile */,
 				52EE56C82B5E2B1500C6D423 /* Movement */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
+				33DD0A3A2B638F3A005296AC /* StatefulPreviewWrapper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -560,17 +574,20 @@
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
+				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
 				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
+				33DD0A3B2B638F3A005296AC /* StatefulPreviewWrapper.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,
 				33DD0A322B6246F4005296AC /* ToastView.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
@@ -579,7 +596,6 @@
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
-				336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,

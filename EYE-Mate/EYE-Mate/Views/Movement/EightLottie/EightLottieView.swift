@@ -94,6 +94,6 @@ struct EightLottieView: View {
     }
 }
 
-//#Preview {
-//    EightLottieView()
-//}
+#Preview {
+    StatefulPreviewWrapper(false) { EightLottieView(showToast: $0)}
+}
