@@ -36,7 +36,13 @@
 		7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
 		7107A3EB2B624F2B00944077 /* VisionTestConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EA2B624F2B00944077 /* VisionTestConditionView.swift */; };
 		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
-		7107A3EF2B62548D00944077 /* DistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceModel.swift */; };
+		7107A3EF2B62548D00944077 /* TestConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* TestConditionViewModel.swift */; };
+		7107A3F82B63463A00944077 /* VisionTestConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3F72B63463A00944077 /* VisionTestConditionViewModel.swift */; };
+		7107A3FA2B6346D900944077 /* AstigmatismTestConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3F92B6346D900944077 /* AstigmatismTestConditionView.swift */; };
+		7107A3FC2B6346E500944077 /* SightTestConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3FB2B6346E500944077 /* SightTestConditionView.swift */; };
+		7107A3FE2B6346F000944077 /* AstigmatismTestConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3FD2B6346F000944077 /* AstigmatismTestConditionViewModel.swift */; };
+		7107A4002B6346FB00944077 /* SightTestConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3FF2B6346FB00944077 /* SightTestConditionViewModel.swift */; };
+		7107A4022B63478F00944077 /* VisionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4012B63478F00944077 /* VisionTestViewModel.swift */; };
 		710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D408F2B5FD885006C9FED /* ColorTestView.swift */; };
 		710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */; };
 		710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightTestView.swift */; };
@@ -95,7 +101,13 @@
 		71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7107A3EA2B624F2B00944077 /* VisionTestConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestConditionView.swift; sourceTree = "<group>"; };
 		7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFaceAndDevice.swift; sourceTree = "<group>"; };
-		7107A3EE2B62548D00944077 /* DistanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceModel.swift; sourceTree = "<group>"; };
+		7107A3EE2B62548D00944077 /* TestConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConditionViewModel.swift; sourceTree = "<group>"; };
+		7107A3F72B63463A00944077 /* VisionTestConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestConditionViewModel.swift; sourceTree = "<group>"; };
+		7107A3F92B6346D900944077 /* AstigmatismTestConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestConditionView.swift; sourceTree = "<group>"; };
+		7107A3FB2B6346E500944077 /* SightTestConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestConditionView.swift; sourceTree = "<group>"; };
+		7107A3FD2B6346F000944077 /* AstigmatismTestConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestConditionViewModel.swift; sourceTree = "<group>"; };
+		7107A3FF2B6346FB00944077 /* SightTestConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestConditionViewModel.swift; sourceTree = "<group>"; };
+		7107A4012B63478F00944077 /* VisionTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestViewModel.swift; sourceTree = "<group>"; };
 		710D408B2B5FD156006C9FED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		710D408D2B5FD160006C9FED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		710D408F2B5FD885006C9FED /* ColorTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestView.swift; sourceTree = "<group>"; };
@@ -313,7 +325,6 @@
 		7107A3F02B625B5600944077 /* Distance */ = {
 			isa = PBXGroup;
 			children = (
-				7107A3EE2B62548D00944077 /* DistanceModel.swift */,
 				7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */,
 			);
 			path = Distance;
@@ -323,8 +334,9 @@
 			isa = PBXGroup;
 			children = (
 				710D409B2B613AC5006C9FED /* ExplanationTextView.swift */,
-				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
 				710D40992B61059D006C9FED /* WaringText.swift */,
+				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
+				7107A3EE2B62548D00944077 /* TestConditionViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -333,7 +345,9 @@
 			isa = PBXGroup;
 			children = (
 				52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */,
+				7107A4012B63478F00944077 /* VisionTestViewModel.swift */,
 				7107A3EA2B624F2B00944077 /* VisionTestConditionView.swift */,
+				7107A3F72B63463A00944077 /* VisionTestConditionViewModel.swift */,
 			);
 			path = Vision;
 			sourceTree = "<group>";
@@ -350,6 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */,
+				7107A3F92B6346D900944077 /* AstigmatismTestConditionView.swift */,
+				7107A3FD2B6346F000944077 /* AstigmatismTestConditionViewModel.swift */,
 			);
 			path = Astigmatism;
 			sourceTree = "<group>";
@@ -358,6 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				710D40932B5FD8A9006C9FED /* SightTestView.swift */,
+				7107A3FB2B6346E500944077 /* SightTestConditionView.swift */,
+				7107A3FF2B6346FB00944077 /* SightTestConditionViewModel.swift */,
 			);
 			path = Sight;
 			sourceTree = "<group>";
@@ -591,7 +609,10 @@
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */,
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
+				7107A3FA2B6346D900944077 /* AstigmatismTestConditionView.swift in Sources */,
+				7107A4002B6346FB00944077 /* SightTestConditionViewModel.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
+				7107A3FE2B6346F000944077 /* AstigmatismTestConditionViewModel.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
@@ -605,9 +626,12 @@
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
+				7107A4022B63478F00944077 /* VisionTestViewModel.swift in Sources */,
 				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
 				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
+				7107A3F82B63463A00944077 /* VisionTestConditionViewModel.swift in Sources */,
+				7107A3FC2B6346E500944077 /* SightTestConditionView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,
@@ -615,7 +639,7 @@
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
-				7107A3EF2B62548D00944077 /* DistanceModel.swift in Sources */,
+				7107A3EF2B62548D00944077 /* TestConditionViewModel.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
@@ -778,6 +802,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -884,6 +910,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
