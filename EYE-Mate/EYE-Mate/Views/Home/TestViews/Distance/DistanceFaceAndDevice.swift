@@ -10,9 +10,9 @@ import SwiftUI
 
 struct DistanceFaceAndDevice: UIViewRepresentable {
     
-    @ObservedObject var model: TestConditionViewModel
+    @ObservedObject var model: DistanceConditionViewModel
     
-    init(model: TestConditionViewModel) {
+    init(model: DistanceConditionViewModel) {
         self.model = model
     }
     

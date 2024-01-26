@@ -7,13 +7,6 @@
 
 import Foundation
 
-class VisionTestConditionViewModel: TestConditionViewModel {
+class VisionTestConditionViewModel: ObservableObject {
     
-    var canStart: Bool {
-        return distance >= 40 && distance <= 50
-    }
-    
-    override init() {
-        
-    }
 }

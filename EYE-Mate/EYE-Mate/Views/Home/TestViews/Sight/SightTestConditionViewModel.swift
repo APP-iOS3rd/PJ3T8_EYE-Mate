@@ -7,6 +7,6 @@
 
 import Foundation
 
-class SightTestConditionViewModel: TestConditionViewModel {
+class SightTestConditionViewModel: ObservableObject {
     
 }

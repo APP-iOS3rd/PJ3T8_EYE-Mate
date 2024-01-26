@@ -7,6 +7,6 @@
 
 import SwiftUI
 
-class AstigmatismTestConditionViewModel: TestConditionViewModel {
+class AstigmatismTestConditionViewModel: ObservableObject {
     
 }
