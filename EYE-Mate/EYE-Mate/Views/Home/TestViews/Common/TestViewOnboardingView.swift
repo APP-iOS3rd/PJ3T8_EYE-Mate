@@ -36,7 +36,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -56,12 +56,11 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
                             .foregroundColor(.white)
-                            .frame(maxHeight: 436)
                             .shadow(radius: 3, x: 1, y: 1)
                     )
                     .padding(.leading, 20)
@@ -87,7 +86,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -110,7 +109,7 @@ struct VisionTestOnboardingView: View {
                             .padding(.horizontal, 40)
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)
@@ -134,7 +133,7 @@ struct VisionTestOnboardingView: View {
                             .padding()
                         Spacer()
                     }
-                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.1)
+                    .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.customGreen, lineWidth: 3)

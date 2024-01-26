@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var homeViewModel = HomeViewModel()
     private var user = UserModel(name: "어디로 가야하오", movement: 3, leftEyeSight: "0.5", rightEyeSight: "0.8")
-    private var onboardingModel = OnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!")
+    private var onboardingModel = EyeSenseOnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!")
     
     var body: some View {
         NavigationStack{
@@ -22,7 +21,7 @@ struct HomeView: View {
                 
                 HomeViewTextView(user: user)
                 
-                OnboardingView(onboardingViewModel: onboardingModel)
+                EyeSenseOnboardingView(onboardingViewModel: onboardingModel)
                     .frame(height: 120)
                     .padding(.top, -30)
                 

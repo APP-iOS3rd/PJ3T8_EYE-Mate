@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OnBoardingViewModel {
+struct EyeSenseOnBoardingViewModel {
     var title: String
     var subTitle: String
     
