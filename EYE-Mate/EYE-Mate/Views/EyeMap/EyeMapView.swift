@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EyeMapView: View {
     var body: some View {
-        MapView()
+        MapTabBarView()
     }
 }
 
