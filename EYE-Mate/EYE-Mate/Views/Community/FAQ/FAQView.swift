@@ -32,6 +32,7 @@ struct FAQView: View {
         }
     }
     
+    // MARK: FAQ 검색바
     @ViewBuilder
     func SearchBar() -> some View {
         HStack{
@@ -54,6 +55,7 @@ struct FAQView: View {
         }
     }
     
+    // MARK: FAQ 목록
     @ViewBuilder
     func FAQs() -> some View {
         ForEach(fetchFAQ.indices, id: \.self) { index in
