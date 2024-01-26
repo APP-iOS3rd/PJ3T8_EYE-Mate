@@ -11,12 +11,24 @@ import Lottie
 
 struct EightLottieView: View {
     @Environment(\.dismiss) var dismiss
+
+    @Binding var showToast: Bool
+
     @State private var movementPercent = 0.0
     @State private var isEyeExerciseComplete = false
+
 
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     let customGreenValueProvider = ColorValueProvider(LottieColor(r: 82.0 / 255.0, g: 202.0 / 255.0, b: 166.0 / 255.0, a: 1))
     let keypath = AnimationKeypath("ball Outlines.Group 1.Fill 1.Color")
+
+    private func goBack() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            dismiss()
+        }
+    }
 
     var body: some View {
         VStack {
@@ -48,7 +60,9 @@ struct EightLottieView: View {
                 if !isEyeExerciseComplete {
                     HStack {
                         Spacer()
-                        Button(action: { dismiss() }) {
+                        Button(action: {
+                            goBack()
+                        }) {
                             Image(systemName: "xmark")
                                 .foregroundColor(.white)
                                 .font(.system(size: 24))
@@ -59,7 +73,10 @@ struct EightLottieView: View {
             }
             if isEyeExerciseComplete {
                 Spacer()
-                CustomBtn(title: "완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: { dismiss() }).frame(height: 88)
+                CustomBtn(title: "완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
+                    showToast.toggle()
+                    goBack()
+                }).frame(height: 88)
             } else {
                 Spacer()
                 LottieView(animation: .named("eight-movement"))
@@ -70,19 +87,13 @@ struct EightLottieView: View {
                     .looping()
                 Spacer()
             }
-        }.onAppear{
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-            windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscape))
-        }.onDisappear{
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-            windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
-        }.navigationBarBackButtonHidden(true)
-
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-            .background(.black)
+        }
+        .navigationBarBackButtonHidden(true)
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+        .background(.black)
     }
 }
 
-#Preview {
-    EightLottieView()
-}
+//#Preview {
+//    EightLottieView()
+//}

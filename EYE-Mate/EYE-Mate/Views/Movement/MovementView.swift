@@ -29,6 +29,10 @@ struct HorizontalDivider: View {
 }
 
 struct StartMovementRow: View {
+    @Binding var showToast: Bool
+
+    @State var isNavigateEightLottieView : Bool = false
+
     var body: some View {
         HStack {
             Image("eight-movement")
@@ -40,9 +44,15 @@ struct StartMovementRow: View {
                     .font(.pretendardSemiBold_12)
             }.padding(.leading, 12)
             Spacer()
-            NavigationLink(destination: EightLottieView()) {
+            Button {
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscape))
+                isNavigateEightLottieView = true
+            } label: {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.white)
+            }.navigationDestination(isPresented: $isNavigateEightLottieView) {
+                EightLottieView(showToast: $showToast)
             }
             .buttonStyle(PlainButtonStyle())
             .padding()
@@ -60,67 +70,72 @@ struct StartMovementRow: View {
 struct MovementView: View {
     @State private var tempData: [Int] = [1, 2, 3]
     @State private var toast: Toast? = nil
+    @State private var showToast = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                VStack(alignment: .leading, spacing: 12){
-                    Text("EYE-Mate")
-                        .font(.pretendardSemiBold_22)
-                    Text("눈 운동")
-                        .font(.pretendardSemiBold_32)
+        NavigationStack{
+            VStack(spacing: 0) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 12){
+                        Text("EYE-Mate")
+                            .font(.pretendardSemiBold_22)
+                        Text("눈 운동")
+                            .font(.pretendardSemiBold_32)
+                    }
+                    Spacer()
+                    Circle()
+                        .foregroundColor(Color.blue)
+                        .frame(width: 50, height: 50)
                 }
-                Spacer()
-                Circle()
-                    .foregroundColor(Color.blue)
-                    .frame(width: 50, height: 50)
-            }
-            .frame(height: 112)
-            .padding(.horizontal, 24)
+                .frame(height: 112)
+                .padding(.horizontal, 24)
 
-            HorizontalDivider(color: Color.customGreen, height: 4)
-            VStack(alignment: .leading, spacing: 16) {
-                VStack(alignment: .leading) {
-                    Text("어디로 가야 하오 님!")
-                        .font(.pretendardSemiBold_22)
-                    Text("오늘도 눈 건강 챙기셨나요? 👀")
-                        .font(.pretendardRegular_22)
+                HorizontalDivider(color: Color.customGreen, height: 4)
+                VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading) {
+                        Text("어디로 가야 하오 님!")
+                            .font(.pretendardSemiBold_22)
+                        Text("오늘도 눈 건강 챙기셨나요? 👀")
+                            .font(.pretendardRegular_22)
+                    }
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    VStack(alignment: .leading) {
+                        Text("#오늘의 눈 운동")
+                            .font(.pretendardRegular_16)
+                        Text("0회")
+                            .font(.pretendardSemiBold_20)
+                    }
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    ForEach(0..<3) { index in
+                        StartMovementRow(showToast: $showToast)
+                    }
+                    .padding(.horizontal, -10)
+                    .padding(.vertical, 0)
+                    .listStyle(PlainListStyle())
+                    .scrollDisabled(true)
+                    .scrollContentBackground(.hidden)
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        Text("추후 다른 운동 업데이트 예정입니다.")
+                            .font(.pretendardMedium_18)
+                            .foregroundColor(Color.warningGray)
+                    }
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
+                    Spacer()
                 }
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                VStack(alignment: .leading) {
-                    Text("#오늘의 눈 운동")
-                        .font(.pretendardRegular_16)
-                    Text("0회")
-                        .font(.pretendardSemiBold_20)
+                .padding(.horizontal, 32)
+                .padding(.top, 16)
+                .background(Color.textFieldGray)
+            }.toastView(toast: $toast)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        if showToast {
+                            toast = Toast()
+                            showToast.toggle()
+                        }
+                    }
                 }
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                ForEach(0..<3) { index in
-                    StartMovementRow()
-                }
-                .padding(.horizontal, -10)
-                .padding(.vertical, 0)
-                .listStyle(PlainListStyle())
-                .scrollDisabled(true)
-                .scrollContentBackground(.hidden)
-                Spacer()
-                VStack(alignment: .leading) {
-                    Text("추후 다른 운동 업데이트 예정입니다.")
-                        .font(.pretendardMedium_18)
-                        .foregroundColor(Color.warningGray)
-                }
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
-                // FIXME: 임시 토스트 발생 버튼
-                Button {
-                    toast = Toast()
-                } label: {
-                    Text("Toast")
-                }
-                Spacer()
-            }
-            .padding(.horizontal, 32)
-            .padding(.top, 16)
-            .background(Color.textFieldGray)
-        }.toastView(toast: $toast)
+        }
     }
 }
 
