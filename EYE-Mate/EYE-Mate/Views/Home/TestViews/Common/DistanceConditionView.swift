@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DistanceConditionView: View {
-    @ObservedObject var viewModel = DistanceConditionViewModel()
+    @StateObject var viewModel = DistanceConditionViewModel()
     @State var title: String
     
     init(title: String) {
@@ -20,7 +20,7 @@ struct DistanceConditionView: View {
             ZStack {
                 DistanceFaceAndDevice(model: viewModel)
                 BackgroundView()
-                DistanceView(title: $title)
+                DistanceView(viewModel: viewModel, title: $title)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(title)
@@ -41,9 +41,8 @@ struct DistanceConditionView: View {
 
 //MARK: - 설명 Text와 거리 Text View
 private struct DistanceView: View {
-    @ObservedObject var viewModel = DistanceConditionViewModel()
+    @ObservedObject var viewModel: DistanceConditionViewModel
     @Binding var title: String
-    
     
     var body: some View {
         VStack {
