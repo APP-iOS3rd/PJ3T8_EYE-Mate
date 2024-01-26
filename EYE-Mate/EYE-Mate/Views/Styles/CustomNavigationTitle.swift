@@ -17,6 +17,7 @@ struct CustomNavigationTitle: View {
     }
     
     var body: some View {
+        NavigationStack {
             HStack {
                 VStack {
                     Text("EYE-Mate")
@@ -33,6 +34,7 @@ struct CustomNavigationTitle: View {
                 }
             }
             .padding([.leading, .trailing], 20)
+        }
     }
 }
 
