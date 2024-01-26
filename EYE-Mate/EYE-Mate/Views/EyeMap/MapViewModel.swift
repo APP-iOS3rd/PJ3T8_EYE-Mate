@@ -27,6 +27,11 @@ enum encodingPlace: String {
     case optician = "%EC%95%88%EA%B2%BD%EC%9B%90"
 }
 
+enum markerImageName: String {
+    case hospital = "hospital_mark"
+    case optician = "optician_mark"
+}
+
 struct NaverMap: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
@@ -51,6 +56,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
     @Published var placeInfo: [String: String] = [:]
     @Published var sheetFlag = false
     var queryPlace: String = encodingPlace.hosiptal.rawValue
+    var markerImage: String = markerImageName.hospital.rawValue
     var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
     let view = NMFNaverMapView(frame: .zero)
@@ -208,7 +214,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                     
                     let marker = NMFMarker()
                     marker.position = NMGLatLng(lat: Double(element.y) ?? 0.0, lng: Double(element.x) ?? 0.0)
-                    marker.iconImage = NMFOverlayImage(name: "hospital_mark")
+                    marker.iconImage = NMFOverlayImage(name: self.markerImage)
                     marker.width = 50
                     marker.height = 50
                     marker.mapView = self.view.mapView

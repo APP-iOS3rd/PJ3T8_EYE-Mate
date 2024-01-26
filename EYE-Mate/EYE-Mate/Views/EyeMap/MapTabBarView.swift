@@ -81,8 +81,12 @@ struct MapTabBarView: View {
                         switch self.selectedPicker {
                         case .hospital:
                             coordinator.queryPlace = encodingPlace.hosiptal.rawValue
+                            coordinator.markerImage = markerImageName.hospital.rawValue
+                            coordinator.sheetFlag = false
                         case .optician:
                             coordinator.queryPlace = encodingPlace.optician.rawValue
+                            coordinator.markerImage = markerImageName.optician.rawValue
+                            coordinator.sheetFlag = false
                         }
                     }
                 }
