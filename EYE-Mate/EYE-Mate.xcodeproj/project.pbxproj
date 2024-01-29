@@ -14,7 +14,7 @@
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
-		336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* EightLottieView.swift */; };
+		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -79,7 +79,7 @@
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
-		336529BE2B600B9100078CF0 /* EightLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightLottieView.swift; sourceTree = "<group>"; };
+		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -186,12 +186,12 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
-		33DD0A372B638A8B005296AC /* EightLottie */ = {
+		33DD0A372B638A8B005296AC /* MovementLottie */ = {
 			isa = PBXGroup;
 			children = (
-				336529BE2B600B9100078CF0 /* EightLottieView.swift */,
+				336529BE2B600B9100078CF0 /* MovementLottieView.swift */,
 			);
-			path = EightLottie;
+			path = MovementLottie;
 			sourceTree = "<group>";
 		};
 		52EE56BE2B5E29B100C6D423 /* Home */ = {
@@ -242,7 +242,7 @@
 		52EE56C82B5E2B1500C6D423 /* Movement */ = {
 			isa = PBXGroup;
 			children = (
-				33DD0A372B638A8B005296AC /* EightLottie */,
+				33DD0A372B638A8B005296AC /* MovementLottie */,
 				33DD0A302B6246A1005296AC /* Toast */,
 				52EE56C92B5E2B2A00C6D423 /* MovementView.swift */,
 				33DD0A382B638BBA005296AC /* StartMovementRow.swift */,
@@ -563,7 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */,
+				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* OnBoardingViewModel.swift in Sources */,

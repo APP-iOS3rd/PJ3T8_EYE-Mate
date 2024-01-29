@@ -1,5 +1,5 @@
 //
-//  EightLottieView.swift
+//  MovementLottieView.swift
 //  EYE-Mate
 //
 //  Created by seongjun on 1/23/24.
@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 import Lottie
 
-struct EightLottieView: View {
+struct MovementLottieView: View {
     @Environment(\.dismiss) var dismiss
 
     @Binding var showToast: Bool
@@ -17,10 +17,11 @@ struct EightLottieView: View {
 
     @State private var movementPercent = 0.0
     @State private var isEyeExerciseComplete = false
+    @State private var isStart = false
 
 
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    let customGreenValueProvider = ColorValueProvider(LottieColor(r: 255.0 / 255.0, g: 202.0 / 255.0, b: 166.0 / 255.0, a: 1))
+    let customGreenValueProvider = ColorValueProvider(LottieColor(r: 82.0 / 255.0, g: 202.0 / 255.0, b: 166.0 / 255.0, a: 1))
     var keypath: AnimationKeypath {
         switch movementType {
         case "Line":
@@ -55,6 +56,7 @@ struct EightLottieView: View {
     }
 
     var body: some View {
+        if isStart {
         VStack {
             ProgressView(value: movementPercent, total: 100)
                 .padding(.top, 16)
@@ -115,6 +117,23 @@ struct EightLottieView: View {
         .navigationBarBackButtonHidden(true)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
         .background(.black)
+        } else {
+            VStack {
+                Text("시작하기 버튼을 눌러 눈 운동을 시작해보세요")
+                    .font(.pretendardBold_30)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 100)
+                Spacer()
+                CustomBtn(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
+                    isStart.toggle()
+                }).frame(height: 88)
+            }     .navigationBarBackButtonHidden(true)
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+                .background(.black)
+        }
+
+
     }
 }
 

@@ -43,7 +43,7 @@ struct StartMovementRow: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.white)
             }.navigationDestination(isPresented: $isNavigateEightLottieView) {
-                EightLottieView(showToast: $showToast, movementType: $movementType)
+                MovementLottieView(showToast: $showToast, movementType: $movementType)
             }
             .buttonStyle(PlainButtonStyle())
             .padding()
