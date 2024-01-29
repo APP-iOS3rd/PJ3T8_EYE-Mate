@@ -58,6 +58,9 @@ struct StartMovementRow: View {
     }
 }
 
-//#Preview {
-//    StatefulPreviewWrapper(false, "Line") { StartMovementRow(showToast: $0, movementType: $1)}
-//}
+#Preview {
+    @State var showToast: Bool = false
+    @State var movementType: String = "Line"
+
+    return StartMovementRow(showToast: $showToast, movementType: $movementType)
+}

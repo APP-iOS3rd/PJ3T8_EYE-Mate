@@ -19,7 +19,6 @@
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
 		33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A382B638BBA005296AC /* StartMovementRow.swift */; };
-		33DD0A3B2B638F3A005296AC /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A3A2B638F3A005296AC /* StatefulPreviewWrapper.swift */; };
 		33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */; };
 		33DD0A412B6393E8005296AC /* circle-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A402B6393E8005296AC /* circle-movement.json */; };
 		33DD0A432B63A25E005296AC /* line-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A422B63A25E005296AC /* line-movement.json */; };
@@ -98,7 +97,6 @@
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		33DD0A382B638BBA005296AC /* StartMovementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMovementRow.swift; sourceTree = "<group>"; };
-		33DD0A3A2B638F3A005296AC /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
 		33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDivider.swift; sourceTree = "<group>"; };
 		33DD0A402B6393E8005296AC /* circle-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "circle-movement.json"; sourceTree = "<group>"; };
 		33DD0A422B63A25E005296AC /* line-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "line-movement.json"; sourceTree = "<group>"; };
@@ -501,7 +499,6 @@
 				52EE56D32B5E2CF400C6D423 /* Profile */,
 				52EE56C82B5E2B1500C6D423 /* Movement */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
-				33DD0A3A2B638F3A005296AC /* StatefulPreviewWrapper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -698,7 +695,6 @@
 				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
-				33DD0A3B2B638F3A005296AC /* StatefulPreviewWrapper.swift in Sources */,
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,

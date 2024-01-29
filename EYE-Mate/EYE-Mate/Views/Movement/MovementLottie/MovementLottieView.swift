@@ -123,6 +123,9 @@ struct MovementLottieView: View {
     }
 }
 
-//#Preview {
-//    StatefulPreviewWrapper(false) { EightLottieView(showToast: $0)}
-//}
+#Preview {
+    @State var showToast: Bool = false
+    @State var movementType: String = "Line"
+
+    return MovementLottieView(showToast: $showToast, movementType: $movementType)
+}
