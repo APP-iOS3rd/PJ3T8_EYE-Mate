@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartMovementRow: View {
     @Binding var showToast: Bool
+    @Binding var movementType: String
 
     @State var isNavigateEightLottieView : Bool = false
 
@@ -17,8 +18,19 @@ struct StartMovementRow: View {
             Image("eight-movement")
                 .frame(width: 72, height: 72)
             VStack(alignment: .leading, spacing: 12){
-                Text("8자 운동")
-                    .font(.pretendardSemiBold_20)
+                switch movementType {
+                case "Line":
+                    Text("1자 운동")
+                        .font(.pretendardSemiBold_20)
+                case "Circle":
+                    Text("원 운동")
+                        .font(.pretendardSemiBold_20)
+                case "Eight":
+                    Text("8자 운동")
+                        .font(.pretendardSemiBold_20)
+                default:
+                    EmptyView()
+                }
                 Text("점을 따라 눈을 움직이세요!")
                     .font(.pretendardSemiBold_12)
             }.padding(.leading, 12)
@@ -31,7 +43,7 @@ struct StartMovementRow: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.white)
             }.navigationDestination(isPresented: $isNavigateEightLottieView) {
-                EightLottieView(showToast: $showToast)
+                EightLottieView(showToast: $showToast, movementType: $movementType)
             }
             .buttonStyle(PlainButtonStyle())
             .padding()
@@ -46,6 +58,6 @@ struct StartMovementRow: View {
     }
 }
 
-#Preview {
-    StatefulPreviewWrapper(false) { StartMovementRow(showToast: $0)}
-}
+//#Preview {
+//    StatefulPreviewWrapper(false, "Line") { StartMovementRow(showToast: $0, movementType: $1)}
+//}

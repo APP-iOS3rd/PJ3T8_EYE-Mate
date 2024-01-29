@@ -13,14 +13,38 @@ struct EightLottieView: View {
     @Environment(\.dismiss) var dismiss
 
     @Binding var showToast: Bool
+    @Binding var movementType: String
 
     @State private var movementPercent = 0.0
     @State private var isEyeExerciseComplete = false
 
 
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    let customGreenValueProvider = ColorValueProvider(LottieColor(r: 82.0 / 255.0, g: 202.0 / 255.0, b: 166.0 / 255.0, a: 1))
-    let keypath = AnimationKeypath("ball Outlines.Group 1.Fill 1.Color")
+    let customGreenValueProvider = ColorValueProvider(LottieColor(r: 255.0 / 255.0, g: 202.0 / 255.0, b: 166.0 / 255.0, a: 1))
+    var keypath: AnimationKeypath {
+        switch movementType {
+        case "Line":
+            AnimationKeypath("Shape Layer 1.Ellipse 1.Fill 1.Color")
+        case "Circle":
+            AnimationKeypath("Ellipse.Ellipse 1.Fill 1.Color")
+        case "Eight":
+            AnimationKeypath("ball Outlines.Group 1.Fill 1.Color")
+        default:
+            AnimationKeypath("")
+        }
+    }
+    var fileName: String {
+        switch movementType {
+        case "Line":
+            "line-movement"
+        case "Circle":
+            "circle-movement"
+        case "Eight":
+            "eight-movement"
+        default:
+            "line-movement"
+        }
+    }
 
     private func goBack() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
@@ -46,12 +70,12 @@ struct EightLottieView: View {
                     Spacer()
                     if isEyeExerciseComplete {
                         Text("눈 운동 완료!")
-                            .font(.custom("Pretendard-Bold", size: 30))
+                            .font(.pretendardBold_30)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                     } else {
                         Text("초록색 점을 따라 눈을 움직여보세요")
-                            .font(.custom("Pretendard-Bold", size: 30))
+                            .font(.pretendardBold_30)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                     }
@@ -79,9 +103,9 @@ struct EightLottieView: View {
                 }).frame(height: 88)
             } else {
                 Spacer()
-                LottieView(animation: .named("eight-movement"))
+                LottieView(animation: .named(fileName))
                     .configure({ lottieView in
-                        lottieView.contentMode = .scaleAspectFill
+                        lottieView.contentMode = fileName == "circle-movement" ? .scaleAspectFit : .scaleAspectFill
                         lottieView.setValueProvider(customGreenValueProvider, keypath: keypath)
                     })
                     .looping()
@@ -94,6 +118,6 @@ struct EightLottieView: View {
     }
 }
 
-#Preview {
-    StatefulPreviewWrapper(false) { EightLottieView(showToast: $0)}
-}
+//#Preview {
+//    StatefulPreviewWrapper(false) { EightLottieView(showToast: $0)}
+//}

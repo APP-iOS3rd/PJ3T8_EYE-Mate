@@ -14,9 +14,9 @@ extension View {
 }
 
 struct MovementView: View {
-    @State private var tempData: [Int] = [1, 2, 3]
     @State private var toast: Toast? = nil
     @State private var showToast = false
+    @State private var movementList: [String] = ["Line", "Circle", "Eight"]
 
     var body: some View {
         NavigationStack{
@@ -51,8 +51,8 @@ struct MovementView: View {
                             .font(.pretendardSemiBold_20)
                     }
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    ForEach(0..<3) { index in
-                        StartMovementRow(showToast: $showToast)
+                    ForEach($movementList, id: \.self) { movement in
+                        StartMovementRow(showToast: $showToast, movementType: movement)
                     }
                     .padding(.horizontal, -10)
                     .padding(.vertical, 0)
