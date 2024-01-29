@@ -21,7 +21,9 @@ struct ToastModifier: ViewModifier {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }.animation(.spring(), value: toast)
             )
-            .onChange(of: toast, { showToast() })
+            .onChange(of: toast, perform: { _ in
+                showToast()
+            })
     }
 
     @ViewBuilder func mainToastView() -> some View {

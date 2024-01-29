@@ -25,7 +25,6 @@
 		33DD0A432B63A25E005296AC /* line-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A422B63A25E005296AC /* line-movement.json */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
-		52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
 		52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */; };
@@ -37,7 +36,6 @@
 		52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* AccountView.swift */; };
 		52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */; };
 		52FB98912B5F861B00F6A284 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98902B5F861B00F6A284 /* Places.swift */; };
-		52FB98962B5FB54F00F6A284 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52FB98952B5FB54F00F6A284 /* APIKEY.plist */; };
 		52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98BC2B60FD7100F6A284 /* MapModalView.swift */; };
 		52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98C02B62226800F6A284 /* MapViewModel.swift */; };
 		52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98CA2B62321B00F6A284 /* InfoView.swift */; };
@@ -50,7 +48,6 @@
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
-		7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
 		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
 		7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */; };
 		7107A4022B63478F00944077 /* VisionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4012B63478F00944077 /* VisionTestViewModel.swift */; };
@@ -119,7 +116,6 @@
 		52EE56D92B5E2D4F00C6D423 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
 		52FB98902B5F861B00F6A284 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
-		58AC2905C7C98C9D8CEBC77A /* Pods-EYE-Mate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.debug.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.debug.xcconfig"; sourceTree = "<group>"; };
 		52FB98952B5FB54F00F6A284 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		52FB98972B5FB55A00F6A284 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52FB98BC2B60FD7100F6A284 /* MapModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModalView.swift; sourceTree = "<group>"; };
@@ -130,7 +126,7 @@
 		52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonStyle.swift; sourceTree = "<group>"; };
 		52FB98D22B6240D200F6A284 /* ActionAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAreaView.swift; sourceTree = "<group>"; };
 		52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabBarView.swift; sourceTree = "<group>"; };
-		58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58AC2905C7C98C9D8CEBC77A /* Pods-EYE-Mate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.debug.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.debug.xcconfig"; sourceTree = "<group>"; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
 		71027A572B5DEAE000879DA7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -143,8 +139,6 @@
 		7107A4092B638DFF00944077 /* AstigmatismTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestViewModel.swift; sourceTree = "<group>"; };
 		7107A40B2B638E1600944077 /* SightTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestViewModel.swift; sourceTree = "<group>"; };
 		7107A40D2B6390D200944077 /* ColorTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestViewModel.swift; sourceTree = "<group>"; };
-		710D408B2B5FD156006C9FED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		710D408D2B5FD160006C9FED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		710D408F2B5FD885006C9FED /* ColorTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestView.swift; sourceTree = "<group>"; };
 		710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestView.swift; sourceTree = "<group>"; };
 		710D40932B5FD8A9006C9FED /* SightTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestView.swift; sourceTree = "<group>"; };
@@ -349,15 +343,6 @@
 				710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */,
 			);
 			path = Styles;
-			sourceTree = "<group>";
-		};
-		52FB98D92B6342C400F6A284 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				710D408D2B5FD160006C9FED /* GoogleService-Info.plist */,
-				1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		71027A492B5DEAE000879DA7 = {
@@ -622,8 +607,6 @@
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
-				52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */,
-				52FB98962B5FB54F00F6A284 /* APIKEY.plist in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
@@ -691,7 +674,7 @@
 				7107A40A2B638DFF00944077 /* AstigmatismTestViewModel.swift in Sources */,
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
-				710D409C2B613AC5006C9FED /* TestTextView.swift in Sources */,
+				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
@@ -725,7 +708,7 @@
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
 				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
-				71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */,
+				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */,
 				7107A40C2B638E1600944077 /* SightTestViewModel.swift in Sources */,
@@ -741,7 +724,6 @@
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
-				336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
