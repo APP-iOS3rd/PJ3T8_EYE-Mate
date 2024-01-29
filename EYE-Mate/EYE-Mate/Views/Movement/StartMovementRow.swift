@@ -15,8 +15,9 @@ struct StartMovementRow: View {
 
     var body: some View {
         HStack {
-            Image("eight-movement")
-                .frame(width: 72, height: 72)
+            Image("\(movementType)Movement")
+                .resizable()
+                .frame(width: 64, height: 64)
             VStack(alignment: .leading, spacing: 12){
                 switch movementType {
                 case "Line":
