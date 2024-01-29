@@ -13,12 +13,17 @@
 		1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE030292B5E3AE600BAD518 /* HomeView.swift */; };
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
-		336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BC2B5F872500078CF0 /* EightMovementView.swift */; };
-		336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* EightLottieView.swift */; };
-		43A9BBC7C51E5E20BA9CF7D2 /* Pods_EYE_Mate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */; };
+		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
+		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
+		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
+		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
+		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
+		33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A382B638BBA005296AC /* StartMovementRow.swift */; };
+		33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */; };
+		33DD0A412B6393E8005296AC /* circle-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A402B6393E8005296AC /* circle-movement.json */; };
+		33DD0A432B63A25E005296AC /* line-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A422B63A25E005296AC /* line-movement.json */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
-		52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
 		52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */; };
@@ -30,7 +35,6 @@
 		52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* AccountView.swift */; };
 		52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */; };
 		52FB98912B5F861B00F6A284 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98902B5F861B00F6A284 /* Places.swift */; };
-		52FB98962B5FB54F00F6A284 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52FB98952B5FB54F00F6A284 /* APIKEY.plist */; };
 		52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98BC2B60FD7100F6A284 /* MapModalView.swift */; };
 		52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98C02B62226800F6A284 /* MapViewModel.swift */; };
 		52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98CA2B62321B00F6A284 /* InfoView.swift */; };
@@ -43,7 +47,6 @@
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
-		7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
 		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
 		7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */; };
 		7107A4022B63478F00944077 /* VisionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4012B63478F00944077 /* VisionTestViewModel.swift */; };
@@ -76,6 +79,7 @@
 		71AD79872B5FC9090010B423 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79862B5FC9090010B423 /* UserModel.swift */; };
 		71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */; };
 		71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC7F272B5E81AB00C0149C /* Bundle+.swift */; };
+		7EA927D5EFEDFFD6C094E518 /* Pods_EYE_Mate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C0F19DAAFCA997FFA21856 /* Pods_EYE_Mate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,8 +90,16 @@
 		1DE030292B5E3AE600BAD518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
-		336529BC2B5F872500078CF0 /* EightMovementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightMovementView.swift; sourceTree = "<group>"; };
-		336529BE2B600B9100078CF0 /* EightLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightLottieView.swift; sourceTree = "<group>"; };
+		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
+		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
+		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
+		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		33DD0A382B638BBA005296AC /* StartMovementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMovementRow.swift; sourceTree = "<group>"; };
+		33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDivider.swift; sourceTree = "<group>"; };
+		33DD0A402B6393E8005296AC /* circle-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "circle-movement.json"; sourceTree = "<group>"; };
+		33DD0A422B63A25E005296AC /* line-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "line-movement.json"; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
 		5296A1452B5F3EBC00299A0A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -112,7 +124,7 @@
 		52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonStyle.swift; sourceTree = "<group>"; };
 		52FB98D22B6240D200F6A284 /* ActionAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAreaView.swift; sourceTree = "<group>"; };
 		52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabBarView.swift; sourceTree = "<group>"; };
-		58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58AC2905C7C98C9D8CEBC77A /* Pods-EYE-Mate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.debug.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.debug.xcconfig"; sourceTree = "<group>"; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
 		71027A572B5DEAE000879DA7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -125,8 +137,6 @@
 		7107A4092B638DFF00944077 /* AstigmatismTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestViewModel.swift; sourceTree = "<group>"; };
 		7107A40B2B638E1600944077 /* SightTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestViewModel.swift; sourceTree = "<group>"; };
 		7107A40D2B6390D200944077 /* ColorTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestViewModel.swift; sourceTree = "<group>"; };
-		710D408B2B5FD156006C9FED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		710D408D2B5FD160006C9FED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		710D408F2B5FD885006C9FED /* ColorTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestView.swift; sourceTree = "<group>"; };
 		710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestView.swift; sourceTree = "<group>"; };
 		710D40932B5FD8A9006C9FED /* SightTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestView.swift; sourceTree = "<group>"; };
@@ -152,8 +162,8 @@
 		71AD79862B5FC9090010B423 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		71EC7F272B5E81AB00C0149C /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
-		81015EAD6440554DEAA04A01 /* Pods-EYE-Mate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.release.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.release.xcconfig"; sourceTree = "<group>"; };
-		C06FE206EA4454036182C7AD /* Pods-EYE-Mate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.debug.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.debug.xcconfig"; sourceTree = "<group>"; };
+		A3AC08F609C4FD46E1A748D1 /* Pods-EYE-Mate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.release.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.release.xcconfig"; sourceTree = "<group>"; };
+		A6C0F19DAAFCA997FFA21856 /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43A9BBC7C51E5E20BA9CF7D2 /* Pods_EYE_Mate.framework in Frameworks */,
+				7EA927D5EFEDFFD6C094E518 /* Pods_EYE_Mate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +181,8 @@
 		29B84FEE92C30B4B0FB86133 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C06FE206EA4454036182C7AD /* Pods-EYE-Mate.debug.xcconfig */,
-				81015EAD6440554DEAA04A01 /* Pods-EYE-Mate.release.xcconfig */,
+				58AC2905C7C98C9D8CEBC77A /* Pods-EYE-Mate.debug.xcconfig */,
+				A3AC08F609C4FD46E1A748D1 /* Pods-EYE-Mate.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -180,9 +190,37 @@
 		3329BBFE2B60FE380099EDC4 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				33DD0A422B63A25E005296AC /* line-movement.json */,
+				33DD0A402B6393E8005296AC /* circle-movement.json */,
 				3329BC012B6102370099EDC4 /* eight-movement.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		3329BC062B6230ED0099EDC4 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		33DD0A302B6246A1005296AC /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				33DD0A312B6246F4005296AC /* ToastView.swift */,
+				33DD0A332B624C11005296AC /* ToastModifier.swift */,
+				33DD0A352B624D72005296AC /* Toast.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		33DD0A372B638A8B005296AC /* MovementLottie */ = {
+			isa = PBXGroup;
+			children = (
+				336529BE2B600B9100078CF0 /* MovementLottieView.swift */,
+			);
+			path = MovementLottie;
 			sourceTree = "<group>";
 		};
 		52EE56BE2B5E29B100C6D423 /* Home */ = {
@@ -231,9 +269,11 @@
 		52EE56C82B5E2B1500C6D423 /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				33DD0A372B638A8B005296AC /* MovementLottie */,
+				33DD0A302B6246A1005296AC /* Toast */,
 				52EE56C92B5E2B2A00C6D423 /* MovementView.swift */,
-				336529BC2B5F872500078CF0 /* EightMovementView.swift */,
-				336529BE2B600B9100078CF0 /* EightLottieView.swift */,
+				33DD0A382B638BBA005296AC /* StartMovementRow.swift */,
+				33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -303,25 +343,17 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
-		52FB98D92B6342C400F6A284 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				710D408D2B5FD160006C9FED /* GoogleService-Info.plist */,
-				1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		71027A492B5DEAE000879DA7 = {
 			isa = PBXGroup;
 			children = (
+				3329BC152B623C2F0099EDC4 /* Info.plist */,
 				71027A542B5DEAE000879DA7 /* EYE-Mate */,
 				52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */,
 				52FB98952B5FB54F00F6A284 /* APIKEY.plist */,
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
-				DDE618B35681A265D0724720 /* Frameworks */,
-				52FB98D92B6342C400F6A284 /* Recovered References */,
+				3329BC062B6230ED0099EDC4 /* Recovered References */,
+				B339148249964F1DF6C49031 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -345,6 +377,7 @@
 				71027A592B5DEAE200879DA7 /* Assets.xcassets */,
 				713F4EEF2B5E06EE00694F05 /* Literal */,
 				71027A5B2B5DEAE200879DA7 /* Preview Content */,
+				3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */,
 			);
 			path = "EYE-Mate";
 			sourceTree = "<group>";
@@ -496,10 +529,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DDE618B35681A265D0724720 /* Frameworks */ = {
+		B339148249964F1DF6C49031 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */,
+				A6C0F19DAAFCA997FFA21856 /* Pods_EYE_Mate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -511,11 +544,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71027A602B5DEAE200879DA7 /* Build configuration list for PBXNativeTarget "EYE-Mate" */;
 			buildPhases = (
-				A7C17653EE9AD17E39DEC474 /* [CP] Check Pods Manifest.lock */,
+				30C8875B2C5C81F23A9691DA /* [CP] Check Pods Manifest.lock */,
 				71027A4E2B5DEAE000879DA7 /* Sources */,
 				71027A4F2B5DEAE000879DA7 /* Frameworks */,
 				71027A502B5DEAE000879DA7 /* Resources */,
-				C641E988634C9C77C2C9DD62 /* [CP] Embed Pods Frameworks */,
+				EE900070D62F2CD8E576C5D9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -564,28 +597,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
 				713F4F0C2B5E082700694F05 /* Pretendard-Bold.otf in Resources */,
+				33DD0A412B6393E8005296AC /* circle-movement.json in Resources */,
 				3329BC022B6102370099EDC4 /* eight-movement.json in Resources */,
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
-				52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */,
-				52FB98962B5FB54F00F6A284 /* APIKEY.plist in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
 				713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */,
 				713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */,
 				713F4F0A2B5E082700694F05 /* Pretendard-Medium.otf in Resources */,
+				3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */,
+				33DD0A432B63A25E005296AC /* line-movement.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A7C17653EE9AD17E39DEC474 /* [CP] Check Pods Manifest.lock */ = {
+		30C8875B2C5C81F23A9691DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -607,7 +640,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C641E988634C9C77C2C9DD62 /* [CP] Embed Pods Frameworks */ = {
+		EE900070D62F2CD8E576C5D9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -631,7 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */,
+				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */,
@@ -639,10 +672,13 @@
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
+				33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */,
+				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
+				33DD0A362B624D72005296AC /* Toast.swift in Sources */,
 				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
 				1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
@@ -650,6 +686,7 @@
 				7107A4082B6356FD00944077 /* DistanceConditionView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
+				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
 				7107A4022B63478F00944077 /* VisionTestViewModel.swift in Sources */,
@@ -661,10 +698,13 @@
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,
+				33DD0A322B6246F4005296AC /* ToastView.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52FB98D12B623CDA00F6A284 /* MapButtonStyle.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
+				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */,
 				7107A40C2B638E1600944077 /* SightTestViewModel.swift in Sources */,
@@ -680,7 +720,6 @@
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
-				336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
@@ -815,7 +854,7 @@
 		};
 		71027A612B5DEAE200879DA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C06FE206EA4454036182C7AD /* Pods-EYE-Mate.debug.xcconfig */;
+			baseConfigurationReference = 58AC2905C7C98C9D8CEBC77A /* Pods-EYE-Mate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -825,6 +864,35 @@
 				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAppCheckInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuthInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseStorage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RecaptchaInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/abseil\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/NMapsGeometry/framework\"",
+					"\"${PODS_ROOT}/NMapsMap/framework\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsGeometry\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsMap\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EYE-Mate/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 저에게 허락해주십쇼!!";
@@ -923,7 +991,7 @@
 		};
 		71027A622B5DEAE200879DA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81015EAD6440554DEAA04A01 /* Pods-EYE-Mate.release.xcconfig */;
+			baseConfigurationReference = A3AC08F609C4FD46E1A748D1 /* Pods-EYE-Mate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
