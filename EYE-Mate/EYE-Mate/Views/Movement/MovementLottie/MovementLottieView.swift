@@ -21,19 +21,6 @@ struct MovementLottieView: View {
 
 
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    let customGreenValueProvider = ColorValueProvider(LottieColor(r: 82.0 / 255.0, g: 202.0 / 255.0, b: 166.0 / 255.0, a: 1))
-    var keypath: AnimationKeypath {
-        switch movementType {
-        case "Line":
-            AnimationKeypath("Shape Layer 1.Ellipse 1.Fill 1.Color")
-        case "Circle":
-            AnimationKeypath("Ellipse.Ellipse 1.Fill 1.Color")
-        case "Eight":
-            AnimationKeypath("ball Outlines.Group 1.Fill 1.Color")
-        default:
-            AnimationKeypath("")
-        }
-    }
     var fileName: String {
         switch movementType {
         case "Line":
@@ -107,8 +94,7 @@ struct MovementLottieView: View {
                 Spacer()
                 LottieView(animation: .named(fileName))
                     .configure({ lottieView in
-                        lottieView.contentMode = fileName == "circle-movement" ? .scaleAspectFit : .scaleAspectFill
-                        lottieView.setValueProvider(customGreenValueProvider, keypath: keypath)
+                        lottieView.contentMode = .scaleAspectFit
                     })
                     .looping()
                 Spacer()
