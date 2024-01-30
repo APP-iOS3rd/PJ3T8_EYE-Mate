@@ -33,7 +33,8 @@ struct MapTabBarView: View {
                     }
                     
                     // MARK: profileImage 추후에 Firebase에서 Image 받아오기
-                    NavigationLink(destination: ProfileView()) {
+                    // 추후에 ProfileView로 바꿔놓기
+                    NavigationLink(destination: LoginView()) {
                         Image(systemName: "person.crop.circle.fill")
                             .font(.largeTitle)
                             .foregroundStyle(.black)
