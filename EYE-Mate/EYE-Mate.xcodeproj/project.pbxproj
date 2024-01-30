@@ -15,6 +15,7 @@
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
+		3391A1642B68DD850035E0A5 /* RecordBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1632B68DD850035E0A5 /* RecordBox.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -93,6 +94,7 @@
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
 		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
+		3391A1632B68DD850035E0A5 /* RecordBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBox.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				52EE56C22B5E2AF200C6D423 /* RecordView.swift */,
+				3391A1632B68DD850035E0A5 /* RecordBox.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				7107A4082B6356FD00944077 /* DistanceConditionView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
+				3391A1642B68DD850035E0A5 /* RecordBox.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
