@@ -90,28 +90,28 @@ private struct HomeViewCellListView: View {
         
         VStack {
             NavigationLink {
-                VisionTestView()
+                VisionView()
             } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest1"), title: "시력 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)
             }
             NavigationLink {
-                ColorTestView()
+                ColorView()
             } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest2"), title: "색채 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)
             }
             NavigationLink {
-                AstigmatismTestView()
+                AstigmatismView()
             } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest3"), title: "난시 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)
             }
             NavigationLink {
-                SightTestView()
+                SightView()
             } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest4"), title: "시야 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)

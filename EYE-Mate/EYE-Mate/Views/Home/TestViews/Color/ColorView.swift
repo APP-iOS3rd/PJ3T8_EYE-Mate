@@ -1,5 +1,5 @@
 //
-//  AstigmatismTest.swift
+//  ColorTestView.swift
 //  EYE-Mate
 //
 //  Created by 이성현 on 2024/01/23.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct AstigmatismTestView: View {
-    @ObservedObject var viewModel = AstigmatismTestViewModel()
+struct ColorView: View {
+    @StateObject var viewModel = SightViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
-            CustomNavigationTitle(title: "난시 검사",
+            CustomNavigationTitle(title: "색채 검사",
                                   userImg: Image(systemName: "person.fill"),
                                   isDisplayBtn: true,
                                   leftBtnAction: { dismiss() },
@@ -24,12 +24,12 @@ struct AstigmatismTestView: View {
                 ProfileView()
             }
             
-            ExplanationTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
+            ExplanationTextView(str: "간단한 테스트를 통해\n색채 식별도를 확인해보세요!")
                 .padding(.leading, 20)
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")
+            VisionTestOnboardingView(image:[Image("Component1"), Image("Component4")])
             
             Spacer()
             
@@ -40,7 +40,7 @@ struct AstigmatismTestView: View {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
-                DistanceConditionView(title: "난시 검사")
+                // 추후 색채검사 테스트 화면으로 바로 이동
             })
             .frame(maxHeight: 75)
             
@@ -55,5 +55,5 @@ struct AstigmatismTestView: View {
 }
 
 #Preview {
-    AstigmatismTestView()
+    ColorView()
 }

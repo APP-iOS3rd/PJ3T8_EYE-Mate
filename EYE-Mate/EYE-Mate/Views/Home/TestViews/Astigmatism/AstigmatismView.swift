@@ -1,5 +1,5 @@
 //
-//  SightTest.swift
+//  AstigmatismTest.swift
 //  EYE-Mate
 //
 //  Created by 이성현 on 2024/01/23.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct SightTestView: View {
-    @ObservedObject var viewModel = SightTestViewModel()
+struct AstigmatismView: View {
+    @ObservedObject var viewModel = AstigmatismViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
-            CustomNavigationTitle(title: "시야 검사",
+            CustomNavigationTitle(title: "난시 검사",
                                   userImg: Image(systemName: "person.fill"),
                                   isDisplayBtn: true,
                                   leftBtnAction: { dismiss() },
@@ -24,12 +24,12 @@ struct SightTestView: View {
                 ProfileView()
             }
             
-            ExplanationTextView(str: "간단한 테스트를 통해\n시야의 상태를 확인해보세요!")
+            ExplanationTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
                 .padding(.leading, 20)
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component6")], thirdTitle: "중앙에 있는 검은색 점에 초점을 두고\n선과 사각형의 변화를 확인하세요!")
+            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")
             
             Spacer()
             
@@ -40,8 +40,7 @@ struct SightTestView: View {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
-                DistanceConditionView(title: "시야 검사")
-                    .navigationBarBackButtonHidden()
+                DistanceConditionView(title: "난시 검사")
             })
             .frame(maxHeight: 75)
             
@@ -56,5 +55,5 @@ struct SightTestView: View {
 }
 
 #Preview {
-    SightTestView()
+    AstigmatismView()
 }
