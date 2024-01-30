@@ -9,12 +9,23 @@ import SwiftUI
 
 struct VisionTestView: View {
     @ObservedObject var viewModel = VisionTestViewModel()
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack{
-            CustomNavigationTitle(title: "시력 검사", userImg: Image(systemName: "person.fill"))
+        NavigationStack {
+            CustomNavigationTitle(title: "시력 검사",
+                                  userImg: Image(systemName: "person.fill"),
+                                  isDisplayBtn: true,
+                                  leftBtnAction: { dismiss() },
+                                  profileBtnAction: {
+                viewModel.isPresentedProfileView.toggle()
+            })
+            .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+                ProfileView()
+            }
             
             ExplanationTextView(str: "간단한 테스트를 통해\n나의 시력을 확인해보세요!")
+                .padding(.leading, 20)
             
             Spacer()
             
@@ -30,7 +41,6 @@ struct VisionTestView: View {
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
                 DistanceConditionView(title: "시력 검사")
-                    .navigationBarBackButtonHidden()
             })
             .frame(maxHeight: 75)
             

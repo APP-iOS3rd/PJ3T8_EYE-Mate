@@ -9,5 +9,6 @@ import Foundation
 
 class ColorTestViewModel: ObservableObject {
     @Published var isPresentedTestView: Bool = false
+    @Published var isPresentedProfileView: Bool = false
     
 }
