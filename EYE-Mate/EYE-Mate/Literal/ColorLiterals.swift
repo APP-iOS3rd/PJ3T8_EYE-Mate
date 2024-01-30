@@ -15,6 +15,8 @@ extension Color {
     static let btnGray  = Color(hex: "#DBDBDB")
     // 회색TabBar
     static let tabGray = Color(hex: "#C4C4C4")
+    // 밝은 회색 배경
+    static let lightGray = Color(hex: "#F3F6F8")
     // 회색경고문구
     static let warningGray = Color(hex: "#8A8A8A")
     // 시그니처 컬러
