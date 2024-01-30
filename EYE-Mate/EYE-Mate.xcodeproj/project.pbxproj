@@ -41,6 +41,7 @@
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
+		7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710D408D2B5FD160006C9FED /* GoogleService-Info.plist */; };
 		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
 		7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */; };
 		7107A4022B63478F00944077 /* VisionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4012B63478F00944077 /* VisionTestViewModel.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQRowCellView.swift; sourceTree = "<group>"; };
 		1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,8 @@
 		7107A40D2B6390D200944077 /* ColorTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestViewModel.swift; sourceTree = "<group>"; };
 		710D235A2B639C8E00E5EDE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		710D23612B68CD2200E5EDE8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		710D408B2B5FD156006C9FED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		710D408D2B5FD160006C9FED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		710D408F2B5FD885006C9FED /* ColorTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestView.swift; sourceTree = "<group>"; };
 		710D40912B5FD89A006C9FED /* AstigmatismTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestView.swift; sourceTree = "<group>"; };
 		710D40932B5FD8A9006C9FED /* SightTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestView.swift; sourceTree = "<group>"; };
@@ -550,6 +554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7107A3CB2B6203AB00944077 /* GoogleService-Info.plist in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
 				713F4F0C2B5E082700694F05 /* Pretendard-Bold.otf in Resources */,
 				3329BC022B6102370099EDC4 /* eight-movement.json in Resources */,
