@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct LoginView: View {
-    // MARK: - userdefault로 loggedin에 따라 나누기
+    @State var signUpFlag: Bool = false
+    // TODO: - loggedin에 따라 프로필/로그인 뷰 나올지 구현
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        if signUpFlag {
+            SignUpView(signUpFlag: $signUpFlag)
+        }
+        else {
+            SignInView(signUpFlag: $signUpFlag)
+        }
     }
 }
 

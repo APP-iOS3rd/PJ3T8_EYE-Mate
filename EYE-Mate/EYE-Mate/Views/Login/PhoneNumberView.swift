@@ -20,7 +20,7 @@ struct PhoneNumberView: View {
     @State private var searchCountry: String  = ""
     @State var verificationID: String = ""
     @State var openOTPView: Bool = false
-    @State var phoneNumberFlag: Bool = false
+    @Binding var signUpFlag: Bool
     
     @FocusState private var keyIsFocused: Bool
     
@@ -32,7 +32,7 @@ struct PhoneNumberView: View {
         
         NavigationStack {
             VStack(alignment: .leading, spacing: 10) {
-
+                
                 Text("전화번호")
                     .font(.pretendardMedium_16)
                 
@@ -70,29 +70,28 @@ struct PhoneNumberView: View {
                     .frame(width: 300)
                     .padding(.bottom, 15)
                     
-                    
-                    
-                    HStack {
-                        Button {
-                            if mobPhoneNumber.count >= countryPattern.count{
-                                self.phoneNumberFlag = true
-                                self.openOTPView = true
+                    // MARK: - 인증요청 버튼
+                    if signUpFlag {
+                        HStack {
+                            Button {
+                                if mobPhoneNumber.count >= countryPattern.count{
+                                    self.openOTPView = true
+                                }
+                                
+                                sendVerificationCode()
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20.0)
+                                        .foregroundStyle(Color.customGreen)
+                                        .frame(width: 120, height: 30)
+                                    Text(openOTPView ? "인증번호 재요청" : "인증번호 요청")
+                                        .foregroundStyle(.white)
+                                        .font(.pretendardSemiBold_14)
+                                }
+                                .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
                             }
-                            
-                            sendVerificationCode()
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20.0)
-                                    .foregroundStyle(Color.customGreen)
-                                    .frame(width: 120, height: 30)
-                                Text(openOTPView ? "인증번호 재요청" : "인증번호 요청")
-                                    .foregroundStyle(.white)
-                                    .font(.pretendardSemiBold_14)
-                            }
-                            .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
                         }
                     }
-
                     
                     // MARK: - OTP View
                     if openOTPView {
@@ -103,7 +102,6 @@ struct PhoneNumberView: View {
                 }
                 .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
             }
-            
         }
         .onTapGesture {
             hideKeyboard()
@@ -135,6 +133,7 @@ struct PhoneNumberView: View {
         }
         .presentationDetents([.medium, .large])
         .ignoresSafeArea(.keyboard)
+        
     }
     
     var filteredResorts: [CPData] {
@@ -178,6 +177,7 @@ struct PhoneNumberView: View {
     }
 }
 
+
 extension View {
     func placeholder<Content: View>(
         when shouldShow: Bool,
@@ -205,5 +205,5 @@ extension View {
 }
 
 #Preview {
-    PhoneNumberView()
+    PhoneNumberView(signUpFlag: .constant(true))
 }

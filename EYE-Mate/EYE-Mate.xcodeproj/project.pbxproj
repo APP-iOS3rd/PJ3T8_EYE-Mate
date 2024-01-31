@@ -21,6 +21,8 @@
 		5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */; };
 		5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */; };
 		5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B02B69C8B600FC8109 /* LoginView.swift */; };
+		5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B42B69EC3500FC8109 /* SignInView.swift */; };
+		5278E3B72B69F8DC00FC8109 /* OTPRequestBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B62B69F8DC00FC8109 /* OTPRequestBtnView.swift */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
 		52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */; };
@@ -93,6 +95,8 @@
 		5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
 		5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
 		5278E3B02B69C8B600FC8109 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5278E3B42B69EC3500FC8109 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		5278E3B62B69F8DC00FC8109 /* OTPRequestBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPRequestBtnView.swift; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
 		5296A1452B5F3EBC00299A0A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
@@ -320,10 +324,12 @@
 			isa = PBXGroup;
 			children = (
 				5278E3B02B69C8B600FC8109 /* LoginView.swift */,
+				5278E3B42B69EC3500FC8109 /* SignInView.swift */,
 				52FB98F52B638B4A00F6A284 /* SignUpView.swift */,
 				5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */,
 				5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */,
 				52FB98F72B6392EA00F6A284 /* LoginViewModel.swift */,
+				5278E3B62B69F8DC00FC8109 /* OTPRequestBtnView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -604,7 +610,9 @@
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
+				5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
+				5278E3B72B69F8DC00FC8109 /* OTPRequestBtnView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
