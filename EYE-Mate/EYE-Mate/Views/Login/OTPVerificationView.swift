@@ -15,17 +15,14 @@ struct OTPVerificationView: View {
     @Binding var signUpFlag: Bool
     @State private var otp: String = ""
     @State private var otpErrorView: Bool = false
-    
     @State private var btnText: String = "회원가입"
     @FocusState private var keyIsFocused: Bool
     var mobileNumber: String = ""
     var foregroundColor: Color = Color(.black)
     var backgroundColor: Color = Color(.systemGray6)
-    
-    
-    
     // userdefaults login
-    @State private var loggedIn = UserDefaults.standard.bool(forKey: "Login")
+    @AppStorage("Login") var loggedIn: Bool = false
+    
     
     var body: some View {
         VStack(alignment:.leading, spacing: 10){
@@ -58,12 +55,13 @@ struct OTPVerificationView: View {
             
             
             Button {
-                if loginViewModel.verifyOTP(otp: otp) {
-                    otpErrorView = true
-                } else {
-                    otpErrorView = false
+                loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag) { success in
+                    if success {
+                        otpErrorView = false
+                    } else {
+                        otpErrorView = true
+                    }
                 }
-                    
                 
             } label: {
                 
