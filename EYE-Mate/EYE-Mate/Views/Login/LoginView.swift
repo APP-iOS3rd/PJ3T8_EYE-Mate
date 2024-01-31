@@ -11,12 +11,13 @@ struct LoginView: View {
     @State var signUpFlag: Bool = false
     // TODO: - loggedin에 따라 프로필/로그인 뷰 나올지 구현
     var body: some View {
-        
-        if signUpFlag {
-            SignUpView(signUpFlag: $signUpFlag)
-        }
-        else {
-            SignInView(signUpFlag: $signUpFlag)
+        NavigationStack {
+            if signUpFlag {
+                SignUpView(signUpFlag: $signUpFlag)
+            }
+            else {
+                SignInView(signUpFlag: $signUpFlag)
+            }
         }
     }
 }

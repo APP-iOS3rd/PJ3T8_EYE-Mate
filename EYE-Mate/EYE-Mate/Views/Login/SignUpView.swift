@@ -11,7 +11,6 @@ import FirebaseAuth
 
 
 struct SignUpView: View {
-    @StateObject var loginViewModel = LoginViewModel()
     @Binding var signUpFlag: Bool
     
     var body: some View {
@@ -29,13 +28,33 @@ struct SignUpView: View {
                     .foregroundStyle(Color.customGreen)
                 PhoneNumberView(signUpFlag: $signUpFlag)
             }
+            
+            VStack(alignment: .leading) {
+                HStack{
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("이미 EYE-Mate 회원이신가요?")
+                            .font(.pretendardMedium_16)
+                        
+                        Button {
+                            signUpFlag = false
+                        } label: {
+                            Text("로그인")
+                                .foregroundStyle(Color.customGreen)
+                                .underline()
+                                .font(.pretendardSemiBold_20)
+                        }
+                    }
+                    Spacer()
+                }
+            }
+            .padding(50)
         }
     }
     
 }
 
 #Preview {
-    SignUpView(signUpFlag: .constant(false))
+    SignUpView(signUpFlag: .constant(true))
 }
 
 
