@@ -32,10 +32,11 @@ struct PhoneNumberView: View {
         
         NavigationStack {
             VStack(alignment: .leading, spacing: 10) {
+
                 Text("전화번호")
                     .font(.pretendardMedium_16)
                 
-                VStack {
+                VStack(alignment: .trailing) {
                     HStack {
                         Button {
                             presentSheet = true
@@ -49,6 +50,7 @@ struct PhoneNumberView: View {
                         }
                         
                         TextField("", text: $mobPhoneNumber)
+                            .font(.pretendardMedium_16)
                             .placeholder(when: mobPhoneNumber.isEmpty) {
                                 Text("Phone number")
                                     .foregroundColor(.warningGray)
@@ -62,27 +64,35 @@ struct PhoneNumberView: View {
                             .padding(10)
                             .frame(minWidth: 80, minHeight: 47)
                             .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        
+                        
                     }
                     .frame(width: 300)
                     .padding(.bottom, 15)
                     
-                    Button {
-                        if mobPhoneNumber.count >= countryPattern.count{
-                            self.phoneNumberFlag = true
-                            self.openOTPView = true
+                    
+                    
+                    HStack {
+                        Button {
+                            if mobPhoneNumber.count >= countryPattern.count{
+                                self.phoneNumberFlag = true
+                                self.openOTPView = true
+                            }
+                            
+                            sendVerificationCode()
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20.0)
+                                    .foregroundStyle(Color.customGreen)
+                                    .frame(width: 120, height: 30)
+                                Text(openOTPView ? "인증번호 재요청" : "인증번호 요청")
+                                    .foregroundStyle(.white)
+                                    .font(.pretendardSemiBold_14)
+                            }
+                            .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
                         }
-                        
-                        sendVerificationCode()
-                    } label: {
-                        Text(openOTPView ? "인증번호 재요청" : "인증번호 요청")
-                            .foregroundStyle(.white)
-                            .font(.pretendardSemiBold_14)
-                            .background(RoundedRectangle(cornerRadius: 20.0)
-                                .foregroundStyle(Color.customGreen)
-                                .frame(width: 120, height: 30))
                     }
-                    .padding(.bottom, 10)
-                    .disableWithOpacity(mobPhoneNumber.count != countryPattern.count )
+
                     
                     // MARK: - OTP View
                     if openOTPView {
@@ -194,3 +204,6 @@ extension View {
     }
 }
 
+#Preview {
+    PhoneNumberView()
+}

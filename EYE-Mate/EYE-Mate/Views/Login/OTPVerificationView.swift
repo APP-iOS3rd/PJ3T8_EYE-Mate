@@ -28,6 +28,7 @@ struct OTPVerificationView: View {
             VStack(alignment:.leading, spacing: 0) {
                 
                 TextField("", text: $otp)
+                    .font(.pretendardMedium_16)
                     .placeholder(when: otp.isEmpty) {
                         Text("Enter OTP")
                             .foregroundColor(.warningGray)
