@@ -13,6 +13,16 @@
 		1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE030292B5E3AE600BAD518 /* HomeView.swift */; };
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
+		336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BC2B5F872500078CF0 /* EightMovementView.swift */; };
+		336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* EightLottieView.swift */; };
+		43A9BBC7C51E5E20BA9CF7D2 /* Pods_EYE_Mate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */; };
+		5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5278E3A82B68B7B500FC8109 /* CountryNumbers.json */; };
+		5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AA2B68B7CA00FC8109 /* CPData.swift */; };
+		5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */; };
+		5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */; };
+		5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B02B69C8B600FC8109 /* LoginView.swift */; };
+		5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B42B69EC3500FC8109 /* SignInView.swift */; };
+		5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
@@ -43,6 +53,7 @@
 		52FB98D12B623CDA00F6A284 /* MapButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */; };
 		52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D22B6240D200F6A284 /* ActionAreaView.swift */; };
 		52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */; };
+		52FB98F62B638B4A00F6A284 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98F52B638B4A00F6A284 /* SignUpView.swift */; };
 		71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */; };
 		71027A582B5DEAE000879DA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71027A572B5DEAE000879DA7 /* MainView.swift */; };
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
@@ -90,6 +101,15 @@
 		1DE030292B5E3AE600BAD518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
+		336529BC2B5F872500078CF0 /* EightMovementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightMovementView.swift; sourceTree = "<group>"; };
+		336529BE2B600B9100078CF0 /* EightLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightLottieView.swift; sourceTree = "<group>"; };
+		5278E3A82B68B7B500FC8109 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
+		5278E3AA2B68B7CA00FC8109 /* CPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
+		5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
+		5278E3B02B69C8B600FC8109 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5278E3B42B69EC3500FC8109 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
 		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
@@ -102,6 +122,7 @@
 		33DD0A422B63A25E005296AC /* line-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "line-movement.json"; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
 		5296A1452B5F3EBC00299A0A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52DC8CD52B5EAA080022B017 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseView.swift; sourceTree = "<group>"; };
@@ -124,6 +145,8 @@
 		52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonStyle.swift; sourceTree = "<group>"; };
 		52FB98D22B6240D200F6A284 /* ActionAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAreaView.swift; sourceTree = "<group>"; };
 		52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabBarView.swift; sourceTree = "<group>"; };
+		52FB98F52B638B4A00F6A284 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		58FECEF218473FFCB6C5FEAA /* Pods_EYE_Mate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EYE_Mate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AC2905C7C98C9D8CEBC77A /* Pods-EYE-Mate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EYE-Mate.debug.xcconfig"; path = "Target Support Files/Pods-EYE-Mate/Pods-EYE-Mate.debug.xcconfig"; sourceTree = "<group>"; };
 		71027A522B5DEAE000879DA7 /* EYE-Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EYE-Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71027A552B5DEAE000879DA7 /* EYE_MateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYE_MateApp.swift; sourceTree = "<group>"; };
@@ -311,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				52EE56D42B5E2D0300C6D423 /* EyeMapView.swift */,
+				52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */,
 				5296A1452B5F3EBC00299A0A /* MapView.swift */,
 				52FB98BC2B60FD7100F6A284 /* MapModalView.swift */,
 				52FB98CA2B62321B00F6A284 /* InfoView.swift */,
@@ -319,7 +343,6 @@
 				52FB98C02B62226800F6A284 /* MapViewModel.swift */,
 				52FB98CE2B62331900F6A284 /* MapImageModifier.swift */,
 				52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */,
-				52FB98D42B62B91F00F6A284 /* MapTabBarView.swift */,
 			);
 			path = EyeMap;
 			sourceTree = "<group>";
@@ -343,6 +366,29 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		52FB98D92B6342C400F6A284 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				710D408D2B5FD160006C9FED /* GoogleService-Info.plist */,
+				1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		52FB98F42B638B3300F6A284 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5278E3B02B69C8B600FC8109 /* LoginView.swift */,
+				5278E3B42B69EC3500FC8109 /* SignInView.swift */,
+				52FB98F52B638B4A00F6A284 /* SignUpView.swift */,
+				5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */,
+				5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */,
+				5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+
 		71027A492B5DEAE000879DA7 = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +414,7 @@
 		71027A542B5DEAE000879DA7 /* EYE-Mate */ = {
 			isa = PBXGroup;
 			children = (
+				52D375232B66C44600EE200F /* EYE-Mate.entitlements */,
 				52FB98972B5FB55A00F6A284 /* Info.plist */,
 				71EC7F262B5E819400C0149C /* Extensions */,
 				71EC7F232B5E7F9900C0149C /* Models */,
@@ -497,6 +544,7 @@
 				52EE56CB2B5E2B3200C6D423 /* Community */,
 				52EE56D22B5E2CA800C6D423 /* EyeMap */,
 				52EE56D32B5E2CF400C6D423 /* Profile */,
+				52FB98F42B638B3300F6A284 /* Login */,
 				52EE56C82B5E2B1500C6D423 /* Movement */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
 			);
@@ -514,9 +562,11 @@
 		71EC7F232B5E7F9900C0149C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5278E3A82B68B7B500FC8109 /* CountryNumbers.json */,
 				71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */,
 				71AD79862B5FC9090010B423 /* UserModel.swift */,
 				52FB98902B5F861B00F6A284 /* Places.swift */,
+				5278E3AA2B68B7CA00FC8109 /* CPData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -604,6 +654,9 @@
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
+				5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */,
+				52DC8CD72B5EAA080022B017 /* GoogleService-Info.plist in Resources */,
+				52FB98962B5FB54F00F6A284 /* APIKEY.plist in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
@@ -664,6 +717,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */,
+				336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
@@ -685,7 +740,9 @@
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
 				7107A4082B6356FD00944077 /* DistanceConditionView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
+				5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
+				5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
@@ -702,7 +759,10 @@
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52FB98D12B623CDA00F6A284 /* MapButtonStyle.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
+				52FB98F62B638B4A00F6A284 /* SignUpView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */,
+				71AD797D2B5FA6180010B423 /* OnboardingView.swift in Sources */,
 				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
@@ -710,6 +770,7 @@
 				7107A40C2B638E1600944077 /* SightTestViewModel.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
+				5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */,
 				52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
@@ -721,6 +782,7 @@
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
+				5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
 			);
@@ -858,10 +920,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "EYE-Mate/EYE-Mate.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = 8383VR3NFP;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -983,6 +1047,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -995,10 +1060,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "EYE-Mate/EYE-Mate.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = 8383VR3NFP;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1091,6 +1158,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

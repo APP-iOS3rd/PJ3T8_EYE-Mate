@@ -32,7 +32,6 @@ struct MapTabBarView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
-                    // MARK: profileImage 추후에 Firebase에서 Image 받아오기
                     NavigationLink(destination: ProfileView()) {
                         Image(systemName: "person.crop.circle.fill")
                             .font(.largeTitle)
