@@ -11,14 +11,15 @@ import Combine
 import FirebaseAuth
 
 struct PhoneNumberView: View {
+    @StateObject var loginViewModel = LoginViewModel(verificationID: "")
     @State var presentSheet = false
     @State var countryCode : String = "+1"
     @State var countryFlag : String = "🇺🇸"
     @State var countryPattern : String = "### ### ####"
     @State var countryLimit : Int = 17
     @State var mobPhoneNumber = ""
-    @State private var searchCountry: String  = ""
-    @State var verificationID: String = ""
+    @State var searchCountry: String  = ""
+    
     @State var openOTPView: Bool = false
     @Binding var signUpFlag: Bool
     
@@ -30,79 +31,77 @@ struct PhoneNumberView: View {
     
     var body: some View {
         
-        NavigationStack {
-            VStack(alignment: .leading, spacing: 10) {
-                
-                Text("전화번호")
-                    .font(.pretendardMedium_16)
-                
-                VStack(alignment: .trailing) {
-                    HStack {
-                        Button {
-                            presentSheet = true
-                            keyIsFocused = false
-                        } label: {
-                            Text("\(countryFlag) \(countryCode)")
-                                .padding(10)
-                                .frame(minWidth: 80, minHeight: 47)
-                                .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                                .foregroundColor(foregroundColor)
-                        }
-                        
-                        TextField("", text: $mobPhoneNumber)
-                            .font(.pretendardMedium_16)
-                            .placeholder(when: mobPhoneNumber.isEmpty) {
-                                Text("Phone number")
-                                    .foregroundColor(.warningGray)
-                                    .font(.pretendardSemiBold_16)
-                            }
-                            .focused($keyIsFocused)
-                            .keyboardType(.numberPad)
-                            .onReceive(Just(mobPhoneNumber)) { _ in
-                                applyPatternOnNumbers(&mobPhoneNumber, pattern: countryPattern, replacementCharacter: "#")
-                            }
+        VStack(alignment: .leading, spacing: 10) {
+            
+            Text("전화번호")
+                .font(.pretendardMedium_16)
+            
+            VStack(alignment: .trailing) {
+                HStack {
+                    Button {
+                        presentSheet = true
+                        keyIsFocused = false
+                    } label: {
+                        Text("\(countryFlag) \(countryCode)")
                             .padding(10)
                             .frame(minWidth: 80, minHeight: 47)
                             .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                        
-                        
+                            .foregroundColor(foregroundColor)
                     }
-                    .frame(width: 300)
-                    .padding(.bottom, 15)
                     
-                    // MARK: - 인증요청 버튼
-                    if signUpFlag {
-                        HStack {
-                            Button {
-                                if mobPhoneNumber.count >= countryPattern.count{
-                                    self.openOTPView = true
-                                }
-                                
-                                sendVerificationCode()
-                            } label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 20.0)
-                                        .foregroundStyle(Color.customGreen)
-                                        .frame(width: 120, height: 30)
-                                    Text(openOTPView ? "인증번호 재요청" : "인증번호 요청")
-                                        .foregroundStyle(.white)
-                                        .font(.pretendardSemiBold_14)
-                                }
-                                .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
-                            }
+                    TextField("", text: $mobPhoneNumber)
+                        .font(.pretendardMedium_16)
+                        .placeholder(when: mobPhoneNumber.isEmpty) {
+                            Text("Phone number")
+                                .foregroundColor(.warningGray)
+                                .font(.pretendardSemiBold_16)
                         }
-                    }
+                        .focused($keyIsFocused)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(mobPhoneNumber)) { _ in
+                            applyPatternOnNumbers(&mobPhoneNumber, pattern: countryPattern, replacementCharacter: "#")
+                        }
+                        .padding(10)
+                        .frame(minWidth: 80, minHeight: 47)
+                        .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                     
-                    // MARK: - OTP View
-                    if openOTPView {
-                        OTPVerificationView(verificationID: $verificationID, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
-                    }
                     
-                    Spacer()
                 }
-                .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
+                .frame(width: 300)
+                .padding(.bottom, 15)
+                
+                // MARK: - 인증요청 버튼
+                HStack {
+                    Button {
+                        if mobPhoneNumber.count >= countryPattern.count{
+                            self.openOTPView = true
+                        }
+                        
+                        loginViewModel.sendVerificationCode(phoneNumber: "\(countryCode)\(mobPhoneNumber)")
+                        
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20.0)
+                                .foregroundStyle(Color.customGreen)
+                                .frame(width: 120, height: 30)
+                            Text(openOTPView ? "인증번호 재요청" : "인증번호 요청")
+                                .foregroundStyle(.white)
+                                .font(.pretendardSemiBold_14)
+                        }
+                        .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
+                    }
+                }
+                
+                // MARK: - OTP View
+                if openOTPView {
+                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
+                }
+                
+                Spacer()
             }
+            .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
         }
+        
         .onTapGesture {
             hideKeyboard()
         }
@@ -159,22 +158,7 @@ struct PhoneNumberView: View {
         stringvar = pureNumber
     }
     
-    func sendVerificationCode() {
-        let phoneNumber = "\(countryCode)\(mobPhoneNumber)"
-        print(phoneNumber)
-        
-        PhoneAuthProvider.provider()
-            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                if let verificationID = verificationID {
-                    print("verificationID:", verificationID)
-                    self.verificationID =  verificationID
-                }
-            }
-    }
+    
 }
 
 

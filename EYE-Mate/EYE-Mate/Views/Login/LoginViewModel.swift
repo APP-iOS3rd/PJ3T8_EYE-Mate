@@ -1,51 +1,66 @@
 //
-//  LoginViewModel.swift
+//  OTPViewModel.swift
 //  EYE-Mate
 //
-//  Created by 이민영 on 2024/01/26.
+//  Created by 이민영 on 2024/01/31.
 //
 
-import Foundation
-import FirebaseAuth
 import SwiftUI
+import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
-    static let shared = LoginViewModel()
     
-
-
-    func login(){
-        print("login 시작")
-        let phoneNumber = "+16505551234"
-
-        // This test verification code is specified for the given test phone number in the developer console.
-        let testVerificationCode = "654321"
-        
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-        print("auth")
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate:nil) {
-            (verificationID, error) in
-            if error != nil {
-                print("인증Error: \(error.debugDescription)")
-                
-                return
-            }
-            else if error == nil {
-                print("nilnil")
-            }
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID ?? "",
-                                                                     verificationCode: testVerificationCode)
-            print("credential", credential)
-            Auth.auth().signIn(with: credential) { (authData, error) in
-                if error != nil {
-                    print("로그인Error: \(error.debugDescription)")
-                    
+    var verificationID: String
+    init(verificationID: String) {
+        self.verificationID = verificationID
+    }
+    
+    func sendVerificationCode(phoneNumber: String) {
+        print(phoneNumber)
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    print(error.localizedDescription)
                     return
                 }
-                print("login 성공")
-                print("authData: \(String(describing: authData))")
+                if let verificationID = verificationID {
+                    print("verificationID:", verificationID)
+                    self.verificationID =  verificationID
+                }
+            }
+    }
+    
+    
+    func verifyOTP(otp: String) -> Bool{
+        var errorFlag: Bool = false
+        // 인증 코드, 인증 ID를 사용해 FIRPhoneAuthCredential 객체 생성
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: otp)
+        
+        // credential 객체로 signin(로그인, 회원가입)
+        Auth.auth().signIn(with: credential) { user, error in
+            print(user?.user.uid ?? "Nope")
+            errorFlag = true
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+
+                print("OTP Verify Success = \(user?.user.uid ?? "N/A")")
             }
         }
+        return errorFlag
     }
-   
+    
+    func resendOTP(mobileNumber: String) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(mobileNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if verificationID != nil {
+                    print("Code has been resent!")
+                    
+                }
+            }
+    }
 }
