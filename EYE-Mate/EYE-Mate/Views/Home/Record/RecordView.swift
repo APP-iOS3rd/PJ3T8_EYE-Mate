@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum TestType {
+    case Vision
+    case ColorVision
+    case Astigmatism
+    case Eyesight
+}
+
 struct RecordView: View {
     @Environment(\.dismiss) var dismiss
 
@@ -15,7 +22,6 @@ struct RecordView: View {
     }
 
     var body: some View {
-
         VStack(spacing: 0) {
             HStack {
                 VStack(alignment: .leading, spacing: 12){
@@ -63,10 +69,10 @@ struct RecordView: View {
                                     .font(.system(size: 20))
                             }
                     }
-                    RecordBox()
-                    RecordBox()
-                    RecordBox()
-                    RecordBox()
+                    RecordBox(type: TestType.Vision)
+                    RecordBox(type: TestType.ColorVision)
+                    RecordBox(type: TestType.Astigmatism)
+                    RecordBox(type: TestType.Eyesight)
                 }.padding(16)
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)

@@ -17,6 +17,10 @@
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
 		3391A1642B68DD850035E0A5 /* RecordBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1632B68DD850035E0A5 /* RecordBox.swift */; };
 		3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1652B6A10210035E0A5 /* ColoredText.swift */; };
+		3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1672B6A1C720035E0A5 /* VisionDataView.swift */; };
+		3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */; };
+		3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */; };
+		3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -97,6 +101,10 @@
 		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
 		3391A1632B68DD850035E0A5 /* RecordBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBox.swift; sourceTree = "<group>"; };
 		3391A1652B6A10210035E0A5 /* ColoredText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredText.swift; sourceTree = "<group>"; };
+		3391A1672B6A1C720035E0A5 /* VisionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDataView.swift; sourceTree = "<group>"; };
+		3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorVisionDataView.swift; sourceTree = "<group>"; };
+		3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismDataView.swift; sourceTree = "<group>"; };
+		3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesightDataView.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -268,6 +276,10 @@
 				52EE56C22B5E2AF200C6D423 /* RecordView.swift */,
 				3391A1632B68DD850035E0A5 /* RecordBox.swift */,
 				3391A1652B6A10210035E0A5 /* ColoredText.swift */,
+				3391A1672B6A1C720035E0A5 /* VisionDataView.swift */,
+				3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */,
+				3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */,
+				3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -682,6 +694,7 @@
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
+				3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				33DD0A362B624D72005296AC /* Toast.swift in Sources */,
@@ -694,6 +707,7 @@
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				3391A1642B68DD850035E0A5 /* RecordBox.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
+				3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
@@ -717,6 +731,7 @@
 				7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */,
 				7107A40C2B638E1600944077 /* SightTestViewModel.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
+				3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */,
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
 				52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
@@ -724,6 +739,7 @@
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
+				3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorTestViewModel.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
