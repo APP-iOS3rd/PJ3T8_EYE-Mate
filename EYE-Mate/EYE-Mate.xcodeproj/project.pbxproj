@@ -7,11 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D130F4A2B5F774F00258F71 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D130F482B5F774F00258F71 /* APIKEY.plist */; };
+		1D575FCB2B6B7EEA00DDC652 /* PostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCA2B6B7EEA00DDC652 /* PostContent.swift */; };
+		1D575FCD2B6B8C7000DDC652 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCC2B6B8C7000DDC652 /* CommentView.swift */; };
+		1D575FCF2B6B92D900DDC652 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCE2B6B92D900DDC652 /* ImageCardView.swift */; };
+		1D575FD12B6B96C100DDC652 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FD02B6B96C100DDC652 /* NewPostView.swift */; };
+		1D575FD32B6B96EC00DDC652 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FD22B6B96EC00DDC652 /* ImagePickerView.swift */; };
+		1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5983992B61596600762E4B /* CreateNewPostView.swift */; };
+		1D73AD3F2B62BC4100DF431D /* CreateNewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */; };
+		1D73AD422B63872B00DF431D /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD412B63872B00DF431D /* PostView.swift */; };
+		1D98EC682B5FB50E00CC3AB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */; };
 		1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */; };
 		1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */; };
 		1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */; };
 		1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE030292B5E3AE600BAD518 /* HomeView.swift */; };
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
+		1DF7E7352B68C4A300602BBB /* FreeBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7E7342B68C4A300602BBB /* FreeBoardViewModel.swift */; };
+		1DF7E7372B68C65500602BBB /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7E7362B68C65500602BBB /* View+.swift */; };
+		1DF7E7392B68DB2A00602BBB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7E7382B68DB2A00602BBB /* Post.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		336529BD2B5F872500078CF0 /* EightMovementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BC2B5F872500078CF0 /* EightMovementView.swift */; };
 		336529BF2B600B9100078CF0 /* EightLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* EightLottieView.swift */; };
@@ -102,11 +115,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D130F482B5F774F00258F71 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
+		1D37B15C2B61118C00007DF8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D575FCA2B6B7EEA00DDC652 /* PostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContent.swift; sourceTree = "<group>"; };
+		1D575FCC2B6B8C7000DDC652 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		1D575FCE2B6B92D900DDC652 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
+		1D575FD02B6B96C100DDC652 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		1D575FD22B6B96EC00DDC652 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		1D5983992B61596600762E4B /* CreateNewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostView.swift; sourceTree = "<group>"; };
+		1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostViewModel.swift; sourceTree = "<group>"; };
+		1D73AD412B63872B00DF431D /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQRowCellView.swift; sourceTree = "<group>"; };
 		1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 		1DE030292B5E3AE600BAD518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
+		1DF7E7342B68C4A300602BBB /* FreeBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardViewModel.swift; sourceTree = "<group>"; };
+		1DF7E7362B68C65500602BBB /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		1DF7E7382B68DB2A00602BBB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		336529BC2B5F872500078CF0 /* EightMovementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightMovementView.swift; sourceTree = "<group>"; };
 		336529BE2B600B9100078CF0 /* EightLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightLottieView.swift; sourceTree = "<group>"; };
@@ -215,6 +242,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D73AD402B6361F000DF431D /* CreateNewPost */ = {
+			isa = PBXGroup;
+			children = (
+				1D5983992B61596600762E4B /* CreateNewPostView.swift */,
+				1D575FD22B6B96EC00DDC652 /* ImagePickerView.swift */,
+				1D575FD02B6B96C100DDC652 /* NewPostView.swift */,
+				1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */,
+			);
+			path = CreateNewPost;
+			sourceTree = "<group>";
+		};
 		29B84FEE92C30B4B0FB86133 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,8 +377,14 @@
 			isa = PBXGroup;
 			children = (
 				52EE56CE2B5E2C8100C6D423 /* FreeBoardView.swift */,
+				1DF7E7342B68C4A300602BBB /* FreeBoardViewModel.swift */,
 				1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */,
 				1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */,
+				1D73AD412B63872B00DF431D /* PostView.swift */,
+				1D575FCE2B6B92D900DDC652 /* ImageCardView.swift */,
+				1D575FCC2B6B8C7000DDC652 /* CommentView.swift */,
+				1D73AD402B6361F000DF431D /* CreateNewPost */,
+				1D575FCA2B6B7EEA00DDC652 /* PostContent.swift */,
 			);
 			path = FreeBoard;
 			sourceTree = "<group>";
@@ -584,6 +628,7 @@
 				71EC7F242B5E7FAE00C0149C /* EmptyModel.swift */,
 				71AD79862B5FC9090010B423 /* UserModel.swift */,
 				52FB98902B5F861B00F6A284 /* Places.swift */,
+				1DF7E7382B68DB2A00602BBB /* Post.swift */,
 				5278E3AA2B68B7CA00FC8109 /* CPData.swift */,
 			);
 			path = Models;
@@ -593,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				71EC7F272B5E81AB00C0149C /* Bundle+.swift */,
+				1DF7E7362B68C65500602BBB /* View+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -756,6 +802,8 @@
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
+				1D575FCB2B6B7EEA00DDC652 /* PostContent.swift in Sources */,
+				1D575FCF2B6B92D900DDC652 /* ImageCardView.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				33DD0A362B624D72005296AC /* Toast.swift in Sources */,
 				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
@@ -766,6 +814,7 @@
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
 				5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
+				1DF7E7392B68DB2A00602BBB /* Post.swift in Sources */,
 				5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
@@ -777,6 +826,14 @@
 				711F4A8F2B6A1789001C6B53 /* SightTestView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
+				1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */,
+				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
+				1D575FD32B6B96EC00DDC652 /* ImagePickerView.swift in Sources */,
+				1D575FCD2B6B8C7000DDC652 /* CommentView.swift in Sources */,
+				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
+				1DF7E7352B68C4A300602BBB /* FreeBoardViewModel.swift in Sources */,
+				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				1D73AD422B63872B00DF431D /* PostView.swift in Sources */,
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightView.swift in Sources */,
@@ -802,6 +859,12 @@
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
+				1D575FD12B6B96C100DDC652 /* NewPostView.swift in Sources */,
+				1DF7E7372B68C65500602BBB /* View+.swift in Sources */,
+				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
+				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
+				1D73AD3F2B62BC4100DF431D /* CreateNewPostViewModel.swift in Sources */,
+				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
@@ -993,6 +1056,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 저에게 허락해주십쇼!!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1104,6 +1168,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 저에게 허락해주십쇼!!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위해 권한 허용이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
