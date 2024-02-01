@@ -40,7 +40,7 @@ struct AstigmatismView: View {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
-                DistanceConditionView(title: "난시 검사")
+                DistanceConditionView(title: "난시 검사", type: .astigmatism)
             })
             .frame(maxHeight: 75)
             

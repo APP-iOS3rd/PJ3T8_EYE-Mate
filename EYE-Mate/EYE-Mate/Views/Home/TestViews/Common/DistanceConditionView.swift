@@ -10,10 +10,12 @@ import SwiftUI
 struct DistanceConditionView: View {
     @StateObject var viewModel = DistanceConditionViewModel()
     var title: String
+    var type: TestType
     @Environment(\.dismiss) var dismiss
     
-    init(title: String) {
+    init(title: String, type: TestType) {
         self.title = title
+        self.type = type
     }
     
     var body: some View {
@@ -21,7 +23,7 @@ struct DistanceConditionView: View {
             ZStack {
                 DistanceFaceAndDevice(model: viewModel)
                 BackgroundView()
-                DistanceView(viewModel: viewModel, title: title)
+                DistanceView(viewModel: viewModel, title: title, type: type)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(title)
@@ -45,6 +47,7 @@ struct DistanceConditionView: View {
 private struct DistanceView: View {
     @ObservedObject var viewModel: DistanceConditionViewModel
     var title: String
+    var type: TestType
     
     var body: some View {
         VStack {
@@ -77,11 +80,28 @@ private struct DistanceView: View {
                     .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
                     .multilineTextAlignment(.center)
                     .frame(height: 50)
-                CustomBtn(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {})
+                CustomBtn(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
+                    switch type {
+                    case .vision:
+                        viewModel.isActiveVisionTest = true
+                    case .astigmatism:
+                        viewModel.isActiveAstigmatismTest = true
+                    case .sight:
+                        viewModel.isActiveSightTest = true
+                    }
+                })
                     .frame(maxHeight: 75)
                     .disabled(!viewModel.canStart)
             }
-            
+            .navigationDestination(isPresented: $viewModel.isActiveVisionTest) {
+                VisionTestView()
+            }
+            .navigationDestination(isPresented: $viewModel.isActiveAstigmatismTest) {
+                AstigmatismTestView()
+            }
+            .navigationDestination(isPresented: $viewModel.isActiveSightTest) {
+                SightTestView()
+            }
         }
     }
 }
@@ -100,5 +120,5 @@ private struct BackgroundView: View {
 
 
 #Preview {
-    DistanceConditionView(title: "검사")
+    DistanceConditionView(title: "검사", type: .vision)
 }

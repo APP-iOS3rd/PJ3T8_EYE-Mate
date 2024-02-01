@@ -7,9 +7,8 @@
 
 import Foundation
 
-enum TestEnum {
+enum TestType {
     case vision
-    case color
     case astigmatism
     case sight
 }
