@@ -32,7 +32,7 @@ struct MapTabBarView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
-                    NavigationLink(destination: ProfileView()) {
+                    NavigationLink(destination: SignUpProfileView()) {
                         Image(systemName: "person.crop.circle.fill")
                             .font(.largeTitle)
                             .foregroundStyle(.black)
