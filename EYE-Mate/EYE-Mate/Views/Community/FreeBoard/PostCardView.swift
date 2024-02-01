@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct PostCardView: View {
-    var post: String
+    var postIndex: Int
+    @ObservedObject var freeboardVM: FreeBoardViewModel
+    
+//    var post: String
     var body: some View {
         HStack {
             VStack {
                 // postTitle, Date
                 HStack(spacing: 8) {
-                    Text("\(post)")
+                    Text("\(freeboardVM.posts[postIndex].postTitle)")
                         .font(.pretendardSemiBold_14)
                         .lineLimit(1)
                     
-                    Text("10월 11일")
+                    Text("\(freeboardVM.posts[postIndex].publishedDate.formatted(date: .numeric, time: .shortened))")
                         .font(.pretendardRegular_10)
                         .foregroundStyle(.gray)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // postContent
-                Text("전문의의 정확한 검진 없이 안약을 과다 사용하면 오히려 눈 건강..")
+                Text("\(freeboardVM.posts[postIndex].postContent)")
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.pretendardRegular_12)
@@ -39,7 +42,7 @@ struct PostCardView: View {
                         .padding(.trailing, -8)
                         .font(.system(size: 15))
                     
-                    Text("41")
+                    Text("\(freeboardVM.posts[postIndex].likedIDs.count)")
                         .font(.pretendardRegular_12)
                     
                     Image(systemName: "message")
@@ -47,7 +50,7 @@ struct PostCardView: View {
                         .padding(.trailing, -6)
                         .font(.system(size: 15))
                     
-                    Text("43")
+                    Text("\(freeboardVM.posts[postIndex].comments.count)")
                         .font(.pretendardRegular_12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -72,6 +75,6 @@ struct PostCardView: View {
     }
 }
 
-#Preview {
-    PostCardView(post: "안약 과다 사용")
-}
+//#Preview {
+//    PostCardView(post: "안약 과다 사용")
+//}

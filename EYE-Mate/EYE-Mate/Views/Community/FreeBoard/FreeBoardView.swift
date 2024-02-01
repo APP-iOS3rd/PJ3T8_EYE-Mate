@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct FreeBoardView: View {
-    @State private var recentsPosts: [String] = ["안약 과다 사용", "안약 과다 사용2", "안약 과다 사용3", "안약 과다 사용4", "안약 과다 사용5", "안약 과다 사용6", "안약 과다 사용7"]
+    // MARK: recentsPosts 추후에 Firebase 연동
+    @StateObject var freeboardVM: FreeBoardViewModel = FreeBoardViewModel()
+
     var body: some View {
-        ReusablePostsView(posts: $recentsPosts)
+        ReusablePostsView(freeboardVM: freeboardVM)
             .frame(maxWidth: .infinity, alignment: .center)
-        
             .overlay(alignment: .bottomTrailing){
                 NavigationLink(destination: CreateNewPostView()) {
                     Circle()
@@ -27,7 +28,6 @@ struct FreeBoardView: View {
                 }
                 .padding()
             }
-        
     }
 }
 

@@ -12,7 +12,8 @@
 import SwiftUI
 
 struct ReusablePostsView: View {
-    @Binding var posts: [String] // 게시물 목록 Data (추후에 Firebase에서 받아와야함)
+    @ObservedObject var freeboardVM: FreeBoardViewModel
+
     var body: some View {
         // 게시물 목록
         ScrollView {
@@ -32,11 +33,11 @@ struct ReusablePostsView: View {
     
     @ViewBuilder
     func Posts() -> some View {
-        ForEach(posts, id: \.self) { post in
-            Button{
-                
-            }label: {
-                PostCardView(post: post)
+        ForEach(freeboardVM.posts.indices) { index in
+            NavigationLink {
+                PostView(postIndex: index, freeboardVM: freeboardVM)
+            } label: {
+                PostCardView(postIndex: index, freeboardVM: freeboardVM)
             }
         }
     }
