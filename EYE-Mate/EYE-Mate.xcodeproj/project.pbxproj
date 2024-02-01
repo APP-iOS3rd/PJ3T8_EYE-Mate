@@ -14,6 +14,9 @@
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
 		331F8AAA2B6B76440008D943 /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AA92B6B76440008D943 /* AddRecordView.swift */; };
 		331F8AAC2B6B7A620008D943 /* AddRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAB2B6B7A620008D943 /* AddRecordHeader.swift */; };
+		331F8AAE2B6B85460008D943 /* EyewareButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAD2B6B85460008D943 /* EyewareButtonGroup.swift */; };
+		331F8AB02B6B85700008D943 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAF2B6B85700008D943 /* RadioButton.swift */; };
+		331F8AB22B6B92340008D943 /* PlaceButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
@@ -100,6 +103,9 @@
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		331F8AA92B6B76440008D943 /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
 		331F8AAB2B6B7A620008D943 /* AddRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordHeader.swift; sourceTree = "<group>"; };
+		331F8AAD2B6B85460008D943 /* EyewareButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyewareButtonGroup.swift; sourceTree = "<group>"; };
+		331F8AAF2B6B85700008D943 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceButtonGroup.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
@@ -210,6 +216,9 @@
 			children = (
 				331F8AA92B6B76440008D943 /* AddRecordView.swift */,
 				331F8AAB2B6B7A620008D943 /* AddRecordHeader.swift */,
+				331F8AAD2B6B85460008D943 /* EyewareButtonGroup.swift */,
+				331F8AAF2B6B85700008D943 /* RadioButton.swift */,
+				331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -704,6 +713,7 @@
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */,
 				7107A40A2B638DFF00944077 /* AstigmatismTestViewModel.swift in Sources */,
+				331F8AB22B6B92340008D943 /* PlaceButtonGroup.swift in Sources */,
 				52EE56DA2B5E2D4F00C6D423 /* AccountView.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
@@ -756,6 +766,7 @@
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
+				331F8AB02B6B85700008D943 /* RadioButton.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */,
@@ -763,6 +774,7 @@
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
+				331F8AAE2B6B85460008D943 /* EyewareButtonGroup.swift in Sources */,
 				331F8AAA2B6B76440008D943 /* AddRecordView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
