@@ -20,7 +20,7 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
     // MARK: 유저 정보
     var userName: String
     var userUID: String
-    var userImageURL: URL  // 사용자 ProfileImage
+    var userImageURL: URL?  // 사용자 ProfileImage
     
     var comments: [Comment] = []
 }
@@ -30,8 +30,7 @@ struct Comment: Codable, Equatable, Hashable {
     // MARK: 유저정보
     var userName: String
     var userUID: String
-    var userImageURL: URL  // 사용자 ProfileImage
-    
+    var userImageURL: URL?  // 사용자 ProfileImage
     
     var comment: String
     var publishedDate: Date = Date() // 게시 Date
@@ -43,7 +42,7 @@ struct ReplyComment: Codable, Equatable, Hashable {
     // MARK: 유저정보
     var userName: String
     var userUID: String
-    var userImageURL: URL  // 사용자 ProfileImage
+    var userImageURL: URL?  // 사용자 ProfileImage
 
     var comment: String
     var publishedDate: Date = Date() // 게시 Date
