@@ -13,6 +13,7 @@ struct CommunityView: View {
     @Namespace private var animation
     
     var body: some View {
+        // MARK: NavigationStack 추후에 지워주기
         NavigationStack{
             VStack(spacing: 0) {
                 // 상단 Title
