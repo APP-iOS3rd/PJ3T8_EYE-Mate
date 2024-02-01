@@ -33,11 +33,11 @@ struct ReusablePostsView: View {
     
     @ViewBuilder
     func Posts() -> some View {
-        ForEach(freeboardVM.posts.indices) { index in
+        ForEach(freeboardVM.posts) { post in
             NavigationLink {
-                PostView(postIndex: index, freeboardVM: freeboardVM)
+                PostView(post: post)
             } label: {
-                PostCardView(postIndex: index, freeboardVM: freeboardVM)
+                PostCardView(post: post)
             }
         }
     }
