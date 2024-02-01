@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct PostCardView: View {
-    var postIndex: Int
-    @ObservedObject var freeboardVM: FreeBoardViewModel
+    var post: Post
     
 //    var post: String
     var body: some View {
@@ -17,18 +16,18 @@ struct PostCardView: View {
             VStack {
                 // postTitle, Date
                 HStack(spacing: 8) {
-                    Text("\(freeboardVM.posts[postIndex].postTitle)")
+                    Text("\(post.postTitle)")
                         .font(.pretendardSemiBold_14)
                         .lineLimit(1)
                     
-                    Text("\(freeboardVM.posts[postIndex].publishedDate.formatted(date: .numeric, time: .shortened))")
+                    Text("\(post.publishedDate.formatted(date: .numeric, time: .shortened))")
                         .font(.pretendardRegular_10)
                         .foregroundStyle(.gray)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // postContent
-                Text("\(freeboardVM.posts[postIndex].postContent)")
+                Text("\(post.postContent)")
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.pretendardRegular_12)
@@ -42,7 +41,7 @@ struct PostCardView: View {
                         .padding(.trailing, -8)
                         .font(.system(size: 15))
                     
-                    Text("\(freeboardVM.posts[postIndex].likedIDs.count)")
+                    Text("\(post.likedIDs.count)")
                         .font(.pretendardRegular_12)
                     
                     Image(systemName: "message")
@@ -50,7 +49,7 @@ struct PostCardView: View {
                         .padding(.trailing, -6)
                         .font(.system(size: 15))
                     
-                    Text("\(freeboardVM.posts[postIndex].comments.count)")
+                    Text("\(post.comments.count)")
                         .font(.pretendardRegular_12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
