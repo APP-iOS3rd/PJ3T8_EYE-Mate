@@ -12,38 +12,42 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
     @DocumentID var id: String?
     var postTitle: String // 게시물 제목
     var postContent: String // 게시물 내용
-    var postImageURLs: [URL]? // Image 받아올 URL
+    var postImageURLs: [URL] = [] // 게시물에 첨부된 이미지들
     var imageReferenceID: String = "" // Image 삭제, 수정 할 때 사용
     var publishedDate: Date = Date() // 게시 Date
     var likedIDs: [String] = [] // 좋아요 누른 userID Array
     
     // MARK: 유저 정보
-    var userName: String
-    var userUID: String
+    var userName: String // 사용자 닉네임
+    var userUID: String // 사용자 UID
     var userImageURL: URL?  // 사용자 ProfileImage
     
-    var comments: [Comment] = []
+    var comments: [Comment] = [] // 댓글 Array
 }
 
 // MARK: 댓글
 struct Comment: Codable, Equatable, Hashable {
     // MARK: 유저정보
-    var userName: String
-    var userUID: String
-    var userImageURL: URL?  // 사용자 ProfileImage
+    var userName: String // 댓글 유저 닉네임
+    var userUID: String // 댓글 유저 UID
+    var userImageURL: URL?  // 댓글 유저 프로필 이미지
     
-    var comment: String
+    var likedIDs: [String] = [] // 좋아요 누른 userID Array
+    
+    var comment: String // 댓글 내용
     var publishedDate: Date = Date() // 게시 Date
-    var replyComments: [ReplyComment]?
+    var replyComments: [ReplyComment] = [] // 대댓글 Array
 }
 
 // MARK: 대댓글
 struct ReplyComment: Codable, Equatable, Hashable {
     // MARK: 유저정보
-    var userName: String
-    var userUID: String
-    var userImageURL: URL?  // 사용자 ProfileImage
+    var userName: String // 대댓글 유저 닉네임
+    var userUID: String // 대댓글 유저 UID
+    var userImageURL: URL?  // 대댓글 유저 프로필 이미지
 
-    var comment: String
+    var likedIDs: [String] = [] // 좋아요 누른 userID Array
+    
+    var comment: String // 대댓글 내용
     var publishedDate: Date = Date() // 게시 Date
 }
