@@ -127,7 +127,7 @@ struct ImagePickerView: View {
                 }
                 
                 ForEach(createNewPostVM.postImageDatas.indices, id: \.self) { index in
-                    if !createNewPostVM.postImageDatas.isEmpty, let image = UIImage(data: createNewPostVM.postImageDatas[index].data) {
+                    if !createNewPostVM.postImageDatas.isEmpty, let image = UIImage(data: createNewPostVM.postImageDatas[index]) {
                         ZStack(alignment: .topTrailing) {
                             Image(uiImage: image)
                                 .resizable()

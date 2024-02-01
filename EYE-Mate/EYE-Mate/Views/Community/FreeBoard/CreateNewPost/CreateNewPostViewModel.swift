@@ -14,7 +14,7 @@ class CreateNewPostViewModel: ObservableObject {
     @Published var postContent: String = ""
     
     // 선택된 사진
-    @Published var postImageDatas: [ImageData] = []
+    @Published var postImageDatas: [Data] = []
     
     // PhotosPicker
     @Published var showImagePicker: Bool = false
@@ -42,7 +42,8 @@ class CreateNewPostViewModel: ObservableObject {
                        let image = UIImage(data: imageData),
                        let compressedImageData = image.jpegData(compressionQuality: 0.5) {
                         await MainActor.run {
-                            postImageDatas.append(ImageData(data: compressedImageData))
+//                            postImageDatas.append(ImageData(data: compressedImageData))
+                            postImageDatas.append(compressedImageData)
                         }
                     }
                 }
@@ -61,11 +62,11 @@ class CreateNewPostViewModel: ObservableObject {
     
     /// Firebase에 게시물 업로드
     func uploadPost() {
-        
+        // MARK: Firebase
     }
 }
 
-struct ImageData: Identifiable, Equatable {
-    let id = UUID()
-    let data: Data
-}
+//struct ImageData: Identifiable, Equatable {
+//    let id = UUID()
+//    let data: Data
+//}
