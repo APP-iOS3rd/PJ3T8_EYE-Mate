@@ -14,7 +14,7 @@ struct SightView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "시야 검사",
-                                  userImg: Image(systemName: "person.fill"),
+                                  userImgUrl: "",
                                   isDisplayBtn: true,
                                   leftBtnAction: { dismiss() },
                                   profileBtnAction: {

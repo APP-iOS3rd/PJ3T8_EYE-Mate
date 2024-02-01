@@ -14,7 +14,7 @@ struct AstigmatismView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "난시 검사",
-                                  userImg: Image(systemName: "person.fill"),
+                                  userImgUrl: "",
                                   isDisplayBtn: true,
                                   leftBtnAction: { dismiss() },
                                   profileBtnAction: {

@@ -6,24 +6,24 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CustomNavigationTitle: View {
     let title: String
-    let userImg: Image
+    let userImgUrl: String
     let isDisplayLeftBtn: Bool
     let leftBtnAction: () -> Void
     let profileBtnAction: () -> Void
-    @State private var loggedIn = UserDefaults.standard.bool(forKey: "Login")
     @Environment(\.dismiss) private var dismiss
     
     init(title: String, 
-         userImg: Image = Image(systemName: "person.fill"),
+         userImgUrl: String = "",
          isDisplayBtn: Bool = true,
          leftBtnAction: @escaping () -> Void = {},
          profileBtnAction: @escaping () -> Void = {}
     ) {
         self.title = title
-        self.userImg = userImg
+        self.userImgUrl = userImgUrl
         self.isDisplayLeftBtn = isDisplayBtn
         self.leftBtnAction = leftBtnAction
         self.profileBtnAction = profileBtnAction
@@ -46,9 +46,9 @@ struct CustomNavigationTitle: View {
                 
                 Spacer()
                 
-                if loggedIn {
+                if userImgUrl != "" {
                     Button(action: profileBtnAction, label: {
-                        userImg
+                        KFImage(URL(string: userImgUrl))
                             .resizable()
                             .frame(width: 50, height: 50)
                     })
