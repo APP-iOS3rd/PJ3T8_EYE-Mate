@@ -73,7 +73,7 @@ private struct ColorTest: View {
                     .padding(.horizontal)
                     .keyboardType(.numberPad)
                 
-                CustomBtn(title: "다음",
+                CustomButton(title: "다음",
                           background: .customGreen,
                           fontStyle: .pretendardBold_16,
                           action: {
@@ -127,32 +127,32 @@ private struct ColorTestResultView: View {
                 .font(.pretendardBold_32)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(20)
-                ColorTestResultTextView(viewModel: viewModel)
-                
-                Spacer()
-                
-                ColorTestResultGraph(viewModel: viewModel)
-                
-                CustomBtn(isLabel: true,
-                          background: .customGreen,
-                          fontStyle: .pretendardMedium_20,
-                          action: {
-                    //TODO: - 내주변 탭으로 이동하기
-                } )
-                    .frame(maxWidth: 350, maxHeight: 70)
-                
-                Spacer()
-                
-                WaringText()
-                
-                Spacer()
-                
-                CustomBtn(title: "돌아가기",
-                          background: .customGreen,
-                          fontStyle: .pretendardBold_16,
-                          //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                          action: { dismiss() } )
-                    .frame(maxHeight: 75)
+            ColorTestResultTextView(viewModel: viewModel)
+            
+            Spacer()
+            
+            ColorTestResultGraph(viewModel: viewModel)
+            
+            CustomButton(isLabel: true,
+                         background: .customGreen,
+                         fontStyle: .pretendardMedium_20,
+                         action: {
+                //TODO: - 내주변 탭으로 이동하기
+            } )
+            .frame(maxWidth: 350, maxHeight: 70)
+            
+            Spacer()
+            
+            WaringText()
+            
+            Spacer()
+            
+            CustomButton(title: "돌아가기",
+                         background: .customGreen,
+                         fontStyle: .pretendardBold_16,
+                         //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                         action: { dismiss() } )
+            .frame(maxHeight: 75)
         }
         .navigationBarBackButtonHidden()
     }
@@ -208,16 +208,22 @@ private struct ColorTestResultGraph: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         ForEach(1..<13) { index in
-                            HStack {
+                            HStack(alignment: .center) {
                                 Spacer()
                                 Text("\(index).")
+                                    .frame(minWidth: 35)
                                     .font(.pretendardRegular_18)
+                                
                                 Spacer()
                                 Text(viewModel.answerSet[index])
+                                    .frame(minWidth: 35)
                                     .font(.pretendardRegular_18)
+                                
                                 Spacer()
                                 Text(viewModel.userAnswer[index])
+                                    .frame(minWidth: 35)
                                     .font(.pretendardRegular_18)
+                                
                                 Spacer()
                             }
                             .frame(maxHeight: 15)

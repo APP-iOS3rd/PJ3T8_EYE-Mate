@@ -14,9 +14,9 @@ struct HomeView: View {
         NavigationStack {
             VStack(alignment: .leading) {
                 CustomNavigationTitle(title: "홈",
-                                      userImgUrl: "",
-                                      isDisplayBtn: false, 
-                                      profileBtnAction: {
+                                      userImageUrl: "",
+                                      isDisplayLeftButton: false,
+                                      profileButtonAction: {
                     viewModel.isPresentedProfileView.toggle()
                 })
                 

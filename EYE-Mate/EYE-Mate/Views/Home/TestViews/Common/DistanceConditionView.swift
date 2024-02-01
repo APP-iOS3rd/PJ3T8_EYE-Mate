@@ -80,7 +80,7 @@ private struct DistanceView: View {
                     .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
                     .multilineTextAlignment(.center)
                     .frame(height: 50)
-                CustomBtn(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
+                CustomButton(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
                     switch type {
                     case .vision:
                         viewModel.isActiveVisionTest = true

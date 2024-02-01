@@ -10,31 +10,38 @@ import Kingfisher
 
 struct CustomNavigationTitle: View {
     let title: String
-    let userImgUrl: String
-    let isDisplayLeftBtn: Bool
-    let leftBtnAction: () -> Void
-    let profileBtnAction: () -> Void
+    let userImageUrl: String
+    let isDisplayLeftButton: Bool
+    let leftButtonAction: () -> Void
+    let profileButtonAction: () -> Void
     @Environment(\.dismiss) private var dismiss
     
     init(title: String, 
-         userImgUrl: String = "",
-         isDisplayBtn: Bool = true,
-         leftBtnAction: @escaping () -> Void = {},
-         profileBtnAction: @escaping () -> Void = {}
+         userImageUrl: String = "",
+         isDisplayLeftButton: Bool = true,
+         leftButtonAction: @escaping () -> Void = {},
+         profileButtonAction: @escaping () -> Void = {}
     ) {
         self.title = title
-        self.userImgUrl = userImgUrl
-        self.isDisplayLeftBtn = isDisplayBtn
-        self.leftBtnAction = leftBtnAction
-        self.profileBtnAction = profileBtnAction
+        self.userImageUrl = userImageUrl
+        self.isDisplayLeftButton = isDisplayLeftButton
+        self.leftButtonAction = leftButtonAction
+        self.profileButtonAction = profileButtonAction
     }
-    
+//    Image(systemName: "chevron.backward")
+//        .resizable()
+//        .frame(width: 16, height: 27)
+//        .foregroundColor(.black)
+//    
     var body: some View {
-            HStack(alignment: .lastTextBaseline) {
-                if isDisplayLeftBtn {
-                    Button(action: { dismiss() }, 
+            HStack(alignment: .bottom) {
+                if isDisplayLeftButton {
+                    Button(action: { dismiss() },
                            label: {
-                        Image("leftArrow")
+                        Image(systemName: "chevron.backward")
+                                .resizable()
+                                .frame(width: 16, height: 32)
+                                .foregroundColor(.black)
                     })
                 }
                 VStack(alignment: .leading) {
@@ -43,17 +50,17 @@ struct CustomNavigationTitle: View {
                     Text(title)
                         .font(.pretendardBold_32)
                 }
-                
+                .padding(.bottom, -3)
                 Spacer()
                 
-                if userImgUrl != "" {
-                    Button(action: profileBtnAction, label: {
-                        KFImage(URL(string: userImgUrl))
+                if userImageUrl != "" {
+                    Button(action: profileButtonAction, label: {
+                        KFImage(URL(string: userImageUrl))
                             .resizable()
                             .frame(width: 50, height: 50)
                     })
                 } else {
-                    Button(action: profileBtnAction, label: {
+                    Button(action: profileButtonAction, label: {
                         Image("defaultprofile")
                             .resizable()
                             .frame(width: 50, height: 50)
