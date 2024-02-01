@@ -25,7 +25,6 @@ struct ColorView: View {
             }
             
             ExplanationTextView(str: "간단한 테스트를 통해\n색채 식별도를 확인해보세요!")
-                .padding(.leading, 20)
             
             Spacer()
             
@@ -40,7 +39,7 @@ struct ColorView: View {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
-                // 추후 색채검사 테스트 화면으로 바로 이동
+                ColorTestView()
             })
             .frame(maxHeight: 75)
             
