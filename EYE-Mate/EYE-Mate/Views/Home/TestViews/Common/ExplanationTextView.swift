@@ -19,7 +19,7 @@ struct ExplanationTextView: View {
             Text(str)
                 .font(.pretendardRegular_24)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 10)
+                .padding(.leading, 30)
             Spacer()
         }
     }
