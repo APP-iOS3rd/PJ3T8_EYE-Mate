@@ -23,17 +23,19 @@ struct RecordView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                VStack(alignment: .leading, spacing: 12){
-                    Text("EYE-Mate")
-                        .font(.pretendardSemiBold_22)
-                    HStack {
+            HStack(alignment: .bottom) {
+                HStack(alignment: .bottom, spacing: 8) {
                         Button {
                             goBack()
                         } label: {
                             Image(systemName: "chevron.left")
                                 .foregroundColor(.black)
+                                .font(.system(size: 32))
+                                .padding(.bottom, 2)
                         }
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("EYE-Mate")
+                            .font(.pretendardSemiBold_22)
                         Text("기록")
                             .font(.pretendardSemiBold_32)
                     }
@@ -43,8 +45,10 @@ struct RecordView: View {
                     .foregroundColor(Color.blue)
                     .frame(width: 50, height: 50)
             }
-            .frame(height: 112)
-            .padding(.horizontal, 24)
+            .frame(height: 80)
+            .padding(.leading, 12)
+            .padding(.trailing, 36)
+            .padding(.bottom, 24)
             HorizontalDivider(color: Color.customGreen, height: 4)
             ScrollView {
                 VStack(spacing: 16) {
@@ -70,6 +74,7 @@ struct RecordView: View {
                             }
                     }
                     RecordBox(type: TestType.Vision)
+                    VisionChart()
                     RecordBox(type: TestType.ColorVision)
                     RecordBox(type: TestType.Astigmatism)
                     RecordBox(type: TestType.Eyesight)
