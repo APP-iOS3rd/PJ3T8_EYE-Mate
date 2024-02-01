@@ -12,6 +12,8 @@
 		1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */; };
 		1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE030292B5E3AE600BAD518 /* HomeView.swift */; };
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
+		331F8AAA2B6B76440008D943 /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AA92B6B76440008D943 /* AddRecordView.swift */; };
+		331F8AAC2B6B7A620008D943 /* AddRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAB2B6B7A620008D943 /* AddRecordHeader.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
@@ -96,6 +98,8 @@
 		1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 		1DE030292B5E3AE600BAD518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
+		331F8AA92B6B76440008D943 /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
+		331F8AAB2B6B7A620008D943 /* AddRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordHeader.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
@@ -201,6 +205,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		331F8AA82B6B75D80008D943 /* AddRecord */ = {
+			isa = PBXGroup;
+			children = (
+				331F8AA92B6B76440008D943 /* AddRecordView.swift */,
+				331F8AAB2B6B7A620008D943 /* AddRecordHeader.swift */,
+			);
+			path = AddRecord;
+			sourceTree = "<group>";
+		};
 		3329BBFE2B60FE380099EDC4 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +288,7 @@
 		52EE56C12B5E2AA600C6D423 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				331F8AA82B6B75D80008D943 /* AddRecord */,
 				52EE56C22B5E2AF200C6D423 /* RecordView.swift */,
 				3391A1632B68DD850035E0A5 /* RecordBox.swift */,
 				3391A1652B6A10210035E0A5 /* ColoredText.swift */,
@@ -734,6 +748,7 @@
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */,
 				7107A40C2B638E1600944077 /* SightTestViewModel.swift in Sources */,
+				331F8AAC2B6B7A620008D943 /* AddRecordHeader.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */,
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
@@ -748,6 +763,7 @@
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
+				331F8AAA2B6B76440008D943 /* AddRecordView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
