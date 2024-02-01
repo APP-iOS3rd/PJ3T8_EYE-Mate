@@ -85,5 +85,5 @@ struct RecordBox: View {
 }
 
 #Preview {
-    RecordBox(type: TestType.ColorVision)
+    RecordBox(type: TestType.Vision)
 }

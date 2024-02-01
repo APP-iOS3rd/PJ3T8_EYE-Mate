@@ -21,6 +21,7 @@
 		3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */; };
 		3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */; };
 		3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */; };
+		3391A1702B6A276C0035E0A5 /* VisionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16F2B6A276C0035E0A5 /* VisionChart.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -105,6 +106,7 @@
 		3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorVisionDataView.swift; sourceTree = "<group>"; };
 		3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismDataView.swift; sourceTree = "<group>"; };
 		3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesightDataView.swift; sourceTree = "<group>"; };
+		3391A16F2B6A276C0035E0A5 /* VisionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionChart.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */,
 				3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */,
 				3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */,
+				3391A16F2B6A276C0035E0A5 /* VisionChart.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
 				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
+				3391A1702B6A276C0035E0A5 /* VisionChart.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
