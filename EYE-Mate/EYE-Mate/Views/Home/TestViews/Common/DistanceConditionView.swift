@@ -94,29 +94,19 @@ private struct DistanceView: View {
                     .disabled(!viewModel.canStart)
             }
             .navigationDestination(isPresented: $viewModel.isActiveVisionTest) {
-                VisionTestView()
+                VisionTestView(distance: viewModel)
             }
             .navigationDestination(isPresented: $viewModel.isActiveAstigmatismTest) {
-                AstigmatismTestView()
+                AstigmatismTestView(distance: viewModel)
             }
             .navigationDestination(isPresented: $viewModel.isActiveSightTest) {
-                SightTestView()
+                SightTestView(distance: viewModel)
             }
         }
     }
 }
 
-//MARK: - Background 뷰
-private struct BackgroundView: View {
-    var body: some View {
-        GeometryReader { g in
-            Rectangle()
-                .ignoresSafeArea()
-                .frame(width: g.size.width, height: g.size.height)
-                .foregroundColor(.white)
-        }
-    }
-}
+
 
 
 #Preview {
