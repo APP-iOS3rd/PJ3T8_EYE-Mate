@@ -29,6 +29,7 @@ struct SignUpProfileView: View {
                 Text("에서 사용할\n프로필을 입력해주세요!")
                     .font(.pretendardRegular_24)
             }
+            .layoutPriority(1)
             .padding(.bottom, 50)
             
             EditableProfileView(profileViewModel: profileViewModel)
