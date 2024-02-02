@@ -12,28 +12,31 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
-                CustomNavigationTitle(title: "홈",
-                                      userImgUrl: "",
-                                      isDisplayBtn: false, 
-                                      profileBtnAction: {
-                    viewModel.isPresentedProfileView.toggle()
-                })
-                
-                Spacer()
-                    .frame(height: 5)
-                
-                HomeViewTextView(user: viewModel.user)
-                
-                EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                    .frame(height: 120)
-                    .padding(.top, -30)
-                
-                HomeViewCellListView()
+            GeometryReader { g in
+                VStack(alignment: .leading) {
+                    CustomNavigationTitle(isDisplayLeftButton: false,
+                                          profileButtonAction: {
+                        viewModel.isPresentedProfileView.toggle()
+                    })
+                    
+                    Spacer()
+                        .frame(height: 5)
+                    
+                    HomeViewTextView(user: viewModel.user)
+                    
+                    EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
+                        .frame(height: 120)
+                        .padding(.top, -30)
+                    
+                    HomeViewCellListView()
+                    
+                    Spacer()
+                }
+                .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+                    ProfileView()
+                }
             }
-            .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
-                ProfileView()
-            }
+            
         }
     }
 }

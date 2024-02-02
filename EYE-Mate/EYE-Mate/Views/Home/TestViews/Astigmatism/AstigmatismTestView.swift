@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct AstigmatismTestView: View {
+    @StateObject var viewModel = AstigmatismTestViewModel()
+    
     var body: some View {
-        Text("AstigmatismTestView")
+        VStack {
+            Text("AstigmatismTestView")
+        }
     }
 }
 
