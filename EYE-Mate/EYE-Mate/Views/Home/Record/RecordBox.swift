@@ -17,7 +17,7 @@ struct RecordBox: View {
             VStack(spacing: 16) {
                 HStack {
                     switch type {
-                    case TestType.Vision:
+                    case .vision:
                         Text("시력")
                             .font(.pretendardBold_20)
                         Spacer()
@@ -27,7 +27,7 @@ struct RecordBox: View {
                                 .font(.pretendardRegular_14)
                                 .foregroundStyle(.black)
                         }
-                    case TestType.ColorVision:
+                    case .colorVision:
                         Text("색각")
                             .font(.pretendardBold_20)
                         Spacer()
@@ -37,7 +37,7 @@ struct RecordBox: View {
                                 .font(.pretendardRegular_14)
                                 .foregroundStyle(.black)
                         }
-                    case TestType.Astigmatism:
+                    case .astigmatism:
                         Text("난시")
                             .font(.pretendardBold_20)
                         Spacer()
@@ -47,7 +47,7 @@ struct RecordBox: View {
                                 .font(.pretendardRegular_14)
                                 .foregroundStyle(.black)
                         }
-                    case TestType.Eyesight:
+                    case .eyesight:
                         Text("시야")
                             .font(.pretendardBold_20)
                         Spacer()
@@ -63,13 +63,13 @@ struct RecordBox: View {
                 HorizontalDivider(color: Color.lightGray, height: 3)
                 VStack(alignment: .leading, spacing: 0) {
                     switch type {
-                    case TestType.Vision:
+                    case .vision:
                         VisionDataView()
-                    case TestType.ColorVision:
+                    case .colorVision:
                         ColorVisionDataView()
-                    case .Astigmatism:
+                    case .astigmatism:
                         AstigmatismDataView()
-                    case .Eyesight:
+                    case .eyesight:
                         EyesightDataView()
                     }
 
@@ -85,5 +85,5 @@ struct RecordBox: View {
 }
 
 #Preview {
-    RecordBox(type: TestType.Vision)
+    RecordBox(type: .vision)
 }

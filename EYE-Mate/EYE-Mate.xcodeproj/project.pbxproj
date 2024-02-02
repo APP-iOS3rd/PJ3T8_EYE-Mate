@@ -18,6 +18,8 @@
 		331F8AB02B6B85700008D943 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAF2B6B85700008D943 /* RadioButton.swift */; };
 		331F8AB22B6B92340008D943 /* PlaceButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */; };
 		331F8AB42B6BC72C0008D943 /* EmptyVisionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB32B6BC72C0008D943 /* EmptyVisionChart.swift */; };
+		331F8AB62B6CD0170008D943 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB52B6CD0170008D943 /* CheckBoxButton.swift */; };
+		331F8AB82B6CD12F0008D943 /* TestTypeButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB72B6CD12F0008D943 /* TestTypeButtonGroup.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
@@ -108,6 +110,8 @@
 		331F8AAF2B6B85700008D943 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceButtonGroup.swift; sourceTree = "<group>"; };
 		331F8AB32B6BC72C0008D943 /* EmptyVisionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyVisionChart.swift; sourceTree = "<group>"; };
+		331F8AB52B6CD0170008D943 /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
+		331F8AB72B6CD12F0008D943 /* TestTypeButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypeButtonGroup.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 				331F8AAD2B6B85460008D943 /* EyewareButtonGroup.swift */,
 				331F8AAF2B6B85700008D943 /* RadioButton.swift */,
 				331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */,
+				331F8AB52B6CD0170008D943 /* CheckBoxButton.swift */,
+				331F8AB72B6CD12F0008D943 /* TestTypeButtonGroup.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismTestView.swift in Sources */,
+				331F8AB62B6CD0170008D943 /* CheckBoxButton.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
@@ -783,6 +790,7 @@
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
+				331F8AB82B6CD12F0008D943 /* TestTypeButtonGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

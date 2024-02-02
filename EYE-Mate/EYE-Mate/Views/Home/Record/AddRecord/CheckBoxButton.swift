@@ -1,33 +1,33 @@
 //
-//  RadioButton.swift
+//  CheckBoxButton.swift
 //  EYE-Mate
 //
-//  Created by seongjun on 2/1/24.
+//  Created by seongjun on 2/2/24.
 //
 
 import SwiftUI
 
-struct RadioButton: View {
+struct CheckBoxButton: View {
     let id: String
     let label: String
-    let isMarked: Bool
-    let callback: (String)->()
+    let callback: (String, Bool)->()
 
     init(
         id: String,
         label:String,
-        isMarked: Bool = true,
-        callback: @escaping (String)->()
-    ) {
+        callback: @escaping (String, Bool)->()
+        ) {
         self.id = id
         self.label = label
-        self.isMarked = isMarked
         self.callback = callback
     }
 
+    @State var isMarked: Bool = false
+
     var body: some View {
         Button {
-            self.callback(self.id)
+            self.isMarked.toggle()
+            self.callback(self.id, self.isMarked)
         } label: {
             if self.isMarked {
                 Text(label)
@@ -58,7 +58,7 @@ struct RadioButton: View {
 }
 
 #Preview {
-    RadioButton(id: "안경", label: "안경") { _ in
+    CheckBoxButton(id: "안경", label: "안경") { _, _  in
 
     }
 }

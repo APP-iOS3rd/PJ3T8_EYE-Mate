@@ -22,6 +22,7 @@ struct AddRecordView: View {
                     Spacer()
                 }
                 HorizontalDivider(color: Color.btnGray, height: 2)
+
                 HStack {
                     Rectangle()
                         .frame(width: 5, height: 18)
@@ -33,9 +34,11 @@ struct AddRecordView: View {
                 }
                 EyewareButtonGroup { selected in
                     print("Selected is: \(selected)")
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 12)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 12)
                 HorizontalDivider(color: Color.btnGray, height: 2)
+
                 HStack {
                     Rectangle()
                         .frame(width: 5, height: 18)
@@ -47,9 +50,11 @@ struct AddRecordView: View {
                 }
                 PlaceButtonGroup { selected in
                     print("Selected is: \(selected)")
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 12)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 12)
                 HorizontalDivider(color: Color.btnGray, height: 2)
+
                 HStack {
                     Rectangle()
                         .frame(width: 5, height: 18)
@@ -59,6 +64,9 @@ struct AddRecordView: View {
                         .foregroundStyle(Color.darkGray)
                     Spacer()
                 }
+                TestTypeButtonGroup()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 12)
                 HorizontalDivider(color: Color.btnGray, height: 2)
 
             }

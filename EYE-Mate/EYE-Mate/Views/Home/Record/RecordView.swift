@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-enum TestType {
-    case Vision
-    case ColorVision
-    case Astigmatism
-    case Eyesight
+enum TestType: String {
+    case vision = "시력"
+    case colorVision = "색각"
+    case astigmatism = "난시"
+    case eyesight = "시야"
 }
 
 struct RecordView: View {
@@ -25,14 +25,14 @@ struct RecordView: View {
         VStack(spacing: 0) {
             HStack(alignment: .bottom) {
                 HStack(alignment: .bottom, spacing: 8) {
-                        Button {
-                            goBack()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.black)
-                                .font(.system(size: 32))
-                                .padding(.bottom, 2)
-                        }
+                    Button {
+                        goBack()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                            .font(.system(size: 32))
+                            .padding(.bottom, 2)
+                    }
                     VStack(alignment: .leading, spacing: 12) {
                         Text("EYE-Mate")
                             .font(.pretendardSemiBold_22)
@@ -62,27 +62,31 @@ struct RecordView: View {
                                 Text("23년 11월 21일(월) ~ 24년 01월 17일(수)")
                                     .font(.pretendardRegular_16)
                             }
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(maxWidth: 40)
-                            .frame(height: 32)
-                            .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
-                            .foregroundStyle(Color.white)
-                            .overlay{
-                                Image(systemName: "plus")
-                                    .foregroundStyle(Color.customGreen)
-                                    .font(.system(size: 20))
-                            }
+
+                        NavigationLink(destination: AddRecordView().navigationBarBackButtonHidden()) {
+                            RoundedRectangle(cornerRadius: 16)
+                                .frame(maxWidth: 40)
+                                .frame(height: 32)
+                                .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
+                                .foregroundStyle(Color.white)
+                                .overlay{
+                                    Image(systemName: "plus")
+                                        .foregroundStyle(Color.customGreen)
+                                        .font(.system(size: 20))
+                                }
+                        }
+
                     }
-                    RecordBox(type: TestType.Vision)
+                    RecordBox(type: .vision)
                     // TODO: Data 없을 때 분기
                     // VisionChart()
                     EmptyVisionChart()
-                    RecordBox(type: TestType.ColorVision)
-                    RecordBox(type: TestType.Astigmatism)
-                    RecordBox(type: TestType.Eyesight)
+                    RecordBox(type: .colorVision)
+                    RecordBox(type: .astigmatism)
+                    RecordBox(type: .eyesight)
                 }.padding(16)
             }
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.lightGray)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
         }
