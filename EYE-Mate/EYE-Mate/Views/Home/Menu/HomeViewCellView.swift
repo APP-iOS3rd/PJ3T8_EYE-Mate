@@ -42,7 +42,7 @@ struct HomeViewCellView: View {
                     .padding(.trailing, 10)
                 }
             }
-            .padding([.top, .bottom], 10)
+            .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)

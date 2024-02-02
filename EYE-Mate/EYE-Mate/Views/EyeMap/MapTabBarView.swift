@@ -22,24 +22,8 @@ struct MapTabBarView: View {
         NavigationStack{
             VStack(spacing: 0) {
                 // 상단 Title
-                HStack(alignment: .bottom) {
-                    VStack(spacing: 5) {
-                        Text("EYE-Mate")
-                            .font(.pretendardSemiBold_22)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("주변 정보")
-                            .font(.pretendardSemiBold_32)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
-                    NavigationLink(destination: ProfileView()) {
-                        Image(systemName: "person.crop.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.black)
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical)
+                CustomNavigationTitle(title: "주변 정보",
+                                      isDisplayLeftButton: false)
                 
                 // 상단 TabView
                 MapTopTabView()

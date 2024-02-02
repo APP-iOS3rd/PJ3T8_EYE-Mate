@@ -21,20 +21,8 @@ struct MovementView: View {
     var body: some View {
         NavigationStack{
             VStack(spacing: 0) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 12){
-                        Text("EYE-Mate")
-                            .font(.pretendardSemiBold_22)
-                        Text("눈 운동")
-                            .font(.pretendardSemiBold_32)
-                    }
-                    Spacer()
-                    Circle()
-                        .foregroundColor(Color.blue)
-                        .frame(width: 50, height: 50)
-                }
-                .frame(height: 112)
-                .padding(.horizontal, 24)
+                CustomNavigationTitle(title: "눈운동",
+                                      isDisplayLeftButton: false)
                 HorizontalDivider(color: Color.customGreen, height: 4)
                 VStack(alignment: .leading, spacing: 16) {
                     VStack(alignment: .leading) {

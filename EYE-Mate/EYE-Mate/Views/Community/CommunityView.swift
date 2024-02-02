@@ -13,39 +13,24 @@ struct CommunityView: View {
     @Namespace private var animation
     
     var body: some View {
-        VStack(spacing: 0) {
-            // 상단 Title
-            VStack(alignment: .leading) {
-                Text("EYE-Mate")
-                // .font(.pretendardBold_22)
-                    .font(.system(size: 22, weight: .heavy))
+            VStack(spacing: 0) {
+                // 상단 Title
+                CustomNavigationTitle(title: "게시판",
+                                      isDisplayLeftButton: false)
                 
-                HStack{
-                    Text("게시판")
-                    // .font(.pretendardBold_32)
-                        .font(.system(size: 32, weight: .heavy))
-                    
-                    Spacer()
-                    
-                    // MARK: profileImage 추후에 Firebase에서 Image 받아오기
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.largeTitle)
+                // 상단 TabView
+                communityTopTabView()
+                
+                // 선택된 상단 Tab의 View Switching
+                switch selectedPicker {
+                case .faq:
+                    FAQView()
+                case .freeboard:
+                    FreeBoardView()
                 }
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical)
-            
-            // 상단 TabView
-            communityTopTabView()
-            
-            // 선택된 상단 Tab의 View Switching
-            switch selectedPicker {
-            case .faq:
-                FAQView()
-            case .freeboard:
-                FreeBoardView()
-            }
-        }
+        
+        
     }
     
     // 상단 TabView(FAQ, 자유)
