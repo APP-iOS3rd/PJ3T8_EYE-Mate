@@ -14,7 +14,7 @@ class ProfileViewModel: ObservableObject {
         case empty, loading(Progress), success(Image), failure(Error)
     }
     
-    @Published private(set) var imageState: ImageState = .empty
+    @Published var imageState: ImageState = .empty
     
     @Published var imageSelection: PhotosPickerItem? {
         didSet {

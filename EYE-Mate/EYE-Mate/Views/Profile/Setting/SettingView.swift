@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct AccountView: View {
+struct SettingView: View {
     @ObservedObject var profileViewModel: ProfileViewModel
     @State var selected: PhotosPickerItem?
     @State var nickname: String = "어디로 가야 하오"
@@ -27,12 +27,12 @@ struct AccountView: View {
                 }
                 .padding(.vertical, 50)
                 
-                SettingListView()
+                SettingListView(profileViewModel: profileViewModel)
             }
         }
     }
 }
 
 #Preview {
-    AccountView(profileViewModel: ProfileViewModel())
+    SettingView(profileViewModel: ProfileViewModel())
 }

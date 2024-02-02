@@ -40,6 +40,7 @@
 		52E991BE2B6CCBF5002D4689 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BD2B6CCBF5002D4689 /* SettingModel.swift */; };
 		52E991C02B6CCD47002D4689 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */; };
 		52E991C32B6CD5C2002D4689 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991C22B6CD5C2002D4689 /* SettingListView.swift */; };
+		52E991C52B6CDAD8002D4689 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
 		52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */; };
@@ -48,7 +49,7 @@
 		52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D02B5E2C8900C6D423 /* FAQView.swift */; };
 		52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D42B5E2D0300C6D423 /* EyeMapView.swift */; };
 		52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D62B5E2D0A00C6D423 /* ProfileView.swift */; };
-		52EE56DA2B5E2D4F00C6D423 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* ProfileSettingView.swift */; };
+		52EE56DA2B5E2D4F00C6D423 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D92B5E2D4F00C6D423 /* SettingView.swift */; };
 		52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */; };
 		52FB98912B5F861B00F6A284 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98902B5F861B00F6A284 /* Places.swift */; };
 		52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB98BC2B60FD7100F6A284 /* MapModalView.swift */; };
@@ -136,6 +137,7 @@
 		52E991BD2B6CCBF5002D4689 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		52E991C22B6CD5C2002D4689 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
+		52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseView.swift; sourceTree = "<group>"; };
 		52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -144,7 +146,7 @@
 		52EE56D02B5E2C8900C6D423 /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		52EE56D42B5E2D0300C6D423 /* EyeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeMapView.swift; sourceTree = "<group>"; };
 		52EE56D62B5E2D0A00C6D423 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		52EE56D92B5E2D4F00C6D423 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		52EE56D92B5E2D4F00C6D423 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
 		52FB98902B5F861B00F6A284 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 		52FB98952B5FB54F00F6A284 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
@@ -260,11 +262,12 @@
 		52E991C12B6CCF89002D4689 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				52EE56D92B5E2D4F00C6D423 /* ProfileSettingView.swift */,
+				52EE56D92B5E2D4F00C6D423 /* SettingView.swift */,
 				52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */,
 				52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */,
 				52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */,
 				52E991C22B6CD5C2002D4689 /* SettingListView.swift */,
+				52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -739,7 +742,7 @@
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */,
 				7107A40A2B638DFF00944077 /* AstigmatismTestViewModel.swift in Sources */,
-				52EE56DA2B5E2D4F00C6D423 /* ProfileSettingView.swift in Sources */,
+				52EE56DA2B5E2D4F00C6D423 /* SettingView.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorTestView.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */,
@@ -798,6 +801,7 @@
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
+				52E991C52B6CDAD8002D4689 /* ActionSheetView.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorTestViewModel.swift in Sources */,

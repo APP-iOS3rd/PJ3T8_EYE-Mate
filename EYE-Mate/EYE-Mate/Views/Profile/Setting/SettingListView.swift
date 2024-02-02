@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct SettingListView: View {
+    @ObservedObject var profileViewModel: ProfileViewModel
+    @State var isPresented: Bool = false
+    
     var body: some View {
         VStack(spacing: 30) {
             // MARK: - 프로필
             VStack(alignment: .leading, spacing: 0) {
                 SettingTitleView(title: "프로필")
                 
-                SettingCellView(title: "프로필 사진 변경")
+                ImageActionButtonView(profileViewModel: profileViewModel, isPresented: false)
                 SettingCellView(title: "닉네임 변경")
             }
             // MARK: - 커뮤니티
@@ -103,5 +106,5 @@ struct SettingTitleView: View {
 }
 
 #Preview {
-    SettingListView()
+    SettingListView(profileViewModel: ProfileViewModel())
 }
