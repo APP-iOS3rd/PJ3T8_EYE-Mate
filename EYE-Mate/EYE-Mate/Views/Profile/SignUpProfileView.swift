@@ -15,8 +15,6 @@ struct SignUpProfileView: View {
     @State var nickname: String = ""
     @State var data: Data?
     @State var error: String = ""
-    // 테스트
-    let namesToTest = ["myName123", "user-name", "한글이름", "longusername12345678901", "-invalid", "a", "한글테스트"]
     
     var body: some View {
         VStack(spacing: 20) {
