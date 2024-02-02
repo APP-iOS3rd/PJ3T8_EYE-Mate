@@ -6,6 +6,21 @@
 //
 
 import SwiftUI
+import PhotosUI
+
+
+struct EditableProfileView: View {
+    @ObservedObject var profileViewModel: ProfileViewModel
+    var body: some View {
+        
+        PhotosPicker(selection: $profileViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
+            CircularProfileImage(imageState: profileViewModel.imageState)
+        }
+        
+    }
+}
+
+
 
 struct CircularProfileImage: View {
     let imageState: ProfileViewModel.ImageState

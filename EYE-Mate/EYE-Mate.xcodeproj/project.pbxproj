@@ -33,7 +33,7 @@
 		52A51ABC2B6B329000C68566 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A51ABB2B6B329000C68566 /* GoogleService-Info.plist */; };
 		52A51ABE2B6B333E00C68566 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */; };
 		52A51AC02B6B3DC800C68566 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */; };
-		52A51AC22B6B68DB00C68566 /* CircularProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC12B6B68DB00C68566 /* CircularProfileImage.swift */; };
+		52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */; };
 		52A51AC42B6B695100C68566 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC32B6B695100C68566 /* ProfileImage.swift */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
@@ -123,7 +123,7 @@
 		52A51ABB2B6B329000C68566 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
 		52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		52A51AC12B6B68DB00C68566 /* CircularProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImage.swift; sourceTree = "<group>"; };
+		52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableProfileView.swift; sourceTree = "<group>"; };
 		52A51AC32B6B695100C68566 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				52EE56D62B5E2D0A00C6D423 /* ProfileView.swift */,
 				52EE56D92B5E2D4F00C6D423 /* AccountView.swift */,
 				52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */,
-				52A51AC12B6B68DB00C68566 /* CircularProfileImage.swift */,
+				52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */,
 				52A51AC32B6B695100C68566 /* ProfileImage.swift */,
 				52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */,
 			);
@@ -773,7 +773,7 @@
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorTestViewModel.swift in Sources */,
-				52A51AC22B6B68DB00C68566 /* CircularProfileImage.swift in Sources */,
+				52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,

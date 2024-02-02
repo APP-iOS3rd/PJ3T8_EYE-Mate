@@ -31,7 +31,7 @@ struct SignUpProfileView: View {
             }
             .padding(.bottom, 50)
             
-            EditableCircularProfileImage(profileViewModel: profileViewModel)
+            EditableProfileView(profileViewModel: profileViewModel)
                 .padding(.bottom, 20)
             
             VStack(spacing: 0) {
@@ -82,20 +82,6 @@ struct SignUpProfileView: View {
     
 }
 
-
-
-
-
-struct EditableCircularProfileImage: View {
-    @ObservedObject var profileViewModel: ProfileViewModel
-    var body: some View {
-        
-        PhotosPicker(selection: $profileViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
-            CircularProfileImage(imageState: profileViewModel.imageState)
-        }
-        
-    }
-}
 
 
 #Preview {
