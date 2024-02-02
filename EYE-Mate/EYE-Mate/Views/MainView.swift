@@ -38,6 +38,7 @@ struct MainView: View {
                             .font(.pretendardMedium_10)
                     }
             }
+            
             .accentColor(.customGreen)
             .padding(0)
         }

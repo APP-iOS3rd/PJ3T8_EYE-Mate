@@ -354,9 +354,9 @@
 				52EE56D62B5E2D0A00C6D423 /* ProfileView.swift */,
 				52EE56D92B5E2D4F00C6D423 /* AccountView.swift */,
 				52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */,
-				52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */,
 				52A51AC12B6B68DB00C68566 /* CircularProfileImage.swift */,
 				52A51AC32B6B695100C68566 /* ProfileImage.swift */,
+				52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1058,10 +1058,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EYE-Mate/EYE-Mate.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = 8383VR3NFP;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8383VR3NFP;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1155,6 +1157,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MinyoungLee_Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
