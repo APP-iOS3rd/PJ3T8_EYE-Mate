@@ -17,6 +17,7 @@
 		331F8AAE2B6B85460008D943 /* EyewareButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAD2B6B85460008D943 /* EyewareButtonGroup.swift */; };
 		331F8AB02B6B85700008D943 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AAF2B6B85700008D943 /* RadioButton.swift */; };
 		331F8AB22B6B92340008D943 /* PlaceButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */; };
+		331F8AB42B6BC72C0008D943 /* EmptyVisionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB32B6BC72C0008D943 /* EmptyVisionChart.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3329BC142B623AC00099EDC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */; };
 		336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336529BE2B600B9100078CF0 /* MovementLottieView.swift */; };
@@ -106,6 +107,7 @@
 		331F8AAD2B6B85460008D943 /* EyewareButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyewareButtonGroup.swift; sourceTree = "<group>"; };
 		331F8AAF2B6B85700008D943 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		331F8AB12B6B92340008D943 /* PlaceButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceButtonGroup.swift; sourceTree = "<group>"; };
+		331F8AB32B6BC72C0008D943 /* EmptyVisionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyVisionChart.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		3329BC132B623AC00099EDC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */,
 				3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */,
 				3391A16F2B6A276C0035E0A5 /* VisionChart.swift */,
+				331F8AB32B6BC72C0008D943 /* EmptyVisionChart.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				33DD0A362B624D72005296AC /* Toast.swift in Sources */,
 				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
+				331F8AB42B6BC72C0008D943 /* EmptyVisionChart.swift in Sources */,
 				1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
@@ -914,10 +918,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8383VR3NFP;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1039,6 +1045,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MinyoungLee_Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1051,10 +1059,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EYE-Mate/Preview Content\"";
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8383VR3NFP;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1147,6 +1157,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Seonghyeon.EYE-Mate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MinyoungLee_Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
