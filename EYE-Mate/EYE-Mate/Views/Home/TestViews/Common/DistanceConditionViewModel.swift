@@ -24,6 +24,14 @@ class DistanceConditionViewModel: ObservableObject {
         canStart ? "테스트가 가능합니다." : "테스트 가능한 거리가 되면\n버튼이 활성화됩니다."
     }
     
+    var canSightStart: Bool {
+        return distance >= 30 && distance <= 40
+    }
+    
+    var sightInformationText: String {
+        canSightStart ? "테스트가 가능합니다." : "테스트 가능한 거리가 되면\n버튼이 활성화됩니다."
+    }
+    
     @MainActor
     func inputDistance(_ distance: Int) {
         print("\(distance)")
