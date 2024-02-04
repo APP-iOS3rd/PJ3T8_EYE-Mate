@@ -8,8 +8,7 @@
 import Foundation
 
 class AstigmatismTestViewModel: ObservableObject {
-    //MARK: - 테스트용으로 데이터 삽입되어있음.
-    @Published var userAnswer: [String] = ["Y", "Y"]
+    @Published var userAnswer: [String] = []
     @Published var userSayYes = false
     @Published var userSayNo = false
     
