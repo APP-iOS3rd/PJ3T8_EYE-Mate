@@ -144,8 +144,15 @@ private struct AstigmatismRight: View {
                             Text("원의 중심에 초점을 맞추세요.\n모든 선이 똑같이 고르고 진하게 보이나요?")
                                 .multilineTextAlignment(.center)
                                 .font(.pretendardMedium_20)
+                                .padding()
                             
                             Spacer()
+                            
+                            if !distance.canStart {
+                                Text("휴대폰과의 거리를 조정해주세요!")
+                                    .font(.pretendardMedium_18)
+                                    .foregroundColor(.customRed)
+                            }
                             
                             HStack {
                                 CustomButton(title: "예",
@@ -164,6 +171,7 @@ private struct AstigmatismRight: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
+                                .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
                                              background: viewModel.userSayNo ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
@@ -180,7 +188,7 @@ private struct AstigmatismRight: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
-                                
+                                .disabled(!distance.canStart)
                             }
                         }
                     }
@@ -269,6 +277,12 @@ private struct AstigmatismLeft: View {
                             
                             Spacer()
                             
+                            if !distance.canStart {
+                                Text("휴대폰과의 거리를 조정해주세요!")
+                                    .font(.pretendardMedium_18)
+                                    .foregroundColor(.customRed)
+                            }
+                            
                             HStack {
                                 CustomButton(title: "예",
                                              background: viewModel.userSayYes ? .customGreen : .btnGray,
@@ -286,6 +300,7 @@ private struct AstigmatismLeft: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
+                                .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
                                              background: viewModel.userSayNo ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
@@ -302,7 +317,7 @@ private struct AstigmatismLeft: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
-                                
+                                .disabled(!distance.canStart)
                             }
                         }
                     }

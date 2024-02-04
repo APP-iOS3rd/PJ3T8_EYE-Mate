@@ -128,7 +128,7 @@ private struct SightRight: View {
                                     .font(.pretendardRegular_30)
                                 Text("\(distance.distance)")
                                     .font(.pretendardRegular_40)
-                                    .foregroundColor(distance.canStart ? .customGreen : .customRed)
+                                    .foregroundColor(distance.canSightStart ? .customGreen : .customRed)
                                 Text("CM")
                                     .font(.pretendardRegular_30)
                                 Spacer()
@@ -146,7 +146,11 @@ private struct SightRight: View {
                                 .font(.pretendardMedium_20)
                             
                             Spacer()
-                            
+                            if !distance.canSightStart {
+                                Text("휴대폰과의 거리를 조정해주세요!")
+                                    .font(.pretendardMedium_18)
+                                    .foregroundColor(.customRed)
+                            }
                             HStack {
                                 CustomButton(title: "예",
                                              background: viewModel.userSayYes ? .customGreen : .btnGray,
@@ -164,6 +168,7 @@ private struct SightRight: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
+                                .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
                                              background: viewModel.userSayNo ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
@@ -180,7 +185,7 @@ private struct SightRight: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
-                                
+                                .disabled(!distance.canSightStart)
                             }
                         }
                     }
@@ -250,14 +255,14 @@ private struct SightLeft: View {
                                     .font(.pretendardRegular_30)
                                 Text("\(distance.distance)")
                                     .font(.pretendardRegular_40)
-                                    .foregroundColor(distance.canStart ? .customGreen : .customRed)
+                                    .foregroundColor(distance.canSightStart ? .customGreen : .customRed)
                                 Text("CM")
                                     .font(.pretendardRegular_30)
                                 Spacer()
                             }
                             Spacer()
                             
-                            Image("Component5")
+                            Image("Component6")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                             
@@ -268,6 +273,13 @@ private struct SightLeft: View {
                                 .font(.pretendardMedium_20)
                             
                             Spacer()
+                            
+                            if !distance.canSightStart {
+                                Text("휴대폰과의 거리를 조정해주세요!")
+                                    .font(.pretendardMedium_18)
+                                    .foregroundColor(.customRed)
+                                    .multilineTextAlignment(.center)
+                            }
                             
                             HStack {
                                 CustomButton(title: "예",
@@ -286,6 +298,7 @@ private struct SightLeft: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
+                                .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
                                              background: viewModel.userSayNo ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
@@ -302,7 +315,7 @@ private struct SightLeft: View {
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
-                                
+                                .disabled(!distance.canSightStart)
                             }
                         }
                     }
