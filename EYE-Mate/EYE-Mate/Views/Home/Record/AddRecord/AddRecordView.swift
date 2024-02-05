@@ -13,6 +13,9 @@ struct AddRecordView: View {
     @State private var isAstigmatismRecordVisible = false
     @State private var isEyesightRecordVisible = false
 
+    @State private var leftVision = 1.0
+    @State private var rightVision = 1.0
+
     var body: some View {
         VStack {
             AddRecordHeader()
@@ -57,8 +60,40 @@ struct AddRecordView: View {
                 if isVisionRecordVisible || isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                     HorizontalDivider(color: Color.btnGray, height: 2)
                 }
+
                 if isVisionRecordVisible {
                     AddRecordSubtitleView(label: "시력")
+                    VStack(spacing: 8) {
+                        HStack(spacing: 16) {
+                            Text("좌").font(.pretendardRegular_14)
+                            VStack(spacing: 6) {
+                                CustomSlider(
+                                    thumbColor: .white,
+                                    minTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 1),
+                                    maxTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 0.2),
+                                    value: $leftVision
+                                )
+                                Text("\(String(format: "%.1f", leftVision))").font(.pretendardRegular_12)
+                            }.padding(.top, 18)
+                        }
+                        .padding(.leading, 12)
+                        .padding(.trailing, 12)
+                        HStack(spacing: 16) {
+                            Text("우").font(.pretendardRegular_14)
+                            VStack(spacing: 6) {
+                                CustomSlider(
+                                    thumbColor: .white,
+                                    minTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 1),
+                                    maxTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 0.2),
+                                    value: $rightVision
+                                )
+                                Text("\(String(format: "%.1f", rightVision))").font(.pretendardRegular_12)
+                            }.padding(.top, 18)
+                        }
+                        .padding(.leading, 12)
+                        .padding(.trailing, 12)
+                    }
+
                     if isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                         HorizontalDivider(color: Color.btnGray, height: 2)
                     }
@@ -78,7 +113,6 @@ struct AddRecordView: View {
                 if isEyesightRecordVisible {
                     AddRecordSubtitleView(label: "시야")
                 }
-
             }
             .padding(.horizontal, 12)
             .padding(.top, 20)
