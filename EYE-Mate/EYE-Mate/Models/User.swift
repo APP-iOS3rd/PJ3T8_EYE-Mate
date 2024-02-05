@@ -13,4 +13,7 @@ struct User: Identifiable, Codable {
     var userUID: String
     var userImageURL: URL
     
+    var scrapPostIDs: [String]?
+    var commentPostIDs: [String]?
+    var myPostIDs: [String]?
 }
