@@ -29,14 +29,14 @@ struct ChangeUserNameView: View {
                 .font(.pretendardRegular_16)
                 .foregroundStyle(Color.red)
             
-            CustomBtn(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
+            CustomBtn(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 
                 let result = profileViewModel.isValidName(nickname)
                 
                 if result != "true" {
                     error = result
                 } else {
-                    // HomeView로 profile 정보 가지고 넘어감
+                    // TODO: - 다시 SettingView로 넘어오기
                     error = "success"
                 }
             })

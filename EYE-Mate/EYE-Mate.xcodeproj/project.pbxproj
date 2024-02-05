@@ -24,6 +24,7 @@
 		521DCDC02B7063B6002C786A /* ChangeUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */; };
 		521DCDC22B7065BB002C786A /* SettingNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */; };
 		521DCDC42B7099C7002C786A /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC32B7099C7002C786A /* SignOutView.swift */; };
+		521DCDCB2B70BA24002C786A /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDCA2B70BA24002C786A /* SignOutViewModel.swift */; };
 		5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5278E3A82B68B7B500FC8109 /* CountryNumbers.json */; };
 		5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AA2B68B7CA00FC8109 /* CPData.swift */; };
 		5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */; };
@@ -123,6 +124,7 @@
 		521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNameView.swift; sourceTree = "<group>"; };
 		521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigationTitle.swift; sourceTree = "<group>"; };
 		521DCDC32B7099C7002C786A /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
+		521DCDCA2B70BA24002C786A /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
 		5278E3A82B68B7B500FC8109 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		5278E3AA2B68B7CA00FC8109 /* CPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
@@ -265,23 +267,50 @@
 			path = MovementLottie;
 			sourceTree = "<group>";
 		};
-		521DCDC52B70AA6A002C786A /* Sign */ = {
+		521DCDC62B70B665002C786A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */,
+				521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		521DCDC72B70B67E002C786A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				521DCDC32B7099C7002C786A /* SignOutView.swift */,
+				521DCDCA2B70BA24002C786A /* SignOutViewModel.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		521DCDC82B70B6AD002C786A /* Community */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Sign;
+			path = Community;
+			sourceTree = "<group>";
+		};
+		521DCDC92B70B6B5002C786A /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		52E991C12B6CCF89002D4689 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				52EE56D92B5E2D4F00C6D423 /* SettingView.swift */,
+				52E991C22B6CD5C2002D4689 /* SettingListView.swift */,
 				52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */,
 				52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */,
 				52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */,
-				52E991C22B6CD5C2002D4689 /* SettingListView.swift */,
-				52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */,
-				521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */,
+				521DCDC62B70B665002C786A /* Profile */,
+				521DCDC82B70B6AD002C786A /* Community */,
+				521DCDC92B70B6B5002C786A /* App */,
+				521DCDC72B70B67E002C786A /* Account */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -391,13 +420,9 @@
 			isa = PBXGroup;
 			children = (
 				52EE56D62B5E2D0A00C6D423 /* ProfileView.swift */,
-				52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */,
 				52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */,
 				52A51AC32B6B695100C68566 /* ProfileImage.swift */,
 				52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */,
-				521DCDC32B7099C7002C786A /* SignOutView.swift */,
-				521DCDC52B70AA6A002C786A /* Sign */,
-				52E991C12B6CCF89002D4689 /* Setting */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -419,6 +444,7 @@
 				5278E3B02B69C8B600FC8109 /* LoginView.swift */,
 				5278E3B42B69EC3500FC8109 /* SignInView.swift */,
 				52FB98F52B638B4A00F6A284 /* SignUpView.swift */,
+				52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */,
 				5278E3AE2B68E6B400FC8109 /* PhoneNumberView.swift */,
 				5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */,
 				5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */,
@@ -580,6 +606,7 @@
 				52EE56CB2B5E2B3200C6D423 /* Community */,
 				52EE56D22B5E2CA800C6D423 /* EyeMap */,
 				52EE56D32B5E2CF400C6D423 /* Profile */,
+				52E991C12B6CCF89002D4689 /* Setting */,
 				52FB98F42B638B3300F6A284 /* Login */,
 				52EE56C82B5E2B1500C6D423 /* Movement */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
@@ -830,6 +857,7 @@
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */,
+				521DCDCB2B70BA24002C786A /* SignOutViewModel.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
 				521DCDC42B7099C7002C786A /* SignOutView.swift in Sources */,
