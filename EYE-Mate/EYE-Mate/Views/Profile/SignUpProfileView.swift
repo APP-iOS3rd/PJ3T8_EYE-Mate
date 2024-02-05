@@ -33,25 +33,10 @@ struct SignUpProfileView: View {
             EditableProfileView(profileViewModel: profileViewModel)
                 .padding(.bottom, 20)
             
-            VStack(spacing: 0) {
-                Text("2~20자의 영문, 숫자, 한글, -, _ 만 사용 가능합니다")
-                    .monospacedDigit()
-                    .font(.pretendardRegular_16)
-                    .foregroundStyle(.gray)
-                TextField("닉네임을 입력해주세요", text: $nickname)
-                    .multilineTextAlignment(.center)
-                    .frame(height: 50)
-                    .background{
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 2)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.white)
-                                    .shadow(radius: 4, x: 2, y: 2)
-                            )
-                    }
-                    .padding()
-            }
+            ProfileNameTextField()
+                .padding(20)
+            
+            
             
             Text("\(error)")
                 .font(.pretendardRegular_16)
@@ -72,17 +57,40 @@ struct SignUpProfileView: View {
             .frame(height: 88)
             
             Spacer()
-            
         }
-        
-        
         
     }
     
 }
 
-
-
+struct ProfileNameTextField: View {
+    @State var nickname: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            TextField("닉네임을 입력해주세요", text: $nickname)
+                .multilineTextAlignment(.center)
+                .font(.pretendardRegular_18)
+                .frame(height: 50)
+                .background{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.white)
+                                .shadow(radius: 4, x: 2, y: 2)
+                        )
+                }
+            
+            Text("\u{2022} 2~20자의 영문, 숫자, 한글, -, _ 만 사용 가능합니다")
+                .monospacedDigit()
+                .font(.pretendardRegular_16)
+                .foregroundStyle(.gray)
+                .padding(.leading, 5)
+        }
+    }
+    
+}
 #Preview {
     SignUpProfileView()
 }

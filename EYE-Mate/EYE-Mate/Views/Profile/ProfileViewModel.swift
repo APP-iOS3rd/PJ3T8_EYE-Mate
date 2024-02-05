@@ -61,6 +61,8 @@ class ProfileViewModel: ObservableObject {
         if !predicate.evaluate(with: name) {
             return "한글, 영어, 숫자, -, _ 문자만 사용해야 합니다."
         }
+        
+        // TODO: - DB에서 중복되는 닉네임 확인
         return "true"
     }
 }
