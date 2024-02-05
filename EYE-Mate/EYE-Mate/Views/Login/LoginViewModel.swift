@@ -7,9 +7,15 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 
 class LoginViewModel: ObservableObject {
     static let shared = LoginView()
+    
+    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
+    @AppStorage("user_profile_url") private var profileURL: URL?
     
     var verificationID: String
     init(verificationID: String) {
@@ -46,6 +52,32 @@ class LoginViewModel: ObservableObject {
                 print(error.localizedDescription)
                 completion(false)
             } else {
+                // 테스트 코드
+                guard let uid = user?.user.uid else {return}
+                Task {
+                    do {
+                        // Storage에 DefaultProfile 이미지 저장
+                        guard let imageData = UIImage(named: "defaultprofile")?.pngData() else { return }
+                        let storageRef = Storage.storage().reference().child("Profile_Images").child(uid)
+                        let _ = try await storageRef.putDataAsync(imageData)
+                        
+                        let downloadURL = try await storageRef.downloadURL()
+                        
+                        let user = User(username: "TestAccount", userUID: uid, userImageURL: downloadURL)
+
+                        let _ = try Firestore.firestore().collection("Users").document(uid).setData(from: user) { error in
+                            if error == nil {
+                                print("Saved Successfully")
+                                self.userName = "TestAccount"
+                                self.userUID = uid
+                                self.profileURL = downloadURL
+                            }
+                        }
+                    }catch{
+                        print(error.localizedDescription)
+                    }
+                }
+                
                 UserDefaults.standard.set(true, forKey: "Login")
                 print("OTP Verify Success = \(user?.user.uid ?? "N/A")")
                 completion(true)
