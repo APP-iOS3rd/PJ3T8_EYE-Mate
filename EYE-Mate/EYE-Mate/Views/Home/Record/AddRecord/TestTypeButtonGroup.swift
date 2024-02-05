@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TestTypeButtonGroup: View {
+    let selectionCallback: (String) -> Void
+
     var body: some View {
         HStack(spacing: 12) {
             checkBoxVisionMajority
@@ -21,7 +23,10 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.vision.rawValue,
             label: TestType.vision.rawValue,
-            callback: checkoBoxGroupCallback
+            callback: { id, isMarked in
+                checkBoxGroupCallback(id: id, isMarked: isMarked)
+                selectionCallback(id)
+            }
         )
     }
 
@@ -29,7 +34,10 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.colorVision.rawValue,
             label: TestType.colorVision.rawValue,
-            callback: checkoBoxGroupCallback
+            callback: { id, isMarked in
+                checkBoxGroupCallback(id: id, isMarked: isMarked)
+                selectionCallback(id)
+            }
         )
     }
 
@@ -37,7 +45,10 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.astigmatism.rawValue,
             label: TestType.astigmatism.rawValue,
-            callback: checkoBoxGroupCallback
+            callback: { id, isMarked in
+                checkBoxGroupCallback(id: id, isMarked: isMarked)
+                selectionCallback(id)
+            }
         )
     }
 
@@ -45,15 +56,20 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.eyesight.rawValue,
             label: TestType.eyesight.rawValue,
-            callback: checkoBoxGroupCallback
+            callback: { id, isMarked in
+                checkBoxGroupCallback(id: id, isMarked: isMarked)
+                selectionCallback(id)
+            }
         )
     }
 
-    func checkoBoxGroupCallback(id: String, isMarked: Bool) {
+    func checkBoxGroupCallback(id: String, isMarked: Bool) {
         print("\(id) is marked: \(isMarked)")
     }
 }
 
 #Preview {
-    TestTypeButtonGroup()
+    TestTypeButtonGroup() { _ in
+
+    }
 }
