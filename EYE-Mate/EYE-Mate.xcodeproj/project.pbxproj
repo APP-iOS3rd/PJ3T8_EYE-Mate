@@ -21,6 +21,8 @@
 		33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */; };
 		33DD0A412B6393E8005296AC /* circle-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A402B6393E8005296AC /* circle-movement.json */; };
 		33DD0A432B63A25E005296AC /* line-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD0A422B63A25E005296AC /* line-movement.json */; };
+		521DCDC02B7063B6002C786A /* ChangeUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */; };
+		521DCDC22B7065BB002C786A /* SettingNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */; };
 		5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5278E3A82B68B7B500FC8109 /* CountryNumbers.json */; };
 		5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AA2B68B7CA00FC8109 /* CPData.swift */; };
 		5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */; };
@@ -117,6 +119,8 @@
 		33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDivider.swift; sourceTree = "<group>"; };
 		33DD0A402B6393E8005296AC /* circle-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "circle-movement.json"; sourceTree = "<group>"; };
 		33DD0A422B63A25E005296AC /* line-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "line-movement.json"; sourceTree = "<group>"; };
+		521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNameView.swift; sourceTree = "<group>"; };
+		521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigationTitle.swift; sourceTree = "<group>"; };
 		5278E3A82B68B7B500FC8109 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		5278E3AA2B68B7CA00FC8109 /* CPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 				52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */,
 				52E991C22B6CD5C2002D4689 /* SettingListView.swift */,
 				52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */,
+				521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				52EE56DB2B5E2E8F00C6D423 /* CustomBtn.swift */,
 				5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */,
 				710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */,
+				521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -737,6 +743,7 @@
 			files = (
 				5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
+				521DCDC22B7065BB002C786A /* SettingNavigationTitle.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
@@ -782,6 +789,7 @@
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				52FB98F62B638B4A00F6A284 /* SignUpView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				521DCDC02B7063B6002C786A /* ChangeUserNameView.swift in Sources */,
 				5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
