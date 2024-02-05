@@ -17,3 +17,17 @@ struct SettingModel: Hashable {
     }
     
 }
+
+struct SignOutContent: Hashable {
+    var icon: String
+    var title: String
+    var subTitle: String
+    
+    init(icon: String, title: String, subTitle: String) {
+        self.icon = icon
+        self.title = title
+        self.subTitle = subTitle
+        
+    }
+    
+}
