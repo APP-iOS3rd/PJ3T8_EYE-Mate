@@ -98,6 +98,7 @@
 		713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F042B5E082700694F05 /* Pretendard-Black.otf */; };
 		713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F052B5E082700694F05 /* Pretendard-Regular.otf */; };
 		713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */; };
+		71526A402B7242B10000631E /* PlaceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A3F2B7242B10000631E /* PlaceCellView.swift */; };
 		71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */; };
 		71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDD2B6D0CA100316569 /* BackgroundView.swift */; };
 		71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDF2B6D206E00316569 /* SightTestViewModel.swift */; };
@@ -207,6 +208,7 @@
 		713F4F042B5E082700694F05 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		713F4F052B5E082700694F05 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		71526A3F2B7242B10000631E /* PlaceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellView.swift; sourceTree = "<group>"; };
 		71948DD92B6BBDFB00316569 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestViewModel.swift; sourceTree = "<group>"; };
 		71948DDD2B6D0CA100316569 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -382,9 +384,9 @@
 				52FB98BC2B60FD7100F6A284 /* MapModalView.swift */,
 				52FB98CA2B62321B00F6A284 /* InfoView.swift */,
 				52FB98D22B6240D200F6A284 /* ActionAreaView.swift */,
-				52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */,
 				52FB98C02B62226800F6A284 /* MapViewModel.swift */,
 				52FB98CE2B62331900F6A284 /* MapImageModifier.swift */,
+				52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */,
 				52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */,
 			);
 			path = EyeMap;
@@ -485,6 +487,7 @@
 				7107A4072B6356FD00944077 /* DistanceConditionView.swift */,
 				711F4A862B6959A2001C6B53 /* TestType.swift */,
 				71948DDD2B6D0CA100316569 /* BackgroundView.swift */,
+				71526A3F2B7242B10000631E /* PlaceCellView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
 				5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */,
 				52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */,
+				71526A402B7242B10000631E /* PlaceCellView.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
