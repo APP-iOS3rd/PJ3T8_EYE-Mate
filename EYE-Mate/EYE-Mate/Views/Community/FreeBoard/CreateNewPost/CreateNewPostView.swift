@@ -23,7 +23,7 @@ struct CreateNewPostView: View {
                 createNewPostVM: createNewPostVM
             )
             
-            CustomBtn(title: "작성하기", background: Color.customGreen, fontStyle: .pretendardBold_18, action: {})
+            CustomButton(title: "작성하기", background: Color.customGreen, fontStyle: .pretendardBold_18, action: {})
                 .frame(maxHeight: 75)
                 .disabled(!createNewPostVM.postButtonActive())
                 .opacity(createNewPostVM.postButtonActive() ? 1 : 0.5)

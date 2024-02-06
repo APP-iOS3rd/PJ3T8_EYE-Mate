@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct VisionTestView: View {
+    @ObservedObject var distance: DistanceConditionViewModel
+    
     var body: some View {
         Text("VisionTestView")
     }
 }
 
 #Preview {
-    VisionTestView()
+    VisionTestView(distance: DistanceConditionViewModel())
 }

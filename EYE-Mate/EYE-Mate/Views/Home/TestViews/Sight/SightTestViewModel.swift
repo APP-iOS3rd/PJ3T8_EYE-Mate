@@ -1,5 +1,5 @@
 //
-//  AstigmatismTestViewModel.swift
+//  SightTestViewModel.swift
 //  EYE-Mate
 //
 //  Created by 이성현 on 2024/02/02.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AstigmatismTestViewModel: ObservableObject {
+class SightTestViewModel: ObservableObject {
     @Published var userAnswer: [String] = []
     @Published var userSayYes = false
     @Published var userSayNo = false
@@ -30,7 +30,7 @@ class AstigmatismTestViewModel: ObservableObject {
     
     var titleText: String {
         if isLeftEye && isRightEye {
-            return "난시 증상"
+            return "양쪽 눈"
         } else if !isLeftEye && isRightEye {
             return "왼쪽 눈"
         } else if isLeftEye && !isRightEye {
@@ -42,9 +42,9 @@ class AstigmatismTestViewModel: ObservableObject {
     
     var subTitleText: String {
         if isLeftEye && isRightEye {
-            return "을 보이는 것 같지 않습니다."
+            return "의 시야가 넓은 것 같습니다."
         } else {
-            return "에서 난시 증상이 발견되었습니다."
+            return "의 시야가 좁아진 것 같습니다."
         }
     }
     

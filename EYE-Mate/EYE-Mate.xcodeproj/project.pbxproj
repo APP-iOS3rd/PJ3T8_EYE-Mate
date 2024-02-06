@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D130F4A2B5F774F00258F71 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D130F482B5F774F00258F71 /* APIKEY.plist */; };
 		1D575FCB2B6B7EEA00DDC652 /* PostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCA2B6B7EEA00DDC652 /* PostContent.swift */; };
 		1D575FCD2B6B8C7000DDC652 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCC2B6B8C7000DDC652 /* CommentView.swift */; };
 		1D575FCF2B6B92D900DDC652 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCE2B6B92D900DDC652 /* ImageCardView.swift */; };
@@ -16,7 +15,6 @@
 		1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5983992B61596600762E4B /* CreateNewPostView.swift */; };
 		1D73AD3F2B62BC4100DF431D /* CreateNewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */; };
 		1D73AD422B63872B00DF431D /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD412B63872B00DF431D /* PostView.swift */; };
-		1D98EC682B5FB50E00CC3AB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */; };
 		1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */; };
 		1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */; };
 		1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */; };
@@ -100,7 +98,10 @@
 		713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F042B5E082700694F05 /* Pretendard-Black.otf */; };
 		713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F052B5E082700694F05 /* Pretendard-Regular.otf */; };
 		713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */; };
+		71526A402B7242B10000631E /* PlaceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A3F2B7242B10000631E /* PlaceCellView.swift */; };
 		71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */; };
+		71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDD2B6D0CA100316569 /* BackgroundView.swift */; };
+		71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDF2B6D206E00316569 /* SightTestViewModel.swift */; };
 		71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */; };
 		71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */; };
 		71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */; };
@@ -112,8 +113,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D130F482B5F774F00258F71 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
-		1D37B15C2B61118C00007DF8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D575FCA2B6B7EEA00DDC652 /* PostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContent.swift; sourceTree = "<group>"; };
 		1D575FCC2B6B8C7000DDC652 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		1D575FCE2B6B92D900DDC652 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 		1D5983992B61596600762E4B /* CreateNewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostView.swift; sourceTree = "<group>"; };
 		1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostViewModel.swift; sourceTree = "<group>"; };
 		1D73AD412B63872B00DF431D /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
-		1D98EC662B5FB50C00CC3AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQRowCellView.swift; sourceTree = "<group>"; };
 		1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
@@ -210,8 +208,11 @@
 		713F4F042B5E082700694F05 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		713F4F052B5E082700694F05 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		71526A3F2B7242B10000631E /* PlaceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellView.swift; sourceTree = "<group>"; };
 		71948DD92B6BBDFB00316569 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestViewModel.swift; sourceTree = "<group>"; };
+		71948DDD2B6D0CA100316569 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		71948DDF2B6D206E00316569 /* SightTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestViewModel.swift; sourceTree = "<group>"; };
 		71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnboardingView.swift; sourceTree = "<group>"; };
 		71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnBoardingViewModel.swift; sourceTree = "<group>"; };
 		71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellView.swift; sourceTree = "<group>"; };
@@ -383,9 +384,9 @@
 				52FB98BC2B60FD7100F6A284 /* MapModalView.swift */,
 				52FB98CA2B62321B00F6A284 /* InfoView.swift */,
 				52FB98D22B6240D200F6A284 /* ActionAreaView.swift */,
-				52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */,
 				52FB98C02B62226800F6A284 /* MapViewModel.swift */,
 				52FB98CE2B62331900F6A284 /* MapImageModifier.swift */,
+				52FB98CC2B6232F200F6A284 /* AsyncImageView.swift */,
 				52FB98D02B623CDA00F6A284 /* MapButtonStyle.swift */,
 			);
 			path = EyeMap;
@@ -485,6 +486,8 @@
 				7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */,
 				7107A4072B6356FD00944077 /* DistanceConditionView.swift */,
 				711F4A862B6959A2001C6B53 /* TestType.swift */,
+				71948DDD2B6D0CA100316569 /* BackgroundView.swift */,
+				71526A3F2B7242B10000631E /* PlaceCellView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				710D40932B5FD8A9006C9FED /* SightView.swift */,
 				7107A40B2B638E1600944077 /* SightViewModel.swift */,
 				711F4A8E2B6A1789001C6B53 /* SightTestView.swift */,
+				71948DDF2B6D206E00316569 /* SightTestViewModel.swift */,
 			);
 			path = Sight;
 			sourceTree = "<group>";
@@ -793,6 +797,7 @@
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
+				71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */,
 				7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */,
 				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
@@ -830,6 +835,7 @@
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
 				5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */,
 				52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */,
+				71526A402B7242B10000631E /* PlaceCellView.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
@@ -838,13 +844,14 @@
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				1D73AD3F2B62BC4100DF431D /* CreateNewPostViewModel.swift in Sources */,
-				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
+				52EE56C72B5E2B0B00C6D423 /* VisionView.swift in Sources */,
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorViewModel.swift in Sources */,
 				71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */,
 				52EE56C72B5E2B0B00C6D423 /* VisionView.swift in Sources */,
+				71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
 				711F4A912B6A19E0001C6B53 /* ColorTestViewModel.swift in Sources */,
