@@ -33,7 +33,11 @@ struct SettingNavigationTitle: View {
     
     var body: some View {
         HStack {
-            Image(systemName: leftBtnType.rawValue)
+            Button(action: leftBtnAction) {
+                Image(systemName: leftBtnType.rawValue)
+                    .foregroundStyle(Color.gray)
+            }
+            
             Spacer()
             if isDisplayTitle {
                 Text(title)

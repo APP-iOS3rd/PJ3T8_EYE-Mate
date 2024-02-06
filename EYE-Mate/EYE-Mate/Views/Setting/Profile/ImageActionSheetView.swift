@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct ImageActionButtonView: View {
+struct ImageActionSheetView: View {
     @ObservedObject var profileViewModel: ProfileViewModel
     @State var isPresented: Bool = false
     @State var showPicker: Bool = false
@@ -52,5 +52,5 @@ struct ImageActionButtonView: View {
 }
 
 #Preview {
-    ImageActionButtonView(profileViewModel: ProfileViewModel())
+    ImageActionSheetView(profileViewModel: ProfileViewModel())
 }

@@ -9,17 +9,19 @@ import SwiftUI
 
 struct ChangeUserNameView: View {
     @EnvironmentObject var profileViewModel: ProfileViewModel
-    // TODO: - profileVeiwModel에서 nickname 바인딩
+    @Environment(\.presentationMode) var presentationMode
     var nickname: String = ""
     @State var error: String = ""
     
     var body: some View {
         VStack {
-            SettingNavigationTitle(title: "닉네임 변경")
+            SettingNavigationTitle(leftBtnAction: {
+                presentationMode.wrappedValue.dismiss()
+            }, title: "닉네임 변경")
             
             VStack(alignment: .leading) {
                 Text("닉네임")
-                
+                // TODO: - profileVeiwModel에서 nickname 바인딩
                 ProfileNameTextField(nickname: nickname)
 
             }
@@ -42,8 +44,12 @@ struct ChangeUserNameView: View {
             })
             .frame(height: 88)
             .padding(5)
+            
+            Spacer()
         }
+        .navigationBarBackButtonHidden(true)
     }
+        
 }
 
 #Preview {

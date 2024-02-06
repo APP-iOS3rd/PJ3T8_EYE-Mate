@@ -9,10 +9,10 @@ import SwiftUI
 
 struct SignOutView: View {
     @StateObject var signOutViewModel = SignOutViewModel()
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack(spacing: 30) {
-            SettingNavigationTitle(isDisplayTitle: false, leftBtnType: .close)
+            SettingNavigationTitle(isDisplayTitle: false, leftBtnAction: {presentationMode.wrappedValue.dismiss()}, leftBtnType: .close)
             
             Text("탈퇴하기")
                 .font(.pretendardSemiBold_32)
@@ -29,6 +29,7 @@ struct SignOutView: View {
             HStack {
                 Button {
                     // TODO: - 탈퇴창 닫기
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("취소")
                         .font(.pretendardBold_18)
@@ -58,6 +59,7 @@ struct SignOutView: View {
             }
             .padding(.horizontal, 20)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

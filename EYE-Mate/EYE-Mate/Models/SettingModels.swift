@@ -7,17 +7,21 @@
 
 import Foundation
 
-struct SettingModel: Hashable {
+// MARK: - 설정 list 뷰 모델
+struct SettingListModel: Hashable {
     var title: String
-    var destination: String
+    var icon: String
     
-    init(title: String, destination: String) {
+    init(title: String, icon: String) {
         self.title = title
-        self.destination = destination
+        self.icon = icon
     }
     
 }
 
+
+
+//  MARK: - 탈퇴하기 뷰 모델
 struct SignOutContent: Hashable {
     var icon: String
     var title: String

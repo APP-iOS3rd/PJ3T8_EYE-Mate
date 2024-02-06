@@ -25,6 +25,8 @@
 		521DCDC22B7065BB002C786A /* SettingNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */; };
 		521DCDC42B7099C7002C786A /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC32B7099C7002C786A /* SignOutView.swift */; };
 		521DCDCB2B70BA24002C786A /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDCA2B70BA24002C786A /* SignOutViewModel.swift */; };
+		521DCDCF2B70C51C002C786A /* LogoutAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDCE2B70C51C002C786A /* LogoutAlertView.swift */; };
+		521DCDD12B71C49A002C786A /* ProfileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDD02B71C49A002C786A /* ProfileListView.swift */; };
 		5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5278E3A82B68B7B500FC8109 /* CountryNumbers.json */; };
 		5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AA2B68B7CA00FC8109 /* CPData.swift */; };
 		5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */; };
@@ -44,7 +46,7 @@
 		52E991BE2B6CCBF5002D4689 /* SettingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BD2B6CCBF5002D4689 /* SettingModels.swift */; };
 		52E991C02B6CCD47002D4689 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */; };
 		52E991C32B6CD5C2002D4689 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991C22B6CD5C2002D4689 /* SettingListView.swift */; };
-		52E991C52B6CDAD8002D4689 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */; };
+		52E991C52B6CDAD8002D4689 /* ImageActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991C42B6CDAD8002D4689 /* ImageActionSheetView.swift */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
 		52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */; };
@@ -125,6 +127,8 @@
 		521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigationTitle.swift; sourceTree = "<group>"; };
 		521DCDC32B7099C7002C786A /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		521DCDCA2B70BA24002C786A /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
+		521DCDCE2B70C51C002C786A /* LogoutAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAlertView.swift; sourceTree = "<group>"; };
+		521DCDD02B71C49A002C786A /* ProfileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListView.swift; sourceTree = "<group>"; };
 		5278E3A82B68B7B500FC8109 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		5278E3AA2B68B7CA00FC8109 /* CPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		5278E3AC2B68B81A00FC8109 /* OTPVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
@@ -145,7 +149,7 @@
 		52E991BD2B6CCBF5002D4689 /* SettingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModels.swift; sourceTree = "<group>"; };
 		52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		52E991C22B6CD5C2002D4689 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
-		52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
+		52E991C42B6CDAD8002D4689 /* ImageActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageActionSheetView.swift; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseView.swift; sourceTree = "<group>"; };
 		52EE56C62B5E2B0B00C6D423 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -270,7 +274,8 @@
 		521DCDC62B70B665002C786A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				52E991C42B6CDAD8002D4689 /* ActionSheetView.swift */,
+				521DCDD02B71C49A002C786A /* ProfileListView.swift */,
+				52E991C42B6CDAD8002D4689 /* ImageActionSheetView.swift */,
 				521DCDBF2B7063B6002C786A /* ChangeUserNameView.swift */,
 			);
 			path = Profile;
@@ -281,22 +286,9 @@
 			children = (
 				521DCDC32B7099C7002C786A /* SignOutView.swift */,
 				521DCDCA2B70BA24002C786A /* SignOutViewModel.swift */,
+				521DCDCE2B70C51C002C786A /* LogoutAlertView.swift */,
 			);
 			path = Account;
-			sourceTree = "<group>";
-		};
-		521DCDC82B70B6AD002C786A /* Community */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Community;
-			sourceTree = "<group>";
-		};
-		521DCDC92B70B6B5002C786A /* App */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 		52E991C12B6CCF89002D4689 /* Setting */ = {
@@ -308,8 +300,6 @@
 				52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */,
 				52E991BF2B6CCD47002D4689 /* SettingViewModel.swift */,
 				521DCDC62B70B665002C786A /* Profile */,
-				521DCDC82B70B6AD002C786A /* Community */,
-				521DCDC92B70B6B5002C786A /* App */,
 				521DCDC72B70B67E002C786A /* Account */,
 			);
 			path = Setting;
@@ -819,6 +809,7 @@
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
+				521DCDD12B71C49A002C786A /* ProfileListView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightTestView.swift in Sources */,
 				52E991C02B6CCD47002D4689 /* SettingViewModel.swift in Sources */,
 				33DD0A322B6246F4005296AC /* ToastView.swift in Sources */,
@@ -847,7 +838,7 @@
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
-				52E991C52B6CDAD8002D4689 /* ActionSheetView.swift in Sources */,
+				52E991C52B6CDAD8002D4689 /* ImageActionSheetView.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorTestViewModel.swift in Sources */,
@@ -855,6 +846,7 @@
 				52EE56C72B5E2B0B00C6D423 /* VisionTestView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
+				521DCDCF2B70C51C002C786A /* LogoutAlertView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
 				5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */,
 				521DCDCB2B70BA24002C786A /* SignOutViewModel.swift in Sources */,
