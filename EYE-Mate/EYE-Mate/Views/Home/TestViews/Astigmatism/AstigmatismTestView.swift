@@ -331,6 +331,7 @@ private struct AstigmatismLeft: View {
 //MARK: - 테스트 결과 화면
 private struct AstigmatismTestResultView: View {
     @ObservedObject var viewModel: AstigmatismTestViewModel
+    @ObservedObject var coordinator: Coordinator = Coordinator.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -340,54 +341,112 @@ private struct AstigmatismTestResultView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(20)
             
+            let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
             
-            
-            HStack {
-                Spacer()
-                VStack(spacing: 20) {
-                    Text("왼쪽")
-                        .font(.pretendardBold_32)
-                    Image(viewModel.leftImage)
+            if total != 0 {
+                ScrollView(showsIndicators: false) {
+                    ResultTextView(viewModel: viewModel)
+                   
+                    Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                        .font(.pretendardBold_20)
+                        
+                        .foregroundColor(.customGreen)
+                    Color.customGreen
+                        .frame(height: 3)
+                        .padding(.horizontal, 10)
+                    VStack {
+                        ForEach(0..<total) { index in
+                            PlaceCellView(place: coordinator.resultInfo[index])
+                        }
+                    }
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                        .foregroundColor(.customGreen)
+                        .frame(height: 80)
+                        .padding(10)
+                        .overlay(
+                            Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                .multilineTextAlignment(.center)
+                                .font(.pretendardLight_16)
+                                .foregroundColor(.tabGray)
+                        )
                 }
+            }
+            else {
+                ResultTextView(viewModel: viewModel)
+                
                 Spacer()
-                VStack(spacing: 20) {
-                    Text("오른쪽")
-                        .font(.pretendardBold_32)
-                    Image(viewModel.rightImage)
-                }
+                
+                Text("내 주변에 안과나 안경점이 없어요!")
+                    .font(.pretendardBold_24)
+                    .foregroundColor(.customGreen)
+                
+                Spacer()
+                
+                Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
+                    .multilineTextAlignment(.center)
+                    .font(.pretendardSemiBold_20)
+                    
                 Spacer()
             }
             
-            HStack(spacing: 0) {
-                Text(viewModel.titleText)
-                    .font(.pretendardBold_18)
-                Text(viewModel.subTitleText)
-                    .font(.pretendardMedium_18)
-            }
-            .padding(.vertical, 10)
-            
-            
-            Text(viewModel.explainText)
-                .multilineTextAlignment(.center)
-                .font(.pretendardMedium_18)
-            
-            
-            Spacer()
-            
-            WaringText()
-            
-            Spacer()
-            
-            CustomButton(title: "돌아가기",
-                         background: .customGreen,
-                         fontStyle: .pretendardBold_16,
-                         //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                         action: { dismiss() } )
-            .frame(maxHeight: 75)
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            Coordinator.shared.checkIfLocationServiceIsEnabled()
+        }
+        
+        CustomButton(title: "돌아가기",
+                     background: .customGreen,
+                     fontStyle: .pretendardBold_16,
+                     //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                     action: { dismiss() } )
+        .frame(maxHeight: 75)
+        
     }
 }
+
+//MARK: - 결과 설명 화면
+private struct ResultTextView: View {
+    @ObservedObject var viewModel: AstigmatismTestViewModel
+    var body: some View {
+        HStack {
+            Spacer()
+            VStack(spacing: 20) {
+                Text("왼쪽")
+                    .font(.pretendardBold_32)
+                Image(viewModel.leftImage)
+            }
+            Spacer()
+            VStack(spacing: 20) {
+                Text("오른쪽")
+                    .font(.pretendardBold_32)
+                Image(viewModel.rightImage)
+            }
+            Spacer()
+        }
+        
+        HStack(spacing: 0) {
+            Text(viewModel.titleText)
+                .font(.pretendardBold_18)
+            Text(viewModel.subTitleText)
+                .font(.pretendardMedium_18)
+        }
+        .padding(.vertical, 10)
+        
+        
+        Text(viewModel.explainText)
+            .multilineTextAlignment(.center)
+            .font(.pretendardMedium_18)
+        
+        Spacer()
+        
+        WaringText()
+        
+        Spacer()
+    }
+}
+
 
 #Preview {
     AstigmatismTestView(distance: DistanceConditionViewModel())
