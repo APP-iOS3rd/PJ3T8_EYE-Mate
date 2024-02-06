@@ -7,12 +7,19 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 
 class LoginViewModel: ObservableObject {
-    static let shared = LoginView()
-    
+    static let shared = LoginViewModel()
     var verificationID: String
-    init(verificationID: String) {
+    
+    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_profile_url") private var profileURL: URL?
+    
+    
+    init( verificationID: String = "temp") {
         self.verificationID = verificationID
         UserDefaults.standard.set(false, forKey: "Login")
         
@@ -46,6 +53,34 @@ class LoginViewModel: ObservableObject {
                 print(error.localizedDescription)
                 completion(false)
             } else {
+                // 로그인 성공
+                // 테스트 코드 (우선 userid, 사진, 이런걸다 설정해놓고 storage에 저장)
+                
+                guard let uid = user?.user.uid else {return}
+                Task {
+                    do {
+                        // Storage에 DefaultProfile 이미지 저장
+                        guard let imageData = UIImage(named: "user")?.pngData() else { return }
+                        let storageRef = Storage.storage().reference().child("Profile_Images").child(uid)
+                        let _ = try await storageRef.putDataAsync(imageData)
+                        
+                        let downloadURL = try await storageRef.downloadURL()
+                        
+                        let user = User(username: "TestAccount", userUID: uid, userImageURL: downloadURL)
+                        
+                        let _ = try Firestore.firestore().collection("Users").document(uid).setData(from: user) { error in
+                            if error == nil {
+                                print("Saved Successfully")
+                                self.userName = "TestAccount"
+                                self.userUID = uid
+                                self.profileURL = downloadURL
+                            }
+                        }
+                    }catch{
+                        print(error.localizedDescription)
+                    }
+                }
+                
                 UserDefaults.standard.set(true, forKey: "Login")
                 print("OTP Verify Success = \(user?.user.uid ?? "N/A")")
                 completion(true)

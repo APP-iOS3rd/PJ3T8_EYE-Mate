@@ -41,6 +41,7 @@
 		52A51AC02B6B3DC800C68566 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */; };
 		52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */; };
 		52A51AC42B6B695100C68566 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC32B6B695100C68566 /* ProfileImage.swift */; };
+		52D0DE532B7213D600DBC54B /* tempUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D0DE522B7213D600DBC54B /* tempUser.swift */; };
 		52E991BA2B6CBC62002D4689 /* SettingTitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */; };
 		52E991BC2B6CC1FC002D4689 /* SettingListDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */; };
 		52E991BE2B6CCBF5002D4689 /* SettingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BD2B6CCBF5002D4689 /* SettingModels.swift */; };
@@ -143,6 +144,7 @@
 		52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableProfileView.swift; sourceTree = "<group>"; };
 		52A51AC32B6B695100C68566 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		52D0DE522B7213D600DBC54B /* tempUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempUser.swift; sourceTree = "<group>"; };
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleModifier.swift; sourceTree = "<group>"; };
 		52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListDivider.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				52FB98902B5F861B00F6A284 /* Places.swift */,
 				5278E3AA2B68B7CA00FC8109 /* CPData.swift */,
 				52E991BD2B6CCBF5002D4689 /* SettingModels.swift */,
+				52D0DE522B7213D600DBC54B /* tempUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				52FB98F62B638B4A00F6A284 /* SignUpView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
+				52D0DE532B7213D600DBC54B /* tempUser.swift in Sources */,
 				521DCDC02B7063B6002C786A /* ChangeUserNameView.swift in Sources */,
 				5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
