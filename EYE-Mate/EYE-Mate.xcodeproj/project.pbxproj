@@ -32,6 +32,7 @@
 		3391A1702B6A276C0035E0A5 /* VisionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16F2B6A276C0035E0A5 /* VisionChart.swift */; };
 		339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */; };
 		339D39062B70BF95005AC16B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39052B70BF95005AC16B /* CustomSlider.swift */; };
+		339D39082B7218BE005AC16B /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39072B7218BE005AC16B /* CustomMenu.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -127,6 +128,7 @@
 		3391A16F2B6A276C0035E0A5 /* VisionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionChart.swift; sourceTree = "<group>"; };
 		339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordSubtitleView.swift; sourceTree = "<group>"; };
 		339D39052B70BF95005AC16B /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		339D39072B7218BE005AC16B /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				331F8AB72B6CD12F0008D943 /* TestTypeButtonGroup.swift */,
 				339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */,
 				339D39052B70BF95005AC16B /* CustomSlider.swift */,
+				339D39072B7218BE005AC16B /* CustomMenu.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */,
 				7107A40C2B638E1600944077 /* SightTestViewModel.swift in Sources */,
 				331F8AAC2B6B7A620008D943 /* AddRecordHeader.swift in Sources */,
+				339D39082B7218BE005AC16B /* CustomMenu.swift in Sources */,
 				71027A562B5DEAE000879DA7 /* EYE_MateApp.swift in Sources */,
 				3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */,
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
