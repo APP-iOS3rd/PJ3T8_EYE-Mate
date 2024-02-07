@@ -15,7 +15,7 @@ enum TestPlace: String {
 struct PlaceButtonGroup: View {
     let callback: (String) -> ()
 
-    @State var selectedId: String = ""
+    @State var selectedID: String = ""
 
     var body: some View {
         HStack(spacing: 12) {
@@ -28,7 +28,7 @@ struct PlaceButtonGroup: View {
         RadioButton(
             id: TestPlace.ophthalmology.rawValue,
             label: TestPlace.ophthalmology.rawValue,
-            isMarked: selectedId == TestPlace.ophthalmology.rawValue ? true : false,
+            isMarked: selectedID == TestPlace.ophthalmology.rawValue ? true : false,
             callback: radioGroupCallback
         )
     }
@@ -37,13 +37,13 @@ struct PlaceButtonGroup: View {
         RadioButton(
             id: TestPlace.optician.rawValue,
             label: TestPlace.optician.rawValue,
-            isMarked: selectedId == TestPlace.optician.rawValue ? true : false,
+            isMarked: selectedID == TestPlace.optician.rawValue ? true : false,
             callback: radioGroupCallback
         )
     }
 
     func radioGroupCallback(id: String) {
-        selectedId = id
+        selectedID = id
         callback(id)
     }
 }

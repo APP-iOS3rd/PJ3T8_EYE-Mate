@@ -30,9 +30,11 @@
 		3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */; };
 		3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */; };
 		3391A1702B6A276C0035E0A5 /* VisionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16F2B6A276C0035E0A5 /* VisionChart.swift */; };
+		3398D4842B73634200535E0C /* VisionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4832B73634200535E0C /* VisionSlider.swift */; };
 		339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */; };
 		339D39062B70BF95005AC16B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39052B70BF95005AC16B /* CustomSlider.swift */; };
 		339D39082B7218BE005AC16B /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39072B7218BE005AC16B /* CustomMenu.swift */; };
+		339D390A2B7355CD005AC16B /* CustomMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39092B7355CD005AC16B /* CustomMenuButton.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -126,9 +128,11 @@
 		3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismDataView.swift; sourceTree = "<group>"; };
 		3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesightDataView.swift; sourceTree = "<group>"; };
 		3391A16F2B6A276C0035E0A5 /* VisionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionChart.swift; sourceTree = "<group>"; };
+		3398D4832B73634200535E0C /* VisionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSlider.swift; sourceTree = "<group>"; };
 		339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordSubtitleView.swift; sourceTree = "<group>"; };
 		339D39052B70BF95005AC16B /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		339D39072B7218BE005AC16B /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
+		339D39092B7355CD005AC16B /* CustomMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuButton.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */,
 				339D39052B70BF95005AC16B /* CustomSlider.swift */,
 				339D39072B7218BE005AC16B /* CustomMenu.swift */,
+				339D39092B7355CD005AC16B /* CustomMenuButton.swift */,
+				3398D4832B73634200535E0C /* VisionSlider.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
 				7107A4082B6356FD00944077 /* DistanceConditionView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
+				339D390A2B7355CD005AC16B /* CustomMenuButton.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
 				3391A1642B68DD850035E0A5 /* RecordBox.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
@@ -800,6 +807,7 @@
 				339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */,
 				331F8AAA2B6B76440008D943 /* AddRecordView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomBtn.swift in Sources */,
+				3398D4842B73634200535E0C /* VisionSlider.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
 				331F8AB82B6CD12F0008D943 /* TestTypeButtonGroup.swift in Sources */,

@@ -16,31 +16,13 @@ struct AddRecordView: View {
     @State private var leftVision = 1.0
     @State private var rightVision = 1.0
 
-    @State private var selectedOption = RecordStatus.nothing
-    @State private var isMenuVisible = false
-    @State private var menuPosition: CGPoint = .zero
+    @State private var leftColorVisionStatus = RecordStatus.nothing
+    @State private var rightColorVisionStatus = RecordStatus.nothing
 
-    func textColor() -> Color {
-        switch selectedOption {
-        case .nothing:
-            return Color.btnGray
-        case .bad:
-            return Color.customRed
-        case .fine:
-            return Color.lightYellow
-        case .good:
-            return Color.customGreen
-        }
-    }
+    @State private var astigmatismStatus = RecordStatus.nothing
 
-    enum RecordStatus: String, CaseIterable, Identifiable {
-        var id: Self { self }
-
-        case nothing = "선택"
-        case bad = "나쁨"
-        case fine = "양호"
-        case good = "좋음"
-    }
+    @State private var leftEyesightStatus = RecordStatus.nothing
+    @State private var rightEyesightStatus = RecordStatus.nothing
 
     var body: some View {
         VStack {
@@ -87,120 +69,66 @@ struct AddRecordView: View {
 
                     if isVisionRecordVisible || isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                         HorizontalDivider(color: Color.btnGray, height: 2)
+                            .transition(AnyTransition.opacity.animation(.easeInOut))
                     }
 
                     if isVisionRecordVisible {
-                        AddRecordSubtitleView(label: "시력")
-                        VStack(spacing: 8) {
-                            HStack(spacing: 16) {
-                                Text("좌").font(.pretendardRegular_14)
-                                VStack(spacing: 6) {
-                                    CustomSlider(
-                                        thumbColor: .white,
-                                        minTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 1),
-                                        maxTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 0.2),
-                                        value: $leftVision
-                                    )
-                                    Text("\(String(format: "%.1f", leftVision))").font(.pretendardRegular_12)
-                                }.padding(.top, 18)
+                        VStack {
+                            AddRecordSubtitleView(label: "시력")
+                            VStack(spacing: 8) {
+                                VisionSlider(value: $leftVision, label: "좌")
+                                VisionSlider(value: $rightVision, label: "우")
                             }
-                            .padding(.leading, 12)
-                            .padding(.trailing, 12)
-                            HStack(spacing: 16) {
-                                Text("우").font(.pretendardRegular_14)
-                                VStack(spacing: 6) {
-                                    CustomSlider(
-                                        thumbColor: .white,
-                                        minTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 1),
-                                        maxTrackColor: UIColor(red: 82/255, green: 202/255, blue: 166/255, alpha: 0.2),
-                                        value: $rightVision
-                                    )
-                                    Text("\(String(format: "%.1f", rightVision))").font(.pretendardRegular_12)
-                                }.padding(.top, 18)
-                            }
-                            .padding(.leading, 12)
-                            .padding(.trailing, 12)
                         }
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
+
 
                         if isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                             HorizontalDivider(color: Color.btnGray, height: 2)
+                                .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
                     }
 
                     if isColorVisionRecordVisible {
-                        AddRecordSubtitleView(label: "색각")
-                        HStack(spacing: 16) {
-                            Text("좌").font(.pretendardRegular_14)
-
-                            ZStack {
-                                    Button {
-                                        isMenuVisible.toggle()
-                                    } label: {
-                                        Text("\(selectedOption.rawValue)")
-                                            .font(.pretendardRegular_16)
-                                            .foregroundStyle(textColor())
-                                            .padding(24)
-                                            .frame(height: 32)
-                                            .background(.white)
-                                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                                            .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
-                                    }
-                                if isMenuVisible {
-                                    CustomMenu {
-                                        Group {
-                                            Button(action: { 
-                                                selectedOption = RecordStatus.good
-                                                isMenuVisible.toggle()
-                                            }) {
-                                                Text("좋음")
-                                            }
-                                            .buttonStyle(CustomMenuButtonStyle(color: Color.customGreen))
-                                            HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
-                                            Button(action: {
-                                                selectedOption = RecordStatus.fine
-                                                isMenuVisible.toggle()
-                                            }) {
-                                                Text("양호")
-                                            }
-                                            .buttonStyle(CustomMenuButtonStyle(color: Color.lightYellow))
-                                            HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
-                                            Button(action: {
-                                                selectedOption = RecordStatus.bad
-                                                isMenuVisible.toggle()
-                                            }) {
-                                                Text("나쁨")
-                                            }
-                                            .buttonStyle(CustomMenuButtonStyle(color: Color.customRed))
-                                        }
-                                    }
-                                    .offset(y: -92)
-                                    .transition(.asymmetric(insertion: AnyTransition.move(edge: .bottom).combined(with: .scale).animation(.easeInOut), removal: AnyTransition.opacity.animation(.easeInOut)))
-
-                                }
-                            }.frame(width: 80, height: 40)
+                        VStack {
+                            AddRecordSubtitleView(label: "색각")
+                            HStack(spacing: 80) {
+                                CustomMenuButton(label: "좌", selectedOption: $leftColorVisionStatus)
+                                CustomMenuButton(label: "우", selectedOption: $rightColorVisionStatus)
+                            }
                         }
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
                         if isAstigmatismRecordVisible || isEyesightRecordVisible {
                             HorizontalDivider(color: Color.btnGray, height: 2)
+                                .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
                     }
                     if isAstigmatismRecordVisible {
-                        AddRecordSubtitleView(label: "난시")
+                        VStack {
+                            AddRecordSubtitleView(label: "난시")
+                            CustomMenuButton(label: nil, selectedOption: $astigmatismStatus)
+                        }
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
                         if isEyesightRecordVisible {
                             HorizontalDivider(color: Color.btnGray, height: 2)
+                                .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
                     }
                     if isEyesightRecordVisible {
-                        AddRecordSubtitleView(label: "시야")
+                        VStack {
+                            AddRecordSubtitleView(label: "시야")
+                            HStack(spacing: 80) {
+                                CustomMenuButton(label: "좌", selectedOption: $leftEyesightStatus)
+                                CustomMenuButton(label: "우", selectedOption: $rightEyesightStatus)
+                            }
+                        }
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
                     }
                 }
                 .padding(.horizontal, 12)
                 .padding(.top, 20)
-
-
                 Spacer()
             }
-        }.onTapGesture {
-            isMenuVisible = false
         }
     }
 }
