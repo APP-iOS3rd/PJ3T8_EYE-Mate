@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Kingfisher
+
 struct PostCardView: View {
     var post: Post
     
@@ -59,10 +61,18 @@ struct PostCardView: View {
             .padding(.leading, 10)
             
             // postImage
-            RoundedRectangle(cornerRadius: 10)
-                .frame(maxWidth: 75, maxHeight: 75)
-                .foregroundStyle(.red)
-                .padding(.trailing)
+            if let imageURL = post.postImageURLs {
+                KFImage(imageURL[0])
+                    .placeholder { //플레이스 홀더 설정
+                        ProgressView()
+                            .modifier(MapImageModifier())
+                    }
+                    .retry(maxCount: 3, interval: .seconds(5))
+                    .resizable()
+                    .frame(maxWidth: 75, maxHeight: 75)
+                    .aspectRatio(contentMode: .fill)
+                    .padding(.trailing)
+            }
         }
         .background(
             RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -73,7 +83,3 @@ struct PostCardView: View {
         .padding(.vertical, 4)
     }
 }
-
-//#Preview {
-//    PostCardView(post: "안약 과다 사용")
-//}
