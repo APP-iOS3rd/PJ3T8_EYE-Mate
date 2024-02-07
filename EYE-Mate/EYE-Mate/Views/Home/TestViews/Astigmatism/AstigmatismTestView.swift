@@ -38,6 +38,8 @@ private struct AstigmatismTest: View {
     
     var body: some View {
         VStack {
+            ProgressView(value: testPercent)
+                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
                 AstigmatismRight(viewModel: viewModel,
@@ -81,9 +83,6 @@ private struct AstigmatismRight: View {
     var body: some View {
         if !isReady {
             //TODO: - 테스트 안내문구 보여주기
-            ProgressView(value: testPercent)
-                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
-            
             Spacer()
             
             VStack {
@@ -120,8 +119,6 @@ private struct AstigmatismRight: View {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
                         VStack {
-                            ProgressView(value: testPercent)
-                                .progressViewStyle(LinearProgressViewStyle(tint: .customGreen))
                             HStack(alignment: .lastTextBaseline) {
                                 Spacer()
                                 Text("현재거리 ")
@@ -148,11 +145,11 @@ private struct AstigmatismRight: View {
                             
                             Spacer()
                             
-                            if !distance.canStart {
-                                Text("휴대폰과의 거리를 조정해주세요!")
-                                    .font(.pretendardMedium_18)
-                                    .foregroundColor(.customRed)
-                            }
+                            Text("휴대폰과의 거리를 조정해주세요!")
+                                .font(.pretendardMedium_18)
+                                .foregroundColor(.customRed)
+                                .opacity(!distance.canStart ? 1.0 : 0.0)
+                            
                             
                             HStack {
                                 CustomButton(title: "예",
@@ -163,11 +160,10 @@ private struct AstigmatismRight: View {
                                         viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        viewModel.userAnswer.append("Y")
-                                        isChange.toggle()
-                                        viewModel.userSayYes.toggle()
-                                    }
+                                    viewModel.userAnswer.append("Y")
+                                    isChange.toggle()
+                                    viewModel.userSayYes.toggle()
+                                    //TODO: - 진동주는 이펙트
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
@@ -180,11 +176,9 @@ private struct AstigmatismRight: View {
                                         viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        viewModel.userAnswer.append("N")
-                                        isChange.toggle()
-                                        viewModel.userSayNo.toggle()
-                                    }
+                                    viewModel.userAnswer.append("N")
+                                    isChange.toggle()
+                                    viewModel.userSayNo.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
@@ -211,9 +205,6 @@ private struct AstigmatismLeft: View {
     var body: some View {
         if !isReady {
             //TODO: - 테스트 안내문구 보여주기
-            ProgressView(value: testPercent)
-                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
-            
             Spacer()
             
             VStack {
@@ -250,8 +241,6 @@ private struct AstigmatismLeft: View {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
                         VStack {
-                            ProgressView(value: testPercent)
-                                .progressViewStyle(LinearProgressViewStyle(tint: .customGreen))
                             HStack(alignment: .lastTextBaseline) {
                                 Spacer()
                                 Text("현재거리 ")
@@ -277,11 +266,11 @@ private struct AstigmatismLeft: View {
                             
                             Spacer()
                             
-                            if !distance.canStart {
-                                Text("휴대폰과의 거리를 조정해주세요!")
-                                    .font(.pretendardMedium_18)
-                                    .foregroundColor(.customRed)
-                            }
+                            Text("휴대폰과의 거리를 조정해주세요!")
+                                .font(.pretendardMedium_18)
+                                .foregroundColor(.customRed)
+                                .opacity(!distance.canStart ? 1.0 : 0.0)
+                            
                             
                             HStack {
                                 CustomButton(title: "예",
@@ -292,11 +281,9 @@ private struct AstigmatismLeft: View {
                                         viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        viewModel.userAnswer.append("Y")
-                                        isTestComplete.toggle()
-                                        viewModel.userSayYes.toggle()
-                                    }
+                                    viewModel.userAnswer.append("Y")
+                                    isTestComplete.toggle()
+                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
@@ -309,11 +296,9 @@ private struct AstigmatismLeft: View {
                                         viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        viewModel.userAnswer.append("N")
-                                        isTestComplete.toggle()
-                                        viewModel.userSayYes.toggle()
-                                    }
+                                    viewModel.userAnswer.append("N")
+                                    isTestComplete.toggle()
+                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
