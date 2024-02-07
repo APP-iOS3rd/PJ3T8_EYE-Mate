@@ -39,7 +39,6 @@ class LoginViewModel: ObservableObject {
             }
     }
     
-    
     // MARK: - signUpFlag == false 이고 storage에 uid 가 없으면 로그인 X -> 회원가입으로 유도(나중에)
     func verifyOTP(otp: String, signUpFlag: Bool, completion: @escaping (Bool) -> Void){
         // 인증 코드, 인증 ID를 사용해 FIRPhoneAuthCredential 객체 생성

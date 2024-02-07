@@ -13,14 +13,18 @@ import FirebaseStorage
 class PostViewModel: ObservableObject {
     @Published var post: Post
     
-    @Published var commentText: String = "댓글을 남겨보세요..."
-    @Published var commentPlaceHolder: String = "댓글을 남겨보세요..."
+    @Published var commentText: String = ""
     
     @Published var isLoading: Bool = false
     
+    @Published var commentViewPadding: CGFloat = 15
+    @Published var commentViewCornerRadius: CGFloat = 10
+    
     @State private var docListener: ListenerRegistration?
     
-    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
+    @AppStorage("user_profile_url") private var profileURL: URL?
     
     init(post: Post) {
         self.post = post
@@ -82,5 +86,26 @@ class PostViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    /// - 댓글 작성 Action
+    func writeComment() {
+        let comment = Comment(userName: userName,
+                              userUID: userUID,
+                              userImageURL: profileURL,
+                              comment: commentText)
+        Task {
+            do {
+                guard let postID = post.id else { return }
+//                try await Firestore.firestore().collection("Posts").document(postID).collection()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    /// - 게시물 스크랩 Action
+    func postScrap() {
+        
     }
 }
