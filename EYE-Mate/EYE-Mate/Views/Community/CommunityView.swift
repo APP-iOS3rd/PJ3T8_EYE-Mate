@@ -14,43 +14,41 @@ struct CommunityView: View {
     
     var body: some View {
         // MARK: NavigationStack 추후에 지워주기
-        NavigationStack{
-            VStack(spacing: 0) {
-                // 상단 Title
-                HStack(alignment: .bottom) {
-                    VStack {
-                        Text("EYE-Mate")
-                            .font(.pretendardBold_22)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("게시판")
-                            .font(.pretendardBold_32)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
-                    // MARK: profileImage 추후에 Firebase에서 Image 받아오기
-                    NavigationLink(destination: ProfileView()) {
-                        Image(systemName: "person.crop.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.black)
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical)
-                
-                // 상단 TabView
-                communityTopTabView()
-                
-                // 선택된 상단 Tab의 View Switching
-                
-                switch selectedPicker {
-                case .faq:
-                    FAQView()
-                case .freeboard:
-                    FreeBoardView()
+        VStack(spacing: 0) {
+            // 상단 Title
+            HStack(alignment: .bottom) {
+                VStack {
+                    Text("EYE-Mate")
+                        .font(.pretendardBold_22)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("게시판")
+                        .font(.pretendardBold_32)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                Spacer()
+                // MARK: profileImage 추후에 Firebase에서 Image 받아오기
+                NavigationLink(destination: ProfileView()) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .font(.largeTitle)
+                        .foregroundStyle(.black)
+                }
             }
+            .padding(.horizontal, 20)
+            .padding(.vertical)
+            
+            // 상단 TabView
+            communityTopTabView()
+            
+            // 선택된 상단 Tab의 View Switching
+            
+            switch selectedPicker {
+            case .faq:
+                FAQView()
+            case .freeboard:
+                FreeBoardView()
+            }
+            
+            Spacer()
         }
     }
     
