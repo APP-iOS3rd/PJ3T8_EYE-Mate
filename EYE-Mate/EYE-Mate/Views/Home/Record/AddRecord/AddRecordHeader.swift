@@ -10,6 +10,8 @@ import SwiftUI
 struct AddRecordHeader: View {
     @Environment(\.dismiss) var dismiss
 
+    let onPressResetButton: () -> Void
+
     private func goBack() {
         dismiss()
     }
@@ -27,6 +29,7 @@ struct AddRecordHeader: View {
                 }
                 Spacer()
                 Button {
+                    onPressResetButton()
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemName: "arrow.clockwise")
@@ -57,5 +60,5 @@ struct AddRecordHeader: View {
 }
 
 #Preview {
-    AddRecordHeader()
+    AddRecordHeader(onPressResetButton: {})
 }

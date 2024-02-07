@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TestTypeButtonGroup: View {
+    @Binding var selectedID: [String]
+
     let selectionCallback: (String) -> Void
 
     var body: some View {
@@ -23,10 +25,8 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.vision.rawValue,
             label: TestType.vision.rawValue,
-            callback: { id, isMarked in
-                checkBoxGroupCallback(id: id, isMarked: isMarked)
-                selectionCallback(id)
-            }
+            isMarked: selectedID.contains(TestType.vision.rawValue) ? true : false,
+            callback: checkBoxGroupCallback
         )
     }
 
@@ -34,10 +34,8 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.colorVision.rawValue,
             label: TestType.colorVision.rawValue,
-            callback: { id, isMarked in
-                checkBoxGroupCallback(id: id, isMarked: isMarked)
-                selectionCallback(id)
-            }
+            isMarked: selectedID.contains(TestType.colorVision.rawValue) ? true : false,
+            callback: checkBoxGroupCallback
         )
     }
 
@@ -45,10 +43,8 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.astigmatism.rawValue,
             label: TestType.astigmatism.rawValue,
-            callback: { id, isMarked in
-                checkBoxGroupCallback(id: id, isMarked: isMarked)
-                selectionCallback(id)
-            }
+            isMarked: selectedID.contains(TestType.astigmatism.rawValue) ? true : false,
+            callback: checkBoxGroupCallback
         )
     }
 
@@ -56,20 +52,25 @@ struct TestTypeButtonGroup: View {
         CheckBoxButton(
             id: TestType.eyesight.rawValue,
             label: TestType.eyesight.rawValue,
-            callback: { id, isMarked in
-                checkBoxGroupCallback(id: id, isMarked: isMarked)
-                selectionCallback(id)
-            }
+            isMarked: selectedID.contains(TestType.eyesight.rawValue) ? true : false,
+            callback: checkBoxGroupCallback
         )
     }
 
-    func checkBoxGroupCallback(id: String, isMarked: Bool) {
-        print("\(id) is marked: \(isMarked)")
+    func checkBoxGroupCallback(id: String) {
+        selectionCallback(id)
+        if let index = selectedID.firstIndex(of: id) {
+            selectedID.remove(at: index)
+        } else {
+            selectedID.append(id)
+        }
     }
 }
 
 #Preview {
-    TestTypeButtonGroup() { _ in
+    @State var selectedID: [String] = []
+
+    return TestTypeButtonGroup(selectedID: $selectedID) { _ in
 
     }
 }

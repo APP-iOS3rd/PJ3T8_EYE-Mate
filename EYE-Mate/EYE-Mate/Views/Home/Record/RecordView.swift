@@ -56,7 +56,7 @@ struct RecordView: View {
                                     .font(.pretendardRegular_16)
                             }
 
-                        NavigationLink(destination: AddRecordView().navigationBarBackButtonHidden()) {
+                        NavigationLink(destination: AddRecordView()) {
                             RoundedRectangle(cornerRadius: 16)
                                 .frame(maxWidth: 40)
                                 .frame(height: 32)

@@ -9,39 +9,66 @@ import SwiftUI
 
 struct AddRecordView: View {
     @Environment(\.dismiss) var dismiss
-
-    @State private var selectedDate = Date()
-
-    @State private var isVisionRecordVisible = false
-    @State private var isColorVisionRecordVisible = false
-    @State private var isAstigmatismRecordVisible = false
-    @State private var isEyesightRecordVisible = false
-
+    
+    @State private var selectedDate: Date = Date()
+    
+    @State private var selectedEyeware = ""
+    @State private var selectedPlace = ""
+    
+    @State private var selectedTestType: [String] = []
+    
     @State private var leftVision = 1.0
     @State private var rightVision = 1.0
-
-    @State private var leftColorVisionStatus = RecordStatus.nothing
-    @State private var rightColorVisionStatus = RecordStatus.nothing
-
-    @State private var astigmatismStatus = RecordStatus.nothing
-
+    
+    @State private var colorVisionStatus = RecordStatus.nothing
+    
+    @State private var leftAstigmatismStatus = RecordStatus.nothing
+    @State private var rightAstigmatismStatus = RecordStatus.nothing
+    
     @State private var leftEyesightStatus = RecordStatus.nothing
     @State private var rightEyesightStatus = RecordStatus.nothing
-
+    
+    var isVisionRecordVisible: Bool {
+        selectedTestType.contains(TestType.vision.rawValue)
+    }
+    var isColorVisionRecordVisible: Bool {
+        selectedTestType.contains(TestType.colorVision.rawValue)
+    }
+    var isAstigmatismRecordVisible: Bool {
+        selectedTestType.contains(TestType.astigmatism.rawValue)
+    }
+    var isEyesightRecordVisible: Bool {
+        selectedTestType.contains(TestType.eyesight.rawValue)
+    }
+    
     private func goBack() {
         dismiss()
     }
-
+    
+    private func resetRecord() {
+        selectedDate = Date()
+        selectedEyeware = ""
+        selectedPlace = ""
+        selectedTestType = []
+        leftVision = 1.0
+        rightVision = 1.0
+        colorVisionStatus = RecordStatus.nothing
+        leftAstigmatismStatus = RecordStatus.nothing
+        rightAstigmatismStatus = RecordStatus.nothing
+        leftEyesightStatus = RecordStatus.nothing
+        rightEyesightStatus = RecordStatus.nothing
+    }
+    
     static let dateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY.MM.dd"
-
+        
         return formatter
     }()
-
+    
     var body: some View {
         VStack {
-            AddRecordHeader()
+            AddRecordHeader(onPressResetButton: {resetRecord()})
             GeometryReader { geometry in
                 ScrollView {
                     VStack(spacing: 20){
@@ -59,46 +86,35 @@ struct AddRecordView: View {
                             Spacer()
                         }
                         HorizontalDivider(color: Color.btnGray, height: 2)
-
+                        
                         AddRecordSubtitleView(label: "안경 착용")
-                        EyewareButtonGroup { selected in
+                        EyewareButtonGroup(selectedID: $selectedEyeware) { selected in
                             print("Selected is: \(selected)")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
                         HorizontalDivider(color: Color.btnGray, height: 2)
-
+                        
                         AddRecordSubtitleView(label: "검사 장소")
-                        PlaceButtonGroup { selected in
+                        PlaceButtonGroup(selectedID: $selectedPlace) { selected in
                             print("Selected is: \(selected)")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
                         HorizontalDivider(color: Color.btnGray, height: 2)
-
+                        
                         AddRecordSubtitleView(label: "검사 종류")
-                        TestTypeButtonGroup { selected in
-                            if selected == TestType.vision.rawValue {
-                                self.isVisionRecordVisible.toggle()
-                            }
-                            if selected == TestType.colorVision.rawValue {
-                                self.isColorVisionRecordVisible.toggle()
-                            }
-                            if selected == TestType.astigmatism.rawValue {
-                                self.isAstigmatismRecordVisible.toggle()
-                            }
-                            if selected == TestType.eyesight.rawValue {
-                                self.isEyesightRecordVisible.toggle()
-                            }
+                        TestTypeButtonGroup(selectedID: $selectedTestType) { selected in
+                            print("Selected is: \(selected)")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-
+                        
                         if isVisionRecordVisible || isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                             HorizontalDivider(color: Color.btnGray, height: 2)
                                 .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
-
+                        
                         if isVisionRecordVisible {
                             VStack {
                                 AddRecordSubtitleView(label: "시력")
@@ -108,21 +124,22 @@ struct AddRecordView: View {
                                 }
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
-
-
+                            
+                            
                             if isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                                 HorizontalDivider(color: Color.btnGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
-
+                        
                         if isColorVisionRecordVisible {
                             VStack {
                                 AddRecordSubtitleView(label: "색각")
-                                HStack(spacing: 80) {
-                                    CustomMenuButton(label: "좌", selectedOption: $leftColorVisionStatus)
-                                    CustomMenuButton(label: "우", selectedOption: $rightColorVisionStatus)
+                                HStack {
+                                    CustomMenuButton(label: nil, selectedOption: $colorVisionStatus)
                                 }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading, 12)
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isAstigmatismRecordVisible || isEyesightRecordVisible {
@@ -133,7 +150,10 @@ struct AddRecordView: View {
                         if isAstigmatismRecordVisible {
                             VStack {
                                 AddRecordSubtitleView(label: "난시")
-                                CustomMenuButton(label: nil, selectedOption: $astigmatismStatus)
+                                HStack(spacing: 80) {
+                                    CustomMenuButton(label: "좌", selectedOption: $leftAstigmatismStatus)
+                                    CustomMenuButton(label: "우", selectedOption: $rightAstigmatismStatus)
+                                }
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isEyesightRecordVisible {
@@ -163,7 +183,7 @@ struct AddRecordView: View {
                     .frame(height: 88)
                     .frame(maxWidth: .infinity)
                 }
-            }
+            }.navigationBarBackButtonHidden()
         }
     }
 }

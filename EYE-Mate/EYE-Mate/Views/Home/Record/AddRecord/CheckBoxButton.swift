@@ -10,24 +10,24 @@ import SwiftUI
 struct CheckBoxButton: View {
     let id: String
     let label: String
-    let callback: (String, Bool)->()
+    let isMarked: Bool
+    let callback: (String)->()
 
     init(
         id: String,
-        label:String,
-        callback: @escaping (String, Bool)->()
-        ) {
+        label: String,
+        isMarked: Bool = false,
+        callback: @escaping (String)->()
+    ) {
         self.id = id
         self.label = label
+        self.isMarked = isMarked
         self.callback = callback
     }
 
-    @State var isMarked: Bool = false
-
     var body: some View {
         Button {
-            self.isMarked.toggle()
-            self.callback(self.id, self.isMarked)
+            self.callback(self.id)
         } label: {
             if self.isMarked {
                 Text(label)
@@ -58,7 +58,7 @@ struct CheckBoxButton: View {
 }
 
 #Preview {
-    CheckBoxButton(id: "안경", label: "안경") { _, _  in
+    CheckBoxButton(id: "안경", label: "안경") { _ in
 
     }
 }

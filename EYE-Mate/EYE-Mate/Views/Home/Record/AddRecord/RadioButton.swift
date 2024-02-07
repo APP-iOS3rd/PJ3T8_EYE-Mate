@@ -16,7 +16,7 @@ struct RadioButton: View {
     init(
         id: String,
         label:String,
-        isMarked: Bool = true,
+        isMarked: Bool = false,
         callback: @escaping (String)->()
     ) {
         self.id = id

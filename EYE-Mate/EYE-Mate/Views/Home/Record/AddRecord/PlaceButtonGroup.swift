@@ -13,9 +13,9 @@ enum TestPlace: String {
 }
 
 struct PlaceButtonGroup: View {
-    let callback: (String) -> ()
+    @Binding var selectedID: String
 
-    @State var selectedID: String = ""
+    let callback: (String) -> ()
 
     var body: some View {
         HStack(spacing: 12) {
@@ -49,7 +49,9 @@ struct PlaceButtonGroup: View {
 }
 
 #Preview {
-    PlaceButtonGroup{ selected in
+    @State var selectedID = ""
+
+    return PlaceButtonGroup(selectedID: $selectedID){ selected in
         print("Selected is: \(selected)")
     }
 }

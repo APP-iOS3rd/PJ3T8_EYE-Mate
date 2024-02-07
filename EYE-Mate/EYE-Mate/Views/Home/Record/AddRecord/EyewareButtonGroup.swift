@@ -15,9 +15,9 @@ enum Eyeware: String {
 }
 
 struct EyewareButtonGroup: View {
-    let callback: (String) -> ()
+    @Binding var selectedID: String
 
-    @State var selectedID: String = ""
+    let callback: (String) -> ()
 
     var body: some View {
         HStack(spacing: 12) {
@@ -72,7 +72,9 @@ struct EyewareButtonGroup: View {
 }
 
 #Preview {
-    EyewareButtonGroup { selected in
+    @State var selectedID = ""
+
+    return EyewareButtonGroup(selectedID: $selectedID) { selected in
         print("Selected is: \(selected)")
     }
 }
