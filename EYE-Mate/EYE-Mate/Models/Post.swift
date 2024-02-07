@@ -12,8 +12,8 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
     @DocumentID var id: String?
     var postTitle: String // 게시물 제목
     var postContent: String // 게시물 내용
-    var postImageURLs: [URL] = [] // 게시물에 첨부된 이미지들
-    var imageReferenceID: String = "" // Image 삭제, 수정 할 때 사용
+    var postImageURLs: [URL]? // 게시물에 첨부된 이미지들
+    var imageReferenceIDs: [String]? // Image 삭제, 수정 할 때 사용
     var publishedDate: Date = Date() // 게시 Date
     var likedIDs: [String] = [] // 좋아요 누른 userID Array
     
