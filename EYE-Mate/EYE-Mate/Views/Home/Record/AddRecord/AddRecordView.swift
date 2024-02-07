@@ -10,6 +10,8 @@ import SwiftUI
 struct AddRecordView: View {
     @Environment(\.dismiss) var dismiss
 
+    @State private var selectedDate = Date()
+
     @State private var isVisionRecordVisible = false
     @State private var isColorVisionRecordVisible = false
     @State private var isAstigmatismRecordVisible = false
@@ -30,6 +32,13 @@ struct AddRecordView: View {
         dismiss()
     }
 
+    static let dateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.MM.dd"
+
+        return formatter
+    }()
+
     var body: some View {
         VStack {
             AddRecordHeader()
@@ -37,6 +46,18 @@ struct AddRecordView: View {
                 ScrollView {
                     VStack(spacing: 20){
                         AddRecordSubtitleView(label: "검사 날짜")
+                        HStack {
+                            Text("\(selectedDate, formatter: AddRecordView.dateFormat)")
+                                .font(.pretendardRegular_16)
+                                .padding(8)
+                                .overlay {
+                                    DatePicker(selection: $selectedDate, displayedComponents: .date) {}
+                                        .labelsHidden()
+                                        .contentShape(Rectangle())
+                                        .opacity(0.011)
+                                }
+                            Spacer()
+                        }
                         HorizontalDivider(color: Color.btnGray, height: 2)
 
                         AddRecordSubtitleView(label: "안경 착용")
