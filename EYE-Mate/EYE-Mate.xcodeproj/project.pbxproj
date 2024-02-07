@@ -44,6 +44,8 @@
 		3398D4882B7369C400535E0C /* AddRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4872B7369C400535E0C /* AddRecordHeader.swift */; };
 		3398D48A2B7369EB00535E0C /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4892B7369EB00535E0C /* CustomMenu.swift */; };
 		3398D48C2B736AC000535E0C /* RecordBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D48B2B736AC000535E0C /* RecordBox.swift */; };
+		3398D48E2B736E7500535E0C /* WarningText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D48D2B736E7500535E0C /* WarningText.swift */; };
+		3398D4902B736EE400535E0C /* VisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D48F2B736EE400535E0C /* VisionView.swift */; };
 		339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */; };
 		339D39062B70BF95005AC16B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39052B70BF95005AC16B /* CustomSlider.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
@@ -64,7 +66,6 @@
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
 		52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C22B5E2AF200C6D423 /* RecordView.swift */; };
 		52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */; };
-		52EE56C72B5E2B0B00C6D423 /* VisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C62B5E2B0B00C6D423 /* VisionView.swift */; };
 		52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56C92B5E2B2A00C6D423 /* MovementView.swift */; };
 		52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56CE2B5E2C8100C6D423 /* FreeBoardView.swift */; };
 		52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE56D02B5E2C8900C6D423 /* FAQView.swift */; };
@@ -99,7 +100,6 @@
 		710D40942B5FD8A9006C9FED /* SightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightView.swift */; };
 		710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */; };
 		710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */; };
-		710D409A2B61059D006C9FED /* WarningText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40992B61059D006C9FED /* WarningText.swift */; };
 		710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D409B2B613AC5006C9FED /* ExplanationTextView.swift */; };
 		711F4A872B6959A2001C6B53 /* TestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A862B6959A2001C6B53 /* TestType.swift */; };
 		711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A882B6A1756001C6B53 /* VisionTestView.swift */; };
@@ -171,6 +171,8 @@
 		3398D4872B7369C400535E0C /* AddRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordHeader.swift; sourceTree = "<group>"; };
 		3398D4892B7369EB00535E0C /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		3398D48B2B736AC000535E0C /* RecordBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBox.swift; sourceTree = "<group>"; };
+		3398D48D2B736E7500535E0C /* WarningText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningText.swift; sourceTree = "<group>"; };
+		3398D48F2B736EE400535E0C /* VisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionView.swift; sourceTree = "<group>"; };
 		339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordSubtitleView.swift; sourceTree = "<group>"; };
 		339D39052B70BF95005AC16B /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -192,7 +194,6 @@
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52EE56C22B5E2AF200C6D423 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseView.swift; sourceTree = "<group>"; };
-		52EE56C62B5E2B0B00C6D423 /* VisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionView.swift; sourceTree = "<group>"; };
 		52EE56C92B5E2B2A00C6D423 /* MovementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementView.swift; sourceTree = "<group>"; };
 		52EE56CE2B5E2C8100C6D423 /* FreeBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardView.swift; sourceTree = "<group>"; };
 		52EE56D02B5E2C8900C6D423 /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
@@ -229,7 +230,6 @@
 		710D40932B5FD8A9006C9FED /* SightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightView.swift; sourceTree = "<group>"; };
 		710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
 		710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewOnboardingView.swift; sourceTree = "<group>"; };
-		710D40992B61059D006C9FED /* WarningText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningText.swift; sourceTree = "<group>"; };
 		710D409B2B613AC5006C9FED /* ExplanationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationTextView.swift; sourceTree = "<group>"; };
 		711F4A862B6959A2001C6B53 /* TestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestType.swift; sourceTree = "<group>"; };
 		711F4A882B6A1756001C6B53 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -549,13 +549,13 @@
 			isa = PBXGroup;
 			children = (
 				710D409B2B613AC5006C9FED /* ExplanationTextView.swift */,
-				710D40992B61059D006C9FED /* WarningText.swift */,
 				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
 				7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */,
 				7107A4072B6356FD00944077 /* DistanceConditionView.swift */,
 				711F4A862B6959A2001C6B53 /* TestType.swift */,
 				71948DDD2B6D0CA100316569 /* BackgroundView.swift */,
 				71526A3F2B7242B10000631E /* PlaceCellView.swift */,
+				3398D48D2B736E7500535E0C /* WarningText.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -563,9 +563,9 @@
 		7107A3F22B625BFB00944077 /* Vision */ = {
 			isa = PBXGroup;
 			children = (
-				52EE56C62B5E2B0B00C6D423 /* VisionView.swift */,
 				7107A4012B63478F00944077 /* VisionViewModel.swift */,
 				711F4A882B6A1756001C6B53 /* VisionTestView.swift */,
+				3398D48F2B736EE400535E0C /* VisionView.swift */,
 			);
 			path = Vision;
 			sourceTree = "<group>";
@@ -861,6 +861,7 @@
 				33DD0A362B624D72005296AC /* Toast.swift in Sources */,
 				71AD79872B5FC9090010B423 /* UserModel.swift in Sources */,
 				331F8AB42B6BC72C0008D943 /* EmptyVisionChart.swift in Sources */,
+				3398D4902B736EE400535E0C /* VisionView.swift in Sources */,
 				1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
 				1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */,
@@ -874,7 +875,6 @@
 				3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
-				710D409A2B61059D006C9FED /* WarningText.swift in Sources */,
 				71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */,
 				7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */,
 				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
@@ -901,6 +901,7 @@
 				33DD0A322B6246F4005296AC /* ToastView.swift in Sources */,
 				52EE56C32B5E2AF200C6D423 /* RecordView.swift in Sources */,
 				52FB98D12B623CDA00F6A284 /* MapButtonStyle.swift in Sources */,
+				3398D48E2B736E7500535E0C /* WarningText.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				52FB98F62B638B4A00F6A284 /* SignUpView.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
@@ -933,14 +934,12 @@
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */,
-				52EE56C72B5E2B0B00C6D423 /* VisionView.swift in Sources */,
 				331F8AAE2B6B85460008D943 /* EyewareButtonGroup.swift in Sources */,
 				339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */,
 				331F8AAA2B6B76440008D943 /* AddRecordView.swift in Sources */,
 				3398D4842B73634200535E0C /* VisionSlider.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorViewModel.swift in Sources */,
 				71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */,
-				52EE56C72B5E2B0B00C6D423 /* VisionView.swift in Sources */,
 				3398D4862B73698800535E0C /* CustomMenuButton.swift in Sources */,
 				71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,

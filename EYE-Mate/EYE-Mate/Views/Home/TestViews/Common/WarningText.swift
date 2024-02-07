@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WaringText: View {
+struct WarningText: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("• 간단한 셀프 테스트이므로 정확한 진단은 병원을 방문하여 검사하시길 바랍니다.")
@@ -23,5 +23,5 @@ struct WaringText: View {
 }
 
 #Preview {
-    WaringText()
+    WarningText()
 }
