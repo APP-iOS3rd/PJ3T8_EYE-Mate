@@ -100,6 +100,7 @@
 		713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */; };
 		71526A402B7242B10000631E /* PlaceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A3F2B7242B10000631E /* PlaceCellView.swift */; };
 		71526A422B7253980000631E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A412B7253980000631E /* Record.swift */; };
+		71526A442B73802E0000631E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71526A432B73802E0000631E /* WebKit.framework */; };
 		71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */; };
 		71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDD2B6D0CA100316569 /* BackgroundView.swift */; };
 		71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDF2B6D206E00316569 /* SightTestViewModel.swift */; };
@@ -211,6 +212,7 @@
 		713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		71526A3F2B7242B10000631E /* PlaceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellView.swift; sourceTree = "<group>"; };
 		71526A412B7253980000631E /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		71526A432B73802E0000631E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		71948DD92B6BBDFB00316569 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestViewModel.swift; sourceTree = "<group>"; };
 		71948DDD2B6D0CA100316569 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71526A442B73802E0000631E /* WebKit.framework in Frameworks */,
 				7EA927D5EFEDFFD6C094E518 /* Pods_EYE_Mate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +477,8 @@
 		7107A3F02B625B5600944077 /* Distance */ = {
 			isa = PBXGroup;
 			children = (
+				7107A4072B6356FD00944077 /* DistanceConditionView.swift */,
+				7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */,
 				7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */,
 			);
 			path = Distance;
@@ -485,8 +490,6 @@
 				710D409B2B613AC5006C9FED /* ExplanationTextView.swift */,
 				710D40992B61059D006C9FED /* WaringText.swift */,
 				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
-				7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */,
-				7107A4072B6356FD00944077 /* DistanceConditionView.swift */,
 				711F4A862B6959A2001C6B53 /* TestType.swift */,
 				71948DDD2B6D0CA100316569 /* BackgroundView.swift */,
 				71526A3F2B7242B10000631E /* PlaceCellView.swift */,
@@ -629,6 +632,7 @@
 		B339148249964F1DF6C49031 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71526A432B73802E0000631E /* WebKit.framework */,
 				A6C0F19DAAFCA997FFA21856 /* Pods_EYE_Mate.framework */,
 			);
 			name = Frameworks;
