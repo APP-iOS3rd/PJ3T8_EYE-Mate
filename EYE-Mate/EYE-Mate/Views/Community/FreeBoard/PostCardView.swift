@@ -8,26 +8,29 @@
 import SwiftUI
 
 struct PostCardView: View {
-    var post: String
+    var post: Post
+    
+//    var post: String
     var body: some View {
         HStack {
             VStack {
                 // postTitle, Date
                 HStack(spacing: 8) {
-                    Text("\(post)")
-                        .font(.pretendardSemiBold_18)
+                    Text("\(post.postTitle)")
+                        .font(.pretendardSemiBold_14)
+                        .lineLimit(1)
                     
-                    Text("10월 11일")
-                        .font(.pretendardRegular_12)
+                    Text("\(post.publishedDate.formatted(date: .numeric, time: .shortened))")
+                        .font(.pretendardRegular_10)
                         .foregroundStyle(.gray)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // postContent
-                Text("전문의의 정확한 검진 없이 안약을 과다 사용하면 오히려 눈 건강..")
+                Text("\(post.postContent)")
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.pretendardRegular_14)
+                    .font(.pretendardRegular_12)
                     .padding(.top, 2)
                     .padding(.bottom, 4)
                     
@@ -36,16 +39,18 @@ struct PostCardView: View {
                     Image(systemName: "heart")
                         .foregroundStyle(Color.customRed)
                         .padding(.trailing, -8)
+                        .font(.system(size: 15))
                     
-                    Text("41")
-                        .font(.pretendardRegular_16)
+                    Text("\(post.likedIDs.count)")
+                        .font(.pretendardRegular_12)
                     
                     Image(systemName: "message")
                         .foregroundStyle(Color.customGreen)
                         .padding(.trailing, -6)
+                        .font(.system(size: 15))
                     
-                    Text("43")
-                        .font(.pretendardRegular_16)
+                    Text("\(post.comments.count)")
+                        .font(.pretendardRegular_12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -69,6 +74,6 @@ struct PostCardView: View {
     }
 }
 
-#Preview {
-    PostCardView(post: "안약 과다 사용")
-}
+//#Preview {
+//    PostCardView(post: "안약 과다 사용")
+//}

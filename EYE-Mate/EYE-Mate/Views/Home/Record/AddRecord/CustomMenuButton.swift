@@ -91,7 +91,7 @@ struct CustomMenuButton: View {
                     }
                     .offset(y: -92)
                     .transition(.asymmetric(insertion: AnyTransition.move(edge: .bottom).combined(with: .scale).animation(.easeInOut), removal: AnyTransition.opacity.animation(.easeInOut)))
-                    
+
                 }
             }.frame(width: 80, height: 40)
         }

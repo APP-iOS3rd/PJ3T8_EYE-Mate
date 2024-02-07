@@ -7,7 +7,8 @@
 
 import Foundation
 
-class VisionTestViewModel: ObservableObject {
+class VisionViewModel: ObservableObject {
     @Published var isPresentedTestView: Bool = false
+    @Published var isPresentedProfileView: Bool = false
     
 }

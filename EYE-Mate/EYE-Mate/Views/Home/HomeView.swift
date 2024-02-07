@@ -8,25 +8,35 @@
 import SwiftUI
 
 struct HomeView: View {
-    private var user = UserModel(name: "어디로 가야하오", movement: 3, leftEyeSight: "0.5", rightEyeSight: "0.8")
-    private var onboardingModel = EyeSenseOnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!")
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
-        NavigationStack{
-            VStack(alignment: .leading){
-                CustomNavigationTitle(title: "홈", userImg: Image(systemName: "person.fill"))
-                
-                Spacer()
-                    .frame(height: 5)
-                
-                HomeViewTextView(user: user)
-                
-                EyeSenseOnboardingView(onboardingViewModel: onboardingModel)
-                    .frame(height: 120)
-                    .padding(.top, -30)
-                
-                HomeViewCellListView()
+        NavigationStack {
+            GeometryReader { g in
+                VStack(alignment: .leading) {
+                    CustomNavigationTitle(isDisplayLeftButton: false,
+                                          profileButtonAction: {
+                        viewModel.isPresentedProfileView.toggle()
+                    })
+                    
+                    Spacer()
+                        .frame(height: 5)
+                    
+                    HomeViewTextView(user: viewModel.user)
+                    
+                    EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
+                        .frame(height: 120)
+                        .padding(.top, -30)
+                    
+                    HomeViewCellListView()
+                    
+                    Spacer()
+                }
+                .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+                    ProfileView()
+                }
             }
+            
         }
     }
 }
@@ -61,36 +71,51 @@ private struct HomeViewTextView: View {
 
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
+    
     var body: some View {
         HStack(spacing: 10) {
-            NavigationLink(destination: RecordView().navigationBarBackButtonHidden()) {
+            NavigationLink {
+                RecordView()
+            } label: {
                 HomeViewCellView(item: .init(isAction: false, img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
                     .padding(.leading, 10)
                     .foregroundColor(.black)
             }
-            NavigationLink(destination: ColorTestView()) {
+            
+            NavigationLink {
+                RecordView()
+            } label: {
                 HomeViewCellView(item: .init(isAction: false, img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
                     .padding(.trailing, 10)
                     .foregroundColor(.black)
             }
         }
+        
         VStack {
-            NavigationLink(destination: VisionTestView()) {
+            NavigationLink {
+                VisionView()
+            } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest1"), title: "시력 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)
             }
-            NavigationLink(destination: ColorTestView()) {
+            NavigationLink {
+                ColorView()
+            } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest2"), title: "색채 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)
             }
-            NavigationLink(destination: AstigmatismTestView()) {
+            NavigationLink {
+                AstigmatismView()
+            } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest3"), title: "난시 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)
             }
-            NavigationLink(destination: SightTestView()) {
+            NavigationLink {
+                SightView()
+            } label: {
                 HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest4"), title: "시야 검사", subTitle: "슉슉 무브무브"))
                     .padding([.leading, .trailing], 10)
                     .foregroundColor(.black)

@@ -86,7 +86,7 @@ struct MovementLottieView: View {
             }
             if isEyeExerciseComplete {
                 Spacer()
-                CustomBtn(title: "완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
+                CustomButton(title: "완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
                     showToast.toggle()
                     goBack()
                 }).frame(height: 88)
@@ -111,7 +111,7 @@ struct MovementLottieView: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 100)
                 Spacer()
-                CustomBtn(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
+                CustomButton(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
                     isStart.toggle()
                 }).frame(height: 88)
             }     .navigationBarBackButtonHidden(true)

@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AddRecordHeader: View {
     @Environment(\.dismiss) var dismiss
-    
+
     private func goBack() {
         dismiss()
     }
-    
+
     var body: some View {
         ZStack {
             HStack {
@@ -36,7 +36,7 @@ struct AddRecordHeader: View {
                         Text("초기화")
                             .font(.pretendardSemiBold_14)
                             .foregroundStyle(Color.customGreen)
-                        
+
                     }
                     .padding(8)
                     .frame(height: 30)

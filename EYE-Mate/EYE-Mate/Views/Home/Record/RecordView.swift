@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum TestType: String {
-    case vision = "시력"
-    case colorVision = "색각"
-    case astigmatism = "난시"
-    case eyesight = "시야"
-}
-
 struct RecordView: View {
     @Environment(\.dismiss) var dismiss
 
@@ -90,6 +83,7 @@ struct RecordView: View {
             .background(Color.lightGray)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

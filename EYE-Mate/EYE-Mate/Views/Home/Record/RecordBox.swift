@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct RecordBox: View {
     let type: TestType
 
