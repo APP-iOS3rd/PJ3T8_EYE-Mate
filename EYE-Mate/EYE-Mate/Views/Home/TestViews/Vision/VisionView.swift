@@ -46,7 +46,7 @@ struct VisionView: View {
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

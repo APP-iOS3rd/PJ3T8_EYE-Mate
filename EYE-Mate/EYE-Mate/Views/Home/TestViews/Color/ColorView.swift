@@ -45,7 +45,7 @@ struct ColorView: View {
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

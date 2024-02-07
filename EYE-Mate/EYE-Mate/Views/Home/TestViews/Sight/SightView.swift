@@ -49,7 +49,7 @@ struct SightView: View {
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

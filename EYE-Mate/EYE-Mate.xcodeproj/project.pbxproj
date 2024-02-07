@@ -99,7 +99,7 @@
 		710D40942B5FD8A9006C9FED /* SightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightView.swift */; };
 		710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */; };
 		710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */; };
-		710D409A2B61059D006C9FED /* WaringText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40992B61059D006C9FED /* WaringText.swift */; };
+		710D409A2B61059D006C9FED /* WarningText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40992B61059D006C9FED /* WarningText.swift */; };
 		710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D409B2B613AC5006C9FED /* ExplanationTextView.swift */; };
 		711F4A872B6959A2001C6B53 /* TestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A862B6959A2001C6B53 /* TestType.swift */; };
 		711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A882B6A1756001C6B53 /* VisionTestView.swift */; };
@@ -229,7 +229,7 @@
 		710D40932B5FD8A9006C9FED /* SightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightView.swift; sourceTree = "<group>"; };
 		710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
 		710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewOnboardingView.swift; sourceTree = "<group>"; };
-		710D40992B61059D006C9FED /* WaringText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaringText.swift; sourceTree = "<group>"; };
+		710D40992B61059D006C9FED /* WarningText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningText.swift; sourceTree = "<group>"; };
 		710D409B2B613AC5006C9FED /* ExplanationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationTextView.swift; sourceTree = "<group>"; };
 		711F4A862B6959A2001C6B53 /* TestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestType.swift; sourceTree = "<group>"; };
 		711F4A882B6A1756001C6B53 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -549,7 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				710D409B2B613AC5006C9FED /* ExplanationTextView.swift */,
-				710D40992B61059D006C9FED /* WaringText.swift */,
+				710D40992B61059D006C9FED /* WarningText.swift */,
 				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
 				7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */,
 				7107A4072B6356FD00944077 /* DistanceConditionView.swift */,
@@ -874,7 +874,7 @@
 				3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
-				710D409A2B61059D006C9FED /* WaringText.swift in Sources */,
+				710D409A2B61059D006C9FED /* WarningText.swift in Sources */,
 				71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */,
 				7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */,
 				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
