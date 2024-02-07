@@ -73,26 +73,45 @@ private struct ColorTest: View {
                     .padding(.horizontal)
                     .keyboardType(.numberPad)
                 
-                CustomButton(title: "다음",
-                          background: .customGreen,
-                          fontStyle: .pretendardBold_16,
-                          action: {
-                    viewModel.userAnswer.append(answer)
-                    answer = ""
-                    isFocused = false
-                    viewModel.isTestStarted = true
-                    withAnimation {
-                        testPercent += 1
+                HStack {
+                    if viewModel.index >= 2 {
+                        CustomButton(title: "뒤로",
+                                     background: .customGreen,
+                                     fontStyle: .pretendardBold_16,
+                                     action: {
+                            viewModel.userAnswer[viewModel.index] = answer
+                            withAnimation {
+                                testPercent -= 1
+                            }
+                            viewModel.index -= 1
+                            answer = viewModel.userAnswer[viewModel.index]
+                        }
+                        )
+                        .frame(maxHeight: 75)
                     }
-                    viewModel.index += 1
-                    if viewModel.index >= viewModel.testColorSet.count {
-                        viewModel.index = 0
-                        viewModel.updateResult()
-                        isTestComplete.toggle()
+                    
+                    CustomButton(title: viewModel.index != 12 ? "다음" : "제출하기",
+                                 background: .customGreen,
+                                 fontStyle: .pretendardBold_16,
+                                 action: {
+                        viewModel.userAnswer[viewModel.index] = answer
+                        isFocused = false
+                        viewModel.isTestStarted = true
+                        withAnimation {
+                            testPercent += 1
+                        }
+                        
+                        viewModel.index += 1
+                        if viewModel.index >= viewModel.testColorSet.count {
+                            viewModel.index = 0
+                            viewModel.updateResult()
+                            isTestComplete.toggle()
+                        }
+                        answer = viewModel.userAnswer[viewModel.index]
                     }
+                    )
+                    .frame(maxHeight: 75)
                 }
-                )
-                .frame(maxHeight: 75)
             }
             .toolbar(.hidden, for: .tabBar)
             .toolbar {
