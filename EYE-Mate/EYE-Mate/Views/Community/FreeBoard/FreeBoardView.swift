@@ -15,7 +15,12 @@ struct FreeBoardView: View {
         ReusablePostsView(freeboardVM: freeboardVM)
             .frame(maxWidth: .infinity, alignment: .center)
             .overlay(alignment: .bottomTrailing){
-                NavigationLink(destination: CreateNewPostView()) {
+                NavigationLink(destination: CreateNewPostView(){ post in
+                    if let post = post {
+                        freeboardVM.posts.insert(post, at: 0)
+                        print("post insert Success")
+                    }
+                }) {
                     Circle()
                         .foregroundStyle(Color.customGreen)
                         .frame(maxHeight: 60)
