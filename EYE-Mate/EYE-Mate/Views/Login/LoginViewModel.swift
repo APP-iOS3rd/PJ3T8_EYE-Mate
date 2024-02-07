@@ -13,11 +13,9 @@ import FirebaseFirestore
 class LoginViewModel: ObservableObject {
     static let shared = LoginViewModel()
     var verificationID: String
-    
-    @AppStorage("user_name") private var userName: String = ""
+    var user: AuthDataResult?
+
     @AppStorage("user_UID") private var userUID: String = ""
-    @AppStorage("user_profile_url") private var profileURL: URL?
-    
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
@@ -40,7 +38,7 @@ class LoginViewModel: ObservableObject {
             }
     }
     
-    
+    @MainActor
     // MARK: - signUpFlag == false 이고 storage에 uid 가 없으면 로그인 X -> 회원가입으로 유도(나중에)
     func verifyOTP(otp: String, signUpFlag: Bool, completion: @escaping (Bool) -> Void){
         // 인증 코드, 인증 ID를 사용해 FIRPhoneAuthCredential 객체 생성
@@ -53,35 +51,10 @@ class LoginViewModel: ObservableObject {
                 print(error.localizedDescription)
                 completion(false)
             } else {
-                // 로그인 성공
-                // 테스트 코드 (우선 userid, 사진, 이런걸다 설정해놓고 storage에 저장)
+                // 인증번호 성공
                 
-                guard let uid = user?.user.uid else {return}
-                Task {
-                    do {
-                        // Storage에 DefaultProfile 이미지 저장
-                        guard let imageData = UIImage(named: "user")?.pngData() else { return }
-                        let storageRef = Storage.storage().reference().child("Profile_Images").child(uid)
-                        let _ = try await storageRef.putDataAsync(imageData)
-                        
-                        let downloadURL = try await storageRef.downloadURL()
-                        
-                        let user = User(username: "TestAccount", userUID: uid, userImageURL: downloadURL)
-                        
-                        let _ = try Firestore.firestore().collection("Users").document(uid).setData(from: user) { error in
-                            if error == nil {
-                                print("Saved Successfully")
-                                self.userName = "TestAccount"
-                                self.userUID = uid
-                                self.profileURL = downloadURL
-                            }
-                        }
-                    }catch{
-                        print(error.localizedDescription)
-                    }
-                }
-                
-                UserDefaults.standard.set(true, forKey: "Login")
+                // if signUpFlag가 아니면 이 과정이 로그인 맞음
+                self.userUID = user?.user.uid ?? "N/A" // UID 저장
                 print("OTP Verify Success = \(user?.user.uid ?? "N/A")")
                 completion(true)
             }
@@ -101,4 +74,5 @@ class LoginViewModel: ObservableObject {
                 }
             }
     }
+    
 }

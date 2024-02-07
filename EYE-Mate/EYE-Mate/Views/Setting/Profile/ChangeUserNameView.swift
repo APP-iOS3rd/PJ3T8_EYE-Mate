@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ChangeUserNameView: View {
+    @AppStorage("user_name") private var userName: String = ""
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @Environment(\.presentationMode) var presentationMode
-    var nickname: String = ""
     @State var error: String = ""
     
     var body: some View {
@@ -22,7 +22,7 @@ struct ChangeUserNameView: View {
             VStack(alignment: .leading) {
                 Text("닉네임")
                 // TODO: - profileVeiwModel에서 nickname 바인딩
-                ProfileNameTextField(nickname: nickname)
+                ProfileNameTextField()
 
             }
             .padding(20)
@@ -33,7 +33,7 @@ struct ChangeUserNameView: View {
             
             CustomBtn(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 
-                let result = profileViewModel.isValidName(nickname)
+                let result = profileViewModel.isValidName()
                 
                 if result != "true" {
                     error = result

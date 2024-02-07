@@ -8,10 +8,10 @@
 import Foundation
 import FirebaseFirestore
 
-struct User: Identifiable, Codable {
+struct tempUser: Identifiable, Codable {
     @DocumentID var id: String?
-    var username: String
+    var userName: String
     var userUID: String
-    var userImageURL: URL
+    var userImageURL: String?
     
 }

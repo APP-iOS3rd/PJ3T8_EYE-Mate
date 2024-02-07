@@ -12,7 +12,6 @@ import PhotosUI
 struct SignUpProfileView: View {
     @StateObject var profileViewModel = ProfileViewModel()
     @State var selected: PhotosPickerItem?
-    @State var nickname: String = ""
     @State var data: Data?
     @State var error: String = ""
     
@@ -33,6 +32,7 @@ struct SignUpProfileView: View {
             EditableProfileView(profileViewModel: profileViewModel)
                 .padding(.bottom, 20)
             
+            
             ProfileNameTextField()
                 .padding(20)
             
@@ -45,13 +45,14 @@ struct SignUpProfileView: View {
             // 입력시작하면 그때부터 체크해서 빨간불
             CustomBtn(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 
-                let result = profileViewModel.isValidName(nickname)
+                let result = profileViewModel.isValidName()
                 
-                if result != "true" {
+                if result != "success" {
                     error = result
                 } else {
                     // HomeView로 profile 정보 가지고 넘어감
                     error = "success"
+                    profileViewModel.uploadUserInfoToFirebase()
                 }
             })
             .frame(height: 88)
@@ -64,11 +65,11 @@ struct SignUpProfileView: View {
 }
 
 struct ProfileNameTextField: View {
-    @State var nickname: String = ""
+    @AppStorage("user_name") private var userName: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            TextField("닉네임을 입력해주세요", text: $nickname)
+            TextField("닉네임을 입력해주세요", text: $userName)
                 .multilineTextAlignment(.center)
                 .font(.pretendardRegular_18)
                 .frame(height: 50)
