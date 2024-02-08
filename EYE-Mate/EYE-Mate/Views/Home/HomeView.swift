@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @Binding var index: Int
+    @Binding var selection: Int
     
     var body: some View {
         NavigationStack {
@@ -30,7 +30,7 @@ struct HomeView: View {
                                 .frame(height: 120)
                                 .padding(.top, -30)
                             
-                            HomeViewCellListView(viewModel: viewModel, index: $index)
+                            HomeViewCellListView(viewModel: viewModel, selection: $selection)
                             
                             Spacer()
                         }
@@ -90,7 +90,7 @@ private struct HomeViewTextView: View {
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
     @ObservedObject var viewModel: HomeViewModel
-    @Binding var index: Int
+    @Binding var selection: Int
     
     var body: some View {
         HStack(spacing: 10) {
@@ -103,7 +103,7 @@ private struct HomeViewCellListView: View {
             })
             
             Button(action: {
-                index = 1
+                selection = 1
             }, label: {
                 HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
                     .padding(.trailing, 10)

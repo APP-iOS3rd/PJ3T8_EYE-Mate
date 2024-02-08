@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var index = 0
+    @State private var selection = 0
+    
+    init() {
+        UITabBar.appearance().scrollEdgeAppearance = .init()
+        UITabBar.appearance().backgroundColor = .white
+    }
     
     var body: some View {
         NavigationStack {
-            TabView(selection: $index) {
-                HomeView(index: $index)
+            TabView(selection: $selection) {
+                HomeView(selection: $selection)
+                    .badge(10)
                     .tabItem {
                         Image(systemName: "house")
                         Text("홈")
@@ -48,3 +54,5 @@ struct MainView: View {
 #Preview {
     MainView()
 }
+
+
