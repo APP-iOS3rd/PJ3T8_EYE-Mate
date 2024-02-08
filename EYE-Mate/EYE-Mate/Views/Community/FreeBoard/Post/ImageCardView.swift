@@ -22,7 +22,9 @@ struct ImageCardView: View {
                         }
                         .retry(maxCount: 3, interval: .seconds(5))
                         .resizable()
-                        .frame(maxWidth: 150, maxHeight: 150)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                        .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.trailing, 5)
                 }

@@ -69,8 +69,9 @@ struct PostCardView: View {
                     }
                     .retry(maxCount: 3, interval: .seconds(5))
                     .resizable()
-                    .frame(maxWidth: 75, maxHeight: 75)
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 75, height: 75)
+                    .background(.black)
                     .padding(.trailing)
             }
         }
