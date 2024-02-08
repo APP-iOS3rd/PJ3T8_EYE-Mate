@@ -35,7 +35,6 @@ struct MapTabBarView: View {
                 case .optician:
                     MapView()
                 }
-                Spacer()
             }
         }
         .navigationBarHidden(true)
