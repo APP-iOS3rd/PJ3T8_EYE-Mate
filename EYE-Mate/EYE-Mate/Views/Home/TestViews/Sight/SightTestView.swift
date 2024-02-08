@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SightTestView: View {
     @StateObject var viewModel = SightTestViewModel()
-    @ObservedObject var distance: DistanceConditionViewModel
     
     //MARK: - 테스트용으로 true로 설정, 기본값은 false
     @State var isTestComplete: Bool = false
@@ -18,7 +17,6 @@ struct SightTestView: View {
         VStack {
             if !isTestComplete {
                 SightTest(viewModel: viewModel,
-                                distance: distance,
                                 isTestComplete: $isTestComplete)
             } else {
                 SightTestResultView(viewModel: viewModel)
@@ -30,7 +28,6 @@ struct SightTestView: View {
 //MARK: - 테스트 화면
 private struct SightTest: View {
     @ObservedObject var viewModel: SightTestViewModel
-    @ObservedObject var distance: DistanceConditionViewModel
     @Environment(\.dismiss) var dismiss
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
@@ -43,13 +40,11 @@ private struct SightTest: View {
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
                 SightRight(viewModel: viewModel,
-                                 distance: distance,
                                  testPercent: $testPercent,
                                  isChange: $isChange)
             } else {
                 //TODO: - 왼쪽 눈 시야검사
                 SightLeft(viewModel: viewModel,
-                                distance: distance,
                                 testPercent: $testPercent,
                                 isTestComplete: $isTestComplete)
             }
@@ -75,7 +70,7 @@ private struct SightTest: View {
 //MARK: - 오른쪽 눈 화면
 private struct SightRight: View {
     @ObservedObject var viewModel: SightTestViewModel
-    @ObservedObject var distance: DistanceConditionViewModel
+    @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var testPercent: Double
     @Binding var isChange: Bool
     @State var isReady: Bool = false
@@ -193,7 +188,7 @@ private struct SightRight: View {
 //MARK: - 왼쪽 눈 화면
 private struct SightLeft: View {
     @ObservedObject var viewModel: SightTestViewModel
-    @ObservedObject var distance: DistanceConditionViewModel
+    @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var testPercent: Double
     @Binding var isTestComplete: Bool
     @State var isReady: Bool = false
@@ -432,5 +427,5 @@ private struct ResultTextView: View {
 }
 
 #Preview {
-    SightTestView(distance: DistanceConditionViewModel())
+    SightTestView()
 }

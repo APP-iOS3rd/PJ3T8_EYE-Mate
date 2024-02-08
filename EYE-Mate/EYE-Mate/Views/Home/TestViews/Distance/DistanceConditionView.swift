@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DistanceConditionView: View {
-    @StateObject var viewModel = DistanceConditionViewModel()
+    @StateObject var viewModel = DistanceConditionViewModel.shared
     var title: String
     var type: TestType
     @Environment(\.dismiss) var dismiss
@@ -21,9 +21,9 @@ struct DistanceConditionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                DistanceFaceAndDevice(model: viewModel)
+                DistanceFaceAndDevice()
                 BackgroundView()
-                DistanceView(viewModel: viewModel, title: title, type: type)
+                DistanceView(title: title, type: type)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(title)
@@ -45,7 +45,7 @@ struct DistanceConditionView: View {
 
 //MARK: - 설명 Text와 거리 Text View
 private struct DistanceView: View {
-    @ObservedObject var viewModel: DistanceConditionViewModel
+    @ObservedObject var viewModel = DistanceConditionViewModel.shared
     var title: String
     var type: TestType
     
@@ -129,10 +129,10 @@ private struct DistanceView: View {
                 VisionTestView(distance: viewModel)
             }
             .navigationDestination(isPresented: $viewModel.isActiveAstigmatismTest) {
-                AstigmatismTestView(distance: viewModel)
+                AstigmatismTestView()
             }
             .navigationDestination(isPresented: $viewModel.isActiveSightTest) {
-                SightTestView(distance: viewModel)
+                SightTestView()
             }
         }
     }

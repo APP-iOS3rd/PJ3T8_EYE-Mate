@@ -10,11 +10,7 @@ import SwiftUI
 
 struct DistanceFaceAndDevice: UIViewRepresentable {
     
-    @ObservedObject var model: DistanceConditionViewModel
-    
-    init(model: DistanceConditionViewModel) {
-        self.model = model
-    }
+    @ObservedObject var model = DistanceConditionViewModel.shared
     
     class Coordinator: NSObject, ARSCNViewDelegate {
         var parent: DistanceFaceAndDevice

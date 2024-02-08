@@ -75,7 +75,7 @@ private struct ColorTest: View {
                 
                 HStack {
                     if viewModel.index >= 2 {
-                        CustomButton(title: "뒤로",
+                        CustomButton(title: "이전",
                                      background: .customGreen,
                                      fontStyle: .pretendardBold_16,
                                      action: {

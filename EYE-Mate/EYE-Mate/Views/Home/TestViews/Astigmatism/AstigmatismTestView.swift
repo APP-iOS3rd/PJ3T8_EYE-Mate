@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AstigmatismTestView: View {
     @StateObject var viewModel = AstigmatismTestViewModel()
-    @ObservedObject var distance: DistanceConditionViewModel
     
     //MARK: - 테스트용으로 true로 설정, 기본값은 false
     @State var isTestComplete: Bool = false
@@ -18,7 +17,6 @@ struct AstigmatismTestView: View {
         VStack {
             if !isTestComplete {
                 AstigmatismTest(viewModel: viewModel,
-                                distance: distance,
                                 isTestComplete: $isTestComplete)
             } else {
                 AstigmatismTestResultView(viewModel: viewModel)
@@ -30,7 +28,6 @@ struct AstigmatismTestView: View {
 //MARK: - 테스트 화면
 private struct AstigmatismTest: View {
     @ObservedObject var viewModel: AstigmatismTestViewModel
-    @ObservedObject var distance: DistanceConditionViewModel
     @Environment(\.dismiss) var dismiss
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
@@ -43,13 +40,11 @@ private struct AstigmatismTest: View {
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
                 AstigmatismRight(viewModel: viewModel,
-                                 distance: distance,
                                  testPercent: $testPercent,
                                  isChange: $isChange)
             } else {
                 //TODO: - 왼쪽 눈 시야검사
                 AstigmatismLeft(viewModel: viewModel,
-                                distance: distance,
                                 testPercent: $testPercent,
                                 isTestComplete: $isTestComplete)
             }
@@ -75,7 +70,7 @@ private struct AstigmatismTest: View {
 //MARK: - 오른쪽 눈 화면
 private struct AstigmatismRight: View {
     @ObservedObject var viewModel: AstigmatismTestViewModel
-    @ObservedObject var distance: DistanceConditionViewModel
+    @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var testPercent: Double
     @Binding var isChange: Bool
     @State var isReady: Bool = false
@@ -197,7 +192,7 @@ private struct AstigmatismRight: View {
 //MARK: - 왼쪽 눈 화면
 private struct AstigmatismLeft: View {
     @ObservedObject var viewModel: AstigmatismTestViewModel
-    @ObservedObject var distance: DistanceConditionViewModel
+    @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var testPercent: Double
     @Binding var isTestComplete: Bool
     @State var isReady: Bool = false
@@ -434,5 +429,5 @@ private struct ResultTextView: View {
 
 
 #Preview {
-    AstigmatismTestView(distance: DistanceConditionViewModel())
+    AstigmatismTestView()
 }

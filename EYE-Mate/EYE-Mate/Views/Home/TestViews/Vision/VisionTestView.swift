@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VisionTestView: View {
-    @ObservedObject var distance: DistanceConditionViewModel
+    @ObservedObject var distance = DistanceConditionViewModel.shared
     
     var body: some View {
         Text("VisionTestView")
@@ -16,5 +16,5 @@ struct VisionTestView: View {
 }
 
 #Preview {
-    VisionTestView(distance: DistanceConditionViewModel())
+    VisionTestView()
 }
