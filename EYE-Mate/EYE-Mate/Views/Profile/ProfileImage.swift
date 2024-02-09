@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseStorage
 
 struct ProfileImage: View {
-    @StateObject var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     let imageState: ProfileViewModel.ImageState
     
     var body: some View {

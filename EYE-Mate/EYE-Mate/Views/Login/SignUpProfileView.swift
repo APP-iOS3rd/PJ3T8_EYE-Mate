@@ -10,7 +10,8 @@ import PhotosUI
 
 
 struct SignUpProfileView: View {
-    @StateObject var profileViewModel = ProfileViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @State var selected: PhotosPickerItem?
     @State var data: Data?
     @State var error: String = ""
@@ -51,6 +52,7 @@ struct SignUpProfileView: View {
                     // HomeView로 profile 정보 가지고 넘어감
                     error = "success"
                     profileViewModel.uploadUserInfoToFirebase()
+                    presentationMode.wrappedValue.dismiss()
                 }
             })
             .frame(height: 88)
