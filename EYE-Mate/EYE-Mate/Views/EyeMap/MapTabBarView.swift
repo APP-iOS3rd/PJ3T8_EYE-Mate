@@ -14,7 +14,7 @@ enum MapTopTapViewItem : String, CaseIterable {
 
 struct MapTabBarView: View {
     @StateObject var profileViewModel = ProfileViewModel.shared
-    @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @State private var selectedPicker: MapTopTapViewItem = .hospital
     @Namespace private var animation
     
@@ -56,6 +56,7 @@ struct MapTabBarView: View {
         }
         .navigationBarHidden(true)
     }
+        
     
     @ViewBuilder
     func MapTopTabView() -> some View {
@@ -96,5 +97,5 @@ struct MapTabBarView: View {
 }
 
 #Preview {
-    MapTabBarView()
+    MapTabBarView(profileViewModel: ProfileViewModel())
 }

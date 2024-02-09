@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct InfoView: View {
-    @ObservedObject var coordinator: Coordinator
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
