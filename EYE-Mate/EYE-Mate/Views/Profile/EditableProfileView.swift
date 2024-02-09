@@ -15,6 +15,7 @@ struct EditableProfileView: View {
         
         PhotosPicker(selection: $profileViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
             CircularProfileImage(imageState: profileViewModel.imageState)
+                
         }
         
     }
@@ -24,13 +25,12 @@ struct EditableProfileView: View {
 
 struct CircularProfileImage: View {
     let imageState: ProfileViewModel.ImageState
+    
     var body: some View {
         ProfileImage(imageState: imageState)
             .frame(width: 200, height: 200)
-            .clipShape(Circle())
-            .background(Color.white)
     }
 }
 #Preview {
-    CircularProfileImage(imageState: .empty)
+    CircularProfileImage(imageState: .empty(Image("test")))
 }

@@ -6,33 +6,38 @@
 //
 
 import SwiftUI
+import FirebaseStorage
 
 struct ProfileImage: View {
+    @StateObject var profileViewModel = ProfileViewModel.shared
     let imageState: ProfileViewModel.ImageState
     
     var body: some View {
         
         switch imageState {
-        case .empty:
-            Image("user")
+        case let .empty(image):
+            image
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 200)
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
             
         case .loading:
             ProgressView()
+            
         case let .success(image):
-            image.resizable()
+            image
+                .resizable()
                 .aspectRatio(contentMode: .fill)
-                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
+                .clipShape(Circle())
+            
         case .failure:
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 40))
                 .foregroundColor(.red)
         }
     }
+    
 }
 #Preview {
-    ProfileImage(imageState: .empty)
+    ProfileImage(imageState: .empty(Image("user")))
 }

@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct ProfileView: View {
     @AppStorage("Login") var loggedIn: Bool = false
-    @StateObject var profileViewModel = ProfileViewModel()
+    @StateObject var profileViewModel = ProfileViewModel.shared
     
     var body: some View {
         
@@ -20,8 +20,7 @@ struct ProfileView: View {
         } else {
             LoginView()
         }
-        
-
+    
     }
     
     // MARK: Logging User Out

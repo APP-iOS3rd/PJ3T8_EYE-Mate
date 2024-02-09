@@ -13,6 +13,7 @@ enum MapTopTapViewItem : String, CaseIterable {
 }
 
 struct MapTabBarView: View {
+    @StateObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var coordinator: Coordinator = Coordinator.shared
     @State private var selectedPicker: MapTopTapViewItem = .hospital
     @Namespace private var animation
@@ -32,10 +33,9 @@ struct MapTabBarView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
-                    NavigationLink(destination: LoginView()) {
-                        Image(systemName: "person.crop.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.black)
+                    NavigationLink(destination: ProfileView()) {
+                        ProfileImage(imageState: profileViewModel.imageState)
+                            .frame(width: 50, height: 50)
                     }
                 }
                 .padding(.horizontal, 20)

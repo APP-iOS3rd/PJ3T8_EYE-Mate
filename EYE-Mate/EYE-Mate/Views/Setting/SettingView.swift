@@ -10,8 +10,8 @@ import PhotosUI
 
 struct SettingView: View {
     @ObservedObject var profileViewModel: ProfileViewModel
-    @State var selected: PhotosPickerItem?
-    @State var nickname: String = "어디로 가야 하오"
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+
     @State var showAlert: Bool = false
     
     var body: some View {
@@ -20,11 +20,14 @@ struct SettingView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
                         // TODO: back 버튼 추가
+                        // setting view에서 변경하는 이미지는 -> firebase에도 반영해야함
+                        profileViewModel.profileImage
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                            .clipShape(Circle())
                         
-                        PhotosPicker(selection: $profileViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
-                            CircularProfileImage(imageState: profileViewModel.imageState)
-                        }
-                        Text(nickname)
+                        Text(userName)
                             .font(.pretendardSemiBold_24)
                     }
                     .padding(.vertical, 50)
