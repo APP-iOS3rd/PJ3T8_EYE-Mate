@@ -30,13 +30,11 @@ struct SignUpProfileView: View {
             .padding(.bottom, 50)
             
             EditableProfileView(profileViewModel: profileViewModel)
+                .frame(width: 200, height: 200)
                 .padding(.bottom, 20)
-            
             
             ProfileNameTextField()
                 .padding(20)
-            
-            
             
             Text("\(error)")
                 .font(.pretendardRegular_16)

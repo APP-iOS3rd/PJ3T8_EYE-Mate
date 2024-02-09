@@ -15,7 +15,7 @@ class LoginViewModel: ObservableObject {
     var verificationID: String
     var user: AuthDataResult?
 
-    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_UID") private var userUID: String = "defaultImage"
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
@@ -25,6 +25,8 @@ class LoginViewModel: ObservableObject {
     
     func sendVerificationCode(phoneNumber: String) {
         print(phoneNumber)
+        // reCAPTCHA 기능 중지 - simulator용
+//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
