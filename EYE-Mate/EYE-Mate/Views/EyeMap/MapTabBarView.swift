@@ -34,7 +34,8 @@ struct MapTabBarView: View {
                     }
                     
                     NavigationLink(destination: ProfileView()) {
-                        ProfileImage(imageState: profileViewModel.imageState)
+                        profileViewModel.profileImage
+                            .ProfileImageModifier()
                             .frame(width: 50, height: 50)
                     }
                 }

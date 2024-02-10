@@ -21,11 +21,15 @@ class ProfileViewModel: ObservableObject {
     
     @Published var profileImage: Image = Image("user")
     
-    enum ImageState {
-        case empty(Image), loading(Progress), success(Image), failure(Error)
+    init() {
+        downloadImageFromProfileURL()
     }
     
-    @Published var imageState: ImageState = .empty(Image("user"))
+    enum ImageState {
+        case empty, loading(Progress), success, failure(Error)
+    }
+    
+    @Published var imageState: ImageState = .empty
     
     @Published var imageSelection: PhotosPickerItem? {
         didSet {
@@ -33,7 +37,7 @@ class ProfileViewModel: ObservableObject {
                 let progress = loadTransferable(from: imageSelection)
                 imageState = .loading(progress)
             } else {
-                imageState = .empty(Image("user"))
+                imageState = .empty
             }
         }
     }
@@ -67,20 +71,21 @@ class ProfileViewModel: ObservableObject {
                 switch result {
                 case let .success(data?):
                     guard let uiImage = UIImage(data: data) else {
-                        self.imageState = .empty(self.profileImage)
+                        self.imageState = .empty
                         return
                     }
                     
                     self.uploadImageToStorage(image: uiImage) // 이미지 업로드 후 userProfileURL 까지 저장 완료
-                    self.imageState = .success(Image(uiImage: uiImage))
+                    self.imageState = .success
                     self.profileImage = Image(uiImage: uiImage)
                     
                 case .success(.none):
-                    print("imagestate: success none")
-                    self.imageState = .empty(self.profileImage)
+                    self.imageState = .empty
+                    
                     // 기본이미지 넣기
                 case let .failure(error):
                     self.imageState = .failure(error)
+                    self.profileImage = Image(systemName: "exclamationmark.triangle.fill")
                 }
             }
         }
@@ -129,35 +134,13 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func downloadImageToFirebase() {
-        // default image는 uid = defaultImage
-        print(self.userUID)
-        Task {
-            do {
-                // Storage에서 이미지 가져오기
-                let storageRef = Storage.storage().reference().child("Profile_Images").child("\(self.userUID).png")
-                
-                let downloadURL = try await storageRef.downloadURL()
-                
-                DispatchQueue.main.async {
-                    self.userProfileURL = downloadURL.absoluteString
-                    print("success downloadingURL", self.userProfileURL)
-                }
-                
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     // MARK: - 로그인 된 상태의 profile 이미지를 위한 함수 -> 이미지 제공
-    func downloadImageFromProfileURL() -> Image {
-        var downloadImage: Image = Image("user")
+    func downloadImageFromProfileURL() {
+//        var downloadImage: Image = Image("user")
         
         // uid가 저장 안된 기본 상태일 때는 기본 이미지 제공
         guard let imageURL = URL(string: userProfileURL) else {
-            print("Invalid image URL")
-            return downloadImage // 기본 이미지
+            return print("Invalid image URL")
         }
         
         // 비동기적으로 이미지 다운로드
@@ -169,17 +152,15 @@ class ProfileViewModel: ObservableObject {
             
             // UIImage로 변환
             if let uiImage = UIImage(data: data) {
-                // SwiftUI Image로 변환하여 UI 업데이트를 메인 스레드에서 수행
-                print("프로필url에서 이미지를 가져왔습니다")
+                print("profileURL에서 이미지를 가져왔습니다")
                 DispatchQueue.main.async {
-                    downloadImage = Image(uiImage: uiImage)
+                    self.profileImage = Image(uiImage: uiImage)
                 }
             } else {
                 print("이미지를 UIImage로 변환할 수 없습니다.")
             }
         }.resume()
         
-        return downloadImage
     }
     
     

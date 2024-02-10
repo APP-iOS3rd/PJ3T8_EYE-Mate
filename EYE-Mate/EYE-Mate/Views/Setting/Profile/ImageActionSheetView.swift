@@ -36,7 +36,8 @@ struct ImageActionSheetView: View {
                                 }
                                 Button("기본 이미지로 변경") {
                                     //
-                                    profileViewModel.imageState = .empty(profileViewModel.profileImage)
+                                    profileViewModel.profileImage = Image("user")
+                                    profileViewModel.uploadImageToStorage(image: UIImage(named: "user")!)
                                 }
                             }
                 )
