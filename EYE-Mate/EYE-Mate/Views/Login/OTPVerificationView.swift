@@ -12,10 +12,12 @@ import Combine
 
 struct OTPVerificationView: View {
     @ObservedObject var loginViewModel: LoginViewModel
+
     @Binding var signUpFlag: Bool
     @State private var otp: String = ""
-    @State private var otpErrorView: Bool = false
+    @State private var isDisplayotpErrorText: Bool = false
     @State var isDisplayProfileSettingView: Bool = false
+    @State var isDisplaySignUpText: Bool = false
     @FocusState private var keyIsFocused: Bool
     
     var mobileNumber: String = ""
@@ -48,8 +50,15 @@ struct OTPVerificationView: View {
                         .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                     
                     
-                    if otpErrorView {
+                    if isDisplayotpErrorText {
                         Text("인증번호 숫자 6자리를 다시 입력해주세요")
+                            .font(.pretendardMedium_16)
+                            .foregroundStyle(Color.customRed)
+                            .frame(width: 300, height: 50)
+                    }
+                    
+                    if isDisplaySignUpText {
+                        Text("가입되지 않은 번호입니다.\n회원가입으로 계정을 만들어보세요!")
                             .font(.pretendardMedium_16)
                             .foregroundStyle(Color.customRed)
                             .frame(width: 300, height: 50)
@@ -61,18 +70,30 @@ struct OTPVerificationView: View {
                     // MARK: - loginViewModel에서 로그인이면 정보 가져와야함
                     loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag) { success in
                         if success {
-                            otpErrorView = false
+                            isDisplayotpErrorText = false
+                            
                             if signUpFlag {
                                 isDisplayProfileSettingView = true
+                                
+                            } else { // 로그인 화면인 경우
+                                loginViewModel.checkLoginList() { value in
+                                    if value {
+                                        isDisplaySignUpText = false
+                                        loggedIn = true
+                                        // 가입된 회원이면 이제 정보 들고와야함
+                                        
+                                    } else {
+                                        isDisplaySignUpText = true
+                                    }
+                                }
                             }
                             
                         } else {
-                            otpErrorView = true
+                            isDisplayotpErrorText = true
                         }
                     }
                     
                 } label: {
-                    
                     Text(signUpFlag ? "회원가입" : "로그인")
                         .foregroundStyle(.white)
                         .font(.pretendardSemiBold_18)

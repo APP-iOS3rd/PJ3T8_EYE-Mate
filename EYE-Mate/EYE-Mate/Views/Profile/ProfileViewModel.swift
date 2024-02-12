@@ -17,7 +17,7 @@ class ProfileViewModel: ObservableObject {
     
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
-    @AppStorage("user_profile_url") private var userProfileURL: String = "https://firebasestorage.googleapis.com/v0/b/eye-mate-29855.appspot.com/o/Profile_Images%2FdefaultImage.png?alt=media&token=923656d8-3cd8-4098-b5aa-3628770e0256"
+    @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     
     @Published var profileImage: Image = Image("user")
     
@@ -110,7 +110,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    
+    // MARK: - 프로필 이미지 변경시 이미지 업로드
     func uploadImageToStorage(image: UIImage) {
         print(self.userUID)
         

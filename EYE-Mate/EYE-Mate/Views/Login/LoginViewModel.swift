@@ -16,6 +16,8 @@ class LoginViewModel: ObservableObject {
     var user: AuthDataResult?
 
     @AppStorage("user_UID") private var userUID: String = "defaultImage"
+    // TODO: - firestore 객체 하나로 통일
+//    let db = Firestore.firestore()
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
@@ -26,7 +28,7 @@ class LoginViewModel: ObservableObject {
     func sendVerificationCode(phoneNumber: String) {
         print(phoneNumber)
         // reCAPTCHA 기능 중지 - simulator용
-//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
@@ -54,8 +56,6 @@ class LoginViewModel: ObservableObject {
                 completion(false)
             } else {
                 // 인증번호 성공
-                
-                // if signUpFlag가 아니면 이 과정이 로그인 맞음
                 self.userUID = user?.user.uid ?? "N/A" // UID 저장
                 print("OTP Verify Success = \(user?.user.uid ?? "N/A")")
                 completion(true)
@@ -75,6 +75,26 @@ class LoginViewModel: ObservableObject {
                     
                 }
             }
+    }
+    
+    // MARK: - 회원 목록에서 로그인 하려는 UID 확인
+    func checkLoginList(completion: @escaping (Bool) -> Void) {
+        Task{
+            do {
+                let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+                let userUIDs = querySnapshot.documents.compactMap { $0.documentID }
+                print(userUID)
+                print(userUIDs)
+                if userUIDs.contains(userUID) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            } catch {
+                print("Error getting document: \(error)")
+                completion(false)
+            }
+        }
     }
     
 }
