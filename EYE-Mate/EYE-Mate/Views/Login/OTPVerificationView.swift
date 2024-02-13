@@ -20,6 +20,7 @@ struct OTPVerificationView: View {
     @State private var isDisplayotpErrorText: Bool = false
     @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
+    @State var isDisplayNotiLoginText: Bool = false
     
     @FocusState private var keyIsFocused: Bool
     
@@ -55,16 +56,17 @@ struct OTPVerificationView: View {
                     
                     if isDisplayotpErrorText {
                         Text("인증번호 숫자 6자리를 다시 입력해주세요")
-                            .font(.pretendardMedium_16)
-                            .foregroundStyle(Color.customRed)
-                            .frame(width: 300, height: 50)
+                            .modifier(TextModifier())
                     }
                     
                     if isDisplaySignUpText {
                         Text("가입되지 않은 번호입니다.\n회원가입으로 계정을 만들어보세요!")
-                            .font(.pretendardMedium_16)
-                            .foregroundStyle(Color.customRed)
-                            .frame(width: 300, height: 50)
+                            .modifier(TextModifier())
+                    }
+                    
+                    if isDisplayNotiLoginText {
+                        Text("이미 가입된 회원입니다.\n로그인 페이지를 이용해주세요!")
+                            .modifier(TextModifier())
                     }
                 }
                 
@@ -75,15 +77,28 @@ struct OTPVerificationView: View {
                         if success {
                             isDisplayotpErrorText = false
                             
+                            // 회원가입 화면
                             if signUpFlag {
-                                isDisplayProfileSettingView = true
-                                
-                            } else { // 로그인 화면인 경우
-
+                                isDisplaySignUpText = false
                                 Task{
-                                    try await loginViewModel.checkLoginList()
+                                    // 이미 등록된 회원인 경우 -> 로그인 화면으로 유도
+                                    if try await loginViewModel.checkLoginList() {
+                                        isDisplayNotiLoginText = true
+                                        isDisplayProfileSettingView = false
+                                    } else {
+                                    // 정상적인 회원가입 프로세스
+                                        isDisplayNotiLoginText = false
+                                        isDisplayProfileSettingView = true
+                                    }
+                                }
+                                
+                            // 로그인 화면인 경우
+                            } else {
+                                Task{
+                                    try await loginViewModel.checkLoginAndSettingInfo()
                                     isDisplaySignUpText = loggedIn ? false : true
-                                    profileViewModel.downloadImageFromProfileURL() // 이미지 업데이트
+                                    // 프로필 이미지 업데이트
+                                    profileViewModel.downloadImageFromProfileURL()
                                     presentationMode.wrappedValue.dismiss()
                                 }
                             }
@@ -110,6 +125,15 @@ struct OTPVerificationView: View {
         .navigationDestination(isPresented: $isDisplayProfileSettingView){
             SignUpProfileView()
         }
+    }
+}
+
+fileprivate struct TextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.pretendardMedium_16)
+            .foregroundStyle(Color.customRed)
+            .frame(width: 300, height: 50)
     }
 }
 

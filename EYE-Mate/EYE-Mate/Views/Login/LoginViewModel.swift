@@ -82,9 +82,9 @@ class LoginViewModel: ObservableObject {
             }
     }
     
-    // MARK: - 회원 목록에서 로그인 하려는 UID 확인
+    // MARK: - 로그인 할 때 회원목록에서 확인 및 회원정보 세팅
     @MainActor
-    func checkLoginList() async throws{
+    func checkLoginAndSettingInfo() async throws{
         do {
             let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
             // for문 으로
@@ -102,6 +102,26 @@ class LoginViewModel: ObservableObject {
             throw error
         }
         
+    }
+    
+    
+    // MARK: - 회원가입 시 회원 정보가 이미 있는 경우 -> 로그인으로 안내할 것
+    @MainActor
+    func checkLoginList() async throws -> Bool{
+        do {
+            let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+            // for문 으로
+            for document in querySnapshot.documents {
+                let data = document.data()
+                if data["userUID"] as! String == userUID {
+                    return true
+                }
+            }
+        } catch {
+            print("Error getting document: \(error)")
+            throw error
+        }
+        return false
     }
     
 }

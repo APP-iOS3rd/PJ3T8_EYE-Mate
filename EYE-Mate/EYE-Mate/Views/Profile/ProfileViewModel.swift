@@ -46,6 +46,7 @@ class ProfileViewModel: ObservableObject {
     
     // MARK: - userName 조건 확인
     func isValidName() async throws -> String {
+        var preName = ""
         let regex = #"^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣_-]{2,20}$"#
         
         // 문자열 길이 체크
@@ -84,6 +85,7 @@ class ProfileViewModel: ObservableObject {
         
         print(nameLists)
         if nameLists.contains(self.userName) {
+            self.userName = preName
             return false
         }
         
