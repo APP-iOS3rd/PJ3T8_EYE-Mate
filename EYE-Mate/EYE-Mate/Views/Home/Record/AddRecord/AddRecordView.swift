@@ -27,7 +27,9 @@ struct AddRecordView: View {
     
     @State private var leftEyesightStatus = RecordStatus.nothing
     @State private var rightEyesightStatus = RecordStatus.nothing
-    
+
+    @State private var selectedEyeStatus: [String] = []
+
     var isVisionRecordVisible: Bool {
         selectedTestType.contains(TestType.vision.rawValue)
     }
@@ -171,6 +173,17 @@ struct AddRecordView: View {
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
+
+
+                        HorizontalDivider(color: Color.btnGray, height: 2)
+
+                        AddRecordSubtitleView(label: "눈 진단")
+                        EyeStatusButtonGroup(selectedID: $selectedEyeStatus) { selected in
+                            print("Selected is: \(selected)")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 12)
+                        
                         Spacer()
                     }
                     .padding(.horizontal, 12)
