@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct LogoutAlertView: View {
+    @AppStorage("Login") private var login: Bool = false
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
+    
     @Binding var showAlert: Bool
     
     var body: some View {
@@ -36,6 +42,13 @@ struct LogoutAlertView: View {
                 
                 Button {
                     // MARK: - 로그아웃 처리
+                    login = false
+                    UserDefaults.standard.removeObject(forKey: "user_name")
+                    UserDefaults.standard.removeObject(forKey: "user_UID")
+                    UserDefaults.standard.removeObject(forKey: "user_profile_url")
+                    profileViewModel.downloadImageFromProfileURL()
+                    
+                    
                 } label: {
                     Text("확인")
                         .foregroundColor(.black)

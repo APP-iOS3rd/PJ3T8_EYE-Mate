@@ -83,6 +83,7 @@ struct OTPVerificationView: View {
                                 Task{
                                     try await loginViewModel.checkLoginList()
                                     isDisplaySignUpText = loggedIn ? false : true
+                                    profileViewModel.downloadImageFromProfileURL() // 이미지 업데이트
                                     presentationMode.wrappedValue.dismiss()
                                 }
                             }

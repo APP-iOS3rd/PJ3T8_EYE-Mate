@@ -51,7 +51,6 @@ struct SignUpProfileView: View {
                     } else {
                         // HomeView로 profile 정보 가지고 넘어감
                         error = "success"
-                        print("??")
                         profileViewModel.uploadUserInfoToFirebase()
                         presentationMode.wrappedValue.dismiss()
                     }
