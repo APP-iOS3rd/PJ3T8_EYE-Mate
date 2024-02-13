@@ -14,10 +14,15 @@ class LoginViewModel: ObservableObject {
     static let shared = LoginViewModel()
     var verificationID: String
     var user: AuthDataResult?
-
-    @AppStorage("user_UID") private var userUID: String = "defaultImage"
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
+    
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
+    @AppStorage("Login") var loggedIn: Bool = false
+    
     // TODO: - firestore 객체 하나로 통일
-//    let db = Firestore.firestore()
+    //    let db = Firestore.firestore()
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
@@ -78,23 +83,25 @@ class LoginViewModel: ObservableObject {
     }
     
     // MARK: - 회원 목록에서 로그인 하려는 UID 확인
-    func checkLoginList(completion: @escaping (Bool) -> Void) {
-        Task{
-            do {
-                let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
-                let userUIDs = querySnapshot.documents.compactMap { $0.documentID }
-                print(userUID)
-                print(userUIDs)
-                if userUIDs.contains(userUID) {
-                    completion(true)
-                } else {
-                    completion(false)
+    @MainActor
+    func checkLoginList() async throws{
+        do {
+            let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+            // for문 으로
+            for document in querySnapshot.documents {
+                let data = document.data()
+                if data["userUID"] as! String == userUID {
+                    userName = data["userName"] as! String
+                    userProfileURL = data["userImageURL"] as! String
+                    loggedIn = true
+                    break
                 }
-            } catch {
-                print("Error getting document: \(error)")
-                completion(false)
             }
+        } catch {
+            print("Error getting document: \(error)")
+            throw error
         }
+        
     }
     
 }

@@ -11,13 +11,16 @@ import Combine
 
 
 struct OTPVerificationView: View {
-    @ObservedObject var loginViewModel: LoginViewModel
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var loginViewModel = LoginViewModel.shared
 
     @Binding var signUpFlag: Bool
     @State private var otp: String = ""
     @State private var isDisplayotpErrorText: Bool = false
     @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
+    
     @FocusState private var keyIsFocused: Bool
     
     var mobileNumber: String = ""
@@ -76,15 +79,11 @@ struct OTPVerificationView: View {
                                 isDisplayProfileSettingView = true
                                 
                             } else { // 로그인 화면인 경우
-                                loginViewModel.checkLoginList() { value in
-                                    if value {
-                                        isDisplaySignUpText = false
-                                        loggedIn = true
-                                        // 가입된 회원이면 이제 정보 들고와야함
-                                        
-                                    } else {
-                                        isDisplaySignUpText = true
-                                    }
+
+                                Task{
+                                    try await loginViewModel.checkLoginList()
+                                    isDisplaySignUpText = loggedIn ? false : true
+                                    presentationMode.wrappedValue.dismiss()
                                 }
                             }
                             
