@@ -20,7 +20,6 @@ struct SettingView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
                         // TODO: back 버튼 추가
-                        // setting view에서 변경하는 이미지는 -> firebase에도 반영해야함
                         profileViewModel.profileImage
                             .ProfileImageModifier()
                             .frame(width: 200, height: 200)

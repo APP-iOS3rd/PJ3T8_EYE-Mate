@@ -10,7 +10,7 @@ import PhotosUI
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
-
+import Kingfisher
 
 class ProfileViewModel: ObservableObject {
     static let shared = ProfileViewModel()
@@ -91,7 +91,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-
+    
     // MARK: - Firebase 업로드
     func uploadUserInfoToFirebase() {
         Task {
@@ -111,9 +111,8 @@ class ProfileViewModel: ObservableObject {
     }
     
     // MARK: - 프로필 이미지 변경시 이미지 업로드
+    @MainActor
     func uploadImageToStorage(image: UIImage) {
-        print(self.userUID)
-        
         Task {
             do {
                 // Storage에 DefaultProfile 이미지 저장
@@ -136,32 +135,21 @@ class ProfileViewModel: ObservableObject {
     
     // MARK: - 로그인 된 상태의 profile 이미지를 위한 함수 -> 이미지 제공
     func downloadImageFromProfileURL() {
-//        var downloadImage: Image = Image("user")
+        let downloader = ImageDownloader.default
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 100, height: 100))
         
         // uid가 저장 안된 기본 상태일 때는 기본 이미지 제공
         guard let imageURL = URL(string: userProfileURL) else {
             return print("Invalid image URL")
         }
         
-        // 비동기적으로 이미지 다운로드
-        URLSession.shared.dataTask(with: imageURL) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error downloading image: \(error?.localizedDescription ?? "Unknown error")")
-                return
+        downloader.downloadImage(with: imageURL, options: [.processor(processor)]) { result in
+            switch result {
+            case .success(let value):
+                self.profileImage = Image(uiImage: value.image)
+            case .failure(let error):
+                print("Error downloading image: \(error)")
             }
-            
-            // UIImage로 변환
-            if let uiImage = UIImage(data: data) {
-                print("profileURL에서 이미지를 가져왔습니다")
-                DispatchQueue.main.async {
-                    self.profileImage = Image(uiImage: uiImage)
-                }
-            } else {
-                print("이미지를 UIImage로 변환할 수 없습니다.")
-            }
-        }.resume()
-        
+        }
     }
-    
-    
 }
