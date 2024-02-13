@@ -43,16 +43,18 @@ struct SignUpProfileView: View {
             
             // 입력시작하면 그때부터 체크해서 빨간불
             CustomBtn(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
-                
-                let result = profileViewModel.isValidName()
-                
-                if result != "success" {
-                    error = result
-                } else {
-                    // HomeView로 profile 정보 가지고 넘어감
-                    error = "success"
-                    profileViewModel.uploadUserInfoToFirebase()
-                    presentationMode.wrappedValue.dismiss()
+                Task {
+                    let result = try await profileViewModel.isValidName()
+                    
+                    if result != "success" {
+                        error = result
+                    } else {
+                        // HomeView로 profile 정보 가지고 넘어감
+                        error = "success"
+                        print("??")
+                        profileViewModel.uploadUserInfoToFirebase()
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
             })
             .frame(height: 88)

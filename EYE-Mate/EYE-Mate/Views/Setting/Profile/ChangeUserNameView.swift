@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChangeUserNameView: View {
     @AppStorage("user_name") private var userName: String = ""
-    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
     @State var error: String = ""
     
@@ -33,13 +33,16 @@ struct ChangeUserNameView: View {
             
             CustomBtn(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 
-                let result = profileViewModel.isValidName()
-                
-                if result != "true" {
-                    error = result
-                } else {
-                    // TODO: - 다시 SettingView로 넘어오기
-                    error = "success"
+                Task {
+                    let result = try await profileViewModel.isValidName()
+                    
+                    if result != "success" {
+                        error = result
+                    } else {
+                        error = "success"
+                        profileViewModel.updateNameToFirebase()
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
             })
             .frame(height: 88)
