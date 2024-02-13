@@ -104,7 +104,6 @@ class ProfileViewModel: ObservableObject {
     
     // MARK: - photospicker -> success 후 이미지 저장, userProfileURL도 저장
     private func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
-        print("picture loading")
         return imageSelection.loadTransferable(type: Data.self) { result in
             DispatchQueue.main.async {
                 guard imageSelection == self.imageSelection else { return }
@@ -155,22 +154,41 @@ class ProfileViewModel: ObservableObject {
     func updateImageToStorage(image: UIImage) {
         Task {
             do {
-                // Storage에 DefaultProfile 이미지 저장
                 guard let imageData = image.pngData() else { return }
                 let storageRef = Storage.storage().reference().child("Profile_Images").child("\(self.userUID).png")
                 let _ = try await storageRef.putDataAsync(imageData)
                 
                 let downloadURL = try await storageRef.downloadURL()
                 
-                DispatchQueue.main.async {
-                    self.userProfileURL = downloadURL.absoluteString
-                    print("success update Storage Image", self.userProfileURL)
+                self.userProfileURL = downloadURL.absoluteString
+                print("success update Storage Image", self.userProfileURL)
+                
+                // 회원가입시 기본 url로 firestore에 저장된 경우, 값 업데이트
+                let documentRef = self.db.collection("Users").document(self.userUID)
+                if (try await documentRef.getDocument().get("userImageURL") as! String).contains("defaultImage.png") {
+                    updateImageURLToFirebase()
                 }
+                
+                
+                
                 
             } catch {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    // MARK: - 회원가입 후 이미지 변경을 안했다면, URL update to firebase
+    func updateImageURLToFirebase() {
+        let documentRef = db.collection("Users").document(self.userUID)
+        documentRef.updateData(["userImageURL": self.userProfileURL]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("UserImageURL successfully updated")
+            }
+        }
+        
     }
     
     // MARK: - 로그인 된 상태에서 profileURL 이미지 다운 받는 함수
@@ -187,6 +205,7 @@ class ProfileViewModel: ObservableObject {
             switch result {
             case .success(let value):
                 self.profileImage = Image(uiImage: value.image)
+                print(self.userProfileURL)
             case .failure(let error):
                 print("Error downloading image: \(error)")
             }
