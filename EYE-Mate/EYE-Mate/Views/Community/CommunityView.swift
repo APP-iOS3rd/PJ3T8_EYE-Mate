@@ -50,6 +50,7 @@ struct CommunityView: View {
                 }
                 
                 Spacer()
+                    .frame(height: 85)
             }
         }
     }

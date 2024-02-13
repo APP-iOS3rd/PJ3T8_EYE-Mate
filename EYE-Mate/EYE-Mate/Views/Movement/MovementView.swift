@@ -59,6 +59,8 @@ struct MovementView: View {
                 .padding(.horizontal, 32)
                 .padding(.top, 16)
                 .background(Color.textFieldGray)
+                Spacer()
+                    .frame(height: 70)
             }.toastView(toast: $toast)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

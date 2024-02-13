@@ -9,35 +9,36 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @Binding var selection: Int
+    @Binding var tabSelection: TabBarItem
     
     var body: some View {
         NavigationStack {
-            GeometryReader { g in
-                VStack(alignment: .leading) {
-                    CustomNavigationTitle(isDisplayLeftButton: false,
-                                          profileButtonAction: {
-                        viewModel.isPresentedProfileView.toggle()
-                    })
-                    
-                    Spacer()
-                        .frame(height: 5)
-                    ScrollView(showsIndicators: false) {
-                        VStack(alignment: .leading) {
-                            HomeViewTextView(user: viewModel.user)
-                            
-                            EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                                .frame(height: 120)
-                                .padding(.top, -30)
-                            
-                            HomeViewCellListView(viewModel: viewModel, selection: $selection)
-                            
-                            Spacer()
-                        }
+            VStack(alignment: .leading) {
+                CustomNavigationTitle(isDisplayLeftButton: false,
+                                      profileButtonAction: {
+                    viewModel.isPresentedProfileView.toggle()
+                })
+                
+                Spacer()
+                    .frame(height: 5)
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        HomeViewTextView(user: viewModel.user)
+                        
+                        EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
+                            .frame(height: 120)
+                            .padding(.top, -30)
+                        
+                        HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
+                        
+                        Spacer()
                     }
                 }
+                Spacer()
+                    .frame(height: 85)
             }
         }
+        
         .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
             ProfileView()
         }
@@ -90,7 +91,7 @@ private struct HomeViewTextView: View {
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
     @ObservedObject var viewModel: HomeViewModel
-    @Binding var selection: Int
+    @Binding var tabSelection: TabBarItem
     
     var body: some View {
         HStack(spacing: 10) {
@@ -103,7 +104,7 @@ private struct HomeViewCellListView: View {
             })
             
             Button(action: {
-                selection = 1
+                tabSelection = .movement
             }, label: {
                 HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
                     .padding(.trailing, 10)

@@ -8,45 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var selection = 0
-    
-    init() {
-        UITabBar.appearance().scrollEdgeAppearance = .init()
-        UITabBar.appearance().backgroundColor = .white
-    }
+    @State private var tabSelection: TabBarItem = .home
     
     var body: some View {
         NavigationStack {
-            TabView(selection: $selection) {
-                HomeView(selection: $selection)
-                    .badge(10)
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("홈")
-                            .font(.pretendardMedium_10)
-                    }.tag(0)
+            CustomTabBarContainerView(selection: $tabSelection) {
+                HomeView(tabSelection: $tabSelection)
+                    .tabBarItem(tab: .home, selection: $tabSelection)
                 MovementView()
-                    .tabItem {
-                        Image(systemName: "eyes")
-                        Text("눈운동")
-                            .font(.pretendardMedium_10)
-                    }.tag(1)
+                    .tabBarItem(tab: .movement, selection: $tabSelection)
                 CommunityView()
-                    .tabItem {
-                        Image(systemName: "message.fill")
-                        Text("게시판")
-                            .font(.pretendardMedium_10)
-                    }.tag(2)
+                    .tabBarItem(tab: .community, selection: $tabSelection)
                 EyeMapView()
-                    .tabItem {
-                        Image(systemName: "map.fill")
-                            .imageScale(.small)
-                        Text("내주변")
-                            .font(.pretendardMedium_10)
-                    }.tag(3)
+                    .tabBarItem(tab: .eyeMap, selection: $tabSelection)
             }
-            .accentColor(.customGreen)
-            .padding(0)
         }
     }
 }

@@ -87,6 +87,8 @@
 		711F4A8D2B6A1782001C6B53 /* AstigmatismTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A8C2B6A1782001C6B53 /* AstigmatismTestView.swift */; };
 		711F4A8F2B6A1789001C6B53 /* SightTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A8E2B6A1789001C6B53 /* SightTestView.swift */; };
 		711F4A912B6A19E0001C6B53 /* ColorTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A902B6A19E0001C6B53 /* ColorTestViewModel.swift */; };
+		7121E7482B77BE2900921317 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121E7472B77BE2900921317 /* CustomTabBar.swift */; };
+		7121E74A2B77C01500921317 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121E7492B77C01500921317 /* TabBarItem.swift */; };
 		713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */; };
 		713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF22B5E070700694F05 /* FontLiterals.swift */; };
 		713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */; };
@@ -101,10 +103,10 @@
 		71526A402B7242B10000631E /* PlaceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A3F2B7242B10000631E /* PlaceCellView.swift */; };
 		71526A422B7253980000631E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A412B7253980000631E /* Record.swift */; };
 		71526A442B73802E0000631E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71526A432B73802E0000631E /* WebKit.framework */; };
-		71526A462B74EB050000631E /* UITabBarController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71526A452B74EB050000631E /* UITabBarController+.swift */; };
 		71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */; };
 		71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDD2B6D0CA100316569 /* BackgroundView.swift */; };
 		71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDF2B6D206E00316569 /* SightTestViewModel.swift */; };
+		71956BC92B7B65E2006BD6F9 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71956BC82B7B65E2006BD6F9 /* HapticManager.swift */; };
 		71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */; };
 		71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */; };
 		71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */; };
@@ -200,6 +202,8 @@
 		711F4A8C2B6A1782001C6B53 /* AstigmatismTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestView.swift; sourceTree = "<group>"; };
 		711F4A8E2B6A1789001C6B53 /* SightTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestView.swift; sourceTree = "<group>"; };
 		711F4A902B6A19E0001C6B53 /* ColorTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestViewModel.swift; sourceTree = "<group>"; };
+		7121E7472B77BE2900921317 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		7121E7492B77C01500921317 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
 		713F4EF22B5E070700694F05 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
@@ -214,11 +218,11 @@
 		71526A3F2B7242B10000631E /* PlaceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellView.swift; sourceTree = "<group>"; };
 		71526A412B7253980000631E /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		71526A432B73802E0000631E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		71526A452B74EB050000631E /* UITabBarController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+.swift"; sourceTree = "<group>"; };
 		71948DD92B6BBDFB00316569 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71948DDB2B6CC88900316569 /* AstigmatismTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismTestViewModel.swift; sourceTree = "<group>"; };
 		71948DDD2B6D0CA100316569 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		71948DDF2B6D206E00316569 /* SightTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestViewModel.swift; sourceTree = "<group>"; };
+		71956BC82B7B65E2006BD6F9 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnboardingView.swift; sourceTree = "<group>"; };
 		71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnBoardingViewModel.swift; sourceTree = "<group>"; };
 		71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellView.swift; sourceTree = "<group>"; };
@@ -414,6 +418,9 @@
 				52EE56DB2B5E2E8F00C6D423 /* CustomButton.swift */,
 				5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */,
 				710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */,
+				7121E7472B77BE2900921317 /* CustomTabBar.swift */,
+				7121E7492B77C01500921317 /* TabBarItem.swift */,
+				71956BC82B7B65E2006BD6F9 /* HapticManager.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -627,7 +634,6 @@
 			children = (
 				71EC7F272B5E81AB00C0149C /* Bundle+.swift */,
 				1DF7E7362B68C65500602BBB /* View+.swift */,
-				71526A452B74EB050000631E /* UITabBarController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				711F4A8B2B6A1779001C6B53 /* ColorTestView.swift in Sources */,
+				71956BC92B7B65E2006BD6F9 /* HapticManager.swift in Sources */,
 				33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismView.swift in Sources */,
@@ -821,7 +828,6 @@
 				1D575FD32B6B96EC00DDC652 /* ImagePickerView.swift in Sources */,
 				1D575FCD2B6B8C7000DDC652 /* CommentView.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
-				71526A462B74EB050000631E /* UITabBarController+.swift in Sources */,
 				1DF7E7352B68C4A300602BBB /* FreeBoardViewModel.swift in Sources */,
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
 				1D73AD422B63872B00DF431D /* PostView.swift in Sources */,
@@ -837,6 +843,7 @@
 				71EC7F252B5E7FAE00C0149C /* EmptyModel.swift in Sources */,
 				711F4A8D2B6A1782001C6B53 /* AstigmatismTestView.swift in Sources */,
 				5278E3AD2B68B81A00FC8109 /* OTPVerificationView.swift in Sources */,
+				7121E7482B77BE2900921317 /* CustomTabBar.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
@@ -870,6 +877,7 @@
 				710D23622B68CD2200E5EDE8 /* HomeViewModel.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomButton.swift in Sources */,
 				5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */,
+				7121E74A2B77C01500921317 /* TabBarItem.swift in Sources */,
 				71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */,
 				1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */,
 			);
