@@ -49,6 +49,8 @@
 		339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */; };
 		339D39062B70BF95005AC16B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39052B70BF95005AC16B /* CustomSlider.swift */; };
 		33DA6A912B7B2F0B006C4827 /* EyeStatusButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A902B7B2F0B006C4827 /* EyeStatusButtonGroup.swift */; };
+		33DA6A932B7B3488006C4827 /* SurgeryButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A922B7B3488006C4827 /* SurgeryButtonGroup.swift */; };
+		33DA6A952B7B39C7006C4827 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -177,6 +179,8 @@
 		339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordSubtitleView.swift; sourceTree = "<group>"; };
 		339D39052B70BF95005AC16B /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		33DA6A902B7B2F0B006C4827 /* EyeStatusButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeStatusButtonGroup.swift; sourceTree = "<group>"; };
+		33DA6A922B7B3488006C4827 /* SurgeryButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryButtonGroup.swift; sourceTree = "<group>"; };
+		33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 				3398D4892B7369EB00535E0C /* CustomMenu.swift */,
 				3398D4912B73919000535E0C /* AddRecordView.swift */,
 				33DA6A902B7B2F0B006C4827 /* EyeStatusButtonGroup.swift */,
+				33DA6A922B7B3488006C4827 /* SurgeryButtonGroup.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				52FB98F42B638B3300F6A284 /* Login */,
 				52EE56C82B5E2B1500C6D423 /* Movement */,
 				52EE56BE2B5E29B100C6D423 /* Home */,
+				33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -887,6 +893,7 @@
 				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
 				711F4A8F2B6A1789001C6B53 /* SightTestView.swift in Sources */,
 				3398D4882B7369C400535E0C /* AddRecordHeader.swift in Sources */,
+				33DA6A952B7B39C7006C4827 /* WrappingHStack.swift in Sources */,
 				5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */,
 				3391A1702B6A276C0035E0A5 /* VisionChart.swift in Sources */,
 				1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */,
@@ -915,6 +922,7 @@
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				33DD0A392B638BBA005296AC /* StartMovementRow.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
+				33DA6A932B7B3488006C4827 /* SurgeryButtonGroup.swift in Sources */,
 				71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */,
 				7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */,
 				7107A40C2B638E1600944077 /* SightViewModel.swift in Sources */,
