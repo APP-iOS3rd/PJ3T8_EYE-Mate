@@ -30,6 +30,8 @@ struct AddRecordView: View {
 
     @State private var selectedEyeStatus: [String] = []
 
+    @State private var selectedSurgery: [String] = []
+
     var isVisionRecordVisible: Bool {
         selectedTestType.contains(TestType.vision.rawValue)
     }
@@ -176,14 +178,21 @@ struct AddRecordView: View {
 
 
                         HorizontalDivider(color: Color.btnGray, height: 2)
-
                         AddRecordSubtitleView(label: "눈 진단")
                         EyeStatusButtonGroup(selectedID: $selectedEyeStatus) { selected in
                             print("Selected is: \(selected)")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                        
+
+                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        AddRecordSubtitleView(label: "눈 수술 여부")
+                        SurgeryButtonGroup(selectedID: $selectedSurgery) { selected in
+                            print("Selected is: \(selected)")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 12)
+
                         Spacer()
                     }
                     .padding(.horizontal, 12)
