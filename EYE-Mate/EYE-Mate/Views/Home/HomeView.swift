@@ -71,7 +71,7 @@ private struct HomeViewTextView: View {
 
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
-    
+
     var body: some View {
         HStack(spacing: 10) {
             NavigationLink {

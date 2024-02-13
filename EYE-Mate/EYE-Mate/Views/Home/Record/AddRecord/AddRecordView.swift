@@ -178,6 +178,7 @@ struct AddRecordView: View {
                     .frame(minHeight: geometry.size.height - 92)
                     CustomButton(title: "입력완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
                         // TODO: 기록 저장
+                        // TODO: 필수 입력 알림 및 disabled 기능 추가
                         goBack()
                     })
                     .frame(height: 88)

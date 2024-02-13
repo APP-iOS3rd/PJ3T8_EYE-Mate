@@ -46,7 +46,6 @@
 		3398D48E2B736E7500535E0C /* WarningText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D48D2B736E7500535E0C /* WarningText.swift */; };
 		3398D4902B736EE400535E0C /* VisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D48F2B736EE400535E0C /* VisionView.swift */; };
 		3398D4922B73919000535E0C /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4912B73919000535E0C /* AddRecordView.swift */; };
-		3398D4942B73960300535E0C /* TestVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4932B73960300535E0C /* TestVeiw.swift */; };
 		339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */; };
 		339D39062B70BF95005AC16B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D39052B70BF95005AC16B /* CustomSlider.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
@@ -174,7 +173,6 @@
 		3398D48D2B736E7500535E0C /* WarningText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningText.swift; sourceTree = "<group>"; };
 		3398D48F2B736EE400535E0C /* VisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionView.swift; sourceTree = "<group>"; };
 		3398D4912B73919000535E0C /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
-		3398D4932B73960300535E0C /* TestVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVeiw.swift; sourceTree = "<group>"; };
 		339D39032B70B4D9005AC16B /* AddRecordSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordSubtitleView.swift; sourceTree = "<group>"; };
 		339D39052B70BF95005AC16B /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 				3398D4872B7369C400535E0C /* AddRecordHeader.swift */,
 				3398D4892B7369EB00535E0C /* CustomMenu.swift */,
 				3398D4912B73919000535E0C /* AddRecordView.swift */,
-				3398D4932B73960300535E0C /* TestVeiw.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -844,7 +841,6 @@
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
 				33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */,
 				710D409C2B613AC5006C9FED /* ExplanationTextView.swift in Sources */,
-				3398D4942B73960300535E0C /* TestVeiw.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismView.swift in Sources */,
 				331F8AB62B6CD0170008D943 /* CheckBoxButton.swift in Sources */,
 				710D40922B5FD89A006C9FED /* AstigmatismView.swift in Sources */,

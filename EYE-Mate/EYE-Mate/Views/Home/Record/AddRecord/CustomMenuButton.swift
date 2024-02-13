@@ -33,9 +33,35 @@ struct CustomMenuButton: View {
     private func textColor() -> Color {
         switch selectedOption {
         case .nothing:
+            return Color.gray
+        case .bad:
+            return Color.white
+        case .fine:
+            return Color.white
+        case .good:
+            return Color.white
+        }
+    }
+
+    private func backgroundColor() -> Color {
+        switch selectedOption {
+        case .nothing:
+            return Color.white
+        case .bad:
+            return Color.lightRed
+        case .fine:
+            return Color.lightYellow
+        case .good:
+            return Color.customGreen
+        }
+    }
+
+    private func strokeColor() -> Color {
+        switch selectedOption {
+        case .nothing:
             return Color.btnGray
         case .bad:
-            return Color.customRed
+            return Color.lightRed
         case .fine:
             return Color.lightYellow
         case .good:
@@ -57,9 +83,13 @@ struct CustomMenuButton: View {
                         .foregroundStyle(textColor())
                         .padding(24)
                         .frame(height: 32)
-                        .background(.white)
+                        .background(backgroundColor())
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(strokeColor(), lineWidth: 2)
+                        }
                 }
                 if isMenuVisible {
                     CustomMenu {
