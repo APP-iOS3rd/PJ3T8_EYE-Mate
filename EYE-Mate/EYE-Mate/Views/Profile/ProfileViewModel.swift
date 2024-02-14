@@ -166,12 +166,9 @@ class ProfileViewModel: ObservableObject {
                 print("success update Storage Image", self.userProfileURL)
                 
                 // 회원가입시 기본 url로 firestore에 저장된 경우, 값 업데이트
-                let documentRef = self.db.collection("Users").document(self.userUID)
-                if (try await documentRef.getDocument().get("userImageURL") as! String).contains("defaultImage.png") {
+                if userProfileURL.contains("defaultImage.png") {
                     updateImageURLToFirebase()
                 }
-                
-                
                 
                 
             } catch {

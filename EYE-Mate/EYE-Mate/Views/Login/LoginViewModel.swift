@@ -84,7 +84,7 @@ class LoginViewModel: ObservableObject {
     
     // MARK: - 로그인 할 때 회원목록에서 확인 및 회원정보 세팅
     @MainActor
-    func checkLoginAndSettingInfo() async throws{
+    func checkLoginAndSettingInfo() async throws -> Bool{
         do {
             let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
             // for문 으로
@@ -93,15 +93,14 @@ class LoginViewModel: ObservableObject {
                 if data["userUID"] as! String == userUID {
                     userName = data["userName"] as! String
                     userProfileURL = data["userImageURL"] as! String
-                    loggedIn = true
-                    break
+                    return true
                 }
             }
         } catch {
             print("Error getting document: \(error)")
             throw error
         }
-        
+        return false
     }
     
     

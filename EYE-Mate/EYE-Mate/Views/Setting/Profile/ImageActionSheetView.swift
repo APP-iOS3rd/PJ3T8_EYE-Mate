@@ -18,7 +18,9 @@ struct ImageActionSheetView: View {
         VStack(spacing: 0) {
             HStack{
                 Text("프로필 사진 변경")
+                    .font(.pretendardRegular_18)
                     .padding(.leading, 30)
+                    .foregroundStyle(Color.black)
                 Spacer()
                 Button {
                     isPresented = true

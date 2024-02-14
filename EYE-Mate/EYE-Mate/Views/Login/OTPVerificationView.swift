@@ -95,11 +95,16 @@ struct OTPVerificationView: View {
                             // 로그인 화면인 경우
                             } else {
                                 Task{
-                                    try await loginViewModel.checkLoginAndSettingInfo()
-                                    isDisplaySignUpText = loggedIn ? false : true
-                                    // 프로필 이미지 업데이트
-                                    profileViewModel.downloadImageFromProfileURL()
-                                    presentationMode.wrappedValue.dismiss()
+                                    let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
+                                    if isRegistered { // 가입한 이력이 있는 경우
+                                        loggedIn = true
+                                        isDisplaySignUpText = false
+                                        profileViewModel.downloadImageFromProfileURL()
+                                        presentationMode.wrappedValue.dismiss()
+                                    } else { // 가입한 이력이 없는 경우
+                                        loggedIn = false
+                                        isDisplaySignUpText = true
+                                    }
                                 }
                             }
                             

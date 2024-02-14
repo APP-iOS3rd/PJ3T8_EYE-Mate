@@ -13,7 +13,7 @@ struct SignUpProfileView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @AppStorage("user_name") private var userName: String = ""
-    @State var selected: PhotosPickerItem?
+    @State var selectedItem: PhotosPickerItem? = nil
     @State var data: Data?
     @State var error: String = ""
     @State var textName: String = ""
@@ -32,7 +32,7 @@ struct SignUpProfileView: View {
             .layoutPriority(1)
             .padding(.bottom, 50)
             
-            EditableProfileView(profileViewModel: profileViewModel)
+            EditableProfileView(profileViewModel: profileViewModel, selectedItem: $selectedItem)
                 .frame(width: 200, height: 200)
                 .padding(.bottom, 20)
             
@@ -54,6 +54,7 @@ struct SignUpProfileView: View {
                         // HomeView로 profile 정보 가지고 넘어감
                         error = "success"
                         self.userName = textName
+                        profileViewModel.imageSelection = selectedItem
                         profileViewModel.uploadUserInfoToFirebase()
                         presentationMode.wrappedValue.dismiss()
                     }
