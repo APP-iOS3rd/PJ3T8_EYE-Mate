@@ -45,7 +45,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     // MARK: - userName 조건 확인
-    func isValidName() async throws -> String {
+    func isValidName(_ userName: String) async throws -> String {
         var preName = ""
         let regex = #"^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣_-]{2,20}$"#
         

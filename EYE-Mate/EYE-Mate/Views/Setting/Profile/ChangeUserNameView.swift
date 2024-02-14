@@ -12,6 +12,7 @@ struct ChangeUserNameView: View {
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
     @State var error: String = ""
+    @State var textName: String = ""
     
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct ChangeUserNameView: View {
             VStack(alignment: .leading) {
                 Text("닉네임")
                 // TODO: - profileVeiwModel에서 nickname 바인딩
-                ProfileNameTextField()
+                ProfileNameTextField(textName: $textName)
 
             }
             .padding(20)
@@ -34,12 +35,13 @@ struct ChangeUserNameView: View {
             CustomBtn(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 
                 Task {
-                    let result = try await profileViewModel.isValidName()
+                    let result = try await profileViewModel.isValidName(textName)
                     
                     if result != "success" {
                         error = result
                     } else {
                         error = "success"
+                        self.userName = textName
                         profileViewModel.updateNameToFirebase()
                         presentationMode.wrappedValue.dismiss()
                     }
