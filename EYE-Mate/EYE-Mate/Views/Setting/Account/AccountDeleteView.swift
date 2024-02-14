@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountDeleteView: View {
-    @StateObject var accountDeleteViewModel = AccountDeleteViewModel()
+    @ObservedObject var accountDeleteViewModel = AccountDeleteViewModel.shared
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack(spacing: 30) {
@@ -44,6 +44,12 @@ struct AccountDeleteView: View {
                 
                 Button {
                     // TODO: - 탈퇴하기(유저 정보 삭제)
+                    // storage, store, auth, appstorage 삭제
+                    accountDeleteViewModel.deleteUserImageFromStorage()
+                    accountDeleteViewModel.deleteUserInfoFromStore()
+//                    accountDeleteViewModel.deleteUserFromAuth()
+                    accountDeleteViewModel.deleteUserDefaults()
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("탈퇴")
                         .font(.pretendardBold_18)
