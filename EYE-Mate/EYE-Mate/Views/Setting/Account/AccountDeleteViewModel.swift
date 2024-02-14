@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SignOutViewModel: ObservableObject{
+class AccountDeleteViewModel: ObservableObject{
     @Published var signoutContents: [SignOutContent]
     
     init(signoutContents: [SignOutContent] = [

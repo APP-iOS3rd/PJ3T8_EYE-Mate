@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct SignOutView: View {
-    @StateObject var signOutViewModel = SignOutViewModel()
+struct AccountDeleteView: View {
+    @StateObject var accountDeleteViewModel = AccountDeleteViewModel()
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack(spacing: 30) {
@@ -22,7 +22,7 @@ struct SignOutView: View {
                 .font(.pretendardSemiBold_18)
                 .foregroundColor(Color.warningGray)
             
-            SignOutContentList(signOutViewModel: signOutViewModel)
+            AccountDeleteContents(accountDeleteViewModel: accountDeleteViewModel)
             
             Spacer()
             
@@ -63,12 +63,12 @@ struct SignOutView: View {
     }
 }
 
-struct SignOutContentList: View {
-    @ObservedObject var signOutViewModel: SignOutViewModel
+struct AccountDeleteContents: View {
+    @ObservedObject var accountDeleteViewModel: AccountDeleteViewModel
     
     var body: some View {
         VStack {
-            ForEach(signOutViewModel.signoutContents, id: \.self) { content in
+            ForEach(accountDeleteViewModel.signoutContents, id: \.self) { content in
                 VStack(alignment: .leading) {
                     HStack {
                         Text(content.icon)
@@ -98,5 +98,5 @@ struct SignOutContentList: View {
 }
 
 #Preview {
-    SignOutView()
+    AccountDeleteView()
 }

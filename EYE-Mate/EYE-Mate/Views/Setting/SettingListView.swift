@@ -61,7 +61,7 @@ struct SettingListView: View {
                     showAlert = true
                 }
             
-            SettingCellView(title: "회원 탈퇴", destination: SignOutView())
+            SettingCellView(title: "회원 탈퇴", destination: AccountDeleteView())
         }
         
     }
