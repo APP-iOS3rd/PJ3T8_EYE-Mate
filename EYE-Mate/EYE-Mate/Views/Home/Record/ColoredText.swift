@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ColoredText: View {
     let receivedText: String
+    let font: Font
 
     var body: some View {
         Text(receivedText)
             .foregroundColor(getTextColor())
-            .font(.pretendardBold_28)
+            .font(font)
     }
 
-    // 텍스트의 값에 따라 색상을 반환하는 함수
+    /// 텍스트의 값에 따라 색상을 반환하는 함수
     func getTextColor() -> Color {
         if let doubleText = Double(receivedText) {
             switch doubleText {
@@ -31,11 +32,11 @@ struct ColoredText: View {
             }
         } else {
             switch receivedText {
-            case "나쁨":
+            case "나쁨", "심각한 색채 지각 이상":
                 return Color.customRed
-            case "양호":
+            case "양호", "경미한 색채 지각 이상", "중증도의 색채 지각 이상":
                 return Color.lightYellow
-            case "좋음":
+            case "좋음", "정상적인 색채 지각":
                 return Color.customGreen
             default:
                 return .black
@@ -46,5 +47,5 @@ struct ColoredText: View {
 }
 
 #Preview {
-    ColoredText(receivedText: "0.5")
+    ColoredText(receivedText: "0.5", font: .pretendardBold_28)
 }

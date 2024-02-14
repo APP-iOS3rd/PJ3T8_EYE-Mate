@@ -33,7 +33,7 @@ struct ColorVisionDataView: View {
                             .font(.pretendardRegular_18)
                             .frame(width: 120, alignment: .leading)
                         Spacer()
-                        ColoredText(receivedText: "\(data.status)")
+                        ColoredText(receivedText: "\(data.status)", font: .pretendardBold_28)
                         Spacer()
                     }.frame(height: 52)
 

@@ -13,6 +13,7 @@ struct AllRecordView: View {
     var body: some View {
         VStack {
             AllRecordHeader(recordType: recordType, onPressDeleteButton: {})
+            AllRecordList(recordType: recordType)
             Spacer()
         }
         .navigationBarBackButtonHidden()

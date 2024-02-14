@@ -39,13 +39,13 @@ struct EyesightDataView: View {
                                 Text("좌")
                                     .font(.pretendardBold_18)
                                 Spacer()
-                                ColoredText(receivedText: "\(data.left)")
+                                ColoredText(receivedText: "\(data.left)", font: .pretendardBold_28)
                             }.frame(width: 80)
                             HStack{
                                 Text("우")
                                     .font(.pretendardBold_18)
                                 Spacer()
-                                ColoredText(receivedText: "\(data.right)")
+                                ColoredText(receivedText: "\(data.right)", font: .pretendardBold_28)
                             }.frame(width: 80)
                         }
                     }.frame(height: 52)
