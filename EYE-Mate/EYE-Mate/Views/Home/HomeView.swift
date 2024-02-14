@@ -9,46 +9,47 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    
+    @State private var isShowRecordView = false
+
     var body: some View {
-        NavigationStack {
             GeometryReader { g in
                 VStack(alignment: .leading) {
                     CustomNavigationTitle(isDisplayLeftButton: false,
                                           profileButtonAction: {
                         viewModel.isPresentedProfileView.toggle()
                     })
-                    
+
                     Spacer()
                         .frame(height: 5)
-                    
+
                     HomeViewTextView(user: viewModel.user)
-                    
+
                     EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
                         .frame(height: 120)
                         .padding(.top, -30)
-                    
-                    HomeViewCellListView()
-                    
+
+                    HomeViewCellListView(isShowRecordView: $isShowRecordView)
+
                     Spacer()
                 }
                 .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
                     ProfileView()
                 }
+                .navigationDestination(isPresented: $isShowRecordView) {
+                    RecordView(isShowRecordView: $isShowRecordView)
+                }
             }
-            
-        }
     }
 }
 
 //MARK: - 상단 텍스트 뷰
 private struct HomeViewTextView: View {
     var user : UserModel
-    
+
     fileprivate init(user: UserModel) {
         self.user = user
     }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
@@ -71,26 +72,27 @@ private struct HomeViewTextView: View {
 
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
+    @Binding var isShowRecordView: Bool
 
     var body: some View {
         HStack(spacing: 10) {
-            NavigationLink {
-                RecordView()
+            Button {
+                isShowRecordView = true
             } label: {
                 HomeViewCellView(item: .init(isAction: false, img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
                     .padding(.leading, 10)
                     .foregroundColor(.black)
             }
-            
+
             NavigationLink {
-                RecordView()
+                RecordView(isShowRecordView: $isShowRecordView)
             } label: {
                 HomeViewCellView(item: .init(isAction: false, img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
                     .padding(.trailing, 10)
                     .foregroundColor(.black)
             }
         }
-        
+
         VStack {
             NavigationLink {
                 VisionView()

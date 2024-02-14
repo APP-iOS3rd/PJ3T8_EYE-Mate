@@ -69,6 +69,8 @@ struct AddRecordView: View {
         rightAstigmatismStatus = RecordStatus.nothing
         leftEyesightStatus = RecordStatus.nothing
         rightEyesightStatus = RecordStatus.nothing
+        selectedEyeStatus = []
+        selectedSurgery = []
     }
 
 

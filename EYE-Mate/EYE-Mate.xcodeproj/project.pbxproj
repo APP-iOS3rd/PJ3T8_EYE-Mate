@@ -51,6 +51,9 @@
 		33DA6A912B7B2F0B006C4827 /* EyeStatusButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A902B7B2F0B006C4827 /* EyeStatusButtonGroup.swift */; };
 		33DA6A932B7B3488006C4827 /* SurgeryButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A922B7B3488006C4827 /* SurgeryButtonGroup.swift */; };
 		33DA6A952B7B39C7006C4827 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */; };
+		33DA6A982B7C97BD006C4827 /* AllRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A972B7C97BD006C4827 /* AllRecordView.swift */; };
+		33DA6A9A2B7C97DF006C4827 /* AllRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */; };
+		33DA6A9C2B7D1BB0006C4827 /* AllRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -181,6 +184,9 @@
 		33DA6A902B7B2F0B006C4827 /* EyeStatusButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeStatusButtonGroup.swift; sourceTree = "<group>"; };
 		33DA6A922B7B3488006C4827 /* SurgeryButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryButtonGroup.swift; sourceTree = "<group>"; };
 		33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
+		33DA6A972B7C97BD006C4827 /* AllRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordView.swift; sourceTree = "<group>"; };
+		33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordHeader.swift; sourceTree = "<group>"; };
+		33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordList.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -333,6 +339,16 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		33DA6A962B7C97A3006C4827 /* AllRecord */ = {
+			isa = PBXGroup;
+			children = (
+				33DA6A972B7C97BD006C4827 /* AllRecordView.swift */,
+				33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */,
+				33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */,
+			);
+			path = AllRecord;
+			sourceTree = "<group>";
+		};
 		33DD0A302B6246A1005296AC /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +406,7 @@
 		52EE56C12B5E2AA600C6D423 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				33DA6A962B7C97A3006C4827 /* AllRecord */,
 				331F8AA82B6B75D80008D943 /* AddRecord */,
 				52EE56C22B5E2AF200C6D423 /* RecordView.swift */,
 				3391A1652B6A10210035E0A5 /* ColoredText.swift */,
@@ -837,6 +854,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */,
+				33DA6A982B7C97BD006C4827 /* AllRecordView.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
@@ -856,6 +874,7 @@
 				711F4A872B6959A2001C6B53 /* TestType.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */,
+				33DA6A9A2B7C97DF006C4827 /* AllRecordHeader.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				711F4A8B2B6A1779001C6B53 /* ColorTestView.swift in Sources */,
@@ -882,6 +901,7 @@
 				1DF7E7392B68DB2A00602BBB /* Post.swift in Sources */,
 				5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
+				33DA6A9C2B7D1BB0006C4827 /* AllRecordList.swift in Sources */,
 				3398D4922B73919000535E0C /* AddRecordView.swift in Sources */,
 				3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
