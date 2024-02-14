@@ -93,6 +93,7 @@ class LoginViewModel: ObservableObject {
                 if data["userUID"] as! String == userUID {
                     userName = data["userName"] as! String
                     userProfileURL = data["userImageURL"] as! String
+                    profileViewModel.downloadImageFromProfileURL()
                     return true
                 }
             }

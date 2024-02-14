@@ -46,7 +46,6 @@ class ProfileViewModel: ObservableObject {
     
     // MARK: - userName 조건 확인
     func isValidName(_ userName: String) async throws -> String {
-        var preName = ""
         let regex = #"^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣_-]{2,20}$"#
         
         // 문자열 길이 체크
@@ -161,15 +160,11 @@ class ProfileViewModel: ObservableObject {
                 let _ = try await storageRef.putDataAsync(imageData)
                 
                 let downloadURL = try await storageRef.downloadURL()
-                
-                self.userProfileURL = downloadURL.absoluteString
-                print("success update Storage Image", self.userProfileURL)
-                
                 // 회원가입시 기본 url로 firestore에 저장된 경우, 값 업데이트
                 if userProfileURL.contains("defaultImage.png") {
+                    self.userProfileURL = downloadURL.absoluteString
                     updateImageURLToFirebase()
                 }
-                
                 
             } catch {
                 print(error.localizedDescription)
@@ -184,7 +179,7 @@ class ProfileViewModel: ObservableObject {
             if let error = error {
                 print("Error updating document: \(error)")
             } else {
-                print("UserImageURL successfully updated")
+                print("UserImageURL successfully updated", self.userProfileURL)
             }
         }
         
@@ -193,10 +188,10 @@ class ProfileViewModel: ObservableObject {
     // MARK: - 로그인 된 상태에서 profileURL 이미지 다운 받는 함수
     func downloadImageFromProfileURL() {
         let downloader = ImageDownloader.default
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 100, height: 100))
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 300))
         
         // uid가 저장 안된 기본 상태일 때는 기본 이미지 제공
-        guard let imageURL = URL(string: userProfileURL) else {
+        guard let imageURL = URL(string: self.userProfileURL) else {
             return print("Invalid image URL")
         }
         
@@ -204,7 +199,7 @@ class ProfileViewModel: ObservableObject {
             switch result {
             case .success(let value):
                 self.profileImage = Image(uiImage: value.image)
-                print(self.userProfileURL)
+                print("Current ImageURL:", self.userProfileURL)
             case .failure(let error):
                 print("Error downloading image: \(error)")
             }

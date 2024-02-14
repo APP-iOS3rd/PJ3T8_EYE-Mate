@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AccountDeleteView: View {
     @ObservedObject var accountDeleteViewModel = AccountDeleteViewModel.shared
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack(spacing: 30) {
@@ -47,7 +48,6 @@ struct AccountDeleteView: View {
                     // storage, store, auth, appstorage 삭제
                     accountDeleteViewModel.deleteUserImageFromStorage()
                     accountDeleteViewModel.deleteUserInfoFromStore()
-//                    accountDeleteViewModel.deleteUserFromAuth()
                     accountDeleteViewModel.deleteUserDefaults()
                     presentationMode.wrappedValue.dismiss()
                 } label: {

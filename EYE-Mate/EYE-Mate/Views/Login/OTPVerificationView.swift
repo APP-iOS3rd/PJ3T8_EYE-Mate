@@ -97,9 +97,10 @@ struct OTPVerificationView: View {
                                 Task{
                                     let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
                                     if isRegistered { // 가입한 이력이 있는 경우
+//                                        profileViewModel.downloadImageFromProfileURL() // 로그인시 속도 체크
                                         loggedIn = true
                                         isDisplaySignUpText = false
-                                        profileViewModel.downloadImageFromProfileURL()
+                                        
                                         presentationMode.wrappedValue.dismiss()
                                     } else { // 가입한 이력이 없는 경우
                                         loggedIn = false

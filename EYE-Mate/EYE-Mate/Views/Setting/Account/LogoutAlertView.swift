@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LogoutAlertView: View {
+    @Environment(\.presentationMode) var presentationMode
     @AppStorage("Login") private var login: Bool = false
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
@@ -46,7 +47,10 @@ struct LogoutAlertView: View {
                     UserDefaults.standard.removeObject(forKey: "user_name")
                     UserDefaults.standard.removeObject(forKey: "user_UID")
                     UserDefaults.standard.removeObject(forKey: "user_profile_url")
+                    UserDefaults.standard.synchronize()
+                    profileViewModel.profileImage = Image("user") // 캐싱으로 보여주기
                     profileViewModel.downloadImageFromProfileURL()
+                    presentationMode.wrappedValue.dismiss()
                     
                     
                 } label: {

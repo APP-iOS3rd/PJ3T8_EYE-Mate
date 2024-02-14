@@ -27,10 +27,7 @@ class AccountDeleteViewModel: ObservableObject{
         self.signoutContents = signoutContents
     }
     
-    
-    // userdefaults # 마지막에
-    
-    // auth 삭제
+    // MARK: - Auth 삭제 함수 생성(임시)
     func deleteUserFromAuth() {
         if let user = Auth.auth().currentUser {
             user.delete { error in
@@ -76,7 +73,9 @@ class AccountDeleteViewModel: ObservableObject{
         UserDefaults.standard.removeObject(forKey: "user_name")
         UserDefaults.standard.removeObject(forKey: "user_UID")
         UserDefaults.standard.removeObject(forKey: "user_profile_url")
-        profileViewModel.downloadImageFromProfileURL()
+        self.userProfileURL = String.defaultProfileURL
+        print(self.userProfileURL)
+        profileViewModel.profileImage = Image("user") // 캐싱으로 보여주기
     }
     
 }
