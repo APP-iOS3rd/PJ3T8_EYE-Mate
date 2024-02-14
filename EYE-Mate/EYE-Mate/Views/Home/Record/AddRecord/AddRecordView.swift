@@ -149,10 +149,9 @@ struct AddRecordView: View {
                             VStack {
                                 AddRecordSubtitleView(label: "색각")
                                 HStack {
-                                    CustomMenuButton(label: nil, selectedOption: $colorVisionStatus)
+                                    CustomMenuButton(label: nil, isColorVision: true, selectedOption: $colorVisionStatus)
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 12)
+                                .frame(maxWidth: .infinity, alignment: .center)
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isAstigmatismRecordVisible || isEyesightRecordVisible {
@@ -164,8 +163,8 @@ struct AddRecordView: View {
                             VStack {
                                 AddRecordSubtitleView(label: "난시")
                                 HStack(spacing: 80) {
-                                    CustomMenuButton(label: "좌", selectedOption: $leftAstigmatismStatus)
-                                    CustomMenuButton(label: "우", selectedOption: $rightAstigmatismStatus)
+                                    CustomMenuButton(label: "좌", isColorVision: false, selectedOption: $leftAstigmatismStatus)
+                                    CustomMenuButton(label: "우", isColorVision: false, selectedOption: $rightAstigmatismStatus)
                                 }
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
@@ -178,8 +177,8 @@ struct AddRecordView: View {
                             VStack {
                                 AddRecordSubtitleView(label: "시야")
                                 HStack(spacing: 80) {
-                                    CustomMenuButton(label: "좌", selectedOption: $leftEyesightStatus)
-                                    CustomMenuButton(label: "우", selectedOption: $rightEyesightStatus)
+                                    CustomMenuButton(label: "좌", isColorVision: false, selectedOption: $leftEyesightStatus)
+                                    CustomMenuButton(label: "우", isColorVision: false, selectedOption: $rightEyesightStatus)
                                 }
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))

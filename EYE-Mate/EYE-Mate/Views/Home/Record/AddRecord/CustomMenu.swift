@@ -14,7 +14,6 @@ struct CustomMenu<Content: View>: View {
         VStack(spacing: 0) {
             content
         }
-        .frame(width: 108)
         .background(.white)
         .cornerRadius(10)
         .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
@@ -54,5 +53,5 @@ struct CustomMenuButtonStyle: ButtonStyle {
               }
               .buttonStyle(CustomMenuButtonStyle(color: Color.customRed))
           }
-    }
+    }.frame(width: 108)
 }
