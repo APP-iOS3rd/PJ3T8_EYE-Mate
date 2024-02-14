@@ -9,22 +9,22 @@ import SwiftUI
 
 struct AddRecordView: View {
     @Environment(\.dismiss) var dismiss
-    
+
     @State private var selectedDate: Date = Date()
-    
+
     @State private var selectedEyeware = ""
     @State private var selectedPlace = ""
-    
+
     @State private var selectedTestType: [String] = []
-    
+
     @State private var leftVision = 1.0
     @State private var rightVision = 1.0
-    
+
     @State private var colorVisionStatus = RecordStatus.nothing
-    
+
     @State private var leftAstigmatismStatus = RecordStatus.nothing
     @State private var rightAstigmatismStatus = RecordStatus.nothing
-    
+
     @State private var leftEyesightStatus = RecordStatus.nothing
     @State private var rightEyesightStatus = RecordStatus.nothing
 
@@ -44,11 +44,19 @@ struct AddRecordView: View {
     var isEyesightRecordVisible: Bool {
         selectedTestType.contains(TestType.eyesight.rawValue)
     }
-    
+
+    var isCompleteButtonDisabled: Bool {
+        if selectedEyeware == "" || selectedPlace == "" || selectedTestType.isEmpty || selectedEyeStatus.isEmpty || selectedSurgery.isEmpty || (isColorVisionRecordVisible && colorVisionStatus == RecordStatus.nothing) || (isAstigmatismRecordVisible && leftAstigmatismStatus == RecordStatus.nothing) || (isAstigmatismRecordVisible && rightAstigmatismStatus == RecordStatus.nothing) || (isEyesightRecordVisible && leftEyesightStatus == RecordStatus.nothing) || (isEyesightRecordVisible && rightEyesightStatus == RecordStatus.nothing){
+            return true
+        } else {
+            return false
+        }
+    }
+
     private func goBack() {
         dismiss()
     }
-    
+
     private func resetRecord() {
         selectedDate = Date()
         selectedEyeware = ""
@@ -62,14 +70,15 @@ struct AddRecordView: View {
         leftEyesightStatus = RecordStatus.nothing
         rightEyesightStatus = RecordStatus.nothing
     }
-    
+
+
     static let dateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY.MM.dd"
-        
+
         return formatter
     }()
-    
+
     var body: some View {
         VStack {
             AddRecordHeader(onPressResetButton: {resetRecord()})
@@ -90,7 +99,7 @@ struct AddRecordView: View {
                             Spacer()
                         }
                         HorizontalDivider(color: Color.btnGray, height: 2)
-                        
+
                         AddRecordSubtitleView(label: "안경 착용")
                         EyewareButtonGroup(selectedID: $selectedEyeware) { selected in
                             print("Selected is: \(selected)")
@@ -98,7 +107,7 @@ struct AddRecordView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
                         HorizontalDivider(color: Color.btnGray, height: 2)
-                        
+
                         AddRecordSubtitleView(label: "검사 장소")
                         PlaceButtonGroup(selectedID: $selectedPlace) { selected in
                             print("Selected is: \(selected)")
@@ -106,19 +115,19 @@ struct AddRecordView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
                         HorizontalDivider(color: Color.btnGray, height: 2)
-                        
+
                         AddRecordSubtitleView(label: "검사 종류")
                         TestTypeButtonGroup(selectedID: $selectedTestType) { selected in
                             print("Selected is: \(selected)")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                        
+
                         if isVisionRecordVisible || isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                             HorizontalDivider(color: Color.btnGray, height: 2)
                                 .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
-                        
+
                         if isVisionRecordVisible {
                             VStack {
                                 AddRecordSubtitleView(label: "시력")
@@ -128,14 +137,14 @@ struct AddRecordView: View {
                                 }
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
-                            
-                            
+
+
                             if isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
                                 HorizontalDivider(color: Color.btnGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
-                        
+
                         if isColorVisionRecordVisible {
                             VStack {
                                 AddRecordSubtitleView(label: "색각")
@@ -198,13 +207,14 @@ struct AddRecordView: View {
                     .padding(.horizontal, 12)
                     .padding(.top, 20)
                     .frame(minHeight: geometry.size.height - 92)
-                    CustomButton(title: "입력완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
+                    CustomButton(title: "입력 완료", background: isCompleteButtonDisabled ? Color.customGreen.opacity(0.5) : Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
                         // TODO: 기록 저장
                         // TODO: 필수 입력 알림 및 disabled 기능 추가
                         goBack()
                     })
                     .frame(height: 88)
                     .frame(maxWidth: .infinity)
+                    .disabled(isCompleteButtonDisabled)
                 }
             }.navigationBarBackButtonHidden()
         }
