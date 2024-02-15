@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import FirebaseAuth
+import UIKit
 
 struct PhoneNumberView: View {
     @StateObject var loginViewModel = LoginViewModel(verificationID: "")
@@ -96,21 +97,24 @@ struct PhoneNumberView: View {
                         }
                         .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
                     }
+                    .disabled(mobPhoneNumber.count < countryPattern.count)
                 }
                 
                 // MARK: - OTP View
                 if openOTPView {
                     OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
+                } else {
+                    
                 }
                 
                 Spacer()
             }
             .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
         }
-        
         .onTapGesture {
             hideKeyboard()
         }
+        
         .sheet(isPresented: $presentSheet) {
             NavigationView {
                 List(filteredResorts) { country in
@@ -137,7 +141,6 @@ struct PhoneNumberView: View {
             .presentationDetents([.medium, .large])
         }
         .presentationDetents([.medium, .large])
-        .ignoresSafeArea(.keyboard)
         
     }
     
@@ -167,7 +170,6 @@ struct PhoneNumberView: View {
     
 }
 
-
 extension View {
     func placeholder<Content: View>(
         when shouldShow: Bool,
@@ -180,12 +182,13 @@ extension View {
             }
         }
 }
+
 extension View {
     func hideKeyboard() {
-        let resign = #selector(UIResponder.resignFirstResponder)
-        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
 extension View {
     func disableWithOpacity(_ condition: Bool) -> some View {
         self

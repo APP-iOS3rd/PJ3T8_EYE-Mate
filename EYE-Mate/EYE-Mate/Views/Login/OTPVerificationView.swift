@@ -8,7 +8,13 @@
 import SwiftUI
 import FirebaseAuth
 import Combine
+import UIKit
 
+enum SignUpErrorText: String {
+    case otp = "인증번호 숫자 6자리를 다시 입력해주세요"
+    case signup = "가입되지 않은 번호입니다.\n회원가입으로 계정을 만들어보세요!"
+    case notiLogin = "이미 가입된 회원입니다.\n로그인 페이지를 이용해주세요!"
+}
 
 struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -21,7 +27,7 @@ struct OTPVerificationView: View {
     @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
     @State var isDisplayNotiLoginText: Bool = false
-    
+    @State private var errorText: String = ""
     @FocusState private var keyIsFocused: Bool
     
     var mobileNumber: String = ""
@@ -38,7 +44,7 @@ struct OTPVerificationView: View {
                 Text("인증번호")
                     .font(.pretendardMedium_16)
                 
-                VStack(alignment:.leading, spacing: 0) {
+                VStack(alignment:.leading, spacing: 10) {
                     
                     TextField("", text: $otp)
                         .font(.pretendardMedium_16)
@@ -53,19 +59,11 @@ struct OTPVerificationView: View {
                         .frame(width: 300, height: 50)
                         .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                     
-                    
-                    if isDisplayotpErrorText {
-                        Text("인증번호 숫자 6자리를 다시 입력해주세요")
+                    if isDisplayotpErrorText || isDisplaySignUpText || isDisplayNotiLoginText {
+                        Text(errorText)
                             .modifier(TextModifier())
-                    }
-                    
-                    if isDisplaySignUpText {
-                        Text("가입되지 않은 번호입니다.\n회원가입으로 계정을 만들어보세요!")
-                            .modifier(TextModifier())
-                    }
-                    
-                    if isDisplayNotiLoginText {
-                        Text("이미 가입된 회원입니다.\n로그인 페이지를 이용해주세요!")
+                    } else {
+                        Text("")
                             .modifier(TextModifier())
                     }
                 }
@@ -87,6 +85,8 @@ struct OTPVerificationView: View {
                                     if try await loginViewModel.checkLoginList() {
                                         isDisplayNotiLoginText = true
                                         isDisplayProfileSettingView = false
+                                        errorText = SignUpErrorText.notiLogin.rawValue
+                                        
                                     } else {
                                         // 회원가입
                                         isDisplayNotiLoginText = false
@@ -104,10 +104,13 @@ struct OTPVerificationView: View {
                                     } else { // 가입한 이력이 없는 경우
                                         loggedIn = false
                                         isDisplaySignUpText = true
+                                        errorText = SignUpErrorText.signup.rawValue
                                     }
                                 }
                             } else {
                                 isDisplayotpErrorText = true
+                                errorText = SignUpErrorText.otp.rawValue
+                                
                             }
                         } catch {
                             print("Error: \(error)")
@@ -122,10 +125,13 @@ struct OTPVerificationView: View {
                             .frame(width: 300, height: 50))
                 }
                 .frame(width: 300, height: 50)
-                .padding(.top, 30)
+                .padding(.top, 10)
                 .disableWithOpacity(otp.count < 6)
+                .disabled(otp.count < 6)
             }
-            
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
         .navigationDestination(isPresented: $isDisplayProfileSettingView){
             SignUpProfileView()
@@ -138,7 +144,8 @@ fileprivate struct TextModifier: ViewModifier {
         content
             .font(.pretendardMedium_16)
             .foregroundStyle(Color.customRed)
-            .frame(width: 300, height: 50)
+            .frame(width: 300, height: 40)
+            .multilineTextAlignment(.center)
     }
 }
 
