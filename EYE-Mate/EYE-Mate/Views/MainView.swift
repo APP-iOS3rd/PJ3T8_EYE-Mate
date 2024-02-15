@@ -8,37 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
-
+    @State private var tabSelection: TabBarItem = .home
+    
     var body: some View {
-        NavigationStack{
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("홈")
-                            .font(.pretendardMedium_10)
-                    }
+        NavigationStack {
+            CustomTabBarContainerView(selection: $tabSelection) {
+                HomeView(tabSelection: $tabSelection)
+                    .tabBarItem(tab: .home, selection: $tabSelection)
                 MovementView()
-                    .tabItem {
-                        Image(systemName: "eyes")
-                        Text("눈운동")
-                            .font(.pretendardMedium_10)
-                    }
+                    .tabBarItem(tab: .movement, selection: $tabSelection)
                 CommunityView()
-                    .tabItem {
-                        Image(systemName: "message.fill")
-                        Text("게시판")
-                            .font(.pretendardMedium_10)
-                    }
+                    .tabBarItem(tab: .community, selection: $tabSelection)
                 EyeMapView()
-                    .tabItem {
-                        Image(systemName: "map.fill")
-                            .imageScale(.small)
-                        Text("내주변")
-                            .font(.pretendardMedium_10)
-                    }
+                    .tabBarItem(tab: .eyeMap, selection: $tabSelection)
             }
-            
             .accentColor(.customGreen)
             .padding(0)
         }
@@ -48,3 +31,5 @@ struct MainView: View {
 #Preview {
     MainView()
 }
+
+

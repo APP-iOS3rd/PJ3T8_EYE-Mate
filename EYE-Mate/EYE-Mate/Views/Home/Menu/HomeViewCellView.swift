@@ -26,23 +26,8 @@ struct HomeViewCellView: View {
                 .padding(.leading, 10)
                 
                 Spacer()
-                
-                if item.isAction {
-                    Button(action: {},
-                           label:
-                            { ZStack {
-                        Circle()
-                            .foregroundColor(Color.customGreen)
-                            .frame(width: 35, height: 35)
-                        Text(">")
-                            .foregroundStyle(.white)
-                    }
-                    }
-                    )
-                    .padding(.trailing, 10)
-                }
             }
-            .padding([.top, .bottom], 10)
+            .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
@@ -53,5 +38,5 @@ struct HomeViewCellView: View {
 }
 
 #Preview {
-    HomeViewCellView(item: .init(isAction: false, img: Image(systemName: "person.fill"), title: "눈 기록", subTitle: "꼼꼼하게"))
+    HomeViewCellView(item: .init(img: Image(systemName: "person.fill"), title: "눈 기록", subTitle: "꼼꼼하게"))
 }

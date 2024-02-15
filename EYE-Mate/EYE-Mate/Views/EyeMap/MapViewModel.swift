@@ -54,6 +54,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
     @Published var placeInfo: [String: String] = [:]
+    @Published var resultInfo: [placeList] = []
     @Published var sheetFlag = false
     var queryPlace: String = encodingPlace.hosiptal.rawValue
     var markerImage: String = markerImageName.hospital.rawValue
@@ -197,6 +198,8 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
                 array.sort { return Double($0.distance) ?? 0.0 < Double($1.distance) ?? 0.0 }
                 // 내 주변 20개 보여주기
                 let resultArray = Array(array[0...19])
+                // 검사 결과에서 보여주기 위한 주변 정보 가져오기 추가
+                self.resultInfo = resultArray
                 
                 // 이전 마커 지우기
                 if self.hospitalsMarkers.count > 1 {

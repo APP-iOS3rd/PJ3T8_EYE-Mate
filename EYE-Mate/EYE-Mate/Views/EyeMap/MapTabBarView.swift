@@ -41,6 +41,8 @@ struct MapTabBarView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical)
+                CustomNavigationTitle(title: "주변 정보",
+                                      isDisplayLeftButton: false)
                 
                 // 상단 TabView
                 MapTopTabView()
@@ -52,7 +54,6 @@ struct MapTabBarView: View {
                 case .optician:
                     MapView()
                 }
-                Spacer()
             }
         }
         .navigationBarHidden(true)
