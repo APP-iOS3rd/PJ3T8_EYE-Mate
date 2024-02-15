@@ -106,39 +106,40 @@ private struct HomeViewCellListView: View {
             Button(action: {
                 tabSelection = .movement
             }, label: {
-                HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
+                HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "눈 피로감 줄이기"))
                     .padding(.trailing, 10)
                     .foregroundColor(.black)
             })
         }
+        .padding(.bottom, 5)
         
-        VStack {
+        VStack(spacing: 15) {
             Button(action: {
                 viewModel.isPresentedVisionView = true
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest1"), title: "시력 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+                HomeViewCellView(item: .init(img: Image("VisionTest1"), title: "시력 검사", subTitle: "나의 시력을 확인해보세요."))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
             })
             Button(action: {
                 viewModel.isPresentedColorView = true
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색채 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색채 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
             })
             Button(action: {
                 viewModel.isPresentedAstigmatismView = true
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest3"), title: "난시 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+                HomeViewCellView(item: .init(img: Image("VisionTest3"), title: "난시 검사", subTitle: "난시의 징후가 있는지 검사하세요."))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
             })
             Button(action: {
                 viewModel.isPresentedSightView = true
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest4"), title: "시야 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+                HomeViewCellView(item: .init(img: Image("VisionTest4"), title: "시야 검사", subTitle: "시야의 문제 여부를 파악해보세요."))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
             })
         }
