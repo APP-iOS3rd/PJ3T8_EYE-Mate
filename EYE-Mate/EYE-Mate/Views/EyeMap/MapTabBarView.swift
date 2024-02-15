@@ -13,7 +13,8 @@ enum MapTopTapViewItem : String, CaseIterable {
 }
 
 struct MapTabBarView: View {
-    @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @StateObject var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @State private var selectedPicker: MapTopTapViewItem = .hospital
     @Namespace private var animation
     
@@ -22,6 +23,24 @@ struct MapTabBarView: View {
         NavigationStack{
             VStack(spacing: 0) {
                 // 상단 Title
+                HStack(alignment: .bottom) {
+                    VStack(spacing: 5) {
+                        Text("EYE-Mate")
+                            .font(.pretendardSemiBold_22)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("주변 정보")
+                            .font(.pretendardSemiBold_32)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    
+                    NavigationLink(destination: ProfileView()) {
+                        profileViewModel.profileImage
+                            .ProfileImageModifier()
+                            .frame(width: 50, height: 50)
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical)
                 CustomNavigationTitle(title: "주변 정보",
                                       isDisplayLeftButton: false)
                 
@@ -39,6 +58,7 @@ struct MapTabBarView: View {
         }
         .navigationBarHidden(true)
     }
+        
     
     @ViewBuilder
     func MapTopTabView() -> some View {
@@ -79,5 +99,5 @@ struct MapTabBarView: View {
 }
 
 #Preview {
-    MapTabBarView()
+    MapTabBarView(profileViewModel: ProfileViewModel())
 }

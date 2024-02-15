@@ -42,14 +42,14 @@ struct SightView: View {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
-                DistanceConditionView(title: "시야 검사", type: .sight)
+                DistanceConditionView(title: "시야 검사", type: .eyesight)
                     .navigationBarBackButtonHidden()
             })
             .frame(maxHeight: 75)
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

@@ -43,7 +43,7 @@ struct HomeView: View {
             ProfileView()
         }
         .navigationDestination(isPresented: $viewModel.isPresentedRecordView) {
-            RecordView()
+            RecordView(viewModel: viewModel)
         }
         .navigationDestination(isPresented: $viewModel.isPresentedVisionView) {
             VisionView()
@@ -63,11 +63,11 @@ struct HomeView: View {
 //MARK: - 상단 텍스트 뷰
 private struct HomeViewTextView: View {
     var user : UserModel
-    
+
     fileprivate init(user: UserModel) {
         self.user = user
     }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){

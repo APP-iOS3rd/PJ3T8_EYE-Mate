@@ -162,7 +162,7 @@ private struct ColorTestResultView: View {
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
             

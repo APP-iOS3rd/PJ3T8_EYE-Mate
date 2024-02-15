@@ -54,7 +54,7 @@ private struct DistanceView: View {
         VStack {
             Spacer()
                 .frame(maxHeight: 100)
-            if type != .sight {
+            if type != .eyesight {
                 Text("\(title)를 위해서 휴대폰을 사용자와\n40cm ~ 50cm 간격을 유지해주세요!")
                     .font(.pretendardMedium_20)
                     .multilineTextAlignment(.center)
@@ -70,7 +70,7 @@ private struct DistanceView: View {
                 Spacer()
                 Text("현재거리 ")
                     .font(.pretendardRegular_30)
-                if type != .sight {
+                if type != .eyesight {
                     Text("\(viewModel.distance)")
                         .font(.pretendardRegular_40)
                         .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
@@ -87,7 +87,7 @@ private struct DistanceView: View {
             Spacer()
             
             VStack {
-                if type != .sight {
+                if type != .eyesight {
                 Text(viewModel.informationText)
                     .font(.pretendardMedium_20)
                     .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
@@ -101,8 +101,10 @@ private struct DistanceView: View {
                             viewModel.isActiveVisionTest = true
                         case .astigmatism:
                             viewModel.isActiveAstigmatismTest = true
-                        case .sight:
+                        case .eyesight:
                             viewModel.isActiveSightTest = true
+                        case .colorVision:
+                            break
                         }
                     })
                     .frame(maxHeight: 75)
@@ -119,12 +121,14 @@ private struct DistanceView: View {
                             viewModel.isActiveVisionTest = true
                         case .astigmatism:
                             viewModel.isActiveAstigmatismTest = true
-                        case .sight:
+                        case .eyesight:
                             viewModel.isActiveSightTest = true
+                        case .colorVision:
+                            break
                         }
                     })
                     .frame(maxHeight: 75)
-                    .disabled(type != .sight ? !viewModel.canStart : !viewModel.canSightStart)
+                    .disabled(type != .eyesight ? !viewModel.canStart : !viewModel.canSightStart)
                 }
             }
             .navigationDestination(isPresented: $viewModel.isActiveVisionTest) {

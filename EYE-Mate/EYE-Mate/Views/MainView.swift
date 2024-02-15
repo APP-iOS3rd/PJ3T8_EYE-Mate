@@ -22,6 +22,8 @@ struct MainView: View {
                 EyeMapView()
                     .tabBarItem(tab: .eyeMap, selection: $tabSelection)
             }
+            .accentColor(.customGreen)
+            .padding(0)
         }
     }
 }

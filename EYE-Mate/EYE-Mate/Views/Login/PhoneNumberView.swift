@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import FirebaseAuth
+import UIKit
 
 struct PhoneNumberView: View {
     @StateObject var loginViewModel = LoginViewModel(verificationID: "")
@@ -19,10 +20,10 @@ struct PhoneNumberView: View {
     @State var countryLimit : Int = 17
     @State var mobPhoneNumber = ""
     @State var searchCountry: String  = ""
-    
+    @State var previousPhoneNumber: String = ""
     @State var openOTPView: Bool = false
-    @Binding var signUpFlag: Bool
     
+    @Binding var signUpFlag: Bool
     @FocusState private var keyIsFocused: Bool
     
     var foregroundColor: Color = Color(.black)
@@ -64,7 +65,12 @@ struct PhoneNumberView: View {
                         .padding(10)
                         .frame(minWidth: 80, minHeight: 47)
                         .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    
+                        .onChange(of: mobPhoneNumber) { newValue in
+                            // 이전 번호와 달라지는 경우
+                            if previousPhoneNumber != newValue {
+                                self.openOTPView = false
+                            }
+                        }
                     
                 }
                 .frame(width: 300)
@@ -74,6 +80,7 @@ struct PhoneNumberView: View {
                 HStack {
                     Button {
                         if mobPhoneNumber.count >= countryPattern.count{
+                            self.previousPhoneNumber = mobPhoneNumber
                             self.openOTPView = true
                         }
                         
@@ -90,21 +97,24 @@ struct PhoneNumberView: View {
                         }
                         .disableWithOpacity(mobPhoneNumber.count < countryPattern.count )
                     }
+                    .disabled(mobPhoneNumber.count < countryPattern.count)
                 }
                 
                 // MARK: - OTP View
                 if openOTPView {
                     OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
+                } else {
+                    
                 }
                 
                 Spacer()
             }
             .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
         }
-        
         .onTapGesture {
             hideKeyboard()
         }
+        
         .sheet(isPresented: $presentSheet) {
             NavigationView {
                 List(filteredResorts) { country in
@@ -131,7 +141,6 @@ struct PhoneNumberView: View {
             .presentationDetents([.medium, .large])
         }
         .presentationDetents([.medium, .large])
-        .ignoresSafeArea(.keyboard)
         
     }
     
@@ -161,7 +170,6 @@ struct PhoneNumberView: View {
     
 }
 
-
 extension View {
     func placeholder<Content: View>(
         when shouldShow: Bool,
@@ -174,12 +182,13 @@ extension View {
             }
         }
 }
+
 extension View {
     func hideKeyboard() {
-        let resign = #selector(UIResponder.resignFirstResponder)
-        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
 extension View {
     func disableWithOpacity(_ condition: Bool) -> some View {
         self
