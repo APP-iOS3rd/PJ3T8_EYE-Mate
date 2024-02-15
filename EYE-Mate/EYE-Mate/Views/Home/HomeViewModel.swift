@@ -10,6 +10,12 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var isPresentedProfileView = false
+    @Published var isPresentedRecordView = false
+    
+    @Published var isPresentedVisionView = false
+    @Published var isPresentedColorView = false
+    @Published var isPresentedAstigmatismView = false
+    @Published var isPresentedSightView = false
     
     @Published var user: UserModel
     @Published var onboardingModel: EyeSenseOnBoardingViewModel

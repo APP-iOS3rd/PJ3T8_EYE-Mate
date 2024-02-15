@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 //MARK: - 테스트마다 조건을 확인하는 모델
-class DistanceConditionViewModel: ObservableObject {
+final class DistanceConditionViewModel: ObservableObject {
+    static let shared = DistanceConditionViewModel()
+    
     @Published var distance: Int = 0
     
     @Published var isActiveVisionTest = false

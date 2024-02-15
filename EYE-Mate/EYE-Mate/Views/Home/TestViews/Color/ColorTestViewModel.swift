@@ -26,7 +26,7 @@ class ColorTestViewModel: ObservableObject {
     
     let answerSet = ["12", "74", "6", "16", "2", "29", "7", "45", "5", "97", "8", "42", "3"]
     
-    @Published var userAnswer: [String] = []
+    @Published var userAnswer: [String] = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
     @Published var index: Int = 0
     @Published var isTestStarted: Bool = false
     private var count: Int = 0
