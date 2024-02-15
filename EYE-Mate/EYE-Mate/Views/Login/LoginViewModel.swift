@@ -33,7 +33,7 @@ class LoginViewModel: ObservableObject {
     func sendVerificationCode(phoneNumber: String) {
         print(phoneNumber)
         // reCAPTCHA 기능 중지 - simulator용
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
@@ -47,25 +47,25 @@ class LoginViewModel: ObservableObject {
             }
     }
     
+    // MARK: - 번호, 인증코드 일치 확인 후 토큰 생성
     @MainActor
-    // MARK: - signUpFlag == false 이고 storage에 uid 가 없으면 로그인 X -> 회원가입으로 유도(나중에)
-    func verifyOTP(otp: String, signUpFlag: Bool, completion: @escaping (Bool) -> Void){
+    func verifyOTP(otp: String, signUpFlag: Bool) async throws -> Bool {
         // 인증 코드, 인증 ID를 사용해 FIRPhoneAuthCredential 객체 생성
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: otp)
         
-        // credential 객체로 signin(로그인, 회원가입)
-        Auth.auth().signIn(with: credential) { user, error in
-            if let error = error {
-                UserDefaults.standard.set(false, forKey: "Login")
-                print(error.localizedDescription)
-                completion(false)
-            } else {
-                // 인증번호 성공
-                self.userUID = user?.user.uid ?? "N/A" // UID 저장
-                print("OTP Verify Success = \(user?.user.uid ?? "N/A")")
-                completion(true)
-            }
+        do {
+            // credential 객체로 signin(로그인, 회원가입)
+            let userCredential = try await Auth.auth().signIn(with: credential)
+            // 인증번호 성공
+            self.userUID = userCredential.user.uid // UID 저장
+            print("OTP Verify Success = \(userCredential.user.uid)")
+            return true
+        } catch {
+            UserDefaults.standard.set(false, forKey: "Login")
+            print(error.localizedDescription)
+            return false
         }
+        
     }
     
     func resendOTP(mobileNumber: String) {

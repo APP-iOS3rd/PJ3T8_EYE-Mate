@@ -14,7 +14,7 @@ struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
-
+    
     @Binding var signUpFlag: Bool
     @State private var otp: String = ""
     @State private var isDisplayotpErrorText: Bool = false
@@ -72,48 +72,47 @@ struct OTPVerificationView: View {
                 
                 // MARK: - 회원가입/로그인 버튼
                 Button {
-                    // MARK: - loginViewModel에서 로그인이면 정보 가져와야함
-                    loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag) { success in
-                        if success {
-                            isDisplayotpErrorText = false
+                    Task{
+                        do {
+                            let success = try await loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag)
                             
-                            // 회원가입 화면
-                            if signUpFlag {
-                                isDisplaySignUpText = false
-                                Task{
-                                    // 이미 등록된 회원인 경우 -> 로그인 화면으로 유도
+                            if success {
+                                isDisplayotpErrorText = false
+                                
+                                // 회원가입 화면
+                                if signUpFlag {
+                                    isDisplaySignUpText = false
+                                    
+                                    // 이미 등록된 회원인 경우 로그인 화면으로
                                     if try await loginViewModel.checkLoginList() {
                                         isDisplayNotiLoginText = true
                                         isDisplayProfileSettingView = false
                                     } else {
-                                    // 정상적인 회원가입 프로세스
+                                        // 회원가입
                                         isDisplayNotiLoginText = false
                                         isDisplayProfileSettingView = true
                                     }
-                                }
-                                
-                            // 로그인 화면인 경우
-                            } else {
-                                Task{
+                                    
+                                    // 로그인 화면인 경우
+                                } else {
                                     let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
+                                    
                                     if isRegistered { // 가입한 이력이 있는 경우
-//                                        profileViewModel.downloadImageFromProfileURL() // 로그인시 속도 체크
                                         loggedIn = true
                                         isDisplaySignUpText = false
-                                        
                                         presentationMode.wrappedValue.dismiss()
                                     } else { // 가입한 이력이 없는 경우
                                         loggedIn = false
                                         isDisplaySignUpText = true
                                     }
                                 }
+                            } else {
+                                isDisplayotpErrorText = true
                             }
-                            
-                        } else {
-                            isDisplayotpErrorText = true
+                        } catch {
+                            print("Error: \(error)")
                         }
                     }
-                    
                 } label: {
                     Text(signUpFlag ? "회원가입" : "로그인")
                         .foregroundStyle(.white)

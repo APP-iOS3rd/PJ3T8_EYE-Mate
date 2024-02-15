@@ -11,8 +11,9 @@ struct ChangeUserNameView: View {
     @AppStorage("user_name") private var userName: String = ""
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
-    @State var error: String = ""
     @State var textName: String = ""
+    @State var isButtonEnabled: Bool = false
+    
     
     var body: some View {
         VStack {
@@ -23,30 +24,18 @@ struct ChangeUserNameView: View {
             VStack(alignment: .leading) {
                 Text("닉네임")
                 // TODO: - profileVeiwModel에서 nickname 바인딩
-                ProfileNameTextField(textName: $textName)
+                ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled)
 
             }
             .padding(20)
             
-            Text("\(error)")
-                .font(.pretendardRegular_16)
-                .foregroundStyle(Color.red)
-            
             CustomBtn(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
-                
-                Task {
-                    let result = try await profileViewModel.isValidName(textName)
-                    
-                    if result != "success" {
-                        error = result
-                    } else {
-                        error = "success"
-                        self.userName = textName
-                        profileViewModel.updateNameToFirebase()
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
+                self.userName = textName
+                profileViewModel.uploadUserInfoToFirebase()
+                presentationMode.wrappedValue.dismiss()
             })
+            .disabled(!isButtonEnabled) // false 이면 disabled
+            .disableWithOpacity(!isButtonEnabled)
             .frame(height: 88)
             .padding(5)
             
