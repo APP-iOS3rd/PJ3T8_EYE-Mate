@@ -7,67 +7,20 @@
 
 import SwiftUI
 
-struct VisionRecordModel: Identifiable & Hashable {
-    let id = UUID()
-    let date: Date
-    let place: String
-    let left: Double
-    let right: Double
-}
-
-struct ColorVisionRecordModel: Identifiable & Hashable {
-    let id = UUID()
-    let date: Date
-    let place: String
-    let status: RecordStatus
-}
-
-struct AstigmatismRecordModel: Identifiable & Hashable {
-    let id = UUID()
-    let date: Date
-    let place: String
-    let left: RecordStatus
-    let right: RecordStatus
-}
-
-struct EyesightRecordModel: Identifiable & Hashable {
-    let id = UUID()
-    let date: Date
-    let place: String
-    let left: RecordStatus
-    let right: RecordStatus
-}
-
 struct AllRecordList: View {
     @Binding var isDeleteMode: Bool
 
-    @State private var visionItems: [VisionRecordModel] =
-    [
-        VisionRecordModel(date: Date(), place: "EYE-Mate", left: 0.3, right: 0.7),
-        VisionRecordModel(date: Date(), place: "EYE-Mate", left: 0.3, right: 0.7),
-        VisionRecordModel(date: Date(), place: "EYE-Mate", left: 0.3, right: 0.7)
-    ]
+    let recordType: TestType
 
-    @State private var colorVisionItems: [ColorVisionRecordModel] =
-    [
-        ColorVisionRecordModel(date: Date(), place: "EYE-Mate", status: .normal),
-        ColorVisionRecordModel(date: Date(), place: "EYE-Mate", status: .serious),
-        ColorVisionRecordModel(date: Date(), place: "EYE-Mate", status: .severe)
-    ]
+    @Binding var visionItems: [VisionRecordModel]
+    @Binding var colorVisionItems: [ColorVisionRecordModel]
+    @Binding var astigmatismItems: [AstigmatismRecordModel]
+    @Binding var eyesightItems: [EyesightRecordModel]
 
-    @State private var astigmatismItems: [AstigmatismRecordModel] =
-    [
-        AstigmatismRecordModel(date: Date(), place: "EYE-Mate", left: .bad, right: .good),
-        AstigmatismRecordModel(date: Date(), place: "EYE-Mate", left: .fine, right: .fine),
-        AstigmatismRecordModel(date: Date(), place: "EYE-Mate", left: .bad, right: .fine)
-    ]
-
-    @State private var eyesightItems: [EyesightRecordModel] =
-    [
-        EyesightRecordModel(date: Date(), place: "EYE-Mate", left: .bad, right: .good),
-        EyesightRecordModel(date: Date(), place: "EYE-Mate", left: .fine, right: .fine),
-        EyesightRecordModel(date: Date(), place: "EYE-Mate", left: .bad, right: .fine)
-    ]
+    @Binding var selectedVisionItems: [UUID]
+    @Binding var selectedColorVisionItems: [UUID]
+    @Binding var selectedAstigmatismItems: [UUID]
+    @Binding var selectedEyesightVisionItems: [UUID]
 
     static let dateFormat: DateFormatter = {
         let formatter = DateFormatter()
@@ -77,13 +30,6 @@ struct AllRecordList: View {
 
         return formatter
     }()
-
-    let recordType: TestType
-
-    @State private var selectedVisionItems: [UUID] = []
-    @State private var selectedColorVisionItems: [UUID] = []
-    @State private var selectedAstigmatismItems: [UUID] = []
-    @State private var selectedEyesightVisionItems: [UUID] = []
 
     private func deleteItem(at offsets: IndexSet) {
         switch recordType {
@@ -313,10 +259,4 @@ struct AllRecordList: View {
             .listStyle(.plain)
         }
     }
-}
-
-#Preview {
-    @State var isDeleteMode = false
-
-    return AllRecordList(isDeleteMode: $isDeleteMode, recordType: .colorVision)
 }

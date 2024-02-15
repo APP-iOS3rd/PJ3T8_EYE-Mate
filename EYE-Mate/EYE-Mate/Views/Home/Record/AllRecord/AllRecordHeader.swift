@@ -9,10 +9,20 @@ import SwiftUI
 
 struct AllRecordHeader: View {
     @Environment(\.dismiss) var dismiss
+    
     @Binding var isDeleteMode: Bool
 
+    @Binding var visionItems: [VisionRecordModel]
+    @Binding var colorVisionItems: [ColorVisionRecordModel]
+    @Binding var astigmatismItems: [AstigmatismRecordModel]
+    @Binding var eyesightItems: [EyesightRecordModel]
+
+    @Binding var selectedVisionItems: [UUID]
+    @Binding var selectedColorVisionItems: [UUID]
+    @Binding var selectedAstigmatismItems: [UUID]
+    @Binding var selectedEyesightVisionItems: [UUID]
+
     let recordType: TestType
-    let onPressDeleteButton: () -> Void
 
     private func goBack() {
         dismiss()
@@ -31,7 +41,33 @@ struct AllRecordHeader: View {
                 }
                 Spacer()
                 Button {
-                    onPressDeleteButton()
+                    if isDeleteMode {
+                        switch recordType {
+                        case .vision:
+                            visionItems.removeAll { item in
+                                selectedVisionItems.contains(item.id)
+                            }
+                            selectedVisionItems.removeAll()
+                        case .colorVision:
+                            colorVisionItems.removeAll { item in
+                                selectedColorVisionItems.contains(item.id)
+                            }
+                            selectedColorVisionItems.removeAll()
+                        case .astigmatism:
+                            astigmatismItems.removeAll { item in
+                                selectedAstigmatismItems.contains(item.id)
+                            }
+                            selectedAstigmatismItems.removeAll()
+                        case .eyesight:
+                            eyesightItems.removeAll { item in
+                                selectedEyesightVisionItems.contains(item.id)
+                            }
+                            selectedEyesightVisionItems.removeAll()
+                        }
+                        isDeleteMode = false
+                    } else {
+                        isDeleteMode = true
+                    }
                 } label: {
                     if isDeleteMode {
                         Text("완료")
@@ -52,9 +88,3 @@ struct AllRecordHeader: View {
             }
         }
     }}
-
-#Preview {
-    @State var isDeleteMode = false
-
-    return AllRecordHeader(isDeleteMode: $isDeleteMode, recordType: TestType.eyesight, onPressDeleteButton: { isDeleteMode.toggle() })
-}
