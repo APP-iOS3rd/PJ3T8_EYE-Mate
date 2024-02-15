@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum TestType {
-    case vision
-    case astigmatism
-    case sight
+enum TestType: String {
+    case vision = "시력"
+    case colorVision = "색각"
+    case astigmatism = "난시"
+    case eyesight = "시야"
 }

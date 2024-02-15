@@ -46,7 +46,7 @@ struct AstigmatismView: View {
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

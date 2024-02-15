@@ -420,7 +420,7 @@ private struct ResultTextView: View {
         
         Spacer()
         
-        WaringText()
+        WarningText()
         
         Spacer()
     }
