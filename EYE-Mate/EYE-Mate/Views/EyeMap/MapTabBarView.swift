@@ -23,26 +23,10 @@ struct MapTabBarView: View {
         NavigationStack{
             VStack(spacing: 0) {
                 // 상단 Title
-                HStack(alignment: .bottom) {
-                    VStack(spacing: 5) {
-                        Text("EYE-Mate")
-                            .font(.pretendardSemiBold_22)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("주변 정보")
-                            .font(.pretendardSemiBold_32)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
-                    NavigationLink(destination: ProfileView()) {
-                        profileViewModel.profileImage
-                            .ProfileImageModifier()
-                            .frame(width: 50, height: 50)
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical)
                 CustomNavigationTitle(title: "주변 정보",
-                                      isDisplayLeftButton: false)
+                                      isDisplayLeftButton: false, profileButtonAction: {
+                    profileViewModel.isPresentedProfileView.toggle()
+                })
                 
                 // 상단 TabView
                 MapTopTabView()
@@ -57,6 +41,9 @@ struct MapTabBarView: View {
             }
         }
         .navigationBarHidden(true)
+        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
+            ProfileView()
+        }
     }
         
     

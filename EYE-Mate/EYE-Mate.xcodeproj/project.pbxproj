@@ -111,6 +111,8 @@
 		71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A592B5DEAE200879DA7 /* Assets.xcassets */; };
 		71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */; };
 		710406ED2B7E3ADF00629AF9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710406EC2B7E3ADF00629AF9 /* SettingView.swift */; };
+		710406EF2B7E3C9A00629AF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 710406EE2B7E3C9A00629AF9 /* GoogleService-Info.plist */; };
+		710406F12B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710406F02B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift */; };
 		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
 		7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */; };
 		7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4012B63478F00944077 /* VisionViewModel.swift */; };
@@ -271,6 +273,8 @@
 		71027A592B5DEAE200879DA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71027A5C2B5DEAE200879DA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		710406EC2B7E3ADF00629AF9 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		710406EE2B7E3C9A00629AF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		710406F02B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGestureRecognizerDelegate.swift; sourceTree = "<group>"; };
 		7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFaceAndDevice.swift; sourceTree = "<group>"; };
 		7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceConditionViewModel.swift; sourceTree = "<group>"; };
 		7107A4012B63478F00944077 /* VisionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewModel.swift; sourceTree = "<group>"; };
@@ -610,6 +614,7 @@
 			isa = PBXGroup;
 			children = (
 				3329BC152B623C2F0099EDC4 /* Info.plist */,
+				710406EE2B7E3C9A00629AF9 /* GoogleService-Info.plist */,
 				71027A542B5DEAE000879DA7 /* EYE-Mate */,
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
@@ -807,6 +812,7 @@
 				52AFE7B72B769CBB0007028F /* Image+Extension.swift */,
 				52AFE7B92B78029F0007028F /* String+Extension.swift */,
 				1DF7E7362B68C65500602BBB /* View+.swift */,
+				710406F02B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -889,6 +895,7 @@
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
 				5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
+				710406EF2B7E3C9A00629AF9 /* GoogleService-Info.plist in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
 				713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */,
@@ -959,6 +966,7 @@
 				7107A40A2B638DFF00944077 /* AstigmatismViewModel.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorView.swift in Sources */,
 				7107A40A2B638DFF00944077 /* AstigmatismViewModel.swift in Sources */,
+				710406F12B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift in Sources */,
 				331F8AB22B6B92340008D943 /* PlaceButtonGroup.swift in Sources */,
 				7107A40A2B638DFF00944077 /* AstigmatismViewModel.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorView.swift in Sources */,
