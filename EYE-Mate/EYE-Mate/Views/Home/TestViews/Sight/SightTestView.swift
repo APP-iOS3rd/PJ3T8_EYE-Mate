@@ -308,7 +308,7 @@ private struct SightLeft: View {
 //MARK: - 테스트 결과 화면
 private struct SightTestResultView: View {
     @ObservedObject var viewModel: SightTestViewModel
-    @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -371,7 +371,7 @@ private struct SightTestResultView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            Coordinator.shared.checkIfLocationServiceIsEnabled()
+            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }
         
         CustomButton(title: "돌아가기",

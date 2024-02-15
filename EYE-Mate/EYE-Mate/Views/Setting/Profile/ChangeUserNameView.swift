@@ -29,7 +29,7 @@ struct ChangeUserNameView: View {
             }
             .padding(20)
             
-            CustomBtn(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
+            CustomButton(title: "닉네임 설정", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 self.userName = textName
                 profileViewModel.uploadUserInfoToFirebase()
                 presentationMode.wrappedValue.dismiss()

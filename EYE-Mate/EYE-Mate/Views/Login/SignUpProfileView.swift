@@ -39,7 +39,7 @@ struct SignUpProfileView: View {
             ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled)
                 .padding(20)
             
-            CustomBtn(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
+            CustomButton(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 self.userName = textName
                 profileViewModel.imageSelection = selectedItem
                 profileViewModel.uploadUserInfoToFirebase()
