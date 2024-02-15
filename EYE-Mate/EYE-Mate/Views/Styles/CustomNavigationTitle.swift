@@ -15,6 +15,7 @@ struct CustomNavigationTitle: View {
     let leftButtonAction: () -> Void
     let profileButtonAction: () -> Void
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     
     init(title: String = "",
          userImageUrl: String = "",
@@ -61,8 +62,8 @@ struct CustomNavigationTitle: View {
                 })
             } else {
                 Button(action: profileButtonAction, label: {
-                    Image("defaultprofile")
-                        .resizable()
+                    profileViewModel.profileImage
+                        .ProfileImageModifier()
                         .frame(width: 50, height: 50)
                 })
             }
