@@ -10,10 +10,12 @@ import SwiftUI
 struct AllRecordView: View {
     let recordType: TestType
 
+    @State var isDeleteMode = false
+
     var body: some View {
         VStack {
-            AllRecordHeader(recordType: recordType, onPressDeleteButton: {})
-            AllRecordList(recordType: recordType)
+            AllRecordHeader(isDeleteMode: $isDeleteMode, recordType: recordType, onPressDeleteButton: { isDeleteMode.toggle() })
+            AllRecordList(isDeleteMode: $isDeleteMode, recordType: recordType)
             Spacer()
         }
         .navigationBarBackButtonHidden()

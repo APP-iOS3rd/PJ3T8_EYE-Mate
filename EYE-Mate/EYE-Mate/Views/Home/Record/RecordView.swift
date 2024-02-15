@@ -71,8 +71,8 @@ struct RecordView: View {
                         }
                         RecordBox(type: .vision)
                         // TODO: Data 없을 때 분기
-                        // VisionChart()
-                        EmptyVisionChart()
+                        VisionChart()
+//                      EmptyVisionChart()
                         RecordBox(type: .colorVision)
                         RecordBox(type: .astigmatism)
                         RecordBox(type: .eyesight)

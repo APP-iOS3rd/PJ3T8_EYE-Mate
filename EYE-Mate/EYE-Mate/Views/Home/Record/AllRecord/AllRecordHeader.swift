@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AllRecordHeader: View {
     @Environment(\.dismiss) var dismiss
+    @Binding var isDeleteMode: Bool
 
     let recordType: TestType
     let onPressDeleteButton: () -> Void
@@ -32,10 +33,15 @@ struct AllRecordHeader: View {
                 Button {
                     onPressDeleteButton()
                 } label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(.black)
-                        .font(.system(size: 24))
-                        .padding(.bottom, 2)
+                    if isDeleteMode {
+                        Text("완료")
+                            .foregroundStyle(.blue)
+                    } else {
+                        Image(systemName: "trash")
+                            .foregroundColor(.black)
+                            .font(.system(size: 24))
+                            .padding(.bottom, 2)
+                    }
                 }
             }.padding(.horizontal, 12)
             HStack {
@@ -48,5 +54,7 @@ struct AllRecordHeader: View {
     }}
 
 #Preview {
-    AllRecordHeader(recordType: TestType.eyesight, onPressDeleteButton: {})
+    @State var isDeleteMode = false
+
+    return AllRecordHeader(isDeleteMode: $isDeleteMode, recordType: TestType.eyesight, onPressDeleteButton: { isDeleteMode.toggle() })
 }
