@@ -46,6 +46,7 @@ struct DistanceConditionView: View {
 //MARK: - 설명 Text와 거리 Text View
 private struct DistanceView: View {
     @ObservedObject var viewModel = DistanceConditionViewModel.shared
+    @StateObject var visionTestViewModel = VisionTestViewModel()
     var title: String
     var type: TestType
     
@@ -96,6 +97,7 @@ private struct DistanceView: View {
                     CustomButton(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
                         switch type {
                         case .vision:
+                            visionTestViewModel.userDistance = viewModel.distance
                             viewModel.isActiveVisionTest = true
                         case .astigmatism:
                             viewModel.isActiveAstigmatismTest = true
@@ -126,7 +128,7 @@ private struct DistanceView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.isActiveVisionTest) {
-                VisionTestView(distance: viewModel)
+                VisionTestView(viewModel: visionTestViewModel, distance: viewModel)
             }
             .navigationDestination(isPresented: $viewModel.isActiveAstigmatismTest) {
                 AstigmatismTestView()
