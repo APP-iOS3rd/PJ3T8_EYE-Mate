@@ -312,7 +312,7 @@ private struct TestView: View {
 //MARK: - 테스트 결과 화면
 private struct VisionTestResultView: View {
     @ObservedObject var viewModel: VisionTestViewModel
-    @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -369,7 +369,7 @@ private struct VisionTestResultView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            Coordinator.shared.checkIfLocationServiceIsEnabled()
+            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }
         
         CustomButton(title: "돌아가기",
@@ -447,7 +447,7 @@ private struct ResultTextView: View {
                 .font(.pretendardLight_16)
                 .padding(10)
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

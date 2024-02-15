@@ -311,7 +311,7 @@ private struct AstigmatismLeft: View {
 //MARK: - 테스트 결과 화면
 private struct AstigmatismTestResultView: View {
     @ObservedObject var viewModel: AstigmatismTestViewModel
-    @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -373,7 +373,7 @@ private struct AstigmatismTestResultView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            Coordinator.shared.checkIfLocationServiceIsEnabled()
+            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }
         
         CustomButton(title: "돌아가기",
