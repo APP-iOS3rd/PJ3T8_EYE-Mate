@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AstigmatismView: View {
     @ObservedObject var viewModel = AstigmatismViewModel()
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -16,11 +17,8 @@ struct AstigmatismView: View {
             CustomNavigationTitle(title: "난시 검사",
                                   userImageUrl: "",
                                   isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() },
-                                  profileButtonAction: {
-                viewModel.isPresentedProfileView.toggle()
-            })
-            .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+                                  leftButtonAction: { dismiss() })
+            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }
             

@@ -9,6 +9,4 @@ import Foundation
 
 class SightViewModel: ObservableObject {
     @Published var isPresentedTestView: Bool = false
-    @Published var isPresentedProfileView: Bool = false
-    
 }

@@ -9,6 +9,4 @@ import Foundation
 
 class AstigmatismViewModel: ObservableObject {
     @Published var isPresentedTestView: Bool = false
-    @Published var isPresentedProfileView: Bool = false
-    
 }
