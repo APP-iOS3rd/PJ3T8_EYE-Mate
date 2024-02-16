@@ -10,13 +10,21 @@ import Kingfisher
 
 struct ImageCardView: View {
     var imageURLs: [URL]
+    
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 0) {
                 ForEach(imageURLs, id: \.self) {
                     KFImage($0)
+                        .placeholder {
+                            ProgressView()
+                                .modifier(MapImageModifier())
+                        }
+                        .retry(maxCount: 3, interval: .seconds(5))
                         .resizable()
-                        .frame(maxWidth: 150, maxHeight: 150)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                        .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.trailing, 5)
                 }
@@ -26,6 +34,6 @@ struct ImageCardView: View {
     }
 }
 
-#Preview {
-    ImageCardView(imageURLs: FreeBoardViewModel().posts[0].postImageURLs)
-}
+//#Preview {
+//    ImageCardView(imageURLs: FreeBoardViewModel().posts[0].postImageURLs)
+//}
