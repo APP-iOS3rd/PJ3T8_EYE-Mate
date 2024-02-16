@@ -35,13 +35,14 @@ struct AccountDeleteView: View {
                     Text("취소")
                         .font(.pretendardBold_18)
                         .foregroundStyle(Color.white)
+                        .frame(height: 65)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .foregroundStyle(Color.btnGray)
+                        }
                 }
-                .frame(height: 65)
-                .frame(maxWidth: .infinity)
-                .background {
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .foregroundStyle(Color.btnGray)
-                }
+                
                 
                 Button {
                     // TODO: - 탈퇴하기(유저 정보 삭제)
@@ -54,13 +55,14 @@ struct AccountDeleteView: View {
                     Text("탈퇴")
                         .font(.pretendardBold_18)
                         .foregroundStyle(Color.white)
+                        .frame(height: 65)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .foregroundStyle(Color.customRed)
+                        }
                 }
-                .frame(height: 65)
-                .frame(maxWidth: .infinity)
-                .background {
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .foregroundStyle(Color.customRed)
-                }
+                
 
             }
             .padding(.horizontal, 20)
