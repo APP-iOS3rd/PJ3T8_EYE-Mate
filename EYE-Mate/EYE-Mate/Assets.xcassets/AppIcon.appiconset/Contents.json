@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "apple-1024-black.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

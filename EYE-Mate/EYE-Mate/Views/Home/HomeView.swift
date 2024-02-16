@@ -9,31 +9,53 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @Binding var tabSelection: TabBarItem
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                CustomNavigationTitle(title: "홈",
-                                      userImgUrl: "",
-                                      isDisplayBtn: false, 
-                                      profileBtnAction: {
+                CustomNavigationTitle(isDisplayLeftButton: false,
+                                      profileButtonAction: {
                     viewModel.isPresentedProfileView.toggle()
                 })
                 
                 Spacer()
                     .frame(height: 5)
-                
-                HomeViewTextView(user: viewModel.user)
-                
-                EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                    .frame(height: 120)
-                    .padding(.top, -30)
-                
-                HomeViewCellListView()
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        HomeViewTextView(user: viewModel.user)
+                        
+                        EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
+                            .frame(height: 120)
+                            .padding(.top, -30)
+                        
+                        HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
+                        
+                        Spacer()
+                    }
+                }
+                Spacer()
+                    .frame(height: 85)
             }
-            .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
-                ProfileView()
-            }
+        }
+        
+        .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+            ProfileView()
+        }
+        .navigationDestination(isPresented: $viewModel.isPresentedRecordView) {
+            RecordView(viewModel: viewModel)
+        }
+        .navigationDestination(isPresented: $viewModel.isPresentedVisionView) {
+            VisionView()
+        }
+        .navigationDestination(isPresented: $viewModel.isPresentedColorView) {
+            ColorView()
+        }
+        .navigationDestination(isPresented: $viewModel.isPresentedAstigmatismView) {
+            AstigmatismView()
+        }
+        .navigationDestination(isPresented: $viewModel.isPresentedSightView) {
+            SightView()
         }
     }
 }
@@ -41,11 +63,11 @@ struct HomeView: View {
 //MARK: - 상단 텍스트 뷰
 private struct HomeViewTextView: View {
     var user : UserModel
-    
+
     fileprivate init(user: UserModel) {
         self.user = user
     }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
@@ -68,59 +90,62 @@ private struct HomeViewTextView: View {
 
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
+    @ObservedObject var viewModel: HomeViewModel
+    @Binding var tabSelection: TabBarItem
     
     var body: some View {
         HStack(spacing: 10) {
-            NavigationLink {
-                RecordView()
-            } label: {
-                HomeViewCellView(item: .init(isAction: false, img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
+            Button(action: {
+                viewModel.isPresentedRecordView = true
+            }, label: {
+                HomeViewCellView(item: .init(img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
                     .padding(.leading, 10)
                     .foregroundColor(.black)
-            }
+            })
             
-            NavigationLink {
-                RecordView()
-            } label: {
-                HomeViewCellView(item: .init(isAction: false, img: Image("Movement"), title: "눈 운동", subTitle: "슉슉 무브무브"))
+            Button(action: {
+                tabSelection = .movement
+            }, label: {
+                HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "눈 피로감 줄이기"))
                     .padding(.trailing, 10)
                     .foregroundColor(.black)
-            }
+            })
         }
+        .padding(.bottom, 5)
         
-        VStack {
-            NavigationLink {
-                VisionView()
-            } label: {
-                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest1"), title: "시력 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+        VStack(spacing: 15) {
+            Button(action: {
+                viewModel.isPresentedVisionView = true
+            }, label: {
+                HomeViewCellView(item: .init(img: Image("VisionTest1"), title: "시력 검사", subTitle: "나의 시력을 확인해보세요."))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
-            }
-            NavigationLink {
-                ColorView()
-            } label: {
-                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest2"), title: "색채 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+            })
+            Button(action: {
+                viewModel.isPresentedColorView = true
+            }, label: {
+                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색채 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
-            }
-            NavigationLink {
-                AstigmatismView()
-            } label: {
-                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest3"), title: "난시 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+            })
+            Button(action: {
+                viewModel.isPresentedAstigmatismView = true
+            }, label: {
+                HomeViewCellView(item: .init(img: Image("VisionTest3"), title: "난시 검사", subTitle: "난시의 징후가 있는지 검사하세요."))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
-            }
-            NavigationLink {
-                SightView()
-            } label: {
-                HomeViewCellView(item: .init(isAction: true, img: Image("VisionTest4"), title: "시야 검사", subTitle: "슉슉 무브무브"))
-                    .padding([.leading, .trailing], 10)
+            })
+            Button(action: {
+                viewModel.isPresentedSightView = true
+            }, label: {
+                HomeViewCellView(item: .init(img: Image("VisionTest4"), title: "시야 검사", subTitle: "시야의 문제 여부를 파악해보세요."))
+                    .padding(.horizontal, 10)
                     .foregroundColor(.black)
-            }
+            })
         }
     }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}

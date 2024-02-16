@@ -9,7 +9,7 @@ import NMapsMap
 import CoreLocation
 
 struct MapView: View {
-    @StateObject var coordinator: Coordinator = Coordinator.shared
+    @StateObject var coordinator: MapCoordinator = MapCoordinator.shared
     @State var updateBtn: Bool = false
     
     var body: some View {
@@ -21,7 +21,7 @@ struct MapView: View {
                 Button{
                     updateBtn.toggle()
                     if updateBtn {
-                        Coordinator.shared.fetchApiData()
+                        MapCoordinator.shared.fetchApiData()
                         updateBtn = false
                     }
                 } label: {
@@ -45,7 +45,7 @@ struct MapView: View {
             .padding(.bottom, 20)
         }
         .onAppear {
-            Coordinator.shared.checkIfLocationServiceIsEnabled()
+            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }
     }
 }

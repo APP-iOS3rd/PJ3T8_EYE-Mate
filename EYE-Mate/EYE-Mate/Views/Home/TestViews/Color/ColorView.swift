@@ -14,10 +14,10 @@ struct ColorView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "색채 검사",
-                                  userImgUrl: "",
-                                  isDisplayBtn: true,
-                                  leftBtnAction: { dismiss() },
-                                  profileBtnAction: {
+                                  userImageUrl: "",
+                                  isDisplayLeftButton: true,
+                                  leftButtonAction: { dismiss() },
+                                  profileButtonAction: {
                 viewModel.isPresentedProfileView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
@@ -32,7 +32,7 @@ struct ColorView: View {
             
             Spacer()
             
-            CustomBtn(title: "테스트 시작하기",
+            CustomButton(title: "테스트 시작하기",
                       background: .customGreen,
                       fontStyle: .pretendardBold_16,
                       action: {
@@ -45,7 +45,7 @@ struct ColorView: View {
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

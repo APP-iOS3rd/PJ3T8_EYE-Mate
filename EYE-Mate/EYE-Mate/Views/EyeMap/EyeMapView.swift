@@ -9,7 +9,11 @@ import SwiftUI
 
 struct EyeMapView: View {
     var body: some View {
-        MapTabBarView()
+        VStack {
+            MapTabBarView()
+            Spacer()
+                .frame(height: 70)
+        }
     }
 }
 

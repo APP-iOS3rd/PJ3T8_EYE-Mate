@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActionAreaView: View {
-    @ObservedObject var coordinator: Coordinator
+    @ObservedObject var coordinator: MapCoordinator
     
     var body: some View {
         VStack {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MapModalView: View {
-    @ObservedObject var coordinator: Coordinator = Coordinator.shared
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     
     var body: some View {
         

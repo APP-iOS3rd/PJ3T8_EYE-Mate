@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 import FirebaseAuth
 
-
 struct SignUpView: View {
+    @StateObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
     
     var body: some View {
@@ -34,7 +34,6 @@ struct SignUpView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("이미 EYE-Mate 회원이신가요?")
                             .font(.pretendardMedium_16)
-                        
                         Button {
                             signUpFlag = false
                         } label: {
@@ -50,7 +49,6 @@ struct SignUpView: View {
             .padding(50)
         }
     }
-    
 }
 
 #Preview {

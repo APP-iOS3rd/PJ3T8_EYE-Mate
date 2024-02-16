@@ -14,10 +14,10 @@ struct SightView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "시야 검사",
-                                  userImgUrl: "",
-                                  isDisplayBtn: true,
-                                  leftBtnAction: { dismiss() },
-                                  profileBtnAction: {
+                                  userImageUrl: "",
+                                  isDisplayLeftButton: true,
+                                  leftButtonAction: { dismiss() },
+                                  profileButtonAction: {
                 viewModel.isPresentedProfileView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
@@ -29,25 +29,27 @@ struct SightView: View {
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component6")], thirdTitle: "중앙에 있는 검은색 점에 초점을 두고\n선과 사각형의 변화를 확인하세요!")
+            VisionTestOnboardingView(title: "핸드폰과 거리를\n30cm~40cm 떨어트려주세요!",
+                                     image:[Image("Component1"), Image("Component2"), Image("Component6")],
+                                     thirdTitle: "중앙에 있는 검은색 점에 초점을 두고\n선과 사각형의 변화를 확인하세요!")
             
             Spacer()
             
-            CustomBtn(title: "테스트 시작하기",
+            CustomButton(title: "테스트 시작하기",
                       background: .customGreen,
                       fontStyle: .pretendardBold_16,
                       action: {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
-                DistanceConditionView(title: "시야 검사", type: .sight)
+                DistanceConditionView(title: "시야 검사", type: .eyesight)
                     .navigationBarBackButtonHidden()
             })
             .frame(maxHeight: 75)
             
             Spacer()
             
-            WaringText()
+            WarningText()
             
             Spacer()
         }

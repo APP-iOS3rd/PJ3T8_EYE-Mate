@@ -25,8 +25,9 @@ struct CreateNewPostView: View {
                 createNewPostVM: createNewPostVM
             )
             
-            CustomBtn(title: "작성하기", background: Color.customGreen, fontStyle: .pretendardBold_18, action: {
-                closeKeyboard()
+
+            CustomButton(title: "작성하기", background: Color.customGreen, fontStyle: .pretendardBold_18, action: {
+            closeKeyboard()
                 createNewPostVM.createPost(){
                     onPost($0)
                     dismiss()

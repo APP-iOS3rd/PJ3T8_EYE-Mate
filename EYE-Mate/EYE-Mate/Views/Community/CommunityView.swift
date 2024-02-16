@@ -31,7 +31,9 @@ struct CommunityView: View {
                     Image(systemName: "person.crop.circle.fill")
                         .font(.largeTitle)
                         .foregroundStyle(.black)
-                }
+                }      
+                Spacer()
+                    .frame(height: 85)
             }
             .padding(.horizontal, 20)
             .padding(.vertical)

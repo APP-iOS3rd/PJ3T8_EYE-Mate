@@ -14,6 +14,8 @@ extension Font {
     static let pretendardExtraLight_12: Font = .custom("Pretendard-ExtraLight", size: 12)
     //Light
     static let pretendardLight_12: Font = .custom("Pretendard-Light", size: 12)
+    static let pretendardLight_16: Font = .custom("Pretendard-Light", size: 16)
+    static let pretendardLight_26: Font = .custom("Pretendard-Light", size: 26)
     
     //Regular
     static let pretendardRegular_10: Font = .custom("Pretendard-Regular", size: 10)
@@ -36,6 +38,7 @@ extension Font {
     static let pretendardMedium_18: Font = .custom("Pretendard-Medium", size: 18)
     static let pretendardMedium_20: Font = .custom("Pretendard-Medium", size: 20)
     static let pretendardMedium_22: Font = .custom("Pretendard-Medium", size: 22)
+    static let pretendardMedium_36: Font = .custom("Pretendard-Medium", size: 36)
     
     //SemiBold
     static let pretendardSemiBold_12: Font = .custom("Pretendard-SemiBold", size: 12)

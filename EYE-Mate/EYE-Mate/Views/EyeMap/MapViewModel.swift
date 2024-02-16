@@ -34,8 +34,8 @@ enum markerImageName: String {
 
 struct NaverMap: UIViewRepresentable {
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator.shared
+    func makeCoordinator() -> MapCoordinator {
+        MapCoordinator.shared
     }
     
     func makeUIView(context: Context) -> NMFNaverMapView {
@@ -46,14 +46,15 @@ struct NaverMap: UIViewRepresentable {
     
 }
 
-final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate {
-    static let shared = Coordinator()
+final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate {
+    static let shared = MapCoordinator()
     // Coordinator 클래스 안의 코드
     // 클래스 상단에 변수 설정을 해줘야 한다.
     @Published var coord: (Double, Double) = (0.0, 0.0)
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
     @Published var placeInfo: [String: String] = [:]
+    @Published var resultInfo: [placeList] = []
     @Published var sheetFlag = false
     var queryPlace: String = encodingPlace.hosiptal.rawValue
     var markerImage: String = markerImageName.hospital.rawValue
@@ -132,7 +133,7 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
         case .denied:
             print("위치 정보 접근을 거절했습니다. 설정에 가서 변경하세요.")
         case .authorizedAlways, .authorizedWhenInUse:
-            print("Success")
+            print("위치 확인")
             
             userLocation = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
             
@@ -197,6 +198,8 @@ final class Coordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, N
                 array.sort { return Double($0.distance) ?? 0.0 < Double($1.distance) ?? 0.0 }
                 // 내 주변 20개 보여주기
                 let resultArray = Array(array[0...19])
+                // 검사 결과에서 보여주기 위한 주변 정보 가져오기 추가
+                self.resultInfo = resultArray
                 
                 // 이전 마커 지우기
                 if self.hospitalsMarkers.count > 1 {

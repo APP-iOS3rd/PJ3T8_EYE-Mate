@@ -8,39 +8,28 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var tabSelection: TabBarItem = .home
+    
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("홈")
-                        .font(.pretendardMedium_10)
-                }
-            MovementView()
-                .tabItem {
-                    Image(systemName: "eyes")
-                    Text("눈운동")
-                        .font(.pretendardMedium_10)
-                }
-            CommunityView()
-                .tabItem {
-                    Image(systemName: "message.fill")
-                    Text("게시판")
-                        .font(.pretendardMedium_10)
-                }
-            EyeMapView()
-                .tabItem {
-                    Image(systemName: "map.fill")
-                        .imageScale(.small)
-                    Text("내주변")
-                        .font(.pretendardMedium_10)
-                }
+        NavigationStack {
+            CustomTabBarContainerView(selection: $tabSelection) {
+                HomeView(tabSelection: $tabSelection)
+                    .tabBarItem(tab: .home, selection: $tabSelection)
+                MovementView()
+                    .tabBarItem(tab: .movement, selection: $tabSelection)
+                CommunityView()
+                    .tabBarItem(tab: .community, selection: $tabSelection)
+                EyeMapView()
+                    .tabBarItem(tab: .eyeMap, selection: $tabSelection)
+            }
+            .accentColor(.customGreen)
+            .padding(0)
         }
-        .accentColor(.customGreen)
-        .padding(0)
     }
 }
 
 #Preview {
     MainView()
 }
+
+
