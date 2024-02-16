@@ -29,8 +29,8 @@ struct CreateNewPostView: View {
                 closeKeyboard()
                 createNewPostVM.createPost(){
                     onPost($0)
+                    dismiss()
                 }
-                dismiss()
             })
                 .frame(maxHeight: 75)
                 .disabled(!createNewPostVM.postButtonActive())
