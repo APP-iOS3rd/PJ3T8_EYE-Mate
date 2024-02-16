@@ -80,7 +80,13 @@ class CreateNewPostViewModel: ObservableObject {
                 if !postImageDatas.isEmpty {
                     let imageUrls = try await uploadImagesToFirebaseStorage()
                     
-                    let post = Post(postTitle: postTitle, postContent: postContent, postImageURLs: imageUrls.imageDownloadURLs, imageReferenceIDs: imageUrls.imageReferenceIDs , userName: userName, userUID: userUID, userImageURL: profileURL)
+                    let post = Post(postTitle: postTitle, 
+                                    postContent: postContent,
+                                    postImageURLs: imageUrls.imageDownloadURLs,
+                                    imageReferenceIDs: imageUrls.imageReferenceIDs ,
+                                    userName: userName,
+                                    userUID: userUID,
+                                    userImageURL: profileURL)
                     
                     try await createDocumentAtFirebase(post) {
                         completion($0)
@@ -133,14 +139,14 @@ class CreateNewPostViewModel: ObservableObject {
     /// - Firestore 게시물 업로드
     func createDocumentAtFirebase(_ post: Post, completion: @escaping (Post) -> ()) async throws {
         // Firebase Firestore에 문서 쓰기
-        let doc = Firestore.firestore().collection("Posts").document()
-        
-        let _ = try doc.setData(from: post) { error in
+        let postDoc = Firestore.firestore().collection("Posts").document()
+    
+        let _ = try postDoc.setData(from: post) { error in
             print("Firestore - Post Create Success")
             if error == nil {
                 self.isLoading = false
                 var updatedPost = post
-                updatedPost.id = doc.documentID
+                updatedPost.id = postDoc.documentID
                 
                 self.post = updatedPost
                 
