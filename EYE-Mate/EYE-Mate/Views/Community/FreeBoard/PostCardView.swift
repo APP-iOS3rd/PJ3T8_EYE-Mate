@@ -12,6 +12,8 @@ import Kingfisher
 struct PostCardView: View {
     var post: Post
     
+    @AppStorage("user_UID") var userUID: String = ""
+    
 //    var post: String
     var body: some View {
         HStack {
@@ -36,9 +38,9 @@ struct PostCardView: View {
                     .padding(.top, 2)
                     .padding(.bottom, 4)
                     
-                // liked, disliked
+                // liked, disliked, comment
                 HStack {
-                    Image(systemName: "heart")
+                    Image(systemName: post.likedIDs.contains(userUID) ? "heart.fill" : "heart")
                         .foregroundStyle(Color.customRed)
                         .padding(.trailing, -8)
                         .font(.system(size: 15))
@@ -51,7 +53,7 @@ struct PostCardView: View {
                         .padding(.trailing, -6)
                         .font(.system(size: 15))
                     
-                    Text("\(post.comments.count)")
+                    Text("\(post.comments.count + post.comments.reduce(0){$0 + $1.replyComments.count})")
                         .font(.pretendardRegular_12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
