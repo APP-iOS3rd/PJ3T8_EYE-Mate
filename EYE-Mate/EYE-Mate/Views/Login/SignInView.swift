@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
     @Binding var signUpFlag: Bool
+    @FocusState private var keyFocused: Bool
     
     var body: some View {
         VStack{
@@ -23,7 +24,7 @@ struct SignInView: View {
                 Text("로그인")
                     .font(.pretendardBold_20)
                     .foregroundStyle(Color.customGreen)
-                PhoneNumberView(signUpFlag: $signUpFlag)
+                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused)
             }
             
             
@@ -47,11 +48,15 @@ struct SignInView: View {
             }
             .padding(50)
         }
-        
+        .background(Color.white)
+        .onTapGesture {
+            keyFocused = false
+            print("signin")
+        }
     }
 }
 
-#Preview {
-    SignInView(signUpFlag: .constant(false))
-}
+//#Preview {
+//    SignInView(signUpFlag: .constant(false), isFocused: .constant(false))
+//}
 

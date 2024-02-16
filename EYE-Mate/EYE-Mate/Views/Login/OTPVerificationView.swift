@@ -20,15 +20,14 @@ struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
-    
     @Binding var signUpFlag: Bool
+    @FocusState.Binding var keyFocused: Bool
     @State private var otp: String = ""
     @State private var isDisplayotpErrorText: Bool = false
     @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
     @State var isDisplayNotiLoginText: Bool = false
     @State private var errorText: String = ""
-    @FocusState private var keyIsFocused: Bool
     
     var mobileNumber: String = ""
     var foregroundColor: Color = Color(.black)
@@ -52,7 +51,7 @@ struct OTPVerificationView: View {
                             Text("Enter OTP")
                                 .foregroundColor(.warningGray)
                                 .font(.pretendardSemiBold_16)
-                                .focused($keyIsFocused)
+                                .focused($keyFocused)
                         }
                         .padding(10)
                         .keyboardType(.numberPad)
@@ -129,9 +128,6 @@ struct OTPVerificationView: View {
                 .disableWithOpacity(otp.count < 6)
                 .disabled(otp.count < 6)
             }
-            .onTapGesture {
-                hideKeyboard()
-            }
         }
         .navigationDestination(isPresented: $isDisplayProfileSettingView){
             SignUpProfileView()
@@ -149,6 +145,6 @@ fileprivate struct TextModifier: ViewModifier {
     }
 }
 
-#Preview {
-    OTPVerificationView(loginViewModel: LoginViewModel(verificationID: "123"), signUpFlag: .constant(true))
-}
+//#Preview {
+//    OTPVerificationView(loginViewModel: LoginViewModel(verificationID: "123"), signUpFlag: .constant(true))
+//}
