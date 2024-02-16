@@ -1,34 +1,34 @@
 //
-//  CommentView.swift
+//  CommentRowCellView.swift
 //  EYE-Mate
 //
-//  Created by Taejun Ha on 2/1/24.
+//  Created by Taejun Ha on 2/13/24.
 //
 
 import SwiftUI
+
 import Kingfisher
 
-struct CommentView: View {
-    var comments: [Comment]
-    
-    var body: some View {
-        ForEach(comments, id: \.self) { comment in
-            CommentRowCellView(comment: comment)
-            
-            HorizontalDivider(color: .btnGray, height: 1)
-        }
-    }
-}
-
 // MARK: Firebase 설계 후 다시 작성 (지금은 View 확인용 틀)
-// 각 댓글 RowCell
+// MARK: 댓글 RowCell
 struct CommentRowCellView: View {
-    var comment: Comment
+    @Binding var comment: Comment
+    
+    @ObservedObject var commentVM: CommentViewModel
+    
+    // MARK: Local Data Update
+    /// - 댓글 좋아요 업데이트
+    var onUpdateComment: (String, Int) -> ()
+    /// - 대댓글 작성 Signal
+    var startWritingReplyComment: (String, Int) -> ()
+    /// - 댓글 삭제
+    var deleteComment: (String, Int) -> ()
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 0) {
-                // MARK: 사용자 이미지 Firebase 연동후 수정
+                
+                // MARK: 댓글 작성자 이미지
                 if comment.userImageURL != nil {
                     KFImage(comment.userImageURL)
                         .resizable()
@@ -40,29 +40,18 @@ struct CommentRowCellView: View {
                         .font(.system(size: 25))
                 }
                 
+                // MARK: 댓글 작성자 이름
                 Text("\(comment.userName)")
                     .padding(.leading, 5)
                     .font(.pretendardSemiBold_12)
                 
                 Spacer()
                 
-                // MARK: 대댓글 기능 작성 필요
-                // 대댓글 버튼
+                // MARK: 댓글 좋아요 Btn
                 Button {
-                } label: {
-                    Image(systemName: "message")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.customGreen)
-                }
-                
-                Image(systemName: "poweron")
-                    .font(.system(size: 12))
-                    .foregroundStyle(Color.customGreen)
-                    .padding(.horizontal, 2)
-                
-                // MARK: 좋아요 기능 작성 필요
-                // 좋아요 버튼
-                Button {
+                    commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
+                        onUpdateComment(postID, commentIndex)
+                    }
                 } label: {
                     Image(systemName: "heart")
                         .font(.system(size: 12))
@@ -74,15 +63,43 @@ struct CommentRowCellView: View {
                     .foregroundStyle(Color.customGreen)
                     .padding(.horizontal, 2)
                 
+                // MARK: 대댓글 기능 작성 필요
+                // MARK: 대댓글 작성 Btn
+                Button {
+                    commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
+                        startWritingReplyComment(commentID, commentIndex)
+                    }
+                } label: {
+                    Image(systemName: "message")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Color.customGreen)
+                }
+                
+                Image(systemName: "poweron")
+                    .font(.system(size: 12))
+                    .foregroundStyle(Color.customGreen)
+                    .padding(.horizontal, 2)
+                
                 // MARK: 신고 기능 작성 필요
-                //
+                // MARK: 댓글 신고, 삭제 메뉴
                 Menu {
-                    Button(role: .destructive) {
-                        
-                    } label: {
-                        Label("신고", systemImage: "light.beacon.max.fill")
-                            .tint(.red)
-                            .foregroundStyle(.red)
+                    if comment.userUID == commentVM.userUID {
+                        /// 댓글 삭제 Action
+                        Button(role: .destructive) {
+                            withAnimation {
+                                commentVM.deleteComment(commentID: comment.id) { postID, commentIndex in
+                                    deleteComment(postID, commentIndex)
+                                }
+                            }
+                        } label: {
+                            Label("삭제", systemImage: "trash")
+                        }
+                    } else {
+                        Button(role: .destructive) {
+                            
+                        } label: {
+                            Label("신고", systemImage: "light.beacon.max.fill")
+                        }
                     }
                 } label: {
                     Image(systemName: "ellipsis")
@@ -97,6 +114,7 @@ struct CommentRowCellView: View {
                 .padding(.leading, 15)
                 .padding(.top, 2)
             
+            // MARK: 댓글 게시일, 좋아요 수
             HStack(alignment: .bottom){
                 Text("\(comment.publishedDate.formatted(date: .numeric, time: .shortened))")
                     .font(.pretendardRegular_12)
@@ -104,7 +122,7 @@ struct CommentRowCellView: View {
                     .padding(.leading, 15)
                     .padding(.top, 2)
                 
-                Image(systemName: "heart")
+                Image(systemName: comment.likedIDs.contains(commentVM.userUID) ? "heart.fill" : "heart")
                     .foregroundStyle(Color.customRed)
                     .padding(.trailing, -8)
                     .font(.system(size: 12))
@@ -116,8 +134,4 @@ struct CommentRowCellView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
     }
-}
-
-#Preview {
-    CommentView(comments: FreeBoardViewModel().posts[0].comments)
 }

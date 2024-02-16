@@ -12,6 +12,7 @@ import FirebaseFirestore
 
 class LoginViewModel: ObservableObject {
     static let shared = LoginViewModel()
+
     var verificationID: String
     var user: AuthDataResult?
     @ObservedObject var profileViewModel = ProfileViewModel.shared
@@ -46,7 +47,7 @@ class LoginViewModel: ObservableObject {
                 }
             }
     }
-    
+   
     // MARK: - 번호, 인증코드 일치 확인 후 토큰 생성
     @MainActor
     func verifyOTP(otp: String, signUpFlag: Bool) async throws -> Bool {

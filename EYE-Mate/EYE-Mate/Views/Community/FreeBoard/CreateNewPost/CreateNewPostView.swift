@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CreateNewPostView: View {
+    var onPost: (Post?)->()
     @StateObject private var createNewPostVM: CreateNewPostViewModel = CreateNewPostViewModel()
+    
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -23,7 +25,14 @@ struct CreateNewPostView: View {
                 createNewPostVM: createNewPostVM
             )
             
-            CustomButton(title: "작성하기", background: Color.customGreen, fontStyle: .pretendardBold_18, action: {})
+
+            CustomButton(title: "작성하기", background: Color.customGreen, fontStyle: .pretendardBold_18, action: {
+            closeKeyboard()
+                createNewPostVM.createPost(){
+                    onPost($0)
+                    dismiss()
+                }
+            })
                 .frame(maxHeight: 75)
                 .disabled(!createNewPostVM.postButtonActive())
                 .opacity(createNewPostVM.postButtonActive() ? 1 : 0.5)
@@ -34,6 +43,7 @@ struct CreateNewPostView: View {
         .toolbar(content: {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
+                    closeKeyboard()
                     dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
@@ -42,13 +52,11 @@ struct CreateNewPostView: View {
             }
         })
         .overlay{
-            if createNewPostVM.isLoading {
-                ProgressView()
-            }
+            LoadingView(show: $createNewPostVM.isLoading)
         }
     }
 }
 
 #Preview {
-    CreateNewPostView()
+    CreateNewPostView(onPost: {post in })
 }

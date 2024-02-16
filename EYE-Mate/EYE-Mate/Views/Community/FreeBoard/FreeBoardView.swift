@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct FreeBoardView: View {
-    // MARK: recentsPosts 추후에 Firebase 연동
     @StateObject var freeboardVM: FreeBoardViewModel = FreeBoardViewModel()
 
     var body: some View {
         ReusablePostsView(freeboardVM: freeboardVM)
             .frame(maxWidth: .infinity, alignment: .center)
             .overlay(alignment: .bottomTrailing){
-                NavigationLink(destination: CreateNewPostView()) {
+                NavigationLink(destination: CreateNewPostView(){ post in
+                    /// 사용자가 새롭게 작성한 게시물 insert
+                    if let post = post {
+                        freeboardVM.posts.insert(post, at: 0)
+                        print("post insert Success")
+                    }
+                }) {
                     Circle()
                         .foregroundStyle(Color.customGreen)
                         .frame(maxHeight: 60)
