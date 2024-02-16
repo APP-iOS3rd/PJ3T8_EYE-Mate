@@ -9,12 +9,12 @@ import SwiftUI
 
 struct LoginView: View {
     @State var signUpFlag: Bool = false
-    @FocusState private var keyFocused: Bool
     
     // TODO: - loggedin에 따라 프로필/로그인 뷰 나올지 구현
     var body: some View {
         NavigationStack {
             ScrollView {
+                CustomBackButton()
                 if signUpFlag {
                     SignUpView(signUpFlag: $signUpFlag)
                 }

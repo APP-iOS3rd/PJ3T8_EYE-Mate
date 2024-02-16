@@ -13,14 +13,17 @@ struct ProfileView: View {
     @ObservedObject var profileViewModel: ProfileViewModel = ProfileViewModel.shared
     
     var body: some View {
-        
-        // TODO: 로그인 상태면 개인 프로필뷰
-        if loggedIn {
-            SettingView(profileViewModel: profileViewModel)
-        } else {
-            LoginView()
+        VStack{
+            // TODO: 로그인 상태면 개인 프로필뷰
+            if loggedIn {
+                SettingView(profileViewModel: profileViewModel)
+            } else {
+                LoginView()
+            }
         }
+        .navigationBarBackButtonHidden(true)
     }
+    
 }
 
 #Preview {

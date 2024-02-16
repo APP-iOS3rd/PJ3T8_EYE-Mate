@@ -79,13 +79,11 @@ struct OTPVerificationView: View {
                                 // 회원가입 화면
                                 if signUpFlag {
                                     isDisplaySignUpText = false
-                                    
                                     // 이미 등록된 회원인 경우 로그인 화면으로
                                     if try await loginViewModel.checkLoginList() {
                                         isDisplayNotiLoginText = true
                                         isDisplayProfileSettingView = false
                                         errorText = SignUpErrorText.notiLogin.rawValue
-                                        
                                     } else {
                                         // 회원가입
                                         isDisplayNotiLoginText = false
@@ -94,6 +92,8 @@ struct OTPVerificationView: View {
                                     
                                     // 로그인 화면인 경우
                                 } else {
+                                    isDisplayProfileSettingView = false
+                                    
                                     let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
                                     
                                     if isRegistered { // 가입한 이력이 있는 경우
@@ -109,12 +109,12 @@ struct OTPVerificationView: View {
                             } else {
                                 isDisplayotpErrorText = true
                                 errorText = SignUpErrorText.otp.rawValue
-                                
                             }
                         } catch {
                             print("Error: \(error)")
                         }
                     }
+                    
                 } label: {
                     Text(signUpFlag ? "회원가입" : "로그인")
                         .foregroundStyle(.white)

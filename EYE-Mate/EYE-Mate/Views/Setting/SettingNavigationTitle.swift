@@ -35,7 +35,8 @@ struct SettingNavigationTitle: View {
         HStack {
             Button(action: leftBtnAction) {
                 Image(systemName: leftBtnType.rawValue)
-                    .foregroundStyle(Color.gray)
+                    .font(.system(size: 30))
+                    .foregroundColor(.black)
             }
             
             Spacer()
