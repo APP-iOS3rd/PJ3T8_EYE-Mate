@@ -26,7 +26,9 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
 }
 
 // MARK: 댓글
-struct Comment: Codable, Equatable, Hashable {
+struct Comment: Identifiable, Codable, Equatable, Hashable {
+    @DocumentID var id: String?
+    
     // MARK: 유저정보
     var userName: String // 댓글 유저 닉네임
     var userUID: String // 댓글 유저 UID
@@ -36,11 +38,14 @@ struct Comment: Codable, Equatable, Hashable {
     
     var comment: String // 댓글 내용
     var publishedDate: Date = Date() // 게시 Date
+//    var replyComments: [ReplyComment] = [] // 대댓글 Array
     var replyComments: [ReplyComment] = [] // 대댓글 Array
 }
 
 // MARK: 대댓글
-struct ReplyComment: Codable, Equatable, Hashable {
+struct ReplyComment: Identifiable, Codable, Equatable, Hashable {
+    @DocumentID var id: String?
+
     // MARK: 유저정보
     var userName: String // 대댓글 유저 닉네임
     var userUID: String // 대댓글 유저 UID
