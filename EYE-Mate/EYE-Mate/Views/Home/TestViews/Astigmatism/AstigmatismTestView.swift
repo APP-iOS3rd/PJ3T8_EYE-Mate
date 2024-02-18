@@ -149,32 +149,28 @@ private struct AstigmatismRight: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: viewModel.userSayYes ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("Y")
                                     isChange.toggle()
-                                    viewModel.userSayYes.toggle()
                                     //TODO: - 진동주는 이펙트
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
-                                             background: viewModel.userSayNo ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("N")
                                     isChange.toggle()
-                                    viewModel.userSayNo.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
@@ -271,31 +267,27 @@ private struct AstigmatismLeft: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: viewModel.userSayYes ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("Y")
                                     isTestComplete.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
-                                             background: viewModel.userSayNo ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("N")
                                     isTestComplete.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)

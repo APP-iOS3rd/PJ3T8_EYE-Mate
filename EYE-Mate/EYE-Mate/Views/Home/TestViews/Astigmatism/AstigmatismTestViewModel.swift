@@ -10,8 +10,6 @@ import FirebaseFirestore
 
 class AstigmatismTestViewModel: ObservableObject {
     @Published var userAnswer: [String] = []
-    @Published var userSayYes = false
-    @Published var userSayNo = false
     
     private var left = ""
     private var right = ""
