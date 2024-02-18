@@ -311,6 +311,9 @@ private struct SightTestResultView: View {
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @Environment(\.dismiss) var dismiss
     
+    @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_UID") private var userUID: String = ""
+    
     var body: some View {
         NavigationStack {
             Text("시야 검사 결과")
@@ -332,7 +335,7 @@ private struct SightTestResultView: View {
                         .frame(height: 3)
                         .padding(.horizontal, 10)
                     VStack {
-                        ForEach(0..<total) { index in
+                        ForEach(0..<total, id: \.self) { index in
                             PlaceCellView(place: coordinator.resultInfo[index])
                         }
                     }
@@ -378,7 +381,17 @@ private struct SightTestResultView: View {
                      background: .customGreen,
                      fontStyle: .pretendardBold_16,
                      //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                     action: { dismiss() } )
+                     action: {
+            if loggedIn {
+                //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                viewModel.saveResult(userUID)
+                
+                dismiss()
+            } else {
+                //TODO: - Alert 창 띄워주고 선택
+                
+            }
+        } )
         .frame(maxHeight: 75)
     }
 }

@@ -140,6 +140,9 @@ private struct ColorTestResultView: View {
     @ObservedObject var viewModel: ColorTestViewModel
     @Environment(\.dismiss) var dismiss
     
+    @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_UID") private var userUID: String = ""
+    
     var body: some View {
         NavigationStack {
             Text("색채 검사 결과")
@@ -170,7 +173,17 @@ private struct ColorTestResultView: View {
                          background: .customGreen,
                          fontStyle: .pretendardBold_16,
                          //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                         action: { dismiss() } )
+                         action: {
+                if loggedIn {
+                    //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                    viewModel.saveResult(userUID)
+                    
+                    dismiss()
+                } else {
+                    //TODO: - Alert 창 띄워주고 선택
+                    
+                }
+            } )
             .frame(maxHeight: 75)
         }
         .navigationBarBackButtonHidden()

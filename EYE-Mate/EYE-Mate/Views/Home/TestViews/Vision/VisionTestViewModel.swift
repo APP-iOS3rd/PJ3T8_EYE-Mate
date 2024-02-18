@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 
 class VisionTestViewModel: ObservableObject {
     @Published var answerArray : [String] = ["C", "2", "3", "4", "5", "6", "7", "비", "미", "므", "무", "기", "브", "누"]
@@ -144,3 +145,27 @@ class VisionTestViewModel: ObservableObject {
 enum BothEyes {
     case left, right
 }
+
+//MARK: - Firebase Method
+extension VisionTestViewModel {
+    func saveResult(_ uid: String) {
+        let visionDoc = Firestore.firestore()
+            .collection("Records")
+            .document(uid)
+            .collection("Visions")
+            .document()
+        
+        let visionItem = Visions(left: leftVision,
+                                 right: rightVision)
+        
+        do {
+            let _ = try visionDoc.setData(from: visionItem)
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
+        
+    }
+}
+
+
+
