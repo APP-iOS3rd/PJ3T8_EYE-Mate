@@ -11,7 +11,6 @@ struct ColorTestView: View {
     @StateObject var viewModel = ColorTestViewModel()
     @State var isTestComplete = false
     
-    
     var body: some View {
         if !isTestComplete {
             ColorTest(viewModel: viewModel, isTestComplete: $isTestComplete)

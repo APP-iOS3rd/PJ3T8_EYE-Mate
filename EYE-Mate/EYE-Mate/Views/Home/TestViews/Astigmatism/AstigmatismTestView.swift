@@ -130,6 +130,7 @@ private struct AstigmatismRight: View {
                             Image("Component5")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .padding(.leading, 10)
                             
                             Spacer()
                             
@@ -252,6 +253,7 @@ private struct AstigmatismLeft: View {
                             Image("Component5")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .padding(.leading, 10)
                             
                             Spacer()
                             
