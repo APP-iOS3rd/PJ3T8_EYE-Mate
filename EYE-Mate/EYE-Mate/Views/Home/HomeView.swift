@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject var profile = ProfileViewModel.shared
     @Binding var tabSelection: TabBarItem
     
     var body: some View {
@@ -16,7 +17,7 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 CustomNavigationTitle(isDisplayLeftButton: false,
                                       profileButtonAction: {
-                    viewModel.isPresentedProfileView.toggle()
+                    profile.isPresentedProfileView.toggle()
                 })
                 
                 Spacer()
@@ -39,7 +40,7 @@ struct HomeView: View {
             }
         }
         
-        .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+        .navigationDestination(isPresented: $profile.isPresentedProfileView) {
             ProfileView()
         }
         .navigationDestination(isPresented: $viewModel.isPresentedRecordView) {
