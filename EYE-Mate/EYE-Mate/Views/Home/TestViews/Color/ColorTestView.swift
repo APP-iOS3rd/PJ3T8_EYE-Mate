@@ -95,7 +95,6 @@ private struct ColorTest: View {
                                  fontStyle: .pretendardBold_16,
                                  action: {
                         viewModel.userAnswer[viewModel.index] = answer
-                        isFocused = false
                         viewModel.isTestStarted = true
                         withAnimation {
                             testPercent += 1
@@ -105,6 +104,7 @@ private struct ColorTest: View {
                         if viewModel.index >= viewModel.testColorSet.count {
                             viewModel.index = 0
                             viewModel.updateResult()
+                            isFocused = false
                             isTestComplete.toggle()
                         }
                         answer = viewModel.userAnswer[viewModel.index]
@@ -138,6 +138,7 @@ private struct ColorTest: View {
 //MARK: - 테스트 결과 화면
 private struct ColorTestResultView: View {
     @ObservedObject var viewModel: ColorTestViewModel
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @Environment(\.dismiss) var dismiss
     
     @AppStorage("Login") var loggedIn: Bool = false
@@ -145,29 +146,73 @@ private struct ColorTestResultView: View {
     
     var body: some View {
         NavigationStack {
+            Spacer()
+                .frame(height: 1)
+            
             Text("색채 검사 결과")
                 .font(.pretendardBold_32)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(20)
-            ColorTestResultTextView(viewModel: viewModel)
             
-            Spacer()
+            let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
             
-            ColorTestResultGraph(viewModel: viewModel)
+            ScrollView(showsIndicators: false) {
+                ColorTestResultTextView(viewModel: viewModel)
+                
+                Spacer()
+                
+                ColorTestResultGraph(viewModel: viewModel)
+                
+                Spacer()
+                
+                WarningText()
+                
+                Spacer()
+                
+                if total != 0 {
+                    Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                        .font(.pretendardBold_20)
+                        
+                        .foregroundColor(.customGreen)
+                    Color.customGreen
+                        .frame(height: 3)
+                        .padding(.horizontal, 10)
+                    VStack {
+                        ForEach(0..<total, id: \.self) { index in
+                            PlaceCellView(place: coordinator.resultInfo[index])
+                        }
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                .foregroundColor(.customGreen)
+                                .frame(height: 80)
+                                .padding(10)
+                                .overlay(
+                                    Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                        .multilineTextAlignment(.center)
+                                        .font(.pretendardLight_16)
+                                        .foregroundColor(.tabGray)
+                                )
+                        })
+                    }
+                } else {
+                    Text("내 주변에 안과나 안경점이 없어요!")
+                        .font(.pretendardBold_24)
+                        .foregroundColor(.customGreen)
+                    
+                    Spacer()
+                    
+                    Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
+                        .multilineTextAlignment(.center)
+                        .font(.pretendardSemiBold_20)
+                        
+                    Spacer()
+                }
+            }
             
-            CustomButton(isLabel: true,
-                         background: .customGreen,
-                         fontStyle: .pretendardMedium_20,
-                         action: {
-                //TODO: - 내주변 탭으로 이동하기
-            } )
-            .frame(maxWidth: 350, maxHeight: 70)
-            
-            Spacer()
-            
-            WarningText()
-            
-            Spacer()
             
             CustomButton(title: "돌아가기",
                          background: .customGreen,
@@ -187,6 +232,9 @@ private struct ColorTestResultView: View {
             .frame(maxHeight: 75)
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
+        }
     }
 }
 
@@ -196,7 +244,7 @@ private struct ColorTestResultTextView: View {
     
     //TODO: - 사용자 계정 나오면 ViewModel에 추가 후 수정필요!
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("어디로 가야 하오 님은")
                 .font(.pretendardRegular_22)
             HStack(alignment: .lastTextBaseline) {
@@ -216,10 +264,9 @@ private struct ColorTestResultGraph: View {
     @ObservedObject var viewModel: ColorTestViewModel
     
     var body: some View {
-        Spacer()
-        Text(viewModel.result)
-            .font(.pretendardMedium_22)
-        GeometryReader { g in
+        VStack {
+            Text(viewModel.result)
+                .font(.pretendardMedium_22)
             VStack {
                 Spacer()
                 HStack {
@@ -235,36 +282,32 @@ private struct ColorTestResultGraph: View {
                     Spacer()
                 } // HStack
                 Color.customGreen
-                    .frame(width: g.size.width / 1.2, height: 2)
-                
-                ScrollView(showsIndicators: false) {
-                    VStack {
-                        ForEach(1..<13) { index in
-                            HStack(alignment: .center) {
-                                Spacer()
-                                Text("\(index).")
-                                    .frame(minWidth: 35)
-                                    .font(.pretendardRegular_18)
-                                
-                                Spacer()
-                                Text(viewModel.answerSet[index])
-                                    .frame(minWidth: 35)
-                                    .font(.pretendardRegular_18)
-                                
-                                Spacer()
-                                Text(viewModel.userAnswer[index])
-                                    .frame(minWidth: 35)
-                                    .font(.pretendardRegular_18)
-                                
-                                Spacer()
-                            }
-                            .frame(maxHeight: 15)
-                            if index <= 11 {
-                                Color.customGreen
-                                    .frame(width: g.size.width / 1.5, height: 1)
-                            }
+                    .frame(width: UIScreen.main.bounds.width / 1.2, height: 2)
+                VStack {
+                    ForEach(1..<13) { index in
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("\(index).")
+                                .frame(minWidth: 35)
+                                .font(.pretendardRegular_18)
+                            
+                            Spacer()
+                            Text(viewModel.answerSet[index])
+                                .frame(minWidth: 35)
+                                .font(.pretendardRegular_18)
+                            
+                            Spacer()
+                            Text(viewModel.userAnswer[index])
+                                .frame(minWidth: 35)
+                                .font(.pretendardRegular_18)
+                            
+                            Spacer()
                         }
-                        
+                        .frame(maxHeight: 15)
+                        if index <= 11 {
+                            Color.customGreen
+                                .frame(width: UIScreen.main.bounds.width / 1.5, height: 1)
+                        }
                     }
                 }
                 Spacer()
@@ -274,10 +317,11 @@ private struct ColorTestResultGraph: View {
                     .stroke(Color.customGreen, lineWidth: 2)
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 1, y: 1)
-                    .frame(width: g.size.width / 1.2)
+                    .frame(width: UIScreen.main.bounds.width / 1.2)
             )
-            .padding()
+            .padding(.vertical, 5)
         }
+        .padding(.top, 10)
     }
 }
 
