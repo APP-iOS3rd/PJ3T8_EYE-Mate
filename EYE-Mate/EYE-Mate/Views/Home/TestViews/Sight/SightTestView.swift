@@ -338,18 +338,23 @@ private struct SightTestResultView: View {
                         ForEach(0..<total, id: \.self) { index in
                             PlaceCellView(place: coordinator.resultInfo[index])
                         }
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                .foregroundColor(.customGreen)
+                                .frame(height: 80)
+                                .padding(10)
+                                .overlay(
+                                    Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                        .multilineTextAlignment(.center)
+                                        .font(.pretendardLight_16)
+                                        .foregroundColor(.tabGray)
+                                )
+                        })
                     }
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                        .foregroundColor(.customGreen)
-                        .frame(height: 80)
-                        .padding(10)
-                        .overlay(
-                            Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
-                                .multilineTextAlignment(.center)
-                                .font(.pretendardLight_16)
-                                .foregroundColor(.tabGray)
-                        )
                 }
             }
             else {

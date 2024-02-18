@@ -322,7 +322,22 @@ private struct VisionTestResultView: View {
         NavigationStack {
             Spacer()
                 .frame(height: 1)
+            
             let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
+            
+            VStack(spacing: 10) {
+                HStack(spacing: 5) {
+                    Text("어디로 가야하오")
+                        .font(.pretendardBold_32)
+                    Text("님!")
+                        .font(.pretendardBold_32)
+                }
+                
+                Text("검사 결과가 나왔어요.")
+                    .font(.pretendardBold_28)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 20)
             
             if total != 0 {
                 ScrollView(showsIndicators: false) {
@@ -339,18 +354,23 @@ private struct VisionTestResultView: View {
                         ForEach(0..<total, id: \.self) { index in
                             PlaceCellView(place: coordinator.resultInfo[index])
                         }
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                .foregroundColor(.customGreen)
+                                .frame(height: 80)
+                                .padding(10)
+                                .overlay(
+                                    Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                        .multilineTextAlignment(.center)
+                                        .font(.pretendardLight_16)
+                                        .foregroundColor(.tabGray)
+                                )
+                        })
                     }
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                        .foregroundColor(.customGreen)
-                        .frame(height: 80)
-                        .padding(10)
-                        .overlay(
-                            Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
-                                .multilineTextAlignment(.center)
-                                .font(.pretendardLight_16)
-                                .foregroundColor(.tabGray)
-                        )
                 }
             }
             else {
@@ -401,18 +421,6 @@ private struct ResultTextView: View {
     @ObservedObject var viewModel: VisionTestViewModel
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 5) {
-                Text("어디로 가야하오")
-                    .font(.pretendardBold_32)
-                Text("님!")
-                    .font(.pretendardBold_32)
-            }
-            .padding(.leading, 10)
-            
-            Text("검사 결과가 나왔어요.")
-                .font(.pretendardBold_28)
-                .padding(.leading, 10)
-            
             HStack(alignment: .lastTextBaseline) {
                 Text("측정거리: ")
                     .font(.pretendardLight_26)
@@ -429,7 +437,7 @@ private struct ResultTextView: View {
                         .offset(y: 20)
                 )
             }
-            .padding(15)
+            .padding([.horizontal, .bottom], 15)
             
             
             HStack {
