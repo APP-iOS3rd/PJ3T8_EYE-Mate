@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DistanceConditionView: View {
-    @StateObject var viewModel = DistanceConditionViewModel.shared
     var title: String
     var type: TestType
     @Environment(\.dismiss) var dismiss
@@ -45,7 +44,7 @@ struct DistanceConditionView: View {
 
 //MARK: - 설명 Text와 거리 Text View
 private struct DistanceView: View {
-    @ObservedObject var viewModel = DistanceConditionViewModel.shared
+    @StateObject var viewModel = DistanceConditionViewModel.shared
     @StateObject var visionTestViewModel = VisionTestViewModel()
     var title: String
     var type: TestType

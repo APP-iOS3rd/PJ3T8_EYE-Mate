@@ -23,7 +23,6 @@ struct DistanceFaceAndDevice: UIViewRepresentable {
         }
 
         func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-            guard let faceAnchor = anchor as? ARFaceAnchor else { return }
 
             // 여기에서 faceAnchor를 사용하여 얼굴의 다양한 특징에 접근할 수 있습니다.
             faceNode = node
@@ -31,16 +30,21 @@ struct DistanceFaceAndDevice: UIViewRepresentable {
             faceNode.addChildNode(rightEye)
             faceNode.transform = node.transform
             
+            //2. Check We Have A Valid ARFaceAnchor
+            guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+            
+            //3. Update The Transform Of The Left & Right Eyes From The Anchor Transform
+            leftEye.simdTransform = faceAnchor.leftEyeTransform
+            rightEye.simdTransform = faceAnchor.rightEyeTransform
+            
             trackDistance(leftEye: leftEye, rightEye: rightEye)
         }
         
         func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
             faceNode.transform = node.transform
 
-            //2. Check We Have A Valid ARFaceAnchor
             guard let faceAnchor = anchor as? ARFaceAnchor else { return }
             
-            //3. Update The Transform Of The Left & Right Eyes From The Anchor Transform
             leftEye.simdTransform = faceAnchor.leftEyeTransform
             rightEye.simdTransform = faceAnchor.rightEyeTransform
             
