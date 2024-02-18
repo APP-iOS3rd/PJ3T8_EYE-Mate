@@ -36,7 +36,6 @@ final class DistanceConditionViewModel: ObservableObject {
     
     @MainActor
     func inputDistance(_ distance: Int) {
-        print("\(distance)")
         self.distance = distance
     }
 }

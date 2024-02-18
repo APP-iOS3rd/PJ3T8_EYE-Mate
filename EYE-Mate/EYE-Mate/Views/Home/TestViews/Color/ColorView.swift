@@ -14,7 +14,6 @@ struct ColorView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "색채 검사",
-                                  userImageUrl: "",
                                   isDisplayLeftButton: true,
                                   leftButtonAction: { dismiss() },
                                   profileButtonAction: {

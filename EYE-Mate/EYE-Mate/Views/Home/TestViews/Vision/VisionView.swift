@@ -14,7 +14,6 @@ struct VisionView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "시력 검사",
-                                  userImageUrl: "",
                                   isDisplayLeftButton: true,
                                   leftButtonAction: { dismiss() },
                                   profileButtonAction: {
