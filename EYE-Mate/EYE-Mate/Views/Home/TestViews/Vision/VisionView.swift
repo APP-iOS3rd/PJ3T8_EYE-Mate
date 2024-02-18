@@ -38,9 +38,9 @@ struct VisionView: View {
                       action: {
                 viewModel.isPresentedTestView.toggle()
             })
-            .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
+            .navigationDestination(isPresented: $viewModel.isPresentedTestView) {
                 DistanceConditionView(title: "시력 검사", type: .vision)
-            })
+            }
             .frame(maxHeight: 75)
 
             Spacer()

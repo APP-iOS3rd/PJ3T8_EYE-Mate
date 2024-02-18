@@ -22,19 +22,26 @@ struct DistanceConditionView: View {
             ZStack {
                 DistanceFaceAndDevice()
                 BackgroundView()
-                DistanceView(title: title, type: type)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
+                VStack {
+                    Spacer()
+                        .frame(height: 5)
+                    
+                    HStack {
                         Text(title)
+                            .frame(maxWidth: .infinity)
                             .font(.pretendardBold_24)
+                            .overlay(alignment: .trailing) {
+                                Button(action: {
+                                    dismiss()
+                                }, label: {
+                                    Image("close")
+                                })
+                                .padding(.trailing)
+                            }
                     }
-                    ToolbarItem {
-                        Button(action: {
-                            dismiss()
-                        }, label: {
-                            Image("close")
-                        })
-                    }
+                    
+                    
+                    DistanceView(title: title, type: type)
                 }
             }
         }
@@ -53,6 +60,7 @@ private struct DistanceView: View {
         VStack {
             Spacer()
                 .frame(maxHeight: 100)
+            
             if type != .eyesight {
                 Text("\(title)를 위해서 휴대폰을 사용자와\n40cm ~ 50cm 간격을 유지해주세요!")
                     .font(.pretendardMedium_20)
@@ -131,7 +139,7 @@ private struct DistanceView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.isActiveVisionTest) {
-                VisionTestView(viewModel: visionTestViewModel, distance: viewModel)
+                VisionTestView(viewModel: visionTestViewModel)
             }
             .navigationDestination(isPresented: $viewModel.isActiveAstigmatismTest) {
                 AstigmatismTestView()

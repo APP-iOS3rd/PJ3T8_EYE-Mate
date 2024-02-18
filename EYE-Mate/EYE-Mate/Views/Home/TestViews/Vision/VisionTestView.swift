@@ -25,19 +25,31 @@ struct VisionTestView: View {
 //MARK: - 테스트 화면
 private struct VisionTest: View {
     @ObservedObject var viewModel: VisionTestViewModel
-    @Environment(\.dismiss) var dismiss
     @Binding var isTestComplete: Bool
-    @State var testPercent = 0.0
     @State var isChange: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
-            ProgressView(value: testPercent)
-                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
+            Spacer()
+                .frame(height: 5)
+            
+            HStack {
+                Text("시력 검사")
+                    .frame(maxWidth: .infinity)
+                    .font(.pretendardBold_24)
+                    .overlay(alignment: .trailing) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image("close")
+                        })
+                        .padding(.trailing)
+                    }
+            }
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
                 VisionRight(viewModel: viewModel,
-                                 testPercent: $testPercent,
                                  isChange: $isChange)
                 .onAppear(perform: {
                     viewModel.change()
@@ -45,21 +57,7 @@ private struct VisionTest: View {
             } else {
                 //TODO: - 왼쪽 눈 시야검사
                 VisionLeft(viewModel: viewModel,
-                                testPercent: $testPercent,
                                 isTestComplete: $isTestComplete)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("시력 검사")
-                    .font(.pretendardBold_24)
-            }
-            ToolbarItem {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image("close")
-                })
             }
         }
         .navigationBarBackButtonHidden()
@@ -70,7 +68,6 @@ private struct VisionTest: View {
 private struct VisionRight: View {
     @ObservedObject var viewModel: VisionTestViewModel
     @ObservedObject var distance = DistanceConditionViewModel.shared
-    @Binding var testPercent: Double
     @Binding var isChange: Bool
     @State var isReady: Bool = false
     
@@ -142,7 +139,6 @@ private struct VisionRight: View {
 private struct VisionLeft: View {
     @ObservedObject var viewModel: VisionTestViewModel
     @ObservedObject var distance = DistanceConditionViewModel.shared
-    @Binding var testPercent: Double
     @Binding var isTestComplete: Bool
     @State var isReady: Bool = false
     

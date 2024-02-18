@@ -9,18 +9,15 @@ import SwiftUI
 
 struct AstigmatismTestView: View {
     @StateObject var viewModel = AstigmatismTestViewModel()
-    
     //MARK: - 테스트용으로 true로 설정, 기본값은 false
     @State var isTestComplete: Bool = false
     
     var body: some View {
-        VStack {
-            if !isTestComplete {
-                AstigmatismTest(viewModel: viewModel,
-                                isTestComplete: $isTestComplete)
-            } else {
-                AstigmatismTestResultView(viewModel: viewModel)
-            }
+        if !isTestComplete {
+            AstigmatismTest(viewModel: viewModel,
+                            isTestComplete: $isTestComplete)
+        } else {
+            AstigmatismTestResultView(viewModel: viewModel)
         }
     }
 }
@@ -28,43 +25,45 @@ struct AstigmatismTestView: View {
 //MARK: - 테스트 화면
 private struct AstigmatismTest: View {
     @ObservedObject var viewModel: AstigmatismTestViewModel
-    @Environment(\.dismiss) var dismiss
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
     @State var isChange: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            ProgressView(value: testPercent)
-                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
-            if !isChange {
-                //TODO: - 오른쪽 눈 시야 검사
-                AstigmatismRight(viewModel: viewModel,
-                                 testPercent: $testPercent,
-                                 isChange: $isChange)
-            } else {
-                //TODO: - 왼쪽 눈 시야검사
-                AstigmatismLeft(viewModel: viewModel,
-                                testPercent: $testPercent,
-                                isTestComplete: $isTestComplete)
+            VStack {
+                Spacer()
+                    .frame(height: 5)
+                
+                HStack {
+                    Text("난시 검사")
+                        .frame(maxWidth: .infinity)
+                        .font(.pretendardBold_24)
+                        .overlay(alignment: .trailing) {
+                            Button(action: {
+                                dismiss()
+                            }, label: {
+                                Image("close")
+                            })
+                            .padding(.trailing)
+                        }
+                }
+                
+                ProgressView(value: testPercent)
+                    .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
+                
+                if !isChange {
+                    AstigmatismRight(viewModel: viewModel,
+                                     testPercent: $testPercent,
+                                     isChange: $isChange)
+                } else {
+                    AstigmatismLeft(viewModel: viewModel,
+                                    testPercent: $testPercent,
+                                    isTestComplete: $isTestComplete)
+                }
             }
+            .navigationBarBackButtonHidden()
         }
-        .toolbar(.hidden, for: .tabBar)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("난시 검사")
-                    .font(.pretendardBold_24)
-            }
-            ToolbarItem {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image("close")
-                })
-            }
-        }
-        .navigationBarBackButtonHidden()
-    }
 }
 
 //MARK: - 오른쪽 눈 화면
@@ -77,7 +76,6 @@ private struct AstigmatismRight: View {
     
     var body: some View {
         if !isReady {
-            //TODO: - 테스트 안내문구 보여주기
             Spacer()
             
             VStack {
@@ -107,7 +105,6 @@ private struct AstigmatismRight: View {
             })
             .frame(maxHeight: 75)
         } else {
-            //TODO: - 테스트 화면 보여주기
             VStack {
                 NavigationStack {
                     ZStack {
@@ -152,24 +149,24 @@ private struct AstigmatismRight: View {
                                              background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
+                                    viewModel.userAnswer.append("Y")
                                     withAnimation {
                                         testPercent += 0.5
                                     }
-                                    viewModel.userAnswer.append("Y")
                                     isChange.toggle()
                                     //TODO: - 진동주는 이펙트
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
-                                .disabled(!distance.canStart)
+                                .disabled(distance.canStart)
                                 CustomButton(title: "아니오",
                                              background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
+                                    viewModel.userAnswer.append("N")
                                     withAnimation {
                                         testPercent += 0.5
                                     }
-                                    viewModel.userAnswer.append("N")
                                     isChange.toggle()
                                 })
                                 .frame(maxHeight: 75)
@@ -196,7 +193,6 @@ private struct AstigmatismLeft: View {
     
     var body: some View {
         if !isReady {
-            //TODO: - 테스트 안내문구 보여주기
             Spacer()
             
             VStack {
@@ -226,7 +222,6 @@ private struct AstigmatismLeft: View {
             })
             .frame(maxHeight: 75)
         } else {
-            //TODO: - 테스트 화면 보여주기
             VStack {
                 NavigationStack {
                     ZStack {
@@ -270,23 +265,23 @@ private struct AstigmatismLeft: View {
                                              background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
+                                    viewModel.userAnswer.append("Y")
                                     withAnimation {
                                         testPercent += 0.5
+                                        isTestComplete.toggle()
                                     }
-                                    viewModel.userAnswer.append("Y")
-                                    isTestComplete.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
-                                .disabled(!distance.canStart)
+                                .disabled(distance.canStart)
                                 CustomButton(title: "아니오",
                                              background: distance.canStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
+                                    viewModel.userAnswer.append("N")
                                     withAnimation {
                                         testPercent += 0.5
                                     }
-                                    viewModel.userAnswer.append("N")
                                     isTestComplete.toggle()
                                 })
                                 .frame(maxHeight: 75)
@@ -382,7 +377,6 @@ private struct AstigmatismTestResultView: View {
         CustomButton(title: "돌아가기",
                      background: .customGreen,
                      fontStyle: .pretendardBold_16,
-                     //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
                      action: {
             if loggedIn {
                 //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!

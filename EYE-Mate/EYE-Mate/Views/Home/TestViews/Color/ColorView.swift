@@ -32,14 +32,14 @@ struct ColorView: View {
             Spacer()
             
             CustomButton(title: "테스트 시작하기",
-                      background: .customGreen,
-                      fontStyle: .pretendardBold_16,
-                      action: {
+                         background: .customGreen,
+                         fontStyle: .pretendardBold_16,
+                         action: {
                 viewModel.isPresentedTestView.toggle()
             })
-            .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
+            .navigationDestination(isPresented: $viewModel.isPresentedTestView) {
                 ColorTestView()
-            })
+            }
             .frame(maxHeight: 75)
             
             Spacer()

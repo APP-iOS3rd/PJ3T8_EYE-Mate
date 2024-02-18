@@ -14,13 +14,11 @@ struct SightTestView: View {
     @State var isTestComplete: Bool = false
     
     var body: some View {
-        VStack {
-            if !isTestComplete {
-                SightTest(viewModel: viewModel,
-                                isTestComplete: $isTestComplete)
-            } else {
-                SightTestResultView(viewModel: viewModel)
-            }
+        if !isTestComplete {
+            SightTest(viewModel: viewModel,
+                      isTestComplete: $isTestComplete)
+        } else {
+            SightTestResultView(viewModel: viewModel)
         }
     }
 }
@@ -28,13 +26,29 @@ struct SightTestView: View {
 //MARK: - 테스트 화면
 private struct SightTest: View {
     @ObservedObject var viewModel: SightTestViewModel
-    @Environment(\.dismiss) var dismiss
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
     @State var isChange: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
+            Spacer()
+                .frame(height: 5)
+            
+            HStack {
+                Text("시야 검사")
+                    .frame(maxWidth: .infinity)
+                    .font(.pretendardBold_24)
+                    .overlay(alignment: .trailing) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image("close")
+                        })
+                        .padding(.trailing)
+                    }
+            }
             ProgressView(value: testPercent)
                 .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
             if !isChange {
@@ -47,20 +61,6 @@ private struct SightTest: View {
                 SightLeft(viewModel: viewModel,
                                 testPercent: $testPercent,
                                 isTestComplete: $isTestComplete)
-            }
-        }
-        .toolbar(.hidden, for: .tabBar)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("시야 검사")
-                    .font(.pretendardBold_24)
-            }
-            ToolbarItem {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image("close")
-                })
             }
         }
         .navigationBarBackButtonHidden()
@@ -178,7 +178,6 @@ private struct SightRight: View {
                         }
                     }
                 }
-                .navigationBarBackButtonHidden()
             }
         }
     }
@@ -299,7 +298,6 @@ private struct SightLeft: View {
                         }
                     }
                 }
-                .navigationBarBackButtonHidden()
             }
         }
     }
@@ -377,7 +375,6 @@ private struct SightTestResultView: View {
             
             
         }
-        .navigationBarBackButtonHidden()
         .onAppear {
             MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }

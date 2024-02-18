@@ -12,6 +12,7 @@ struct ColorTestView: View {
     @State var isTestComplete = false
     
     var body: some View {
+        
         if !isTestComplete {
             ColorTest(viewModel: viewModel, isTestComplete: $isTestComplete)
         } else {
@@ -30,12 +31,31 @@ private struct ColorTest: View {
     @State private var testPercent = 0.0
     @Binding var isTestComplete: Bool
     
-    
     var body: some View {
         ZStack {
             Color.white
             
             VStack {
+                Spacer()
+                    .frame(height: 5)
+                
+                HStack {
+                    Text("색채 검사")
+                        .frame(maxWidth: .infinity)
+                        .font(.pretendardBold_24)
+                        .overlay(alignment: .trailing) {
+                            Button(action: {
+                                dismiss()
+                            }, label: {
+                                Image("close")
+                            })
+                            .padding(.trailing)
+                        }
+                }
+                
+                ProgressView(value: testPercent, total: 12)
+                    .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
+                
                 if !viewModel.isTestStarted {
                     Spacer()
                     
@@ -43,8 +63,6 @@ private struct ColorTest: View {
                         .multilineTextAlignment(.center)
                         .font(.pretendardMedium_20)
                 } else {
-                    ProgressView(value: testPercent, total: 12)
-                        .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
                     
                     Spacer()
                     
@@ -111,23 +129,9 @@ private struct ColorTest: View {
                     )
                     .frame(maxHeight: 75)
                 }
-            }
-            .toolbar(.hidden, for: .tabBar)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("색채 검사")
-                        .font(.pretendardBold_24)
-                }
-                ToolbarItem {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Image("close")
-                    })
-                }
-            }
+            } //VStack
             .navigationBarBackButtonHidden()
-        }
+        } //ZStack
         .onTapGesture {
             isFocused = false
         }
