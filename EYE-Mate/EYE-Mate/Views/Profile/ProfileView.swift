@@ -18,7 +18,7 @@ struct ProfileView: View {
             if loggedIn {
                 SettingView(profileViewModel: profileViewModel)
             } else {
-                LoginView()
+                LoginView(isAlertView: .constant(false))
             }
         }
         .navigationBarBackButtonHidden(true)

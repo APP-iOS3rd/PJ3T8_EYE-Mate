@@ -16,6 +16,9 @@ struct SignUpProfileView: View {
     @State var textName: String = ""
     @State var isButtonEnabled: Bool = false
     
+    @Binding var isAlertView: Bool
+    
+    @ObservedObject var visionTestViewModel = VisionTestViewModel.shared
     
     var body: some View {
         VStack(spacing: 20) {
@@ -43,7 +46,12 @@ struct SignUpProfileView: View {
                 self.userName = textName
                 profileViewModel.imageSelection = selectedItem
                 profileViewModel.uploadUserInfoToFirebase()
-                presentationMode.wrappedValue.dismiss()
+                if visionTestViewModel.showFullScreenCover {
+                    isAlertView.toggle()
+                    visionTestViewModel.showFullScreenCover.toggle()
+                } else {
+                    presentationMode.wrappedValue.dismiss()
+                }
                 
             })
             .disabled(!isButtonEnabled)
@@ -58,5 +66,5 @@ struct SignUpProfileView: View {
 }
 
 #Preview {
-    SignUpProfileView()
+    SignUpProfileView(isAlertView: .constant(false))
 }

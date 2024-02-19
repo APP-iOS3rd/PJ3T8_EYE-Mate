@@ -14,6 +14,8 @@ struct SignUpView: View {
     @Binding var signUpFlag: Bool
     @FocusState private var keyFocused: Bool
     
+    @Binding var isAlertView: Bool
+    
     var body: some View {
         VStack{
             Spacer()
@@ -27,7 +29,7 @@ struct SignUpView: View {
                 Text("회원가입")
                     .font(.pretendardBold_20)
                     .foregroundStyle(Color.customGreen)
-                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused)
+                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused, isAlertView: $isAlertView)
             }
             
             VStack(alignment: .leading) {
