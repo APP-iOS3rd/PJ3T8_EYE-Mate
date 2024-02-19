@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+extension UIApplication {
+    class func navigationTopViewController() -> UIViewController? {
+        let allScenes = UIApplication.shared.connectedScenes
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+
+        return windowScene?.windows.first { $0.isKeyWindow }?.rootViewController?.navigationController?.topViewController
+    }
+}
+
 struct StartMovementRow: View {
     @Binding var showToast: Bool
     @Binding var movementType: String
@@ -37,8 +46,13 @@ struct StartMovementRow: View {
             }.padding(.leading, 12)
             Spacer()
             Button {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscape))
+                DispatchQueue.main.async {
+                    AppDelegate.orientationLock = UIInterfaceOrientationMask.landscapeRight
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
+                    UINavigationController.attemptRotationToDeviceOrientation()
+                    //                UIApplication.navigationTopViewController()?.setNeedsUpdateOfSupportedInterfaceOrientations()
+                }
                 isNavigateEightLottieView = true
             } label: {
                 Image(systemName: "chevron.right")
@@ -49,13 +63,13 @@ struct StartMovementRow: View {
             .buttonStyle(PlainButtonStyle())
             .padding()
             .background(Color.customGreen)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+            .clipShape(Circle())
             .frame(width: 44, height: 44)
         }
         .padding(16)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.25), radius: 4, x: 2, y: 2)
+        .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
     }
 }
 

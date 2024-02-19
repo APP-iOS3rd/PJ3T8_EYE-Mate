@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct RecordView: View {
-    @ObservedObject var viewModel: HomeViewModel
-
+    @Environment(\.presentationMode) var presentationMode
+    
     private func goBack() {
-        viewModel.isPresentedRecordView = false
+        presentationMode.wrappedValue.dismiss()
     }
     
     var body: some View {
+        NavigationStack {
             VStack(spacing: 0) {
                 HStack(alignment: .bottom) {
                     HStack(alignment: .bottom, spacing: 8) {
@@ -72,7 +73,7 @@ struct RecordView: View {
                         RecordBox(type: .vision)
                         // TODO: Data 없을 때 분기
                         VisionChart()
-//                      EmptyVisionChart()
+                        //                      EmptyVisionChart()
                         RecordBox(type: .colorVision)
                         RecordBox(type: .astigmatism)
                         RecordBox(type: .eyesight)
@@ -84,10 +85,9 @@ struct RecordView: View {
             }
             .navigationBarBackButtonHidden()
         }
+    }
 }
 
 #Preview {
-    @StateObject var viewModel = HomeViewModel()
-
-    return RecordView(viewModel: viewModel)
+    RecordView()
 }

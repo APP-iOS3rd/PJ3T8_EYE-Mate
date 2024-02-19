@@ -49,4 +49,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
         return false
     }
+
+    static var orientationLock = UIInterfaceOrientationMask.portrait
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return AppDelegate.orientationLock
+    }
 }

@@ -28,7 +28,8 @@ struct AstigmatismDataView: View {
                     HStack {
                         Text("\(data.date)")
                             .font(.pretendardRegular_18)
-                            .frame(width: 120, alignment: .leading)
+                            .frame(width: 128, alignment: .leading)
+                            .monospaced()
                         Spacer()
                         HStack(spacing: 32) {
                             HStack{

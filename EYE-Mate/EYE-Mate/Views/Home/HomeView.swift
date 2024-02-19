@@ -42,7 +42,7 @@ struct HomeView: View {
             ProfileView()
         }
         .navigationDestination(isPresented: $viewModel.isPresentedRecordView) {
-            RecordView(viewModel: viewModel)
+            RecordView()
         }
         .navigationDestination(isPresented: $viewModel.isPresentedVisionView) {
             VisionView()

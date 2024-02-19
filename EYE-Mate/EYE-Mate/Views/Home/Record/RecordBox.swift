@@ -42,7 +42,7 @@ struct RecordBox: View {
                 .padding(24)
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.25), radius: 4, x: 2, y: 2)
+                .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
             }
     }
 }

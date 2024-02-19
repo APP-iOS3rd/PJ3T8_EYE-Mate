@@ -32,14 +32,14 @@ struct MovementView: View {
                         Text("오늘도 눈 건강 챙기셨나요? 👀")
                             .font(.pretendardRegular_22)
                     }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     VStack(alignment: .leading) {
                         Text("#오늘의 눈 운동")
                             .font(.pretendardRegular_16)
                         Text("0회")
                             .font(.pretendardSemiBold_20)
                     }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     ForEach($movementList, id: \.self) { movement in
                         StartMovementRow(showToast: $showToast, movementType: movement)
                     }
@@ -54,7 +54,7 @@ struct MovementView: View {
                             .font(.pretendardMedium_18)
                             .foregroundColor(Color.warningGray)
                     }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
                 }
                 .padding(.horizontal, 32)
@@ -62,15 +62,16 @@ struct MovementView: View {
                 .background(Color.textFieldGray)
                 Spacer()
                     .frame(height: 70)
-            }.toastView(toast: $toast)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        if showToast {
-                            toast = Toast()
-                            showToast.toggle()
-                        }
+            }
+            .toastView(toast: $toast)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if showToast {
+                        toast = Toast()
+                        showToast.toggle()
                     }
                 }
+            }
         }
         .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()

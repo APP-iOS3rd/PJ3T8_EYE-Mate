@@ -34,20 +34,23 @@ struct VisionDataView: View {
                     HStack {
                         Text("\(data.date)")
                             .font(.pretendardRegular_18)
-                            .frame(width: 120, alignment: .leading)
+                            .frame(width: 128, alignment: .leading)
+                            .monospaced()
                         Spacer()
                         HStack(spacing: 32) {
                             HStack{
                                 Text("좌")
                                     .font(.pretendardBold_18)
-                                Spacer()
+                                Spacer().frame(width: 12)
                                 ColoredText(receivedText: "\(data.left)", font: .pretendardBold_28)
+                                    .monospaced()
                             }.frame(width: 80)
                             HStack{
                                 Text("우")
                                     .font(.pretendardBold_18)
-                                Spacer()
+                                Spacer().frame(width: 12)
                                 ColoredText(receivedText: "\(data.right)", font: .pretendardBold_28)
+                                    .monospaced()
                             }.frame(width: 80)
                         }
                     }.frame(height: 52)
