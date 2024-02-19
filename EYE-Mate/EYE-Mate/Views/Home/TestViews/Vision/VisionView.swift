@@ -28,7 +28,8 @@ struct VisionView: View {
 
             Spacer()
 
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component3")])
+            TestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component3")])
+                .padding(.horizontal, 10)
 
             Spacer()
 

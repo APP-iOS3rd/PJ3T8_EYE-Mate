@@ -28,7 +28,8 @@ struct AstigmatismView: View {
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")
+            TestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")
+                .padding(.horizontal, 10)
             
             Spacer()
             

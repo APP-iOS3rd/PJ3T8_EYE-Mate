@@ -125,7 +125,7 @@
 		710D40922B5FD89A006C9FED /* AstigmatismView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40912B5FD89A006C9FED /* AstigmatismView.swift */; };
 		710D40942B5FD8A9006C9FED /* SightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40932B5FD8A9006C9FED /* SightView.swift */; };
 		710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */; };
-		710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */; };
+		710D40982B60DE97006C9FED /* TestOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D40972B60DE97006C9FED /* TestOnboardingView.swift */; };
 		711F4A872B6959A2001C6B53 /* TestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A862B6959A2001C6B53 /* TestType.swift */; };
 		711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A882B6A1756001C6B53 /* VisionTestView.swift */; };
 		711F4A8B2B6A1779001C6B53 /* ColorTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A8A2B6A1779001C6B53 /* ColorTestView.swift */; };
@@ -286,7 +286,7 @@
 		710D40912B5FD89A006C9FED /* AstigmatismView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismView.swift; sourceTree = "<group>"; };
 		710D40932B5FD8A9006C9FED /* SightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightView.swift; sourceTree = "<group>"; };
 		710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
-		710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewOnboardingView.swift; sourceTree = "<group>"; };
+		710D40972B60DE97006C9FED /* TestOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOnboardingView.swift; sourceTree = "<group>"; };
 		710D409B2B613AC5006C9FED /* ExplanationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationTextView.swift; sourceTree = "<group>"; };
 		711F4A862B6959A2001C6B53 /* TestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestType.swift; sourceTree = "<group>"; };
 		711F4A882B6A1756001C6B53 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -668,7 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				710D409B2B613AC5006C9FED /* ExplanationTextView.swift */,
-				710D40972B60DE97006C9FED /* TestViewOnboardingView.swift */,
+				710D40972B60DE97006C9FED /* TestOnboardingView.swift */,
 				711F4A862B6959A2001C6B53 /* TestType.swift */,
 				71948DDD2B6D0CA100316569 /* BackgroundView.swift */,
 				71526A3F2B7242B10000631E /* PlaceCellView.swift */,
@@ -1013,7 +1013,7 @@
 				7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */,
 				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,
-				710D40982B60DE97006C9FED /* TestViewOnboardingView.swift in Sources */,
+				710D40982B60DE97006C9FED /* TestOnboardingView.swift in Sources */,
 				711F4A8F2B6A1789001C6B53 /* SightTestView.swift in Sources */,
 				3398D4882B7369C400535E0C /* AddRecordHeader.swift in Sources */,
 				33DA6A952B7B39C7006C4827 /* WrappingHStack.swift in Sources */,

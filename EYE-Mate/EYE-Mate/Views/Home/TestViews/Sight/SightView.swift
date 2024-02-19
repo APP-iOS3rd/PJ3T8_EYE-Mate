@@ -28,9 +28,10 @@ struct SightView: View {
             
             Spacer()
             
-            VisionTestOnboardingView(title: "핸드폰과 거리를\n30cm~40cm 떨어트려주세요!",
+            TestOnboardingView(title: "핸드폰과 거리를\n30cm~40cm 떨어트려주세요!",
                                      image:[Image("Component1"), Image("Component2"), Image("Component6")],
                                      thirdTitle: "중앙에 있는 검은색 점에 초점을 두고\n선과 사각형의 변화를 확인하세요!")
+            .padding(.horizontal, 10)
             
             Spacer()
             

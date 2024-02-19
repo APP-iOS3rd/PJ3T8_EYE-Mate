@@ -27,7 +27,8 @@ struct ColorView: View {
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component4")])
+            TestOnboardingView(image:[Image("Component1"), Image("Component4")])
+                .padding(.horizontal, 10)
             
             Spacer()
             
