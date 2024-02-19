@@ -10,7 +10,7 @@ import PhotosUI
 
 
 struct EditableProfileView: View {
-    @ObservedObject var profileViewModel: ProfileViewModel
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Binding var selectedItem: PhotosPickerItem?
     @State private var circleImage: Image = Image("user")
     

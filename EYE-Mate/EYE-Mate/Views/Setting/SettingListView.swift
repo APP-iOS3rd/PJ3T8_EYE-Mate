@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingListView: View {
-    @ObservedObject var profileViewModel: ProfileViewModel
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @StateObject var settingViewModel = SettingViewModel()
     @State var isPresented: Bool = false
     @Binding var showAlert:Bool
