@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct VisionTestView: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @StateObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
-    @State var isTestComplete = false
+    @State var isTestComplete = true
     
     
     var body: some View {
         if !isTestComplete {
-            VisionTest(viewModel: viewModel, isTestComplete: $isTestComplete)
+            VisionTest(isTestComplete: $isTestComplete)
         } else {
-            VisionTestResultView(viewModel: viewModel)
+            VisionTestResultView()
         }
     }
 }
 
 //MARK: - 테스트 화면
 private struct VisionTest: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @Binding var isTestComplete: Bool
     @State var isChange: Bool = false
     @Environment(\.dismiss) var dismiss
@@ -49,15 +49,13 @@ private struct VisionTest: View {
             }
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
-                VisionRight(viewModel: viewModel,
-                                 isChange: $isChange)
+                VisionRight(isChange: $isChange)
                 .onAppear(perform: {
                     viewModel.change()
                 })
             } else {
                 //TODO: - 왼쪽 눈 시야검사
-                VisionLeft(viewModel: viewModel,
-                                isTestComplete: $isTestComplete)
+                VisionLeft(isTestComplete: $isTestComplete)
             }
         }
         .navigationBarBackButtonHidden()
@@ -66,7 +64,7 @@ private struct VisionTest: View {
 
 //MARK: - 오른쪽 눈 화면
 private struct VisionRight: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var isChange: Bool
     @State var isReady: Bool = false
@@ -124,7 +122,7 @@ private struct VisionRight: View {
                             Spacer()
                             
                             //TODO: - 시력검사 화면 보여주기
-                            TestView(viewModel: viewModel, changeValue: $isChange, type: BothEyes.right,
+                            TestView(changeValue: $isChange, type: BothEyes.right,
                                      isAnimation: distance.canStart)
                         }
                     }
@@ -138,7 +136,7 @@ private struct VisionRight: View {
 
 //MARK: - 왼쪽 눈 화면
 private struct VisionLeft: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var isTestComplete: Bool
     
@@ -196,7 +194,7 @@ private struct VisionLeft: View {
                             Spacer()
                             
                             //TODO: - 시력검사 화면 보여주기
-                            TestView(viewModel: viewModel, changeValue: $isTestComplete, type: BothEyes.left, isAnimation: distance.canStart)
+                            TestView(changeValue: $isTestComplete, type: BothEyes.left, isAnimation: distance.canStart)
                         }
                     }
                 }
@@ -208,7 +206,7 @@ private struct VisionLeft: View {
 
 //MARK: - 테스트 화면
 private struct TestView: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @State private var selectedButtonIndex: Int?
     @Binding var changeValue: Bool
@@ -314,15 +312,21 @@ private struct TestView: View {
 
 //MARK: - 테스트 결과 화면
 private struct VisionTestResultView: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
     
+    @State var showAlert: Bool = false
+    
+    
     var body: some View {
+        ZStack {
         NavigationStack {
             Spacer()
                 .frame(height: 1)
@@ -366,7 +370,7 @@ private struct VisionTestResultView: View {
                                 tabManager.selection = .eyeMap
                                 dismiss()
                             } else {
-                                
+                                showAlert.toggle()
                             }
                         }, label: {
                             RoundedRectangle(cornerRadius: 10)
@@ -401,29 +405,54 @@ private struct VisionTestResultView: View {
                     
                 Spacer()
             }
-            
+            CustomButton(title: "돌아가기",
+                         background: .customGreen,
+                         fontStyle: .pretendardBold_16,
+                         action: {
+                if loggedIn {
+                    //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                    viewModel.saveResult(userUID)
+                    
+                    dismiss()
+                } else {
+                    //TODO: - Alert 창 띄워주고 선택
+                    
+                }
+            } )
+            .frame(maxHeight: 75)
         }
         .navigationBarBackButtonHidden()
         .onAppear {
             MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }
         
-        CustomButton(title: "돌아가기",
-                     background: .customGreen,
-                     fontStyle: .pretendardBold_16,
-                     action: {
-            if loggedIn {
-                //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                viewModel.saveResult(userUID)
-                
-                dismiss()
-            } else {
-                //TODO: - Alert 창 띄워주고 선택
-                
-            }
-        } )
-        .frame(maxHeight: 75)
         
+        
+            if showAlert {
+                ZStack{
+                    // 배경화면
+                    Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
+                    
+                    CustomAlertView(
+                        showAlert: $showAlert,
+                        title: "저희 아직 친구가 아니네요.",
+                        message: "비회원의 경우 검사 결과가 저장되지 않아요!",
+                        leftButtonTitle: "홈으로",
+                        leftButtonAction: {
+                            dismiss()
+                        },
+                        rightButtonTitle: "로그인",
+                        rightButtonAction: {
+                            // MARK: - 로그인 화면으로 이동
+                            viewModel.showFullScreenCover.toggle()
+                            print("TestView - showFullScreenCover : \(viewModel.showFullScreenCover)")
+                        })
+                }
+                .fullScreenCover(isPresented: $viewModel.showFullScreenCover, content: {
+                    LoginView(isAlertView: $showAlert, type: .VisionTestViewModel)
+                })
+            }
+        }
     }
 }
 

@@ -11,8 +11,6 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
     
-    @Binding var tabSelection: TabBarItem
-    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {

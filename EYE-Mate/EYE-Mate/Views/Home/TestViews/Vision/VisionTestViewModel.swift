@@ -10,6 +10,8 @@ import SwiftUI
 import FirebaseFirestore
 
 class VisionTestViewModel: ObservableObject {
+    static let shared = VisionTestViewModel()
+    
     @Published var answerArray : [String] = ["C", "2", "3", "4", "5", "6", "7", "비", "미", "므", "무", "기", "브", "누"]
     // 정답
     @Published var answer: String = ""
@@ -33,6 +35,8 @@ class VisionTestViewModel: ObservableObject {
     @Published var rightVision = "0.3"
     // 다음 버튼 활성화
     @Published var nextButton = false
+    
+    @Published var showFullScreenCover: Bool = false
     
     
     func saveDistance(_ distance: Int) {
