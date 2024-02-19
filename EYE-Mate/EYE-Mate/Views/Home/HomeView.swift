@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @ObservedObject var profile = ProfileViewModel.shared
-    @Binding var tabSelection: TabBarItem
     
     var body: some View {
         NavigationStack {
@@ -30,7 +29,7 @@ struct HomeView: View {
                             .frame(height: 120)
                             .padding(.top, -30)
                         
-                        HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
+                        HomeViewCellListView(viewModel: viewModel)
                         
                         Spacer()
                     }
@@ -92,7 +91,7 @@ private struct HomeViewTextView: View {
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
     @ObservedObject var viewModel: HomeViewModel
-    @Binding var tabSelection: TabBarItem
+    @EnvironmentObject var tabManager: TabManager
     
     var body: some View {
         HStack(spacing: 10) {
@@ -105,7 +104,7 @@ private struct HomeViewCellListView: View {
             })
             
             Button(action: {
-                tabSelection = .movement
+                tabManager.selection = .movement
             }, label: {
                 HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "눈 피로감 줄이기"))
                     .padding(.trailing, 10)
@@ -147,6 +146,6 @@ private struct HomeViewCellListView: View {
     }
 }
 
-//#Preview {
-//    HomeView()
-//}
+#Preview {
+    HomeView()
+}

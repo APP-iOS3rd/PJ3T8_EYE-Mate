@@ -9,20 +9,20 @@ import SwiftUI
 
 struct CustomTabBarContainerView<Content: View>: View {
     let content: Content
-    @Binding var selection: TabBarItem
+    @EnvironmentObject var tabManager: TabManager
     @State private var tabs: [TabBarItem] = [.home, .movement, .community, .eyeMap]
     
-    init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
-        self._selection = selection
+    init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     
     var body: some View {
         ZStack(alignment: .bottom) {
             content
-            CustomTabBar(tabs: tabs, localSelection: selection, selection: $selection)
+            CustomTabBar(tabs: tabs, localSelection: tabManager.selection)
         }
         .onPreferenceChange(TabBarItemPrefrenceKey.self, perform: { value in
+            print("onPreferenceChange called : \(tabs)")
             self.tabs = tabs
         })
         .ignoresSafeArea(edges: .bottom)
@@ -33,12 +33,13 @@ struct CustomTabBarContainerView<Content: View>: View {
 struct CustomTabBar: View {
     let tabs: [TabBarItem]
     @Namespace private var namespace
+    @EnvironmentObject var tabManager: TabManager
     @State var localSelection: TabBarItem
-    @Binding var selection: TabBarItem
     
     var body: some View {
         tabBarVersion
-            .onChange(of: selection) { newValue in
+            .onChange(of: tabManager.selection) { newValue in
+                print("onChange called : \(tabManager.selection), \(localSelection), \(newValue)")
                 withAnimation(.bouncy) {
                     localSelection = newValue
                 }
@@ -66,14 +67,14 @@ extension CustomTabBar {
     private func tabView(tab: TabBarItem) -> some View {
         VStack(spacing: 5) {
             Image(systemName: tab.iconName)
-                .scaleEffect(selection == tab ? 1.4 : 1.0)
+                .scaleEffect(tabManager.selection == tab ? 1.4 : 1.0)
                 
             Text(tab.title)
-                .scaleEffect(selection == tab ? 1.2 : 1.0)
+                .scaleEffect(tabManager.selection == tab ? 1.2 : 1.0)
                 .font(.pretendardMedium_10)
         }
         .foregroundColor(localSelection == tab ? Color.customGreen : Color.gray)
-        .animation(.interpolatingSpring(stiffness: 300, damping: 10), value: selection)
+        .animation(.interpolatingSpring(stiffness: 300, damping: 10), value: tabManager.selection)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
         .background(
@@ -93,12 +94,12 @@ extension CustomTabBar {
 extension CustomTabBar {
     private func switchToTab(tab: TabBarItem) {
         HapticManager.instance.impact(style: .light)
-        selection = tab
+        tabManager.selection = tab
     }
     
     private func switchToTabWithAnimation(tab: TabBarItem) {
         withAnimation(.easeInOut) {
-            selection = tab
+            tabManager.selection = tab
         }
     }
 }

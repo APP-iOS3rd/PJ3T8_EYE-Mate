@@ -308,6 +308,7 @@ private struct SightTestResultView: View {
     @ObservedObject var viewModel: SightTestViewModel
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
@@ -338,7 +339,14 @@ private struct SightTestResultView: View {
                         }
                         
                         Button(action: {
-                            
+                            //TODO: - 로그인 상태라면 저장 후 이동, 아니면 Alert창
+                            if loggedIn {
+                                viewModel.saveResult(userUID)
+                                tabManager.selection = .eyeMap
+                                dismiss()
+                            } else {
+                                
+                            }
                         }, label: {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
