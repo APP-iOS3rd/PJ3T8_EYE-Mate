@@ -124,7 +124,8 @@ private struct VisionRight: View {
                             Spacer()
                             
                             //TODO: - 시력검사 화면 보여주기
-                            TestView(viewModel: viewModel, changeValue: $isChange, type: BothEyes.right)
+                            TestView(viewModel: viewModel, changeValue: $isChange, type: BothEyes.right,
+                                     isAnimation: distance.canStart)
                         }
                     }
                 }
@@ -140,11 +141,11 @@ private struct VisionLeft: View {
     @ObservedObject var viewModel: VisionTestViewModel
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @Binding var isTestComplete: Bool
+    
     @State var isReady: Bool = false
     
     var body: some View {
         if !isReady {
-            //TODO: - 테스트 안내문구 보여주기
             Spacer()
             
             VStack {
@@ -195,7 +196,7 @@ private struct VisionLeft: View {
                             Spacer()
                             
                             //TODO: - 시력검사 화면 보여주기
-                            TestView(viewModel: viewModel, changeValue: $isTestComplete, type: BothEyes.left)
+                            TestView(viewModel: viewModel, changeValue: $isTestComplete, type: BothEyes.left, isAnimation: distance.canStart)
                         }
                     }
                 }
@@ -214,32 +215,38 @@ private struct TestView: View {
     @State private var confused = false
     @State var type: BothEyes
     
+    @State var isAnimation: Bool
+    
     var body: some View {
         VStack {
-            GeometryReader { geometry in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.customGreen, lineWidth: 3)
-                        .foregroundColor(.white)
-                        .shadow(radius: 3, x: 1, y: 1)
-                        .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
-                        .padding(.vertical)
-                    
-                    if !distance.canStart {
-                        Text("휴대폰과의 거리를 조정해주세요!")
-                            .offset(y: -geometry.size.height * 0.25)
-                            .font(.pretendardRegular_20)
-                            .foregroundColor(.customRed)
-                    }
-                    
-                    Text(viewModel.answer)
-                        .font(.system(size: CGFloat(viewModel.fontSize)))
-                        .blur(radius: distance.canStart ? 0 : 5)
+            ZStack {
+                Text("휴대폰과의 거리를 조정해주세요!")
+                    .font(.pretendardRegular_20)
+                    .foregroundColor(.customRed)
+                    .opacity(!isAnimation ? 1.0 : 0.0)
+                    .offset(y: -UIScreen.main.bounds.height * 0.15)
+                
+                Text(viewModel.answer)
+                    .font(.system(size: CGFloat(viewModel.fontSize)))
+                    .blur(radius: isAnimation ? 0 : 5)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.customGreen, lineWidth: 3)
+                    .foregroundColor(.white)
+                    .shadow(radius: 3, x: 1, y: 1)
+            )
+            .padding(30)
+            .onChange(of: distance.canStart) { newValue in
+                withAnimation {
+                    isAnimation = newValue
                 }
-                .padding(.leading, 20)
             }
             
+            
             Text("위의 문양을 보고 같은 문양을 고르세요.")
+                .font(.pretendardRegular_20)
             
             HStack(spacing: 20) {
                 ForEach(0..<3){ index in
@@ -258,13 +265,13 @@ private struct TestView: View {
                     }, label: {
                         Text(viewModel.question[index])
                             .font(.pretendardMedium_22)
-                            .frame(width: 20)
+                            .frame(width: 20, height: 20)
                             .foregroundColor(.black)
                     })
                     .padding(25)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.black, lineWidth: 3)
+                            .stroke(.black, lineWidth: 5)
                             .background(selectedButtonIndex == index ? Color.customGreen : .white)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     )
@@ -279,13 +286,13 @@ private struct TestView: View {
                 }, label: {
                     Text("?")
                         .font(.pretendardMedium_22)
-                        .frame(width: 20)
+                        .frame(width: 20, height: 20)
                         .foregroundColor(.black)
                 })
                 .padding(25)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(.black, lineWidth: 3)
+                        .stroke(.black, lineWidth: 5)
                         .background(confused ? Color.customGreen : .white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 )
