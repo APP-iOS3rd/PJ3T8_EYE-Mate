@@ -17,38 +17,64 @@ struct EyeSenseOnboardingView: View {
     }
     
     var body: some View {
-        TabView{
-            NavigationLink(destination: EyeSenseView()) {
-                VStack{
-                    Text(onboardingViewModel.title)
-                        .font(.pretendardBold_16)
-                        .foregroundColor(.customGreen)
-                    Spacer()
-                        .frame(height: 5)
-                    Text(onboardingViewModel.subTitle)
-                        .font(.pretendardMedium_20)
-                        .foregroundColor(.customGreen)
+        VStack{
+            TabView{
+                NavigationLink(destination: EyeSenseView()) {
+                    VStack(alignment: .leading){
+                        EyeSenseTitleView()
+//                            .padding(.leading, 0)
+                        
+                        Text("\"\(onboardingViewModel.subTitle)\"")
+                            .font(.pretendardMedium_18)
+                            .foregroundColor(.customGreen)
+                    }
+                    .padding(.top, -20)
+                }
+                NavigationLink(destination: EyeSenseView()) {
+                    VStack(alignment: .leading){
+                        EyeSenseTitleView()
+                            .padding(.leading, 0)
+                        
+                        Text("\"\(onboardingViewModel.subTitle)\"")
+                            .font(.pretendardMedium_18)
+                            .foregroundColor(.customGreen)
+                    }
+                    .padding(.top, -20)
                 }
             }
-            NavigationLink(destination: EyeSenseView()) {
-                VStack{
-                    Text(onboardingViewModel.title)
-                        .font(.pretendardBold_16)
-                        .foregroundColor(.customGreen)
-                    Spacer()
-                        .frame(height: 5)
-                    Text(onboardingViewModel.subTitle)
-                        .font(.pretendardMedium_20)
-                        .foregroundColor(.customGreen)
-                }
+            
+            .tabViewStyle(.page(indexDisplayMode: .always))
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+            .accentColor(.customGreen)
+//            .frame(maxWidth: .infinity)
+            .frame(width: 350)
+            .frame(height: 110)
+            .background{
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(hex: "EFFCFD"))
+                    .opacity(0.8)
+                    .shadow(radius: 4)
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-        .accentColor(.customGreen)
     }
 }
 
+struct EyeSenseTitleView: View {
+    var body: some View {
+        HStack (spacing: 10){
+            Image("EyeSenseIcon")
+                .resizable()
+                .frame(width: 30, height: 30)
+            
+            Text("알고 계셨나요?")
+                .font(.pretendardBold_16)
+                .foregroundColor(.customGreen)
+        }
+        .padding(.leading, -30)
+    }
+}
+
+
 #Preview {
-    EyeSenseOnboardingView(onboardingViewModel: EyeSenseOnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!"))
+    EyeSenseOnboardingView(onboardingViewModel: EyeSenseOnBoardingViewModel(title: "알고 계셨나요?", subTitle: "전자기기를 보면 눈이 안좋아져요!"))
 }

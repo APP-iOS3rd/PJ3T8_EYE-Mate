@@ -25,8 +25,7 @@ struct HomeView: View {
                         HomeViewTextView(user: viewModel.user)
                         
                         EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                            .frame(height: 120)
-                            .padding(.top, -30)
+                            .padding(.horizontal, 20)
                         
                         HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
                         
@@ -145,6 +144,6 @@ private struct HomeViewCellListView: View {
     }
 }
 
-//#Preview {
-//    HomeView()
-//}
+#Preview {
+    HomeView(tabSelection: .constant(.home))
+}

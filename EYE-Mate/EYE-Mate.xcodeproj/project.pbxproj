@@ -12,7 +12,6 @@
 		1D575FCF2B6B92D900DDC652 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FCE2B6B92D900DDC652 /* ImageCardView.swift */; };
 		1D575FD12B6B96C100DDC652 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FD02B6B96C100DDC652 /* NewPostView.swift */; };
 		1D575FD32B6B96EC00DDC652 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D575FD22B6B96EC00DDC652 /* ImagePickerView.swift */; };
-		1D575FDA2B6BF4DB00DDC652 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D575FD82B6BF4DB00DDC652 /* GoogleService-Info.plist */; };
 		1D575FDB2B6BF4DB00DDC652 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D575FD92B6BF4DB00DDC652 /* APIKEY.plist */; };
 		1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5983992B61596600762E4B /* CreateNewPostView.swift */; };
 		1D73AD3F2B62BC4100DF431D /* CreateNewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */; };
@@ -180,7 +179,6 @@
 		1D575FD02B6B96C100DDC652 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		1D575FD22B6B96EC00DDC652 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		1D575FD62B6BF4D300DDC652 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D575FD82B6BF4DB00DDC652 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "EYE-Mate/Preview Content/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D575FD92B6BF4DB00DDC652 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1D5983992B61596600762E4B /* CreateNewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostView.swift; sourceTree = "<group>"; };
 		1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostViewModel.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 		331F8AB52B6CD0170008D943 /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		331F8AB72B6CD12F0008D943 /* TestTypeButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypeButtonGroup.swift; sourceTree = "<group>"; };
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
-		3329BC152B623C2F0099EDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "EYE-Mate/Info.plist"; sourceTree = "<group>"; };
 		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
 		3391A1652B6A10210035E0A5 /* ColoredText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredText.swift; sourceTree = "<group>"; };
 		3391A1672B6A1C720035E0A5 /* VisionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDataView.swift; sourceTree = "<group>"; };
@@ -259,6 +256,7 @@
 		52AFE7BB2B7DA8CB0007028F /* ProfileNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameTextField.swift; sourceTree = "<group>"; };
 		52AFE7CF2B7F3E4D0007028F /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		52AFE7D12B7F7D750007028F /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		52AFE7D42B82F71F0007028F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/Eye-mate/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52D0DE522B7213D600DBC54B /* tempUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempUser.swift; sourceTree = "<group>"; };
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleModifier.swift; sourceTree = "<group>"; };
@@ -472,6 +470,14 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		52AFE7D32B82F7050007028F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				710406EE2B7E3C9A00629AF9 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		52E991C12B6CCF89002D4689 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,12 +651,13 @@
 		71027A492B5DEAE000879DA7 = {
 			isa = PBXGroup;
 			children = (
+				52AFE7D42B82F71F0007028F /* GoogleService-Info.plist */,
 				71027A542B5DEAE000879DA7 /* EYE-Mate */,
 				1D575FD92B6BF4DB00DDC652 /* APIKEY.plist */,
-				1D575FD82B6BF4DB00DDC652 /* GoogleService-Info.plist */,
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
 				B339148249964F1DF6C49031 /* Frameworks */,
+				52AFE7D32B82F7050007028F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -936,7 +943,6 @@
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				710406EF2B7E3C9A00629AF9 /* GoogleService-Info.plist in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
-				1D575FDA2B6BF4DB00DDC652 /* GoogleService-Info.plist in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
 				713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */,
 				713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */,

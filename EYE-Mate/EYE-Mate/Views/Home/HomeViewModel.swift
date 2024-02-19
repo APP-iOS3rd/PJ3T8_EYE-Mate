@@ -20,7 +20,7 @@ class HomeViewModel: ObservableObject {
     @Published var onboardingModel: EyeSenseOnBoardingViewModel
     
     init(user: UserModel = UserModel(name: "어디로 가야하오", movement: 3, leftEyeSight: "0.5", rightEyeSight: "0.8"),
-         onboardingModel: EyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel(title: "오늘의 눈 상식", subTitle: "전자기기를 보면 눈이 안좋아져요!")
+         onboardingModel: EyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel(title: "알고 계셨나요?", subTitle: "전자기기를 보면 눈이 안좋아져요!")
     ) {
         self.user = user
         self.onboardingModel = onboardingModel
