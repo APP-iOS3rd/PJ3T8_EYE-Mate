@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var isPresentedProfileView = false
     @Published var isPresentedRecordView = false
     
     @Published var isPresentedVisionView = false

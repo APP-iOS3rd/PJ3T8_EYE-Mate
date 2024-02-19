@@ -23,10 +23,7 @@ struct MapTabBarView: View {
         NavigationStack{
             VStack(spacing: 0) {
                 // 상단 Title
-                CustomNavigationTitle(title: "주변 정보",
-                                      isDisplayLeftButton: false, profileButtonAction: {
-                    profileViewModel.isPresentedProfileView.toggle()
-                })
+                CustomNavigationTitle(title: "주변 정보", isDisplayLeftButton: false)
                 
                 // 상단 TabView
                 MapTopTabView()
@@ -40,7 +37,6 @@ struct MapTabBarView: View {
                 }
             }
         }
-        .navigationBarHidden(true)
         .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()
         }

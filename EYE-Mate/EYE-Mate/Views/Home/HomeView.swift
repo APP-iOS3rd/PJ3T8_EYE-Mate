@@ -9,15 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @ObservedObject var profile = ProfileViewModel.shared
+    @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    
+    @Binding var tabSelection: TabBarItem
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                CustomNavigationTitle(isDisplayLeftButton: false,
-                                      profileButtonAction: {
-                    profile.isPresentedProfileView.toggle()
-                })
+                CustomNavigationTitle(isDisplayLeftButton: false)
                 
                 Spacer()
                     .frame(height: 5)
@@ -39,7 +38,7 @@ struct HomeView: View {
             }
         }
         
-        .navigationDestination(isPresented: $profile.isPresentedProfileView) {
+        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()
         }
         .navigationDestination(isPresented: $viewModel.isPresentedRecordView) {

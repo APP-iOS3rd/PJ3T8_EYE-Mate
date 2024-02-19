@@ -14,6 +14,7 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
+                CustomBackButton()
                 if signUpFlag {
                     SignUpView(signUpFlag: $signUpFlag)
                 }
@@ -21,8 +22,8 @@ struct LoginView: View {
                     SignInView(signUpFlag: $signUpFlag)
                 }
             }
-            .ignoresSafeArea(.keyboard)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

@@ -24,7 +24,7 @@ struct PhoneNumberView: View {
     @State var openOTPView: Bool = false
     
     @Binding var signUpFlag: Bool
-    @FocusState private var keyIsFocused: Bool
+    @FocusState.Binding var keyFocused: Bool
     
     var foregroundColor: Color = Color(.black)
     var backgroundColor: Color = Color(.systemGray6)
@@ -41,7 +41,7 @@ struct PhoneNumberView: View {
                 HStack {
                     Button {
                         presentSheet = true
-                        keyIsFocused = false
+                        keyFocused = false
                     } label: {
                         Text("\(countryFlag) \(countryCode)")
                             .padding(10)
@@ -57,7 +57,7 @@ struct PhoneNumberView: View {
                                 .foregroundColor(.warningGray)
                                 .font(.pretendardSemiBold_16)
                         }
-                        .focused($keyIsFocused)
+                        .focused($keyFocused)
                         .keyboardType(.numberPad)
                         .onReceive(Just(mobPhoneNumber)) { _ in
                             applyPatternOnNumbers(&mobPhoneNumber, pattern: countryPattern, replacementCharacter: "#")
@@ -102,41 +102,39 @@ struct PhoneNumberView: View {
                 
                 // MARK: - OTP View
                 if openOTPView {
-                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
+                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
                 } else {
                     
                 }
                 
                 Spacer()
             }
-            .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
+            .animation(.easeInOut(duration: 0.6), value: keyFocused)
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
-        
         .sheet(isPresented: $presentSheet) {
             NavigationView {
-                List(filteredResorts) { country in
-                    HStack {
-                        Text(country.flag)
-                        Text(country.name)
-                            .font(.headline)
-                        Spacer()
-                        Text(country.dial_code)
-                            .foregroundColor(.secondary)
+                VStack{
+                    List(filteredResorts) { country in
+                        HStack {
+                            Text(country.flag)
+                            Text(country.name)
+                                .font(.headline)
+                            Spacer()
+                            Text(country.dial_code)
+                                .foregroundColor(.secondary)
+                        }
+                        .onTapGesture {
+                            self.countryFlag = country.flag
+                            self.countryCode = country.dial_code
+                            self.countryPattern = country.pattern
+                            self.countryLimit = country.limit
+                            presentSheet = false
+                            searchCountry = ""
+                        }
                     }
-                    .onTapGesture {
-                        self.countryFlag = country.flag
-                        self.countryCode = country.dial_code
-                        self.countryPattern = country.pattern
-                        self.countryLimit = country.limit
-                        presentSheet = false
-                        searchCountry = ""
-                    }
+                    .listStyle(.plain)
+                    .searchable(text: $searchCountry, placement: .navigationBarDrawer(displayMode: .always))
                 }
-                .listStyle(.plain)
-                .searchable(text: $searchCountry, prompt: "Your country")
             }
             .presentationDetents([.medium, .large])
         }
@@ -148,7 +146,8 @@ struct PhoneNumberView: View {
         if searchCountry.isEmpty {
             return counrties
         } else {
-            return counrties.filter { $0.name.contains(searchCountry) }
+            let lowercaseSearchText = searchCountry.lowercased()
+            return counrties.filter { $0.name.lowercased().contains(lowercaseSearchText) }
         }
     }
     
@@ -197,6 +196,6 @@ extension View {
     }
 }
 
-#Preview {
-    PhoneNumberView(signUpFlag: .constant(true))
-}
+//#Preview {
+//    PhoneNumberView(signUpFlag: .constant(true), keyFocused: .constant(true))
+//}

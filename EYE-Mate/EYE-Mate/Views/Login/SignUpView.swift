@@ -12,6 +12,7 @@ import FirebaseAuth
 struct SignUpView: View {
     @StateObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
+    @FocusState private var keyFocused: Bool
     
     var body: some View {
         VStack{
@@ -26,7 +27,7 @@ struct SignUpView: View {
                 Text("회원가입")
                     .font(.pretendardBold_20)
                     .foregroundStyle(Color.customGreen)
-                PhoneNumberView(signUpFlag: $signUpFlag)
+                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused)
             }
             
             VStack(alignment: .leading) {
@@ -48,12 +49,16 @@ struct SignUpView: View {
             }
             .padding(50)
         }
+        .background(Color.white)
+        .onTapGesture {
+            keyFocused = false
+        }
     }
 }
 
-#Preview {
-    SignUpView(signUpFlag: .constant(true))
-}
+//#Preview {
+//    SignUpView(signUpFlag: .constant(true))
+//}
 
 
 

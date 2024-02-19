@@ -9,17 +9,15 @@ import SwiftUI
 
 struct SightView: View {
     @ObservedObject var viewModel = SightViewModel()
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "시야 검사",
                                   isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() },
-                                  profileButtonAction: {
-                viewModel.isPresentedProfileView.toggle()
-            })
-            .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+                                  leftButtonAction: { dismiss() })
+            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }
             

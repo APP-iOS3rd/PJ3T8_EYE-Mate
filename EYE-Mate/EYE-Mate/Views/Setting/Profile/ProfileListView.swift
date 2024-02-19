@@ -10,14 +10,12 @@ import PhotosUI
 
 struct ProfileListView: View {
     @ObservedObject var profileViewModel: ProfileViewModel
+    @State var isPresented = false
     
     var body: some View {
-            ImageActionSheetView(profileViewModel: profileViewModel)
-            
-            NavigationLink(destination: ChangeUserNameView()) {
-                ProfileCellView()
-        }
+        ImageActionSheetView(profileViewModel: profileViewModel)
         
+        SettingCellView(title: "닉네임 변경", destination: ChangeUserNameView())
     }
 }
 
