@@ -114,7 +114,9 @@ private struct ColorTest: View {
                         viewModel.userAnswer[viewModel.index] = answer
                         viewModel.isTestStarted = true
                         withAnimation {
-                            testPercent += 1
+                            if viewModel.index != 12 {
+                                testPercent += 1
+                            }
                         }
                         
                         viewModel.index += 1
