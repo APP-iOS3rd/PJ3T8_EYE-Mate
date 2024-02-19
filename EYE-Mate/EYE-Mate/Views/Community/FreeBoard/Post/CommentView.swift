@@ -60,7 +60,8 @@ struct CommentView: View {
                             deleteReplyComment(postID, commentIndex, replyCommentIndex)
                         }
                     }
-                    .padding(5)
+                    .padding(.vertical, 5)
+                    .padding(.leading, 5)
                 }
                 
                 HorizontalDivider(color: .btnGray, height: 1)
