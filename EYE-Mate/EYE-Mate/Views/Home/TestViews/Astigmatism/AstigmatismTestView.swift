@@ -143,7 +143,6 @@ private struct AstigmatismRight: View {
                                 .foregroundColor(.customRed)
                                 .opacity(!distance.canStart ? 1.0 : 0.0)
                             
-                            
                             HStack {
                                 CustomButton(title: "예",
                                              background: distance.canStart ? .customGreen : .btnGray,

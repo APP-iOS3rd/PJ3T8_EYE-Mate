@@ -52,12 +52,10 @@ private struct SightTest: View {
             ProgressView(value: testPercent)
                 .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
             if !isChange {
-                //TODO: - 오른쪽 눈 시야 검사
                 SightRight(viewModel: viewModel,
                                  testPercent: $testPercent,
                                  isChange: $isChange)
             } else {
-                //TODO: - 왼쪽 눈 시야검사
                 SightLeft(viewModel: viewModel,
                                 testPercent: $testPercent,
                                 isTestComplete: $isTestComplete)
@@ -77,7 +75,6 @@ private struct SightRight: View {
     
     var body: some View {
         if !isReady {
-            //TODO: - 테스트 안내문구 보여주기
             Spacer()
             
             VStack {
@@ -107,7 +104,6 @@ private struct SightRight: View {
             })
             .frame(maxHeight: 75)
         } else {
-            //TODO: - 테스트 화면 보여주기
             VStack {
                 NavigationStack {
                     ZStack {
@@ -138,38 +134,35 @@ private struct SightRight: View {
                                 .font(.pretendardMedium_20)
                             
                             Spacer()
-                            if !distance.canSightStart {
-                                Text("휴대폰과의 거리를 조정해주세요!")
-                                    .font(.pretendardMedium_18)
-                                    .foregroundColor(.customRed)
-                            }
+                            
+                            Text("휴대폰과의 거리를 조정해주세요!")
+                                .font(.pretendardMedium_18)
+                                .foregroundColor(.customRed)
+                                .opacity(!distance.canSightStart ? 1.0 : 0.0)
+                            
                             HStack {
                                 CustomButton(title: "예",
-                                             background: viewModel.userSayYes ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("Y")
                                     isChange.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
-                                             background: viewModel.userSayNo ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("N")
                                     isChange.toggle()
-                                    viewModel.userSayNo.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
@@ -256,40 +249,35 @@ private struct SightLeft: View {
                             
                             Spacer()
                             
-                            if !distance.canSightStart {
-                                Text("휴대폰과의 거리를 조정해주세요!")
-                                    .font(.pretendardMedium_18)
-                                    .foregroundColor(.customRed)
-                                    .multilineTextAlignment(.center)
-                            }
+                            Text("휴대폰과의 거리를 조정해주세요!")
+                                .font(.pretendardMedium_18)
+                                .foregroundColor(.customRed)
+                                .opacity(!distance.canSightStart ? 1.0 : 0.0)
+                            
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: viewModel.userSayYes ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("Y")
                                     isTestComplete.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
-                                             background: viewModel.userSayNo ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("N")
                                     isTestComplete.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
@@ -383,6 +371,7 @@ private struct SightTestResultView: View {
             
             
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
             MapCoordinator.shared.checkIfLocationServiceIsEnabled()
         }
