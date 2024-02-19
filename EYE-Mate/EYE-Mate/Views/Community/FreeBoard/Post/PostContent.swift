@@ -79,16 +79,22 @@ struct PostContent: View {
             
             // 스크랩 버튼
             Button {
+                postVM.postScrap()
             } label: {
-                Image(systemName: "bookmark")
+                Image(systemName: postVM.post.scrapIDs.contains(userUID) ? "bookmark.fill" : "bookmark")
                     .font(.system(size: 21))
                     .foregroundStyle(Color.customGreen)
             }
-            
+            .padding(.trailing, 5)
             // Menu (신고 또는 삭제 -> 추후에 공유 등 추가 가능)
             Menu {
                 // 본인의 게시물인 경우에 삭제 Btn, 아닌 경우 신고 Btn
                 if userUID == postVM.post.userUID {
+                    // 게시물 수정
+                    Button(action:  {
+                    }) {
+                        Label("수정", systemImage: "square.and.pencil.circle")
+                    }
                     // 게시물 삭제
                     Button(role: .destructive ,action: postVM.deletePost) {
                         Label("삭제", systemImage: "trash")
@@ -107,6 +113,8 @@ struct PostContent: View {
                     .rotationEffect(.degrees(90))
                     .font(.system(size: 21))
                     .foregroundColor(.customGreen)
+                    .frame(height: 21)
+                    .padding(.trailing, -10)
             }
         }
     }

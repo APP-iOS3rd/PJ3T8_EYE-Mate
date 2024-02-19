@@ -43,6 +43,7 @@ struct PostView: View {
                 PostContent(postVM: postVM){ updatedPost in
                     /// 게시물 좋아요 업데이트
                     postVM.post.likedIDs = updatedPost.likedIDs
+                    postVM.post.scrapIDs = updatedPost.scrapIDs
                     onUpdate(updatedPost)
                 } onDelete: {
                     /// 게시물 삭제
