@@ -11,6 +11,7 @@ struct CommunityView: View {
     
     @State private var selectedPicker: CommunityTopTapViewItem = .faq
     @Namespace private var animation
+    @State var isSearching = false
     
     var body: some View {
         // MARK: NavigationStack 추후에 지워주기
@@ -31,26 +32,35 @@ struct CommunityView: View {
                     Image(systemName: "person.crop.circle.fill")
                         .font(.largeTitle)
                         .foregroundStyle(.black)
-                }      
+                }
                 Spacer()
                     .frame(height: 85)
             }
             .padding(.horizontal, 20)
             .padding(.vertical)
+            .opacity(isSearching ? 0 : 1)
             
             // 상단 TabView
             communityTopTabView()
             
             // 선택된 상단 Tab의 View Switching
-            
             switch selectedPicker {
             case .faq:
-                FAQView()
+                FAQView() { isSearching in
+                    withAnimation {
+                        self.isSearching = isSearching
+                    }
+                }
             case .freeboard:
-                FreeBoardView()
+                FreeBoardView(){ isSearching in
+                    withAnimation() {
+                        self.isSearching = isSearching
+                    }
+                }
             }
             
             Spacer()
+                .frame(height: 85)
         }
     }
     
@@ -74,7 +84,9 @@ struct CommunityView: View {
                 }
                 .onTapGesture {
                     withAnimation {
+                        hideKeyboard()
                         self.selectedPicker = item
+                        self.isSearching = false
                     }
                 }
             }
