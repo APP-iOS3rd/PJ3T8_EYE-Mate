@@ -13,9 +13,12 @@ class FreeBoardViewModel: ObservableObject {
     @Published var posts: [Post] = []
     @Published var isFetching: Bool = true
     
-    @State private var paginationDoc: QueryDocumentSnapshot?
+    @Published var searchText: String = ""
+    @Published var isSearching: Bool = false
     
-    // MARK: Posts Fetch Function
+    @Published var paginationDoc: QueryDocumentSnapshot?
+    
+    /// - 게시물 Fetch
     func fetchPosts() async {
         do {
             var query: Query!
@@ -80,14 +83,77 @@ class FreeBoardViewModel: ObservableObject {
         }
     }
     
+    /// - 검색어를 포함한 게시물 Fetch
+    func fetchPosts(searchText: String) async {
+        do {
+            var query: Query!
+            
+            query = Firestore.firestore().collection("Posts")
+                .order(by: "publishedDate", descending: true)
+           
+            
+            let docs = try await query.getDocuments()
+            let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
+                var post = try? doc.data(as: Post.self)
+                
+                if var post = post, post.postTitle.contains(searchText) || post.postContent.contains(searchText) {
+                    
+                    // Comment 가져오기
+                    guard let postID = post.id else { return nil }
+                    let commentsQuerySnapshot = try await Firestore.firestore()
+                        .collection("Posts")
+                        .document(postID)
+                        .collection("Comments")
+                        .order(by: "publishedDate", descending: false)
+                        .getDocuments()
+                    
+                    post.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
+                        var comment = try? commentDoc.data(as: Comment.self)
+                        
+                        // 댓글의 대댓글 가져오기
+                        let replyCommentsQuerySnapshot = try await Firestore.firestore()
+                            .collection("Posts")
+                            .document(postID)
+                            .collection("Comments")
+                            .document(commentDoc.documentID)
+                            .collection("ReplyComments")
+                            .order(by: "publishedDate", descending: false)
+                            .getDocuments()
+                        
+                        comment?.replyComments = replyCommentsQuerySnapshot.documents.compactMap{ replyDoc -> ReplyComment? in
+                            try? replyDoc.data(as: ReplyComment.self)
+                        }
+                        return comment
+                    }.compactMap{ $0 }
+                    
+                    return post
+                } else {
+                    return nil
+                }
+            }.compactMap{ $0 }
+            
+            await MainActor.run {
+                posts = fetchedPosts
+                isFetching = false
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
     func refreshable() async {
         await MainActor.run {
             isFetching = true
             posts = []
+            paginationDoc = nil
         }
         
-        paginationDoc = nil
-        await fetchPosts()
+        if isSearching {
+            await fetchPosts(searchText: searchText)
+        } else {
+            await fetchPosts()
+        }
     }
 }
 
