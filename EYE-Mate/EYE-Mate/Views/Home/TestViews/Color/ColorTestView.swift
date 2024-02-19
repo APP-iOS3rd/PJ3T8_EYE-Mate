@@ -89,6 +89,11 @@ private struct ColorTest: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                     .keyboardType(.numberPad)
+                    .onChange(of: answer) { newValue in
+                        if newValue.count > 2 {
+                            answer.removeLast()
+                        }
+                    }
                 
                 HStack {
                     if viewModel.index >= 2 {
