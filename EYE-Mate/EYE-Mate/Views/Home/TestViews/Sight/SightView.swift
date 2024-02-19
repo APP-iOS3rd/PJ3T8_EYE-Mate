@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SightView: View {
     @ObservedObject var viewModel = SightViewModel()
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -16,11 +17,8 @@ struct SightView: View {
             CustomNavigationTitle(title: "시야 검사",
                                   userImageUrl: "",
                                   isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() },
-                                  profileButtonAction: {
-                viewModel.isPresentedProfileView.toggle()
-            })
-            .navigationDestination(isPresented: $viewModel.isPresentedProfileView) {
+                                  leftButtonAction: { dismiss() })
+            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }
             

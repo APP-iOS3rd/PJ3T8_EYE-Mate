@@ -72,7 +72,6 @@
 		521DCDC22B7065BB002C786A /* SettingNavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */; };
 		521DCDC42B7099C7002C786A /* AccountDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDC32B7099C7002C786A /* AccountDeleteView.swift */; };
 		521DCDCB2B70BA24002C786A /* AccountDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDCA2B70BA24002C786A /* AccountDeleteViewModel.swift */; };
-		521DCDCF2B70C51C002C786A /* LogoutAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDCE2B70C51C002C786A /* LogoutAlertView.swift */; };
 		521DCDD12B71C49A002C786A /* ProfileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DCDD02B71C49A002C786A /* ProfileListView.swift */; };
 		5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5278E3A82B68B7B500FC8109 /* CountryNumbers.json */; };
 		5278E3AB2B68B7CA00FC8109 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3AA2B68B7CA00FC8109 /* CPData.swift */; };
@@ -89,6 +88,8 @@
 		52AFE7B82B769CBB0007028F /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7B72B769CBB0007028F /* Image+Extension.swift */; };
 		52AFE7BA2B78029F0007028F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7B92B78029F0007028F /* String+Extension.swift */; };
 		52AFE7BC2B7DA8CB0007028F /* ProfileNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7BB2B7DA8CB0007028F /* ProfileNameTextField.swift */; };
+		52AFE7D02B7F3E4D0007028F /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7CF2B7F3E4D0007028F /* CustomBackButton.swift */; };
+		52AFE7D22B7F7D750007028F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7D12B7F7D750007028F /* CustomAlertView.swift */; };
 		52D0DE532B7213D600DBC54B /* tempUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D0DE522B7213D600DBC54B /* tempUser.swift */; };
 		52E991BA2B6CBC62002D4689 /* SettingTitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */; };
 		52E991BC2B6CC1FC002D4689 /* SettingListDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */; };
@@ -240,7 +241,6 @@
 		521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigationTitle.swift; sourceTree = "<group>"; };
 		521DCDC32B7099C7002C786A /* AccountDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteView.swift; sourceTree = "<group>"; };
 		521DCDCA2B70BA24002C786A /* AccountDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteViewModel.swift; sourceTree = "<group>"; };
-		521DCDCE2B70C51C002C786A /* LogoutAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAlertView.swift; sourceTree = "<group>"; };
 		521DCDD02B71C49A002C786A /* ProfileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListView.swift; sourceTree = "<group>"; };
 		5278E3A82B68B7B500FC8109 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		5278E3AA2B68B7CA00FC8109 /* CPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
@@ -257,6 +257,8 @@
 		52AFE7B72B769CBB0007028F /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		52AFE7B92B78029F0007028F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		52AFE7BB2B7DA8CB0007028F /* ProfileNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameTextField.swift; sourceTree = "<group>"; };
+		52AFE7CF2B7F3E4D0007028F /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		52AFE7D12B7F7D750007028F /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		52D0DE522B7213D600DBC54B /* tempUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempUser.swift; sourceTree = "<group>"; };
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleModifier.swift; sourceTree = "<group>"; };
@@ -466,7 +468,6 @@
 			children = (
 				521DCDC32B7099C7002C786A /* AccountDeleteView.swift */,
 				521DCDCA2B70BA24002C786A /* AccountDeleteViewModel.swift */,
-				521DCDCE2B70C51C002C786A /* LogoutAlertView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -621,6 +622,8 @@
 				7121E7472B77BE2900921317 /* CustomTabBar.swift */,
 				7121E7492B77C01500921317 /* TabBarItem.swift */,
 				71956BC82B7B65E2006BD6F9 /* HapticManager.swift */,
+				52AFE7CF2B7F3E4D0007028F /* CustomBackButton.swift */,
+				52AFE7D12B7F7D750007028F /* CustomAlertView.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
 				71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */,
+				52AFE7D02B7F3E4D0007028F /* CustomBackButton.swift in Sources */,
 				7107A40A2B638DFF00944077 /* AstigmatismViewModel.swift in Sources */,
 				710D40902B5FD885006C9FED /* ColorView.swift in Sources */,
 				7107A40A2B638DFF00944077 /* AstigmatismViewModel.swift in Sources */,
@@ -1043,6 +1047,7 @@
 				52E991C32B6CD5C2002D4689 /* SettingListView.swift in Sources */,
 				52E991BA2B6CBC62002D4689 /* SettingTitleModifier.swift in Sources */,
 				52EE56D52B5E2D0300C6D423 /* EyeMapView.swift in Sources */,
+				52AFE7D22B7F7D750007028F /* CustomAlertView.swift in Sources */,
 				7107A4082B6356FD00944077 /* DistanceConditionView.swift in Sources */,
 				710406ED2B7E3ADF00629AF9 /* SettingView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
@@ -1131,7 +1136,6 @@
 				52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
-				521DCDCF2B70C51C002C786A /* LogoutAlertView.swift in Sources */,
 				52EE56DC2B5E2E8F00C6D423 /* CustomButton.swift in Sources */,
 				5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */,
 				521DCDCB2B70BA24002C786A /* AccountDeleteViewModel.swift in Sources */,

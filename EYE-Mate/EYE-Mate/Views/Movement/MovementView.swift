@@ -17,15 +17,13 @@ struct MovementView: View {
     @State private var toast: Toast? = nil
     @State private var showToast = false
     @State private var movementList: [String] = ["Line", "Circle", "Eight"]
-    @State private var isPresentedProfileView = false
+    @ObservedObject private var profileViewModel = ProfileViewModel.shared
 
     var body: some View {
         NavigationStack{
             VStack(spacing: 0) {
                 CustomNavigationTitle(title: "눈운동",
-                                      isDisplayLeftButton: false, profileButtonAction: {
-                    isPresentedProfileView.toggle()
-                })
+                                      isDisplayLeftButton: false)
                 HorizontalDivider(color: Color.customGreen, height: 4)
                 VStack(alignment: .leading, spacing: 16) {
                     VStack(alignment: .leading) {
@@ -74,7 +72,7 @@ struct MovementView: View {
                     }
                 }
         }
-        .navigationDestination(isPresented: $isPresentedProfileView) {
+        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()
         }
     }

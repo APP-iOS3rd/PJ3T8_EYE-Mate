@@ -57,6 +57,7 @@ struct SettingListView: View {
             SettingTitleView(title: "계정")
             
             SettingCellView<Text>(title: "로그아웃")
+                .background(Color.white)
                 .onTapGesture {
                     showAlert = true
                 }

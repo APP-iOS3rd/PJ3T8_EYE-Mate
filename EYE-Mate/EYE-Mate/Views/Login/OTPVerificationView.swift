@@ -20,15 +20,14 @@ struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
-    
     @Binding var signUpFlag: Bool
+    @FocusState.Binding var keyFocused: Bool
     @State private var otp: String = ""
     @State private var isDisplayotpErrorText: Bool = false
     @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
     @State var isDisplayNotiLoginText: Bool = false
     @State private var errorText: String = ""
-    @FocusState private var keyIsFocused: Bool
     
     var mobileNumber: String = ""
     var foregroundColor: Color = Color(.black)
@@ -52,7 +51,7 @@ struct OTPVerificationView: View {
                             Text("Enter OTP")
                                 .foregroundColor(.warningGray)
                                 .font(.pretendardSemiBold_16)
-                                .focused($keyIsFocused)
+                                .focused($keyFocused)
                         }
                         .padding(10)
                         .keyboardType(.numberPad)
@@ -80,13 +79,11 @@ struct OTPVerificationView: View {
                                 // 회원가입 화면
                                 if signUpFlag {
                                     isDisplaySignUpText = false
-                                    
                                     // 이미 등록된 회원인 경우 로그인 화면으로
                                     if try await loginViewModel.checkLoginList() {
                                         isDisplayNotiLoginText = true
                                         isDisplayProfileSettingView = false
                                         errorText = SignUpErrorText.notiLogin.rawValue
-                                        
                                     } else {
                                         // 회원가입
                                         isDisplayNotiLoginText = false
@@ -95,6 +92,8 @@ struct OTPVerificationView: View {
                                     
                                     // 로그인 화면인 경우
                                 } else {
+                                    isDisplayProfileSettingView = false
+                                    
                                     let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
                                     
                                     if isRegistered { // 가입한 이력이 있는 경우
@@ -110,12 +109,12 @@ struct OTPVerificationView: View {
                             } else {
                                 isDisplayotpErrorText = true
                                 errorText = SignUpErrorText.otp.rawValue
-                                
                             }
                         } catch {
                             print("Error: \(error)")
                         }
                     }
+                    
                 } label: {
                     Text(signUpFlag ? "회원가입" : "로그인")
                         .foregroundStyle(.white)
@@ -128,9 +127,6 @@ struct OTPVerificationView: View {
                 .padding(.top, 10)
                 .disableWithOpacity(otp.count < 6)
                 .disabled(otp.count < 6)
-            }
-            .onTapGesture {
-                hideKeyboard()
             }
         }
         .navigationDestination(isPresented: $isDisplayProfileSettingView){
@@ -149,6 +145,6 @@ fileprivate struct TextModifier: ViewModifier {
     }
 }
 
-#Preview {
-    OTPVerificationView(loginViewModel: LoginViewModel(verificationID: "123"), signUpFlag: .constant(true))
-}
+//#Preview {
+//    OTPVerificationView(loginViewModel: LoginViewModel(verificationID: "123"), signUpFlag: .constant(true))
+//}

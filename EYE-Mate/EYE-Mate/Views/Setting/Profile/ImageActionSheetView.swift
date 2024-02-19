@@ -16,36 +16,36 @@ struct ImageActionSheetView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack{
-                Text("프로필 사진 변경")
-                    .font(.pretendardRegular_18)
-                    .padding(.leading, 30)
-                    .foregroundStyle(Color.black)
-                Spacer()
-                Button {
-                    isPresented = true
-                } label: {
+            Button {
+                isPresented = true
+            } label: {
+                HStack {
+                    Text("프로필 사진 변경")
+                        .font(.pretendardRegular_18)
+                        .padding(.leading, 30)
+                        .foregroundStyle(Color.black)
+                    Spacer()
                     Image(systemName: "chevron.forward")
                         .padding(.trailing, 10)
                         .foregroundStyle(Color.gray)
                 }
-                .confirmationDialog(
-                            "프로필 사진 선택",
-                            isPresented: $isPresented,
-                            actions: {
-                                Button("앨범에서 사진 선택") {
-                                    showPicker = true
-                                }
-                                Button("기본 이미지로 변경") {
-                                    //
-                                    profileViewModel.profileImage = Image("user")
-                                    profileViewModel.updateImageToStorage(image: UIImage(named: "user")!)
-                                }
-                            }
-                )
-                .photosPicker(isPresented: $showPicker, selection: $profileViewModel.imageSelection)
                 
             }
+            .confirmationDialog(
+                "프로필 사진 선택",
+                isPresented: $isPresented,
+                actions: {
+                    Button("앨범에서 사진 선택") {
+                        showPicker = true
+                    }
+                    Button("기본 이미지로 변경") {
+                        //
+                        profileViewModel.profileImage = Image("user")
+                        profileViewModel.updateImageToStorage(image: UIImage(named: "user")!)
+                    }
+                }
+            )
+            .photosPicker(isPresented: $showPicker, selection: $profileViewModel.imageSelection)
             .frame(width: 330, height: 50)
             
             SettingListDivider()

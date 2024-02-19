@@ -19,8 +19,8 @@ struct SignUpProfileView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Spacer()
-            VStack {
+            CustomBackButton()
+            HStack {
                 Text("EYE-Mate")
                     .foregroundColor(Color.customGreen)
                     .font(.pretendardSemiBold_24)
@@ -28,7 +28,7 @@ struct SignUpProfileView: View {
                 Text("에서 사용할\n프로필을 입력해주세요!")
                     .font(.pretendardRegular_24)
             }
-            .layoutPriority(1)
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.bottom, 50)
             
             EditableProfileView(profileViewModel: profileViewModel, selectedItem: $selectedItem)
@@ -46,13 +46,13 @@ struct SignUpProfileView: View {
                 presentationMode.wrappedValue.dismiss()
                 
             })
-            .disabled(!isButtonEnabled) // false 이면 disabled
+            .disabled(!isButtonEnabled)
             .disableWithOpacity(!isButtonEnabled)
             .frame(height: 88)
             
             Spacer()
         }
-        
+        .navigationBarBackButtonHidden(true)
     }
     
 }
