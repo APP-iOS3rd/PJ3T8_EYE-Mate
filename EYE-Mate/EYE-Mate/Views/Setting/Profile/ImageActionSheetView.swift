@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct ImageActionSheetView: View {
-    @ObservedObject var profileViewModel: ProfileViewModel
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @State var isPresented: Bool = false
     @State var showPicker: Bool = false
     @State var selectedImage: PhotosPickerItem?
@@ -55,5 +55,5 @@ struct ImageActionSheetView: View {
 }
 
 #Preview {
-    ImageActionSheetView(profileViewModel: ProfileViewModel())
+    ImageActionSheetView()
 }

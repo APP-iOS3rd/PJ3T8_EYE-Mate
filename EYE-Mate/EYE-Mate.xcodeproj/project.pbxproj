@@ -162,6 +162,7 @@
 		71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71948DDF2B6D206E00316569 /* SightTestViewModel.swift */; };
 		71956BC92B7B65E2006BD6F9 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71956BC82B7B65E2006BD6F9 /* HapticManager.swift */; };
 		71A72B912B7DA1D1005E78F7 /* VisionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A72B902B7DA1D1005E78F7 /* VisionTestViewModel.swift */; };
+		71A9AF522B84A18800A4C962 /* TestAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9AF512B84A18800A4C962 /* TestAlertView.swift */; };
 		71AD797D2B5FA6180010B423 /* EyeSenseOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */; };
 		71AD797F2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */; };
 		71AD79812B5FAAF10010B423 /* HomeViewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */; };
@@ -332,6 +333,7 @@
 		71948DDF2B6D206E00316569 /* SightTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTestViewModel.swift; sourceTree = "<group>"; };
 		71956BC82B7B65E2006BD6F9 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		71A72B902B7DA1D1005E78F7 /* VisionTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestViewModel.swift; sourceTree = "<group>"; };
+		71A9AF512B84A18800A4C962 /* TestAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAlertView.swift; sourceTree = "<group>"; };
 		71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnboardingView.swift; sourceTree = "<group>"; };
 		71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeSenseOnBoardingViewModel.swift; sourceTree = "<group>"; };
 		71AD79802B5FAAF10010B423 /* HomeViewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellView.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				71948DDD2B6D0CA100316569 /* BackgroundView.swift */,
 				71526A3F2B7242B10000631E /* PlaceCellView.swift */,
 				3398D48D2B736E7500535E0C /* WarningText.swift */,
+				71A9AF512B84A18800A4C962 /* TestAlertView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1074,6 +1077,7 @@
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
 				521DCDD12B71C49A002C786A /* ProfileListView.swift in Sources */,
+				71A9AF522B84A18800A4C962 /* TestAlertView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightView.swift in Sources */,
 				52AFE7BA2B78029F0007028F /* String+Extension.swift in Sources */,
 				52E991C02B6CCD47002D4689 /* SettingViewModel.swift in Sources */,
