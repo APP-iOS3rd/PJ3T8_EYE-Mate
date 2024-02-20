@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordView: View {
-    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject private var viewModel = HomeViewModel.shared
 
     private func goBack() {
         viewModel.isPresentedRecordView = false
@@ -65,7 +65,5 @@ struct RecordView: View {
 }
 
 #Preview {
-    @StateObject var viewModel = HomeViewModel()
-
-    return RecordView(viewModel: viewModel)
+    RecordView()
 }
