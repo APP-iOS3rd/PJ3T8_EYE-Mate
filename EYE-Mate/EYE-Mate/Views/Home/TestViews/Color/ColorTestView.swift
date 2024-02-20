@@ -149,110 +149,118 @@ private struct ColorTest: View {
 private struct ColorTestResultView: View {
     @ObservedObject var viewModel: ColorTestViewModel
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
+    @ObservedObject var loginViewModel = LoginViewModel.shared
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
     
+    @State var showAlert = false
+    
     var body: some View {
-        NavigationStack {
-            Spacer()
-                .frame(height: 1)
-            
-            Text("색채 검사 결과")
-                .font(.pretendardBold_32)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(20)
-            
-            let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
-            
-            ScrollView(showsIndicators: false) {
-                ColorTestResultTextView(viewModel: viewModel)
-                
+        ZStack {
+            NavigationStack {
                 Spacer()
+                    .frame(height: 1)
                 
-                ColorTestResultGraph(viewModel: viewModel)
+                Text("색채 검사 결과")
+                    .font(.pretendardBold_32)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(20)
                 
-                Spacer()
+                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 
-                WarningText()
-                
-                Spacer()
-                
-                if total != 0 {
-                    Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
-                        .font(.pretendardBold_20)
+                ScrollView(showsIndicators: false) {
+                    ColorTestResultTextView(viewModel: viewModel)
+                    
+                    Spacer()
+                    
+                    ColorTestResultGraph(viewModel: viewModel)
+                    
+                    Spacer()
+                    
+                    WarningText()
+                    
+                    Spacer()
+                    
+                    if total != 0 {
+                        Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                            .font(.pretendardBold_20)
                         
-                        .foregroundColor(.customGreen)
-                    Color.customGreen
-                        .frame(height: 3)
-                        .padding(.horizontal, 10)
-                    VStack {
-                        ForEach(0..<total, id: \.self) { index in
-                            PlaceCellView(place: coordinator.resultInfo[index])
-                        }
-                        
-                        Button(action: {
-                            //TODO: - 로그인 상태라면 저장 후 이동, 아니면 Alert창
-                            if loggedIn {
-                                viewModel.saveResult(userUID)
-                                tabManager.selection = .eyeMap
-                                dismiss()
-                            } else {
-                                
+                            .foregroundColor(.customGreen)
+                        Color.customGreen
+                            .frame(height: 3)
+                            .padding(.horizontal, 10)
+                        VStack {
+                            ForEach(0..<total, id: \.self) { index in
+                                PlaceCellView(place: coordinator.resultInfo[index])
                             }
-                        }, label: {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                                .foregroundColor(.customGreen)
-                                .frame(height: 80)
-                                .padding(10)
-                                .overlay(
-                                    Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
-                                        .multilineTextAlignment(.center)
-                                        .font(.pretendardLight_16)
-                                        .foregroundColor(.tabGray)
-                                )
-                        })
-                    }
-                } else {
-                    Text("내 주변에 안과나 안경점이 없어요!")
-                        .font(.pretendardBold_24)
-                        .foregroundColor(.customGreen)
-                    
-                    Spacer()
-                    
-                    Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
-                        .multilineTextAlignment(.center)
-                        .font(.pretendardSemiBold_20)
+                            
+                            Button(action: {
+                                //TODO: - 로그인 상태라면 저장 후 이동, 아니면 Alert창
+                                if loggedIn {
+                                    viewModel.saveResult(userUID)
+                                    tabManager.selection = .eyeMap
+                                    dismiss()
+                                } else {
+                                    showAlert = true
+                                }
+                            }, label: {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                    .foregroundColor(.customGreen)
+                                    .frame(height: 80)
+                                    .padding(10)
+                                    .overlay(
+                                        Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                            .multilineTextAlignment(.center)
+                                            .font(.pretendardLight_16)
+                                            .foregroundColor(.tabGray)
+                                    )
+                            })
+                        }
+                    } else {
+                        Text("내 주변에 안과나 안경점이 없어요!")
+                            .font(.pretendardBold_24)
+                            .foregroundColor(.customGreen)
                         
-                    Spacer()
+                        Spacer()
+                        
+                        Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
+                            .multilineTextAlignment(.center)
+                            .font(.pretendardSemiBold_20)
+                        
+                        Spacer()
+                    }
                 }
+                
+                
+                CustomButton(title: "돌아가기",
+                             background: .customGreen,
+                             fontStyle: .pretendardBold_16,
+                             //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                             action: {
+                    if loggedIn {
+                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        viewModel.saveResult(userUID)
+                        dismiss()
+                    } else {
+                        //TODO: - Alert 창 띄워주고 선택
+                        showAlert = true
+                    }
+                } )
+                .frame(maxHeight: 75)
             }
-            
-            
-            CustomButton(title: "돌아가기",
-                         background: .customGreen,
-                         fontStyle: .pretendardBold_16,
-                         //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                         action: {
-                if loggedIn {
-                    //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                    viewModel.saveResult(userUID)
-                    
-                    dismiss()
-                } else {
-                    //TODO: - Alert 창 띄워주고 선택
-                    
-                }
-            } )
-            .frame(maxHeight: 75)
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                MapCoordinator.shared.checkIfLocationServiceIsEnabled()
+            }
+            TestAlertView(showAlert: $showAlert)
         }
-        .navigationBarBackButtonHidden()
-        .onAppear {
-            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
-        }
+        .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
+            LoginView(isAlertView: true)
+        })
     }
 }
 
