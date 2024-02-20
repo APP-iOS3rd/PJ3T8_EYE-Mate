@@ -8,7 +8,8 @@
 import Foundation
 import FirebaseFirestore
 
-struct Article: Hashable {
+struct Article: Identifiable, Hashable {
+    var id: UUID = .init()
     var title: String
     var url: String
 }
@@ -27,7 +28,7 @@ class EyeSenseOnBoardingViewModel: ObservableObject {
 extension EyeSenseOnBoardingViewModel {
     
     @MainActor
-    func fetchData() async {
+    func fetchData() async -> [Article] {
         do {
             articles.removeAll()
             let query = db.collection("Articles")
@@ -47,8 +48,11 @@ extension EyeSenseOnBoardingViewModel {
                     articles.append(Article(title: data["title"] as! String, url: data["url"] as! String))
                 }
             }
+            
+            return articles
         } catch {
             print("Error getting documents: \(error)")
         }
+        return []
     }
 }

@@ -89,6 +89,8 @@
 		52AFE7BC2B7DA8CB0007028F /* ProfileNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7BB2B7DA8CB0007028F /* ProfileNameTextField.swift */; };
 		52AFE7D02B7F3E4D0007028F /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7CF2B7F3E4D0007028F /* CustomBackButton.swift */; };
 		52AFE7D22B7F7D750007028F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7D12B7F7D750007028F /* CustomAlertView.swift */; };
+		52AFE7F12B84C4F70007028F /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7F02B84C4F70007028F /* OffsetKey.swift */; };
+		52AFE7F32B84DD5B0007028F /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7F22B84DD5B0007028F /* PageControl.swift */; };
 		52D0DE532B7213D600DBC54B /* tempUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D0DE522B7213D600DBC54B /* tempUser.swift */; };
 		52E991BA2B6CBC62002D4689 /* SettingTitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */; };
 		52E991BC2B6CC1FC002D4689 /* SettingListDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */; };
@@ -257,6 +259,8 @@
 		52AFE7CF2B7F3E4D0007028F /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		52AFE7D12B7F7D750007028F /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		52AFE7D42B82F71F0007028F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/Eye-mate/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52AFE7F02B84C4F70007028F /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
+		52AFE7F22B84DD5B0007028F /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		52D0DE522B7213D600DBC54B /* tempUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempUser.swift; sourceTree = "<group>"; };
 		52D375232B66C44600EE200F /* EYE-Mate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EYE-Mate.entitlements"; sourceTree = "<group>"; };
 		52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleModifier.swift; sourceTree = "<group>"; };
@@ -525,6 +529,8 @@
 				52EE56C42B5E2AFF00C6D423 /* EyeSenseView.swift */,
 				71AD797C2B5FA6180010B423 /* EyeSenseOnboardingView.swift */,
 				71AD797E2B5FA7070010B423 /* EyeSenseOnBoardingViewModel.swift */,
+				52AFE7F02B84C4F70007028F /* OffsetKey.swift */,
+				52AFE7F22B84DD5B0007028F /* PageControl.swift */,
 			);
 			path = EyeSense;
 			sourceTree = "<group>";
@@ -1007,6 +1013,7 @@
 				521DCDC22B7065BB002C786A /* SettingNavigationTitle.swift in Sources */,
 				33DA6A982B7C97BD006C4827 /* AllRecordView.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
+				52AFE7F12B84C4F70007028F /* OffsetKey.swift in Sources */,
 				336529BF2B600B9100078CF0 /* MovementLottieView.swift in Sources */,
 				52EE56CF2B5E2C8100C6D423 /* FreeBoardView.swift in Sources */,
 				71EC7F282B5E81AB00C0149C /* Bundle+.swift in Sources */,
@@ -1069,6 +1076,7 @@
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
 				71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */,
+				52AFE7F32B84DD5B0007028F /* PageControl.swift in Sources */,
 				7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */,
 				7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */,
 				71AD79832B5FB37C0010B423 /* MenuModel.swift in Sources */,

@@ -36,11 +36,6 @@ struct HomeView: View {
                 Spacer()
                     .frame(height: 85)
             }
-            .onAppear{
-                Task{
-                    await eyeSenseOnBoardingViewModel.fetchData()
-                }
-            }
         }
         
         .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
@@ -67,11 +62,11 @@ struct HomeView: View {
 //MARK: - 상단 텍스트 뷰
 private struct HomeViewTextView: View {
     var user : UserModel
-
+    
     fileprivate init(user: UserModel) {
         self.user = user
     }
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
