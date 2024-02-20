@@ -33,7 +33,6 @@ struct HomeViewCellView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
                     .shadow(radius: 3, x: 1, y: 1)
-                    .opacity(0.5)
             )
         }
 }
