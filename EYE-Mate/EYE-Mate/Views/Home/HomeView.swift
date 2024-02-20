@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel
     
     @Binding var tabSelection: TabBarItem
     
@@ -24,7 +25,7 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         HomeViewTextView(user: viewModel.user)
                         
-                        EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
+                        EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
                             .padding(.horizontal, 20)
                         
                         HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
@@ -34,6 +35,11 @@ struct HomeView: View {
                 }
                 Spacer()
                     .frame(height: 85)
+            }
+            .onAppear{
+                Task{
+                    await eyeSenseOnBoardingViewModel.fetchData()
+                }
             }
         }
         
@@ -145,5 +151,5 @@ private struct HomeViewCellListView: View {
 }
 
 #Preview {
-    HomeView(tabSelection: .constant(.home))
+    HomeView(eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel(), tabSelection: .constant(.home))
 }

@@ -8,46 +8,61 @@
 import SwiftUI
 
 struct EyeSenseOnboardingView: View {
-    var onboardingViewModel: EyeSenseOnBoardingViewModel
+    @ObservedObject var onboardingViewModel: EyeSenseOnBoardingViewModel
     
     init(onboardingViewModel: EyeSenseOnBoardingViewModel) {
         self.onboardingViewModel = onboardingViewModel
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.customGreen)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(.customGreen).withAlphaComponent(0.3)
     }
+    @State var showModal: Bool = false
     
     var body: some View {
         VStack{
             TabView{
-                NavigationLink(destination: EyeSenseView()) {
-                    VStack(alignment: .leading){
+                NavigationLink(destination: EyeSenseView(onboardingViewModel: onboardingViewModel)){
+                    VStack(alignment: .leading, spacing: 10){
                         EyeSenseTitleView()
-//                            .padding(.leading, 0)
+                            .padding(.top, 15)
+                            .padding(.leading, 15)
                         
-                        Text("\"\(onboardingViewModel.subTitle)\"")
-                            .font(.pretendardMedium_18)
-                            .foregroundColor(.customGreen)
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("\"\(onboardingViewModel.title)\"")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                                .font(.pretendardSemiBold_18)
+                                .foregroundColor(.customGreen)
+                            Spacer()
+                        }
+                        Spacer()
                     }
-                    .padding(.top, -20)
                 }
-                NavigationLink(destination: EyeSenseView()) {
-                    VStack(alignment: .leading){
+                
+                NavigationLink(destination: EyeSenseView(onboardingViewModel: onboardingViewModel)){
+                    VStack(alignment: .leading, spacing: 10){
                         EyeSenseTitleView()
-                            .padding(.leading, 0)
+                            .padding(.top, 15)
+                            .padding(.leading, 15)
                         
-                        Text("\"\(onboardingViewModel.subTitle)\"")
-                            .font(.pretendardMedium_18)
-                            .foregroundColor(.customGreen)
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("\"\(onboardingViewModel.title)\"")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                                .font(.pretendardSemiBold_18)
+                                .foregroundColor(.customGreen)
+                            Spacer()
+                        }
+                        Spacer()
                     }
-                    .padding(.top, -20)
                 }
             }
             
             .tabViewStyle(.page(indexDisplayMode: .always))
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
             .accentColor(.customGreen)
-//            .frame(maxWidth: .infinity)
-            .frame(width: 350)
+            .frame(maxWidth: .infinity)
             .frame(height: 110)
             .background{
                 RoundedRectangle(cornerRadius: 10)
@@ -69,12 +84,13 @@ struct EyeSenseTitleView: View {
             Text("알고 계셨나요?")
                 .font(.pretendardBold_16)
                 .foregroundColor(.customGreen)
+            Spacer()
         }
-        .padding(.leading, -30)
+        .padding(.leading, 0)
     }
 }
 
 
 #Preview {
-    EyeSenseOnboardingView(onboardingViewModel: EyeSenseOnBoardingViewModel(title: "알고 계셨나요?", subTitle: "전자기기를 보면 눈이 안좋아져요!"))
+    EyeSenseOnboardingView(onboardingViewModel: EyeSenseOnBoardingViewModel(title: "현대인의 눈 피로 원인, 컴퓨터시력증후군(CVS)"))
 }
