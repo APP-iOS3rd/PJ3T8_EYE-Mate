@@ -37,7 +37,6 @@ struct CustomNavigationTitle: View {
             VStack(alignment: .leading) {
                 Text("EYE-Mate")
                     .font(.pretendardSemiBold_22)
-                    .padding(.leading, 6)
                 Spacer()
                     .frame(height: 10)
                 
