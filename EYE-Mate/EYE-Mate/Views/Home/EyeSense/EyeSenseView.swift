@@ -12,9 +12,11 @@ struct EyeSenseView: View {
     var url: String = ""
     var body: some View {
         VStack{
+            CustomBackButton()
             ArticleView(urlToLoad: url)
                 .padding(.top, 30)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
