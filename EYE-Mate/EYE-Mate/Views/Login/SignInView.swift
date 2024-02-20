@@ -11,8 +11,6 @@ struct SignInView: View {
     @Binding var signUpFlag: Bool
     @FocusState private var keyFocused: Bool
     
-    @Binding var isAlertView: Bool
-    
     var body: some View {
         VStack{
             Spacer()
@@ -26,7 +24,7 @@ struct SignInView: View {
                 Text("로그인")
                     .font(.pretendardBold_20)
                     .foregroundStyle(Color.customGreen)
-                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused, isAlertView: $isAlertView)
+                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused)
             }
             
             

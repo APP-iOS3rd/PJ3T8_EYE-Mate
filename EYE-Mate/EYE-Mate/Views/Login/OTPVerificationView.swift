@@ -33,8 +33,6 @@ struct OTPVerificationView: View {
     var foregroundColor: Color = Color(.black)
     var backgroundColor: Color = Color(.systemGray6)
     
-    @Binding var isAlertView: Bool
-    
     // userdefaults login
     @AppStorage("Login") var loggedIn: Bool = false
     
@@ -101,9 +99,6 @@ struct OTPVerificationView: View {
                                     if isRegistered { // 가입한 이력이 있는 경우
                                         loggedIn = true
                                         isDisplaySignUpText = false
-                                        if isAlertView {
-                                            isAlertView.toggle()
-                                        }
                                         presentationMode.wrappedValue.dismiss()
                                     } else { // 가입한 이력이 없는 경우
                                         loggedIn = false
@@ -135,7 +130,7 @@ struct OTPVerificationView: View {
             }
         }
         .navigationDestination(isPresented: $isDisplayProfileSettingView){
-            SignUpProfileView(isAlertView: $isAlertView)
+            SignUpProfileView()
         }
     }
 }

@@ -25,7 +25,6 @@ struct PhoneNumberView: View {
     
     @Binding var signUpFlag: Bool
     @FocusState.Binding var keyFocused: Bool
-    @Binding var isAlertView: Bool
     
     var foregroundColor: Color = Color(.black)
     var backgroundColor: Color = Color(.systemGray6)
@@ -103,7 +102,7 @@ struct PhoneNumberView: View {
                 
                 // MARK: - OTP View
                 if openOTPView {
-                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)", isAlertView: $isAlertView)
+                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
                 } else {
                     
                 }

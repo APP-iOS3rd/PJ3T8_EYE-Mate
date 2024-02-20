@@ -36,8 +36,6 @@ class VisionTestViewModel: ObservableObject {
     // 다음 버튼 활성화
     @Published var nextButton = false
     
-    @Published var showFullScreenCover: Bool = false
-    
     
     func saveDistance(_ distance: Int) {
         userDistance = distance
