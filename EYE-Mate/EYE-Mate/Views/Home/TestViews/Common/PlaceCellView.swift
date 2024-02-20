@@ -12,11 +12,11 @@ struct PlaceCellView: View {
     var place: placeList
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 20)
+        RoundedRectangle(cornerRadius: 10)
             .stroke(Color.customGreen, lineWidth: 3)
-            .cornerRadius(20)
+            .cornerRadius(10)
             .background(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(.white)
                     .shadow(radius: 5, x: 2, y: 2)
             )

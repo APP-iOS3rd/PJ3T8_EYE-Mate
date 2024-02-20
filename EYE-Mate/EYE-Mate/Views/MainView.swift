@@ -8,24 +8,28 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var tabSelection: TabBarItem = .home
+    @StateObject private var tabManager = TabManager()
     
     var body: some View {
         NavigationStack {
-            CustomTabBarContainerView(selection: $tabSelection) {
-                HomeView(tabSelection: $tabSelection)
-                    .tabBarItem(tab: .home, selection: $tabSelection)
+            CustomTabBarContainerView() {
+                HomeView()
+                    .tabBarItem(tab: .home, selection: $tabManager.selection)
                 MovementView()
-                    .tabBarItem(tab: .movement, selection: $tabSelection)
+                    .tabBarItem(tab: .movement, selection: $tabManager.selection)
                 CommunityView()
-                    .tabBarItem(tab: .community, selection: $tabSelection)
+                    .tabBarItem(tab: .community, selection: $tabManager.selection)
                 EyeMapView()
-                    .tabBarItem(tab: .eyeMap, selection: $tabSelection)
+                    .tabBarItem(tab: .eyeMap, selection: $tabManager.selection)
             }
             .accentColor(.customGreen)
-            .padding(0)
         }
+        .environmentObject(tabManager)
     }
+}
+
+class TabManager: ObservableObject {
+    @Published var selection: TabBarItem = .home
 }
 
 #Preview {

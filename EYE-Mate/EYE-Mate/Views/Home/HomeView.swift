@@ -11,15 +11,13 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
     
-    @Binding var tabSelection: TabBarItem
-    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
                 CustomNavigationTitle(isDisplayLeftButton: false)
                 
                 Spacer()
-                    .frame(height: 5)
+                
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         HomeViewTextView(user: viewModel.user)
@@ -28,7 +26,7 @@ struct HomeView: View {
                             .frame(height: 120)
                             .padding(.top, -30)
                         
-                        HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
+                        HomeViewCellListView(viewModel: viewModel)
                         
                         Spacer()
                     }
@@ -70,8 +68,6 @@ private struct HomeViewTextView: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
-                Text(user.name + " 님!")
-                    .font(.pretendardBold_22)
                 Text("오늘도 눈 건강 챙기셨나요? 👀")
                     .font(.pretendardRegular_22)
             }
@@ -90,7 +86,7 @@ private struct HomeViewTextView: View {
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
     @ObservedObject var viewModel: HomeViewModel
-    @Binding var tabSelection: TabBarItem
+    @EnvironmentObject var tabManager: TabManager
     
     var body: some View {
         HStack(spacing: 10) {
@@ -103,7 +99,7 @@ private struct HomeViewCellListView: View {
             })
             
             Button(action: {
-                tabSelection = .movement
+                tabManager.selection = .movement
             }, label: {
                 HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "눈 피로감 줄이기"))
                     .padding(.trailing, 10)
@@ -145,6 +141,6 @@ private struct HomeViewCellListView: View {
     }
 }
 
-//#Preview {
-//    HomeView()
-//}
+#Preview {
+    HomeView()
+}

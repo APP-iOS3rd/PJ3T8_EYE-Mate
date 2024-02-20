@@ -16,32 +16,10 @@ struct RecordView: View {
     
     var body: some View {
             VStack(spacing: 0) {
-                HStack(alignment: .bottom) {
-                    HStack(alignment: .bottom, spacing: 8) {
-                        Button {
-                            goBack()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.black)
-                                .font(.system(size: 32))
-                                .padding(.bottom, 2)
-                        }
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("EYE-Mate")
-                                .font(.pretendardSemiBold_22)
-                            Text("기록")
-                                .font(.pretendardSemiBold_32)
-                        }
-                    }
-                    Spacer()
-                    Circle()
-                        .foregroundColor(Color.blue)
-                        .frame(width: 50, height: 50)
-                }
-                .frame(height: 80)
-                .padding(.leading, 12)
-                .padding(.trailing, 36)
-                .padding(.bottom, 24)
+                CustomNavigationTitle(title: "기록")
+                
+                Spacer()
+                
                 HorizontalDivider(color: Color.customGreen, height: 4)
                 ScrollView {
                     VStack(spacing: 16) {

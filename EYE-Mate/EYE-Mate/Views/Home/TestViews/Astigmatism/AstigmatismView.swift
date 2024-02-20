@@ -15,9 +15,7 @@ struct AstigmatismView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "난시 검사",
-                                  userImageUrl: "",
-                                  isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() })
+                                  isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }
@@ -27,7 +25,8 @@ struct AstigmatismView: View {
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")
+            TestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")
+                .padding(.horizontal, 10)
             
             Spacer()
             

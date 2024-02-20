@@ -29,7 +29,7 @@ class PostViewModel: ObservableObject {
     @State private var docListener: ListenerRegistration?
     @State private var paginationDoc: QueryDocumentSnapshot?
     
-    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") var userUID: String = ""
     @AppStorage("user_profile_url") private var profileURL: URL?
     

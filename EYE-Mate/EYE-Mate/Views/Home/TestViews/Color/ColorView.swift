@@ -15,9 +15,7 @@ struct ColorView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "색채 검사",
-                                  userImageUrl: "",
-                                  isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() })
+                                  isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }
@@ -26,19 +24,20 @@ struct ColorView: View {
             
             Spacer()
             
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component4")])
+            TestOnboardingView(image:[Image("Component1"), Image("Component4")])
+                .padding(.horizontal, 10)
             
             Spacer()
             
             CustomButton(title: "테스트 시작하기",
-                      background: .customGreen,
-                      fontStyle: .pretendardBold_16,
-                      action: {
+                         background: .customGreen,
+                         fontStyle: .pretendardBold_16,
+                         action: {
                 viewModel.isPresentedTestView.toggle()
             })
-            .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
+            .navigationDestination(isPresented: $viewModel.isPresentedTestView) {
                 ColorTestView()
-            })
+            }
             .frame(maxHeight: 75)
             
             Spacer()

@@ -11,11 +11,12 @@ import PhotosUI
 struct SignUpProfileView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @State var selectedItem: PhotosPickerItem? = nil
     @State var textName: String = ""
     @State var isButtonEnabled: Bool = false
     
+    @ObservedObject var loginViewModel = LoginViewModel.shared
     
     var body: some View {
         VStack(spacing: 20) {
@@ -31,7 +32,7 @@ struct SignUpProfileView: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.bottom, 50)
             
-            EditableProfileView(profileViewModel: profileViewModel, selectedItem: $selectedItem)
+            EditableProfileView(selectedItem: $selectedItem)
                 .frame(width: 200, height: 200)
                 .padding(.bottom, 20)
             
@@ -43,8 +44,11 @@ struct SignUpProfileView: View {
                 self.userName = textName
                 profileViewModel.imageSelection = selectedItem
                 profileViewModel.uploadUserInfoToFirebase()
-                presentationMode.wrappedValue.dismiss()
-                
+                if loginViewModel.showFullScreenCover {
+                    loginViewModel.showFullScreenCover.toggle()
+                } else {
+                    presentationMode.wrappedValue.dismiss()
+                }
             })
             .disabled(!isButtonEnabled)
             .disableWithOpacity(!isButtonEnabled)

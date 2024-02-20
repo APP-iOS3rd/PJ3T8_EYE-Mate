@@ -6,18 +6,32 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class AstigmatismTestViewModel: ObservableObject {
     @Published var userAnswer: [String] = []
-    @Published var userSayYes = false
-    @Published var userSayNo = false
+    
+    private var left = ""
+    private var right = ""
     
     var isLeftEye: Bool {
-        userAnswer[0] == "Y" ? true : false
+        if userAnswer[0] == "Y" {
+            left = "좋음"
+            return true
+        } else {
+            left = "나쁨"
+            return false
+        }
     }
     
     var isRightEye: Bool {
-        userAnswer[1] == "Y" ? true : false
+        if userAnswer[1] == "Y" {
+            right = "좋음"
+            return true
+        } else {
+            right = "나쁨"
+            return false
+        }
     }
     
     var leftImage: String {
@@ -54,5 +68,25 @@ class AstigmatismTestViewModel: ObservableObject {
         } else {
             return "정확한 진단을 위해\n정밀 눈 검사를 받아보는걸 추천드려요."
         }
+    }
+}
+
+//MARK: - Firebase Method
+extension AstigmatismTestViewModel {
+    func saveResult(_ uid: String) {
+        let astigmatismDoc = Firestore.firestore()
+            .collection("Records")
+            .document(uid)
+            .collection("Astigmatisms")
+            .document()
+        
+        let astigmatismItem = Astigmatisms(left: left, right: right)
+        
+        do {
+            let _ = try astigmatismDoc.setData(from: astigmatismItem)
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
+        
     }
 }
