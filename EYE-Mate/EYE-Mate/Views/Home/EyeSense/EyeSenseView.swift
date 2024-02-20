@@ -9,10 +9,10 @@ import SwiftUI
 import WebKit
 
 struct EyeSenseView: View {
-    var onboardingViewModel: EyeSenseOnBoardingViewModel
+    var url: String = ""
     var body: some View {
         VStack{
-            ArticleView()
+            ArticleView(urlToLoad: url)
                 .padding(.top, 30)
         }
     }
@@ -41,5 +41,5 @@ struct ArticleView: UIViewRepresentable {
 
 
 #Preview {
-    EyeSenseView(onboardingViewModel: EyeSenseOnBoardingViewModel(title: "현대인의 눈 피로 원인, 컴퓨터시력증후군(CVS)"))
+    EyeSenseView()
 }

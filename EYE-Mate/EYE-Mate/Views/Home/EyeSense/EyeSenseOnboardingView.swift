@@ -20,41 +20,24 @@ struct EyeSenseOnboardingView: View {
     var body: some View {
         VStack{
             TabView{
-                NavigationLink(destination: EyeSenseView(onboardingViewModel: onboardingViewModel)){
-                    VStack(alignment: .leading, spacing: 10){
-                        EyeSenseTitleView()
-                            .padding(.top, 15)
-                            .padding(.leading, 15)
-                        
-                        HStack(alignment: .center) {
-                            Spacer()
-                            Text("\"\(onboardingViewModel.title)\"")
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                                .font(.pretendardSemiBold_18)
-                                .foregroundColor(.customGreen)
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                }
-                
-                NavigationLink(destination: EyeSenseView(onboardingViewModel: onboardingViewModel)){
-                    VStack(alignment: .leading, spacing: 10){
-                        EyeSenseTitleView()
-                            .padding(.top, 15)
-                            .padding(.leading, 15)
-                        
-                        HStack(alignment: .center) {
-                            Spacer()
-                            Text("\"\(onboardingViewModel.title)\"")
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                                .font(.pretendardSemiBold_18)
-                                .foregroundColor(.customGreen)
+                ForEach(onboardingViewModel.articles, id: \.self) { data in
+                    NavigationLink(destination: EyeSenseView(url: data.url)){
+                        VStack(alignment: .leading, spacing: 10){
+                            EyeSenseTitleView()
+                                .padding(.top, 15)
+                                .padding(.leading, 15)
+                            
+                            HStack(alignment: .center) {
+                                Spacer()
+                                Text("\"\(data.title)\"")
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+                                    .font(.pretendardSemiBold_18)
+                                    .foregroundColor(.customGreen)
+                                Spacer()
+                            }
                             Spacer()
                         }
-                        Spacer()
                     }
                 }
             }

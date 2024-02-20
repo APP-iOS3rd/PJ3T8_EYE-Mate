@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct Article {
+struct Article: Hashable {
     var title: String
     var url: String
 }
@@ -29,6 +29,7 @@ extension EyeSenseOnBoardingViewModel {
     @MainActor
     func fetchData() async {
         do {
+            articles.removeAll()
             let query = db.collection("Articles")
             let snapshot = try await query.getDocuments()
             let totalCount = snapshot.count
@@ -41,8 +42,6 @@ extension EyeSenseOnBoardingViewModel {
             }
             
             for document in selectedDocuments {
-                print("\(document.documentID) => \(document.data()!)")
-                
                 // articles에 정보 담기
                 if let data = document.data() {
                     articles.append(Article(title: data["title"] as! String, url: data["url"] as! String))
