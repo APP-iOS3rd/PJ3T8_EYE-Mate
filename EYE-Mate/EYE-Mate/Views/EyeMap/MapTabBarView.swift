@@ -25,6 +25,8 @@ struct MapTabBarView: View {
                 // 상단 Title
                 CustomNavigationTitle(title: "주변 정보", isDisplayLeftButton: false)
                 
+                Spacer()
+                
                 // 상단 TabView
                 MapTopTabView()
                 

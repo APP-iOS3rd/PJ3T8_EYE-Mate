@@ -17,7 +17,7 @@ struct HomeView: View {
                 CustomNavigationTitle(isDisplayLeftButton: false)
                 
                 Spacer()
-                    .frame(height: 5)
+                
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         HomeViewTextView(user: viewModel.user)
@@ -68,8 +68,6 @@ private struct HomeViewTextView: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
-                Text(user.name + " 님!")
-                    .font(.pretendardBold_22)
                 Text("오늘도 눈 건강 챙기셨나요? 👀")
                     .font(.pretendardRegular_22)
             }
