@@ -46,47 +46,52 @@ struct ReplyCommentRowCellView: View {
                 
                 Spacer()
                 
-                // MARK: 대댓글 좋아요 Btn
-                Button {
-                    commentVM.likeReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
-                        onUpdateReplyComment(postID, commentIndex, replyCommentIndex)
+                HStack(spacing: 0) {
+                    // MARK: 대댓글 좋아요 Btn
+                    Button {
+                        commentVM.likeReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
+                            onUpdateReplyComment(postID, commentIndex, replyCommentIndex)
+                        }
+                    } label: {
+                        Image(systemName: "heart")
+                            .font(.system(size: 12))
+                            .foregroundStyle(Color.white)
+                            .padding(5)
                     }
-                } label: {
-                    Image(systemName: "heart")
+                    
+                    Image(systemName: "poweron")
                         .font(.system(size: 12))
-                        .foregroundStyle(Color.customGreen)
-                }
-                
-                Image(systemName: "poweron")
-                    .font(.system(size: 12))
-                    .foregroundStyle(Color.customGreen)
-                    .padding(.horizontal, 2)
-                
-                // MARK: 신고 기능 작성 필요
-                // MARK: 대댓글 신고, 삭제 Menu
-                Menu {
-                    if replyComment.userUID == commentVM.userUID {
-                        /// 대댓글 삭제
-                        Button(role: .destructive) {
-                            commentVM.deleteReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
-                                deleteReplyComment(postID, commentIndex, replyCommentIndex)
+                        .foregroundStyle(Color.white)
+                    
+                    // MARK: 신고 기능 작성 필요
+                    // MARK: 대댓글 신고, 삭제 Menu
+                    Menu {
+                        if replyComment.userUID == commentVM.userUID {
+                            /// 대댓글 삭제
+                            Button(role: .destructive) {
+                                commentVM.deleteReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
+                                    deleteReplyComment(postID, commentIndex, replyCommentIndex)
+                                }
+                            } label: {
+                                Label("삭제", systemImage: "trash")
                             }
-                        } label: {
-                            Label("삭제", systemImage: "trash")
+                        } else {
+                            Button(role: .destructive) {
+                                
+                            } label: {
+                                Label("신고", systemImage: "light.beacon.max.fill")
+                            }
                         }
-                    } else {
-                        Button(role: .destructive) {
-                            
-                        } label: {
-                            Label("신고", systemImage: "light.beacon.max.fill")
-                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .rotationEffect(.degrees(90))
+                            .font(.system(size: 12))
+                            .frame(height: 12)
+                            .foregroundStyle(Color.white)
+                            .padding(5)
                     }
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .rotationEffect(.degrees(90))
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.customGreen)
                 }
+                .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.customGreen).opacity(1))
             }
             
             // MARK: 대댓글 내용

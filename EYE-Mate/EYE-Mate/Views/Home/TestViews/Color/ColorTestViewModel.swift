@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 
 class ColorTestViewModel: ObservableObject {
     let testColorSet = [Image("Ishihara_12"),
@@ -55,5 +56,25 @@ class ColorTestViewModel: ObservableObject {
         } else {
             return "심각한 색채 지각 이상"
         }
+    }
+}
+
+//MARK: - Firebase Method
+extension ColorTestViewModel {
+    func saveResult(_ uid: String) {
+        let colorDoc = Firestore.firestore()
+            .collection("Records")
+            .document(uid)
+            .collection("Colors")
+            .document()
+        
+        let colorItem = Colors(status: resultMessage)
+        
+        do {
+            let _ = try colorDoc.setData(from: colorItem)
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
+        
     }
 }

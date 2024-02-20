@@ -24,6 +24,9 @@ struct MovementView: View {
             VStack(spacing: 0) {
                 CustomNavigationTitle(title: "눈운동",
                                       isDisplayLeftButton: false)
+                
+                Spacer()
+                
                 HorizontalDivider(color: Color.customGreen, height: 4)
                 VStack(alignment: .leading, spacing: 16) {
                     VStack(alignment: .leading) {

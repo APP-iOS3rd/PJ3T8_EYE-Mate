@@ -13,7 +13,7 @@ struct ProfileListView: View {
     @State var isPresented = false
     
     var body: some View {
-        ImageActionSheetView(profileViewModel: profileViewModel)
+        ImageActionSheetView()
         
         SettingCellView(title: "닉네임 변경", destination: ChangeUserNameView())
     }
@@ -44,5 +44,5 @@ fileprivate struct ProfileCellView: View {
 
 
 #Preview {
-    ProfileListView(profileViewModel: ProfileViewModel())
+    ProfileListView()
 }

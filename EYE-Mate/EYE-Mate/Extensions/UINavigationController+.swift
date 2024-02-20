@@ -1,10 +1,11 @@
 //
-//  UIGestureRecognizerDelegate.swift
+//  UINavigationController+.swift
 //  EYE-Mate
 //
-//  Created by 이성현 on 2024/02/15.
+//  Created by 이성현 on 2024/02/19.
 //
 
+import Foundation
 import UIKit
 
 extension UINavigationController: UIGestureRecognizerDelegate {

@@ -19,7 +19,7 @@ struct SettingListView: View {
             VStack(alignment: .leading, spacing: 0) {
                 SettingTitleView(title: "프로필")
                 
-                ProfileListView(profileViewModel: profileViewModel)
+                ProfileListView()
             }
         }
         // MARK: - 커뮤니티
@@ -118,5 +118,5 @@ struct SettingTitleView: View {
 }
 
 #Preview {
-    SettingListView(profileViewModel: ProfileViewModel(), showAlert: .constant(false))
+    SettingListView(showAlert: .constant(false))
 }

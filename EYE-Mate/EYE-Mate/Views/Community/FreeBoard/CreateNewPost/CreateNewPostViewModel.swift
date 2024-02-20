@@ -29,7 +29,7 @@ class CreateNewPostViewModel: ObservableObject {
     @Published var isLoading = false
     
     @AppStorage("user_profile_url") private var profileURL: URL?
-    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     
     /// 작성하기 버튼 활성 조건 get
@@ -140,7 +140,8 @@ class CreateNewPostViewModel: ObservableObject {
     func createDocumentAtFirebase(_ post: Post, completion: @escaping (Post) -> ()) async throws {
         // Firebase Firestore에 문서 쓰기
         let postDoc = Firestore.firestore().collection("Posts").document()
-    
+        
+        // Posts Collection에 게시물 추가
         let _ = try postDoc.setData(from: post) { error in
             print("Firestore - Post Create Success")
             if error == nil {
@@ -149,7 +150,6 @@ class CreateNewPostViewModel: ObservableObject {
                 updatedPost.id = postDoc.documentID
                 
                 self.post = updatedPost
-                
                 completion(updatedPost)
             }
         }

@@ -15,9 +15,7 @@ struct VisionView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "시력 검사",
-                                  userImageUrl: "",
-                                  isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() })
+                                  isDisplayLeftButton: true)
             
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
@@ -28,7 +26,8 @@ struct VisionView: View {
 
             Spacer()
 
-            VisionTestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component3")])
+            TestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component3")])
+                .padding(.horizontal, 10)
 
             Spacer()
 
@@ -38,9 +37,9 @@ struct VisionView: View {
                       action: {
                 viewModel.isPresentedTestView.toggle()
             })
-            .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {
+            .navigationDestination(isPresented: $viewModel.isPresentedTestView) {
                 DistanceConditionView(title: "시력 검사", type: .vision)
-            })
+            }
             .frame(maxHeight: 75)
 
             Spacer()

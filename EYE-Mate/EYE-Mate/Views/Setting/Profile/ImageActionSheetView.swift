@@ -55,5 +55,5 @@ struct ImageActionSheetView: View {
 }
 
 #Preview {
-    ImageActionSheetView(profileViewModel: ProfileViewModel())
+    ImageActionSheetView()
 }

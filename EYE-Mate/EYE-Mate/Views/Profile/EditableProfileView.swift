@@ -37,5 +37,5 @@ struct EditableProfileView: View {
 }
 
 #Preview {
-    EditableProfileView(profileViewModel: ProfileViewModel(), selectedItem: .constant(nil) )
+    EditableProfileView(selectedItem: .constant(nil) )
 }

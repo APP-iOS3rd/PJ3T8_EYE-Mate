@@ -10,21 +10,17 @@ import Kingfisher
 
 struct CustomNavigationTitle: View {
     let title: String
-    let userImageUrl: String
     let isDisplayLeftButton: Bool
-    let leftButtonAction: () -> Void
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    
     init(title: String = "",
-         userImageUrl: String = "",
-         isDisplayLeftButton: Bool = true,
-         leftButtonAction: @escaping () -> Void = {}
+         isDisplayLeftButton: Bool = true
     ) {
         self.title = title
-        self.userImageUrl = userImageUrl
         self.isDisplayLeftButton = isDisplayLeftButton
-        self.leftButtonAction = leftButtonAction
     }
     
     var body: some View {
@@ -33,22 +29,30 @@ struct CustomNavigationTitle: View {
                 Button(action: { dismiss() },
                        label: {
                     Image(systemName: "chevron.backward")
-                        .resizable()
-                        .frame(width: 16, height: 32)
+                        .font(.system(size: 35))
                         .foregroundColor(.black)
                 })
             }
             VStack(alignment: .leading) {
                 Text("EYE-Mate")
                     .font(.pretendardSemiBold_22)
-                    .padding(.leading, 6)
                 Spacer()
                     .frame(height: 10)
                 
-                Text(title)
-                    .font(.pretendardBold_32)
+                if title == "" {
+                    HStack(spacing: 5) {
+                        Text(userName)
+                            .font(.pretendardSemiBold_32)
+                            .foregroundColor(.customGreen)
+                        
+                        Text("님!")
+                            .font(.pretendardBold_32)
+                    }
+                } else {
+                    Text(title)
+                        .font(.pretendardBold_32)
+                }
             }
-            .padding(.bottom, title == "" ? 21 : -3)
             Spacer()
             
             
@@ -61,10 +65,11 @@ struct CustomNavigationTitle: View {
             })
             
         }
-        .padding(20)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 10)
     }
 }
 
 #Preview {
-    CustomNavigationTitle(title: "홈")
+    CustomNavigationTitle(title: "시력 검사")
 }

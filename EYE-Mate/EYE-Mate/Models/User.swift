@@ -13,12 +13,8 @@ struct User: Identifiable, Codable {
     var userUID: String
     var userImageURL: URL
     
-    var scrapPostIDs: [String] = []
-    var commentPostIDs: [String] = []
-    var myPostIDs: [String] = []
-    
     var left: String?
     var right: String?
     
-    var todayMovementCount: Int = 0
+    var todayMovementCount: Int = 0    
 }

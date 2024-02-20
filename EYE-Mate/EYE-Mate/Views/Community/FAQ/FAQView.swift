@@ -11,9 +11,12 @@ struct FAQView: View {
     @State private var searchText: String = ""
     @State private var fetchFAQ: [String] = ["갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다.","갑자기 눈이 안 보입니다."]
     @State private var expandedFAQIndex: Int?
+    
+    @FocusState var searchBarFocused: Bool
+    var searchSignal: (Bool) -> ()
+
     var body: some View {
         VStack {
-            // FAQ 검색바
             SearchBar()
             
             // FAQ 목록
@@ -30,8 +33,13 @@ struct FAQView: View {
             // MARK: FAQ목록 추후에 Firebase에서 받아오기
             // 처음에 화면 나타났을 때는 키워드가 없으므로 모든 FAQ 받아옴(Pagination 필요)
         }
+        .onChange(of: searchBarFocused) { isSearching in
+            searchSignal(searchBarFocused)
+        }
     }
-    
+}
+
+extension FAQView {
     // MARK: FAQ 검색바
     @ViewBuilder
     func SearchBar() -> some View {
@@ -39,10 +47,14 @@ struct FAQView: View {
             TextField("어떤 질문을 찾으시나요?", text: $searchText)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 15)
+                .focused($searchBarFocused)
                 .overlay(alignment: .trailing){
                     Image(systemName: "magnifyingglass")
                         .font(.title)
                         .foregroundStyle(Color.customGreen)
+                        .onTapGesture {
+                            searchBarFocused = false
+                        }
                 }
         }
         .padding(.horizontal, 15)
@@ -78,6 +90,6 @@ struct FAQView: View {
     }
 }
 
-#Preview {
-    FAQView()
-}
+//#Preview {
+//    FAQView()
+//}

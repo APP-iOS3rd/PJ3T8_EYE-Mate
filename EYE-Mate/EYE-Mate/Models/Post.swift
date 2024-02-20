@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct Post: Identifiable, Codable, Equatable, Hashable {
     @DocumentID var id: String?
+
     var postTitle: String // 게시물 제목
     var postContent: String // 게시물 내용
     var postImageURLs: [URL]? // 게시물에 첨부된 이미지들
@@ -23,6 +24,9 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
     var userImageURL: URL?  // 사용자 ProfileImage
     
     var comments: [Comment] = [] // 댓글 Array
+    
+    var scrapIDs: [String] = [] // 스크랩한 UserIDs
+    var commentIDs: [String] = [] // 댓글단 UserIDs
 }
 
 // MARK: 댓글

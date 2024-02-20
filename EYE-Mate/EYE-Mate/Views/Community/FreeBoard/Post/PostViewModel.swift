@@ -29,7 +29,7 @@ class PostViewModel: ObservableObject {
     @State private var docListener: ListenerRegistration?
     @State private var paginationDoc: QueryDocumentSnapshot?
     
-    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") var userUID: String = ""
     @AppStorage("user_profile_url") private var profileURL: URL?
     
@@ -66,6 +66,7 @@ class PostViewModel: ObservableObject {
                     "likedIDs": FieldValue.arrayRemove([userUID])
                 ])
             } else {
+                // 배열에 사용자 ID 추가
                 try await dbRef.document(postID).updateData([
                     "likedIDs": FieldValue.arrayUnion([userUID])
                 ])
@@ -122,7 +123,7 @@ class PostViewModel: ObservableObject {
                               userUID: userUID,
                               userImageURL: profileURL,
                               comment: commentText)
-                
+        
         Task {
             do {
                 guard let postID = post.id else { return }
@@ -130,6 +131,7 @@ class PostViewModel: ObservableObject {
                 let doc = dbRef.document(postID).collection("Comments").document()
                 
                 try doc.setData(from: comment)
+                
                 
                 await MainActor.run {
                     var commentData = comment
@@ -159,7 +161,11 @@ class PostViewModel: ObservableObject {
             do {
                 guard let postID = post.id, let commentID = replyWritingCommentID, let commentIndex = replyWritingCommentIndex else { return }
                 
-                let doc = dbRef.document(postID).collection("Comments").document(commentID).collection("ReplyComments").document()
+                let doc = dbRef.document(postID)
+                    .collection("Comments")
+                    .document(commentID)
+                    .collection("ReplyComments")
+                    .document()
                 
                 try doc.setData(from: replyComment)
                 
@@ -188,6 +194,22 @@ class PostViewModel: ObservableObject {
     
     /// - 게시물 스크랩 Action
     func postScrap() {
-        
+        Task {
+            guard let postID = post.id else { return }
+            
+            let dbRef = Firestore.firestore().collection("Posts").document(postID)
+            
+            if post.scrapIDs.contains(userUID) {
+                // 배열에서 사용자 ID 제거
+                try await dbRef.updateData([
+                    "scrapIDs" : FieldValue.arrayRemove([userUID])
+                ])
+            } else {
+                // 배열에 사용자 ID 추가
+                try await dbRef.updateData([
+                    "scrapIDs" : FieldValue.arrayUnion([userUID])
+                ])
+            }
+        }
     }
 }

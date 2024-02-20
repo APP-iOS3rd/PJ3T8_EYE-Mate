@@ -14,6 +14,7 @@ struct HomeViewCellView: View {
             HStack {
                 item.img
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
                     .padding(.leading, 20)
                 
