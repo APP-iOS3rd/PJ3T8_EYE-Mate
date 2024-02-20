@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomAlertView: View {
-    @Binding var showAlert: Bool
     var title: String
     var message: String
     var leftButtonTitle: String
@@ -65,5 +64,5 @@ struct CustomAlertView: View {
 }
 
 #Preview {
-    CustomAlertView(showAlert: .constant(true), title: "title", message: "message", leftButtonTitle: "left", leftButtonAction: {}, rightButtonTitle: "right", rightButtonAction: {})
+    CustomAlertView(title: "title", message: "message", leftButtonTitle: "left", leftButtonAction: {}, rightButtonTitle: "right", rightButtonAction: {})
 }
