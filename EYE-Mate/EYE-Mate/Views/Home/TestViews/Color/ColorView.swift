@@ -15,8 +15,7 @@ struct ColorView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "색채 검사",
-                                  isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() })
+                                  isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }

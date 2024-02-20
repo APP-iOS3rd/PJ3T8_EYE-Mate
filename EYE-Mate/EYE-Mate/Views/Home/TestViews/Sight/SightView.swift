@@ -15,8 +15,7 @@ struct SightView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "시야 검사",
-                                  isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() })
+                                  isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }

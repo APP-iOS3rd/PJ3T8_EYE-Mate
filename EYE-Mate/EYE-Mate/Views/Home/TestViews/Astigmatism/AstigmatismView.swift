@@ -15,8 +15,7 @@ struct AstigmatismView: View {
     var body: some View {
         NavigationStack {
             CustomNavigationTitle(title: "난시 검사",
-                                  isDisplayLeftButton: true,
-                                  leftButtonAction: { dismiss() })
+                                  isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
                 ProfileView()
             }
