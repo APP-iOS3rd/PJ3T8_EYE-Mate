@@ -19,7 +19,9 @@ struct ImageCardView: View {
                 ForEach(imageURLs.indices, id: \.self) { index in
                     Button {
                         postVM.selectedImageIndex = index
-                        postVM.showImageViewer.toggle()
+                        withAnimation {
+                            postVM.showImageViewer.toggle()
+                        }
                     } label: {
                         KFImage(imageURLs[index])
                             .placeholder {
