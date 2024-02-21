@@ -9,12 +9,10 @@ import FirebaseFirestore
 
 struct User: Identifiable, Codable {
     @DocumentID var id: String?
-    var username: String
+    var userName: String
     var userUID: String
-    var userImageURL: String
+    var userImageURL: String?
     
-    var left: String?
-    var right: String?
-    
-    var todayMovementCount: Int = 0    
+    var left: String
+    var right: String
 }
