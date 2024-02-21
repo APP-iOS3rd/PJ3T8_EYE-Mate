@@ -53,12 +53,12 @@ private struct SightTest: View {
                 .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
             if !isChange {
                 SightRight(viewModel: viewModel,
-                                 testPercent: $testPercent,
-                                 isChange: $isChange)
+                           testPercent: $testPercent,
+                           isChange: $isChange)
             } else {
                 SightLeft(viewModel: viewModel,
-                                testPercent: $testPercent,
-                                isTestComplete: $isTestComplete)
+                          testPercent: $testPercent,
+                          isTestComplete: $isTestComplete)
             }
         }
         .navigationBarBackButtonHidden()
@@ -105,7 +105,7 @@ private struct SightRight: View {
             .frame(maxHeight: 75)
         } else {
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -219,7 +219,7 @@ private struct SightLeft: View {
         } else {
             //TODO: - 테스트 화면 보여주기
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -306,7 +306,7 @@ private struct SightTestResultView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
+            VStack {
                 Text("시야 검사 결과")
                     .font(.pretendardBold_32)
                     .frame(maxWidth: .infinity, alignment: .leading)

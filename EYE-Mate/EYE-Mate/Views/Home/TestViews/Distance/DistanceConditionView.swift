@@ -18,31 +18,29 @@ struct DistanceConditionView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                DistanceFaceAndDevice()
-                BackgroundView()
-                VStack {
-                    Spacer()
-                        .frame(height: 5)
-                    
-                    HStack {
-                        Text(title)
-                            .frame(maxWidth: .infinity)
-                            .font(.pretendardBold_24)
-                            .overlay(alignment: .trailing) {
-                                Button(action: {
-                                    dismiss()
-                                }, label: {
-                                    Image("close")
-                                })
-                                .padding(.trailing)
-                            }
-                    }
-                    
-                    
-                    DistanceView(title: title, type: type)
+        ZStack {
+            DistanceFaceAndDevice()
+            BackgroundView()
+            VStack {
+                Spacer()
+                    .frame(height: 5)
+                
+                HStack {
+                    Text(title)
+                        .frame(maxWidth: .infinity)
+                        .font(.pretendardBold_24)
+                        .overlay(alignment: .trailing) {
+                            Button(action: {
+                                dismiss()
+                            }, label: {
+                                Image("close")
+                            })
+                            .padding(.trailing)
+                        }
                 }
+                
+                
+                DistanceView(title: title, type: type)
             }
         }
         .navigationBarBackButtonHidden()
@@ -95,12 +93,12 @@ private struct DistanceView: View {
             
             VStack {
                 if type != .eyesight {
-                Text(viewModel.informationText)
-                    .font(.pretendardMedium_20)
-                    .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
-                    .multilineTextAlignment(.center)
-                    .frame(height: 50)
-                
+                    Text(viewModel.informationText)
+                        .font(.pretendardMedium_20)
+                        .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
+                        .multilineTextAlignment(.center)
+                        .frame(height: 50)
+                    
                     CustomButton(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
                         switch type {
                         case .vision:

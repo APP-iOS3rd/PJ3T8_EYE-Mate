@@ -13,7 +13,7 @@ struct AstigmatismView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack {
+        VStack {
             CustomNavigationTitle(title: "난시 검사",
                                   isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
@@ -31,9 +31,9 @@ struct AstigmatismView: View {
             Spacer()
             
             CustomButton(title: "테스트 시작하기",
-                      background: .customGreen,
-                      fontStyle: .pretendardBold_16,
-                      action: {
+                         background: .customGreen,
+                         fontStyle: .pretendardBold_16,
+                         action: {
                 viewModel.isPresentedTestView.toggle()
             })
             .navigationDestination(isPresented: $viewModel.isPresentedTestView, destination: {

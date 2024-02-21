@@ -160,7 +160,7 @@ private struct ColorTestResultView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
+            VStack {
                 Spacer()
                     .frame(height: 1)
                 

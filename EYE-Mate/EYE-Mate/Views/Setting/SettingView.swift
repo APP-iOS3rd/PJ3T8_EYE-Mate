@@ -20,23 +20,22 @@ struct SettingView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
-                ScrollView(showsIndicators: false) {
-                    CustomBackButton()
+            ScrollView(showsIndicators: false) {
+                CustomBackButton()
+                
+                VStack(spacing: 20) {
+                    profileViewModel.profileImage
+                        .ProfileImageModifier()
+                        .frame(width: 200, height: 200)
                     
-                    VStack(spacing: 20) {
-                        profileViewModel.profileImage
-                            .ProfileImageModifier()
-                            .frame(width: 200, height: 200)
-                        
-                        Text(userName)
-                            .font(.pretendardSemiBold_24)
-                    }
-                    .padding(.vertical, 50)
-                    
-                    SettingListView(showAlert: $showAlert)
+                    Text(userName)
+                        .font(.pretendardSemiBold_24)
                 }
+                .padding(.vertical, 50)
+                
+                SettingListView(showAlert: $showAlert)
             }
+            
             
             if showAlert {
                 ZStack{
@@ -50,16 +49,16 @@ struct SettingView: View {
                         leftButtonAction: { showAlert = false },
                         rightButtonTitle: "확인",
                         rightButtonAction: {
-                        // MARK: - 로그아웃 처리
-                        login = false
-                        UserDefaults.standard.removeObject(forKey: "user_name")
-                        UserDefaults.standard.removeObject(forKey: "user_UID")
-                        UserDefaults.standard.removeObject(forKey: "user_profile_url")
-                        UserDefaults.standard.synchronize()
-                        profileViewModel.profileImage = Image("user")
-                        profileViewModel.downloadImageFromProfileURL()
-                        presentationMode.wrappedValue.dismiss()
-                    })
+                            // MARK: - 로그아웃 처리
+                            login = false
+                            UserDefaults.standard.removeObject(forKey: "user_name")
+                            UserDefaults.standard.removeObject(forKey: "user_UID")
+                            UserDefaults.standard.removeObject(forKey: "user_profile_url")
+                            UserDefaults.standard.synchronize()
+                            profileViewModel.profileImage = Image("user")
+                            profileViewModel.downloadImageFromProfileURL()
+                            presentationMode.wrappedValue.dismiss()
+                        })
                 }
             }
         }

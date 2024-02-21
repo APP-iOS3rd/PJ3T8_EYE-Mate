@@ -31,39 +31,39 @@ private struct AstigmatismTest: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-            VStack {
-                Spacer()
-                    .frame(height: 5)
-                
-                HStack {
-                    Text("난시 검사")
-                        .frame(maxWidth: .infinity)
-                        .font(.pretendardBold_24)
-                        .overlay(alignment: .trailing) {
-                            Button(action: {
-                                dismiss()
-                            }, label: {
-                                Image("close")
-                            })
-                            .padding(.trailing)
-                        }
-                }
-                
-                ProgressView(value: testPercent)
-                    .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
-                
-                if !isChange {
-                    AstigmatismRight(viewModel: viewModel,
-                                     testPercent: $testPercent,
-                                     isChange: $isChange)
-                } else {
-                    AstigmatismLeft(viewModel: viewModel,
-                                    testPercent: $testPercent,
-                                    isTestComplete: $isTestComplete)
-                }
+        VStack {
+            Spacer()
+                .frame(height: 5)
+            
+            HStack {
+                Text("난시 검사")
+                    .frame(maxWidth: .infinity)
+                    .font(.pretendardBold_24)
+                    .overlay(alignment: .trailing) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image("close")
+                        })
+                        .padding(.trailing)
+                    }
             }
-            .navigationBarBackButtonHidden()
+            
+            ProgressView(value: testPercent)
+                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
+            
+            if !isChange {
+                AstigmatismRight(viewModel: viewModel,
+                                 testPercent: $testPercent,
+                                 isChange: $isChange)
+            } else {
+                AstigmatismLeft(viewModel: viewModel,
+                                testPercent: $testPercent,
+                                isTestComplete: $isTestComplete)
+            }
         }
+        .navigationBarBackButtonHidden()
+    }
 }
 
 //MARK: - 오른쪽 눈 화면
@@ -106,7 +106,7 @@ private struct AstigmatismRight: View {
             .frame(maxHeight: 75)
         } else {
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -222,7 +222,7 @@ private struct AstigmatismLeft: View {
             .frame(maxHeight: 75)
         } else {
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -312,7 +312,7 @@ private struct AstigmatismTestResultView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
+            VStack {
                 Text("난시 검사 결과")
                     .font(.pretendardBold_32)
                     .frame(maxWidth: .infinity, alignment: .leading)

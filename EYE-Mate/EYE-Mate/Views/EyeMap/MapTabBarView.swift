@@ -19,25 +19,23 @@ struct MapTabBarView: View {
     @Namespace private var animation
     
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 0) {
-                // 상단 TabView
-                MapTopTabView()
-                
-                // 선택된 상단 Tab의 View Switching
-                switch selectedPicker {
-                case .hospital:
-                    MapView()
-                case .optician:
-                    MapView()
-                }
+        VStack(spacing: 0) {
+            // 상단 TabView
+            MapTopTabView()
+            
+            // 선택된 상단 Tab의 View Switching
+            switch selectedPicker {
+            case .hospital:
+                MapView()
+            case .optician:
+                MapView()
             }
         }
         .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()
         }
     }
-        
+    
     
     @ViewBuilder
     func MapTopTabView() -> some View {

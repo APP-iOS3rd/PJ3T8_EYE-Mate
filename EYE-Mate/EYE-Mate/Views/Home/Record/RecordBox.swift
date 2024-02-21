@@ -10,7 +10,7 @@ import SwiftUI
 struct RecordBox: View {
     let type: TestType
     @ObservedObject private var recordViewModel = RecordViewModel.shared
-
+    
     var body: some View {
         VStack {
             VStack(spacing: 16) {
@@ -37,7 +37,7 @@ struct RecordBox: View {
                 }
                 HorizontalDivider(color: Color.lightGray, height: 3)
                 VStack(alignment: .leading, spacing: 0) {
-
+                    
                 }
             }
             .frame(maxWidth: .infinity)

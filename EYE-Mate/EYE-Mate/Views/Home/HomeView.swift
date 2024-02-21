@@ -11,28 +11,22 @@ struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
     @ObservedObject var eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel
-    
+
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        HomeViewTextView()
-                      
-                        EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
-                            .padding(.horizontal, 20)
-                        
-                        HomeViewCellListView()
-                        
-                        Spacer()
-                    }
+        VStack(alignment: .leading) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
+                    HomeViewTextView()
+
+                    EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
+                        .padding(.horizontal, 20)
+
+                    HomeViewCellListView()
+
+                    Spacer()
                 }
             }
-            Spacer()
-                .frame(height: 85)
         }
-
-
         .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()
         }
@@ -59,15 +53,15 @@ private struct HomeViewTextView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text("오늘도 눈 건강 챙기셨나요? 👀")
                 .font(.pretendardRegular_22)
-                
+
             if loggedIn {
                 //TODO: - 유저 좌, 우 시력 가져와서 보여주기
-                
+
             } else {
                 Text("# 최근 시력 기록이 없어요!")
                     .multilineTextAlignment(.center)
@@ -84,17 +78,17 @@ private struct HomeViewCellListView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @EnvironmentObject var router: Router
     @EnvironmentObject var tabManager: TabManager
-    
+
     var body: some View {
         VStack(spacing: 20) {
             HStack(spacing: 10) {
                 Button(action: {
-                         router.navigate(to: .record)
+                    router.navigate(to: .record)
                 }, label: {
                     HomeViewCellView(item: .init(img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"), isArrowButton: false)
                         .foregroundColor(.black)
                 })
-                
+
                 Button(action: {
                     tabManager.selection = .movement
                 }, label: {

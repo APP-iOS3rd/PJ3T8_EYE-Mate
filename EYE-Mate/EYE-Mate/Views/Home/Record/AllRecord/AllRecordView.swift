@@ -10,22 +10,21 @@ import SwiftUI
 struct AllRecordView: View {
     let recordType: TestType
     @ObservedObject private var recordViewModel = RecordViewModel()
-
+    
     @State private var isDeleteMode = false
-
+    
     @State private var selectedVisionItems: [String] = []
     @State private var selectedColorVisionItems: [String] = []
     @State private var selectedAstigmatismItems: [String] = []
     @State private var selectedEyesightVisionItems: [String] = []
-
+    
     var body: some View {
-        NavigationStack {
-            // FIXME: 전역으로 상태 관리하는 방법이 있을 것 같음
-            VStack {
-                AllRecordHeader(isDeleteMode: $isDeleteMode, selectedVisionItems: $selectedVisionItems, selectedColorVisionItems: $selectedColorVisionItems, selectedAstigmatismItems: $selectedAstigmatismItems, selectedEyesightVisionItems: $selectedEyesightVisionItems, recordType: recordType )
-                RecordList()
-                Spacer()
-            }
+        
+        // FIXME: 전역으로 상태 관리하는 방법이 있을 것 같음
+        VStack {
+            AllRecordHeader(isDeleteMode: $isDeleteMode, selectedVisionItems: $selectedVisionItems, selectedColorVisionItems: $selectedColorVisionItems, selectedAstigmatismItems: $selectedAstigmatismItems, selectedEyesightVisionItems: $selectedEyesightVisionItems, recordType: recordType )
+            RecordList()
+            Spacer()
         }
         .navigationBarBackButtonHidden()
         .task {
@@ -57,16 +56,16 @@ struct AllRecordView: View {
             }
         }
     }
-
+    
     static let dateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.timeZone = TimeZone(abbreviation: "KST")
         formatter.dateFormat = "yy.MM.dd (EEEEE)"
-
+        
         return formatter
     }()
-
+    
     private func deleteItem(at offsets: IndexSet) {
         switch recordType {
         case .vision: break
@@ -79,7 +78,7 @@ struct AllRecordView: View {
             //            recordViewModel.eyesightRecords.remove(atOffsets: offsets)
         }
     }
-
+    
     @ViewBuilder
     func RecordList() -> some View {
         if recordType == .vision {
@@ -107,7 +106,7 @@ struct AllRecordView: View {
                                 //                                    .font(.pretendardRegular_16)
                                 //                                    .foregroundStyle(.gray)
                             }
-
+                            
                             Spacer().frame(width: 32)
                             HStack(spacing: 16) {
                                 Text("좌")
@@ -136,7 +135,7 @@ struct AllRecordView: View {
                 .listRowBackground(Color.clear)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
-
+                
             }
             .listStyle(.plain)
         } else if recordType == .colorVision {

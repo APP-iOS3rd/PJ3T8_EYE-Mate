@@ -10,85 +10,60 @@ import SwiftUI
 struct RecordView: View {
     @ObservedObject private var recordViewModel = RecordViewModel.shared
     @EnvironmentObject var router: Router
-
+    
     @State private var visions = []
     @ObservedObject private var viewModel = HomeViewModel.shared
-
+    
     private func goBack() {
         router.navigateBack()
     }
-
+    
     static let dateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.timeZone = TimeZone(abbreviation: "KST")
         formatter.dateFormat = "yy.MM.dd (EEEEE)"
-
+        
         return formatter
     }()
-
+    
     var body: some View {
-            VStack(spacing: 0) {
-                CustomNavigationTitle(title: "기록",
-                                      isDisplayLeftButton: true)
-                
-                Spacer()
-                
-                HorizontalDivider(color: Color.customGreen, height: 4)
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        HStack(spacing: 16) {
-                            RoundedRectangle(cornerRadius: 16)
-                                .frame(maxWidth: 40)
-                                .frame(height: 32)
-                                .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
-                                .foregroundStyle(Color.white)
-                                .overlay{
-                                    Image(systemName: "plus")
-                                        .foregroundStyle(Color.customGreen)
-                                        .font(.system(size: 20))
-                                }
-                        }
+        VStack(spacing: 0) {
+            CustomNavigationTitle(title: "기록",
+                                  isDisplayLeftButton: true)
+            
+            Spacer()
+            
+            HorizontalDivider(color: Color.customGreen, height: 4)
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        RoundedRectangle(cornerRadius: 16)
+                            .frame(maxWidth: 40)
+                            .frame(height: 32)
+                            .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
+                            .foregroundStyle(Color.white)
+                            .overlay{
+                                Image(systemName: "plus")
+                                    .foregroundStyle(Color.customGreen)
+                                    .font(.system(size: 20))
+                            }
                     }
-                    RecordDataBox(recordType: .vision)
-                    if recordViewModel.recentVisionRecords.isEmpty {
-                        EmptyVisionChart()
-                    } else {
-                        VisionChart(visionRecords: recordViewModel.recentVisionRecords)
-                    }
-                    RecordDataBox(recordType: .colorVision)
-                    RecordDataBox(recordType: .astigmatism)
-                    RecordDataBox(recordType: .eyesight)
-                }.padding(16)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.lightGray)
-            .scrollIndicators(ScrollIndicatorVisibility.hidden)
-
-            .navigationBarBackButtonHidden()
-            .task {
-                do {
-                    try await recordViewModel.fetchVisionRecord()
-                } catch {
-                    print("Error fetching vision records: \(error)")
                 }
-                do {
-                    try await recordViewModel.fetchColorVisionRecord()
-                } catch {
-                    print("Error fetching colorVision records: \(error)")
+                RecordDataBox(recordType: .vision)
+                if recordViewModel.recentVisionRecords.isEmpty {
+                    EmptyVisionChart()
+                } else {
+                    VisionChart(visionRecords: recordViewModel.recentVisionRecords)
                 }
-                do {
-                    try await recordViewModel.fetchAstigmatismRecord()
-                } catch {
-                    print("Error fetching astigmatism records: \(error)")
-                }
-                do {
-                    try await recordViewModel.fetchEyesightRecord()
-                } catch {
-                    print("Error fetching eyesight records: \(error)")
-                }
-            }
+                RecordDataBox(recordType: .colorVision)
+                RecordDataBox(recordType: .astigmatism)
+                RecordDataBox(recordType: .eyesight)
+            }.padding(16)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.lightGray)
+        .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .navigationDestination(isPresented: $recordViewModel.isPresentedVisionRecordListView) {
             AllRecordView(recordType: .vision)
         }
@@ -101,8 +76,32 @@ struct RecordView: View {
         .navigationDestination(isPresented: $recordViewModel.isPresentedEyesightRecordListView) {
             AllRecordView(recordType: .eyesight)
         }
+        .navigationBarBackButtonHidden()
+        .task {
+            do {
+                try await recordViewModel.fetchVisionRecord()
+            } catch {
+                print("Error fetching vision records: \(error)")
+            }
+            do {
+                try await recordViewModel.fetchColorVisionRecord()
+            } catch {
+                print("Error fetching colorVision records: \(error)")
+            }
+            do {
+                try await recordViewModel.fetchAstigmatismRecord()
+            } catch {
+                print("Error fetching astigmatism records: \(error)")
+            }
+            do {
+                try await recordViewModel.fetchEyesightRecord()
+            } catch {
+                print("Error fetching eyesight records: \(error)")
+            }
+        }
     }
-
+    
+    
     @ViewBuilder
     func RecordDataBox(recordType: TestType) -> some View {
         VStack {
@@ -148,13 +147,13 @@ struct RecordView: View {
                                             }.frame(width: 80)
                                         }
                                     }.frame(height: 52)
-
+                                    
                                     if data.id != recordViewModel.recentVisionRecords.last?.id {
                                         HorizontalDivider(color: Color.lightGray, height: 1)
                                     }
                                 }
                             }
-
+                            
                         }
                     case .colorVision:
                         if recordViewModel.recentColorVisionRecords.isEmpty {
@@ -172,7 +171,7 @@ struct RecordView: View {
                                         ColoredText(receivedText: "\(data.status)", font: .pretendardBold_20)
                                         Spacer()
                                     }.frame(height: 52)
-
+                                    
                                     if data.id != recordViewModel.recentColorVisionRecords.last?.id {
                                         HorizontalDivider(color: Color.lightGray, height: 1)
                                     }
@@ -207,7 +206,7 @@ struct RecordView: View {
                                             }.frame(width: 80)
                                         }
                                     }.frame(height: 52)
-
+                                    
                                     if data.id != recordViewModel.recentAstigmatismRecords.last?.id {
                                         HorizontalDivider(color: Color.lightGray, height: 1)
                                     }
@@ -242,7 +241,7 @@ struct RecordView: View {
                                             }.frame(width: 80)
                                         }
                                     }.frame(height: 52)
-
+                                    
                                     if data.id != recordViewModel.recentEyesightRecords.last?.id {
                                         HorizontalDivider(color: Color.lightGray, height: 1)
                                     }

@@ -13,7 +13,7 @@ struct ColorView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack {
+        VStack {
             CustomNavigationTitle(title: "색채 검사",
                                   isDisplayLeftButton: true)
             .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {

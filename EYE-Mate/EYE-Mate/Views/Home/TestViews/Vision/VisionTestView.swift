@@ -50,9 +50,9 @@ private struct VisionTest: View {
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
                 VisionRight(isChange: $isChange)
-                .onAppear(perform: {
-                    viewModel.change()
-                })
+                    .onAppear(perform: {
+                        viewModel.change()
+                    })
             } else {
                 //TODO: - 왼쪽 눈 시야검사
                 VisionLeft(isTestComplete: $isTestComplete)
@@ -103,7 +103,7 @@ private struct VisionRight: View {
         } else {
             //TODO: - 테스트 화면 보여주기
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -175,7 +175,7 @@ private struct VisionLeft: View {
         } else {
             //TODO: - 테스트 화면 보여주기
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -327,7 +327,7 @@ private struct VisionTestResultView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
+            VStack {
                 Spacer()
                     .frame(height: 1)
                 
