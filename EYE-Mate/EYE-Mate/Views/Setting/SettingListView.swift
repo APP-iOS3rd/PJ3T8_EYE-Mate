@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct SettingListView: View {
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @StateObject var settingViewModel = SettingViewModel()
-    @State var isPresented: Bool = false
-    @Binding var showAlert:Bool
+    @Binding var isLogoutAlert:Bool
+    @Binding var isSignoutAlert:Bool
+    let listWidthSize = UIScreen.main.bounds.width - 70
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(alignment: .center, spacing: 30) {
             // MARK: - 프로필
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .center, spacing: 0) {
                 SettingTitleView(title: "프로필")
                 
                 ProfileListView()
             }
         }
         // MARK: - 커뮤니티
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .center, spacing: 0) {
             SettingTitleView(title: "커뮤니티")
             SettingCellView(title: "작성한 게시글", destination: Text("작성한 게시글"))
             SettingCellView(title: "작성한 댓글", destination: Text("작성한 댓글"))
@@ -31,21 +30,25 @@ struct SettingListView: View {
         }
         
         // MARK: - 앱
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .center, spacing: 0) {
             SettingTitleView(title: "앱")
-            HStack{
-                Text("앱 버전")
-                    .font(.pretendardRegular_18)
-                    .padding(.leading, 30)
-                Spacer()
-                Text("1.0.2.1")
-                    .font(.pretendardMedium_18)
-                    .padding(.trailing, 10)
-                    .foregroundStyle(Color.gray)
+            VStack(spacing: 0) {
+                HStack{
+                    Text("앱 버전")
+                        .font(.pretendardRegular_18)
+                        .padding(.leading, 20)
+                        .foregroundStyle(Color.black)
+                    
+                    Spacer()
+                    Text("1.0.2.1")
+                        .font(.pretendardMedium_18)
+                        .padding(.trailing, 20)
+                        .foregroundStyle(Color.gray)
+                }
+                .frame(width: listWidthSize, height: 50)
+                
+                SettingListDivider()
             }
-            .frame(width: 330, height: 50)
-            
-            SettingListDivider()
             
             SettingCellView(title: "고객센터", destination: Text("고객센터"))
             SettingCellView(title: "오픈소스 라이선스", destination: Text("고객센터"))
@@ -53,16 +56,20 @@ struct SettingListView: View {
         }
         
         // MARK: - 계정
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .center, spacing: 0) {
             SettingTitleView(title: "계정")
             
             SettingCellView<Text>(title: "로그아웃")
                 .background(Color.white)
                 .onTapGesture {
-                    showAlert = true
+                    isLogoutAlert = true
                 }
-            
-            SettingCellView(title: "회원 탈퇴", destination: AccountDeleteView())
+
+            SettingCellView<Text>(title: "회원 탈퇴")
+                .background(Color.white)
+                .onTapGesture {
+                    isSignoutAlert = true
+                }
         }
         
     }
@@ -71,6 +78,7 @@ struct SettingListView: View {
 struct SettingCellView<Destination: View>: View {
     var title: String
     var destination: Destination? = nil
+    let listWidthSize = UIScreen.main.bounds.width - 70
 
     var body: some View {
         if let destinationView = destination {
@@ -87,15 +95,15 @@ struct SettingCellView<Destination: View>: View {
             HStack{
                 Text(title)
                     .font(.pretendardRegular_18)
-                    .padding(.leading, 30)
+                    .padding(.leading,20)
                     .foregroundStyle(Color.black)
                 
                 Spacer()
                 Image(systemName: "chevron.forward")
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 20)
                     .foregroundStyle(Color.gray)
             }
-            .frame(width: 330, height: 50)
+            .frame(width: listWidthSize, height: 50)
             
             SettingListDivider()
         }
@@ -108,7 +116,7 @@ struct SettingTitleView: View {
     var body: some View {
         HStack {
             Text(title)
-                .padding(.leading, 30)
+                .padding(.leading, 20)
                 .font(.pretendardSemiBold_20)
                 .foregroundStyle(Color.customGreen)
             Spacer()
@@ -118,5 +126,5 @@ struct SettingTitleView: View {
 }
 
 #Preview {
-    SettingListView(showAlert: .constant(false))
+    SettingListView(isLogoutAlert: .constant(false), isSignoutAlert: .constant(false))
 }

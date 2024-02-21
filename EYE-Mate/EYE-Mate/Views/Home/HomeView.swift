@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
-    @ObservedObject var eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel
+    @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
     
     var body: some View {
         NavigationStack {

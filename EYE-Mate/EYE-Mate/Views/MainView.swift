@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var tabManager = TabManager.shared
-    @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
     
     var body: some View {
         NavigationStack {

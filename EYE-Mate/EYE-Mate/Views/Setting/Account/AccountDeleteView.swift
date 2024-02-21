@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AccountDeleteView: View {
     @ObservedObject var accountDeleteViewModel = AccountDeleteViewModel.shared
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
+    @State private var isCheckAlert: Bool = false
+    @Binding var isSignoutAlert: Bool
+    
     var body: some View {
         VStack(spacing: 30) {
             SettingNavigationTitle(isDisplayTitle: false, leftBtnAction: {presentationMode.wrappedValue.dismiss()}, leftBtnType: .close)
@@ -45,12 +47,9 @@ struct AccountDeleteView: View {
                 
                 
                 Button {
-                    // TODO: - 탈퇴하기(유저 정보 삭제)
-                    // storage, store, auth, appstorage 삭제
-                    accountDeleteViewModel.deleteUserImageFromStorage()
-                    accountDeleteViewModel.deleteUserInfoFromStore()
-                    accountDeleteViewModel.deleteUserDefaults()
-                    presentationMode.wrappedValue.dismiss()
+                    // MARK: - 탈퇴 확인 Alert
+                    isCheckAlert = true
+                    
                 } label: {
                     Text("탈퇴")
                         .font(.pretendardBold_18)
@@ -62,12 +61,34 @@ struct AccountDeleteView: View {
                                 .foregroundStyle(Color.customRed)
                         }
                 }
-                
-
             }
             .padding(.horizontal, 20)
         }
         .navigationBarBackButtonHidden(true)
+        .fullScreenCover(isPresented: $isCheckAlert) {
+            ZStack{
+                Color.gray.opacity(0.8).edgesIgnoringSafeArea(.all)
+                
+                CustomAlertView(
+                    title: "회원 탈퇴",
+                    message: "회원님의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?",
+                    leftButtonTitle: "취소",
+                    leftButtonAction: {
+                        isCheckAlert = false
+                        isSignoutAlert = false
+                    },
+                    rightButtonTitle: "확인",
+                    rightButtonAction: {
+                        // MARK: - 탈퇴하기(유저 정보 삭제)
+                        // storage, store, auth, appstorage 삭제
+                        accountDeleteViewModel.deleteUserImageFromStorage()
+                        accountDeleteViewModel.deleteUserInfoFromStore()
+                        accountDeleteViewModel.deleteUserDefaults()
+                        presentationMode.wrappedValue.dismiss()
+                        isSignoutAlert = false
+                    })
+            }
+        }
     }
 }
 
@@ -88,6 +109,7 @@ struct AccountDeleteContents: View {
                     Text(content.subTitle)
                         .font(.pretendardSemiBold_14)
                         .foregroundStyle(Color.warningGray)
+                        .padding(.trailing, 10)
                         .lineSpacing(3)
                 }
                 .padding(.leading, 20)
@@ -106,5 +128,5 @@ struct AccountDeleteContents: View {
 }
 
 #Preview {
-    AccountDeleteView()
+    AccountDeleteView(isSignoutAlert: .constant(true))
 }

@@ -14,9 +14,9 @@ struct SettingTitleModifier: ViewModifier {
                 RoundedRectangle(cornerRadius: 10.0)
                     .foregroundStyle(Color.tabGray)
                     .opacity(0.2)
-                    .frame(width: 330, height: 45)
+                    .frame(width: UIScreen.main.bounds.width - 70, height: 45)
             }
-            .frame(width: 330, height: 45)
+            .frame(width: UIScreen.main.bounds.width - 70, height: 45)
     }
 }
 

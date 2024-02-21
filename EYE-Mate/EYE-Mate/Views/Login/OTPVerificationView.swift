@@ -18,7 +18,6 @@ enum SignUpErrorText: String {
 
 struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
     @FocusState.Binding var keyFocused: Bool
@@ -51,9 +50,9 @@ struct OTPVerificationView: View {
                             Text("Enter OTP")
                                 .foregroundColor(.warningGray)
                                 .font(.pretendardSemiBold_16)
-                                .focused($keyFocused)
                         }
                         .padding(10)
+                        .focused($keyFocused)
                         .keyboardType(.numberPad)
                         .frame(width: 300, height: 50)
                         .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
@@ -66,6 +65,7 @@ struct OTPVerificationView: View {
                             .modifier(TextModifier())
                     }
                 }
+                .animation(.easeInOut(duration: 0.6), value: keyFocused)
                 
                 // MARK: - 회원가입/로그인 버튼
                 Button {
@@ -116,12 +116,15 @@ struct OTPVerificationView: View {
                     }
                     
                 } label: {
-                    Text(signUpFlag ? "회원가입" : "로그인")
-                        .foregroundStyle(.white)
-                        .font(.pretendardSemiBold_18)
-                        .background(RoundedRectangle(cornerRadius: 10.0)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10.0)
                             .foregroundStyle(Color.customGreen)
-                            .frame(width: 300, height: 50))
+                            .frame(width: 300, height: 50)
+                        
+                        Text(signUpFlag ? "회원가입" : "로그인")
+                            .foregroundStyle(.white)
+                            .font(.pretendardSemiBold_18)
+                    }
                 }
                 .frame(width: 300, height: 50)
                 .padding(.top, 10)
