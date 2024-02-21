@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeViewCellView: View {
     let item: MenuModel
+    var isArrowButton: Bool = true
     
     var body: some View {
             HStack {
@@ -23,10 +24,26 @@ struct HomeViewCellView: View {
                         .font(.pretendardSemiBold_20)
                     Text(item.subTitle)
                         .font(.pretendardSemiBold_12)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
                 }
-                .padding(.leading, 10)
+                .padding(.leading, 5)
                 
                 Spacer()
+                
+                if isArrowButton {
+                    Circle()
+                        .frame(width: 45, height: 45)
+                        .opacity(0.8)
+                        .foregroundColor(.customGreen)
+                        .overlay {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .font(.system(size: 20))
+                                .scaleEffect(x: -1, y: 1)
+                        }
+                        .padding(.trailing, 20)
+                }
             }
             .padding(.vertical, 10)
             .background(
