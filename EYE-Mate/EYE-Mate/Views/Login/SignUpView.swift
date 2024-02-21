@@ -60,7 +60,6 @@ struct SignUpView: View {
         }
         .background(Color.white)
         .onTapGesture {
-            print("tapped")
             keyFocused = false
         }
     }

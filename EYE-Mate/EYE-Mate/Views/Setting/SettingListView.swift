@@ -11,7 +11,8 @@ struct SettingListView: View {
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @StateObject var settingViewModel = SettingViewModel()
     @State var isPresented: Bool = false
-    @Binding var showAlert:Bool
+    @Binding var isLogoutAlert:Bool
+    @Binding var isSignoutAlert:Bool
     let listWidthSize = UIScreen.main.bounds.width - 70
     
     var body: some View {
@@ -64,10 +65,16 @@ struct SettingListView: View {
             SettingCellView<Text>(title: "로그아웃")
                 .background(Color.white)
                 .onTapGesture {
-                    showAlert = true
+                    isLogoutAlert = true
+                }
+
+            SettingCellView<Text>(title: "회원 탈퇴")
+                .background(Color.white)
+                .onTapGesture {
+                    isSignoutAlert = true
                 }
             
-            SettingCellView(title: "회원 탈퇴", destination: AccountDeleteView())
+            
         }
         
     }
@@ -124,5 +131,5 @@ struct SettingTitleView: View {
 }
 
 #Preview {
-    SettingListView(showAlert: .constant(false))
+    SettingListView(isLogoutAlert: .constant(false), isSignoutAlert: .constant(false))
 }
