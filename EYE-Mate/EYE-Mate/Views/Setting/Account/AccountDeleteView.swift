@@ -109,6 +109,7 @@ struct AccountDeleteContents: View {
                     Text(content.subTitle)
                         .font(.pretendardSemiBold_14)
                         .foregroundStyle(Color.warningGray)
+                        .padding(.trailing, 10)
                         .lineSpacing(3)
                 }
                 .padding(.leading, 20)
