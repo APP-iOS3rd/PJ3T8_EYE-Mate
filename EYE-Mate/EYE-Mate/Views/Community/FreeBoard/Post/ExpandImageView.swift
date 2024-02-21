@@ -44,6 +44,10 @@ struct ExpandImageView: View {
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+            .onAppear {
+                UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.customGreen.opacity(0.6))
+                UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.customGreen.opacity(0.3))
+            }
             .overlay(alignment: .topTrailing) {
                 // Close Button
                 Button {
