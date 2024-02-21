@@ -37,6 +37,7 @@ class LoginViewModel: ObservableObject {
         print(phoneNumber)
         // reCAPTCHA 기능 중지 - simulator용
 //        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        Auth.auth().languageCode = "ko"
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
@@ -45,7 +46,7 @@ class LoginViewModel: ObservableObject {
                 }
                 if let verificationID = verificationID {
                     print("verificationID:", verificationID)
-                    self.verificationID =  verificationID
+                    self.verificationID = verificationID
                 }
             }
     }
