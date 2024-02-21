@@ -14,9 +14,9 @@ import UIKit
 struct PhoneNumberView: View {
     @StateObject var loginViewModel = LoginViewModel(verificationID: "")
     @State var presentSheet = false
-    @State var countryCode : String = "+1"
-    @State var countryFlag : String = "🇺🇸"
-    @State var countryPattern : String = "### ### ####"
+    @State var countryCode : String = "+82"
+    @State var countryFlag : String = "🇰🇷"
+    @State var countryPattern : String = "## #### ####"
     @State var countryLimit : Int = 17
     @State var mobPhoneNumber = ""
     @State var searchCountry: String  = ""
@@ -44,6 +44,7 @@ struct PhoneNumberView: View {
                         keyFocused = false
                     } label: {
                         Text("\(countryFlag) \(countryCode)")
+                            .font(.pretendardMedium_16)
                             .padding(10)
                             .frame(minWidth: 80, minHeight: 47)
                             .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
