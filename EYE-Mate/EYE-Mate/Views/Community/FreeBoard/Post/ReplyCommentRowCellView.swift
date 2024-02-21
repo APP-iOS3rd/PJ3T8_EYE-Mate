@@ -28,16 +28,11 @@ struct ReplyCommentRowCellView: View {
             HStack(spacing: 0) {
                 
                 // MARK: 대댓글 작성자 프로필 이미지
-                if replyComment.userImageURL != nil {
-                    KFImage(replyComment.userImageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 25, height: 25)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.system(size: 25))
-                }
+                KFImage(URL(string: replyComment.userImageURL))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 25, height: 25)
+                    .clipShape(Circle())
                 
                 // MARK: 대댓글 작성자 이름
                 Text("\(replyComment.userName)")

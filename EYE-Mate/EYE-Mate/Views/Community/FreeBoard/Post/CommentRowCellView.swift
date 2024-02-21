@@ -29,16 +29,11 @@ struct CommentRowCellView: View {
             HStack(spacing: 0) {
                 
                 // MARK: 댓글 작성자 이미지
-                if comment.userImageURL != nil {
-                    KFImage(comment.userImageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 25, height: 25)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.system(size: 25))
-                }
+                KFImage(URL(string: comment.userImageURL))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 25, height: 25)
+                    .clipShape(Circle())
                 
                 // MARK: 댓글 작성자 이름
                 Text("\(comment.userName)")
