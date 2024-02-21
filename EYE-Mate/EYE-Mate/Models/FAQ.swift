@@ -12,6 +12,6 @@ import FirebaseFirestore
 struct FAQ: Identifiable, Codable, Equatable, Hashable {
     @DocumentID var id: String?
     
-    var faqTitle: String
-    var faqAnswer: String
+    var question: String
+    var answer: String
 }
