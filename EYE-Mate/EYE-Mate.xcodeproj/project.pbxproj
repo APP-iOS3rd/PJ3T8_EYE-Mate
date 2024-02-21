@@ -123,7 +123,6 @@
 		710406F62B7F75C900629AF9 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D408F2B5FD885006C9FED /* ColorView.swift */; };
 		710406F72B7F75C900629AF9 /* AstigmatismViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4092B638DFF00944077 /* AstigmatismViewModel.swift */; };
 		710406F82B7F761700629AF9 /* ExplanationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D409B2B613AC5006C9FED /* ExplanationTextView.swift */; };
-		710406F12B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710406F02B7E4E0A00629AF9 /* UIGestureRecognizerDelegate.swift */; };
 		7107A3ED2B62502900944077 /* DistanceFaceAndDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EC2B62502900944077 /* DistanceFaceAndDevice.swift */; };
 		7107A3EF2B62548D00944077 /* DistanceConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EE2B62548D00944077 /* DistanceConditionViewModel.swift */; };
 		7107A4022B63478F00944077 /* VisionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A4012B63478F00944077 /* VisionViewModel.swift */; };
@@ -363,14 +362,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D2A6A452B7F721000720885 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				710406EE2B7E3C9A00629AF9 /* GoogleService-Info.plist */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		1D73AD402B6361F000DF431D /* CreateNewPost */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,7 +653,6 @@
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
 				B339148249964F1DF6C49031 /* Frameworks */,
-				1D2A6A452B7F721000720885 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -851,7 +841,6 @@
 				52E991BD2B6CCBF5002D4689 /* SettingModels.swift */,
 				52D0DE522B7213D600DBC54B /* tempUser.swift */,
 				71526A412B7253980000631E /* TestModel.swift */,
-				71526A412B7253980000631E /* Record.swift */,
 				1D2A6A482B81D23000720885 /* FAQ.swift */,
 			);
 			path = Models;
