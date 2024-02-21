@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var tabManager = TabManager()
-    
+    @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
+  
     var body: some View {
         NavigationStack {
             CustomTabBarContainerView() {
-                HomeView()
+                HomeView(eyeSenseOnBoardingViewModel: eyeSenseOnBoardingViewModel)
                     .tabBarItem(tab: .home, selection: $tabManager.selection)
                 MovementView()
                     .tabBarItem(tab: .movement, selection: $tabManager.selection)

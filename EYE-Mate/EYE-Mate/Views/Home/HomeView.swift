@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel
     
     var body: some View {
         NavigationStack {
@@ -22,9 +23,8 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         HomeViewTextView(user: viewModel.user)
                         
-                        EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                            .frame(height: 120)
-                            .padding(.top, -30)
+                        EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
+                            .padding(.horizontal, 20)
                         
                         HomeViewCellListView(viewModel: viewModel)
                         
@@ -60,11 +60,11 @@ struct HomeView: View {
 //MARK: - 상단 텍스트 뷰
 private struct HomeViewTextView: View {
     var user : UserModel
-
+    
     fileprivate init(user: UserModel) {
         self.user = user
     }
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
@@ -142,5 +142,5 @@ private struct HomeViewCellListView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel())
 }
