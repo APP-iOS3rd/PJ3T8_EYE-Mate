@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomAlertView: View {
-    @Binding var showAlert: Bool
     var title: String
     var message: String
     var leftButtonTitle: String
@@ -21,11 +20,11 @@ struct CustomAlertView: View {
             Spacer()
             
             Text(title)
-                .font(.pretendardMedium_22)
+                .font(.pretendardMedium_20)
                 .padding(10)
             
             Text(message)
-                .font(.pretendardMedium_16)
+                .font(.pretendardMedium_14)
                 .foregroundColor(Color.gray)
                 .padding(.bottom, 10)
             
@@ -58,7 +57,6 @@ struct CustomAlertView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
         }
-        .opacity(0.95)
         .frame(width: UIScreen.main.bounds.width-110, height: 150)
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 4)
@@ -66,5 +64,5 @@ struct CustomAlertView: View {
 }
 
 #Preview {
-    CustomAlertView(showAlert: .constant(true), title: "title", message: "message", leftButtonTitle: "left", leftButtonAction: {}, rightButtonTitle: "right", rightButtonAction: {})
+    CustomAlertView(title: "title", message: "message", leftButtonTitle: "left", leftButtonAction: {}, rightButtonTitle: "right", rightButtonAction: {})
 }

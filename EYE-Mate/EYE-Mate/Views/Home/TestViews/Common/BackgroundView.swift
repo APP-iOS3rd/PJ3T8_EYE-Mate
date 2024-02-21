@@ -12,7 +12,7 @@ struct BackgroundView: View {
     var body: some View {
         GeometryReader { g in
             Rectangle()
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .bottom)
                 .frame(width: g.size.width, height: g.size.height)
                 .foregroundColor(.white)
         }

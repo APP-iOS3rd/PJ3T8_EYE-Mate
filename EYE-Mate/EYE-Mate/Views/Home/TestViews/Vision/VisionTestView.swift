@@ -8,58 +8,54 @@
 import SwiftUI
 
 struct VisionTestView: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @State var isTestComplete = false
     
     
     var body: some View {
         if !isTestComplete {
-            VisionTest(viewModel: viewModel, isTestComplete: $isTestComplete)
+            VisionTest(isTestComplete: $isTestComplete)
         } else {
-            VisionTestResultView(viewModel: viewModel)
+            VisionTestResultView()
         }
     }
 }
 
 //MARK: - 테스트 화면
 private struct VisionTest: View {
-    @ObservedObject var viewModel: VisionTestViewModel
-    @Environment(\.dismiss) var dismiss
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @Binding var isTestComplete: Bool
-    @State var testPercent = 0.0
     @State var isChange: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
-            ProgressView(value: testPercent)
-                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
+            Spacer()
+                .frame(height: 5)
+            
+            HStack {
+                Text("시력 검사")
+                    .frame(maxWidth: .infinity)
+                    .font(.pretendardBold_24)
+                    .overlay(alignment: .trailing) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image("close")
+                        })
+                        .padding(.trailing)
+                    }
+            }
             if !isChange {
                 //TODO: - 오른쪽 눈 시야 검사
-                VisionRight(viewModel: viewModel,
-                                 testPercent: $testPercent,
-                                 isChange: $isChange)
+                VisionRight(isChange: $isChange)
                 .onAppear(perform: {
                     viewModel.change()
                 })
             } else {
                 //TODO: - 왼쪽 눈 시야검사
-                VisionLeft(viewModel: viewModel,
-                                testPercent: $testPercent,
-                                isTestComplete: $isTestComplete)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("시력 검사")
-                    .font(.pretendardBold_24)
-            }
-            ToolbarItem {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image("close")
-                })
+                VisionLeft(isTestComplete: $isTestComplete)
             }
         }
         .navigationBarBackButtonHidden()
@@ -68,9 +64,8 @@ private struct VisionTest: View {
 
 //MARK: - 오른쪽 눈 화면
 private struct VisionRight: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
-    @Binding var testPercent: Double
     @Binding var isChange: Bool
     @State var isReady: Bool = false
     
@@ -127,7 +122,8 @@ private struct VisionRight: View {
                             Spacer()
                             
                             //TODO: - 시력검사 화면 보여주기
-                            TestView(viewModel: viewModel, changeValue: $isChange, type: BothEyes.right)
+                            TestView(changeValue: $isChange, type: BothEyes.right,
+                                     isAnimation: distance.canStart)
                         }
                     }
                 }
@@ -140,15 +136,14 @@ private struct VisionRight: View {
 
 //MARK: - 왼쪽 눈 화면
 private struct VisionLeft: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
-    @Binding var testPercent: Double
     @Binding var isTestComplete: Bool
+    
     @State var isReady: Bool = false
     
     var body: some View {
         if !isReady {
-            //TODO: - 테스트 안내문구 보여주기
             Spacer()
             
             VStack {
@@ -199,7 +194,7 @@ private struct VisionLeft: View {
                             Spacer()
                             
                             //TODO: - 시력검사 화면 보여주기
-                            TestView(viewModel: viewModel, changeValue: $isTestComplete, type: BothEyes.left)
+                            TestView(changeValue: $isTestComplete, type: BothEyes.left, isAnimation: distance.canStart)
                         }
                     }
                 }
@@ -211,39 +206,45 @@ private struct VisionLeft: View {
 
 //MARK: - 테스트 화면
 private struct TestView: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @State private var selectedButtonIndex: Int?
     @Binding var changeValue: Bool
     @State private var confused = false
     @State var type: BothEyes
     
+    @State var isAnimation: Bool
+    
     var body: some View {
         VStack {
-            GeometryReader { geometry in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.customGreen, lineWidth: 3)
-                        .foregroundColor(.white)
-                        .shadow(radius: 3, x: 1, y: 1)
-                        .frame(width: geometry.size.width / 1.12, height: geometry.size.height / 1.15)
-                        .padding(.vertical)
-                    
-                    if !distance.canStart {
-                        Text("휴대폰과의 거리를 조정해주세요!")
-                            .offset(y: -geometry.size.height * 0.25)
-                            .font(.pretendardRegular_20)
-                            .foregroundColor(.customRed)
-                    }
-                    
-                    Text(viewModel.answer)
-                        .font(.system(size: CGFloat(viewModel.fontSize)))
-                        .blur(radius: distance.canStart ? 0 : 5)
+            ZStack {
+                Text("휴대폰과의 거리를 조정해주세요!")
+                    .font(.pretendardRegular_20)
+                    .foregroundColor(.customRed)
+                    .opacity(!isAnimation ? 1.0 : 0.0)
+                    .offset(y: -UIScreen.main.bounds.height * 0.15)
+                
+                Text(viewModel.answer)
+                    .font(.system(size: CGFloat(viewModel.fontSize)))
+                    .blur(radius: isAnimation ? 0 : 5)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.customGreen, lineWidth: 3)
+                    .foregroundColor(.white)
+                    .shadow(radius: 3, x: 1, y: 1)
+            )
+            .padding(30)
+            .onChange(of: distance.canStart) { newValue in
+                withAnimation {
+                    isAnimation = newValue
                 }
-                .padding(.leading, 20)
             }
             
+            
             Text("위의 문양을 보고 같은 문양을 고르세요.")
+                .font(.pretendardRegular_20)
             
             HStack(spacing: 20) {
                 ForEach(0..<3){ index in
@@ -262,13 +263,13 @@ private struct TestView: View {
                     }, label: {
                         Text(viewModel.question[index])
                             .font(.pretendardMedium_22)
-                            .frame(width: 20)
+                            .frame(width: 20, height: 20)
                             .foregroundColor(.black)
                     })
                     .padding(25)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.black, lineWidth: 3)
+                            .stroke(.black, lineWidth: 5)
                             .background(selectedButtonIndex == index ? Color.customGreen : .white)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     )
@@ -283,13 +284,13 @@ private struct TestView: View {
                 }, label: {
                     Text("?")
                         .font(.pretendardMedium_22)
-                        .frame(width: 20)
+                        .frame(width: 20, height: 20)
                         .foregroundColor(.black)
                 })
                 .padding(25)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(.black, lineWidth: 3)
+                        .stroke(.black, lineWidth: 5)
                         .background(confused ? Color.customGreen : .white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 )
@@ -311,74 +312,124 @@ private struct TestView: View {
 
 //MARK: - 테스트 결과 화면
 private struct VisionTestResultView: View {
-    @ObservedObject var viewModel: VisionTestViewModel
+    @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
+    @ObservedObject var loginViewModel = LoginViewModel.shared
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var tabManager: TabManager
+    
+    @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_UID") private var userUID: String = ""
+    
+    @State var showAlert: Bool = false
+    
+    
     var body: some View {
-        NavigationStack {
-            let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
-            
-            if total != 0 {
-                ScrollView(showsIndicators: false) {
-                    ResultTextView(viewModel: viewModel)
-                   
-                    Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
-                        .font(.pretendardBold_20)
+        ZStack {
+            NavigationStack {
+                Spacer()
+                    .frame(height: 1)
+                
+                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
+                
+                VStack(spacing: 10) {
+                    HStack(spacing: 5) {
+                        Text("어디로 가야하오")
+                            .font(.pretendardBold_32)
+                        Text("님!")
+                            .font(.pretendardBold_32)
+                    }
+                    
+                    Text("검사 결과가 나왔어요.")
+                        .font(.pretendardBold_28)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 20)
+                
+                if total != 0 {
+                    ScrollView(showsIndicators: false) {
+                        ResultTextView(viewModel: viewModel)
                         
-                        .foregroundColor(.customGreen)
-                    Color.customGreen
-                        .frame(height: 3)
-                        .padding(.horizontal, 10)
-                    VStack {
-                        ForEach(0..<total) { index in
-                            PlaceCellView(place: coordinator.resultInfo[index])
+                        Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                            .font(.pretendardBold_20)
+                        
+                            .foregroundColor(.customGreen)
+                        Color.customGreen
+                            .frame(height: 3)
+                            .padding(.horizontal, 10)
+                        VStack {
+                            ForEach(0..<total, id: \.self) { index in
+                                PlaceCellView(place: coordinator.resultInfo[index])
+                            }
+                            
+                            Button(action: {
+                                //TODO: - 로그인 상태라면 저장 후 이동, 아니면 Alert창
+                                if loggedIn {
+                                    viewModel.saveResult(userUID)
+                                    tabManager.selection = .eyeMap
+                                    dismiss()
+                                } else {
+                                    showAlert = true
+                                }
+                            }, label: {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                    .foregroundColor(.customGreen)
+                                    .frame(height: 80)
+                                    .padding(10)
+                                    .overlay(
+                                        Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                            .multilineTextAlignment(.center)
+                                            .font(.pretendardLight_16)
+                                            .foregroundColor(.tabGray)
+                                    )
+                            })
                         }
                     }
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                        .foregroundColor(.customGreen)
-                        .frame(height: 80)
-                        .padding(10)
-                        .overlay(
-                            Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
-                                .multilineTextAlignment(.center)
-                                .font(.pretendardLight_16)
-                                .foregroundColor(.tabGray)
-                        )
                 }
-            }
-            else {
-                ResultTextView(viewModel: viewModel)
-                
-                Spacer()
-                
-                Text("내 주변에 안과나 안경점이 없어요!")
-                    .font(.pretendardBold_24)
-                    .foregroundColor(.customGreen)
-                
-                Spacer()
-                
-                Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
-                    .multilineTextAlignment(.center)
-                    .font(.pretendardSemiBold_20)
+                else {
+                    ResultTextView(viewModel: viewModel)
                     
-                Spacer()
+                    Spacer()
+                    
+                    Text("내 주변에 안과나 안경점이 없어요!")
+                        .font(.pretendardBold_24)
+                        .foregroundColor(.customGreen)
+                    
+                    Spacer()
+                    
+                    Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
+                        .multilineTextAlignment(.center)
+                        .font(.pretendardSemiBold_20)
+                    
+                    Spacer()
+                }
+                CustomButton(title: "돌아가기",
+                             background: .customGreen,
+                             fontStyle: .pretendardBold_16,
+                             action: {
+                    if loggedIn {
+                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        viewModel.saveResult(userUID)
+                        
+                        dismiss()
+                    } else {
+                        //TODO: - Alert 창 띄워주고 선택
+                        
+                    }
+                } )
+                .frame(maxHeight: 75)
             }
-            
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                MapCoordinator.shared.checkIfLocationServiceIsEnabled()
+            }
+            TestAlertView(showAlert: $showAlert)
         }
-        .navigationBarBackButtonHidden()
-        .onAppear {
-            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
-        }
-        
-        CustomButton(title: "돌아가기",
-                     background: .customGreen,
-                     fontStyle: .pretendardBold_16,
-                     //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                     action: { dismiss() } )
-        .frame(maxHeight: 75)
-        
+        .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
+            LoginView(isAlertView: true)
+        })
     }
 }
 
@@ -387,18 +438,6 @@ private struct ResultTextView: View {
     @ObservedObject var viewModel: VisionTestViewModel
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 5) {
-                Text("어디로 가야하오")
-                    .font(.pretendardBold_32)
-                Text("님!")
-                    .font(.pretendardBold_32)
-            }
-            .padding(.leading, 10)
-            
-            Text("검사 결과가 나왔어요.")
-                .font(.pretendardBold_28)
-                .padding(.leading, 10)
-            
             HStack(alignment: .lastTextBaseline) {
                 Text("측정거리: ")
                     .font(.pretendardLight_26)
@@ -415,7 +454,7 @@ private struct ResultTextView: View {
                         .offset(y: 20)
                 )
             }
-            .padding(15)
+            .padding([.horizontal, .bottom], 15)
             
             
             HStack {

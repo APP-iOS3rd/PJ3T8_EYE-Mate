@@ -10,15 +10,15 @@ import FirebaseAuth
 
 struct ProfileView: View {
     @AppStorage("Login") var loggedIn: Bool = false
-    @ObservedObject var profileViewModel: ProfileViewModel = ProfileViewModel.shared
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     
     var body: some View {
         VStack{
             // TODO: 로그인 상태면 개인 프로필뷰
             if loggedIn {
-                SettingView(profileViewModel: profileViewModel)
+                SettingView()
             } else {
-                LoginView()
+                LoginView(isAlertView: false)
             }
         }
         .navigationBarBackButtonHidden(true)

@@ -29,16 +29,11 @@ struct CommentRowCellView: View {
             HStack(spacing: 0) {
                 
                 // MARK: 댓글 작성자 이미지
-                if comment.userImageURL != nil {
-                    KFImage(comment.userImageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 25, height: 25)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.system(size: 25))
-                }
+                KFImage(URL(string: comment.userImageURL))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 25, height: 25)
+                    .clipShape(Circle())
                 
                 // MARK: 댓글 작성자 이름
                 Text("\(comment.userName)")
@@ -48,65 +43,70 @@ struct CommentRowCellView: View {
                 Spacer()
                 
                 // MARK: 댓글 좋아요 Btn
-                Button {
-                    commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
-                        onUpdateComment(postID, commentIndex)
+                HStack(spacing: 0) {
+                    Button {
+                        commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
+                            onUpdateComment(postID, commentIndex)
+                        }
+                    } label: {
+                        Image(systemName: "heart")
+                            .font(.system(size: 12))
+                            .foregroundStyle(Color.white)
+                            .padding(5)
                     }
-                } label: {
-                    Image(systemName: "heart")
+                    
+                    Image(systemName: "poweron")
                         .font(.system(size: 12))
-                        .foregroundStyle(Color.customGreen)
-                }
-                
-                Image(systemName: "poweron")
-                    .font(.system(size: 12))
-                    .foregroundStyle(Color.customGreen)
-                    .padding(.horizontal, 2)
-                
-                // MARK: 대댓글 기능 작성 필요
-                // MARK: 대댓글 작성 Btn
-                Button {
-                    commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
-                        startWritingReplyComment(commentID, commentIndex)
+                        .foregroundStyle(Color.white)
+                    
+                    // MARK: 대댓글 기능 작성 필요
+                    // MARK: 대댓글 작성 Btn
+                    Button {
+                        commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
+                            startWritingReplyComment(commentID, commentIndex)
+                        }
+                    } label: {
+                        Image(systemName: "message")
+                            .font(.system(size: 12))
+                            .foregroundStyle(Color.white)
+                            .padding(5)
                     }
-                } label: {
-                    Image(systemName: "message")
+                    
+                    Image(systemName: "poweron")
                         .font(.system(size: 12))
-                        .foregroundStyle(Color.customGreen)
-                }
-                
-                Image(systemName: "poweron")
-                    .font(.system(size: 12))
-                    .foregroundStyle(Color.customGreen)
-                    .padding(.horizontal, 2)
-                
-                // MARK: 신고 기능 작성 필요
-                // MARK: 댓글 신고, 삭제 메뉴
-                Menu {
-                    if comment.userUID == commentVM.userUID {
-                        /// 댓글 삭제 Action
-                        Button(role: .destructive) {
-                            withAnimation {
-                                commentVM.deleteComment(commentID: comment.id) { postID, commentIndex in
-                                    deleteComment(postID, commentIndex)
+                        .foregroundStyle(Color.white)
+                    
+                    // TODO: 신고 기능 작성 필요
+                    // MARK: 댓글 신고, 삭제 메뉴
+                    Menu {
+                        if comment.userUID == commentVM.userUID {
+                            /// 댓글 삭제 Action
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    commentVM.deleteComment(commentID: comment.id) { postID, commentIndex in
+                                        deleteComment(postID, commentIndex)
+                                    }
                                 }
+                            } label: {
+                                Label("삭제", systemImage: "trash")
                             }
-                        } label: {
-                            Label("삭제", systemImage: "trash")
+                        } else {
+                            Button(role: .destructive) {
+                                
+                            } label: {
+                                Label("신고", systemImage: "light.beacon.max.fill")
+                            }
                         }
-                    } else {
-                        Button(role: .destructive) {
-                            
-                        } label: {
-                            Label("신고", systemImage: "light.beacon.max.fill")
-                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .rotationEffect(.degrees(90))
+                            .font(.system(size: 12))
+                            .frame(height: 12)
+                            .foregroundStyle(Color.white)
+                            .padding(5)
                     }
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .rotationEffect(.degrees(90))
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.customGreen)
                 }
+                .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.customGreen).opacity(1))
             }
             
             Text("\(comment.comment)")

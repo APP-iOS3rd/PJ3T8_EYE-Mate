@@ -34,7 +34,7 @@ struct SettingView: View {
                     }
                     .padding(.vertical, 50)
                     
-                    SettingListView(profileViewModel: profileViewModel, showAlert: $showAlert)
+                    SettingListView(showAlert: $showAlert)
                 }
             }
             
@@ -44,11 +44,10 @@ struct SettingView: View {
                     Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
                     
                     CustomAlertView(
-                        showAlert: $showAlert,
                         title: "로그아웃",
                         message: "로그아웃 하시겠습니까?",
                         leftButtonTitle: "취소",
-                        leftButtonAction: { showAlert = false},
+                        leftButtonAction: { showAlert = false },
                         rightButtonTitle: "확인",
                         rightButtonAction: {
                         // MARK: - 로그아웃 처리
@@ -68,5 +67,5 @@ struct SettingView: View {
 }
 
 #Preview {
-    SettingView(profileViewModel: ProfileViewModel())
+    SettingView()
 }

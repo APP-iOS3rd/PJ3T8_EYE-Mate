@@ -34,6 +34,7 @@ struct ReusablePostsView: View {
         .scrollIndicators(.never)
         .refreshable {
             /// 위로 스크롤 당겨서 새로고침
+            hideKeyboard()
             Task {
                 await freeboardVM.refreshable()
             }
@@ -44,7 +45,9 @@ struct ReusablePostsView: View {
             await freeboardVM.fetchPosts()
         }
     }
-    
+}
+
+extension ReusablePostsView {
     @ViewBuilder
     func PostList() -> some View {
         ForEach(freeboardVM.posts) { post in
@@ -54,6 +57,7 @@ struct ReusablePostsView: View {
                     /// 게시물 좋아요 Local Data 업데이트
                     if let index = freeboardVM.posts.firstIndex(where: { post in post.id == updatedPost.id }) {
                         freeboardVM.posts[index].likedIDs = updatedPost.likedIDs
+                        freeboardVM.posts[index].scrapIDs = updatedPost.scrapIDs
                     }
                 } onDelete: {
                     /// 게시물 삭제 Local Data 업데이트
@@ -90,9 +94,33 @@ struct ReusablePostsView: View {
                     if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
                         freeboardVM.posts[index].comments[commentIndex].replyComments.remove(at: replyCommentIndex)
                     }
+                } onEditPost: { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
+                    /// 게시물 수정
+                    if let postIndex = freeboardVM.posts.firstIndex(where: {$0.id == postID}) {
+                        freeboardVM.posts[postIndex].postTitle = postTitle
+                        freeboardVM.posts[postIndex].postContent = postContent
+                        freeboardVM.posts[postIndex].postImageURLs = postImageURLs
+                        freeboardVM.posts[postIndex].imageReferenceIDs = imageReferenceIDs
+                    }
                 }
             } label: {
                 PostCardView(post: post)
+            }
+            .onAppear {
+                /// - 마지막 게시물이 나타나면 새 게시물 가져오기(있는 경우)
+                if post.id == freeboardVM.posts.last?.id && freeboardVM.paginationDoc != nil {
+                    if freeboardVM.isSearching {
+                        /// 검색중일 경우
+                        Task {
+                            await freeboardVM.fetchPosts(searchText: freeboardVM.searchText)
+                        }
+                    } else { 
+                        /// 검색중이 아닐 경우
+                        Task {
+                            await freeboardVM.fetchPosts()
+                        }
+                    }
+                }
             }
         }
     }

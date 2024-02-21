@@ -12,6 +12,7 @@ struct RecordView: View {
     @EnvironmentObject var router: Router
 
     @State private var visions = []
+    @ObservedObject private var viewModel = HomeViewModel.shared
 
     private func goBack() {
         router.navigateBack()
@@ -27,50 +28,16 @@ struct RecordView: View {
     }()
 
     var body: some View {
-
-        VStack(spacing: 0) {
-            HStack(alignment: .bottom) {
-                HStack(alignment: .bottom, spacing: 8) {
-                    Button {
-                        goBack()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.black)
-                            .font(.system(size: 32))
-                            .padding(.bottom, 2)
-                    }
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("EYE-Mate")
-                            .font(.pretendardSemiBold_22)
-                        Text("기록")
-                            .font(.pretendardSemiBold_32)
-                    }
-                }
+            VStack(spacing: 0) {
+                CustomNavigationTitle(title: "기록",
+                                      isDisplayLeftButton: true)
+                
                 Spacer()
-                Circle()
-                    .foregroundColor(Color.blue)
-                    .frame(width: 50, height: 50)
-            }
-            .frame(height: 80)
-            .padding(.leading, 12)
-            .padding(.trailing, 36)
-            .padding(.bottom, 24)
-            HorizontalDivider(color: Color.customGreen, height: 4)
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(maxWidth: 320)
-                            .frame(height: 32)
-                            .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
-                            .foregroundStyle(Color.white)
-                            .overlay{
-                                Text("23년 11월 21일(월) ~ 24년 01월 17일(수)")
-                                    .font(.pretendardRegular_16)
-                            }
-                        Button {
-                            router.navigate(to: .addRecord)
-                        } label: {
+                
+                HorizontalDivider(color: Color.customGreen, height: 4)
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        HStack(spacing: 16) {
                             RoundedRectangle(cornerRadius: 16)
                                 .frame(maxWidth: 40)
                                 .frame(height: 32)

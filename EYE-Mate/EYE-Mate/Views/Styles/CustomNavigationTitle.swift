@@ -9,23 +9,14 @@ import SwiftUI
 import Kingfisher
 
 struct CustomNavigationTitle: View {
-    let title: String
-    let userImageUrl: String
-    let isDisplayLeftButton: Bool
-    let leftButtonAction: () -> Void
+    var title: String = ""
+    var isDisplayLeftButton: Bool = false
+    
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var tabManager = TabManager.shared
     
-    init(title: String = "",
-         userImageUrl: String = "",
-         isDisplayLeftButton: Bool = true,
-         leftButtonAction: @escaping () -> Void = {}
-    ) {
-        self.title = title
-        self.userImageUrl = userImageUrl
-        self.isDisplayLeftButton = isDisplayLeftButton
-        self.leftButtonAction = leftButtonAction
-    }
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     
     var body: some View {
         HStack(alignment: .bottom) {
@@ -33,22 +24,43 @@ struct CustomNavigationTitle: View {
                 Button(action: { dismiss() },
                        label: {
                     Image(systemName: "chevron.backward")
-                        .resizable()
-                        .frame(width: 16, height: 32)
+                        .font(.system(size: 35))
                         .foregroundColor(.black)
                 })
             }
             VStack(alignment: .leading) {
                 Text("EYE-Mate")
                     .font(.pretendardSemiBold_22)
-                    .padding(.leading, 6)
                 Spacer()
                     .frame(height: 10)
+                if title == "" {
+                    switch tabManager.selection {
+                    case .home:
+                        HStack(spacing: 5) {
+                            Text(userName)
+                                .font(.pretendardSemiBold_32)
+                                .foregroundColor(.customGreen)
+                            
+                            Text("님!")
+                                .font(.pretendardBold_32)
+                        }
+                    case .movement:
+                        Text("눈운동")
+                            .font(.pretendardBold_32)
+                    case .community:
+                        Text("게시판")
+                            .font(.pretendardBold_32)
+                    case .eyeMap:
+                        Text("내주변")
+                            .font(.pretendardBold_32)
+                    }
+                } else {
+                    Text(title)
+                        .font(.pretendardBold_32)
+                }
                 
-                Text(title)
-                    .font(.pretendardBold_32)
             }
-            .padding(.bottom, title == "" ? 21 : -3)
+                
             Spacer()
             
             
@@ -61,10 +73,11 @@ struct CustomNavigationTitle: View {
             })
             
         }
-        .padding(20)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 10)
     }
 }
 
 #Preview {
-    CustomNavigationTitle(title: "홈")
+    CustomNavigationTitle()
 }

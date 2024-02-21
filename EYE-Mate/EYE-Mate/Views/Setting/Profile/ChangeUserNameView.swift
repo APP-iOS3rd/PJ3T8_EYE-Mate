@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChangeUserNameView: View {
-    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
     @State var textName: String = ""
@@ -48,5 +48,4 @@ struct ChangeUserNameView: View {
 
 #Preview {
     ChangeUserNameView()
-        .environmentObject(ProfileViewModel())
 }
