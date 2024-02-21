@@ -8,36 +8,36 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject private var viewModel = HomeViewModel.shared
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
-    
+
     @Binding var tabSelection: TabBarItem
-    
+
+    @EnvironmentObject var router: Router
+
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                CustomNavigationTitle(isDisplayLeftButton: false)
-                
-                Spacer()
-                    .frame(height: 5)
-                ScrollView(showsIndicators: false) {
-                    VStack(alignment: .leading) {
-                        HomeViewTextView(user: viewModel.user)
-                        
-                        EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                            .frame(height: 120)
-                            .padding(.top, -30)
-                        
-                        HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
-                        
-                        Spacer()
-                    }
+        VStack(alignment: .leading) {
+            CustomNavigationTitle(isDisplayLeftButton: false)
+            Spacer()
+                .frame(height: 5)
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    HomeViewTextView(user: viewModel.user)
+
+                    EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
+                        .frame(height: 120)
+                        .padding(.top, -30)
+
+                    HomeViewCellListView(viewModel: viewModel, tabSelection: $tabSelection)
+
+                    Spacer()
                 }
-                Spacer()
-                    .frame(height: 85)
             }
+            Spacer()
+                .frame(height: 85)
         }
-        
+
+
         .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
             ProfileView()
         }
@@ -90,18 +90,19 @@ private struct HomeViewTextView: View {
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @EnvironmentObject var router: Router
     @Binding var tabSelection: TabBarItem
-    
+
     var body: some View {
         HStack(spacing: 10) {
             Button(action: {
-                viewModel.isPresentedRecordView = true
+                router.navigate(to: .record)
             }, label: {
                 HomeViewCellView(item: .init(img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
                     .padding(.leading, 10)
                     .foregroundColor(.black)
             })
-            
+
             Button(action: {
                 tabSelection = .movement
             }, label: {
@@ -111,7 +112,7 @@ private struct HomeViewCellListView: View {
             })
         }
         .padding(.bottom, 5)
-        
+
         VStack(spacing: 15) {
             Button(action: {
                 viewModel.isPresentedVisionView = true

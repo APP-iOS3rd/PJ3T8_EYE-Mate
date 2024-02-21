@@ -55,8 +55,8 @@
 		33DA6A952B7B39C7006C4827 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */; };
 		33DA6A982B7C97BD006C4827 /* AllRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A972B7C97BD006C4827 /* AllRecordView.swift */; };
 		33DA6A9A2B7C97DF006C4827 /* AllRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */; };
-		33DA6A9C2B7D1BB0006C4827 /* AllRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */; };
 		33DA6A9F2B84764A006C4827 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */; };
+		33DA6AA12B85F233006C4827 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AA02B85F233006C4827 /* Router.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -220,8 +220,8 @@
 		33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		33DA6A972B7C97BD006C4827 /* AllRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordView.swift; sourceTree = "<group>"; };
 		33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordHeader.swift; sourceTree = "<group>"; };
-		33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordList.swift; sourceTree = "<group>"; };
 		33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		33DA6AA02B85F233006C4827 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -422,7 +422,6 @@
 			children = (
 				33DA6A972B7C97BD006C4827 /* AllRecordView.swift */,
 				33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */,
-				33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */,
 			);
 			path = AllRecord;
 			sourceTree = "<group>";
@@ -834,6 +833,7 @@
 				52E991BD2B6CCBF5002D4689 /* SettingModels.swift */,
 				52D0DE522B7213D600DBC54B /* tempUser.swift */,
 				71526A412B7253980000631E /* Record.swift */,
+				33DA6AA02B85F233006C4827 /* Router.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1053,7 +1053,6 @@
 				1DF7E7392B68DB2A00602BBB /* Post.swift in Sources */,
 				5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
-				33DA6A9C2B7D1BB0006C4827 /* AllRecordList.swift in Sources */,
 				3398D4922B73919000535E0C /* AddRecordView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
@@ -1081,6 +1080,7 @@
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
 				521DCDD12B71C49A002C786A /* ProfileListView.swift in Sources */,
+				33DA6AA12B85F233006C4827 /* Router.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightView.swift in Sources */,
 				52AFE7BA2B78029F0007028F /* String+Extension.swift in Sources */,
 				52E991C02B6CCD47002D4689 /* SettingViewModel.swift in Sources */,

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct RecordView: View {
-    @Environment(\.presentationMode) var presentationMode
-    @StateObject private var recordViewModel = RecordViewModel()
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
+    @EnvironmentObject var router: Router
 
     @State private var visions = []
 
     private func goBack() {
-        presentationMode.wrappedValue.dismiss()
+        router.navigateBack()
     }
 
     static let dateFormat: DateFormatter = {
@@ -27,76 +27,77 @@ struct RecordView: View {
     }()
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                HStack(alignment: .bottom) {
-                    HStack(alignment: .bottom, spacing: 8) {
-                        Button {
-                            goBack()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.black)
-                                .font(.system(size: 32))
-                                .padding(.bottom, 2)
-                        }
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("EYE-Mate")
-                                .font(.pretendardSemiBold_22)
-                            Text("기록")
-                                .font(.pretendardSemiBold_32)
-                        }
+
+        VStack(spacing: 0) {
+            HStack(alignment: .bottom) {
+                HStack(alignment: .bottom, spacing: 8) {
+                    Button {
+                        goBack()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                            .font(.system(size: 32))
+                            .padding(.bottom, 2)
                     }
-                    Spacer()
-                    Circle()
-                        .foregroundColor(Color.blue)
-                        .frame(width: 50, height: 50)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("EYE-Mate")
+                            .font(.pretendardSemiBold_22)
+                        Text("기록")
+                            .font(.pretendardSemiBold_32)
+                    }
                 }
-                .frame(height: 80)
-                .padding(.leading, 12)
-                .padding(.trailing, 36)
-                .padding(.bottom, 24)
-                HorizontalDivider(color: Color.customGreen, height: 4)
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        HStack(spacing: 16) {
+                Spacer()
+                Circle()
+                    .foregroundColor(Color.blue)
+                    .frame(width: 50, height: 50)
+            }
+            .frame(height: 80)
+            .padding(.leading, 12)
+            .padding(.trailing, 36)
+            .padding(.bottom, 24)
+            HorizontalDivider(color: Color.customGreen, height: 4)
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        RoundedRectangle(cornerRadius: 16)
+                            .frame(maxWidth: 320)
+                            .frame(height: 32)
+                            .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
+                            .foregroundStyle(Color.white)
+                            .overlay{
+                                Text("23년 11월 21일(월) ~ 24년 01월 17일(수)")
+                                    .font(.pretendardRegular_16)
+                            }
+                        Button {
+                            router.navigate(to: .addRecord)
+                        } label: {
                             RoundedRectangle(cornerRadius: 16)
-                                .frame(maxWidth: 320)
+                                .frame(maxWidth: 40)
                                 .frame(height: 32)
                                 .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
                                 .foregroundStyle(Color.white)
                                 .overlay{
-                                    Text("23년 11월 21일(월) ~ 24년 01월 17일(수)")
-                                        .font(.pretendardRegular_16)
+                                    Image(systemName: "plus")
+                                        .foregroundStyle(Color.customGreen)
+                                        .font(.system(size: 20))
                                 }
-
-                            NavigationLink(destination: AddRecordView()) {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .frame(maxWidth: 40)
-                                    .frame(height: 32)
-                                    .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
-                                    .foregroundStyle(Color.white)
-                                    .overlay{
-                                        Image(systemName: "plus")
-                                            .foregroundStyle(Color.customGreen)
-                                            .font(.system(size: 20))
-                                    }
-                            }
                         }
-                        RecordDataBox(recordType: .vision)
-                        if recordViewModel.recentVisionRecords.isEmpty {
-                            EmptyVisionChart()
-                        } else {
-                            VisionChart(visionRecords: recordViewModel.recentVisionRecords)
-                        }
-                        RecordDataBox(recordType: .colorVision)
-                        RecordDataBox(recordType: .astigmatism)
-                        RecordDataBox(recordType: .eyesight)
-                    }.padding(16)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.lightGray)
-                .scrollIndicators(ScrollIndicatorVisibility.hidden)
+                    }
+                    RecordDataBox(recordType: .vision)
+                    if recordViewModel.recentVisionRecords.isEmpty {
+                        EmptyVisionChart()
+                    } else {
+                        VisionChart(visionRecords: recordViewModel.recentVisionRecords)
+                    }
+                    RecordDataBox(recordType: .colorVision)
+                    RecordDataBox(recordType: .astigmatism)
+                    RecordDataBox(recordType: .eyesight)
+                }.padding(16)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.lightGray)
+            .scrollIndicators(ScrollIndicatorVisibility.hidden)
+
             .navigationBarBackButtonHidden()
             .task {
                 do {
@@ -120,6 +121,18 @@ struct RecordView: View {
                     print("Error fetching eyesight records: \(error)")
                 }
             }
+        }
+        .navigationDestination(isPresented: $recordViewModel.isPresentedVisionRecordListView) {
+            AllRecordView(recordType: .vision)
+        }
+        .navigationDestination(isPresented: $recordViewModel.isPresentedColorVisionRecordListView) {
+            AllRecordView(recordType: .colorVision)
+        }
+        .navigationDestination(isPresented: $recordViewModel.isPresentedAstigmatismRecordListView) {
+            AllRecordView(recordType: .astigmatism)
+        }
+        .navigationDestination(isPresented: $recordViewModel.isPresentedEyesightRecordListView) {
+            AllRecordView(recordType: .eyesight)
         }
     }
 

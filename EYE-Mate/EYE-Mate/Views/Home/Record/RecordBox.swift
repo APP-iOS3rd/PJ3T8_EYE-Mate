@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RecordBox: View {
     let type: TestType
-    
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
+
     var body: some View {
         VStack {
             VStack(spacing: 16) {
@@ -17,7 +18,18 @@ struct RecordBox: View {
                     Text(type.rawValue)
                         .font(.pretendardBold_20)
                     Spacer()
-                    NavigationLink(destination: AllRecordView(recordType: type)) {
+                    Button {
+                        switch type {
+                        case .vision:
+                            recordViewModel.isPresentedVisionRecordListView = true
+                        case .colorVision:
+                            recordViewModel.isPresentedColorVisionRecordListView = true
+                        case .astigmatism:
+                            recordViewModel.isPresentedAstigmatismRecordListView = true
+                        case .eyesight:
+                            recordViewModel.isPresentedEyesightRecordListView = true
+                        }
+                    } label: {
                         Text("모두보기")
                             .font(.pretendardRegular_14)
                             .foregroundStyle(.black)
@@ -25,7 +37,7 @@ struct RecordBox: View {
                 }
                 HorizontalDivider(color: Color.lightGray, height: 3)
                 VStack(alignment: .leading, spacing: 0) {
-    
+
                 }
             }
             .frame(maxWidth: .infinity)

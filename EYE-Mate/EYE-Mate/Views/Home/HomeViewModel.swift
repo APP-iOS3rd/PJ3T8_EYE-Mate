@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    static let shared = HomeViewModel()
+    @Published var navigationPath = NavigationPath()
+
     @Published var isPresentedRecordView = false
     
     @Published var isPresentedVisionView = false

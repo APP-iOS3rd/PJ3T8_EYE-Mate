@@ -9,22 +9,21 @@ import SwiftUI
 
 struct MainView: View {
     @State private var tabSelection: TabBarItem = .home
-    
+    @EnvironmentObject var router: Router
+
     var body: some View {
-        NavigationStack {
-            CustomTabBarContainerView(selection: $tabSelection) {
-                HomeView(tabSelection: $tabSelection)
-                    .tabBarItem(tab: .home, selection: $tabSelection)
-                MovementView()
-                    .tabBarItem(tab: .movement, selection: $tabSelection)
-                CommunityView()
-                    .tabBarItem(tab: .community, selection: $tabSelection)
-                EyeMapView()
-                    .tabBarItem(tab: .eyeMap, selection: $tabSelection)
-            }
-            .accentColor(.customGreen)
-            .padding(0)
+        CustomTabBarContainerView(selection: $tabSelection) {
+            HomeView(tabSelection: $tabSelection)
+                .tabBarItem(tab: .home, selection: $tabSelection)
+            //                MovementView()
+            //                    .tabBarItem(tab: .movement, selection: $tabSelection)
+            //                CommunityView()
+            //                    .tabBarItem(tab: .community, selection: $tabSelection)
+            //                EyeMapView()
+            //                    .tabBarItem(tab: .eyeMap, selection: $tabSelection)
         }
+        .accentColor(.customGreen)
+        .padding(0)
     }
 }
 
