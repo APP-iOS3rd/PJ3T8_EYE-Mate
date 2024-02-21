@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel
     
     var body: some View {
         NavigationStack {
@@ -17,9 +18,9 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
                         HomeViewTextView()
-                        
-                        EyeSenseOnboardingView(onboardingViewModel: viewModel.onboardingModel)
-                            .frame(height: 120)
+                      
+                        EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
+                            .padding(.horizontal, 20)
                         
                         HomeViewCellListView()
                         
@@ -129,5 +130,5 @@ private struct HomeViewCellListView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel())
 }
