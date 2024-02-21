@@ -47,7 +47,7 @@ struct SettingView: View {
                         title: "로그아웃",
                         message: "로그아웃 하시겠습니까?",
                         leftButtonTitle: "취소",
-                        leftButtonAction: { showAlert = false},
+                        leftButtonAction: { showAlert = false },
                         rightButtonTitle: "확인",
                         rightButtonAction: {
                         // MARK: - 로그아웃 처리

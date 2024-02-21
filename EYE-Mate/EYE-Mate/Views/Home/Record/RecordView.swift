@@ -16,7 +16,8 @@ struct RecordView: View {
     
     var body: some View {
             VStack(spacing: 0) {
-                CustomNavigationTitle(title: "기록")
+                CustomNavigationTitle(title: "기록",
+                                      isDisplayLeftButton: true)
                 
                 Spacer()
                 
