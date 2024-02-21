@@ -22,7 +22,7 @@ struct ColoredText: View {
         if let doubleText = Double(receivedText) {
             switch doubleText {
             case ...0.3:
-                return Color.customRed
+                return Color.lightRed
             case 0.3..<0.8:
                 return Color.lightYellow
             case 0.8...:
@@ -33,7 +33,7 @@ struct ColoredText: View {
         } else {
             switch receivedText {
             case "나쁨", "심각한 색채 지각 이상":
-                return Color.customRed
+                return Color.lightRed
             case "양호", "경미한 색채 지각 이상", "중증도의 색채 지각 이상":
                 return Color.lightYellow
             case "좋음", "정상적인 색채 지각":

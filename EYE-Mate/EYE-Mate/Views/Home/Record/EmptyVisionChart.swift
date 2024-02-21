@@ -8,6 +8,13 @@
 import Charts
 import SwiftUI
 
+struct VisionData: Identifiable {
+    let id = UUID()
+    let date: String
+    let left: Double
+    let right: Double
+}
+
 struct EmptyVisionChart: View {
     let dataArray = [
         VisionData(date: "23.12.30(토)", left: 0, right: 0.1),
