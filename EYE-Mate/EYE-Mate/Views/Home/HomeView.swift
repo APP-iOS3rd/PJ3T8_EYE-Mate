@@ -14,10 +14,6 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                CustomNavigationTitle(isDisplayLeftButton: false)
-                
-                Spacer()
-                
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
                         HomeViewTextView()
@@ -92,15 +88,14 @@ private struct HomeViewCellListView: View {
                 Button(action: {
                     viewModel.isPresentedRecordView = true
                 }, label: {
-                    HomeViewCellView(item: .init(img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"))
+                    HomeViewCellView(item: .init(img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"), isArrowButton: false)
                         .foregroundColor(.black)
                 })
                 
                 Button(action: {
                     tabManager.selection = .movement
                 }, label: {
-                    HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "눈 피로감 줄이기"))
-                    
+                    HomeViewCellView(item: .init(img: Image("Movement"), title: "눈 운동", subTitle: "눈 피로감 줄이기"), isArrowButton: false)
                         .foregroundColor(.black)
                 })
             }
@@ -129,7 +124,7 @@ private struct HomeViewCellListView: View {
                     .foregroundColor(.black)
             })
         }
-        .padding(.horizontal, 15)
+        .padding(.horizontal, 20)
     }
 }
 
