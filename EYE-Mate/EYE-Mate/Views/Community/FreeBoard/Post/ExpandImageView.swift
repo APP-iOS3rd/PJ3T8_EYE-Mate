@@ -48,7 +48,6 @@ struct ExpandImageView: View {
                 // Close Button
                 Button {
                     withAnimation(.default) {
-//                        postVM.selectedImageIndex = -1
                         postVM.showImageViewer.toggle()
                     }
                 } label: {
@@ -66,13 +65,12 @@ struct ExpandImageView: View {
             outValue = value.translation
             postVM.onChangeImageViewer(value: draggingOffset)
         }).onEnded(postVM.onEnd(value:)))
+        .onChange(of: postVM.selectedImageIndex) { newValue in
+            postVM.imageScale = 1
+        }
     }
 }
 
 extension Color {
     static let bg = Color.black.opacity(0.95)
 }
-
-//#Preview {
-//    ExpandImageView()
-//}

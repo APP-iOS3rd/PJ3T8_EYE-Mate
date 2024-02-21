@@ -263,6 +263,7 @@ class PostViewModel: ObservableObject {
                     self.showImageViewer.toggle()
                     self.imageViewerOffset = .zero
                     self.bgOpacity = 1
+                    self.imageScale = 1
                 }
             }
         }
