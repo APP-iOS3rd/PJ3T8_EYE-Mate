@@ -34,7 +34,7 @@ class CreateNewPostViewModel: ObservableObject {
     @Published var isLoading = false
     
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
-    @AppStorage("user_name") private var userName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     
     /// 작성하기 버튼 활성 조건 get

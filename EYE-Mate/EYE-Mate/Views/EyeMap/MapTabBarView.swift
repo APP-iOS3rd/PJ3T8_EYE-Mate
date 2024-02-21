@@ -13,18 +13,14 @@ enum MapTopTapViewItem : String, CaseIterable {
 }
 
 struct MapTabBarView: View {
-    @StateObject var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @State private var selectedPicker: MapTopTapViewItem = .hospital
     @Namespace private var animation
     
     var body: some View {
-        
         NavigationStack{
             VStack(spacing: 0) {
-                // 상단 Title
-                CustomNavigationTitle(title: "주변 정보", isDisplayLeftButton: false)
-                
                 // 상단 TabView
                 MapTopTabView()
                 
@@ -82,5 +78,5 @@ struct MapTabBarView: View {
 }
 
 #Preview {
-    MapTabBarView(profileViewModel: ProfileViewModel())
+    MapTabBarView()
 }

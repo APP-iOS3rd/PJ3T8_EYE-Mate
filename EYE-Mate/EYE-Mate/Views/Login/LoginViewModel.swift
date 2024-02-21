@@ -22,6 +22,8 @@ class LoginViewModel: ObservableObject {
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     @AppStorage("Login") var loggedIn: Bool = false
     
+    @Published var showFullScreenCover: Bool = false
+    
     // TODO: - firestore 객체 하나로 통일
     //    let db = Firestore.firestore()
     

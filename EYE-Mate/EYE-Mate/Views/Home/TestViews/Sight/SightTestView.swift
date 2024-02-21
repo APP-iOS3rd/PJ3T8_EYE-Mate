@@ -14,13 +14,11 @@ struct SightTestView: View {
     @State var isTestComplete: Bool = false
     
     var body: some View {
-        VStack {
-            if !isTestComplete {
-                SightTest(viewModel: viewModel,
-                                isTestComplete: $isTestComplete)
-            } else {
-                SightTestResultView(viewModel: viewModel)
-            }
+        if !isTestComplete {
+            SightTest(viewModel: viewModel,
+                      isTestComplete: $isTestComplete)
+        } else {
+            SightTestResultView(viewModel: viewModel)
         }
     }
 }
@@ -28,39 +26,39 @@ struct SightTestView: View {
 //MARK: - 테스트 화면
 private struct SightTest: View {
     @ObservedObject var viewModel: SightTestViewModel
-    @Environment(\.dismiss) var dismiss
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
     @State var isChange: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
+            Spacer()
+                .frame(height: 5)
+            
+            HStack {
+                Text("시야 검사")
+                    .frame(maxWidth: .infinity)
+                    .font(.pretendardBold_24)
+                    .overlay(alignment: .trailing) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image("close")
+                        })
+                        .padding(.trailing)
+                    }
+            }
             ProgressView(value: testPercent)
                 .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
             if !isChange {
-                //TODO: - 오른쪽 눈 시야 검사
                 SightRight(viewModel: viewModel,
                                  testPercent: $testPercent,
                                  isChange: $isChange)
             } else {
-                //TODO: - 왼쪽 눈 시야검사
                 SightLeft(viewModel: viewModel,
                                 testPercent: $testPercent,
                                 isTestComplete: $isTestComplete)
-            }
-        }
-        .toolbar(.hidden, for: .tabBar)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("시야 검사")
-                    .font(.pretendardBold_24)
-            }
-            ToolbarItem {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image("close")
-                })
             }
         }
         .navigationBarBackButtonHidden()
@@ -77,7 +75,6 @@ private struct SightRight: View {
     
     var body: some View {
         if !isReady {
-            //TODO: - 테스트 안내문구 보여주기
             Spacer()
             
             VStack {
@@ -107,7 +104,6 @@ private struct SightRight: View {
             })
             .frame(maxHeight: 75)
         } else {
-            //TODO: - 테스트 화면 보여주기
             VStack {
                 NavigationStack {
                     ZStack {
@@ -138,38 +134,35 @@ private struct SightRight: View {
                                 .font(.pretendardMedium_20)
                             
                             Spacer()
-                            if !distance.canSightStart {
-                                Text("휴대폰과의 거리를 조정해주세요!")
-                                    .font(.pretendardMedium_18)
-                                    .foregroundColor(.customRed)
-                            }
+                            
+                            Text("휴대폰과의 거리를 조정해주세요!")
+                                .font(.pretendardMedium_18)
+                                .foregroundColor(.customRed)
+                                .opacity(!distance.canSightStart ? 1.0 : 0.0)
+                            
                             HStack {
                                 CustomButton(title: "예",
-                                             background: viewModel.userSayYes ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("Y")
                                     isChange.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
-                                             background: viewModel.userSayNo ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("N")
                                     isChange.toggle()
-                                    viewModel.userSayNo.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
@@ -178,7 +171,6 @@ private struct SightRight: View {
                         }
                     }
                 }
-                .navigationBarBackButtonHidden()
             }
         }
     }
@@ -257,40 +249,35 @@ private struct SightLeft: View {
                             
                             Spacer()
                             
-                            if !distance.canSightStart {
-                                Text("휴대폰과의 거리를 조정해주세요!")
-                                    .font(.pretendardMedium_18)
-                                    .foregroundColor(.customRed)
-                                    .multilineTextAlignment(.center)
-                            }
+                            Text("휴대폰과의 거리를 조정해주세요!")
+                                .font(.pretendardMedium_18)
+                                .foregroundColor(.customRed)
+                                .opacity(!distance.canSightStart ? 1.0 : 0.0)
+                            
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: viewModel.userSayYes ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayYes.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("Y")
                                     isTestComplete.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
-                                             background: viewModel.userSayNo ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .btnGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
-                                        viewModel.userSayNo.toggle()
                                         testPercent += 0.5
                                     }
                                     viewModel.userAnswer.append("N")
                                     isTestComplete.toggle()
-                                    viewModel.userSayYes.toggle()
                                 })
                                 .frame(maxHeight: 75)
                                 .padding(.leading, -10)
@@ -299,7 +286,6 @@ private struct SightLeft: View {
                         }
                     }
                 }
-                .navigationBarBackButtonHidden()
             }
         }
     }
@@ -309,77 +295,109 @@ private struct SightLeft: View {
 private struct SightTestResultView: View {
     @ObservedObject var viewModel: SightTestViewModel
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
+    @ObservedObject var loginViewModel = LoginViewModel.shared
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var tabManager: TabManager
+    
+    @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_UID") private var userUID: String = ""
+    
+    @State var showAlert = false
     
     var body: some View {
-        NavigationStack {
-            Text("시야 검사 결과")
-                .font(.pretendardBold_32)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(20)
-            
-            let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
-            
-            if total != 0 {
-                ScrollView(showsIndicators: false) {
-                    ResultTextView(viewModel: viewModel)
-                   
-                    Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
-                        .font(.pretendardBold_20)
+        ZStack {
+            NavigationStack {
+                Text("시야 검사 결과")
+                    .font(.pretendardBold_32)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(20)
+                
+                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
+                
+                if total != 0 {
+                    ScrollView(showsIndicators: false) {
+                        ResultTextView(viewModel: viewModel)
                         
-                        .foregroundColor(.customGreen)
-                    Color.customGreen
-                        .frame(height: 3)
-                        .padding(.horizontal, 10)
-                    VStack {
-                        ForEach(0..<total) { index in
-                            PlaceCellView(place: coordinator.resultInfo[index])
+                        Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                            .font(.pretendardBold_20)
+                        
+                            .foregroundColor(.customGreen)
+                        Color.customGreen
+                            .frame(height: 3)
+                            .padding(.horizontal, 10)
+                        VStack {
+                            ForEach(0..<total, id: \.self) { index in
+                                PlaceCellView(place: coordinator.resultInfo[index])
+                            }
+                            
+                            Button(action: {
+                                //TODO: - 로그인 상태라면 저장 후 이동, 아니면 Alert창
+                                if loggedIn {
+                                    viewModel.saveResult(userUID)
+                                    tabManager.selection = .eyeMap
+                                    dismiss()
+                                } else {
+                                    showAlert = true
+                                }
+                            }, label: {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                    .foregroundColor(.customGreen)
+                                    .frame(height: 80)
+                                    .padding(10)
+                                    .overlay(
+                                        Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
+                                            .multilineTextAlignment(.center)
+                                            .font(.pretendardLight_16)
+                                            .foregroundColor(.tabGray)
+                                    )
+                            })
                         }
                     }
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                        .foregroundColor(.customGreen)
-                        .frame(height: 80)
-                        .padding(10)
-                        .overlay(
-                            Text("모든 장소를 확인하려면 내 주변 화면에서 확인하세요!")
-                                .multilineTextAlignment(.center)
-                                .font(.pretendardLight_16)
-                                .foregroundColor(.tabGray)
-                        )
                 }
-            }
-            else {
-                ResultTextView(viewModel: viewModel)
-                
-                Spacer()
-                
-                Text("내 주변에 안과나 안경점이 없어요..")
-                    .font(.pretendardBold_24)
-                    .foregroundColor(.customGreen)
-                
-                Spacer()
-                
-                Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
-                    .multilineTextAlignment(.center)
-                    .font(.pretendardSemiBold_20)
+                else {
+                    ResultTextView(viewModel: viewModel)
                     
-                Spacer()
+                    Spacer()
+                    
+                    Text("내 주변에 안과나 안경점이 없어요..")
+                        .font(.pretendardBold_24)
+                        .foregroundColor(.customGreen)
+                    
+                    Spacer()
+                    
+                    Text("내 주변 화면에서\n다른 안과나 안경점을 찾아보세요!")
+                        .multilineTextAlignment(.center)
+                        .font(.pretendardSemiBold_20)
+                    
+                    Spacer()
+                }
+                
+                CustomButton(title: "돌아가기",
+                             background: .customGreen,
+                             fontStyle: .pretendardBold_16,
+                             //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                             action: {
+                    if loggedIn {
+                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        viewModel.saveResult(userUID)
+                        dismiss()
+                    } else {
+                        //TODO: - Alert 창 띄워주고 선택
+                        showAlert = true
+                    }
+                } )
+                .frame(maxHeight: 75)
             }
-            
-            
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                MapCoordinator.shared.checkIfLocationServiceIsEnabled()
+            }
+            TestAlertView(showAlert: $showAlert)
         }
-        .navigationBarBackButtonHidden()
-        .onAppear {
-            MapCoordinator.shared.checkIfLocationServiceIsEnabled()
-        }
-        
-        CustomButton(title: "돌아가기",
-                     background: .customGreen,
-                     fontStyle: .pretendardBold_16,
-                     //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
-                     action: { dismiss() } )
-        .frame(maxHeight: 75)
+        .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
+            LoginView(isAlertView: true)
+        })
     }
 }
 
