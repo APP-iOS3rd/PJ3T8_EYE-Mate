@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct SettingListView: View {
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @StateObject var settingViewModel = SettingViewModel()
-    @State var isPresented: Bool = false
     @Binding var isLogoutAlert:Bool
     @Binding var isSignoutAlert:Bool
     let listWidthSize = UIScreen.main.bounds.width - 70
@@ -73,8 +70,6 @@ struct SettingListView: View {
                 .onTapGesture {
                     isSignoutAlert = true
                 }
-            
-            
         }
         
     }

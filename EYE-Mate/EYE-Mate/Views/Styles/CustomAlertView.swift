@@ -63,7 +63,7 @@ struct CustomAlertView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
         }
-        .frame(width: UIScreen.main.bounds.width-110, height: UIScreen.main.bounds.height / 5)
+        .frame(width: UIScreen.main.bounds.width - 110, height: UIScreen.main.bounds.height / 5)
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 4)
     }

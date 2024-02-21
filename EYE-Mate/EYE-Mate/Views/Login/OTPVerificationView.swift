@@ -18,7 +18,6 @@ enum SignUpErrorText: String {
 
 struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
     @FocusState.Binding var keyFocused: Bool

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AccountDeleteView: View {
     @ObservedObject var accountDeleteViewModel = AccountDeleteViewModel.shared
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
     @State private var isCheckAlert: Bool = false
     @Binding var isSignoutAlert: Bool

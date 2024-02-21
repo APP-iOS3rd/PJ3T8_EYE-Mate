@@ -36,8 +36,7 @@ struct SignInView: View {
                 }
                 
             }
-            
-            
+
             VStack(alignment: .leading) {
                 HStack{
                     VStack(alignment: .leading, spacing: 5) {

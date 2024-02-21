@@ -25,7 +25,7 @@ class LoginViewModel: ObservableObject {
     @Published var showFullScreenCover: Bool = false
     
     // TODO: - firestore 객체 하나로 통일
-    //    let db = Firestore.firestore()
+    let db = Firestore.firestore()
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
@@ -90,7 +90,7 @@ class LoginViewModel: ObservableObject {
     @MainActor
     func checkLoginAndSettingInfo() async throws -> Bool{
         do {
-            let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+            let querySnapshot = try await db.collection("Users").getDocuments()
             // for문 으로
             for document in querySnapshot.documents {
                 let data = document.data()
@@ -113,7 +113,7 @@ class LoginViewModel: ObservableObject {
     @MainActor
     func checkLoginList() async throws -> Bool{
         do {
-            let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+            let querySnapshot = try await db.collection("Users").getDocuments()
             // for문 으로
             for document in querySnapshot.documents {
                 let data = document.data()
