@@ -9,19 +9,14 @@ import SwiftUI
 import Kingfisher
 
 struct CustomNavigationTitle: View {
-    let title: String
-    let isDisplayLeftButton: Bool
+    var title: String = ""
+    var isDisplayLeftButton: Bool = false
+    
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var profileViewModel = ProfileViewModel.shared
+    @ObservedObject var tabManager = TabManager.shared
     
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
-    
-    init(title: String = "",
-         isDisplayLeftButton: Bool = true
-    ) {
-        self.title = title
-        self.isDisplayLeftButton = isDisplayLeftButton
-    }
     
     var body: some View {
         HStack(alignment: .bottom) {
@@ -38,21 +33,34 @@ struct CustomNavigationTitle: View {
                     .font(.pretendardSemiBold_22)
                 Spacer()
                     .frame(height: 10)
-                
                 if title == "" {
-                    HStack(spacing: 5) {
-                        Text(userName)
-                            .font(.pretendardSemiBold_32)
-                            .foregroundColor(.customGreen)
-                        
-                        Text("님!")
+                    switch tabManager.selection {
+                    case .home:
+                        HStack(spacing: 5) {
+                            Text(userName)
+                                .font(.pretendardSemiBold_32)
+                                .foregroundColor(.customGreen)
+                            
+                            Text("님!")
+                                .font(.pretendardBold_32)
+                        }
+                    case .movement:
+                        Text("눈운동")
+                            .font(.pretendardBold_32)
+                    case .community:
+                        Text("게시판")
+                            .font(.pretendardBold_32)
+                    case .eyeMap:
+                        Text("내주변")
                             .font(.pretendardBold_32)
                     }
                 } else {
                     Text(title)
                         .font(.pretendardBold_32)
                 }
+                
             }
+                
             Spacer()
             
             
@@ -71,5 +79,5 @@ struct CustomNavigationTitle: View {
 }
 
 #Preview {
-    CustomNavigationTitle(title: "시력 검사")
+    CustomNavigationTitle()
 }

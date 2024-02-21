@@ -7,8 +7,10 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 
 class HomeViewModel: ObservableObject {
+    static let shared = HomeViewModel()
     @Published var isPresentedRecordView = false
     
     @Published var isPresentedVisionView = false
@@ -23,4 +25,11 @@ class HomeViewModel: ObservableObject {
         self.user = user
     }
     
+}
+
+//MARK: - Firebase Methods
+extension HomeViewModel {
+    func saveResult(_ uid: String) {
+        
+    }
 }

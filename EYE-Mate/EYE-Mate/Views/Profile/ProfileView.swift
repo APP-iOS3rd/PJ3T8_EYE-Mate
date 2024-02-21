@@ -22,9 +22,6 @@ struct ProfileView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .onAppear(perform: {
-            print("ProfileView - \(profileViewModel.isPresentedProfileView)")
-        })
     }
     
 }
