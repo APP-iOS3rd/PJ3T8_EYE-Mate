@@ -12,7 +12,12 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class CreateNewPostViewModel: ObservableObject {
-    @Published var post: Post?
+    
+    // 수정할 게시물 Data
+    var post: Post?
+    
+    // 게시물의 이미지를 수정했는지에 대한 flag
+    var editingPostImages: Bool = false
     
     // 게시물 제목, 내용
     @Published var postTitle: String = ""
@@ -28,7 +33,7 @@ class CreateNewPostViewModel: ObservableObject {
     // 이미지 로딩 중임을 알리는 변수
     @Published var isLoading = false
     
-    @AppStorage("user_profile_url") private var profileURL: URL?
+    @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     @AppStorage("user_name") private var userName: String = ""
     @AppStorage("user_UID") private var userUID: String = ""
     
@@ -57,8 +62,10 @@ class CreateNewPostViewModel: ObservableObject {
                     }
                 }
                 await MainActor.run{
+                    print("게시물 수정 - 이미지 추가")
                     isLoading = false
                     photoItem = []
+                    editingPostImages = true
                 }
             }
         }
@@ -66,7 +73,14 @@ class CreateNewPostViewModel: ObservableObject {
     
     /// - 이미지 삭제 함수
     func removeImage(at index: Int) {
+        // 인덱스가 유효한지 확인
+        guard index >= 0 && index < postImageDatas.count else {
+            return // 유효하지 않은 인덱스이므로 함수 종료
+        }
+        
         postImageDatas.remove(at: index)
+        print("게시물 수정 - 이미지 삭제")
+        editingPostImages = true
     }
     
     /// - 게시물 업로드
@@ -74,25 +88,23 @@ class CreateNewPostViewModel: ObservableObject {
         isLoading = true
         Task {
             do {
-                guard let profileURL = profileURL else { return }
-                
                 // 이미지 업로드(있는경우)
                 if !postImageDatas.isEmpty {
                     let imageUrls = try await uploadImagesToFirebaseStorage()
                     
-                    let post = Post(postTitle: postTitle, 
+                    let post = Post(postTitle: postTitle,
                                     postContent: postContent,
                                     postImageURLs: imageUrls.imageDownloadURLs,
                                     imageReferenceIDs: imageUrls.imageReferenceIDs ,
                                     userName: userName,
                                     userUID: userUID,
-                                    userImageURL: profileURL)
+                                    userImageURL: userProfileURL)
                     
                     try await createDocumentAtFirebase(post) {
                         completion($0)
                     }
                 } else { // 업로드할 이미지 없는 경우
-                    let post = Post(postTitle: postTitle, postContent: postContent, userName: userName, userUID: userUID, userImageURL: profileURL)
+                    let post = Post(postTitle: postTitle, postContent: postContent, userName: userName, userUID: userUID, userImageURL: userProfileURL)
                     
                     try await createDocumentAtFirebase(post) {
                         completion($0)
@@ -148,10 +160,115 @@ class CreateNewPostViewModel: ObservableObject {
                 self.isLoading = false
                 var updatedPost = post
                 updatedPost.id = postDoc.documentID
-                
-                self.post = updatedPost
                 completion(updatedPost)
             }
         }
     }
+    
+    /// - 게시물 수정
+    func editPost(completion: @escaping (String, String, String, [URL]?, [String]?) -> ()) {
+        isLoading = true
+        Task {
+            do {
+                guard let post = post, let postID = post.id else { return }
+                
+                // Images 변경 사항 있을 시 Storage의 기존 image 삭제
+                if editingPostImages {
+                    // 이미지를 추가한 경우
+                    if !postImageDatas.isEmpty {
+                        let imageUrls = try await uploadImagesToFirebaseStorage()
+                        
+                        // Storage 기존 이미지 삭제
+                        if let imageReferenceIDs = post.imageReferenceIDs {
+                            for imageReferenceID in imageReferenceIDs {
+                                try await Storage.storage().reference().child("Post_Images").child(imageReferenceID).delete()
+                            }
+                        }
+                        
+                        // Firestore Post에 새로운 이미지 업데이트
+                        let stringImageDownloadURLs = imageUrls.imageDownloadURLs.map { $0.absoluteString }
+                        
+                        try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                            "postImageURLs" : stringImageDownloadURLs,
+                            "imageReferenceIDs" : imageUrls.imageReferenceIDs
+                        ])
+                        
+                        await MainActor.run {
+                            completion(postID,
+                                       self.postTitle,
+                                       self.postContent,
+                                       imageUrls.imageDownloadURLs,
+                                       imageUrls.imageReferenceIDs)
+                        }
+                    } else {
+                        // Storage 기존 이미지 삭제
+                        if let imageReferenceIDs = post.imageReferenceIDs {
+                            for imageReferenceID in imageReferenceIDs {
+                                try await Storage.storage().reference().child("Post_Images").child(imageReferenceID).delete()
+                            }
+                        }
+                        
+                        // 이미지를 추가하지 않은 경우
+                        try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                            "postImageURLs" : FieldValue.delete(),
+                            "imageReferenceIDs" : FieldValue.delete()
+                        ])
+                        
+                        await MainActor.run {
+                            completion(postID,
+                                       self.postTitle,
+                                       self.postContent,
+                                       nil,
+                                       nil)
+                        }
+                    }
+                } else {
+                    // 이미지 변경 사항이 없는 경우
+                    try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                        "postTitle" : self.postTitle,
+                        "postContent" : self.postContent
+                    ])
+                    
+                    await MainActor.run {
+                        completion(postID,
+                                   self.postTitle,
+                                   self.postContent,
+                                   post.postImageURLs,
+                                   post.imageReferenceIDs)
+                    }
+                }
+            } catch {
+                print("CreateNewPostViewModel - editPost() : \(error.localizedDescription)")
+            }
+        }
+    }
+
+    
+    /// - Storage Image URL을 Data로 변환하여 postImageDatas에 추가
+    func loadImage(from urls: [URL]) {
+        isLoading = true
+        Task {
+            do {
+                for url in urls {
+                    let data = try await loadData(from: url)
+                    await MainActor.run {
+                        postImageDatas.append(data)
+                    }
+                }
+                
+                await MainActor.run {
+                    isLoading = false
+                }
+            } catch {
+                print("Error loading image: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    /// - Storage Image URL을 Data로 변환
+    func loadData(from url: URL) async throws -> Data {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return data
+    }
+
 }
