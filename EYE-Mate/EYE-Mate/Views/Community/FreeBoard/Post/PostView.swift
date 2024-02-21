@@ -29,6 +29,9 @@ struct PostView: View {
     var deleteComment: (String, Int) -> ()
     /// - 대댓글 삭제
     var deleteReplyComment: (String, Int, Int) -> ()
+    /// - 게시물 수정
+    var onEditPost: (String, String, String, [URL]?, [String]?) -> ()
+
     
     @FocusState var commentTextFieldisFocused: Bool
     
@@ -40,7 +43,9 @@ struct PostView: View {
             
             ScrollView{
                 // MARK: 게시물 내용
-                PostContent(postVM: postVM){ updatedPost in
+                PostContent(postVM: postVM) { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
+                   onEditPost(postID, postTitle, postContent, postImageURLs, imageReferenceIDs)
+                } onUpdate: { updatedPost in
                     /// 게시물 좋아요 업데이트
                     postVM.post.likedIDs = updatedPost.likedIDs
                     postVM.post.scrapIDs = updatedPost.scrapIDs
@@ -52,7 +57,6 @@ struct PostView: View {
                     dismiss()
                 }
                 .padding(.top)
-                .padding(.horizontal)
 
                 HorizontalDivider(color: .btnGray, height: 2)
                 
@@ -131,6 +135,22 @@ struct PostView: View {
         .overlay {
             LoadingView(show: $postVM.isLoading)
         }
+        .overlay {
+            ZStack {
+                if postVM.showImageViewer {
+                    ExpandImageView(postVM: postVM)
+                }
+            }
+        }
+        .onChange(of: postVM.post.postImageURLs) { newValue in
+            if let postImageURLs = newValue {
+                postVM.selectedImages = []
+                for url in postImageURLs {
+                    postVM.selectedImages.append(KFImage(url))
+                }
+            }
+        }
+        .navigationBarHidden(postVM.showImageViewer)
     }
     
     // MARK: 댓글 입력 View

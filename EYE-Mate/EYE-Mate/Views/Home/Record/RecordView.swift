@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordView: View {
-    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject private var viewModel = HomeViewModel.shared
 
     private func goBack() {
         viewModel.isPresentedRecordView = false
@@ -16,7 +16,8 @@ struct RecordView: View {
     
     var body: some View {
             VStack(spacing: 0) {
-                CustomNavigationTitle(title: "기록")
+                CustomNavigationTitle(title: "기록",
+                                      isDisplayLeftButton: true)
                 
                 Spacer()
                 
@@ -65,7 +66,5 @@ struct RecordView: View {
 }
 
 #Preview {
-    @StateObject var viewModel = HomeViewModel()
-
-    return RecordView(viewModel: viewModel)
+    RecordView()
 }

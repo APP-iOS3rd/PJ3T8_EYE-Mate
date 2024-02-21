@@ -94,6 +94,14 @@ extension ReusablePostsView {
                     if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
                         freeboardVM.posts[index].comments[commentIndex].replyComments.remove(at: replyCommentIndex)
                     }
+                } onEditPost: { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
+                    /// 게시물 수정
+                    if let postIndex = freeboardVM.posts.firstIndex(where: {$0.id == postID}) {
+                        freeboardVM.posts[postIndex].postTitle = postTitle
+                        freeboardVM.posts[postIndex].postContent = postContent
+                        freeboardVM.posts[postIndex].postImageURLs = postImageURLs
+                        freeboardVM.posts[postIndex].imageReferenceIDs = imageReferenceIDs
+                    }
                 }
             } label: {
                 PostCardView(post: post)

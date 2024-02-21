@@ -11,7 +11,7 @@ struct User: Identifiable, Codable {
     @DocumentID var id: String?
     var username: String
     var userUID: String
-    var userImageURL: URL
+    var userImageURL: String
     
     var left: String?
     var right: String?

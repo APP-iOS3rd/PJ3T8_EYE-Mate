@@ -21,7 +21,7 @@ struct Post: Identifiable, Codable, Equatable, Hashable {
     // MARK: 유저 정보
     var userName: String // 사용자 닉네임
     var userUID: String // 사용자 UID
-    var userImageURL: URL?  // 사용자 ProfileImage
+    var userImageURL: String  // 사용자 ProfileImage
     
     var comments: [Comment] = [] // 댓글 Array
     
@@ -36,7 +36,7 @@ struct Comment: Identifiable, Codable, Equatable, Hashable {
     // MARK: 유저정보
     var userName: String // 댓글 유저 닉네임
     var userUID: String // 댓글 유저 UID
-    var userImageURL: URL?  // 댓글 유저 프로필 이미지
+    var userImageURL: String  // 댓글 유저 프로필 이미지
     
     var likedIDs: [String] = [] // 좋아요 누른 userID Array
     
@@ -53,7 +53,7 @@ struct ReplyComment: Identifiable, Codable, Equatable, Hashable {
     // MARK: 유저정보
     var userName: String // 대댓글 유저 닉네임
     var userUID: String // 대댓글 유저 UID
-    var userImageURL: URL?  // 대댓글 유저 프로필 이미지
+    var userImageURL: String  // 대댓글 유저 프로필 이미지
 
     var likedIDs: [String] = [] // 좋아요 누른 userID Array
     

@@ -63,7 +63,7 @@ struct PostCardView: View {
             .padding(.leading, 10)
             
             // postImage
-            if let imageURL = post.postImageURLs {
+            if let imageURL = post.postImageURLs, !imageURL.isEmpty{
                 KFImage(imageURL[0])
                     .placeholder { //플레이스 홀더 설정
                         ProgressView()

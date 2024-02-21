@@ -8,27 +8,37 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var tabManager = TabManager()
+    @StateObject private var tabManager = TabManager.shared
+    @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
     
     var body: some View {
         NavigationStack {
-            CustomTabBarContainerView() {
-                HomeView()
-                    .tabBarItem(tab: .home, selection: $tabManager.selection)
-                MovementView()
-                    .tabBarItem(tab: .movement, selection: $tabManager.selection)
-                CommunityView()
-                    .tabBarItem(tab: .community, selection: $tabManager.selection)
-                EyeMapView()
-                    .tabBarItem(tab: .eyeMap, selection: $tabManager.selection)
+            VStack {
+                CustomNavigationTitle(isDisplayLeftButton: false)
+                CustomTabBarContainerView() {
+                    switch tabManager.selection {
+                    case .home:
+                        HomeView()
+                            .tabBarItem(tab: .home, selection: $tabManager.selection)
+                    case .movement:
+                        MovementView()
+                            .tabBarItem(tab: .movement, selection: $tabManager.selection)
+                    case .community:
+                        CommunityView()
+                            .tabBarItem(tab: .community, selection: $tabManager.selection)
+                    case .eyeMap:
+                        EyeMapView()
+                            .tabBarItem(tab: .eyeMap, selection: $tabManager.selection)
+                    }
+                }
             }
-            .accentColor(.customGreen)
         }
         .environmentObject(tabManager)
     }
 }
 
 class TabManager: ObservableObject {
+    static let shared = TabManager()
     @Published var selection: TabBarItem = .home
 }
 

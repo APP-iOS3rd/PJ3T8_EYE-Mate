@@ -19,14 +19,8 @@ struct MapTabBarView: View {
     @Namespace private var animation
     
     var body: some View {
-        
         NavigationStack{
             VStack(spacing: 0) {
-                // 상단 Title
-                CustomNavigationTitle(title: "주변 정보", isDisplayLeftButton: false)
-                
-                Spacer()
-                
                 // 상단 TabView
                 MapTopTabView()
                 
