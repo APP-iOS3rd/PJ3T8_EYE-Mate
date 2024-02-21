@@ -32,7 +32,7 @@ struct SettingView: View {
                         Text(userName)
                             .font(.pretendardSemiBold_24)
                     }
-                    .padding(.vertical, 50)
+                    .padding(.vertical, 30)
                     
                     SettingListView(showAlert: $showAlert)
                 }
