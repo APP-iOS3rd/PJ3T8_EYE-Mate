@@ -13,6 +13,8 @@ struct CommunityView: View {
     @Namespace private var animation
     @State var isSearching = false
     
+    @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    
     var body: some View {
         // MARK: NavigationStack 추후에 지워주기
         VStack(spacing: 0) {
@@ -37,6 +39,9 @@ struct CommunityView: View {
             
             Spacer()
                 .frame(height: 85)
+        }
+        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
+            ProfileView()
         }
     }
     
