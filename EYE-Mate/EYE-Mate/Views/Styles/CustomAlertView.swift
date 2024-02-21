@@ -24,9 +24,12 @@ struct CustomAlertView: View {
                 .padding(10)
             
             Text(message)
+                .multilineTextAlignment(.center)
                 .font(.pretendardMedium_14)
                 .foregroundColor(Color.gray)
                 .padding(.bottom, 10)
+            
+            Spacer()
             
             HStack(spacing: 0) {
                 Button {
@@ -35,7 +38,8 @@ struct CustomAlertView: View {
                     Text(leftButtonTitle)
                         .font(.pretendardMedium_18)
                         .foregroundColor(.black)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(height: UIScreen.main.bounds.height / 15)
+                        .frame(maxWidth: .infinity)
                         .background(Color.btnGray)
                 }
                 
@@ -45,19 +49,21 @@ struct CustomAlertView: View {
                     Text(rightButtonTitle)
                         .font(.pretendardMedium_18)
                         .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(height: UIScreen.main.bounds.height / 15)
+                        .frame(maxWidth: .infinity)
                         .background {
                             RoundedRectangle(cornerRadius: 0)
                                 .fill(Color.customGreen)
                         }
                 }
             }
+            .frame(height: UIScreen.main.bounds.height / 15)
         }
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
         }
-        .frame(width: UIScreen.main.bounds.width-110, height: 150)
+        .frame(width: UIScreen.main.bounds.width-110, height: UIScreen.main.bounds.height / 5)
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 4)
     }
