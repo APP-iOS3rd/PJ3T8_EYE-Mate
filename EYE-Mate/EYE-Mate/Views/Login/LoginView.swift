@@ -16,21 +16,21 @@ struct LoginView: View {
     // TODO: - loggedin에 따라 프로필/로그인 뷰 나올지 구현
     var body: some View {
         NavigationStack {
-            ScrollView {
-                if !isAlertView {
-                    CustomBackButton()
-                } else {
-                    HStack {
-                        Spacer()
-                        
-                        Button(action: {
-                            loginViewModel.showFullScreenCover.toggle()
-                        }, label: {
-                            Image("close")
-                        })
-                    }
-                    .padding(.trailing)
+            if !isAlertView {
+                CustomBackButton()
+            } else {
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        loginViewModel.showFullScreenCover.toggle()
+                    }, label: {
+                        Image("close")
+                    })
                 }
+                .padding(.trailing)
+            }
+            ScrollView {
                 if signUpFlag {
                     SignUpView(signUpFlag: $signUpFlag)
                 }

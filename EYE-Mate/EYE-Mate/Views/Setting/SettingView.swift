@@ -21,9 +21,9 @@ struct SettingView: View {
     var body: some View {
         ZStack {
             NavigationStack {
+                CustomBackButton()
+                
                 ScrollView(showsIndicators: false) {
-                    CustomBackButton()
-                    
                     VStack(spacing: 20) {
                         profileViewModel.profileImage
                             .ProfileImageModifier()
