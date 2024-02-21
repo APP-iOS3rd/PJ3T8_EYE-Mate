@@ -9,11 +9,20 @@ import SwiftUI
 
 import FirebaseFirestore
 import FirebaseStorage
+import Kingfisher
 
 class PostViewModel: ObservableObject {
     @Published var post: Post
     
     @Published var isLoading: Bool = false
+    
+    // ExpandImageView
+    @Published var showImageViewer = false
+    @Published var imageViewerOffset: CGSize = .zero
+    @Published var selectedImages: [KFImage] = []
+    @Published var selectedImageIndex: Int = -1
+    @Published var bgOpacity: Double = 1
+    @Published var imageScale: CGFloat = 1
     
     @Published var commentText: String = ""
     @Published var commentPlaceholder: String = "댓글을 입력해보세요..."
@@ -31,12 +40,18 @@ class PostViewModel: ObservableObject {
     
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") var userUID: String = ""
-    @AppStorage("user_profile_url") private var profileURL: URL?
+    @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     
     private let dbRef = Firestore.firestore().collection("Posts")
     
     init(post: Post) {
         self.post = post
+        
+        if let postImageURLs = post.postImageURLs{
+            for url in postImageURLs {
+                selectedImages.append(KFImage(url))
+            }
+        }
     }
     
     /// - Document Listener 추가
@@ -121,7 +136,7 @@ class PostViewModel: ObservableObject {
         isLoading = true
         let comment = Comment(userName: userName,
                               userUID: userUID,
-                              userImageURL: profileURL,
+                              userImageURL: userProfileURL,
                               comment: commentText)
         
         Task {
@@ -154,7 +169,7 @@ class PostViewModel: ObservableObject {
         isLoading = true
         let replyComment = ReplyComment(userName: userName,
                                         userUID: userUID,
-                                        userImageURL: profileURL,
+                                        userImageURL: userProfileURL,
                                         comment: commentText)
         
         Task {
@@ -209,6 +224,47 @@ class PostViewModel: ObservableObject {
                 try await dbRef.updateData([
                     "scrapIDs" : FieldValue.arrayUnion([userUID])
                 ])
+            }
+        }
+    }
+    
+    // ExpandImageView 드래그에 따른 높이와 배경 Opacity 조절
+    func onChangeImageViewer(value: CGSize) {
+        DispatchQueue.main.async {
+            self.imageViewerOffset = value
+            
+            guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+            let screenHeight = window.screen.bounds.height
+            
+            let halgHeight = screenHeight / 2
+            
+            let progress = self.imageViewerOffset.height / halgHeight
+            
+            withAnimation(.default) {
+                self.bgOpacity = Double(1 - progress)
+            }
+        }
+    }
+    
+    // ExpandImageView 드래그 정도에 따라 화면 toggle
+    func onEnd(value: DragGesture.Value) {
+        DispatchQueue.main.async {
+            withAnimation(.easeInOut) {
+                var translation = value.translation.height
+                
+                if translation < 0 {
+                    translation = -translation
+                }
+                
+                if translation < 250 {
+                    self.imageViewerOffset = .zero
+                    self.bgOpacity = 1
+                } else {
+                    self.showImageViewer.toggle()
+                    self.imageViewerOffset = .zero
+                    self.bgOpacity = 1
+                    self.imageScale = 1
+                }
             }
         }
     }

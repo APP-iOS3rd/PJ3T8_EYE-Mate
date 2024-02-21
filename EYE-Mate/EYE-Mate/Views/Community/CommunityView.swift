@@ -13,33 +13,11 @@ struct CommunityView: View {
     @Namespace private var animation
     @State var isSearching = false
     
+    @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    
     var body: some View {
         // MARK: NavigationStack 추후에 지워주기
         VStack(spacing: 0) {
-            // 상단 Title
-            HStack(alignment: .bottom) {
-                VStack {
-                    Text("EYE-Mate")
-                        .font(.pretendardBold_22)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("게시판")
-                        .font(.pretendardBold_32)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                
-                // MARK: profileImage 추후에 Firebase에서 Image 받아오기
-                NavigationLink(destination: ProfileView()) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundStyle(.black)
-                }
-                Spacer()
-                    .frame(height: 85)
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical)
-            .opacity(isSearching ? 0 : 1)
-            
             // 상단 TabView
             communityTopTabView()
             
@@ -61,6 +39,9 @@ struct CommunityView: View {
             
             Spacer()
                 .frame(height: 85)
+        }
+        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
+            ProfileView()
         }
     }
     

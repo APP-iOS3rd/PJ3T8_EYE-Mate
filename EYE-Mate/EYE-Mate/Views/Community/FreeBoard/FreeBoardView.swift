@@ -24,7 +24,8 @@ struct FreeBoardView: View {
         ReusablePostsView(freeboardVM: freeboardVM)
             .frame(maxWidth: .infinity, alignment: .center)
             .overlay(alignment: .bottomTrailing){
-                NavigationLink(destination: CreateNewPostView(){ post in
+                NavigationLink(destination: CreateNewPostView(isEditingPost: false){_,_,_,_,_ in 
+                } onPost: { post in
                     /// 사용자가 새롭게 작성한 게시물 insert
                     if let post = post {
                         freeboardVM.posts.insert(post, at: 0)
