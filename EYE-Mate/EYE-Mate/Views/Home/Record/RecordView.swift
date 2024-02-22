@@ -36,34 +36,41 @@ struct RecordView: View {
 
             HorizontalDivider(color: Color.customGreen, height: 4)
             ScrollView {
-                LazyVStack(spacing: 16) {
-                    HStack(spacing: 16) {
+                VStack(spacing: 24) {
+                    HStack {
+                        Spacer()
                         Button {
                             router.navigate(to: .addRecord)
                         } label: {
                             RoundedRectangle(cornerRadius: 16)
-                                .frame(maxWidth: 40)
-                                .frame(height: 32)
+                                .frame(width: 132, height: 32)
                                 .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
                                 .foregroundStyle(Color.white)
                                 .overlay{
-                                    Image(systemName: "plus")
-                                        .foregroundStyle(Color.customGreen)
-                                        .font(.system(size: 20))
+                                    HStack {
+                                        Image(systemName: "plus")
+                                            .foregroundStyle(Color.customGreen)
+                                            .font(.system(size: 20))
+                                        Text("기록 추가하기")
+                                            .font(.pretendardRegular_16)
+                                            .foregroundColor(.black)
+
+                                    }
                                 }
                         }
                     }
-                }
-                RecordDataBox(recordType: .vision)
-                if recordViewModel.recentVisionRecords.isEmpty {
-                    EmptyVisionChart()
-                } else {
-                    VisionChart(visionRecords: recordViewModel.recentVisionRecords)
-                }
-                RecordDataBox(recordType: .colorVision)
-                RecordDataBox(recordType: .astigmatism)
-                RecordDataBox(recordType: .eyesight)
-            }.padding(16)
+
+                    RecordDataBox(recordType: .vision)
+                    if recordViewModel.recentVisionRecords.isEmpty {
+                        EmptyVisionChart()
+                    } else {
+                        VisionChart(visionRecords: recordViewModel.recentVisionRecords)
+                    }
+                    RecordDataBox(recordType: .colorVision)
+                    RecordDataBox(recordType: .astigmatism)
+                    RecordDataBox(recordType: .eyesight)
+                }.padding(16)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.lightGray)

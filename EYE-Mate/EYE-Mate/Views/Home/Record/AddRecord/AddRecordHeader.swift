@@ -51,7 +51,7 @@ struct AddRecordHeader: View {
             }.padding(.horizontal, 12)
             HStack {
                 Spacer()
-                Text("시력 기록 추가")
+                Text("기록 추가하기")
                     .font(.pretendardSemiBold_18)
                 Spacer()
             }
