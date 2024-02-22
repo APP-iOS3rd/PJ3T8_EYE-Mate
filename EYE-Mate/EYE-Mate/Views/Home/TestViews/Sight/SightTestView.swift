@@ -310,7 +310,7 @@ private struct SightTestResultView: View {
                 Spacer()
                     .frame(height: 1)
                 
-                TestResultTitleView(type: .colorVision)
+                TestResultTitleView(type: .eyesight)
                 
                 let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 
