@@ -50,6 +50,8 @@ struct EYE_MateApp: App {
                             SightTestView()
                         case .profile:
                             ProfileView()
+                        case .signUpProfile:
+                            SignUpProfileView()
                         }
                     }
             }

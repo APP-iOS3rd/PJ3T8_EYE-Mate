@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddRecordView: View {
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: Router
 
     @State private var selectedDate: Date = Date()
 
@@ -54,7 +54,7 @@ struct AddRecordView: View {
     }
 
     private func goBack() {
-        dismiss()
+        router.navigateBack()
     }
 
     private func resetRecord() {

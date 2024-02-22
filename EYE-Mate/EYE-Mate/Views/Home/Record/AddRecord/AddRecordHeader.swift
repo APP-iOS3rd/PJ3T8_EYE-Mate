@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct AddRecordHeader: View {
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: Router
 
     let onPressResetButton: () -> Void
 
     private func goBack() {
-        dismiss()
+        router.navigateBack()
     }
 
     var body: some View {

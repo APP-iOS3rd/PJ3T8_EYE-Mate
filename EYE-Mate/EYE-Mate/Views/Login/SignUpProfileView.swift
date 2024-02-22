@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct SignUpProfileView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @State var selectedItem: PhotosPickerItem? = nil
@@ -47,7 +47,7 @@ struct SignUpProfileView: View {
                 if loginViewModel.showFullScreenCover {
                     loginViewModel.showFullScreenCover.toggle()
                 } else {
-                    presentationMode.wrappedValue.dismiss()
+                    router.navigateBack()
                 }
             })
             .disabled(!isButtonEnabled)

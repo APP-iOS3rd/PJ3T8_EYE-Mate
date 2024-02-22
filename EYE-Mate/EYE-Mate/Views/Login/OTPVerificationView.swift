@@ -17,14 +17,13 @@ enum SignUpErrorText: String {
 }
 
 struct OTPVerificationView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
     @FocusState.Binding var keyFocused: Bool
     @State private var otp: String = ""
     @State private var isDisplayotpErrorText: Bool = false
-    @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
     @State var isDisplayNotiLoginText: Bool = false
     @State private var errorText: String = ""
@@ -43,7 +42,6 @@ struct OTPVerificationView: View {
                 .font(.pretendardMedium_16)
             
             VStack(alignment:.leading, spacing: 10) {
-                
                 TextField("", text: $otp)
                     .font(.pretendardMedium_16)
                     .placeholder(when: otp.isEmpty) {
@@ -81,25 +79,24 @@ struct OTPVerificationView: View {
                                 // 이미 등록된 회원인 경우 로그인 화면으로
                                 if try await loginViewModel.checkLoginList() {
                                     isDisplayNotiLoginText = true
-                                    isDisplayProfileSettingView = false
                                     errorText = SignUpErrorText.notiLogin.rawValue
                                 } else {
                                     // 회원가입
                                     isDisplayNotiLoginText = false
-                                    isDisplayProfileSettingView = true
+                                    router.navigate(to: .signUpProfile)
                                 }
-                                
-                                // 로그인 화면인 경우
-                            } else {
-                                isDisplayProfileSettingView = false
-                                
+                            }
+                            // 로그인 화면인 경우
+                            else {
                                 let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
-                                
-                                if isRegistered { // 가입한 이력이 있는 경우
+                                // 가입한 이력이 있는 경우
+                                if isRegistered {
                                     loggedIn = true
                                     isDisplaySignUpText = false
-                                    presentationMode.wrappedValue.dismiss()
-                                } else { // 가입한 이력이 없는 경우
+                                    router.navigateBack()
+                                }
+                                // 가입한 이력이 없는 경우
+                                else {
                                     loggedIn = false
                                     isDisplaySignUpText = true
                                     errorText = SignUpErrorText.signup.rawValue
@@ -126,9 +123,6 @@ struct OTPVerificationView: View {
             .padding(.top, 10)
             .disableWithOpacity(otp.count < 6)
             .disabled(otp.count < 6)
-        }
-        .navigationDestination(isPresented: $isDisplayProfileSettingView){
-            SignUpProfileView()
         }
     }
 }

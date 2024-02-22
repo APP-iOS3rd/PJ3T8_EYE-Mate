@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingListView: View {
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @StateObject var settingViewModel = SettingViewModel()
-    @State var isPresented: Bool = false
     @Binding var showAlert:Bool
     
     var body: some View {
@@ -18,7 +17,6 @@ struct SettingListView: View {
             // MARK: - 프로필
             VStack(alignment: .leading, spacing: 0) {
                 SettingTitleView(title: "프로필")
-                
                 ProfileListView()
             }
         }
