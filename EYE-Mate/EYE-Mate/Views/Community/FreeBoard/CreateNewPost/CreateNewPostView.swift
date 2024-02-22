@@ -28,6 +28,26 @@ struct CreateNewPostView: View {
     
     var body: some View {
         VStack {
+            if isEditingPost {
+                HStack {
+                    Text("게시물 수정")
+                        .font(.pretendardBold_18)
+                }
+                .hAlign(.center)
+                .overlay(alignment: .leading) {
+                    Button {
+                        closeKeyboard()
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .foregroundStyle(.black)
+                            .font(.system(size: 20, weight: .medium))
+                    }
+                    .padding(.leading, 14)
+                }
+                .padding(.top, 6)
+            }
+            
             // 게시물 제목, 내용
             NewPostView(
                 postTitle: $createNewPostVM.postTitle,

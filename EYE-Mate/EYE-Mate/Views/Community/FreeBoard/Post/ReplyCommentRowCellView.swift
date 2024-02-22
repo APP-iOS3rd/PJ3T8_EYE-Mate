@@ -16,6 +16,9 @@ struct ReplyCommentRowCellView: View {
     
     @ObservedObject var commentVM: CommentViewModel
     
+    @Binding var showAlert: Bool
+    @AppStorage("Login") var loggedIn: Bool = false
+
     // MARK: Local Data Update
     /// - 대댓글 좋아요 업데이트
     var onUpdateReplyComment: (String, Int, Int) -> ()
@@ -44,8 +47,12 @@ struct ReplyCommentRowCellView: View {
                 HStack(spacing: 0) {
                     // MARK: 대댓글 좋아요 Btn
                     Button {
-                        commentVM.likeReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
-                            onUpdateReplyComment(postID, commentIndex, replyCommentIndex)
+                        if loggedIn {
+                            commentVM.likeReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
+                                onUpdateReplyComment(postID, commentIndex, replyCommentIndex)
+                            }
+                        } else {
+                            showAlert = true
                         }
                     } label: {
                         Image(systemName: "heart")
@@ -64,15 +71,23 @@ struct ReplyCommentRowCellView: View {
                         if replyComment.userUID == commentVM.userUID {
                             /// 대댓글 삭제
                             Button(role: .destructive) {
-                                commentVM.deleteReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
-                                    deleteReplyComment(postID, commentIndex, replyCommentIndex)
+                                if loggedIn {
+                                    commentVM.deleteReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
+                                        deleteReplyComment(postID, commentIndex, replyCommentIndex)
+                                    }
+                                } else {
+                                    showAlert = true
                                 }
                             } label: {
                                 Label("삭제", systemImage: "trash")
                             }
                         } else {
                             Button(role: .destructive) {
-                                
+                                if loggedIn {
+                                    
+                                } else {
+                                    showAlert = true
+                                }
                             } label: {
                                 Label("신고", systemImage: "light.beacon.max.fill")
                             }
