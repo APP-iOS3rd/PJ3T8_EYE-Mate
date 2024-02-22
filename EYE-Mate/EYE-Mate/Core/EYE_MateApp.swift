@@ -24,8 +24,8 @@ struct EYE_MateApp: App {
                         switch destination {
                         case .record:
                             RecordView()
-                            //                        case .allRecord(let recordType):
-                            //                            AllRecordView(recordType: recordType)
+                        case .allRecord(let recordType):
+                            AllRecordView(recordType: recordType)
                         case .addRecord:
                             AddRecordView()
                         }

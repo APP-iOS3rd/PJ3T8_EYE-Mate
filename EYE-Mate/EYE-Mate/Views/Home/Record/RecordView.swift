@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct RecordView: View {
-    @ObservedObject private var recordViewModel = RecordViewModel.shared
     @EnvironmentObject var router: Router
 
-    @State private var visions = []
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
     @ObservedObject private var viewModel = HomeViewModel.shared
+
+    @State private var visions = []
 
     private func goBack() {
         router.navigateBack()
@@ -75,18 +76,6 @@ struct RecordView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.lightGray)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
-        .navigationDestination(isPresented: $recordViewModel.isPresentedVisionRecordListView) {
-            AllRecordView(recordType: .vision)
-        }
-        .navigationDestination(isPresented: $recordViewModel.isPresentedColorVisionRecordListView) {
-            AllRecordView(recordType: .colorVision)
-        }
-        .navigationDestination(isPresented: $recordViewModel.isPresentedAstigmatismRecordListView) {
-            AllRecordView(recordType: .astigmatism)
-        }
-        .navigationDestination(isPresented: $recordViewModel.isPresentedEyesightRecordListView) {
-            AllRecordView(recordType: .eyesight)
-        }
         .navigationBarBackButtonHidden()
         .task {
             do {
@@ -121,7 +110,9 @@ struct RecordView: View {
                     Text(recordType.rawValue)
                         .font(.pretendardBold_20)
                     Spacer()
-                    NavigationLink(destination: AllRecordView(recordType: recordType)) {
+                    Button {
+                        router.navigate(to: .allRecord(recordType: recordType))
+                    } label: {
                         Text("모두보기")
                             .font(.pretendardRegular_14)
                             .foregroundStyle(.black)

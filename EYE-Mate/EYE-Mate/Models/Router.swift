@@ -8,9 +8,9 @@
 import SwiftUI
 
 final class Router: ObservableObject {
-    public enum Destination: Codable, Hashable {
+    public enum Destination: Hashable {
         case record
-//        case allRecord(recordType: TestType)
+        case allRecord(recordType: TestType)
         case addRecord
     }
 

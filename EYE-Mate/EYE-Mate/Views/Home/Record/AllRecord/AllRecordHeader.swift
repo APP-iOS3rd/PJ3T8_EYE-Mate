@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AllRecordHeader: View {
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: Router
+
     @ObservedObject private var recordViewModel = RecordViewModel.shared
 
     @Binding var isDeleteMode: Bool
@@ -33,7 +34,7 @@ struct AllRecordHeader: View {
     }
 
     private func goBack() {
-        dismiss()
+        router.navigateBack()
     }
 
     private func deleteSelectedItems() {
