@@ -24,46 +24,46 @@ struct AstigmatismTestView: View {
 
 //MARK: - 테스트 화면
 private struct AstigmatismTest: View {
+    @EnvironmentObject var router: Router
     @ObservedObject var viewModel: AstigmatismTestViewModel
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
     @State var isChange: Bool = false
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-            VStack {
-                Spacer()
-                    .frame(height: 5)
-                
-                HStack {
-                    Text("난시 검사")
-                        .frame(maxWidth: .infinity)
-                        .font(.pretendardBold_24)
-                        .overlay(alignment: .trailing) {
-                            Button(action: {
-                                dismiss()
-                            }, label: {
-                                Image("close")
-                            })
-                            .padding(.trailing)
-                        }
-                }
-                
-                ProgressView(value: testPercent)
-                    .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
-                
-                if !isChange {
-                    AstigmatismRight(viewModel: viewModel,
-                                     testPercent: $testPercent,
-                                     isChange: $isChange)
-                } else {
-                    AstigmatismLeft(viewModel: viewModel,
-                                    testPercent: $testPercent,
-                                    isTestComplete: $isTestComplete)
-                }
+        VStack {
+            Spacer()
+                .frame(height: 5)
+            
+            HStack {
+                Text("난시 검사")
+                    .frame(maxWidth: .infinity)
+                    .font(.pretendardBold_24)
+                    .overlay(alignment: .trailing) {
+                        Button(action: {
+                            router.navigateBack()
+                        }, label: {
+                            Image("close")
+                        })
+                        .padding(.trailing)
+                    }
             }
-            .navigationBarBackButtonHidden()
+            
+            ProgressView(value: testPercent)
+                .progressViewStyle(LinearProgressViewStyle(tint: Color.customGreen))
+            
+            if !isChange {
+                AstigmatismRight(viewModel: viewModel,
+                                 testPercent: $testPercent,
+                                 isChange: $isChange)
+            } else {
+                AstigmatismLeft(viewModel: viewModel,
+                                testPercent: $testPercent,
+                                isTestComplete: $isTestComplete)
+            }
         }
+        .navigationBarBackButtonHidden()
+    }
 }
 
 //MARK: - 오른쪽 눈 화면
@@ -106,7 +106,7 @@ private struct AstigmatismRight: View {
             .frame(maxHeight: 75)
         } else {
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -145,7 +145,7 @@ private struct AstigmatismRight: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("Y")
@@ -159,7 +159,7 @@ private struct AstigmatismRight: View {
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("N")
@@ -222,7 +222,7 @@ private struct AstigmatismLeft: View {
             .frame(maxHeight: 75)
         } else {
             VStack {
-                NavigationStack {
+                VStack {
                     ZStack {
                         DistanceFaceAndDevice(model: distance)
                         BackgroundView()
@@ -261,7 +261,7 @@ private struct AstigmatismLeft: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("Y")
@@ -274,7 +274,7 @@ private struct AstigmatismLeft: View {
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("N")
@@ -302,7 +302,7 @@ private struct AstigmatismTestResultView: View {
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
     
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: Router
     @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("Login") var loggedIn: Bool = false
@@ -312,7 +312,7 @@ private struct AstigmatismTestResultView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
+            VStack {
                 Spacer()
                     .frame(height: 1)
                 
@@ -341,7 +341,7 @@ private struct AstigmatismTestResultView: View {
                                 if loggedIn {
                                     viewModel.saveResult(userUID)
                                     tabManager.selection = .eyeMap
-                                    dismiss()
+                                    router.navigateBack()
                                 } else {
                                     showAlert = true
                                 }
@@ -384,9 +384,9 @@ private struct AstigmatismTestResultView: View {
                              fontStyle: .pretendardBold_16,
                              action: {
                     if loggedIn {
-                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        //TODO: - 사용자 모델 추가 시 저장하고 navigateBack() 하기!
                         viewModel.saveResult(userUID)
-                        dismiss()
+                        router.navigateToRoot()
                     } else {
                         //TODO: - Alert 창 띄워주고 선택
                         showAlert = true

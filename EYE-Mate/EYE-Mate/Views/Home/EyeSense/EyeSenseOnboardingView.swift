@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EyeSenseOnboardingView: View {
+    @EnvironmentObject var router: Router
     @ObservedObject var onboardingViewModel: EyeSenseOnBoardingViewModel
     
     init(onboardingViewModel: EyeSenseOnBoardingViewModel) {
@@ -27,12 +28,14 @@ struct EyeSenseOnboardingView: View {
         VStack {
             TabView(selection: $currentPage){
                 ForEach(fakedPages) { Page in
-                    NavigationLink(destination: EyeSenseView(url: Page.url)){
+                    Button {
+                        router.navigate(to: .eyeSense(url: Page.url))
+                    } label: {
                         VStack(alignment: .leading, spacing: 10){
                             EyeSenseTitleView()
                                 .padding(.top, 15)
                                 .padding(.leading, 15)
-                            
+
                             HStack(alignment: .center) {
                                 Spacer()
                                 Text("\"\(Page.title)\"")

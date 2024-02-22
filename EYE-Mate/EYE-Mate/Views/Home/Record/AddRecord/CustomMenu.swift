@@ -30,7 +30,7 @@ struct CustomMenuButtonStyle: ButtonStyle {
         .frame(height: 44)
         .frame(maxWidth: .infinity)
         .foregroundColor(color)
-        .background(configuration.isPressed ? Color.btnGray : Color.clear)
+        .background(configuration.isPressed ? Color.buttonGray : Color.clear)
 
     }
 }
@@ -42,12 +42,12 @@ struct CustomMenuButtonStyle: ButtonStyle {
                   Text("좋음")
               }
               .buttonStyle(CustomMenuButtonStyle(color: Color.customGreen))
-            HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+            HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
               Button(action: {}) {
                   Text("양호")
               }
               .buttonStyle(CustomMenuButtonStyle(color: Color.lightYellow))
-            HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+            HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
               Button(action: {}) {
                   Text("나쁨")
               }

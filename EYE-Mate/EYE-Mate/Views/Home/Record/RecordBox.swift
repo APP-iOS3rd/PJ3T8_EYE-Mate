@@ -9,41 +9,43 @@ import SwiftUI
 
 struct RecordBox: View {
     let type: TestType
-
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
+    
     var body: some View {
-            VStack {
-                VStack(spacing: 16) {
-                    HStack {
-                        Text(type.rawValue)
-                            .font(.pretendardBold_20)
-                        Spacer()
-                        NavigationLink(destination: AllRecordView(recordType: type)) {
-                            Text("모두보기")
-                                .font(.pretendardRegular_14)
-                                .foregroundStyle(.black)
-                        }
-                    }
-                    HorizontalDivider(color: Color.lightGray, height: 3)
-                    VStack(alignment: .leading, spacing: 0) {
+        VStack {
+            VStack(spacing: 16) {
+                HStack {
+                    Text(type.rawValue)
+                        .font(.pretendardBold_20)
+                    Spacer()
+                    Button {
                         switch type {
                         case .vision:
-                            VisionDataView()
+                            recordViewModel.isPresentedVisionRecordListView = true
                         case .colorVision:
-                            ColorVisionDataView()
+                            recordViewModel.isPresentedColorVisionRecordListView = true
                         case .astigmatism:
-                            AstigmatismDataView()
+                            recordViewModel.isPresentedAstigmatismRecordListView = true
                         case .eyesight:
-                            EyesightDataView()
+                            recordViewModel.isPresentedEyesightRecordListView = true
                         }
-
+                    } label: {
+                        Text("모두보기")
+                            .font(.pretendardRegular_14)
+                            .foregroundStyle(.black)
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(24)
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.25), radius: 4, x: 2, y: 2)
+                HorizontalDivider(color: Color.lightGray, height: 3)
+                VStack(alignment: .leading, spacing: 0) {
+                    
+                }
             }
+            .frame(maxWidth: .infinity)
+            .padding(24)
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
+        }
     }
 }
 
