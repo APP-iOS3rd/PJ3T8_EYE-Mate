@@ -61,6 +61,12 @@
 		33DA6A9F2B84764A006C4827 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */; };
 		33DA6AA12B85F233006C4827 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AA02B85F233006C4827 /* Router.swift */; };
 		33DA6AA42B872461006C4827 /* MovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AA32B872461006C4827 /* MovementViewModel.swift */; };
+		33DA6AAB2B87460B006C4827 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA52B87460B006C4827 /* NotoSansKR-Bold.otf */; };
+		33DA6AAC2B87460B006C4827 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA62B87460B006C4827 /* NotoSansKR-Thin.otf */; };
+		33DA6AAD2B87460B006C4827 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA72B87460B006C4827 /* NotoSansKR-Black.otf */; };
+		33DA6AAE2B87460B006C4827 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */; };
+		33DA6AAF2B87460B006C4827 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */; };
+		33DA6AB02B87460B006C4827 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -233,6 +239,12 @@
 		33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		33DA6AA02B85F233006C4827 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		33DA6AA32B872461006C4827 /* MovementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementViewModel.swift; sourceTree = "<group>"; };
+		33DA6AA52B87460B006C4827 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		33DA6AA62B87460B006C4827 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		33DA6AA72B87460B006C4827 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -801,6 +813,12 @@
 			children = (
 				713F4F042B5E082700694F05 /* Pretendard-Black.otf */,
 				713F4F032B5E082700694F05 /* Pretendard-Bold.otf */,
+				33DA6AA72B87460B006C4827 /* NotoSansKR-Black.otf */,
+				33DA6AA52B87460B006C4827 /* NotoSansKR-Bold.otf */,
+				33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */,
+				33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */,
+				33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */,
+				33DA6AA62B87460B006C4827 /* NotoSansKR-Thin.otf */,
 				713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */,
 				713F4F002B5E082700694F05 /* Pretendard-ExtraLight.otf */,
 				713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */,
@@ -942,13 +960,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DA6AAF2B87460B006C4827 /* NotoSansKR-Regular.otf in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
 				713F4F0C2B5E082700694F05 /* Pretendard-Bold.otf in Resources */,
 				33DD0A412B6393E8005296AC /* circle-movement.json in Resources */,
+				33DA6AAD2B87460B006C4827 /* NotoSansKR-Black.otf in Resources */,
 				3329BC022B6102370099EDC4 /* eight-movement.json in Resources */,
+				33DA6AAB2B87460B006C4827 /* NotoSansKR-Bold.otf in Resources */,
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
+				33DA6AAE2B87460B006C4827 /* NotoSansKR-Medium.otf in Resources */,
 				5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
@@ -957,7 +979,9 @@
 				713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */,
 				713F4F0A2B5E082700694F05 /* Pretendard-Medium.otf in Resources */,
 				33DD0A432B63A25E005296AC /* line-movement.json in Resources */,
+				33DA6AB02B87460B006C4827 /* NotoSansKR-Light.otf in Resources */,
 				1D2C1D4B2B848F2900DC8410 /* GoogleService-Info.plist in Resources */,
+				33DA6AAC2B87460B006C4827 /* NotoSansKR-Thin.otf in Resources */,
 				1D2C1D4D2B848F3300DC8410 /* APIKEY.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -123,13 +123,13 @@ struct AllRecordView: View {
                             HStack(spacing: 16) {
                                 Text("좌")
                                     .font(.pretendardSemiBold_18)
-                                ColoredText(receivedText: "\(data.left)", font: .custom("Noto Sans-Bold", size: 28))
+                                ColoredText(receivedText: "\(data.left)", font: .custom("NotoSansKR-Bold", size: 28))
                             }
                             Spacer().frame(width: 24)
                             HStack(spacing: 16) {
                                 Text("우")
                                     .font(.pretendardSemiBold_18)
-                                ColoredText(receivedText: "\(data.right)", font: .custom("Noto Sans-Bold", size: 28))
+                                ColoredText(receivedText: "\(data.right)", font: .custom("NotoSansKR-Bold", size: 28))
                             }
                             Spacer()
                         }

@@ -130,7 +130,7 @@ struct RecordView: View {
                                 VStack(spacing: 0) {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
-                                            .font(.custom("Noto Sans-Regular", size: 16))
+                                            .font(.custom("NotoSansKR-Regular", size: 16))
                                             .frame(width: 120, alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
@@ -138,13 +138,13 @@ struct RecordView: View {
                                                 Text("좌")
                                                     .font(.pretendardBold_18)
                                                 Spacer().frame(width: 12)
-                                                ColoredText(receivedText: "\(data.left)", font: .custom("Noto Sans-Bold", size: 28))
+                                                ColoredText(receivedText: "\(data.left)", font: .custom("NotoSansKR-Bold", size: 28))
                                             }.frame(width: 80)
                                             HStack{
                                                 Text("우")
                                                     .font(.pretendardBold_18)
                                                 Spacer().frame(width: 12)
-                                                ColoredText(receivedText: "\(data.right)", font: .custom("Noto Sans-Bold", size: 28))
+                                                ColoredText(receivedText: "\(data.right)", font: .custom("NotoSansKR-Bold", size: 28))
                                             }.frame(width: 80)
                                         }
                                     }.frame(height: 52)
@@ -166,7 +166,7 @@ struct RecordView: View {
                                 VStack(spacing: 0) {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
-                                            .font(.custom("Noto Sans-Regular", size: 16))
+                                            .font(.custom("NotoSansKR-Regular", size: 16))
                                             .frame(width: 120, alignment: .leading)
                                         Spacer()
                                         ColoredText(receivedText: "\(data.status)", font: .pretendardBold_20)
@@ -189,7 +189,7 @@ struct RecordView: View {
                                 VStack(spacing: 0) {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
-                                            .font(.custom("Noto Sans-Regular", size: 16))
+                                            .font(.custom("NotoSansKR-Regular", size: 16))
                                             .frame(width: 120, alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
@@ -224,7 +224,7 @@ struct RecordView: View {
                                 VStack(spacing: 0) {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
-                                            .font(.custom("Noto Sans-Regular", size: 16))
+                                            .font(.custom("NotoSansKR-Regular", size: 16))
                                             .frame(width: 120, alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
