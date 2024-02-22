@@ -12,8 +12,6 @@ struct EyeSenseOnboardingView: View {
     
     init(onboardingViewModel: EyeSenseOnBoardingViewModel) {
         self.onboardingViewModel = onboardingViewModel
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
     }
     @State var showModal: Bool = false
     // Tabview page 넘기기에 관련된 변수
@@ -104,6 +102,9 @@ struct EyeSenseOnboardingView: View {
                     startTimer()
                 }
             }
+
+            UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
+            UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
         }
         .onDisappear {
             // 뷰가 사라질 때 타이머 중지
