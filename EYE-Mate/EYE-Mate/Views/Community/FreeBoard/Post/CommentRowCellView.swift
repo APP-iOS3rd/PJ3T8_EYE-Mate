@@ -42,7 +42,7 @@ struct CommentRowCellView: View {
                 
                 Spacer()
                 
-                // MARK: 댓글 좋아요 Btn
+                // MARK: 댓글 좋아요 Button
                 HStack(spacing: 0) {
                     Button {
                         commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
@@ -60,7 +60,7 @@ struct CommentRowCellView: View {
                         .foregroundStyle(Color.white)
                     
                     // MARK: 대댓글 기능 작성 필요
-                    // MARK: 대댓글 작성 Btn
+                    // MARK: 대댓글 작성 Button
                     Button {
                         commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
                             startWritingReplyComment(commentID, commentIndex)

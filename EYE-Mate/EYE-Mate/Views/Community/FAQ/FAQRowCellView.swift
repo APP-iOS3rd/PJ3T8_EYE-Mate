@@ -39,7 +39,7 @@ struct FAQRowCellView: View {
                     .rotationEffect(.degrees(isExpanded ? 90 : 0)) 
             }
             .padding(15)
-            .background(isExpanded ? Color.btnGray : .white)
+            .background(isExpanded ? Color.buttonGray : .white)
 
             // FAQ Answer
             if isExpanded{

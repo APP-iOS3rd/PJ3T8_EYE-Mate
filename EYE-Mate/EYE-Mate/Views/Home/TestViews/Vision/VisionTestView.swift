@@ -298,7 +298,7 @@ private struct TestView: View {
                 )
             }
             CustomButton(title: "다음",
-                         background: distance.canStart && viewModel.nextButton ? .customGreen : .btnGray,
+                         background: distance.canStart && viewModel.nextButton ? .customGreen : .buttonGray,
                          fontStyle: .pretendardMedium_18,
                          action: {
                 viewModel.checkAnswer($changeValue, type)

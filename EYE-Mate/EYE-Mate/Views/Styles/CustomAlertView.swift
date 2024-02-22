@@ -36,7 +36,7 @@ struct CustomAlertView: View {
                         .font(.pretendardMedium_18)
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.btnGray)
+                        .background(Color.buttonGray)
                 }
                 
                 Button {

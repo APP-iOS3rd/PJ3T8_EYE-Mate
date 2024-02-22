@@ -10,7 +10,7 @@ import CoreLocation
 
 struct MapView: View {
     @StateObject var coordinator: MapCoordinator = MapCoordinator.shared
-    @State var updateBtn: Bool = false
+    @State var updateButton: Bool = false
     
     var body: some View {
         
@@ -19,10 +19,10 @@ struct MapView: View {
                 .ignoresSafeArea(.all, edges: .top)
             VStack{
                 Button{
-                    updateBtn.toggle()
-                    if updateBtn {
+                    updateButton.toggle()
+                    if updateButton {
                         MapCoordinator.shared.fetchApiData()
-                        updateBtn = false
+                        updateButton = false
                     }
                 } label: {
                     Text("\(Image(systemName: "arrow.clockwise")) 현 지도에서 검색")

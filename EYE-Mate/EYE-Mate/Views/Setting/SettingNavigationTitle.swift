@@ -14,27 +14,27 @@ enum SettingNavigationBtnType: String {
 
 struct SettingNavigationTitle: View {
     let isDisplayTitle: Bool
-    let leftBtnAction: () -> Void
-    let leftBtnType: SettingNavigationBtnType
+    let leftButtonAction: () -> Void
+    let leftButtonType: SettingNavigationBtnType
     let title: String
     
     init(
         isDisplayTitle: Bool = true,
-        leftBtnAction: @escaping () -> Void = {},
-        leftBtnType: SettingNavigationBtnType = .back,
+        leftButtonAction: @escaping () -> Void = {},
+        leftButtonType: SettingNavigationBtnType = .back,
         title: String = "닉네임 변경"
     ) {
         self.isDisplayTitle = isDisplayTitle
-        self.leftBtnAction = leftBtnAction
-        self.leftBtnType = leftBtnType
+        self.leftButtonAction = leftButtonAction
+        self.leftButtonType = leftButtonType
         self.title = title
     }
     
     
     var body: some View {
         HStack {
-            Button(action: leftBtnAction) {
-                Image(systemName: leftBtnType.rawValue)
+            Button(action: leftButtonAction) {
+                Image(systemName: leftButtonType.rawValue)
                     .font(.system(size: 30))
                     .foregroundColor(.black)
             }

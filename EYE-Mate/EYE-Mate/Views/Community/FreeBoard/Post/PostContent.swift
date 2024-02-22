@@ -98,7 +98,7 @@ struct PostContent: View {
 
             // Menu (신고 또는 삭제 -> 추후에 공유 등 추가 가능)
             Menu {
-                // 본인의 게시물인 경우에 삭제 Btn, 아닌 경우 신고 Btn
+                // 본인의 게시물인 경우에 삭제 Button, 아닌 경우 신고 Button
                 if userUID == postVM.post.userUID {
                     // 게시물 수정
                     Button(action:  {

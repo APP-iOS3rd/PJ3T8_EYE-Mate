@@ -17,7 +17,7 @@ struct ChangeUserNameView: View {
     
     var body: some View {
         VStack {
-            SettingNavigationTitle(leftBtnAction: {
+            SettingNavigationTitle(leftButtonAction: {
                 presentationMode.wrappedValue.dismiss()
             }, title: "닉네임 변경")
             

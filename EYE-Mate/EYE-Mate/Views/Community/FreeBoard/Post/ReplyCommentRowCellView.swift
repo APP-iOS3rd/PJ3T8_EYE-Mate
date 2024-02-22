@@ -42,7 +42,7 @@ struct ReplyCommentRowCellView: View {
                 Spacer()
                 
                 HStack(spacing: 0) {
-                    // MARK: 대댓글 좋아요 Btn
+                    // MARK: 대댓글 좋아요 Button
                     Button {
                         commentVM.likeReplyComment(commentID: commentID, replyCommentID: replyComment.id) { postID, commentIndex, replyCommentIndex in
                             onUpdateReplyComment(postID, commentIndex, replyCommentIndex)

@@ -64,7 +64,7 @@ struct CommentView: View {
                     .padding(.leading, 5)
                 }
                 
-                HorizontalDivider(color: .btnGray, height: 1)
+                HorizontalDivider(color: .buttonGray, height: 1)
             }
         }
         .padding(.horizontal)

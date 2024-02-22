@@ -40,17 +40,17 @@ struct RadioButton: View {
                     .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.btnGray, lineWidth: 1)
+                            .stroke(Color.buttonGray, lineWidth: 1)
                     } }
             else {
                 Text(label)
                     .font(.pretendardRegular_16)
-                    .foregroundStyle(Color.btnGray)
+                    .foregroundStyle(Color.buttonGray)
                     .padding(16)
                     .frame(height: 32)
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.btnGray, lineWidth: 1)
+                            .stroke(Color.buttonGray, lineWidth: 1)
                     }
             }
         }

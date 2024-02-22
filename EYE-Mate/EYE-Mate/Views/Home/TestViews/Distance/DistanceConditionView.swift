@@ -100,7 +100,7 @@ private struct DistanceView: View {
                         .multilineTextAlignment(.center)
                         .frame(height: 50)
 
-                    CustomButton(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
+                    CustomButton(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .buttonGray, fontStyle: .pretendardMedium_18, action: {
                         switch type {
                         case .vision:
                             visionTestViewModel.userDistance = viewModel.distance
@@ -121,7 +121,7 @@ private struct DistanceView: View {
                         .foregroundColor(viewModel.canSightStart ? .customGreen : .customRed)
                         .multilineTextAlignment(.center)
                         .frame(height: 50)
-                    CustomButton(title: "테스트 시작하기", background: viewModel.canSightStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
+                    CustomButton(title: "테스트 시작하기", background: viewModel.canSightStart ? .customGreen : .buttonGray, fontStyle: .pretendardMedium_18, action: {
                         switch type {
                         case .vision:
                             router.navigate(to: .visionTest)

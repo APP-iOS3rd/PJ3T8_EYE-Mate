@@ -142,7 +142,7 @@ private struct SightRight: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: distance.canSightStart ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
@@ -155,7 +155,7 @@ private struct SightRight: View {
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
-                                             background: distance.canSightStart ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
@@ -257,7 +257,7 @@ private struct SightLeft: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: distance.canSightStart ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {
@@ -270,7 +270,7 @@ private struct SightLeft: View {
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canSightStart)
                                 CustomButton(title: "아니오",
-                                             background: distance.canSightStart ? .customGreen : .btnGray,
+                                             background: distance.canSightStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     withAnimation {

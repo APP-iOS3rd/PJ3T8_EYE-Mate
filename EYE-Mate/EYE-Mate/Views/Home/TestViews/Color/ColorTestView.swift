@@ -243,7 +243,7 @@ private struct ColorTestResultView: View {
                              fontStyle: .pretendardBold_16,
                              action: {
                     if loggedIn {
-                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        //TODO: - 사용자 모델 추가 시 저장하고 navigateToRoot() 하기!
                         viewModel.saveResult(userUID)
                         router.navigateToRoot()
                     } else {

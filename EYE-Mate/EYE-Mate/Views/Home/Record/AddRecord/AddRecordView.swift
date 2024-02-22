@@ -100,7 +100,7 @@ struct AddRecordView: View {
                                 }
                             Spacer()
                         }
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
 
                         AddRecordSubtitleView(label: "안경 착용")
                         EyewareButtonGroup(selectedID: $selectedEyeware) { selected in
@@ -108,7 +108,7 @@ struct AddRecordView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
 
                         AddRecordSubtitleView(label: "검사 장소")
                         PlaceButtonGroup(selectedID: $selectedPlace) { selected in
@@ -116,7 +116,7 @@ struct AddRecordView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
 
                         AddRecordSubtitleView(label: "검사 종류")
                         TestTypeButtonGroup(selectedID: $selectedTestType) { selected in
@@ -126,7 +126,7 @@ struct AddRecordView: View {
                         .padding(.leading, 12)
 
                         if isVisionRecordVisible || isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
-                            HorizontalDivider(color: Color.btnGray, height: 2)
+                            HorizontalDivider(color: Color.buttonGray, height: 2)
                                 .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
 
@@ -142,7 +142,7 @@ struct AddRecordView: View {
 
 
                             if isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
-                                HorizontalDivider(color: Color.btnGray, height: 2)
+                                HorizontalDivider(color: Color.buttonGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
@@ -157,7 +157,7 @@ struct AddRecordView: View {
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isAstigmatismRecordVisible || isEyesightRecordVisible {
-                                HorizontalDivider(color: Color.btnGray, height: 2)
+                                HorizontalDivider(color: Color.buttonGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
@@ -171,7 +171,7 @@ struct AddRecordView: View {
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isEyesightRecordVisible {
-                                HorizontalDivider(color: Color.btnGray, height: 2)
+                                HorizontalDivider(color: Color.buttonGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
@@ -187,7 +187,7 @@ struct AddRecordView: View {
                         }
 
 
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
                         AddRecordSubtitleView(label: "눈 진단")
                         EyeStatusButtonGroup(selectedID: $selectedEyeStatus) { selected in
                             print("Selected is: \(selected)")
@@ -195,7 +195,7 @@ struct AddRecordView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
 
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
                         AddRecordSubtitleView(label: "눈 수술 여부")
                         SurgeryButtonGroup(selectedID: $selectedSurgery) { selected in
                             print("Selected is: \(selected)")

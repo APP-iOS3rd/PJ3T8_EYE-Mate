@@ -145,7 +145,7 @@ private struct AstigmatismRight: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("Y")
@@ -159,7 +159,7 @@ private struct AstigmatismRight: View {
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("N")
@@ -261,7 +261,7 @@ private struct AstigmatismLeft: View {
                             
                             HStack {
                                 CustomButton(title: "예",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("Y")
@@ -274,7 +274,7 @@ private struct AstigmatismLeft: View {
                                 .padding(.trailing, -10)
                                 .disabled(!distance.canStart)
                                 CustomButton(title: "아니오",
-                                             background: distance.canStart ? .customGreen : .btnGray,
+                                             background: distance.canStart ? .customGreen : .buttonGray,
                                              fontStyle: .pretendardMedium_18,
                                              action: {
                                     viewModel.userAnswer.append("N")

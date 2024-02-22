@@ -39,7 +39,7 @@ struct PostView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HorizontalDivider(color: .btnGray, height: 2)
+            HorizontalDivider(color: .buttonGray, height: 2)
             
             ScrollView{
                 // MARK: 게시물 내용
@@ -58,7 +58,7 @@ struct PostView: View {
                 }
                 .padding(.top)
 
-                HorizontalDivider(color: .btnGray, height: 2)
+                HorizontalDivider(color: .buttonGray, height: 2)
                 
                 // MARK: 댓글
                 if !postVM.post.comments.isEmpty {
