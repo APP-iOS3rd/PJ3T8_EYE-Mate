@@ -19,6 +19,19 @@ struct AllRecordHeader: View {
 
     let recordType: TestType
 
+    var isRecordsEmpty: Bool {
+        switch recordType {
+        case .vision:
+            return recordViewModel.visionRecords.isEmpty
+        case .colorVision:
+            return recordViewModel.colorVisionRecords.isEmpty
+        case .astigmatism:
+            return recordViewModel.astigmatismRecords.isEmpty
+        case .eyesight:
+            return recordViewModel.eyesightRecords.isEmpty
+        }
+    }
+
     private func goBack() {
         dismiss()
     }
@@ -75,22 +88,24 @@ struct AllRecordHeader: View {
                         .padding(.bottom, 2)
                 }
                 Spacer()
-                Button {
-                    if isDeleteMode {
-                        deleteSelectedItems()
-                        isDeleteMode = false
-                    } else {
-                        isDeleteMode = true
-                    }
-                } label: {
-                    if isDeleteMode {
-                        Text("완료")
-                            .foregroundStyle(.blue)
-                    } else {
-                        Image(systemName: "trash")
-                            .foregroundColor(.black)
-                            .font(.system(size: 24))
-                            .padding(.bottom, 2)
+                if !isRecordsEmpty {
+                    Button {
+                        if isDeleteMode {
+                            deleteSelectedItems()
+                            isDeleteMode = false
+                        } else {
+                            isDeleteMode = true
+                        }
+                    } label: {
+                        if isDeleteMode {
+                            Text("완료")
+                                .foregroundStyle(.blue)
+                        } else {
+                            Image(systemName: "trash")
+                                .foregroundColor(.black)
+                                .font(.system(size: 24))
+                                .padding(.bottom, 2)
+                        }
                     }
                 }
             }.padding(.horizontal, 12)
