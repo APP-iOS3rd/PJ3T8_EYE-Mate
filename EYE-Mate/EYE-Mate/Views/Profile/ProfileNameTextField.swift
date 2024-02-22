@@ -19,6 +19,7 @@ struct ProfileNameTextField: View {
     @State var isSyntaxErrorText: Bool = false
     @State var isDupliatedErrorText: Bool = false
     @State var errorText: String = ""
+    @FocusState.Binding var keyFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -27,6 +28,7 @@ struct ProfileNameTextField: View {
                     .multilineTextAlignment(.center)
                     .font(.pretendardRegular_18)
                     .frame(height: 50)
+                    .focused($keyFocused)
                     .background{
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 2)
@@ -78,6 +80,6 @@ struct ProfileNameTextField: View {
     
 }
 
-#Preview {
-    ProfileNameTextField(textName: .constant("EYE-Mate"), isButtonEnabled: .constant(false))
-}
+//#Preview {
+//    ProfileNameTextField(textName: .constant("EYE-Mate"), isButtonEnabled: .constant(false), )
+//}

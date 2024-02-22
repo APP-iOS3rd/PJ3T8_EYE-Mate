@@ -18,6 +18,7 @@ struct SettingView: View {
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
 
     @State var isLogoutAlert: Bool = false
+    
     @State var isSignoutAlert: Bool = false
 
     var body: some View {
@@ -39,35 +40,39 @@ struct SettingView: View {
                     SettingListView(isLogoutAlert: $isLogoutAlert, isSignoutAlert: $isSignoutAlert)
                 }
             }
-        }
-        .fullScreenCover(isPresented: $isLogoutAlert, content: {
-            ZStack{
-                // 배경화면
-                Color.gray.opacity(0.8).edgesIgnoringSafeArea(.all)
+            
+            if isLogoutAlert {
+                
+                ZStack{
+                    // 배경화면
+                    Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
 
-                CustomAlertView(
-                    title: "로그아웃",
-                    message: "로그아웃 하시겠습니까?",
-                    leftButtonTitle: "취소",
-                    leftButtonAction: { isLogoutAlert = false},
-                    rightButtonTitle: "확인",
-                    rightButtonAction: {
-                        // MARK: - 로그아웃 처리
-                        login = false
-                        UserDefaults.standard.removeObject(forKey: "user_name")
-                        UserDefaults.standard.removeObject(forKey: "user_UID")
-                        UserDefaults.standard.removeObject(forKey: "user_profile_url")
-                        UserDefaults.standard.synchronize()
-                        profileViewModel.profileImage = Image("user")
-                        profileViewModel.downloadImageFromProfileURL()
-                        router.navigateBack()
-                    })
+                    CustomAlertView(
+                        title: "로그아웃",
+                        message: "로그아웃 하시겠습니까?",
+                        leftButtonTitle: "취소",
+                        leftButtonAction: { isLogoutAlert = false},
+                        rightButtonTitle: "확인",
+                        rightButtonAction: {
+                            // MARK: - 로그아웃 처리
+                            login = false
+                            UserDefaults.standard.removeObject(forKey: "user_name")
+                            UserDefaults.standard.removeObject(forKey: "user_UID")
+                            UserDefaults.standard.removeObject(forKey: "user_profile_url")
+                            UserDefaults.standard.synchronize()
+                            profileViewModel.profileImage = Image("user")
+                            profileViewModel.downloadImageFromProfileURL()
+                            presentationMode.wrappedValue.dismiss()
+                        })
+                }
             }
-        })
-
+                
+        }
         .fullScreenCover(isPresented: $isSignoutAlert, content: {
             AccountDeleteView(isSignoutAlert: $isSignoutAlert)
         })
+        .animation(.easeInOut(duration: 0.1), value: isLogoutAlert)
+        
     }
 }
 
