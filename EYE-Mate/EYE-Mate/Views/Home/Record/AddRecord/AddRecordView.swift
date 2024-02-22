@@ -10,6 +10,7 @@ import SwiftUI
 struct AddRecordView: View {
     @EnvironmentObject var router: Router
     @ObservedObject private var recordViewModel = RecordViewModel.shared
+    // FIXME: 테스트를 위해 임시 uuid 넣어두었음 추후 ""로 초기화하고 예외처리 로직 구현
     @AppStorage("user_UID") private var userUID: String = "JVGqkutgyQPwq0Cebwtpun5pPeq1"
 
     @State private var selectedDate: Date = Date()
@@ -19,8 +20,8 @@ struct AddRecordView: View {
 
     @State private var selectedTestType: [String] = []
 
-    @State private var leftVision = 1.0
-    @State private var rightVision = 1.0
+    @State private var leftVision: Float = 1.0
+    @State private var rightVision: Float = 1.0
 
     @State private var colorVisionStatus = RecordStatus.nothing
 
