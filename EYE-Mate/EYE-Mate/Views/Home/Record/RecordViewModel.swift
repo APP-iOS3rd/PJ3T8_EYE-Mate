@@ -89,10 +89,8 @@ final class RecordViewModel: ObservableObject {
         } ?? 0
         visionRecords.remove(at: index)
 
-        let recentIndex = recentVisionRecords.firstIndex { currentRecord in
-            return currentRecord.id == record.id
-        } ?? 0
-        recentVisionRecords.remove(at: recentIndex)
+        let recentVisions = Array(visionRecords.prefix(5))
+        recentVisionRecords = recentVisions
     }
 
     @MainActor
@@ -128,10 +126,8 @@ final class RecordViewModel: ObservableObject {
         } ?? 0
         colorVisionRecords.remove(at: index)
 
-        let recentIndex = recentColorVisionRecords.firstIndex { currentRecord in
-            return currentRecord.id == record.id
-        } ?? 0
-        recentColorVisionRecords.remove(at: recentIndex)
+        let recentColorVisions = Array(colorVisionRecords.prefix(5))
+        recentColorVisionRecords = recentColorVisions
     }
 
     @MainActor
@@ -167,10 +163,8 @@ final class RecordViewModel: ObservableObject {
         } ?? 0
         astigmatismRecords.remove(at: index)
 
-        let recentIndex = recentAstigmatismRecords.firstIndex { currentRecord in
-            return currentRecord.id == record.id
-        } ?? 0
-        recentAstigmatismRecords.remove(at: recentIndex)
+        let recentAstigmatisms = Array(astigmatismRecords.prefix(5))
+        recentAstigmatismRecords = recentAstigmatisms
     }
 
     @MainActor
@@ -206,9 +200,7 @@ final class RecordViewModel: ObservableObject {
         } ?? 0
         eyesightRecords.remove(at: index)
 
-        let recentIndex = recentEyesightRecords.firstIndex { currentRecord in
-            return currentRecord.id == record.id
-        } ?? 0
-        recentEyesightRecords.remove(at: recentIndex)
+        let recentEyesights = Array(eyesightRecords.prefix(5))
+        recentEyesightRecords = recentEyesights
     }
 }
