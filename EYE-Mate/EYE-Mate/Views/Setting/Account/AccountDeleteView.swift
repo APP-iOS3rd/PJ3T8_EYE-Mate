@@ -14,71 +14,66 @@ struct AccountDeleteView: View {
     @Binding var isSignoutAlert: Bool
     
     var body: some View {
-        VStack(spacing: 30) {
-            SettingNavigationTitle(isDisplayTitle: false, leftBtnAction: {presentationMode.wrappedValue.dismiss()}, leftBtnType: .close)
-            
-            Text("탈퇴하기")
-                .font(.pretendardSemiBold_32)
-            
-            Text("잠깐! EYE-Mate를 탈퇴하기 전에\n아래 정보를 확인해주세요")
-                .multilineTextAlignment(.center)
-                .font(.pretendardSemiBold_18)
-                .foregroundColor(Color.warningGray)
-            
-            AccountDeleteContents(accountDeleteViewModel: accountDeleteViewModel)
-            
-            Spacer()
-            
-            HStack {
-                Button {
-                    // TODO: - 탈퇴창 닫기
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("취소")
-                        .font(.pretendardBold_18)
-                        .foregroundStyle(Color.white)
-                        .frame(height: 65)
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10.0)
-                                .foregroundStyle(Color.btnGray)
-                        }
-                }
+        ZStack{
+            VStack(spacing: 30) {
+                SettingNavigationTitle(isDisplayTitle: false, leftBtnAction: {presentationMode.wrappedValue.dismiss()}, leftBtnType: .close)
                 
+                Text("탈퇴하기")
+                    .font(.pretendardSemiBold_32)
                 
-                Button {
-                    // MARK: - 탈퇴 확인 Alert
-                    isCheckAlert = true
+                Text("잠깐! EYE-Mate를 탈퇴하기 전에\n아래 정보를 확인해주세요")
+                    .multilineTextAlignment(.center)
+                    .font(.pretendardSemiBold_18)
+                    .foregroundColor(Color.warningGray)
+                
+                AccountDeleteContents(accountDeleteViewModel: accountDeleteViewModel)
+                
+                Spacer()
+                
+                HStack {
+                    Button {
+                        // TODO: - 탈퇴창 닫기
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("취소")
+                            .font(.pretendardBold_18)
+                            .foregroundStyle(Color.white)
+                            .frame(height: 65)
+                            .frame(maxWidth: .infinity)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10.0)
+                                    .foregroundStyle(Color.btnGray)
+                            }
+                    }
                     
-                } label: {
-                    Text("탈퇴")
-                        .font(.pretendardBold_18)
-                        .foregroundStyle(Color.white)
-                        .frame(height: 65)
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10.0)
-                                .foregroundStyle(Color.customRed)
-                        }
+                    Button {
+                        // MARK: - 탈퇴 확인 Alert
+                        isCheckAlert = true
+                        
+                    } label: {
+                        Text("탈퇴")
+                            .font(.pretendardBold_18)
+                            .foregroundStyle(Color.white)
+                            .frame(height: 65)
+                            .frame(maxWidth: .infinity)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10.0)
+                                    .foregroundStyle(Color.customRed)
+                            }
+                    }
                 }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
-        }
-        .navigationBarBackButtonHidden(true)
-        .fullScreenCover(isPresented: $isCheckAlert) {
-            ZStack{
-                Color.gray.opacity(0.8).edgesIgnoringSafeArea(.all)
+            
+            if isCheckAlert {
                 
-                CustomAlertView(
-                    title: "회원 탈퇴",
-                    message: "회원님의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?",
-                    leftButtonTitle: "취소",
-                    leftButtonAction: {
+                ZStack{
+                    Color.gray.opacity(0.8).edgesIgnoringSafeArea(.all)
+                    
+                    DeleteAlertView(title: "회원 탈퇴", message: "회원님의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?", leftButtonTitle: "취소", leftButtonAction: {
                         isCheckAlert = false
                         isSignoutAlert = false
-                    },
-                    rightButtonTitle: "확인",
-                    rightButtonAction: {
+                    }, rightButtonTitle: "확인", rightButtonAction: {
                         // MARK: - 탈퇴하기(유저 정보 삭제)
                         // storage, store, auth, appstorage 삭제
                         accountDeleteViewModel.deleteUserImageFromStorage()
@@ -87,8 +82,11 @@ struct AccountDeleteView: View {
                         presentationMode.wrappedValue.dismiss()
                         isSignoutAlert = false
                     })
+                }
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .animation(.easeInOut(duration: 0.1), value: isCheckAlert)
     }
 }
 

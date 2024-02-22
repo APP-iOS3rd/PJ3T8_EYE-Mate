@@ -22,7 +22,8 @@ struct SignUpProfileView: View {
     var body: some View {
         VStack(spacing: 20) {
             CustomBackButton()
-            //            ScrollView {
+                .opacity(!keyFocused ? 1.0 : 0.0 )
+            
             HStack {
                 Text("EYE-Mate")
                     .foregroundColor(Color.customGreen)
@@ -58,12 +59,12 @@ struct SignUpProfileView: View {
             .frame(height: 88)
             
             Spacer()
-            //            }
         }
-        .navigationBarBackButtonHidden(true)
+        .background(Color.white)
         .onTapGesture {
             keyFocused = false
         }
+        .navigationBarBackButtonHidden(true)
     }
     
 }
