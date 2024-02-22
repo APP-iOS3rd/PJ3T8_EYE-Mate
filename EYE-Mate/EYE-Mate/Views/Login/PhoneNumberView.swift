@@ -12,19 +12,19 @@ import FirebaseAuth
 import UIKit
 
 struct PhoneNumberView: View {
-    @StateObject var loginViewModel = LoginViewModel(verificationID: "")
+    @ObservedObject var loginViewModel = LoginViewModel.shared
     @State var presentSheet = false
-    @State var countryCode : String = "+1"
-    @State var countryFlag : String = "🇺🇸"
-    @State var countryPattern : String = "### ### ####"
+    @State var countryFlag : String = "🇰🇷"
+    @State var countryPattern : String = "## #### ####"
     @State var countryLimit : Int = 17
-    @State var mobPhoneNumber = ""
     @State var searchCountry: String  = ""
     @State var previousPhoneNumber: String = ""
-    @State var openOTPView: Bool = false
-    
+
+    @Binding var openOTPView: Bool
     @Binding var signUpFlag: Bool
     @FocusState.Binding var keyFocused: Bool
+    @Binding var countryCode : String
+    @Binding var mobPhoneNumber: String
     
     var foregroundColor: Color = Color(.black)
     var backgroundColor: Color = Color(.systemGray6)
@@ -44,6 +44,7 @@ struct PhoneNumberView: View {
                         keyFocused = false
                     } label: {
                         Text("\(countryFlag) \(countryCode)")
+                            .font(.pretendardMedium_16)
                             .padding(10)
                             .frame(minWidth: 80, minHeight: 47)
                             .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
@@ -99,15 +100,6 @@ struct PhoneNumberView: View {
                     }
                     .disabled(mobPhoneNumber.count < countryPattern.count)
                 }
-                
-                // MARK: - OTP View
-                if openOTPView {
-                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
-                } else {
-                    
-                }
-                
-                Spacer()
             }
             .animation(.easeInOut(duration: 0.6), value: keyFocused)
         }

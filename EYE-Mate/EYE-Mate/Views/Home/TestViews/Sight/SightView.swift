@@ -18,7 +18,7 @@ struct SightView: View {
             CustomNavigationTitle(title: "시야 검사",
                                   isDisplayLeftButton: true)
             ExplanationTextView(str: "간단한 테스트를 통해\n시야의 상태를 확인해보세요!")
-                .padding(.leading, 20)
+            
             Spacer()
             
             TestOnboardingView(title: "핸드폰과 거리를\n30cm~40cm 떨어트려주세요!",

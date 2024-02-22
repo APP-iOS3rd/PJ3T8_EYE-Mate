@@ -18,6 +18,8 @@ class FreeBoardViewModel: ObservableObject {
     
     @Published var paginationDoc: QueryDocumentSnapshot?
     
+    @Published var isShowCreateView: Bool = false
+    
     /// - 게시물 Fetch
     func fetchPosts() async {
         do {

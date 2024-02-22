@@ -52,6 +52,8 @@ struct EYE_MateApp: App {
                             ProfileView()
                         case .signUpProfile:
                             SignUpProfileView()
+                        case .eyeSense(let url):
+                            EyeSenseView(url: url)
                         }
                     }
             }

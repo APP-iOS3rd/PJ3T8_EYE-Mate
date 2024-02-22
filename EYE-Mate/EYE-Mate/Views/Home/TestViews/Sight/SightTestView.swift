@@ -307,10 +307,10 @@ private struct SightTestResultView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("시야 검사 결과")
-                    .font(.pretendardBold_32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(20)
+                Spacer()
+                    .frame(height: 1)
+                
+                TestResultTitleView(type: .eyesight)
                 
                 let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 
@@ -397,6 +397,7 @@ private struct SightTestResultView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut, value: showAlert)
     }
 }
 

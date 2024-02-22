@@ -10,9 +10,12 @@ import Combine
 import FirebaseAuth
 
 struct SignUpView: View {
-    @StateObject var loginViewModel = LoginViewModel.shared
+    @ObservedObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
     @FocusState private var keyFocused: Bool
+    @State var openOTPView: Bool = false
+    @State var countryCode : String = "+82"
+    @State var mobPhoneNumber = ""
     
     var body: some View {
         VStack{
@@ -27,7 +30,13 @@ struct SignUpView: View {
                 Text("회원가입")
                     .font(.pretendardBold_20)
                     .foregroundStyle(Color.customGreen)
-                PhoneNumberView(signUpFlag: $signUpFlag, keyFocused: $keyFocused)
+                PhoneNumberView(openOTPView: $openOTPView, signUpFlag: $signUpFlag, keyFocused: $keyFocused, countryCode: $countryCode, mobPhoneNumber: $mobPhoneNumber)
+                
+                // MARK: - OTP View
+                if openOTPView {
+                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
+                }
+                
             }
             
             VStack(alignment: .leading) {
@@ -56,9 +65,9 @@ struct SignUpView: View {
     }
 }
 
-//#Preview {
-//    SignUpView(signUpFlag: .constant(true))
-//}
+#Preview {
+    SignUpView(loginViewModel: LoginViewModel(), signUpFlag: .constant(true))
+}
 
 
 

@@ -24,6 +24,7 @@ final class Router: ObservableObject {
         case sightTest
         case profile
         case signUpProfile
+        case eyeSense(url: String)
     }
 
     @Published var navigationPath = NavigationPath()

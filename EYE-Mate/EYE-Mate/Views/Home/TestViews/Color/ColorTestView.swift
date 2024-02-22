@@ -41,7 +41,7 @@ private struct ColorTest: View {
                     .frame(height: 5)
 
                 HStack {
-                    Text("색채 검사")
+                    Text("색각 검사")
                         .frame(maxWidth: .infinity)
                         .font(.pretendardBold_24)
                         .overlay(alignment: .trailing) {
@@ -165,12 +165,9 @@ private struct ColorTestResultView: View {
             VStack {
                 Spacer()
                     .frame(height: 1)
-
-                Text("색채 검사 결과")
-                    .font(.pretendardBold_32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(20)
-
+                
+                TestResultTitleView(type: .colorVision)
+                
                 let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
 
                 ScrollView(showsIndicators: false) {
@@ -262,6 +259,7 @@ private struct ColorTestResultView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut, value: showAlert)
     }
 }
 
@@ -271,15 +269,17 @@ private struct ColorTestResultTextView: View {
 
     //TODO: - 사용자 계정 나오면 ViewModel에 추가 후 수정필요!
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("어디로 가야 하오 님은")
-                .font(.pretendardRegular_22)
-            HStack(alignment: .lastTextBaseline) {
-                Text(viewModel.resultMessage)
-                    .font(.pretendardSemiBold_32)
-                Text("입니다.")
-                    .font(.pretendardRegular_22)
-            }
+        HStack(alignment: .lastTextBaseline) {
+            Color.customGreen
+                .frame(width: 3, height: 20)
+            
+            Text("색채 지각:")
+                .font(.pretendardSemiBold_24)
+            
+            Text(viewModel.resultMessage)
+                .font(.pretendardSemiBold_32)
+                .foregroundColor(viewModel.resultMessageColor)
+                .padding(.leading, 15)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading, 30)

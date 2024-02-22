@@ -21,11 +21,13 @@ class LoginViewModel: ObservableObject {
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_left") private var userLeft: String = ""
+    @AppStorage("user_right") private var userRight: String = ""
     
     @Published var showFullScreenCover: Bool = false
     
     // TODO: - firestore 객체 하나로 통일
-    //    let db = Firestore.firestore()
+    let db = Firestore.firestore()
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
@@ -37,6 +39,7 @@ class LoginViewModel: ObservableObject {
         print(phoneNumber)
         // reCAPTCHA 기능 중지 - simulator용
 //        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        Auth.auth().languageCode = "ko"
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
@@ -45,7 +48,7 @@ class LoginViewModel: ObservableObject {
                 }
                 if let verificationID = verificationID {
                     print("verificationID:", verificationID)
-                    self.verificationID =  verificationID
+                    self.verificationID = verificationID
                 }
             }
     }
@@ -89,13 +92,15 @@ class LoginViewModel: ObservableObject {
     @MainActor
     func checkLoginAndSettingInfo() async throws -> Bool{
         do {
-            let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+            let querySnapshot = try await db.collection("Users").getDocuments()
             // for문 으로
             for document in querySnapshot.documents {
                 let data = document.data()
                 if data["userUID"] as! String == userUID {
                     userName = data["userName"] as! String
                     userProfileURL = data["userImageURL"] as! String
+                    userLeft = data["left"] as! String
+                    userRight = data["right"] as! String
                     profileViewModel.downloadImageFromProfileURL()
                     return true
                 }
@@ -112,7 +117,7 @@ class LoginViewModel: ObservableObject {
     @MainActor
     func checkLoginList() async throws -> Bool{
         do {
-            let querySnapshot = try await Firestore.firestore().collection("Users").getDocuments()
+            let querySnapshot = try await db.collection("Users").getDocuments()
             // for문 으로
             for document in querySnapshot.documents {
                 let data = document.data()

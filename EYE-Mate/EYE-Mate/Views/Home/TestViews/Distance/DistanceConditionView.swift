@@ -50,11 +50,10 @@ private struct DistanceView: View {
     @EnvironmentObject var router: Router
 
     @StateObject var viewModel = DistanceConditionViewModel.shared
-    @StateObject var visionTestViewModel = VisionTestViewModel()
-
-    let title: String
-    let type: TestType
-
+    @ObservedObject var visionTestViewModel = VisionTestViewModel.shared
+    var title: String
+    var type: TestType
+    
     var body: some View {
         VStack {
             Spacer()

@@ -16,6 +16,9 @@ struct CommentRowCellView: View {
     
     @ObservedObject var commentVM: CommentViewModel
     
+    @Binding var showAlert: Bool
+    @AppStorage("Login") var loggedIn: Bool = false
+
     // MARK: Local Data Update
     /// - 댓글 좋아요 업데이트
     var onUpdateComment: (String, Int) -> ()
@@ -45,8 +48,12 @@ struct CommentRowCellView: View {
                 // MARK: 댓글 좋아요 Button
                 HStack(spacing: 0) {
                     Button {
-                        commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
-                            onUpdateComment(postID, commentIndex)
+                        if loggedIn {
+                            commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
+                                onUpdateComment(postID, commentIndex)
+                            }
+                        } else {
+                            showAlert = true
                         }
                     } label: {
                         Image(systemName: "heart")
@@ -62,8 +69,12 @@ struct CommentRowCellView: View {
                     // MARK: 대댓글 기능 작성 필요
                     // MARK: 대댓글 작성 Button
                     Button {
-                        commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
-                            startWritingReplyComment(commentID, commentIndex)
+                        if loggedIn {
+                            commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
+                                startWritingReplyComment(commentID, commentIndex)
+                            }
+                        } else {
+                            showAlert = true
                         }
                     } label: {
                         Image(systemName: "message")
@@ -92,7 +103,11 @@ struct CommentRowCellView: View {
                             }
                         } else {
                             Button(role: .destructive) {
-                                
+                                if loggedIn {
+                                    
+                                } else {
+                                    showAlert = true
+                                }
                             } label: {
                                 Label("신고", systemImage: "light.beacon.max.fill")
                             }

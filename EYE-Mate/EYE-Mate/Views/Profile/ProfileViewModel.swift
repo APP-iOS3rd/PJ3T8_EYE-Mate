@@ -133,7 +133,7 @@ class ProfileViewModel: ObservableObject {
         func uploadUserInfoToFirebase() {
             Task {
                 do {
-                    let user = tempUser(userName: self.userName, userUID: self.userUID, userImageURL: self.userProfileURL)
+                    let user = User(userName: self.userName, userUID: self.userUID, userImageURL: self.userProfileURL, left: "", right: "")
                     
                     let _ = try db.collection("Users").document(self.userUID).setData(from: user) { error in
                         if error == nil {

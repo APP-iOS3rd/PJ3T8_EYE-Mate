@@ -19,7 +19,7 @@ struct AstigmatismView: View {
                                   isDisplayLeftButton: true)
 
             ExplanationTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
-                .padding(.leading, 20)
+            
             Spacer()
 
             TestOnboardingView(image:[Image("Component1"), Image("Component2"), Image("Component5")], thirdTitle: "원의 중심으로 초점을 두고\n선의 변화를 확인하세요!")

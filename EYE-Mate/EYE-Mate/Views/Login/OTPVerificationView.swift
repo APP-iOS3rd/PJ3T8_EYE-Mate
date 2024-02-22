@@ -44,23 +44,87 @@ struct OTPVerificationView: View {
             VStack(alignment:.leading, spacing: 10) {
                 TextField("", text: $otp)
                     .font(.pretendardMedium_16)
-                    .placeholder(when: otp.isEmpty) {
-                        Text("Enter OTP")
-                            .foregroundColor(.warningGray)
-                            .font(.pretendardSemiBold_16)
-                            .focused($keyFocused)
-                    }
-                    .padding(10)
-                    .keyboardType(.numberPad)
-                    .frame(width: 300, height: 50)
-                    .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 
-                if isDisplayotpErrorText || isDisplaySignUpText || isDisplayNotiLoginText {
-                    Text(errorText)
-                        .modifier(TextModifier())
-                } else {
-                    Text("")
-                        .modifier(TextModifier())
+                VStack(alignment:.leading, spacing: 10) {
+                    
+                    TextField("", text: $otp)
+                        .font(.pretendardMedium_16)
+                        .placeholder(when: otp.isEmpty) {
+                            Text("Enter OTP")
+                                .foregroundColor(.warningGray)
+                                .font(.pretendardSemiBold_16)
+                        }
+                        .padding(10)
+                        .focused($keyFocused)
+                        .keyboardType(.numberPad)
+                        .frame(width: 300, height: 50)
+                        .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    
+                    if isDisplayotpErrorText || isDisplaySignUpText || isDisplayNotiLoginText {
+                        Text(errorText)
+                            .modifier(TextModifier())
+                    } else {
+                        Text("")
+                            .modifier(TextModifier())
+                    }
+                }
+                .animation(.easeInOut(duration: 0.6), value: keyFocused)
+                
+                // MARK: - 회원가입/로그인 버튼
+                Button {
+                    Task{
+                        do {
+                            let success = try await loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag)
+                            
+                            if success {
+                                isDisplayotpErrorText = false
+                                
+                                // 회원가입 화면
+                                if signUpFlag {
+                                    isDisplaySignUpText = false
+                                    // 이미 등록된 회원인 경우 로그인 화면으로
+                                    if try await loginViewModel.checkLoginList() {
+                                        isDisplayNotiLoginText = true
+                                        errorText = SignUpErrorText.notiLogin.rawValue
+                                    } else {
+                                        // 회원가입
+                                        isDisplayNotiLoginText = false
+                                        router.navigate(to: .signUpProfile)
+                                    }
+                                    
+                                    // 로그인 화면인 경우
+                                } else {
+                                    let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
+                                    
+                                    if isRegistered { // 가입한 이력이 있는 경우
+                                        loggedIn = true
+                                        isDisplaySignUpText = false
+                                        router.navigateBack()
+                                    } else { // 가입한 이력이 없는 경우
+                                        loggedIn = false
+                                        isDisplaySignUpText = true
+                                        errorText = SignUpErrorText.signup.rawValue
+                                    }
+                                }
+                            } else {
+                                isDisplayotpErrorText = true
+                                errorText = SignUpErrorText.otp.rawValue
+                            }
+                        } catch {
+                            print("Error: \(error)")
+                        }
+                    }
+                    
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .foregroundStyle(Color.customGreen)
+                            .frame(width: 300, height: 50)
+                        
+                        Text(signUpFlag ? "회원가입" : "로그인")
+                            .foregroundStyle(.white)
+                            .font(.pretendardSemiBold_18)
+                    }
                 }
             }
             

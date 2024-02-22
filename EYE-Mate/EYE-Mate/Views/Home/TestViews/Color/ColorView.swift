@@ -15,7 +15,7 @@ struct ColorView: View {
 
     var body: some View {
         VStack {
-            CustomNavigationTitle(title: "색채 검사",
+            CustomNavigationTitle(title: "색각 검사",
                                   isDisplayLeftButton: true)
             
             ExplanationTextView(str: "간단한 테스트를 통해\n색채 식별도를 확인해보세요!")

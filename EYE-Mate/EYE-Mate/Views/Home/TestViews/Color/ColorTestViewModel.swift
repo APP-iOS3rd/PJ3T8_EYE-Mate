@@ -48,13 +48,25 @@ class ColorTestViewModel: ObservableObject {
     
     var resultMessage: String {
         if count >= testColorSet.count - 2 {
-            return "정상적인 색채 지각"
+            return "정상"
         } else if count >= testColorSet.count - 5 {
-            return "경미한 색채 지각 이상"
+            return "경미"
         } else if count >= testColorSet.count - 8 {
-            return "중증도의 색채 지각 이상"
+            return "중증도"
         } else {
-            return "심각한 색채 지각 이상"
+            return "심각"
+        }
+    }
+    
+    var resultMessageColor: Color {
+        if count >= testColorSet.count - 2 {
+            return .customGreen
+        } else if count >= testColorSet.count - 5 {
+            return .lightYellow
+        } else if count >= testColorSet.count - 8 {
+            return .lightYellow
+        } else {
+            return .customRed
         }
     }
 }

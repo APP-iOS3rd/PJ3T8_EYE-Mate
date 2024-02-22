@@ -333,21 +333,9 @@ private struct VisionTestResultView: View {
                 Spacer()
                     .frame(height: 1)
                 
-                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
+                TestResultTitleView(type: .vision)
                 
-                VStack(spacing: 10) {
-                    HStack(spacing: 5) {
-                        Text("어디로 가야하오")
-                            .font(.pretendardBold_32)
-                        Text("님!")
-                            .font(.pretendardBold_32)
-                    }
-                    
-                    Text("검사 결과가 나왔어요.")
-                        .font(.pretendardBold_28)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 20)
+                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 
                 if total != 0 {
                     ScrollView(showsIndicators: false) {
@@ -414,11 +402,10 @@ private struct VisionTestResultView: View {
                     if loggedIn {
                         //TODO: - 사용자 모델 추가 시 저장하고 navigateBack() 하기!
                         viewModel.saveResult(userUID)
-                        
                         router.navigateToRoot()
                     } else {
                         //TODO: - Alert 창 띄워주고 선택
-                        
+                        showAlert = true
                     }
                 } )
                 .frame(maxHeight: 75)

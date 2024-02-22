@@ -39,11 +39,9 @@ struct CustomTabBar: View {
     var body: some View {
         tabBarVersion
             .onChange(of: tabManager.selection) { newValue in
-                print("onChange called : \(tabManager.selection), \(localSelection), \(newValue)")
-                withAnimation(.bouncy) {
-                    localSelection = newValue
-                }
+                localSelection = newValue
             }
+            .animation(.bouncy, value: localSelection)
     }
 }
 

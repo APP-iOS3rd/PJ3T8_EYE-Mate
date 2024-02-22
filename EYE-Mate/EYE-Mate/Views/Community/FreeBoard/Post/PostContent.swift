@@ -14,12 +14,15 @@ import FirebaseStorage
 struct PostContent: View {
     @ObservedObject var postVM: PostViewModel
     
+    @Binding var showAlert: Bool
+    
     var onEditPost: (String, String, String, [URL]?, [String]?) -> ()
     var onUpdate: (Post) -> ()
     var onDelete: () -> ()
     
     @State var isShowEditPostView: Bool = false
     
+    @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
     
     var body: some View {
@@ -88,18 +91,22 @@ struct PostContent: View {
             
             // 스크랩 버튼
             Button {
-                postVM.postScrap()
+                if loggedIn {
+                    postVM.postScrap()
+                } else {
+                    showAlert = true
+                }
             } label: {
                 Image(systemName: postVM.post.scrapIDs.contains(userUID) ? "bookmark.fill" : "bookmark")
                     .font(.system(size: 21))
                     .foregroundStyle(Color.customGreen)
                     .frame(width: 30, height: 35)
             }
-
+            
             // Menu (신고 또는 삭제 -> 추후에 공유 등 추가 가능)
             Menu {
-                // 본인의 게시물인 경우에 삭제 Button, 아닌 경우 신고 Button
-                if userUID == postVM.post.userUID {
+                // 본인의 게시물인 경우에 삭제 Btn, 아닌 경우 신고 Btn
+                if userUID == postVM.post.userUID && loggedIn {
                     // 게시물 수정
                     Button(action:  {
                         isShowEditPostView = true
@@ -112,7 +119,11 @@ struct PostContent: View {
                     }
                 } else {
                     Button(role: .destructive) {
-                        
+                        if loggedIn {
+                            
+                        } else {
+                            showAlert = true
+                        }
                     } label: {
                         Label("신고", systemImage: "light.beacon.max.fill")
                             .tint(.red)
@@ -153,7 +164,13 @@ struct PostContent: View {
         // 좋아요, 댓글
         HStack {
             // 좋아요 버튼
-            Button(action: postVM.likePost){
+            Button {
+                if loggedIn {
+                    postVM.likePost()
+                } else {
+                    showAlert = true
+                }
+            } label: {
                 Image(systemName: postVM.post.likedIDs.contains(userUID) ? "heart.fill" : "heart")
                     .foregroundStyle(Color.customRed)
                     .padding(.trailing, -8)

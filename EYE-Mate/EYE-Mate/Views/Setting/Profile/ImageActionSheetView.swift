@@ -12,7 +12,7 @@ struct ImageActionSheetView: View {
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @State var isPresented: Bool = false
     @State var showPicker: Bool = false
-    @State var selectedImage: PhotosPickerItem?
+    let listWidthSize = UIScreen.main.bounds.width - 70
     
     var body: some View {
         VStack(spacing: 0) {
@@ -22,11 +22,11 @@ struct ImageActionSheetView: View {
                 HStack {
                     Text("프로필 사진 변경")
                         .font(.pretendardRegular_18)
-                        .padding(.leading, 30)
+                        .padding(.leading, 20)
                         .foregroundStyle(Color.black)
                     Spacer()
                     Image(systemName: "chevron.forward")
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 20)
                         .foregroundStyle(Color.gray)
                 }
                 
@@ -46,7 +46,7 @@ struct ImageActionSheetView: View {
                 }
             )
             .photosPicker(isPresented: $showPicker, selection: $profileViewModel.imageSelection)
-            .frame(width: 330, height: 50)
+            .frame(width: listWidthSize, height: 50)
             
             SettingListDivider()
             

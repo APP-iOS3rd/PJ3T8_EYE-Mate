@@ -10,22 +10,20 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
-    @ObservedObject var eyeSenseOnBoardingViewModel: EyeSenseOnBoardingViewModel
-
+    @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
+    
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
                     HomeViewTextView()
-                    
                     EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
                         .padding(.horizontal, 20)
-
                     HomeViewCellListView()
-
                     Spacer()
                 }
             }
+            .padding(.bottom, 72)
         }
     }
 }
@@ -35,16 +33,22 @@ private struct HomeViewTextView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
-
+    
+    @AppStorage("user_left") private var userLeft: String = ""
+    @AppStorage("user_right") private var userRight: String = ""
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text("오늘도 눈 건강 챙기셨나요? 👀")
                 .font(.pretendardRegular_22)
-
-            if loggedIn {
-                //TODO: - 유저 좌, 우 시력 가져와서 보여주기
-
-            } else {
+                
+            //TODO: - 유저 좌, 우 시력 가져와서 보여주기
+            if userLeft != "" && userRight != "" {
+                Text("# 최근 시력 좌 \(userLeft) 우 \(userRight)")
+                    .multilineTextAlignment(.center)
+                    .font(.pretendardBold_16)
+            }
+            else {
                 Text("# 최근 시력 기록이 없어요!")
                     .multilineTextAlignment(.center)
                     .font(.pretendardBold_16)
@@ -63,7 +67,9 @@ private struct HomeViewCellListView: View {
     @ObservedObject private var viewModel = HomeViewModel.shared
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("눈 관리")
+                .font(.pretendardSemiBold_20)
             HStack(spacing: 10) {
                 Button(action: {
                     router.navigate(to: .record)
@@ -79,6 +85,8 @@ private struct HomeViewCellListView: View {
                         .foregroundColor(.black)
                 })
             }
+            Text("눈 검사")
+                .font(.pretendardSemiBold_20)
             Button(action: {
                 router.navigate(to: .checkVision)
             }, label: {
@@ -88,7 +96,7 @@ private struct HomeViewCellListView: View {
             Button(action: {
                 router.navigate(to: .checkColor)
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색채 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
+                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색각 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
                     .foregroundColor(.black)
             })
             Button(action: {
