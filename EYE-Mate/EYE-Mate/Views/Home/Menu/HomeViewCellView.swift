@@ -27,27 +27,21 @@ struct HomeViewCellView: View {
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                 }
-                .padding(.leading, 5)
+                .padding(10)
                 
                 Spacer()
                 
                 if isArrowButton {
-                    Circle()
-                        .frame(width: 45, height: 45)
-                        .opacity(0.8)
+                    Image(systemName: "chevron.backward")
                         .foregroundColor(.customGreen)
-                        .overlay {
-                            Image(systemName: "chevron.backward")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20))
-                                .scaleEffect(x: -1, y: 1)
-                        }
+                        .font(.system(size: 30))
+                        .scaleEffect(x: -1, y: 1)
                         .padding(.trailing, 20)
                 }
             }
             .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(.white)
                     .shadow(radius: 3, x: 1, y: 1)
             )

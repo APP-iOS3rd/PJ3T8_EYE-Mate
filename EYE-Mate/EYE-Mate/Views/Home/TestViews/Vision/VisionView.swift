@@ -22,7 +22,6 @@ struct VisionView: View {
             }
 
             ExplanationTextView(str: "간단한 테스트를 통해\n나의 시력을 확인해보세요!")
-                .padding(.leading, 20)
 
             Spacer()
 

@@ -90,7 +90,9 @@ private struct HomeViewCellListView: View {
     @EnvironmentObject var tabManager: TabManager
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("눈 관리")
+                .font(.pretendardSemiBold_20)
             HStack(spacing: 10) {
                 Button(action: {
                     viewModel.isPresentedRecordView = true
@@ -106,6 +108,8 @@ private struct HomeViewCellListView: View {
                         .foregroundColor(.black)
                 })
             }
+            Text("눈 검사")
+                .font(.pretendardSemiBold_20)
             Button(action: {
                 viewModel.isPresentedVisionView = true
             }, label: {
