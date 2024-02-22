@@ -261,6 +261,7 @@ private struct ColorTestResultView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut, value: showAlert)
     }
 }
 
@@ -268,11 +269,17 @@ private struct ColorTestResultView: View {
 private struct ColorTestResultTextView: View {
     @ObservedObject var viewModel: ColorTestViewModel
     
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    
     //TODO: - 사용자 계정 나오면 ViewModel에 추가 후 수정필요!
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("어디로 가야 하오 님은")
-                .font(.pretendardRegular_22)
+            HStack(spacing: 5) {
+                Text(userName)
+                    .font(.pretendardRegular_22)
+                Text("님은")
+                    .font(.pretendardRegular_22)
+            }
             HStack(alignment: .lastTextBaseline) {
                 Text(viewModel.resultMessage)
                     .font(.pretendardSemiBold_32)

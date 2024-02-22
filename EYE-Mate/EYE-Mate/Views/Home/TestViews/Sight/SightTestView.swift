@@ -398,6 +398,7 @@ private struct SightTestResultView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut, value: showAlert)
     }
 }
 
