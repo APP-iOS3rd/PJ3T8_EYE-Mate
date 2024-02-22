@@ -40,7 +40,7 @@ private struct ColorTest: View {
                     .frame(height: 5)
                 
                 HStack {
-                    Text("색채 검사")
+                    Text("색각 검사")
                         .frame(maxWidth: .infinity)
                         .font(.pretendardBold_24)
                         .overlay(alignment: .trailing) {
@@ -164,10 +164,7 @@ private struct ColorTestResultView: View {
                 Spacer()
                     .frame(height: 1)
                 
-                Text("색채 검사 결과")
-                    .font(.pretendardBold_32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(20)
+                TestResultTitleView(type: .colorVision)
                 
                 let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 

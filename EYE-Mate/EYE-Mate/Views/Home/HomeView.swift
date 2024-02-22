@@ -115,7 +115,7 @@ private struct HomeViewCellListView: View {
             Button(action: {
                 viewModel.isPresentedColorView = true
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색채 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
+                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색각 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
                     .foregroundColor(.black)
             })
             Button(action: {
