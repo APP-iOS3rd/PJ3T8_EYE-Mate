@@ -34,8 +34,9 @@ struct FAQRowCellView: View {
 
                 Spacer()
 
-                Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                Image(systemName: "chevron.right")
                     .font(.title3)
+                    .rotationEffect(.degrees(isExpanded ? 90 : 0)) 
             }
             .padding(15)
             .background(isExpanded ? Color.btnGray : .white)
