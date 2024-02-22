@@ -22,6 +22,7 @@ final class Router: ObservableObject {
         case colorTest
         case astigmatismTest
         case sightTest
+        case profile
     }
 
     @Published var navPath = NavigationPath()

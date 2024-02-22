@@ -71,9 +71,6 @@ struct MovementView: View {
                 }
             }
         }
-        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-            ProfileView()
-        }
     }
 }
 

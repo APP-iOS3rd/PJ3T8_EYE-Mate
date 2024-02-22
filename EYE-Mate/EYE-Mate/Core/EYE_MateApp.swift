@@ -48,6 +48,8 @@ struct EYE_MateApp: App {
                             AstigmatismTestView()
                         case .sightTest:
                             SightTestView()
+                        case .profile:
+                            ProfileView()
                         }
                     }
             }

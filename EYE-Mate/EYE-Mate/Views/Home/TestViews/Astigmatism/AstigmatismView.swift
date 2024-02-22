@@ -17,9 +17,6 @@ struct AstigmatismView: View {
         VStack {
             CustomNavigationTitle(title: "난시 검사",
                                   isDisplayLeftButton: true)
-            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-                ProfileView()
-            }
 
             ExplanationTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
                 .padding(.leading, 20)

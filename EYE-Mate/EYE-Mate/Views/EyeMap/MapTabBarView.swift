@@ -31,9 +31,6 @@ struct MapTabBarView: View {
                 MapView()
             }
         }
-        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-            ProfileView()
-        }
     }
     
     

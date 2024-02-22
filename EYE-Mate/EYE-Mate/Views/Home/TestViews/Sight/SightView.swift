@@ -17,10 +17,6 @@ struct SightView: View {
         VStack {
             CustomNavigationTitle(title: "시야 검사",
                                   isDisplayLeftButton: true)
-            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-                ProfileView()
-            }
-            
             ExplanationTextView(str: "간단한 테스트를 통해\n시야의 상태를 확인해보세요!")
                 .padding(.leading, 20)
             Spacer()

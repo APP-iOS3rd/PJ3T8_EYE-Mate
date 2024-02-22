@@ -17,9 +17,6 @@ struct ColorView: View {
         VStack {
             CustomNavigationTitle(title: "색채 검사",
                                   isDisplayLeftButton: true)
-            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-                ProfileView()
-            }
             
             ExplanationTextView(str: "간단한 테스트를 통해\n색채 식별도를 확인해보세요!")
             Spacer()

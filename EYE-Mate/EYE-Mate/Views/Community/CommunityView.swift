@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CommunityView: View {
-    
     @State private var selectedPicker: CommunityTopTapViewItem = .faq
     @Namespace private var animation
     @State var isSearching = false
@@ -38,9 +37,6 @@ struct CommunityView: View {
             
             Spacer()
                 .frame(height: 85)
-        }
-        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-            ProfileView()
         }
     }
     

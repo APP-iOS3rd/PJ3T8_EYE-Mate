@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct CustomBackButton: View {
-    @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @EnvironmentObject var router: Router
+
     var body: some View {
         HStack(alignment: .bottom) {
             Button {
-                self.presentationMode.wrappedValue.dismiss()
-                profileViewModel.isPresentedProfileView.toggle()
+                router.navigateBack()
             } label: {
                 Image(systemName: "chevron.backward")
                     .font(.system(size: 30))
                     .foregroundColor(.black)
             }
-            
+
             Spacer()
         }
         .padding(.top, 10)

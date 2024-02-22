@@ -15,8 +15,6 @@ import Kingfisher
 class ProfileViewModel: ObservableObject {
     static let shared = ProfileViewModel()
     
-    @Published var isPresentedProfileView = false
-    
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
