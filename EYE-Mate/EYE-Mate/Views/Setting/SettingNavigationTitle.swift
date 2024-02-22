@@ -32,21 +32,24 @@ struct SettingNavigationTitle: View {
     
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Button(action: leftBtnAction) {
                 Image(systemName: leftBtnType.rawValue)
                     .font(.system(size: 30))
                     .foregroundColor(.black)
+                    .padding(.leading, 20)
+                
             }
             
             Spacer()
+            
             if isDisplayTitle {
                 Text(title)
                     .font(.pretendardSemiBold_24)
+                    .padding(.trailing, 20)
             }
             Spacer()
         }
-        .padding(20)
         .padding(.bottom, 20)
     }
 }
