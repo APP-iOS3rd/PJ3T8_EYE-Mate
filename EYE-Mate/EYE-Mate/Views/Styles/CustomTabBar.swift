@@ -21,7 +21,7 @@ struct CustomTabBarContainerView<Content: View>: View {
             content
             CustomTabBar(tabs: tabs, localSelection: tabManager.selection)
         }
-        .onPreferenceChange(TabBarItemPrefrenceKey.self, perform: { value in
+        .onPreferenceChange(TabBarItemPreferenceKey.self, perform: { value in
             print("onPreferenceChange called : \(tabs)")
             self.tabs = tabs
         })
@@ -106,7 +106,7 @@ extension CustomTabBar {
 
 
 //MARK: - PreferenceKey
-struct TabBarItemPrefrenceKey: PreferenceKey {
+struct TabBarItemPreferenceKey: PreferenceKey {
     static var defaultValue = [TabBarItem]()
     static func reduce(value: inout [TabBarItem], nextValue: () -> [TabBarItem]) {
         value += nextValue()
@@ -120,7 +120,7 @@ struct TabBarItemViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .opacity(selection == tab ? 1.0 : 0.0)
-            .preference(key: TabBarItemPrefrenceKey.self, value: [tab])
+            .preference(key: TabBarItemPreferenceKey.self, value: [tab])
     }
 }
 
