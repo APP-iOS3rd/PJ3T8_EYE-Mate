@@ -266,23 +266,19 @@ private struct ColorTestResultView: View {
 private struct ColorTestResultTextView: View {
     @ObservedObject var viewModel: ColorTestViewModel
     
-    @AppStorage("user_name") private var userName: String = "EYE-Mate"
-    
     //TODO: - 사용자 계정 나오면 ViewModel에 추가 후 수정필요!
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 5) {
-                Text(userName)
-                    .font(.pretendardRegular_22)
-                Text("님은")
-                    .font(.pretendardRegular_22)
-            }
-            HStack(alignment: .lastTextBaseline) {
-                Text(viewModel.resultMessage)
-                    .font(.pretendardSemiBold_32)
-                Text("입니다.")
-                    .font(.pretendardRegular_22)
-            }
+        HStack(alignment: .lastTextBaseline) {
+            Color.customGreen
+                .frame(width: 3, height: 20)
+            
+            Text("색채 지각:")
+                .font(.pretendardSemiBold_24)
+            
+            Text(viewModel.resultMessage)
+                .font(.pretendardSemiBold_32)
+                .foregroundColor(viewModel.resultMessageColor)
+                .padding(.leading, 15)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading, 30)
