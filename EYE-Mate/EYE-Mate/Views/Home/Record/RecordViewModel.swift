@@ -75,6 +75,26 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
+    func deleteVisionRecord(record: VisionRecord) {
+        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Visions").document(record.id!).delete() { error in
+            if let error = error {
+                        print("Error removing document: \(error.localizedDescription)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+        }
+
+        let index = visionRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        visionRecords.remove(at: index)
+
+        let recentIndex = recentVisionRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        recentVisionRecords.remove(at: recentIndex)
+    }
+
     @MainActor
     func fetchColorVisionRecord() async throws {
         let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Colors").getDocuments()
@@ -92,6 +112,26 @@ final class RecordViewModel: ObservableObject {
             self.colorVisionRecords = colorVisions
             self.recentColorVisionRecords = recentColorVisions
         }
+    }
+
+    func deleteColorVisionRecord(record: ColorVisionRecord) {
+        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Colors").document(record.id!).delete() { error in
+            if let error = error {
+                        print("Error removing document: \(error.localizedDescription)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+        }
+
+        let index = colorVisionRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        colorVisionRecords.remove(at: index)
+
+        let recentIndex = recentColorVisionRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        recentColorVisionRecords.remove(at: recentIndex)
     }
 
     @MainActor
@@ -113,6 +153,26 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
+    func deleteAstigmatismVisionRecord(record: AstigmatismRecord) {
+        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Astigmatisms").document(record.id!).delete() { error in
+            if let error = error {
+                        print("Error removing document: \(error.localizedDescription)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+        }
+
+        let index = astigmatismRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        astigmatismRecords.remove(at: index)
+
+        let recentIndex = recentAstigmatismRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        recentAstigmatismRecords.remove(at: recentIndex)
+    }
+
     @MainActor
     func fetchEyesightRecord() async throws {
         let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Sights").getDocuments()
@@ -132,4 +192,23 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
+    func deleteEyesightVisionRecord(record: EyesightRecord) {
+        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Sights").document(record.id!).delete() { error in
+            if let error = error {
+                        print("Error removing document: \(error.localizedDescription)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+        }
+
+        let index = eyesightRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        eyesightRecords.remove(at: index)
+
+        let recentIndex = recentEyesightRecords.firstIndex { currentRecord in
+            return currentRecord.id == record.id
+        } ?? 0
+        recentEyesightRecords.remove(at: recentIndex)
+    }
 }
