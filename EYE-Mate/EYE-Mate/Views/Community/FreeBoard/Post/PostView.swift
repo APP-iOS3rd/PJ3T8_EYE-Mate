@@ -31,82 +31,97 @@ struct PostView: View {
     var deleteReplyComment: (String, Int, Int) -> ()
     /// - 게시물 수정
     var onEditPost: (String, String, String, [URL]?, [String]?) -> ()
-
+    
     
     @FocusState var commentTextFieldisFocused: Bool
     
     @Environment(\.dismiss) private var dismiss
     
+    @AppStorage("Login") var loggedIn: Bool = false
+    @ObservedObject var loginViewModel = LoginViewModel.shared
+    @State var showAlert: Bool = false
+    
     var body: some View {
-        VStack(spacing: 0) {
-            HorizontalDivider(color: .btnGray, height: 2)
-            
-            ScrollView{
-                // MARK: 게시물 내용
-                PostContent(postVM: postVM) { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
-                   onEditPost(postID, postTitle, postContent, postImageURLs, imageReferenceIDs)
-                } onUpdate: { updatedPost in
-                    /// 게시물 좋아요 업데이트
-                    postVM.post.likedIDs = updatedPost.likedIDs
-                    postVM.post.scrapIDs = updatedPost.scrapIDs
-                    onUpdate(updatedPost)
-                } onDelete: {
-                    /// 게시물 삭제
-                    onDelete()
-                    postVM.isLoading = false
-                    dismiss()
-                }
-                .padding(.top)
-
+        ZStack {
+            VStack(spacing: 0) {
                 HorizontalDivider(color: .btnGray, height: 2)
                 
-                // MARK: 댓글
-                if !postVM.post.comments.isEmpty {
-                    CommentView(postVM: postVM, commentVM: CommentViewModel(comments: postVM.post.comments, selectedPostID: postVM.post.id, isLoading: $postVM.isLoading))
-                    { postID, commentIndex, likedIDs in
-                        /// 댓글 좋아요 업데이트
-                        postVM.post.comments[commentIndex].likedIDs = likedIDs
-                        onUpdateComment(postID, commentIndex, likedIDs)
-                        
-                    } onUpdateReplyComment: { postID, commentIndex, replyCommentIndex, likedIDs in
-                        /// 대댓글 좋아요 업데이트
-                        postVM.post.comments[commentIndex].replyComments[replyCommentIndex].likedIDs = likedIDs
-                        onUpdateReplyComment(postID, commentIndex, replyCommentIndex, likedIDs)
-                    } startWritingReplyComment: { commentID, commentIndex in
-                        /// 대댓글 작성 Signal
-                        withAnimation {
-                            postVM.startWritingReplyComment(commentID: commentID, commentIndex: commentIndex)
-                            commentTextFieldisFocused = true
-                        }
-                    } deleteComment: { postID, commentIndex in
-                        /// 댓글 삭제
-                        postVM.post.comments.remove(at: commentIndex)
-                        deleteComment(postID, commentIndex)
-                    } deleteReplyComment: { postID, commentIndex, replyCommentIndex in
-                        /// 대댓글 삭제
-                        postVM.post.comments[commentIndex].replyComments.remove(at: replyCommentIndex)
-                        deleteReplyComment(postID, commentIndex, replyCommentIndex)
+                ScrollView{
+                    // MARK: 게시물 내용
+                    PostContent(postVM: postVM, showAlert: $showAlert) { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
+                        onEditPost(postID, postTitle, postContent, postImageURLs, imageReferenceIDs)
+                    } onUpdate: { updatedPost in
+                        /// 게시물 좋아요 업데이트
+                        postVM.post.likedIDs = updatedPost.likedIDs
+                        postVM.post.scrapIDs = updatedPost.scrapIDs
+                        onUpdate(updatedPost)
+                    } onDelete: {
+                        /// 게시물 삭제
+                        onDelete()
+                        postVM.isLoading = false
+                        dismiss()
                     }
-                } else {
-                    Spacer()
+                    .padding(.top)
+                    
+                    HorizontalDivider(color: .btnGray, height: 2)
+                    
+                    // MARK: 댓글
+                    if !postVM.post.comments.isEmpty {
+                        CommentView(postVM: postVM, commentVM: CommentViewModel(comments: postVM.post.comments, selectedPostID: postVM.post.id, isLoading: $postVM.isLoading), showAlert: $showAlert)
+                        { postID, commentIndex, likedIDs in
+                            /// 댓글 좋아요 업데이트
+                            postVM.post.comments[commentIndex].likedIDs = likedIDs
+                            onUpdateComment(postID, commentIndex, likedIDs)
+                            
+                        } onUpdateReplyComment: { postID, commentIndex, replyCommentIndex, likedIDs in
+                            /// 대댓글 좋아요 업데이트
+                            postVM.post.comments[commentIndex].replyComments[replyCommentIndex].likedIDs = likedIDs
+                            onUpdateReplyComment(postID, commentIndex, replyCommentIndex, likedIDs)
+                        } startWritingReplyComment: { commentID, commentIndex in
+                            /// 대댓글 작성 Signal
+                            withAnimation {
+                                postVM.startWritingReplyComment(commentID: commentID, commentIndex: commentIndex)
+                                commentTextFieldisFocused = true
+                            }
+                        } deleteComment: { postID, commentIndex in
+                            /// 댓글 삭제
+                            postVM.post.comments.remove(at: commentIndex)
+                            deleteComment(postID, commentIndex)
+                        } deleteReplyComment: { postID, commentIndex, replyCommentIndex in
+                            /// 대댓글 삭제
+                            postVM.post.comments[commentIndex].replyComments.remove(at: replyCommentIndex)
+                            deleteReplyComment(postID, commentIndex, replyCommentIndex)
+                        }
+                    } else {
+                        Spacer()
+                    }
                 }
-            }
-            .scrollIndicators(.never)
-            .onTapGesture {
-                /// 댓글 입력란 바깥 터치시 Keyboard Close
-                withAnimation {
+                .scrollIndicators(.never)
+                .onTapGesture {
+                    /// 댓글 입력란 바깥 터치시 Keyboard Close
                     commentTextFieldisFocused = false
-                    postVM.replyWritingCommentID = nil
-                    postVM.replyWritingCommentIndex = nil
-                    postVM.commentPlaceholder = "댓글을 입력해보세요..."
-                    postVM.commentText = ""
+                    postVM.resetCommentInputView()
                 }
-            }
+                
+                // MARK: 댓글 입력
+                CommentInputView()
+                    .padding(postVM.commentViewPadding)
+                
+            } // VStack
             
-            // MARK: 댓글 입력
-            CommentInputView()
-                .padding(postVM.commentViewPadding)
-        }
+            if showAlert {
+                CustomAlertView(
+                    title: "저희 아직 친구가 아니네요.",
+                    message: "로그인이 필요해요!",
+                    leftButtonTitle: "취소",
+                    leftButtonAction: { showAlert = false },
+                    rightButtonTitle: "로그인",
+                    rightButtonAction: {
+                        loginViewModel.showFullScreenCover.toggle()
+                        showAlert = false
+                    })
+            }
+        } // ZStack
         .vAlign(.top)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
@@ -151,6 +166,9 @@ struct PostView: View {
             }
         }
         .navigationBarHidden(postVM.showImageViewer)
+        .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
+            LoginView(isAlertView: true)
+        })
     }
     
     // MARK: 댓글 입력 View
@@ -177,18 +195,24 @@ struct PostView: View {
             
             if !postVM.commentText.isEmpty {
                 Button {
-                    if postVM.replyWritingCommentID == nil {
-                        /// 댓글 작성 Action
-                        postVM.writeComment() {
-                            commentTextFieldisFocused = false
-                            writeComment(postVM.post)
+                    if loggedIn {
+                        if postVM.replyWritingCommentID == nil {
+                            /// 댓글 작성 Action
+                            postVM.writeComment() {
+                                commentTextFieldisFocused = false
+                                writeComment(postVM.post)
+                            }
+                        } else {
+                            /// 대댓글 작성 Action
+                            postVM.writeReplyComment() { postID, commentIndex, replyComment in
+                                commentTextFieldisFocused = false
+                                writeReplyComment(postID, commentIndex, replyComment)
+                            }
                         }
                     } else {
-                        /// 대댓글 작성 Action
-                        postVM.writeReplyComment() { postID, commentIndex, replyComment in
-                            commentTextFieldisFocused = false
-                            writeReplyComment(postID, commentIndex, replyComment)
-                        }
+                        showAlert = true
+                        commentTextFieldisFocused = false
+                        postVM.resetCommentInputView()
                     }
                 } label: {
                     Text("등록")
