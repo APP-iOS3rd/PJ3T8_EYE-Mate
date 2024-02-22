@@ -16,7 +16,7 @@ struct AccountDeleteView: View {
     var body: some View {
         ZStack{
             VStack(spacing: 30) {
-                SettingNavigationTitle(isDisplayTitle: false, leftBtnAction: {presentationMode.wrappedValue.dismiss()}, leftBtnType: .close)
+                SettingNavigationTitle(isDisplayTitle: false, leftButtonAction: {presentationMode.wrappedValue.dismiss()}, leftButtonType: .close)
                 
                 Text("탈퇴하기")
                     .font(.pretendardSemiBold_32)
@@ -42,7 +42,7 @@ struct AccountDeleteView: View {
                             .frame(maxWidth: .infinity)
                             .background {
                                 RoundedRectangle(cornerRadius: 10.0)
-                                    .foregroundStyle(Color.btnGray)
+                                    .foregroundStyle(Color.buttonGray)
                             }
                     }
                     
