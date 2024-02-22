@@ -9,19 +9,19 @@ import SwiftUI
 
 extension UIApplication {
     class func navigationTopViewController() -> UIViewController? {
-        let allScenes = UIApplication.shared.connectedScenes
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-
+        
         return windowScene?.windows.first { $0.isKeyWindow }?.rootViewController?.navigationController?.topViewController
     }
 }
 
 struct StartMovementRow: View {
-    @Binding var showToast: Bool
-    @Binding var movementType: String
-
+    @EnvironmentObject var router: Router
+    
+    let movementType: String
+    
     @State var isNavigateEightLottieView : Bool = false
-
+    
     var body: some View {
         HStack {
             Image("\(movementType)Movement")
@@ -53,12 +53,10 @@ struct StartMovementRow: View {
                     UINavigationController.attemptRotationToDeviceOrientation()
                     //                UIApplication.navigationTopViewController()?.setNeedsUpdateOfSupportedInterfaceOrientations()
                 }
-                isNavigateEightLottieView = true
+                router.navigate(to: .movementLottie(movementType: movementType))
             } label: {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.white)
-            }.navigationDestination(isPresented: $isNavigateEightLottieView) {
-                MovementLottieView(showToast: $showToast, movementType: $movementType)
             }
             .buttonStyle(PlainButtonStyle())
             .padding()
@@ -71,11 +69,4 @@ struct StartMovementRow: View {
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
     }
-}
-
-#Preview {
-    @State var showToast: Bool = false
-    @State var movementType: String = "Line"
-
-    return StartMovementRow(showToast: $showToast, movementType: $movementType)
 }

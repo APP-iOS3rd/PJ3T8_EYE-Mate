@@ -12,6 +12,7 @@ final class Router: ObservableObject {
         case record
         case allRecord(recordType: TestType)
         case addRecord
+        case movementLottie(movementType: String)
     }
 
     @Published var navPath = NavigationPath()

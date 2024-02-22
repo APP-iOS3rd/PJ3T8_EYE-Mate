@@ -14,10 +14,12 @@ extension View {
 }
 
 struct MovementView: View {
-    @State private var toast: Toast? = nil
-    @State private var showToast = false
-    @State private var movementList: [String] = ["Line", "Circle", "Eight"]
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    @ObservedObject private var movementViewModel = MovementViewModel.shared
+
+    @State private var toast: Toast? = nil
+
+    let movementList: [String] = ["Line", "Circle", "Eight"]
 
     var body: some View {
         VStack(spacing: 0) {
@@ -37,8 +39,8 @@ struct MovementView: View {
                         .font(.pretendardSemiBold_20)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                ForEach($movementList, id: \.self) { movement in
-                    StartMovementRow(showToast: $showToast, movementType: movement)
+                ForEach(movementList, id: \.self) { movement in
+                    StartMovementRow(movementType: movement)
                 }
                 .padding(.horizontal, -10)
                 .padding(.vertical, 0)
@@ -63,9 +65,9 @@ struct MovementView: View {
         .toastView(toast: $toast)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                if showToast {
+                if movementViewModel.showToast {
                     toast = Toast()
-                    showToast.toggle()
+                    movementViewModel.showToast.toggle()
                 }
             }
         }

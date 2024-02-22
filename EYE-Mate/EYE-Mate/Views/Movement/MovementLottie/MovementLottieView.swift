@@ -10,16 +10,17 @@ import UIKit
 import Lottie
 
 struct MovementLottieView: View {
-    @Environment(\.dismiss) var dismiss
-
-    @Binding var showToast: Bool
-    @Binding var movementType: String
-
+    @EnvironmentObject var router: Router
+    
+    @ObservedObject private var movementViewModel = MovementViewModel.shared
+    
+    let movementType: String
+    
     @State private var movementPercent = 0.0
     @State private var isEyeExerciseComplete = false
     @State private var isStart = false
-
-
+    
+    
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var fileName: String {
         switch movementType {
@@ -33,7 +34,7 @@ struct MovementLottieView: View {
             "line-movement"
         }
     }
-
+    
     private func goBack() {
         DispatchQueue.main.async {
             AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
@@ -43,10 +44,10 @@ struct MovementLottieView: View {
             //            UIApplication.navigationTopViewController()?.setNeedsUpdateOfSupportedInterfaceOrientations()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            dismiss()
+            router.navigateBack()
         }
     }
-
+    
     var body: some View {
         VStack {
             if isStart {
@@ -93,7 +94,7 @@ struct MovementLottieView: View {
                     if isEyeExerciseComplete {
                         Spacer()
                         CustomButton(title: "완료", background: Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
-                            showToast.toggle()
+                            movementViewModel.showToast.toggle()
                             goBack()
                         }).frame(height: 88)
                     } else {
@@ -124,15 +125,8 @@ struct MovementLottieView: View {
                 .navigationBarBackButtonHidden(true)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.black)
-
+                
             }
         }
     }
-}
-
-#Preview {
-    @State var showToast: Bool = false
-    @State var movementType: String = "Line"
-
-    return MovementLottieView(showToast: $showToast, movementType: $movementType)
 }

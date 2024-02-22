@@ -17,7 +17,7 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
                     HomeViewTextView()
-
+                    
                     EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
                         .padding(.horizontal, 20)
 

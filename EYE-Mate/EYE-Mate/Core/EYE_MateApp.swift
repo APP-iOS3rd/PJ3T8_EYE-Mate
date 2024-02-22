@@ -15,7 +15,7 @@ struct EYE_MateApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @ObservedObject var router = Router()
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.navPath) {
@@ -28,6 +28,8 @@ struct EYE_MateApp: App {
                             AllRecordView(recordType: recordType)
                         case .addRecord:
                             AddRecordView()
+                        case .movementLottie(let movementType):
+                            MovementLottieView(movementType: movementType)
                         }
                     }
             }

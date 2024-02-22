@@ -55,7 +55,6 @@ struct RecordView: View {
                                         Text("기록 추가하기")
                                             .font(.pretendardRegular_16)
                                             .foregroundColor(.black)
-
                                     }
                                 }
                         }
