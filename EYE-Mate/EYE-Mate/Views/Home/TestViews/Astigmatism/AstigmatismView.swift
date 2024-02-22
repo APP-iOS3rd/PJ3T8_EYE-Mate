@@ -21,7 +21,6 @@ struct AstigmatismView: View {
             }
             
             ExplanationTextView(str: "간단한 테스트를 통해\n난시 여부를 확인해보세요!")
-                .padding(.leading, 20)
             
             Spacer()
             

@@ -75,7 +75,6 @@ struct EyeSenseOnboardingView: View {
                     .fill(
                         LinearGradient(gradient: Gradient(colors: [Color(hex: "62D8C5"), Color(hex: "70A8D6")]), startPoint: .top, endPoint: .bottom)
                     )
-                    .shadow(radius: 4)
             )
             
             .tabViewStyle(.page(indexDisplayMode: .never))

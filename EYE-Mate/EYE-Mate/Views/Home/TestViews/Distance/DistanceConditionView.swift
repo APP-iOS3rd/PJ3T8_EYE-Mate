@@ -52,7 +52,7 @@ struct DistanceConditionView: View {
 //MARK: - 설명 Text와 거리 Text View
 private struct DistanceView: View {
     @StateObject var viewModel = DistanceConditionViewModel.shared
-    @StateObject var visionTestViewModel = VisionTestViewModel()
+    @ObservedObject var visionTestViewModel = VisionTestViewModel.shared
     var title: String
     var type: TestType
     

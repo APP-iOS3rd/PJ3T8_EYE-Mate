@@ -18,6 +18,8 @@ class AccountDeleteViewModel: ObservableObject{
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_left") var userLeft: String = ""
+    @AppStorage("user_right") var userRight: String = ""
     
     init(signoutContents: [SignOutContent] = [
         .init(icon: "📊", title: "시력 검사 기록이 사라져요", subTitle: "EYE-Mate를 탈퇴하면 기록되어 관리되던 시력 검사 기록들이 모두 삭제되며, 복구할 수 없어요."),
@@ -73,8 +75,9 @@ class AccountDeleteViewModel: ObservableObject{
         UserDefaults.standard.removeObject(forKey: "user_name")
         UserDefaults.standard.removeObject(forKey: "user_UID")
         UserDefaults.standard.removeObject(forKey: "user_profile_url")
+        UserDefaults.standard.removeObject(forKey: "user_left")
+        UserDefaults.standard.removeObject(forKey: "user_right")
         self.userProfileURL = String.defaultProfileURL
-        print(self.userProfileURL)
         profileViewModel.profileImage = Image("user") // 캐싱으로 보여주기
     }
     

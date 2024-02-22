@@ -17,19 +17,9 @@ class HomeViewModel: ObservableObject {
     @Published var isPresentedColorView = false
     @Published var isPresentedAstigmatismView = false
     @Published var isPresentedSightView = false
-    
-    @Published var user: UserModel
-    
-    init(user: UserModel = UserModel(name: "어디로 가야하오", movement: 3, leftEyeSight: "0.5", rightEyeSight: "0.8")
-    ) {
-        self.user = user
-    }
-    
 }
 
 //MARK: - Firebase Methods
 extension HomeViewModel {
-    func saveResult(_ uid: String) {
-        
-    }
+    
 }

@@ -313,10 +313,10 @@ private struct AstigmatismTestResultView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                Text("난시 검사 결과")
-                    .font(.pretendardBold_32)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(20)
+                Spacer()
+                    .frame(height: 1)
+                
+                TestResultTitleView(type: .astigmatism)
                 
                 let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 
@@ -403,6 +403,7 @@ private struct AstigmatismTestResultView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut, value: showAlert)
     }
 }
 

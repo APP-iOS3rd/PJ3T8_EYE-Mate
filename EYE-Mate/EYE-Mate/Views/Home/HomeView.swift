@@ -59,15 +59,21 @@ private struct HomeViewTextView: View {
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_UID") private var userUID: String = ""
     
+    @AppStorage("user_left") private var userLeft: String = ""
+    @AppStorage("user_right") private var userRight: String = ""
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text("오늘도 눈 건강 챙기셨나요? 👀")
                 .font(.pretendardRegular_22)
                 
-            if loggedIn {
-                //TODO: - 유저 좌, 우 시력 가져와서 보여주기
-                
-            } else {
+            //TODO: - 유저 좌, 우 시력 가져와서 보여주기
+            if userLeft != "" && userRight != "" {
+                Text("# 최근 시력 좌 \(userLeft) 우 \(userRight)")
+                    .multilineTextAlignment(.center)
+                    .font(.pretendardBold_16)
+            }
+            else {
                 Text("# 최근 시력 기록이 없어요!")
                     .multilineTextAlignment(.center)
                     .font(.pretendardBold_16)
@@ -84,7 +90,9 @@ private struct HomeViewCellListView: View {
     @EnvironmentObject var tabManager: TabManager
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("눈 관리")
+                .font(.pretendardSemiBold_20)
             HStack(spacing: 10) {
                 Button(action: {
                     viewModel.isPresentedRecordView = true
@@ -100,6 +108,8 @@ private struct HomeViewCellListView: View {
                         .foregroundColor(.black)
                 })
             }
+            Text("눈 검사")
+                .font(.pretendardSemiBold_20)
             Button(action: {
                 viewModel.isPresentedVisionView = true
             }, label: {
@@ -109,7 +119,7 @@ private struct HomeViewCellListView: View {
             Button(action: {
                 viewModel.isPresentedColorView = true
             }, label: {
-                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색채 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
+                HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색각 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
                     .foregroundColor(.black)
             })
             Button(action: {

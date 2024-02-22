@@ -12,6 +12,11 @@ import FirebaseFirestore
 class VisionTestViewModel: ObservableObject {
     static let shared = VisionTestViewModel()
     
+    @AppStorage("user_left") private var userLeft: String = ""
+    @AppStorage("user_right") private var userRight: String = ""
+    
+    let db = Firestore.firestore()
+    
     @Published var answerArray : [String] = ["C", "2", "3", "4", "5", "6", "7", "비", "미", "므", "무", "기", "브", "누"]
     // 정답
     @Published var answer: String = ""
@@ -150,22 +155,48 @@ enum BothEyes {
 
 //MARK: - Firebase Method
 extension VisionTestViewModel {
-    func saveResult(_ uid: String) {
-        let visionDoc = Firestore.firestore()
-            .collection("Records")
-            .document(uid)
-            .collection("Visions")
-            .document()
+    
+    // 기록 추가
+    func saveResult(_ uid: String)  {
+        self.userLeft = leftVision
+        self.userRight = rightVision
         
-        let visionItem = Visions(left: leftVision,
-                                 right: rightVision)
-        
-        do {
-            let _ = try visionDoc.setData(from: visionItem)
-        } catch {
-            print("error: \(error.localizedDescription)")
+        Task {
+            let visionDoc = db
+                .collection("Records")
+                .document(uid)
+                .collection("Visions")
+                .document()
+            
+            let visionItem = Visions(left: leftVision,
+                                     right: rightVision)
+            
+            do {
+                let _ = try visionDoc.setData(from: visionItem)
+            } catch {
+                print("시력 결과를 저장하는데 오류가 발생했습니다 - \(error.localizedDescription)")
+            }
         }
         
+        updateVisionResult(uid)
+    }
+    
+    func updateVisionResult(_ uid: String) {
+        // 유저 최근 시력 update
+        Task {
+            let userDoc = db
+                .collection("Users")
+                .document(uid)
+            
+            do {
+                try await userDoc.updateData([
+                    "left": leftVision,
+                    "right": rightVision
+                ])
+            } catch {
+                print("error - \(error.localizedDescription)")
+            }
+        }
     }
 }
 
