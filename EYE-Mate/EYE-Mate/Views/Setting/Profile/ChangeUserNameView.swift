@@ -13,7 +13,7 @@ struct ChangeUserNameView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var textName: String = ""
     @State var isButtonEnabled: Bool = false
-    
+    @FocusState private var keyFocused: Bool
     
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct ChangeUserNameView: View {
             VStack(alignment: .leading) {
                 Text("닉네임")
                 // TODO: - profileVeiwModel에서 nickname 바인딩
-                ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled)
+                ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled, keyFocused: $keyFocused)
 
             }
             .padding(20)
@@ -42,6 +42,9 @@ struct ChangeUserNameView: View {
             Spacer()
         }
         .navigationBarBackButtonHidden(true)
+        .onTapGesture {
+            keyFocused = false
+        }
     }
         
 }

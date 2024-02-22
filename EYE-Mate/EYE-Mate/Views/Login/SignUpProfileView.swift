@@ -15,12 +15,14 @@ struct SignUpProfileView: View {
     @State var selectedItem: PhotosPickerItem? = nil
     @State var textName: String = ""
     @State var isButtonEnabled: Bool = false
+    @FocusState private var keyFocused: Bool
     
     @ObservedObject var loginViewModel = LoginViewModel.shared
     
     var body: some View {
         VStack(spacing: 20) {
             CustomBackButton()
+            //            ScrollView {
             HStack {
                 Text("EYE-Mate")
                     .foregroundColor(Color.customGreen)
@@ -37,10 +39,11 @@ struct SignUpProfileView: View {
                 .padding(.bottom, 20)
             
             // 닉네임 입력마다 실시간 유효성 확인
-            ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled)
+            ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled, keyFocused: $keyFocused)
                 .padding(20)
             
             CustomButton(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
+                keyFocused = false
                 self.userName = textName
                 profileViewModel.imageSelection = selectedItem
                 profileViewModel.uploadUserInfoToFirebase()
@@ -55,8 +58,12 @@ struct SignUpProfileView: View {
             .frame(height: 88)
             
             Spacer()
+            //            }
         }
         .navigationBarBackButtonHidden(true)
+        .onTapGesture {
+            keyFocused = false
+        }
     }
     
 }
