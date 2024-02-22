@@ -12,7 +12,6 @@ struct VisionTestView: View {
     @ObservedObject var distance = DistanceConditionViewModel.shared
     @State var isTestComplete = false
     
-    
     var body: some View {
         if !isTestComplete {
             VisionTest(isTestComplete: $isTestComplete)
@@ -24,10 +23,13 @@ struct VisionTestView: View {
 
 //MARK: - 테스트 화면
 private struct VisionTest: View {
+    @EnvironmentObject var router: Router
+    
     @ObservedObject var viewModel = VisionTestViewModel.shared
+    
     @Binding var isTestComplete: Bool
+    
     @State var isChange: Bool = false
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -40,7 +42,7 @@ private struct VisionTest: View {
                     .font(.pretendardBold_24)
                     .overlay(alignment: .trailing) {
                         Button(action: {
-                            dismiss()
+                            router.navigateBack()
                         }, label: {
                             Image("close")
                         })
@@ -315,8 +317,8 @@ private struct VisionTestResultView: View {
     @ObservedObject var viewModel = VisionTestViewModel.shared
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
-    @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var router: Router
     @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("Login") var loggedIn: Bool = false
@@ -368,7 +370,7 @@ private struct VisionTestResultView: View {
                                 if loggedIn {
                                     viewModel.saveResult(userUID)
                                     tabManager.selection = .eyeMap
-                                    dismiss()
+                                    router.navigateBack()
                                 } else {
                                     showAlert = true
                                 }
@@ -410,10 +412,10 @@ private struct VisionTestResultView: View {
                              fontStyle: .pretendardBold_16,
                              action: {
                     if loggedIn {
-                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        //TODO: - 사용자 모델 추가 시 저장하고 navigateBack() 하기!
                         viewModel.saveResult(userUID)
                         
-                        dismiss()
+                        router.navigateToRoot()
                     } else {
                         //TODO: - Alert 창 띄워주고 선택
                         

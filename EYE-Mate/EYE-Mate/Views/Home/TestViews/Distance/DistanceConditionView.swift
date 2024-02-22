@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct DistanceConditionView: View {
+    @EnvironmentObject var router: Router
+
     var title: String
     var type: TestType
-    @Environment(\.dismiss) var dismiss
-    
+
     init(title: String, type: TestType) {
         self.title = title
         self.type = type
     }
-    
+
     var body: some View {
         ZStack {
             DistanceFaceAndDevice()
@@ -24,22 +25,19 @@ struct DistanceConditionView: View {
             VStack {
                 Spacer()
                     .frame(height: 5)
-                
                 HStack {
                     Text(title)
                         .frame(maxWidth: .infinity)
                         .font(.pretendardBold_24)
                         .overlay(alignment: .trailing) {
                             Button(action: {
-                                dismiss()
+                                router.navigateBack()
                             }, label: {
                                 Image("close")
                             })
                             .padding(.trailing)
                         }
                 }
-                
-                
                 DistanceView(title: title, type: type)
             }
         }
@@ -49,16 +47,19 @@ struct DistanceConditionView: View {
 
 //MARK: - 설명 Text와 거리 Text View
 private struct DistanceView: View {
+    @EnvironmentObject var router: Router
+
     @StateObject var viewModel = DistanceConditionViewModel.shared
     @StateObject var visionTestViewModel = VisionTestViewModel()
-    var title: String
-    var type: TestType
-    
+
+    let title: String
+    let type: TestType
+
     var body: some View {
         VStack {
             Spacer()
                 .frame(maxHeight: 100)
-            
+
             if type != .eyesight {
                 Text("\(title)를 위해서 휴대폰을 사용자와\n40cm ~ 50cm 간격을 유지해주세요!")
                     .font(.pretendardMedium_20)
@@ -68,9 +69,9 @@ private struct DistanceView: View {
                     .font(.pretendardMedium_20)
                     .multilineTextAlignment(.center)
             }
-            
+
             Spacer()
-            
+
             HStack{
                 Spacer()
                 Text("현재거리 ")
@@ -88,9 +89,9 @@ private struct DistanceView: View {
                     .font(.pretendardRegular_30)
                 Spacer()
             }
-            
+
             Spacer()
-            
+
             VStack {
                 if type != .eyesight {
                     Text(viewModel.informationText)
@@ -98,16 +99,16 @@ private struct DistanceView: View {
                         .foregroundColor(viewModel.canStart ? .customGreen : .customRed)
                         .multilineTextAlignment(.center)
                         .frame(height: 50)
-                    
+
                     CustomButton(title: "테스트 시작하기", background: viewModel.canStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
                         switch type {
                         case .vision:
                             visionTestViewModel.userDistance = viewModel.distance
-                            viewModel.isActiveVisionTest = true
+                            router.navigate(to: .visionTest)
                         case .astigmatism:
-                            viewModel.isActiveAstigmatismTest = true
+                            router.navigate(to: .astigmatismTest)
                         case .eyesight:
-                            viewModel.isActiveSightTest = true
+                            router.navigate(to: .sightTest)
                         case .colorVision:
                             break
                         }
@@ -123,11 +124,11 @@ private struct DistanceView: View {
                     CustomButton(title: "테스트 시작하기", background: viewModel.canSightStart ? .customGreen : .btnGray, fontStyle: .pretendardMedium_18, action: {
                         switch type {
                         case .vision:
-                            viewModel.isActiveVisionTest = true
+                            router.navigate(to: .visionTest)
                         case .astigmatism:
-                            viewModel.isActiveAstigmatismTest = true
+                            router.navigate(to: .astigmatismTest)
                         case .eyesight:
-                            viewModel.isActiveSightTest = true
+                            router.navigate(to: .sightTest)
                         case .colorVision:
                             break
                         }
@@ -135,15 +136,6 @@ private struct DistanceView: View {
                     .frame(maxHeight: 75)
                     .disabled(type != .eyesight ? !viewModel.canStart : !viewModel.canSightStart)
                 }
-            }
-            .navigationDestination(isPresented: $viewModel.isActiveVisionTest) {
-                VisionTestView(viewModel: visionTestViewModel)
-            }
-            .navigationDestination(isPresented: $viewModel.isActiveAstigmatismTest) {
-                AstigmatismTestView()
-            }
-            .navigationDestination(isPresented: $viewModel.isActiveSightTest) {
-                SightTestView()
             }
         }
     }

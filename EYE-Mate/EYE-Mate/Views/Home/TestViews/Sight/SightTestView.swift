@@ -25,11 +25,11 @@ struct SightTestView: View {
 
 //MARK: - 테스트 화면
 private struct SightTest: View {
+    @EnvironmentObject var router: Router
     @ObservedObject var viewModel: SightTestViewModel
     @Binding var isTestComplete: Bool
     @State var testPercent = 0.0
     @State var isChange: Bool = false
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -42,7 +42,7 @@ private struct SightTest: View {
                     .font(.pretendardBold_24)
                     .overlay(alignment: .trailing) {
                         Button(action: {
-                            dismiss()
+                            router.navigateBack()
                         }, label: {
                             Image("close")
                         })
@@ -296,7 +296,7 @@ private struct SightTestResultView: View {
     @ObservedObject var viewModel: SightTestViewModel
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: Router
     @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("Login") var loggedIn: Bool = false
@@ -335,7 +335,7 @@ private struct SightTestResultView: View {
                                 if loggedIn {
                                     viewModel.saveResult(userUID)
                                     tabManager.selection = .eyeMap
-                                    dismiss()
+                                    router.navigateBack()
                                 } else {
                                     showAlert = true
                                 }
@@ -376,12 +376,11 @@ private struct SightTestResultView: View {
                 CustomButton(title: "돌아가기",
                              background: .customGreen,
                              fontStyle: .pretendardBold_16,
-                             //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
                              action: {
                     if loggedIn {
-                        //TODO: - 사용자 모델 추가 시 저장하고 dismiss() 하기!
+                        //TODO: - 사용자 모델 추가 시 저장하고 navigateBack() 하기!
                         viewModel.saveResult(userUID)
-                        dismiss()
+                        router.navigateToRoot()
                     } else {
                         //TODO: - Alert 창 띄워주고 선택
                         showAlert = true

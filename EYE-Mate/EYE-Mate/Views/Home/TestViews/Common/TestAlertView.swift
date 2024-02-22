@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TestAlertView: View {
+    @EnvironmentObject var router: Router
     @ObservedObject var loginViewModel = LoginViewModel.shared
-    @Environment(\.dismiss) var dismiss
     
     @Binding var showAlert: Bool
     
@@ -24,7 +24,7 @@ struct TestAlertView: View {
                     message: "비회원의 경우 검사 결과가 저장되지 않아요!",
                     leftButtonTitle: "홈으로",
                     leftButtonAction: {
-                        dismiss()
+                        router.navigateToRoot()
                     },
                     rightButtonTitle: "로그인",
                     rightButtonAction: {
