@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AllRecordView: View {
     let recordType: TestType
-    @ObservedObject private var recordViewModel = RecordViewModel()
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
 
     @State private var isDeleteMode = false
 
