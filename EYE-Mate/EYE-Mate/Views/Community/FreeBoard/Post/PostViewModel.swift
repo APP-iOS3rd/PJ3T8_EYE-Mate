@@ -200,6 +200,16 @@ class PostViewModel: ObservableObject {
         }
     }
     
+    /// - 댓글 작성 뷰 reset
+    func resetCommentInputView()  {
+        withAnimation {
+            replyWritingCommentID = nil
+            replyWritingCommentIndex = nil
+            commentPlaceholder = "댓글을 입력해보세요..."
+            commentText = ""
+        }
+    }
+    
     /// - 대댓글 작성 시작 Action
     func startWritingReplyComment(commentID: String, commentIndex: Int) {
         self.replyWritingCommentID = commentID

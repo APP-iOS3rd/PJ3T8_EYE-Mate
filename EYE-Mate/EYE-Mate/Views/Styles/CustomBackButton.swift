@@ -15,7 +15,7 @@ struct CustomBackButton: View {
         HStack(alignment: .bottom) {
             Button {
                 self.presentationMode.wrappedValue.dismiss()
-                profileViewModel.isPresentedProfileView.toggle()
+                profileViewModel.isPresentedProfileView = false
             } label: {
                 Image(systemName: "chevron.backward")
                     .font(.system(size: 30))
