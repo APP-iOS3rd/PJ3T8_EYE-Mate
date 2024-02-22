@@ -40,7 +40,7 @@ struct SettingListView: View {
                         .foregroundStyle(Color.black)
                     
                     Spacer()
-                    Text("1.0.2.1")
+                    Text("1.0.0")
                         .font(.pretendardMedium_18)
                         .padding(.trailing, 20)
                         .foregroundStyle(Color.gray)
@@ -50,9 +50,8 @@ struct SettingListView: View {
                 SettingListDivider()
             }
             
-            SettingCellView(title: "고객센터", destination: Text("고객센터"))
-            SettingCellView(title: "오픈소스 라이선스", destination: Text("고객센터"))
-            SettingCellView(title: "개인정보 처리방침", destination: Text("고객센터"))
+            SettingCellView(title: "고객센터", destination: CustomerInfoView())
+            SettingCellView(title: "오픈소스 라이선스", destination: LicenseView())
         }
         
         // MARK: - 계정
