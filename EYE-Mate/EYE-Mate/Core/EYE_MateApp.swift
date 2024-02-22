@@ -18,7 +18,7 @@ struct EYE_MateApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $router.navPath) {
+            NavigationStack(path: $router.navigationPath) {
                 MainView()
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {

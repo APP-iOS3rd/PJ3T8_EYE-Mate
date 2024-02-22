@@ -26,17 +26,17 @@ final class Router: ObservableObject {
         case signUpProfile
     }
 
-    @Published var navPath = NavigationPath()
+    @Published var navigationPath = NavigationPath()
 
     func navigate(to destination: Destination) {
-        navPath.append(destination)
+        navigationPath.append(destination)
     }
 
     func navigateBack() {
-        navPath.removeLast()
+        navigationPath.removeLast()
     }
 
     func navigateToRoot() {
-        navPath.removeLast(navPath.count)
+        navigationPath.removeLast(navigationPath.count)
     }
 }

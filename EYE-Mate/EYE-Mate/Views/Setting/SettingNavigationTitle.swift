@@ -17,7 +17,7 @@ struct SettingNavigationTitle: View {
     let leftButtonAction: () -> Void
     let leftButtonType: SettingNavigationBtnType
     let title: String
-    
+
     init(
         isDisplayTitle: Bool = true,
         leftButtonAction: @escaping () -> Void = {},
@@ -29,8 +29,7 @@ struct SettingNavigationTitle: View {
         self.leftButtonType = leftButtonType
         self.title = title
     }
-    
-    
+
     var body: some View {
         HStack {
             Button(action: leftButtonAction) {
@@ -38,7 +37,6 @@ struct SettingNavigationTitle: View {
                     .font(.system(size: 30))
                     .foregroundColor(.black)
             }
-            
             Spacer()
             if isDisplayTitle {
                 Text(title)
