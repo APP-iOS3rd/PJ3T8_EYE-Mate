@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct AddRecordView: View {
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: Router
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
+    // FIXME: 테스트를 위해 임시 uuid 넣어두었음 추후 ""로 초기화하고 예외처리 로직 구현
+    @AppStorage("user_UID") private var userUID: String = "JVGqkutgyQPwq0Cebwtpun5pPeq1"
 
     @State private var selectedDate: Date = Date()
 
@@ -17,8 +20,8 @@ struct AddRecordView: View {
 
     @State private var selectedTestType: [String] = []
 
-    @State private var leftVision = 1.0
-    @State private var rightVision = 1.0
+    @State private var leftVision: Float = 1.0
+    @State private var rightVision: Float = 1.0
 
     @State private var colorVisionStatus = RecordStatus.nothing
 
@@ -54,7 +57,7 @@ struct AddRecordView: View {
     }
 
     private func goBack() {
-        dismiss()
+        router.navigateBack()
     }
 
     private func resetRecord() {
@@ -100,7 +103,7 @@ struct AddRecordView: View {
                                 }
                             Spacer()
                         }
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
 
                         AddRecordSubtitleView(label: "안경 착용")
                         EyewareButtonGroup(selectedID: $selectedEyeware) { selected in
@@ -108,7 +111,7 @@ struct AddRecordView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
 
                         AddRecordSubtitleView(label: "검사 장소")
                         PlaceButtonGroup(selectedID: $selectedPlace) { selected in
@@ -116,7 +119,7 @@ struct AddRecordView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
 
                         AddRecordSubtitleView(label: "검사 종류")
                         TestTypeButtonGroup(selectedID: $selectedTestType) { selected in
@@ -126,7 +129,7 @@ struct AddRecordView: View {
                         .padding(.leading, 12)
 
                         if isVisionRecordVisible || isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
-                            HorizontalDivider(color: Color.btnGray, height: 2)
+                            HorizontalDivider(color: Color.buttonGray, height: 2)
                                 .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
 
@@ -142,7 +145,7 @@ struct AddRecordView: View {
 
 
                             if isColorVisionRecordVisible || isAstigmatismRecordVisible || isEyesightRecordVisible {
-                                HorizontalDivider(color: Color.btnGray, height: 2)
+                                HorizontalDivider(color: Color.buttonGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
@@ -157,7 +160,7 @@ struct AddRecordView: View {
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isAstigmatismRecordVisible || isEyesightRecordVisible {
-                                HorizontalDivider(color: Color.btnGray, height: 2)
+                                HorizontalDivider(color: Color.buttonGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
@@ -171,7 +174,7 @@ struct AddRecordView: View {
                             }
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                             if isEyesightRecordVisible {
-                                HorizontalDivider(color: Color.btnGray, height: 2)
+                                HorizontalDivider(color: Color.buttonGray, height: 2)
                                     .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
@@ -187,7 +190,7 @@ struct AddRecordView: View {
                         }
 
 
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
                         AddRecordSubtitleView(label: "눈 진단")
                         EyeStatusButtonGroup(selectedID: $selectedEyeStatus) { selected in
                             print("Selected is: \(selected)")
@@ -195,7 +198,7 @@ struct AddRecordView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 12)
 
-                        HorizontalDivider(color: Color.btnGray, height: 2)
+                        HorizontalDivider(color: Color.buttonGray, height: 2)
                         AddRecordSubtitleView(label: "눈 수술 여부")
                         SurgeryButtonGroup(selectedID: $selectedSurgery) { selected in
                             print("Selected is: \(selected)")
@@ -209,8 +212,18 @@ struct AddRecordView: View {
                     .padding(.top, 20)
                     .frame(minHeight: geometry.size.height - 92)
                     CustomButton(title: "입력 완료", background: isCompleteButtonDisabled ? Color.customGreen.opacity(0.5) : Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
-                        // TODO: 기록 저장
-                        // TODO: 필수 입력 알림 및 disabled 기능 추가
+                        if isVisionRecordVisible {
+                            recordViewModel.createVisionRecord(uid: userUID, visionRecord: VisionRecord(left: String(leftVision), right: String(rightVision), publishedDate: selectedDate))
+                        }
+                        if isColorVisionRecordVisible {
+                            recordViewModel.createColorVisionRecord(uid: userUID, colorVisionRecord: ColorVisionRecord(status: colorVisionStatus.rawValue, publishedDate: selectedDate))
+                        }
+                        if isAstigmatismRecordVisible {
+                            recordViewModel.createAstigmatismRecord(uid: userUID, astigmatismRecord: AstigmatismRecord(left: leftAstigmatismStatus.rawValue, right: rightAstigmatismStatus.rawValue, publishedDate: selectedDate))
+                        }
+                        if isEyesightRecordVisible {
+                            recordViewModel.createEyesightRecord(uid: userUID, eyesightRecord: EyesightRecord(left: leftEyesightStatus.rawValue, right: rightEyesightStatus.rawValue, publishedDate: selectedDate))
+                        }
                         goBack()
                     })
                     .frame(height: 88)

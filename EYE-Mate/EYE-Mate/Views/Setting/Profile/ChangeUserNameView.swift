@@ -17,7 +17,7 @@ struct ChangeUserNameView: View {
     
     var body: some View {
         VStack {
-            SettingNavigationTitle(leftBtnAction: {
+            SettingNavigationTitle(leftButtonAction: {
                 presentationMode.wrappedValue.dismiss()
             }, title: "닉네임 변경")
             
@@ -25,7 +25,6 @@ struct ChangeUserNameView: View {
                 Text("닉네임")
                 // TODO: - profileVeiwModel에서 nickname 바인딩
                 ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled, keyFocused: $keyFocused)
-
             }
             .padding(20)
             

@@ -15,7 +15,6 @@ struct EditableProfileView: View {
     @State private var circleImage: Image = Image("user")
     
     var body: some View {
-        
         PhotosPicker(
             selection: $selectedItem,
             matching: .images,

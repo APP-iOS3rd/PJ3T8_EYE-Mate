@@ -13,13 +13,13 @@ struct CustomerInfoView: View {
     var dropDownList = ["신고", "장애/버그", "문의", "기타"]
     @State var selectedItem = "고객센터 카테고리"
     @State var placeholder = "무엇을 도와드릴까요?"
-    
+
     var body: some View {
         VStack {
-            SettingNavigationTitle(isDisplayTitle: true, leftBtnAction: {
+            SettingNavigationTitle(isDisplayTitle: true, leftButtonAction: {
                 presentationMode.wrappedValue.dismiss()
-            }, leftBtnType: .back, title:"고객센터")
-            
+            }, leftButtonType: .back, title:"고객센터")
+
             ScrollView {
                 VStack(spacing: 10){
                     Menu {
@@ -30,14 +30,14 @@ struct CustomerInfoView: View {
                                 Text(item)
                             }
                         }
-                        
+
                     } label: {
                         HStack{
                             Text(selectedItem)
                                 .font(.pretendardRegular_18)
                                 .foregroundStyle(Color.black)
                                 .multilineTextAlignment(.leading)
-                            
+
                             Spacer()
                             Image(systemName: "chevron.down")
                                 .foregroundStyle(Color.black)
@@ -47,12 +47,12 @@ struct CustomerInfoView: View {
                         .background{
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color(hex: "EEEEEE").opacity(0.8))
-                            
+
                         }
                     }
                     .menuStyle(.button)
                     .padding(.bottom, 10)
-                    
+
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray.opacity(0.8), lineWidth: 3)
@@ -66,7 +66,7 @@ struct CustomerInfoView: View {
                                 .disabled(true)
                                 .padding(10)
                         }
-                        
+
                         TextEditor(text: $content)
                             .foregroundStyle(Color.black)
                             .opacity(content.isEmpty ? 0.5 : 1)
@@ -74,7 +74,7 @@ struct CustomerInfoView: View {
                             .frame(width: UIScreen.main.bounds.width - 40 ,height: 300)
                     }
                     .frame(width: UIScreen.main.bounds.width - 40 ,height: 300)
-                    
+
                     CustomButton(title: "제출", background: Color.customGreen, fontStyle: .pretendardSemiBold_16, action: {})
                         .frame(width: UIScreen.main.bounds.width - 10, height: 80)
                 }

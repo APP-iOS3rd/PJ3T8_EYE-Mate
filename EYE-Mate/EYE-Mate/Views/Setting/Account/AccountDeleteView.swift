@@ -25,7 +25,7 @@ struct AccountDeleteView: View {
                     .multilineTextAlignment(.center)
                     .font(.pretendardSemiBold_18)
                     .foregroundColor(Color.warningGray)
-                
+           
                 AccountDeleteContents(accountDeleteViewModel: accountDeleteViewModel)
                 
                 Spacer()

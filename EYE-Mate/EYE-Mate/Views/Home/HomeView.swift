@@ -13,42 +13,17 @@ struct HomeView: View {
     @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        HomeViewTextView()
-                      
-                        EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
-                            .padding(.horizontal, 20)
-                        
-                        HomeViewCellListView()
-                        
-                        Spacer()
-                    }
+        VStack(alignment: .leading) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
+                    HomeViewTextView()
+                    EyeSenseOnboardingView(onboardingViewModel: eyeSenseOnBoardingViewModel)
+                        .padding(.horizontal, 20)
+                    HomeViewCellListView()
+                    Spacer()
                 }
-                Spacer()
-                    .frame(height: 85)
             }
-        }
-        
-        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-            ProfileView()
-        }
-        .navigationDestination(isPresented: $viewModel.isPresentedRecordView) {
-            RecordView()
-        }
-        .navigationDestination(isPresented: $viewModel.isPresentedVisionView) {
-            VisionView()
-        }
-        .navigationDestination(isPresented: $viewModel.isPresentedColorView) {
-            ColorView()
-        }
-        .navigationDestination(isPresented: $viewModel.isPresentedAstigmatismView) {
-            AstigmatismView()
-        }
-        .navigationDestination(isPresented: $viewModel.isPresentedSightView) {
-            SightView()
+            .padding(.bottom, 72)
         }
     }
 }
@@ -86,21 +61,23 @@ private struct HomeViewTextView: View {
 
 //MARK: - 셀 리스트 뷰
 private struct HomeViewCellListView: View {
-    @ObservedObject private var viewModel = HomeViewModel.shared
+    @EnvironmentObject var router: Router
     @EnvironmentObject var tabManager: TabManager
-    
+
+    @ObservedObject private var viewModel = HomeViewModel.shared
+
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("눈 관리")
                 .font(.pretendardSemiBold_20)
             HStack(spacing: 10) {
                 Button(action: {
-                    viewModel.isPresentedRecordView = true
+                    router.navigate(to: .record)
                 }, label: {
                     HomeViewCellView(item: .init(img: Image("Record"), title: "눈 기록", subTitle: "꼼꼼한 기록 관리"), isArrowButton: false)
                         .foregroundColor(.black)
                 })
-                
+
                 Button(action: {
                     tabManager.selection = .movement
                 }, label: {
@@ -111,25 +88,25 @@ private struct HomeViewCellListView: View {
             Text("눈 검사")
                 .font(.pretendardSemiBold_20)
             Button(action: {
-                viewModel.isPresentedVisionView = true
+                router.navigate(to: .checkVision)
             }, label: {
                 HomeViewCellView(item: .init(img: Image("VisionTest1"), title: "시력 검사", subTitle: "나의 시력을 확인해보세요."))
                     .foregroundColor(.black)
             })
             Button(action: {
-                viewModel.isPresentedColorView = true
+                router.navigate(to: .checkColor)
             }, label: {
                 HomeViewCellView(item: .init(img: Image("VisionTest2"), title: "색각 검사", subTitle: "색상을 선명하게 구별할 수 있나요?"))
                     .foregroundColor(.black)
             })
             Button(action: {
-                viewModel.isPresentedAstigmatismView = true
+                router.navigate(to: .checkAstigmatism)
             }, label: {
                 HomeViewCellView(item: .init(img: Image("VisionTest3"), title: "난시 검사", subTitle: "난시의 징후가 있는지 검사하세요."))
                     .foregroundColor(.black)
             })
             Button(action: {
-                viewModel.isPresentedSightView = true
+                router.navigate(to: .checkSight)
             }, label: {
                 HomeViewCellView(item: .init(img: Image("VisionTest4"), title: "시야 검사", subTitle: "시야의 문제 여부를 파악해보세요."))
                     .foregroundColor(.black)

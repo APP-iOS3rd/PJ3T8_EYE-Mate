@@ -9,33 +9,34 @@ import SwiftUI
 import PhotosUI
 
 struct SettingView: View {
+    @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @Environment(\.presentationMode) var presentationMode
+
     @AppStorage("Login") private var login: Bool = false
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
-    
+
     @State var isLogoutAlert: Bool = false
     
     @State var isSignoutAlert: Bool = false
-    
+
     var body: some View {
         ZStack {
-            NavigationStack {
+            VStack {
                 CustomBackButton()
-                
+
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
                         profileViewModel.profileImage
                             .ProfileImageModifier()
                             .frame(width: 200, height: 200)
-                        
+
                         Text(userName)
                             .font(.pretendardSemiBold_24)
                     }
                     .padding(.vertical, 30)
-                    
+
                     SettingListView(isLogoutAlert: $isLogoutAlert, isSignoutAlert: $isSignoutAlert)
                 }
             }

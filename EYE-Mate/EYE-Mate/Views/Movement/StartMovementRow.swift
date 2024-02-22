@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+extension UIApplication {
+    class func navigationTopViewController() -> UIViewController? {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        
+        return windowScene?.windows.first { $0.isKeyWindow }?.rootViewController?.navigationController?.topViewController
+    }
+}
+
 struct StartMovementRow: View {
-    @Binding var showToast: Bool
-    @Binding var movementType: String
-
+    @EnvironmentObject var router: Router
+    
+    let movementType: String
+    
     @State var isNavigateEightLottieView : Bool = false
-
+    
     var body: some View {
         HStack {
             Image("\(movementType)Movement")
@@ -37,31 +46,27 @@ struct StartMovementRow: View {
             }.padding(.leading, 12)
             Spacer()
             Button {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscape))
-                isNavigateEightLottieView = true
+                DispatchQueue.main.async {
+                    AppDelegate.orientationLock = UIInterfaceOrientationMask.landscapeRight
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
+                    UINavigationController.attemptRotationToDeviceOrientation()
+                    //                UIApplication.navigationTopViewController()?.setNeedsUpdateOfSupportedInterfaceOrientations()
+                }
+                router.navigate(to: .movementLottie(movementType: movementType))
             } label: {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.white)
-            }.navigationDestination(isPresented: $isNavigateEightLottieView) {
-                MovementLottieView(showToast: $showToast, movementType: $movementType)
             }
             .buttonStyle(PlainButtonStyle())
             .padding()
             .background(Color.customGreen)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+            .clipShape(Circle())
             .frame(width: 44, height: 44)
         }
         .padding(16)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.25), radius: 4, x: 2, y: 2)
+        .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
     }
-}
-
-#Preview {
-    @State var showToast: Bool = false
-    @State var movementType: String = "Line"
-
-    return StartMovementRow(showToast: $showToast, movementType: $movementType)
 }

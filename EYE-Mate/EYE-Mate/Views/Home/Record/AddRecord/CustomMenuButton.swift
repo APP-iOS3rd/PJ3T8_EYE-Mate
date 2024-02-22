@@ -63,7 +63,7 @@ struct CustomMenuButton: View {
     private func strokeColor() -> Color {
         switch selectedOption {
         case .nothing:
-            return Color.btnGray
+            return Color.buttonGray
         case .bad, .serious:
             return Color.lightRed
         case .fine, .minor, .severe:
@@ -107,7 +107,7 @@ struct CustomMenuButton: View {
                                     Text(RecordStatus.normal.rawValue)
                                 }
                                 .buttonStyle(CustomMenuButtonStyle(color: Color.customGreen))
-                                HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+                                HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
                                 Button(action: {
                                     selectedOption = RecordStatus.minor
                                     isMenuVisible = false
@@ -115,7 +115,7 @@ struct CustomMenuButton: View {
                                     Text(RecordStatus.minor.rawValue)
                                 }
                                 .buttonStyle(CustomMenuButtonStyle(color: Color.lightYellow))
-                                HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+                                HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
                                 Button(action: {
                                     selectedOption = RecordStatus.severe
                                     isMenuVisible = false
@@ -123,7 +123,7 @@ struct CustomMenuButton: View {
                                     Text(RecordStatus.severe.rawValue)
                                 }
                                 .buttonStyle(CustomMenuButtonStyle(color: Color.lightYellow))
-                                HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+                                HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
                                 Button(action: {
                                     selectedOption = RecordStatus.serious
                                     isMenuVisible = false
@@ -146,7 +146,7 @@ struct CustomMenuButton: View {
                                     Text("좋음")
                                 }
                                 .buttonStyle(CustomMenuButtonStyle(color: Color.customGreen))
-                                HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+                                HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
                                 Button(action: {
                                     selectedOption = RecordStatus.fine
                                     isMenuVisible = false
@@ -154,7 +154,7 @@ struct CustomMenuButton: View {
                                     Text("양호")
                                 }
                                 .buttonStyle(CustomMenuButtonStyle(color: Color.lightYellow))
-                                HorizontalDivider(color: Color.btnGray, height: 2).padding(.horizontal, 12)
+                                HorizontalDivider(color: Color.buttonGray, height: 2).padding(.horizontal, 12)
                                 Button(action: {
                                     selectedOption = RecordStatus.bad
                                     isMenuVisible = false
