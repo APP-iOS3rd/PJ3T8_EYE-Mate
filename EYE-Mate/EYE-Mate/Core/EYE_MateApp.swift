@@ -17,7 +17,8 @@ struct EYE_MateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(userName: "TestAccount", userUID: "mNnvAM9IlDdIu8fTZQpTICW37Np1", userProfileURL: "https://firebasestorage.googleapis.com:443/v0/b/eye-mate-29855.appspot.com/o/Profile_Images%2FmNnvAM9IlDdIu8fTZQpTICW37Np1.png?alt=media&token=b35d187d-d627-49d8-9c7c-33522d3697f1",
+                     loggedIn: true, userLeft: "", userRight: "")
         }
     }
 }
