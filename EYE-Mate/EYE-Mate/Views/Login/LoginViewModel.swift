@@ -21,6 +21,8 @@ class LoginViewModel: ObservableObject {
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
     @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_left") private var userLeft: String = ""
+    @AppStorage("user_right") private var userRight: String = ""
     
     @Published var showFullScreenCover: Bool = false
     
@@ -97,6 +99,8 @@ class LoginViewModel: ObservableObject {
                 if data["userUID"] as! String == userUID {
                     userName = data["userName"] as! String
                     userProfileURL = data["userImageURL"] as! String
+                    userLeft = data["left"] as! String
+                    userRight = data["right"] as! String
                     profileViewModel.downloadImageFromProfileURL()
                     return true
                 }
