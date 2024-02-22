@@ -331,9 +331,9 @@ private struct VisionTestResultView: View {
                 Spacer()
                     .frame(height: 1)
                 
-                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
-                
                 TestResultTitleView(type: .vision)
+                
+                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
                 
                 if total != 0 {
                     ScrollView(showsIndicators: false) {
