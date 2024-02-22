@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddRecordView: View {
     @EnvironmentObject var router: Router
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
+    @AppStorage("user_UID") private var userUID: String = "JVGqkutgyQPwq0Cebwtpun5pPeq1"
 
     @State private var selectedDate: Date = Date()
 
@@ -209,8 +211,18 @@ struct AddRecordView: View {
                     .padding(.top, 20)
                     .frame(minHeight: geometry.size.height - 92)
                     CustomButton(title: "입력 완료", background: isCompleteButtonDisabled ? Color.customGreen.opacity(0.5) : Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
-                        // TODO: 기록 저장
-                        // TODO: 필수 입력 알림 및 disabled 기능 추가
+                        if isVisionRecordVisible {
+                            recordViewModel.createVisionRecord(uid: userUID, visionRecord: VisionRecord(left: String(leftVision), right: String(rightVision), publishedDate: selectedDate))
+                        }
+                        if isColorVisionRecordVisible {
+                            recordViewModel.createColorVisionRecord(uid: userUID, colorVisionRecord: ColorVisionRecord(status: colorVisionStatus.rawValue, publishedDate: selectedDate))
+                        }
+                        if isAstigmatismRecordVisible {
+                            recordViewModel.createAstigmatismRecord(uid: userUID, astigmatismRecord: AstigmatismRecord(left: leftAstigmatismStatus.rawValue, right: rightAstigmatismStatus.rawValue, publishedDate: selectedDate))
+                        }
+                        if isEyesightRecordVisible {
+                            recordViewModel.createEyesightRecord(uid: userUID, eyesightRecord: EyesightRecord(left: leftEyesightStatus.rawValue, right: rightEyesightStatus.rawValue, publishedDate: selectedDate))
+                        }
                         goBack()
                     })
                     .frame(height: 88)

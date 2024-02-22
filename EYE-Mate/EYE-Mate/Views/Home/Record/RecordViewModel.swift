@@ -12,12 +12,27 @@ struct VisionRecord: Identifiable, Codable, Equatable, Hashable {
     var left: String
     var right: String
     var publishedDate: Date
+
+    var dictionary: [String: Any] {
+        return [
+            "left": left,
+            "right": right,
+            "publishedDate": publishedDate,
+        ]
+    }
 }
 
 struct ColorVisionRecord: Identifiable, Codable, Equatable, Hashable {
     @DocumentID var id: String?
     var status: String
     var publishedDate: Date
+
+    var dictionary: [String: Any] {
+        return [
+            "status": status,
+            "publishedDate": publishedDate,
+        ]
+    }
 }
 
 struct AstigmatismRecord: Identifiable, Codable, Equatable, Hashable {
@@ -25,6 +40,14 @@ struct AstigmatismRecord: Identifiable, Codable, Equatable, Hashable {
     var left: String
     var right: String
     var publishedDate: Date
+
+    var dictionary: [String: Any] {
+        return [
+            "left": left,
+            "right": right,
+            "publishedDate": publishedDate,
+        ]
+    }
 }
 
 struct EyesightRecord: Identifiable, Codable, Equatable, Hashable {
@@ -32,6 +55,14 @@ struct EyesightRecord: Identifiable, Codable, Equatable, Hashable {
     var left: String
     var right: String
     var publishedDate: Date
+
+    var dictionary: [String: Any] {
+        return [
+            "left": left,
+            "right": right,
+            "publishedDate": publishedDate,
+        ]
+    }
 }
 
 final class RecordViewModel: ObservableObject {
@@ -78,10 +109,10 @@ final class RecordViewModel: ObservableObject {
     func deleteVisionRecord(record: VisionRecord) {
         db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Visions").document(record.id!).delete() { error in
             if let error = error {
-                        print("Error removing document: \(error.localizedDescription)")
-                    } else {
-                        print("Document successfully removed!")
-                    }
+                print("Error removing document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully removed!")
+            }
         }
 
         let index = visionRecords.firstIndex { currentRecord in
@@ -91,6 +122,10 @@ final class RecordViewModel: ObservableObject {
 
         let recentVisions = Array(visionRecords.prefix(5))
         recentVisionRecords = recentVisions
+    }
+
+    func createVisionRecord(uid: String, visionRecord: VisionRecord) {
+        let _ = db.collection("Records").document(uid).collection("Visions").document().setData(visionRecord.dictionary)
     }
 
     @MainActor
@@ -115,10 +150,10 @@ final class RecordViewModel: ObservableObject {
     func deleteColorVisionRecord(record: ColorVisionRecord) {
         db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Colors").document(record.id!).delete() { error in
             if let error = error {
-                        print("Error removing document: \(error.localizedDescription)")
-                    } else {
-                        print("Document successfully removed!")
-                    }
+                print("Error removing document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully removed!")
+            }
         }
 
         let index = colorVisionRecords.firstIndex { currentRecord in
@@ -130,9 +165,13 @@ final class RecordViewModel: ObservableObject {
         recentColorVisionRecords = recentColorVisions
     }
 
+    func createColorVisionRecord(uid: String, colorVisionRecord: ColorVisionRecord) {
+        let _ = db.collection("Records").document(uid).collection("Colors").document().setData(colorVisionRecord.dictionary)
+    }
+
     @MainActor
     func fetchAstigmatismRecord() async throws {
-        let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Astigmtisms").getDocuments()
+        let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Astigmatisms").getDocuments()
         var astigmatisms: [AstigmatismRecord] = []
 
         for document in snapshot.documents {
@@ -152,10 +191,10 @@ final class RecordViewModel: ObservableObject {
     func deleteAstigmatismVisionRecord(record: AstigmatismRecord) {
         db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Astigmatisms").document(record.id!).delete() { error in
             if let error = error {
-                        print("Error removing document: \(error.localizedDescription)")
-                    } else {
-                        print("Document successfully removed!")
-                    }
+                print("Error removing document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully removed!")
+            }
         }
 
         let index = astigmatismRecords.firstIndex { currentRecord in
@@ -165,6 +204,10 @@ final class RecordViewModel: ObservableObject {
 
         let recentAstigmatisms = Array(astigmatismRecords.prefix(5))
         recentAstigmatismRecords = recentAstigmatisms
+    }
+
+    func createAstigmatismRecord(uid: String, astigmatismRecord: AstigmatismRecord) {
+        let _ = db.collection("Records").document(uid).collection("Astigmatisms").document().setData(astigmatismRecord.dictionary)
     }
 
     @MainActor
@@ -189,10 +232,10 @@ final class RecordViewModel: ObservableObject {
     func deleteEyesightVisionRecord(record: EyesightRecord) {
         db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Sights").document(record.id!).delete() { error in
             if let error = error {
-                        print("Error removing document: \(error.localizedDescription)")
-                    } else {
-                        print("Document successfully removed!")
-                    }
+                print("Error removing document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully removed!")
+            }
         }
 
         let index = eyesightRecords.firstIndex { currentRecord in
@@ -202,5 +245,9 @@ final class RecordViewModel: ObservableObject {
 
         let recentEyesights = Array(eyesightRecords.prefix(5))
         recentEyesightRecords = recentEyesights
+    }
+
+    func createEyesightRecord(uid: String, eyesightRecord: EyesightRecord) {
+        let _ = db.collection("Records").document(uid).collection("Sights").document().setData(eyesightRecord.dictionary)
     }
 }
