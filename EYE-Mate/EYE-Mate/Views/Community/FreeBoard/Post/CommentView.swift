@@ -13,6 +13,8 @@ struct CommentView: View {
     @ObservedObject var postVM: PostViewModel
     @StateObject var commentVM: CommentViewModel
     
+    @Binding var showAlert: Bool
+    
     // MARK: Local Data Update
     /// - 댓글  좋아요 업데이트
     var onUpdateComment: (String, Int, [String]) -> ()
@@ -32,7 +34,7 @@ struct CommentView: View {
             VStack(spacing: 0) {
         
                 // MARK: 댓글 Cell
-                CommentRowCellView(comment: comment, commentVM: commentVM) { postID, commentIndex in
+                CommentRowCellView(comment: comment, commentVM: commentVM, showAlert: $showAlert) { postID, commentIndex in
                     /// 댓글 좋아요 업데이트
                     onUpdateComment(postID, commentIndex, commentVM.comments[commentIndex].likedIDs)
                 } startWritingReplyComment: { commentID, commentIndex in
@@ -52,7 +54,7 @@ struct CommentView: View {
                             .foregroundStyle(.gray)
                         
                         // MARK: 대댓글 Cell
-                        ReplyCommentRowCellView(commentID: comment.id, replyComment: replyComment, commentVM: commentVM) { postID, commentIndex, replyCommentIndex in
+                        ReplyCommentRowCellView(commentID: comment.id, replyComment: replyComment, commentVM: commentVM, showAlert: $showAlert) { postID, commentIndex, replyCommentIndex in
                             /// 대댓글 좋아요 업데이트
                             onUpdateReplyComment(postID, commentIndex, replyCommentIndex, commentVM.comments[commentIndex].replyComments[replyCommentIndex].likedIDs)
                         } deleteReplyComment: { postID, commentIndex, replyCommentIndex in
