@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingListView: View {
     @Binding var isLogoutAlert: Bool
     @Binding var isSignoutAlert: Bool
-    let listWidthSize = UIScreen.main.bounds.width - 70
     
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
@@ -41,10 +40,12 @@ struct SettingListView: View {
                     Spacer()
                     Text("1.0.0")
                         .font(.pretendardMedium_18)
-                        .padding(.trailing, 20)
+                        .padding(.trailing, 10)
                         .foregroundStyle(Color.gray)
                 }
-                .frame(width: listWidthSize, height: 50)
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
                 
                 SettingListDivider()
             }
@@ -62,7 +63,7 @@ struct SettingListView: View {
                 .onTapGesture {
                     isLogoutAlert = true
                 }
-
+            
             SettingCellView<Text>(title: "회원 탈퇴")
                 .background(Color.white)
                 .onTapGesture {
@@ -76,8 +77,7 @@ struct SettingListView: View {
 struct SettingCellView<Destination: View>: View {
     var title: String
     var destination: Destination? = nil
-    let listWidthSize = UIScreen.main.bounds.width - 70
-
+    
     var body: some View {
         if let destinationView = destination {
             NavigationLink(destination: destinationView) {
@@ -90,20 +90,23 @@ struct SettingCellView<Destination: View>: View {
     
     private var content: some View {
         VStack(spacing: 0) {
-            HStack{
+            HStack(alignment: .bottom){
                 Text(title)
+                    .padding(.leading, 20)
                     .font(.pretendardRegular_18)
-                    .padding(.leading,20)
                     .foregroundStyle(Color.black)
                 
                 Spacer()
                 Image(systemName: "chevron.forward")
-                    .padding(.trailing, 20)
+                    .padding(.trailing, 10)
                     .foregroundStyle(Color.gray)
             }
-            .frame(width: listWidthSize, height: 50)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 20)
             
             SettingListDivider()
+            
         }
     }
 }
@@ -112,14 +115,20 @@ struct SettingTitleView: View {
     var title: String
     
     var body: some View {
-        HStack {
-            Text(title)
-                .padding(.leading, 20)
-                .font(.pretendardSemiBold_20)
-                .foregroundStyle(Color.customGreen)
-            Spacer()
+        VStack {
+            HStack {
+                Text(title)
+                    .padding(.leading, 20)
+                    .font(.pretendardSemiBold_18)
+                    .foregroundStyle(Color.customGreen)
+                
+                Spacer()
+            }
+            .modifier(SettingTitleModifier())
+            .frame(maxWidth: .infinity)
+            .frame(height: 50)
         }
-        .modifier(SettingTitleModifier())
+        .padding(.horizontal, 20)
     }
 }
 

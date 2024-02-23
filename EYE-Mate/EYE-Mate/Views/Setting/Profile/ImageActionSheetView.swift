@@ -12,7 +12,6 @@ struct ImageActionSheetView: View {
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @State var isPresented: Bool = false
     @State var showPicker: Bool = false
-    let listWidthSize = UIScreen.main.bounds.width - 70
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,7 +25,7 @@ struct ImageActionSheetView: View {
                         .foregroundStyle(Color.black)
                     Spacer()
                     Image(systemName: "chevron.forward")
-                        .padding(.trailing, 20)
+                        .padding(.trailing, 10)
                         .foregroundStyle(Color.gray)
                 }
                 
@@ -46,7 +45,9 @@ struct ImageActionSheetView: View {
                 }
             )
             .photosPicker(isPresented: $showPicker, selection: $profileViewModel.imageSelection)
-            .frame(width: listWidthSize, height: 50)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 20)
             
             SettingListDivider()
             

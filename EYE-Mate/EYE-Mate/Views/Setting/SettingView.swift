@@ -36,7 +36,7 @@ struct SettingView: View {
                         Text(userName)
                             .font(.pretendardSemiBold_24)
                     }
-                    .padding(.vertical, 30)
+                    .padding(.vertical, 20)
 
                     SettingListView(isLogoutAlert: $isLogoutAlert, isSignoutAlert: $isSignoutAlert)
                 }
