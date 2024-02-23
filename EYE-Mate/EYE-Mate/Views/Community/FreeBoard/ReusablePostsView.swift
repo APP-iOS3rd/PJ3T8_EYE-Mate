@@ -12,6 +12,8 @@ import SwiftUI
 struct ReusablePostsView: View {
     @ObservedObject var freeboardVM: FreeBoardViewModel
 
+    let fetchCase: FetchCase
+    
     var body: some View {
         // 게시물 목록
         ScrollView {
@@ -34,15 +36,25 @@ struct ReusablePostsView: View {
         .scrollIndicators(.never)
         .refreshable {
             /// 위로 스크롤 당겨서 새로고침
-            hideKeyboard()
-            Task {
-                await freeboardVM.refreshable()
+            if fetchCase == .freeboard {
+                hideKeyboard()
+                Task {
+                    await freeboardVM.refreshable()
+                }
             }
         }
         .task {
             // MARK: 처음에 한번 Firebase에서 posts 받아오기
             guard freeboardVM.posts.isEmpty else {return}
-            await freeboardVM.fetchPosts()
+            
+            switch fetchCase {
+            case .freeboard:
+                await freeboardVM.fetchPosts()
+            case .myPost:
+                await freeboardVM.fetchMyPosts()
+            case .scrapPost:
+                await freeboardVM.fetchScrapPosts()
+            }
         }
     }
 }
