@@ -125,7 +125,7 @@ final class RecordViewModel: ObservableObject {
     }
 
     func createVisionRecord(uid: String, visionRecord: VisionRecord) {
-        let _ = db.collection("Records").document(uid).collection("Visions").document().setData(visionRecord.dictionary) { error in
+        db.collection("Records").document(uid).collection("Visions").document().setData(visionRecord.dictionary) { error in
             if let error = error {
                 print("Error create document: \(error.localizedDescription)")
             } else {
@@ -172,7 +172,13 @@ final class RecordViewModel: ObservableObject {
     }
 
     func createColorVisionRecord(uid: String, colorVisionRecord: ColorVisionRecord) {
-        let _ = db.collection("Records").document(uid).collection("Colors").document().setData(colorVisionRecord.dictionary)
+        db.collection("Records").document(uid).collection("Colors").document().setData(colorVisionRecord.dictionary) { error in
+            if let error = error {
+                print("Error create document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully created!")
+            }
+        }
     }
 
     @MainActor
@@ -213,7 +219,13 @@ final class RecordViewModel: ObservableObject {
     }
 
     func createAstigmatismRecord(uid: String, astigmatismRecord: AstigmatismRecord) {
-        let _ = db.collection("Records").document(uid).collection("Astigmatisms").document().setData(astigmatismRecord.dictionary)
+        db.collection("Records").document(uid).collection("Astigmatisms").document().setData(astigmatismRecord.dictionary) { error in
+            if let error = error {
+                print("Error create document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully created!")
+            }
+        }
     }
 
     @MainActor
@@ -254,6 +266,12 @@ final class RecordViewModel: ObservableObject {
     }
 
     func createEyesightRecord(uid: String, eyesightRecord: EyesightRecord) {
-        let _ = db.collection("Records").document(uid).collection("Sights").document().setData(eyesightRecord.dictionary)
+        db.collection("Records").document(uid).collection("Sights").document().setData(eyesightRecord.dictionary) { error in
+            if let error = error {
+                print("Error create document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully created!")
+            }
+        }
     }
 }

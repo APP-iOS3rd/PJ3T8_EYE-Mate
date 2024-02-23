@@ -65,7 +65,7 @@ struct AllRecordView: View {
                     Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
                     CustomAlertView(
                         title: "정말 삭제하시겠습니까?",
-                        message: "삭제한 기록은 되돌릴 수 없습니다.?",
+                        message: "삭제한 기록은 되돌릴 수 없습니다.",
                         leftButtonTitle: "취소",
                         leftButtonAction: { isDeleteAlert = false },
                         rightButtonTitle: "삭제",
@@ -82,7 +82,7 @@ struct AllRecordView: View {
                     Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
                     CustomAlertView(
                         title: "정말 삭제하시겠습니까?",
-                        message: "삭제한 기록은 되돌릴 수 없습니다.?",
+                        message: "삭제한 기록은 되돌릴 수 없습니다.",
                         leftButtonTitle: "취소",
                         leftButtonAction: { isDeleteOneItemAlert = false },
                         rightButtonTitle: "삭제",
