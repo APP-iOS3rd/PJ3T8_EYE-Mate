@@ -109,8 +109,8 @@ struct ChartView: View {
             }
         }
         .chartForegroundStyleScale([
-            "left" : Color(hex: "#586BCF"),
-            "right" : Color(hex: "#FFB647"),
+            "left" : Color(hex: "#7ECFE8"),
+            "right" : Color(hex: "#52CAA6"),
         ])
         .chartLegend(.hidden)
     }
