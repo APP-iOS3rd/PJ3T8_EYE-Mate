@@ -41,7 +41,7 @@ struct HomeViewCellView: View {
             }
             .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
                     .shadow(radius: 3, x: 1, y: 1)
             )
