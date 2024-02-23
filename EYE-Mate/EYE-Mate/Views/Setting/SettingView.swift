@@ -24,6 +24,7 @@ struct SettingView: View {
 
     var body: some View {
         ZStack {
+            
             VStack {
                 CustomBackButton()
 
@@ -41,19 +42,20 @@ struct SettingView: View {
                     SettingListView(isLogoutAlert: $isLogoutAlert, isSignoutAlert: $isSignoutAlert)
                 }
             }
-            
+             
             if isLogoutAlert {
-                
+                // 배경화면
                 ZStack{
-                    // 배경화면
                     Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
-
+                    
                     CustomAlertView(
                         title: "로그아웃",
                         message: "로그아웃 하시겠습니까?",
                         leftButtonTitle: "취소",
-                        leftButtonAction: { isLogoutAlert = false},
-                        rightButtonTitle: "확인",
+                        leftButtonAction: {
+                            isLogoutAlert = false
+                        },
+                        rightButtonTitle: "로그아웃",
                         rightButtonAction: {
                             // MARK: - 로그아웃 처리
                             login = false
@@ -66,16 +68,18 @@ struct SettingView: View {
                             presentationMode.wrappedValue.dismiss()
                         })
                 }
-            }
                 
+            }
+            
         }
         .fullScreenCover(isPresented: $isSignoutAlert, content: {
             AccountDeleteView(isSignoutAlert: $isSignoutAlert)
         })
         .animation(.easeInOut(duration: 0.1), value: isLogoutAlert)
-        
     }
 }
+
+
 
 #Preview {
     SettingView()
