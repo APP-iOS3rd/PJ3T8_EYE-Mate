@@ -77,7 +77,7 @@ struct EyeSenseOnboardingView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(
-                        LinearGradient(gradient: Gradient(colors: [Color(hex: "62D8C5"), Color(hex: "70A8D6")]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [Color(hex: "74DFD3"), Color(hex: "29CEBA")]), startPoint: .top, endPoint: .bottom)
                     )
             )
             

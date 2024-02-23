@@ -166,6 +166,7 @@ class ProfileViewModel: ObservableObject {
                 } catch {
                     print(error.localizedDescription)
                 }
+                return
             }
         }
         
