@@ -628,6 +628,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - AcknowList (2.0.3)
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
     - BoringSSL-GRPC/Interface (= 0.0.24)
@@ -776,7 +777,7 @@ PODS:
   - GTMSessionFetcher/Core (3.3.1)
   - Kingfisher (7.11.0)
   - leveldb-library (1.22.3)
-  - lottie-ios (4.4.0)
+  - lottie-ios (4.4.1)
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
     - nanopb/encode (= 2.30909.1)
@@ -789,6 +790,7 @@ PODS:
   - RecaptchaInterop (100.0.0)
 
 DEPENDENCIES:
+  - AcknowList
   - FirebaseAuth
   - FirebaseCore
   - FirebaseFirestore
@@ -801,6 +803,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AcknowList
     - BoringSSL-GRPC
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -830,6 +833,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
+  AcknowList: 6d4faca4c3e0173377fe5649e086d627cd60b003
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   FirebaseAppCheckInterop: 69fc7d8f6a1cbfa973efb8d1723651de30d12525
   FirebaseAuth: 42f07198c4ed6b55643a147ae682d32200f3ff6d
@@ -850,13 +854,13 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 8a1b34ad97ebe6f909fb8b9b77fba99943007556
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   leveldb-library: e74c27d8fbd22854db7cb467968a0b8aa1db7126
-  lottie-ios: ef1be1f90d54255f08e09d767950e43714661178
+  lottie-ios: e047b1d2e6239b787cc5e9755b988869cf190494
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
   NMapsMap: a5b909a31b6f3d27a670f6eb2ddc913c38975474
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 51e3e5a89880aefcbac336170a9a5735f154c1e2
+PODFILE CHECKSUM: 2f847d8945ac67408945c426903a37e2f3c65db5
 
 COCOAPODS: 1.14.3

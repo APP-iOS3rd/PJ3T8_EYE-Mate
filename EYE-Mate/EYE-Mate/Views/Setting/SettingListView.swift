@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AcknowList
+import UIKit
 
 struct SettingListView: View {
     @Binding var isLogoutAlert: Bool
@@ -51,7 +53,7 @@ struct SettingListView: View {
             }
             
             SettingCellView(title: "고객센터", destination: CustomerInfoView())
-            SettingCellView(title: "오픈소스 라이선스", destination: LicenseView())
+            SettingCellView(title: "오픈소스 라이선스", destination: AcknowListViewControllerView())
         }
         
         // MARK: - 계정
@@ -131,6 +133,30 @@ struct SettingTitleView: View {
         .padding(.horizontal, 20)
     }
 }
+
+struct AcknowListViewControllerView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> AcknowListViewController {
+        // Create AcknowListViewController instance
+        let acknowList = AcknowListViewController(fileNamed: "Pods-EYE-Mate-acknowledgements")
+        
+//        acknowList.navigationItem.leftBarButtonItem = nil
+//        let navigationController = UINavigationController(rootViewController: acknowList)
+//        navigationController.navigationBar.topItem?.hidesBackButton = true
+//        
+//        // Customize back button
+//        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        backButton.tintColor = UIColor.black // Set the color to black
+//        navigationController.navigationBar.topItem?.backBarButtonItem = backButton
+//        
+        
+        return acknowList
+    }
+    func updateUIViewController(_ uiViewController: AcknowListViewController, context: Context) {
+        // Update the view controller if needed
+        
+    }
+}
+
 
 #Preview {
     SettingListView(isLogoutAlert: .constant(false), isSignoutAlert: .constant(false))
