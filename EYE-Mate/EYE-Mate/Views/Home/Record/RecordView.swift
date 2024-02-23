@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecordView: View {
     @EnvironmentObject var router: Router
+    @AppStorage("user_UID") private var userUID: String = ""
 
     @ObservedObject private var recordViewModel = RecordViewModel.shared
     @ObservedObject private var viewModel = HomeViewModel.shared
@@ -78,22 +79,22 @@ struct RecordView: View {
         .navigationBarBackButtonHidden()
         .task {
             do {
-                try await recordViewModel.fetchVisionRecord()
+                try await recordViewModel.fetchVisionRecord(uid: userUID)
             } catch {
                 print("Error fetching vision records: \(error)")
             }
             do {
-                try await recordViewModel.fetchColorVisionRecord()
+                try await recordViewModel.fetchColorVisionRecord(uid: userUID)
             } catch {
                 print("Error fetching colorVision records: \(error)")
             }
             do {
-                try await recordViewModel.fetchAstigmatismRecord()
+                try await recordViewModel.fetchAstigmatismRecord(uid: userUID)
             } catch {
                 print("Error fetching astigmatism records: \(error)")
             }
             do {
-                try await recordViewModel.fetchEyesightRecord()
+                try await recordViewModel.fetchEyesightRecord(uid: userUID)
             } catch {
                 print("Error fetching eyesight records: \(error)")
             }

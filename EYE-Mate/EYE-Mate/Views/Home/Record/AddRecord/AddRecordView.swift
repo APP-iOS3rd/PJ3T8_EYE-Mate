@@ -10,8 +10,8 @@ import SwiftUI
 struct AddRecordView: View {
     @EnvironmentObject var router: Router
     @ObservedObject private var recordViewModel = RecordViewModel.shared
-    // FIXME: 테스트를 위해 임시 uuid 넣어두었음 추후 ""로 초기화하고 예외처리 로직 구현
-    @AppStorage("user_UID") private var userUID: String = "JVGqkutgyQPwq0Cebwtpun5pPeq1"
+
+    @AppStorage("user_UID") private var userUID: String = ""
 
     @State private var selectedDate: Date = Date()
 
@@ -86,7 +86,7 @@ struct AddRecordView: View {
 
     var body: some View {
         VStack {
-            AddRecordHeader(onPressResetButton: {resetRecord()})
+            AddRecordHeader(onPressResetButton: { resetRecord() })
             GeometryReader { geometry in
                 ScrollView {
                     VStack(spacing: 20){
@@ -213,6 +213,7 @@ struct AddRecordView: View {
                     .frame(minHeight: geometry.size.height - 92)
                     CustomButton(title: "입력 완료", background: isCompleteButtonDisabled ? Color.customGreen.opacity(0.5) : Color.customGreen, fontStyle: .pretendardSemiBold_22, action: {
                         if isVisionRecordVisible {
+                            print("들")
                             recordViewModel.createVisionRecord(uid: userUID, visionRecord: VisionRecord(left: String(leftVision), right: String(rightVision), publishedDate: selectedDate))
                         }
                         if isColorVisionRecordVisible {

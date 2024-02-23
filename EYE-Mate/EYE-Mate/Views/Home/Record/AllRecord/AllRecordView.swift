@@ -11,7 +11,12 @@ struct AllRecordView: View {
     let recordType: TestType
     @ObservedObject private var recordViewModel = RecordViewModel.shared
 
+    @AppStorage("user_UID") private var userUID: String = ""
+
     @State private var isDeleteMode = false
+    @State var isDeleteAlert: Bool = false
+    @State var isDeleteOneItemAlert: Bool = false
+    @State var deleteRecord: (any Identifiable)? = nil
 
     @State private var selectedVisionItems: [String] = []
     @State private var selectedColorVisionItems: [String] = []
@@ -19,40 +24,76 @@ struct AllRecordView: View {
     @State private var selectedEyesightVisionItems: [String] = []
 
     var body: some View {
-
-        // FIXME: 전역으로 상태 관리하는 방법이 있을 것 같음
-        VStack {
-            AllRecordHeader(isDeleteMode: $isDeleteMode, selectedVisionItems: $selectedVisionItems, selectedColorVisionItems: $selectedColorVisionItems, selectedAstigmatismItems: $selectedAstigmatismItems, selectedEyesightVisionItems: $selectedEyesightVisionItems, recordType: recordType )
-            RecordList()
-            Spacer()
-        }
-        .navigationBarBackButtonHidden()
-        .task {
-            switch recordType {
-            case .vision:
-                do {
-                    try await recordViewModel.fetchVisionRecord()
-                } catch {
-                    print("Error fetching vision records: \(error)")
+        ZStack {
+            VStack {
+                AllRecordHeader(isDeleteMode: $isDeleteMode, isDeleteAlert: $isDeleteAlert, selectedVisionItems: $selectedVisionItems, selectedColorVisionItems: $selectedColorVisionItems, selectedAstigmatismItems: $selectedAstigmatismItems, selectedEyesightVisionItems: $selectedEyesightVisionItems, recordType: recordType )
+                RecordList()
+                Spacer()
+            }
+            .navigationBarBackButtonHidden()
+            .task {
+                switch recordType {
+                case .vision:
+                    do {
+                        try await recordViewModel.fetchVisionRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching vision records: \(error)")
+                    }
+                case .colorVision:
+                    do {
+                        try await recordViewModel.fetchColorVisionRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching colorVision records: \(error)")
+                    }
+                case .astigmatism:
+                    do {
+                        try await recordViewModel.fetchAstigmatismRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching astigmatism records: \(error)")
+                    }
+                case .eyesight:
+                    do {
+                        try await recordViewModel.fetchEyesightRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching eyesight records: \(error)")
+                    }
                 }
-            case .colorVision:
-                do {
-                    try await recordViewModel.fetchColorVisionRecord()
-                } catch {
-                    print("Error fetching colorVision records: \(error)")
+            }
+            if isDeleteAlert {
+                ZStack{
+                    // 배경화면
+                    Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
+                    CustomAlertView(
+                        title: "정말 삭제하시겠습니까?",
+                        message: "삭제한 기록은 되돌릴 수 없습니다.?",
+                        leftButtonTitle: "취소",
+                        leftButtonAction: { isDeleteAlert = false },
+                        rightButtonTitle: "삭제",
+                        rightButtonAction: {
+                            deleteSelectedItems()
+                            isDeleteAlert = false
+                        })
                 }
-            case .astigmatism:
-                do {
-                    try await recordViewModel.fetchAstigmatismRecord()
-                } catch {
-                    print("Error fetching astigmatism records: \(error)")
+                .animation(.easeInOut(duration: 0.1), value: isDeleteAlert)
+            }
+            if isDeleteOneItemAlert {
+                ZStack{
+                    // 배경화면
+                    Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
+                    CustomAlertView(
+                        title: "정말 삭제하시겠습니까?",
+                        message: "삭제한 기록은 되돌릴 수 없습니다.?",
+                        leftButtonTitle: "취소",
+                        leftButtonAction: { isDeleteOneItemAlert = false },
+                        rightButtonTitle: "삭제",
+                        rightButtonAction: {
+                            withAnimation {
+                                deleteItem(item: deleteRecord!)
+                            }
+                            isDeleteOneItemAlert = false
+                        })
                 }
-            case .eyesight:
-                do {
-                    try await recordViewModel.fetchEyesightRecord()
-                } catch {
-                    print("Error fetching eyesight records: \(error)")
-                }
+                .animation(.easeInOut(duration: 0.1), value: isDeleteOneItemAlert)
             }
         }
     }
@@ -66,29 +107,67 @@ struct AllRecordView: View {
         return formatter
     }()
 
-    private func deleteItem(at offsets: IndexSet) {
-        switch recordType {
-        case .vision:
-            for index in offsets {
-                let record = recordViewModel.visionRecords[index]
-                recordViewModel.deleteVisionRecord(record: record)
+    private func deleteItem<T: Identifiable>(item: T) {
+        if let visionRecord = item as? VisionRecord {
+            if let record = recordViewModel.visionRecords.first(where: { $0.id == visionRecord.id }) {
+                recordViewModel.deleteVisionRecord(uid: userUID, record: record)
             }
-        case .colorVision: 
-            for index in offsets {
-                let record = recordViewModel.colorVisionRecords[index]
-                recordViewModel.deleteColorVisionRecord(record: record)
+        } else if let colorVisionRecord = item as? ColorVisionRecord {
+            if let record = recordViewModel.colorVisionRecords.first(where: { $0.id == colorVisionRecord.id }) {
+                recordViewModel.deleteColorVisionRecord(uid: userUID, record: record)
             }
-        case .astigmatism: 
-            for index in offsets {
-                let record = recordViewModel.astigmatismRecords[index]
-                recordViewModel.deleteAstigmatismVisionRecord(record: record)
+        } else if let astigmatismRecord = item as? AstigmatismRecord {
+            if let record = recordViewModel.astigmatismRecords.first(where: { $0.id == astigmatismRecord.id }) {
+                recordViewModel.deleteAstigmatismVisionRecord(uid: userUID, record: record)
             }
-        case .eyesight:
-            for index in offsets {
-                let record = recordViewModel.eyesightRecords[index]
-                recordViewModel.deleteEyesightVisionRecord(record: record)
+        } else if let eyesightRecord = item as? EyesightRecord {
+            if let record = recordViewModel.eyesightRecords.first(where: { $0.id == eyesightRecord.id }) {
+                recordViewModel.deleteEyesightVisionRecord(uid: userUID, record: record)
             }
         }
+        isDeleteOneItemAlert = true
+    }
+
+    private func deleteSelectedItems() {
+        switch recordType {
+        case .vision:
+            selectedVisionItems.forEach { id in
+                if let record = recordViewModel.visionRecords.first(where: { $0.id == id }) {
+                    recordViewModel.deleteVisionRecord(uid: userUID, record: record)
+                }
+            }
+        case .colorVision:
+            selectedColorVisionItems.forEach { id in
+                if let record = recordViewModel.colorVisionRecords.first(where: { $0.id == id }) {
+                    recordViewModel.deleteColorVisionRecord(uid: userUID, record: record)
+                }
+            }
+        case .astigmatism:
+            selectedAstigmatismItems.forEach { id in
+                if let record = recordViewModel.astigmatismRecords.first(where: { $0.id == id }) {
+                    recordViewModel.deleteAstigmatismVisionRecord(uid: userUID, record: record)
+                }
+            }
+        case .eyesight:
+            selectedEyesightVisionItems.forEach { id in
+                if let record = recordViewModel.eyesightRecords.first(where: { $0.id == id }) {
+                    recordViewModel.deleteEyesightVisionRecord(uid: userUID, record: record)
+                }
+            }
+        }
+
+        switch recordType {
+        case .vision:
+            selectedVisionItems.removeAll()
+        case .colorVision:
+            selectedColorVisionItems.removeAll()
+        case .astigmatism:
+            selectedAstigmatismItems.removeAll()
+        case .eyesight:
+            selectedEyesightVisionItems.removeAll()
+        }
+
+        isDeleteMode = false
     }
 
     @ViewBuilder
@@ -133,6 +212,15 @@ struct AllRecordView: View {
                             }
                             Spacer()
                         }
+                        .swipeActions {
+                            if !isDeleteMode {
+                                Button("Delete") {
+                                    deleteRecord = data
+                                    isDeleteOneItemAlert = true
+                                }
+                                .tint(.red)
+                            }
+                        }
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
@@ -141,13 +229,11 @@ struct AllRecordView: View {
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
                     }
                 }
-                .onDelete(perform: isDeleteMode ? nil : deleteItem)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
-
             }
             .listStyle(.plain)
         } else if recordType == .colorVision {
@@ -179,6 +265,15 @@ struct AllRecordView: View {
                             ColoredText(receivedText: data.status, font: .pretendardBold_20)
                             Spacer()
                         }
+                        .swipeActions {
+                            if !isDeleteMode {
+                                Button("Delete") {
+                                    deleteRecord = data
+                                    isDeleteOneItemAlert = true
+                                }
+                                .tint(.red)
+                            }
+                        }
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
@@ -187,7 +282,6 @@ struct AllRecordView: View {
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
                     }
                 }
-                .onDelete(perform: isDeleteMode ? nil : deleteItem)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
@@ -234,6 +328,15 @@ struct AllRecordView: View {
                             }
                             Spacer()
                         }
+                        .swipeActions {
+                            if !isDeleteMode {
+                                Button("Delete") {
+                                    deleteRecord = data
+                                    isDeleteOneItemAlert = true
+                                }
+                                .tint(.red)
+                            }
+                        }
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
@@ -242,7 +345,6 @@ struct AllRecordView: View {
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
                     }
                 }
-                .onDelete(perform: isDeleteMode ? nil : deleteItem)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
@@ -289,6 +391,15 @@ struct AllRecordView: View {
                             }
                             Spacer()
                         }
+                        .swipeActions {
+                            if !isDeleteMode {
+                                Button("Delete") {
+                                    deleteRecord = data
+                                    isDeleteOneItemAlert = true
+                                }
+                                .tint(.red)
+                            }
+                        }
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
@@ -297,7 +408,6 @@ struct AllRecordView: View {
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
                     }
                 }
-                .onDelete(perform: isDeleteMode ? nil : deleteItem)
                 .listRowInsets(.init())
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)

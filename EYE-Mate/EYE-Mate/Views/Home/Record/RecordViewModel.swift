@@ -88,8 +88,8 @@ final class RecordViewModel: ObservableObject {
     let db = Firestore.firestore()
 
     @MainActor
-    func fetchVisionRecord() async throws {
-        let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Visions").getDocuments()
+    func fetchVisionRecord(uid: String) async throws {
+        let snapshot = try await db.collection("Records").document(uid).collection("Visions").getDocuments()
         var visions: [VisionRecord] = []
 
         for document in snapshot.documents {
@@ -106,8 +106,8 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
-    func deleteVisionRecord(record: VisionRecord) {
-        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Visions").document(record.id!).delete() { error in
+    func deleteVisionRecord(uid: String, record: VisionRecord) {
+        db.collection("Records").document(uid).collection("Visions").document(record.id!).delete() { error in
             if let error = error {
                 print("Error removing document: \(error.localizedDescription)")
             } else {
@@ -125,12 +125,18 @@ final class RecordViewModel: ObservableObject {
     }
 
     func createVisionRecord(uid: String, visionRecord: VisionRecord) {
-        let _ = db.collection("Records").document(uid).collection("Visions").document().setData(visionRecord.dictionary)
+        let _ = db.collection("Records").document(uid).collection("Visions").document().setData(visionRecord.dictionary) { error in
+            if let error = error {
+                print("Error create document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully created!")
+            }
+        }
     }
 
     @MainActor
-    func fetchColorVisionRecord() async throws {
-        let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Colors").getDocuments()
+    func fetchColorVisionRecord(uid: String) async throws {
+        let snapshot = try await db.collection("Records").document(uid).collection("Colors").getDocuments()
         var colorVisions: [ColorVisionRecord] = []
 
         for document in snapshot.documents {
@@ -147,8 +153,8 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
-    func deleteColorVisionRecord(record: ColorVisionRecord) {
-        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Colors").document(record.id!).delete() { error in
+    func deleteColorVisionRecord(uid: String, record: ColorVisionRecord) {
+        db.collection("Records").document(uid).collection("Colors").document(record.id!).delete() { error in
             if let error = error {
                 print("Error removing document: \(error.localizedDescription)")
             } else {
@@ -170,8 +176,8 @@ final class RecordViewModel: ObservableObject {
     }
 
     @MainActor
-    func fetchAstigmatismRecord() async throws {
-        let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Astigmatisms").getDocuments()
+    func fetchAstigmatismRecord(uid: String) async throws {
+        let snapshot = try await db.collection("Records").document(uid).collection("Astigmatisms").getDocuments()
         var astigmatisms: [AstigmatismRecord] = []
 
         for document in snapshot.documents {
@@ -188,8 +194,8 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
-    func deleteAstigmatismVisionRecord(record: AstigmatismRecord) {
-        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Astigmatisms").document(record.id!).delete() { error in
+    func deleteAstigmatismVisionRecord(uid: String, record: AstigmatismRecord) {
+        db.collection("Records").document(uid).collection("Astigmatisms").document(record.id!).delete() { error in
             if let error = error {
                 print("Error removing document: \(error.localizedDescription)")
             } else {
@@ -211,8 +217,8 @@ final class RecordViewModel: ObservableObject {
     }
 
     @MainActor
-    func fetchEyesightRecord() async throws {
-        let snapshot = try await db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Sights").getDocuments()
+    func fetchEyesightRecord(uid: String) async throws {
+        let snapshot = try await db.collection("Records").document(uid).collection("Sights").getDocuments()
         var eysights: [EyesightRecord] = []
 
         for document in snapshot.documents {
@@ -229,8 +235,8 @@ final class RecordViewModel: ObservableObject {
         }
     }
 
-    func deleteEyesightVisionRecord(record: EyesightRecord) {
-        db.collection("Records").document("JVGqkutgyQPwq0Cebwtpun5pPeq1").collection("Sights").document(record.id!).delete() { error in
+    func deleteEyesightVisionRecord(uid: String, record: EyesightRecord) {
+        db.collection("Records").document(uid).collection("Sights").document(record.id!).delete() { error in
             if let error = error {
                 print("Error removing document: \(error.localizedDescription)")
             } else {
