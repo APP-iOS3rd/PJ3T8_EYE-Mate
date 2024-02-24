@@ -597,7 +597,6 @@
 				1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */,
 				52EE56CD2B5E2B6100C6D423 /* FreeBoard */,
 				52EE56CC2B5E2B5300C6D423 /* FAQ */,
-				1D2A6A462B81CEF300720885 /* CommunitySearchBar.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -619,6 +618,7 @@
 				1DF7E7342B68C4A300602BBB /* FreeBoardViewModel.swift */,
 				1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */,
 				1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */,
+				1D2A6A462B81CEF300720885 /* CommunitySearchBar.swift */,
 				1DF8A7692B70CF8D00C57EBD /* Post */,
 				1D73AD402B6361F000DF431D /* CreateNewPost */,
 			);

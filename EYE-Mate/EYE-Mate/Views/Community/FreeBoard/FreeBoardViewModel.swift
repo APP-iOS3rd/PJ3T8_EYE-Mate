@@ -224,7 +224,7 @@ class FreeBoardViewModel: ObservableObject {
             }
             
         } catch {
-            print("FreeBoardViewModel - fetchMyPosts(): \(error.localizedDescription)")
+            print("FreeBoardViewModel - fetchScrapPosts(): \(error.localizedDescription)")
         }
     }
 }
