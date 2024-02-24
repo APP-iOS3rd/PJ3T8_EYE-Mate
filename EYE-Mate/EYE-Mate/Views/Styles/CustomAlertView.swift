@@ -40,7 +40,7 @@ struct CustomAlertView: View {
                         .foregroundColor(.black)
                         .frame(height: UIScreen.main.bounds.height / 15)
                         .frame(maxWidth: .infinity)
-                        .background(Color.btnGray)
+                        .background(Color.buttonGray)
                 }
                 
                 Button {

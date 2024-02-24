@@ -33,7 +33,7 @@ struct PostView: View {
     var onEditPost: (String, String, String, [URL]?, [String]?) -> ()
     
     
-    @FocusState var commentTextFieldisFocused: Bool
+    @FocusState var commentTextFieldIsFocused: Bool
     
     @Environment(\.dismiss) private var dismiss
     
@@ -44,7 +44,7 @@ struct PostView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                HorizontalDivider(color: .btnGray, height: 2)
+                HorizontalDivider(color: .buttonGray, height: 2)
                 
                 ScrollView{
                     // MARK: 게시물 내용
@@ -63,7 +63,7 @@ struct PostView: View {
                     }
                     .padding(.top)
                     
-                    HorizontalDivider(color: .btnGray, height: 2)
+                    HorizontalDivider(color: .buttonGray, height: 2)
                     
                     // MARK: 댓글
                     if !postVM.post.comments.isEmpty {
@@ -81,7 +81,7 @@ struct PostView: View {
                             /// 대댓글 작성 Signal
                             withAnimation {
                                 postVM.startWritingReplyComment(commentID: commentID, commentIndex: commentIndex)
-                                commentTextFieldisFocused = true
+                                commentTextFieldIsFocused = true
                             }
                         } deleteComment: { postID, commentIndex in
                             /// 댓글 삭제
@@ -99,7 +99,7 @@ struct PostView: View {
                 .scrollIndicators(.never)
                 .onTapGesture {
                     /// 댓글 입력란 바깥 터치시 Keyboard Close
-                    commentTextFieldisFocused = false
+                    commentTextFieldIsFocused = false
                     postVM.resetCommentInputView()
                 }
                 
@@ -179,8 +179,8 @@ struct PostView: View {
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .font(.pretendardRegular_14)
-                .focused($commentTextFieldisFocused)
-                .onChange(of: commentTextFieldisFocused) { newValue in
+                .focused($commentTextFieldIsFocused)
+                .onChange(of: commentTextFieldIsFocused) { newValue in
                     withAnimation {
                         if newValue {
                             postVM.commentViewCornerRadius = 0
@@ -199,19 +199,19 @@ struct PostView: View {
                         if postVM.replyWritingCommentID == nil {
                             /// 댓글 작성 Action
                             postVM.writeComment() {
-                                commentTextFieldisFocused = false
+                                commentTextFieldIsFocused = false
                                 writeComment(postVM.post)
                             }
                         } else {
                             /// 대댓글 작성 Action
                             postVM.writeReplyComment() { postID, commentIndex, replyComment in
-                                commentTextFieldisFocused = false
+                                commentTextFieldIsFocused = false
                                 writeReplyComment(postID, commentIndex, replyComment)
                             }
                         }
                     } else {
                         showAlert = true
-                        commentTextFieldisFocused = false
+                        commentTextFieldIsFocused = false
                         postVM.resetCommentInputView()
                     }
                 } label: {
@@ -233,7 +233,7 @@ struct PostView: View {
                 .foregroundStyle(Color(hex: "#EEEEEE"))
         )
         .onTapGesture {
-            commentTextFieldisFocused = true
+            commentTextFieldIsFocused = true
         }
     }
 }

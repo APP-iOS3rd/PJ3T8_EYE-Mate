@@ -18,6 +18,8 @@ struct PageControl: UIViewRepresentable {
         control.currentPage = currentPage
         control.backgroundStyle = .minimal
         control.allowsContinuousInteraction = false
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
         
         return control
     }
@@ -25,5 +27,9 @@ struct PageControl: UIViewRepresentable {
     func updateUIView(_ uiView: UIPageControl, context: Context) {
         uiView.numberOfPages = totalPages
         uiView.currentPage = currentPage
+        
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
+        
     }
 }

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct EyeSenseOnboardingView: View {
+    @EnvironmentObject var router: Router
     @ObservedObject var onboardingViewModel: EyeSenseOnBoardingViewModel
     
     init(onboardingViewModel: EyeSenseOnBoardingViewModel) {
         self.onboardingViewModel = onboardingViewModel
+        
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
     }
@@ -27,7 +29,9 @@ struct EyeSenseOnboardingView: View {
         VStack {
             TabView(selection: $currentPage){
                 ForEach(fakedPages) { Page in
-                    NavigationLink(destination: EyeSenseView(url: Page.url)){
+                    Button {
+                        router.navigate(to: .eyeSense(url: Page.url))
+                    } label: {
                         VStack(alignment: .leading, spacing: 10){
                             EyeSenseTitleView()
                                 .padding(.top, 15)
@@ -83,28 +87,27 @@ struct EyeSenseOnboardingView: View {
                     .offset(y: -15)
             }
         }
-        .onAppear {
-            Task{
-                listOfPages.removeAll()
-                fakedPages.removeAll()
-                listOfPages = await onboardingViewModel.fetchData()
-                fakedPages.append(contentsOf: listOfPages)
+        .task{
+            listOfPages.removeAll()
+            fakedPages.removeAll()
+            listOfPages = await onboardingViewModel.fetchData()
+            fakedPages.append(contentsOf: listOfPages)
+            
+            if var firstPage = listOfPages.first, var lastPage = listOfPages.last {
+                currentPage = firstPage.id.uuidString
                 
-                if var firstPage = listOfPages.first, var lastPage = listOfPages.last {
-                    currentPage = firstPage.id.uuidString
-                    
-                    firstPage.id = .init()
-                    lastPage.id = .init()
-                    
-                    fakedPages.append(firstPage)
-                    fakedPages.insert(lastPage, at: 0)
-                }
-                // 페이지 변경 시 애니메이션 적용 - startTimer안에선 적용하면 X(이유 모름)
-                withAnimation{
-                    startTimer()
-                }
+                firstPage.id = .init()
+                lastPage.id = .init()
+                
+                fakedPages.append(firstPage)
+                fakedPages.insert(lastPage, at: 0)
+            }
+            // 페이지 변경 시 애니메이션 적용
+            withAnimation{
+                startTimer()
             }
         }
+        
         .onDisappear {
             // 뷰가 사라질 때 타이머 중지
             stopTimer()

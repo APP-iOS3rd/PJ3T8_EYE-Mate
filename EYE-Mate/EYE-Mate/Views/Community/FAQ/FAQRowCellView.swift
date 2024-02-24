@@ -32,12 +32,13 @@ struct FAQRowCellView: View {
                    
                 Spacer()
 
-                Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                Image(systemName: "chevron.right")
                     .font(.title3)
+                    .rotationEffect(.degrees(isExpanded ? 90 : 0)) 
                     .frame(width: 18)
             }
             .padding(15)
-            .background(isExpanded ? Color.btnGray : .white)
+            .background(isExpanded ? Color.buttonGray : .white)
 
             // FAQ Answer
             if isExpanded{

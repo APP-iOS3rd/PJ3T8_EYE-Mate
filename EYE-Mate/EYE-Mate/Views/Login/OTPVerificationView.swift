@@ -17,13 +17,13 @@ enum SignUpErrorText: String {
 }
 
 struct OTPVerificationView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
+    @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var loginViewModel = LoginViewModel.shared
     @Binding var signUpFlag: Bool
     @FocusState.Binding var keyFocused: Bool
     @State private var otp: String = ""
     @State private var isDisplayotpErrorText: Bool = false
-    @State var isDisplayProfileSettingView: Bool = false
     @State var isDisplaySignUpText: Bool = false
     @State var isDisplayNotiLoginText: Bool = false
     @State private var errorText: String = ""
@@ -37,9 +37,12 @@ struct OTPVerificationView: View {
     
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment:.leading, spacing: 10){
-                Text("인증번호")
+        VStack(alignment:.leading, spacing: 10){
+            Text("인증번호")
+                .font(.pretendardMedium_16)
+            
+            VStack(alignment:.leading, spacing: 10) {
+                TextField("", text: $otp)
                     .font(.pretendardMedium_16)
                 
                 VStack(alignment:.leading, spacing: 10) {
@@ -82,24 +85,21 @@ struct OTPVerificationView: View {
                                     // 이미 등록된 회원인 경우 로그인 화면으로
                                     if try await loginViewModel.checkLoginList() {
                                         isDisplayNotiLoginText = true
-                                        isDisplayProfileSettingView = false
                                         errorText = SignUpErrorText.notiLogin.rawValue
                                     } else {
                                         // 회원가입
                                         isDisplayNotiLoginText = false
-                                        isDisplayProfileSettingView = true
+                                        router.navigate(to: .signUpProfile)
                                     }
                                     
                                     // 로그인 화면인 경우
                                 } else {
-                                    isDisplayProfileSettingView = false
-                                    
                                     let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
                                     
                                     if isRegistered { // 가입한 이력이 있는 경우
                                         loggedIn = true
                                         isDisplaySignUpText = false
-                                        presentationMode.wrappedValue.dismiss()
+                                        router.navigateBack()
                                     } else { // 가입한 이력이 없는 경우
                                         loggedIn = false
                                         isDisplaySignUpText = true
@@ -126,14 +126,67 @@ struct OTPVerificationView: View {
                             .font(.pretendardSemiBold_18)
                     }
                 }
-                .frame(width: 300, height: 50)
-                .padding(.top, 10)
-                .disableWithOpacity(otp.count < 6)
-                .disabled(otp.count < 6)
             }
-        }
-        .navigationDestination(isPresented: $isDisplayProfileSettingView){
-            SignUpProfileView()
+            
+            // MARK: - 회원가입/로그인 버튼
+            Button {
+                Task{
+                    do {
+                        let success = try await loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag)
+                        
+                        if success {
+                            isDisplayotpErrorText = false
+                            
+                            // 회원가입 화면
+                            if signUpFlag {
+                                isDisplaySignUpText = false
+                                // 이미 등록된 회원인 경우 로그인 화면으로
+                                if try await loginViewModel.checkLoginList() {
+                                    isDisplayNotiLoginText = true
+                                    errorText = SignUpErrorText.notiLogin.rawValue
+                                } else {
+                                    // 회원가입
+                                    isDisplayNotiLoginText = false
+                                    router.navigate(to: .signUpProfile)
+                                }
+                            }
+                            // 로그인 화면인 경우
+                            else {
+                                let isRegistered = try await loginViewModel.checkLoginAndSettingInfo()
+                                // 가입한 이력이 있는 경우
+                                if isRegistered {
+                                    loggedIn = true
+                                    isDisplaySignUpText = false
+                                    router.navigateBack()
+                                }
+                                // 가입한 이력이 없는 경우
+                                else {
+                                    loggedIn = false
+                                    isDisplaySignUpText = true
+                                    errorText = SignUpErrorText.signup.rawValue
+                                }
+                            }
+                        } else {
+                            isDisplayotpErrorText = true
+                            errorText = SignUpErrorText.otp.rawValue
+                        }
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
+                
+            } label: {
+                Text(signUpFlag ? "회원가입" : "로그인")
+                    .foregroundStyle(.white)
+                    .font(.pretendardSemiBold_18)
+                    .background(RoundedRectangle(cornerRadius: 10.0)
+                        .foregroundStyle(Color.customGreen)
+                        .frame(width: 300, height: 50))
+            }
+            .frame(width: 300, height: 50)
+            .padding(.top, 10)
+            .disableWithOpacity(otp.count < 6)
+            .disabled(otp.count < 6)
         }
     }
 }

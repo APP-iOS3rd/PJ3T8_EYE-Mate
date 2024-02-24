@@ -8,24 +8,35 @@
 import SwiftUI
 
 struct AllRecordHeader: View {
-    @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var router: Router
+
+    @ObservedObject private var recordViewModel = RecordViewModel.shared
+
     @Binding var isDeleteMode: Bool
+    @Binding var isDeleteAlert: Bool
 
-    @Binding var visionItems: [VisionRecordModel]
-    @Binding var colorVisionItems: [ColorVisionRecordModel]
-    @Binding var astigmatismItems: [AstigmatismRecordModel]
-    @Binding var eyesightItems: [EyesightRecordModel]
-
-    @Binding var selectedVisionItems: [UUID]
-    @Binding var selectedColorVisionItems: [UUID]
-    @Binding var selectedAstigmatismItems: [UUID]
-    @Binding var selectedEyesightVisionItems: [UUID]
+    @Binding var selectedVisionItems: [String]
+    @Binding var selectedColorVisionItems: [String]
+    @Binding var selectedAstigmatismItems: [String]
+    @Binding var selectedEyesightVisionItems: [String]
 
     let recordType: TestType
 
+    var isRecordsEmpty: Bool {
+        switch recordType {
+        case .vision:
+            return recordViewModel.visionRecords.isEmpty
+        case .colorVision:
+            return recordViewModel.colorVisionRecords.isEmpty
+        case .astigmatism:
+            return recordViewModel.astigmatismRecords.isEmpty
+        case .eyesight:
+            return recordViewModel.eyesightRecords.isEmpty
+        }
+    }
+
     private func goBack() {
-        dismiss()
+        router.navigateBack()
     }
 
     var body: some View {
@@ -40,43 +51,23 @@ struct AllRecordHeader: View {
                         .padding(.bottom, 2)
                 }
                 Spacer()
-                Button {
-                    if isDeleteMode {
-                        switch recordType {
-                        case .vision:
-                            visionItems.removeAll { item in
-                                selectedVisionItems.contains(item.id)
-                            }
-                            selectedVisionItems.removeAll()
-                        case .colorVision:
-                            colorVisionItems.removeAll { item in
-                                selectedColorVisionItems.contains(item.id)
-                            }
-                            selectedColorVisionItems.removeAll()
-                        case .astigmatism:
-                            astigmatismItems.removeAll { item in
-                                selectedAstigmatismItems.contains(item.id)
-                            }
-                            selectedAstigmatismItems.removeAll()
-                        case .eyesight:
-                            eyesightItems.removeAll { item in
-                                selectedEyesightVisionItems.contains(item.id)
-                            }
-                            selectedEyesightVisionItems.removeAll()
+                if !isRecordsEmpty {
+                    Button {
+                        if isDeleteMode {
+                            isDeleteAlert = true
+                        } else {
+                            isDeleteMode = true
                         }
-                        isDeleteMode = false
-                    } else {
-                        isDeleteMode = true
-                    }
-                } label: {
-                    if isDeleteMode {
-                        Text("완료")
-                            .foregroundStyle(.blue)
-                    } else {
-                        Image(systemName: "trash")
-                            .foregroundColor(.black)
-                            .font(.system(size: 24))
-                            .padding(.bottom, 2)
+                    } label: {
+                        if isDeleteMode {
+                            Text("완료")
+                                .foregroundStyle(.blue)
+                        } else {
+                            Image(systemName: "trash")
+                                .foregroundColor(.black)
+                                .font(.system(size: 24))
+                                .padding(.bottom, 2)
+                        }
                     }
                 }
             }.padding(.horizontal, 12)
@@ -85,6 +76,20 @@ struct AllRecordHeader: View {
                 Text("\(recordType.rawValue) 기록 모두보기")
                     .font(.pretendardSemiBold_18)
                 Spacer()
+            }
+        }
+        .onChange(of: isDeleteMode) { newValue in
+            if !newValue {
+                switch recordType {
+                case .vision:
+                    selectedVisionItems.removeAll()
+                case .colorVision:
+                    selectedColorVisionItems.removeAll()
+                case .astigmatism:
+                    selectedAstigmatismItems.removeAll()
+                case .eyesight:
+                    selectedEyesightVisionItems.removeAll()
+                }
             }
         }
     }}

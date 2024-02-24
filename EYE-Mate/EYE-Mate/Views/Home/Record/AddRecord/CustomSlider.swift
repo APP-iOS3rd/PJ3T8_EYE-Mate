@@ -10,17 +10,17 @@ import SwiftUI
 struct CustomSlider: UIViewRepresentable {
     final class Coordinator: NSObject {
         // @State 변수 값에 대한 참조를 받음
-        var value: Binding<Double>
+        var value: Binding<Float>
 
-        init(value: Binding<Double>) {
+        init(value: Binding<Float>) {
             self.value = value
         }
 
         @objc func valueChanged(_ sender: UISlider) {
-            let step: Float = 0.1
-            let roundedValue = round(sender.value / step) * step
-            sender.value = roundedValue
-            self.value.wrappedValue = Double(roundedValue)
+            let roundedValue = Double(round(sender.value * 10) / 10)
+            let roundedValueString = String(format: "%.1f", roundedValue)
+            sender.value = Float(roundedValueString)!
+            self.value.wrappedValue = Float(roundedValueString)!
         }
     }
 
@@ -28,7 +28,7 @@ struct CustomSlider: UIViewRepresentable {
     var minTrackColor: UIColor?
     var maxTrackColor: UIColor?
 
-    @Binding var value: Double
+    @Binding var value: Float
 
     private func thumbImage() -> UIImage {
         let thumbView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
@@ -53,7 +53,7 @@ struct CustomSlider: UIViewRepresentable {
         slider.maximumTrackTintColor = maxTrackColor
         slider.maximumValue = 2.0
         slider.minimumValue = 0.0
-        slider.value = Float(value)
+        slider.value = Float(String(format: "%.1f", value))!
         slider.addTarget(
             context.coordinator,
             action: #selector(Coordinator.valueChanged(_:)),

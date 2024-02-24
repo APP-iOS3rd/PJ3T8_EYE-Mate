@@ -8,42 +8,33 @@
 import SwiftUI
 
 struct ColorView: View {
+    @EnvironmentObject var router: Router
+
     @StateObject var viewModel = SightViewModel()
     @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
-        NavigationStack {
+        VStack {
             CustomNavigationTitle(title: "색각 검사",
                                   isDisplayLeftButton: true)
-            .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-                ProfileView()
-            }
             
             ExplanationTextView(str: "간단한 테스트를 통해\n색채 식별도를 확인해보세요!")
-            
             Spacer()
             
             TestOnboardingView(image:[Image("Component1"), Image("Component4")])
                 .padding(.horizontal, 10)
-            
             Spacer()
             
             CustomButton(title: "테스트 시작하기",
                          background: .customGreen,
                          fontStyle: .pretendardBold_16,
                          action: {
-                viewModel.isPresentedTestView.toggle()
+                router.navigate(to: .colorTest)
             })
-            .navigationDestination(isPresented: $viewModel.isPresentedTestView) {
-                ColorTestView()
-            }
             .frame(maxHeight: 75)
-            
             Spacer()
             
             WarningText()
-            
             Spacer()
         }
         .navigationBarBackButtonHidden()

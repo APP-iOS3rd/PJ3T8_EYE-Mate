@@ -8,43 +8,72 @@
 import Charts
 import SwiftUI
 
-struct VisionChartData {
-    let date: String
+struct VisionRecordData {
+    let publishedDate: String
     let point: Double
 }
 
+
 struct VisionChart: View {
-    let dataArray = [
-        VisionData(date: "23.12.30(토)", left: 0.3, right: 0.9),
-        VisionData(date: "23.11.21(월)", left: 0.7, right: 1.0),
-        VisionData(date: "23.08.15(수)", left: 0.9, right: 1.2),
-        VisionData(date: "23.02.04(수)", left: 1.2, right: 1.1),
-        VisionData(date: "22.12.20(금)", left: 1.4, right: 1.2),
-    ]
+    let visionRecords: [VisionRecord]
 
-    private func removeDay(dateString: String) -> String {
-        if let regex = try? NSRegularExpression(pattern: "\\(.*?\\)"), let match = regex.firstMatch(in: dateString, range: NSRange(dateString.startIndex..., in: dateString)) {
-            return (dateString as NSString).replacingCharacters(in: match.range, with: "")
-        } else {
-            return dateString
-        }
-    }
+    static let dateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yy.MM.dd HH:mm:ss"
 
-    var body: some View {
-        let visionData = [
+        return formatter
+    }()
+
+    private func calculateVisionData() -> [(side: String, data: [VisionRecordData])] {
+        let visionData: [(side: String, data: [VisionRecordData])] = [
             (
-                side: "left",
-                data: dataArray.map { VisionChartData(date: removeDay(dateString: $0.date), point: $0.left) }
+                side: "좌측 시력",
+                data: visionRecords.map { VisionRecordData(publishedDate: VisionChart.dateFormat.string(from: $0.publishedDate), point: Double($0.left)!) }
             ),
             (
-                side: "right",
-                data: dataArray.map { VisionChartData(date: removeDay(dateString: $0.date), point: $0.right) }
+                side: "우측 시력",
+                data: visionRecords.map { VisionRecordData(publishedDate: VisionChart.dateFormat.string(from: $0.publishedDate), point: Double($0.right)!) }
             )
         ]
 
-        Chart(visionData, id: \.side) { data in
-            ForEach(data.data, id: \.date) {
-                BarMark(x: .value("date", $0.date), y: .value("point", $0.point))
+        return visionData
+    }
+
+    var body: some View {
+        let visionData = calculateVisionData()
+
+        return createChart(with: visionData)
+            .frame(height: 120)
+            .padding(.vertical, 20)
+    }
+
+    private func createChart(with data: [(side: String, data: [VisionRecordData])]) -> some View {
+        return ChartView(data: data)
+    }
+}
+
+struct ChartView: View {
+    let data: [(side: String, data: [VisionRecordData])]
+
+    private func removeTime(dateString: String) -> String {
+        let pattern = "\\d{2}\\.\\d{2}\\.\\d{2}"
+        let regex = try? NSRegularExpression(pattern: pattern, options: [])
+        guard let match = regex?.firstMatch(in: dateString, options: [], range: NSRange(location: 0, length: dateString.utf16.count)) else {
+            return dateString
+        }
+        if let range = Range(match.range, in: dateString) {
+            return String(dateString[range])
+        }
+        return dateString
+    }
+
+    var body: some View {
+        // Chart 뷰 생성 및 설정
+        Chart(data, id: \.side) { data in
+            ForEach(data.data, id: \.publishedDate) { recordData in
+                BarMark(x: .value("date", recordData.publishedDate), y: .value("point", recordData.point))
             }
             .foregroundStyle(by: .value("Side", data.side))
             .position(by: .value("Side", data.side))
@@ -69,20 +98,19 @@ struct VisionChart: View {
             }
         }
         .chartXAxis {
-            AxisMarks(values: .automatic) {
-                AxisValueLabel().font(.pretendardRegular_12).foregroundStyle(.black)
+            AxisMarks(values: .automatic) { value in
+                AxisValueLabel() {
+                    if let date = value.as(String.self) {
+                        Text(removeTime(dateString: date))
+                            .font(.pretendardRegular_12)
+                            .foregroundStyle(.black)
+                    }
+                }
             }
         }
         .chartForegroundStyleScale([
-            "left" : Color(hex: "#586BCF"),
-            "right" : Color(hex: "#FFB647"),
+            "좌측 시력" : Color(hex: "#3EA99F"),
+            "우측 시력" : Color.customGreen
         ])
-        .chartLegend(.hidden)
-        .frame(height: 120)
-        .padding(.vertical, 20)
     }
-}
-
-#Preview {
-    VisionChart()
 }

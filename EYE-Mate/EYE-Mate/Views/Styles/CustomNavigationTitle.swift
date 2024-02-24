@@ -11,17 +11,17 @@ import Kingfisher
 struct CustomNavigationTitle: View {
     var title: String = ""
     var isDisplayLeftButton: Bool = false
-    
-    @Environment(\.dismiss) private var dismiss
+
+    @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var tabManager = TabManager.shared
-    
+
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
-    
+
     var body: some View {
         HStack(alignment: .bottom) {
             if isDisplayLeftButton {
-                Button(action: { dismiss() },
+                Button(action: { router.navigateBack() },
                        label: {
                     Image(systemName: "chevron.backward")
                         .font(.system(size: 35))
@@ -40,12 +40,12 @@ struct CustomNavigationTitle: View {
                             Text(userName)
                                 .font(.pretendardSemiBold_32)
                                 .foregroundColor(.customGreen)
-                            
+
                             Text("님!")
                                 .font(.pretendardBold_32)
                         }
                     case .movement:
-                        Text("눈운동")
+                        Text("눈 운동")
                             .font(.pretendardBold_32)
                     case .community:
                         Text("게시판")
@@ -58,20 +58,20 @@ struct CustomNavigationTitle: View {
                     Text(title)
                         .font(.pretendardBold_32)
                 }
-                
+
             }
-                
+
             Spacer()
-            
-            
+
+
             Button(action: {
-                profileViewModel.isPresentedProfileView.toggle()
+                router.navigate(to: .profile)
             }, label: {
                 profileViewModel.profileImage
                     .ProfileImageModifier()
                     .frame(width: 50, height: 50)
             })
-            
+
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 10)

@@ -14,32 +14,31 @@ extension View {
 }
 
 struct MovementView: View {
-    @State private var toast: Toast? = nil
-    @State private var showToast = false
-    @State private var movementList: [String] = ["Line", "Circle", "Eight"]
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
+    @ObservedObject private var movementViewModel = MovementViewModel.shared
+
+    @State private var toast: Toast? = nil
+
+    let movementList: [String] = ["Line", "Circle", "Eight"]
 
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 0) {
-                HorizontalDivider(color: Color.customGreen, height: 4)
+        VStack(spacing: 0) {
+            HorizontalDivider(color: Color.customGreen, height: 4)
+            ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
+                    Spacer().frame(height: 12)
                     VStack(alignment: .leading) {
-                        Text("어디로 가야 하오 님!")
+                        Text("\(userName) 님!")
                             .font(.pretendardSemiBold_22)
                         Text("오늘도 눈 건강 챙기셨나요? 👀")
                             .font(.pretendardRegular_22)
                     }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    VStack(alignment: .leading) {
-                        Text("#오늘의 눈 운동")
-                            .font(.pretendardRegular_16)
-                        Text("0회")
-                            .font(.pretendardSemiBold_20)
-                    }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    ForEach($movementList, id: \.self) { movement in
-                        StartMovementRow(showToast: $showToast, movementType: movement)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer().frame(height: 24)
+                    ForEach(movementList, id: \.self) { movement in
+                        StartMovementRow(movementType: movement)
                     }
                     .padding(.horizontal, -10)
                     .padding(.vertical, 0)
@@ -52,26 +51,22 @@ struct MovementView: View {
                             .font(.pretendardMedium_18)
                             .foregroundColor(Color.warningGray)
                     }
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
                 }
                 .padding(.horizontal, 32)
                 .padding(.top, 16)
-                .background(Color.textFieldGray)
-                Spacer()
-                    .frame(height: 70)
-            }.toastView(toast: $toast)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        if showToast {
-                            toast = Toast()
-                            showToast.toggle()
-                        }
-                    }
-                }
+            }
         }
-        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-            ProfileView()
+        .background(Color.textFieldGray)
+        .toastView(toast: $toast)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                if movementViewModel.showToast {
+                    toast = Toast()
+                    movementViewModel.showToast.toggle()
+                }
+            }
         }
     }
 }

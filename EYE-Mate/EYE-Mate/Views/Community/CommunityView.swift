@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CommunityView: View {
-    
     @State private var selectedPicker: CommunityTopTapViewItem = .faq
     @Namespace private var animation
     @State var isSearching = false
@@ -16,7 +15,6 @@ struct CommunityView: View {
     @ObservedObject private var profileViewModel = ProfileViewModel.shared
     
     var body: some View {
-        // MARK: NavigationStack 추후에 지워주기
         VStack(spacing: 0) {
             // 상단 TabView
             communityTopTabView()
@@ -39,9 +37,6 @@ struct CommunityView: View {
             
             Spacer()
                 .frame(height: 85)
-        }
-        .navigationDestination(isPresented: $profileViewModel.isPresentedProfileView) {
-            ProfileView()
         }
     }
     

@@ -9,18 +9,21 @@ import SwiftUI
 import PhotosUI
 
 struct SignUpProfileView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @State var selectedItem: PhotosPickerItem? = nil
     @State var textName: String = ""
     @State var isButtonEnabled: Bool = false
+    @FocusState private var keyFocused: Bool
     
     @ObservedObject var loginViewModel = LoginViewModel.shared
     
     var body: some View {
         VStack(spacing: 20) {
             CustomBackButton()
+                .opacity(!keyFocused ? 1.0 : 0.0 )
+            
             HStack {
                 Text("EYE-Mate")
                     .foregroundColor(Color.customGreen)
@@ -37,17 +40,18 @@ struct SignUpProfileView: View {
                 .padding(.bottom, 20)
             
             // 닉네임 입력마다 실시간 유효성 확인
-            ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled)
+            ProfileNameTextField(textName: $textName, isButtonEnabled: $isButtonEnabled, keyFocused: $keyFocused)
                 .padding(20)
             
             CustomButton(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
+                keyFocused = false
                 self.userName = textName
                 profileViewModel.imageSelection = selectedItem
                 profileViewModel.uploadUserInfoToFirebase()
                 if loginViewModel.showFullScreenCover {
                     loginViewModel.showFullScreenCover.toggle()
                 } else {
-                    presentationMode.wrappedValue.dismiss()
+                    router.navigateBack()
                 }
             })
             .disabled(!isButtonEnabled)
@@ -55,6 +59,10 @@ struct SignUpProfileView: View {
             .frame(height: 88)
             
             Spacer()
+        }
+        .background(Color.white)
+        .onTapGesture {
+            keyFocused = false
         }
         .navigationBarBackButtonHidden(true)
     }

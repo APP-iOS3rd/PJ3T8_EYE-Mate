@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SettingListView: View {
-    @Binding var isLogoutAlert:Bool
-    @Binding var isSignoutAlert:Bool
+    @Binding var isLogoutAlert: Bool
+    @Binding var isSignoutAlert: Bool
     let listWidthSize = UIScreen.main.bounds.width - 70
     
     var body: some View {
@@ -17,7 +17,6 @@ struct SettingListView: View {
             // MARK: - 프로필
             VStack(alignment: .center, spacing: 0) {
                 SettingTitleView(title: "프로필")
-                
                 ProfileListView()
             }
         }

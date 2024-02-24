@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VisionSlider: View {
-    @Binding var value: Double
+    @Binding var value: Float
 
     let label: String
 

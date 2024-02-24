@@ -45,10 +45,6 @@
 		331F8AB82B6CD12F0008D943 /* TestTypeButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F8AB72B6CD12F0008D943 /* TestTypeButtonGroup.swift */; };
 		3329BC022B6102370099EDC4 /* eight-movement.json in Resources */ = {isa = PBXBuildFile; fileRef = 3329BC012B6102370099EDC4 /* eight-movement.json */; };
 		3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1652B6A10210035E0A5 /* ColoredText.swift */; };
-		3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1672B6A1C720035E0A5 /* VisionDataView.swift */; };
-		3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */; };
-		3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */; };
-		3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */; };
 		3391A1702B6A276C0035E0A5 /* VisionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391A16F2B6A276C0035E0A5 /* VisionChart.swift */; };
 		3398D4842B73634200535E0C /* VisionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4832B73634200535E0C /* VisionSlider.swift */; };
 		3398D4862B73698800535E0C /* CustomMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D4852B73698800535E0C /* CustomMenuButton.swift */; };
@@ -65,7 +61,17 @@
 		33DA6A952B7B39C7006C4827 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */; };
 		33DA6A982B7C97BD006C4827 /* AllRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A972B7C97BD006C4827 /* AllRecordView.swift */; };
 		33DA6A9A2B7C97DF006C4827 /* AllRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */; };
-		33DA6A9C2B7D1BB0006C4827 /* AllRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */; };
+		33DA6A9F2B84764A006C4827 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */; };
+		33DA6AA12B85F233006C4827 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AA02B85F233006C4827 /* Router.swift */; };
+		33DA6AA42B872461006C4827 /* MovementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AA32B872461006C4827 /* MovementViewModel.swift */; };
+		33DA6AAB2B87460B006C4827 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA52B87460B006C4827 /* NotoSansKR-Bold.otf */; };
+		33DA6AAC2B87460B006C4827 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA62B87460B006C4827 /* NotoSansKR-Thin.otf */; };
+		33DA6AAD2B87460B006C4827 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA72B87460B006C4827 /* NotoSansKR-Black.otf */; };
+		33DA6AAE2B87460B006C4827 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */; };
+		33DA6AAF2B87460B006C4827 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */; };
+		33DA6AB02B87460B006C4827 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */; };
+		33DA6AB32B8759E3006C4827 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AB22B8759E3006C4827 /* CustomerInfoView.swift */; };
+		33DA6AB52B8759F4006C4827 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AB42B8759F4006C4827 /* LicenseView.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -90,6 +96,11 @@
 		52A51ABE2B6B333E00C68566 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */; };
 		52A51AC02B6B3DC800C68566 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */; };
 		52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */; };
+		52A905642B8747C400F3CD32 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A905632B8747C400F3CD32 /* LicenseView.swift */; };
+		52A905662B8747CB00F3CD32 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A905652B8747CB00F3CD32 /* CustomerInfoView.swift */; };
+		52A9056A2B8747F400F3CD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A905692B8747F400F3CD32 /* GoogleService-Info.plist */; };
+		52A9056C2B8747FA00F3CD32 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A9056B2B8747FA00F3CD32 /* APIKEY.plist */; };
+		52A9056E2B87510E00F3CD32 /* DeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9056D2B87510E00F3CD32 /* DeleteAlertView.swift */; };
 		52AFE7B82B769CBB0007028F /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7B72B769CBB0007028F /* Image+.swift */; };
 		52AFE7BA2B78029F0007028F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7B92B78029F0007028F /* String+.swift */; };
 		52AFE7BC2B7DA8CB0007028F /* ProfileNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AFE7BB2B7DA8CB0007028F /* ProfileNameTextField.swift */; };
@@ -223,10 +234,6 @@
 		3329BC012B6102370099EDC4 /* eight-movement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eight-movement.json"; sourceTree = "<group>"; };
 		336529BE2B600B9100078CF0 /* MovementLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLottieView.swift; sourceTree = "<group>"; };
 		3391A1652B6A10210035E0A5 /* ColoredText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredText.swift; sourceTree = "<group>"; };
-		3391A1672B6A1C720035E0A5 /* VisionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDataView.swift; sourceTree = "<group>"; };
-		3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorVisionDataView.swift; sourceTree = "<group>"; };
-		3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstigmatismDataView.swift; sourceTree = "<group>"; };
-		3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesightDataView.swift; sourceTree = "<group>"; };
 		3391A16F2B6A276C0035E0A5 /* VisionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionChart.swift; sourceTree = "<group>"; };
 		3398D4832B73634200535E0C /* VisionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSlider.swift; sourceTree = "<group>"; };
 		3398D4852B73698800535E0C /* CustomMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuButton.swift; sourceTree = "<group>"; };
@@ -243,7 +250,17 @@
 		33DA6A942B7B39C7006C4827 /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		33DA6A972B7C97BD006C4827 /* AllRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordView.swift; sourceTree = "<group>"; };
 		33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordHeader.swift; sourceTree = "<group>"; };
-		33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordList.swift; sourceTree = "<group>"; };
+		33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		33DA6AA02B85F233006C4827 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		33DA6AA32B872461006C4827 /* MovementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementViewModel.swift; sourceTree = "<group>"; };
+		33DA6AA52B87460B006C4827 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		33DA6AA62B87460B006C4827 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		33DA6AA72B87460B006C4827 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		33DA6AB22B8759E3006C4827 /* CustomerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
+		33DA6AB42B8759F4006C4827 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -268,6 +285,12 @@
 		52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
 		52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableProfileView.swift; sourceTree = "<group>"; };
+		52A905632B8747C400F3CD32 /* LicenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		52A905652B8747CB00F3CD32 /* CustomerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
+		52A905672B8747EA00F3CD32 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52A905692B8747F400F3CD32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52A9056B2B8747FA00F3CD32 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
+		52A9056D2B87510E00F3CD32 /* DeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertView.swift; sourceTree = "<group>"; };
 		52AFE7B72B769CBB0007028F /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		52AFE7B92B78029F0007028F /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		52AFE7BB2B7DA8CB0007028F /* ProfileNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameTextField.swift; sourceTree = "<group>"; };
@@ -464,9 +487,25 @@
 			children = (
 				33DA6A972B7C97BD006C4827 /* AllRecordView.swift */,
 				33DA6A992B7C97DF006C4827 /* AllRecordHeader.swift */,
-				33DA6A9B2B7D1BB0006C4827 /* AllRecordList.swift */,
 			);
 			path = AllRecord;
+			sourceTree = "<group>";
+		};
+		33DA6A9D2B8339F6006C4827 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1D34CA5F2B864DF9008A604E /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		33DA6AB12B8759C4006C4827 /* AppManage */ = {
+			isa = PBXGroup;
+			children = (
+				33DA6AB22B8759E3006C4827 /* CustomerInfoView.swift */,
+				33DA6AB42B8759F4006C4827 /* LicenseView.swift */,
+			);
+			path = AppManage;
 			sourceTree = "<group>";
 		};
 		33DD0A302B6246A1005296AC /* Toast */ = {
@@ -502,8 +541,18 @@
 			children = (
 				521DCDC32B7099C7002C786A /* AccountDeleteView.swift */,
 				521DCDCA2B70BA24002C786A /* AccountDeleteViewModel.swift */,
+				52A9056D2B87510E00F3CD32 /* DeleteAlertView.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		52A9055E2B87473200F3CD32 /* AppManage */ = {
+			isa = PBXGroup;
+			children = (
+				52A905632B8747C400F3CD32 /* LicenseView.swift */,
+				52A905652B8747CB00F3CD32 /* CustomerInfoView.swift */,
+			);
+			path = AppManage;
 			sourceTree = "<group>";
 		};
 		52E991C12B6CCF89002D4689 /* Setting */ = {
@@ -515,6 +564,7 @@
 				52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */,
 				52E991BB2B6CC1FC002D4689 /* SettingListDivider.swift */,
 				521DCDC12B7065BB002C786A /* SettingNavigationTitle.swift */,
+				52A9055E2B87473200F3CD32 /* AppManage */,
 				521DCDC62B70B665002C786A /* Profile */,
 				521DCDC72B70B67E002C786A /* Account */,
 				1DB6D97C2B875D8B0045FE3D /* MyPostsView.swift */,
@@ -568,13 +618,10 @@
 				331F8AA82B6B75D80008D943 /* AddRecord */,
 				52EE56C22B5E2AF200C6D423 /* RecordView.swift */,
 				3391A1652B6A10210035E0A5 /* ColoredText.swift */,
-				3391A1672B6A1C720035E0A5 /* VisionDataView.swift */,
-				3391A1692B6A214D0035E0A5 /* ColorVisionDataView.swift */,
-				3391A16B2B6A215D0035E0A5 /* AstigmatismDataView.swift */,
-				3391A16D2B6A21840035E0A5 /* EyesightDataView.swift */,
 				3391A16F2B6A276C0035E0A5 /* VisionChart.swift */,
 				331F8AB32B6BC72C0008D943 /* EmptyVisionChart.swift */,
 				3398D48B2B736AC000535E0C /* RecordBox.swift */,
+				33DA6A9E2B84764A006C4827 /* RecordViewModel.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -587,6 +634,7 @@
 				52EE56C92B5E2B2A00C6D423 /* MovementView.swift */,
 				33DD0A382B638BBA005296AC /* StartMovementRow.swift */,
 				33DD0A3C2B6390ED005296AC /* HorizontalDivider.swift */,
+				33DA6AA32B872461006C4827 /* MovementViewModel.swift */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -691,7 +739,7 @@
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
 				B339148249964F1DF6C49031 /* Frameworks */,
-				1D34CA562B8649BD008A604E /* Recovered References */,
+				33DA6A9D2B8339F6006C4827 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -829,6 +877,12 @@
 			children = (
 				713F4F042B5E082700694F05 /* Pretendard-Black.otf */,
 				713F4F032B5E082700694F05 /* Pretendard-Bold.otf */,
+				33DA6AA72B87460B006C4827 /* NotoSansKR-Black.otf */,
+				33DA6AA52B87460B006C4827 /* NotoSansKR-Bold.otf */,
+				33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */,
+				33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */,
+				33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */,
+				33DA6AA62B87460B006C4827 /* NotoSansKR-Thin.otf */,
 				713F4F062B5E082700694F05 /* Pretendard-ExtraBold.otf */,
 				713F4F002B5E082700694F05 /* Pretendard-ExtraLight.otf */,
 				713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */,
@@ -876,6 +930,7 @@
 				1DAB12A42B6CD04500474730 /* User.swift */,
 				52E991BD2B6CCBF5002D4689 /* SettingModels.swift */,
 				52D0DE522B7213D600DBC54B /* tempUser.swift */,
+				33DA6AA02B85F233006C4827 /* Router.swift */,
 				71526A412B7253980000631E /* TestModel.swift */,
 				1D2A6A482B81D23000720885 /* FAQ.swift */,
 			);
@@ -967,21 +1022,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DA6AAF2B87460B006C4827 /* NotoSansKR-Regular.otf in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
 				713F4F0C2B5E082700694F05 /* Pretendard-Bold.otf in Resources */,
 				33DD0A412B6393E8005296AC /* circle-movement.json in Resources */,
+				33DA6AAD2B87460B006C4827 /* NotoSansKR-Black.otf in Resources */,
 				3329BC022B6102370099EDC4 /* eight-movement.json in Resources */,
+				33DA6AAB2B87460B006C4827 /* NotoSansKR-Bold.otf in Resources */,
 				71027A5A2B5DEAE200879DA7 /* Assets.xcassets in Resources */,
 				713F4F0B2B5E082700694F05 /* Pretendard-Thin.otf in Resources */,
 				713F4F0D2B5E082700694F05 /* Pretendard-Black.otf in Resources */,
+				33DA6AAE2B87460B006C4827 /* NotoSansKR-Medium.otf in Resources */,
 				5278E3A92B68B7B500FC8109 /* CountryNumbers.json in Resources */,
 				713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */,
+				52A9056A2B8747F400F3CD32 /* GoogleService-Info.plist in Resources */,
+				52A9056C2B8747FA00F3CD32 /* APIKEY.plist in Resources */,
 				713F4F0F2B5E082700694F05 /* Pretendard-ExtraBold.otf in Resources */,
 				713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */,
 				713F4F0E2B5E082700694F05 /* Pretendard-Regular.otf in Resources */,
 				713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */,
 				713F4F0A2B5E082700694F05 /* Pretendard-Medium.otf in Resources */,
 				33DD0A432B63A25E005296AC /* line-movement.json in Resources */,
+				33DA6AB02B87460B006C4827 /* NotoSansKR-Light.otf in Resources */,
+				33DA6AAC2B87460B006C4827 /* NotoSansKR-Thin.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,7 +1150,9 @@
 				52AFE7D22B7F7D750007028F /* CustomAlertView.swift in Sources */,
 				7107A4082B6356FD00944077 /* DistanceConditionView.swift in Sources */,
 				710406ED2B7E3ADF00629AF9 /* SettingView.swift in Sources */,
+				52A9056E2B87510E00F3CD32 /* DeleteAlertView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
+				52A905642B8747C400F3CD32 /* LicenseView.swift in Sources */,
 				5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */,
 				71526A422B7253980000631E /* TestModel.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
@@ -1095,9 +1160,9 @@
 				1DB6D9812B875DCF0045FE3D /* ScrapPostsView.swift in Sources */,
 				5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
-				33DA6A9C2B7D1BB0006C4827 /* AllRecordList.swift in Sources */,
+				33DA6AA42B872461006C4827 /* MovementViewModel.swift in Sources */,
+				33DA6AB52B8759F4006C4827 /* LicenseView.swift in Sources */,
 				3398D4922B73919000535E0C /* AddRecordView.swift in Sources */,
-				3391A1682B6A1C720035E0A5 /* VisionDataView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
 				71948DE02B6D206E00316569 /* SightTestViewModel.swift in Sources */,
@@ -1119,12 +1184,14 @@
 				1DB6D97D2B875D8B0045FE3D /* MyPostsView.swift in Sources */,
 				1D575FCD2B6B8C7000DDC652 /* CommentView.swift in Sources */,
 				3398D48C2B736AC000535E0C /* RecordBox.swift in Sources */,
+				33DA6A9F2B84764A006C4827 /* RecordViewModel.swift in Sources */,
 				52EE56CA2B5E2B2A00C6D423 /* MovementView.swift in Sources */,
 				1DF7E7352B68C4A300602BBB /* FreeBoardViewModel.swift in Sources */,
 				1D73AD422B63872B00DF431D /* PostView.swift in Sources */,
 				52FB98C12B62226800F6A284 /* MapViewModel.swift in Sources */,
 				52FB98CD2B6232F200F6A284 /* AsyncImageView.swift in Sources */,
 				521DCDD12B71C49A002C786A /* ProfileListView.swift in Sources */,
+				33DA6AA12B85F233006C4827 /* Router.swift in Sources */,
 				71A9AF522B84A18800A4C962 /* TestAlertView.swift in Sources */,
 				710D40942B5FD8A9006C9FED /* SightView.swift in Sources */,
 				52AFE7BA2B78029F0007028F /* String+.swift in Sources */,
@@ -1157,7 +1224,6 @@
 				5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */,
 				52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */,
 				52A51ABE2B6B333E00C68566 /* SignUpProfileView.swift in Sources */,
-				3391A16A2B6A214D0035E0A5 /* ColorVisionDataView.swift in Sources */,
 				52FB98BD2B60FD7100F6A284 /* MapModalView.swift in Sources */,
 				5278E3AF2B68E6B400FC8109 /* PhoneNumberView.swift in Sources */,
 				52FB98CB2B62321B00F6A284 /* InfoView.swift in Sources */,
@@ -1194,13 +1260,14 @@
 				331F8AB02B6B85700008D943 /* RadioButton.swift in Sources */,
 				52EE56D12B5E2C8900C6D423 /* FAQView.swift in Sources */,
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
-				3391A16E2B6A21840035E0A5 /* EyesightDataView.swift in Sources */,
 				331F8AAE2B6B85460008D943 /* EyewareButtonGroup.swift in Sources */,
 				339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */,
 				3398D4842B73634200535E0C /* VisionSlider.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorViewModel.swift in Sources */,
+				52A905662B8747CB00F3CD32 /* CustomerInfoView.swift in Sources */,
 				71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */,
 				71A72B912B7DA1D1005E78F7 /* VisionTestViewModel.swift in Sources */,
+				33DA6AB32B8759E3006C4827 /* CustomerInfoView.swift in Sources */,
 				3398D4862B73698800535E0C /* CustomMenuButton.swift in Sources */,
 				71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
