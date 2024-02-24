@@ -129,7 +129,11 @@ extension ReusablePostsView {
                     } else { 
                         /// 검색중이 아닐 경우
                         Task {
-                            await freeboardVM.fetchPosts()
+                            switch fetchCase {
+                            case .freeboard: await freeboardVM.fetchPosts()
+                            case .myPost: await freeboardVM.fetchMyPosts()
+                            case .scrapPost: await freeboardVM.fetchScrapPosts()
+                            }
                         }
                     }
                 }
