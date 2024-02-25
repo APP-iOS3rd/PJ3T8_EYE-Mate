@@ -16,13 +16,13 @@ struct CustomerServiceView: View {
     var subTitle = "이용 중 불편한 점이나 문의 사항을 보내주세요.\n확인 후 빠르고 정확하게 답변드리겠습니다.\n"
     @State var menuText: String = "카테고리"
     @State var placeholder = "무엇을 도와드릴까요?"
-
+    
     var body: some View {
         VStack {
             SettingNavigationTitle(isDisplayTitle: true, leftButtonAction: {
                 presentationMode.wrappedValue.dismiss()
             }, leftButtonType: .back, title:"고객센터")
-
+            
             ScrollView {
                 VStack(spacing: 10){
                     HStack {
@@ -41,7 +41,7 @@ struct CustomerServiceView: View {
                         Spacer()
                     }
                     .modifier(CSViewModifier(height: 20))
-                
+                    
                     VStack {
                         Menu {
                             ForEach(dropDownList, id: \.self) { item in
@@ -56,7 +56,7 @@ struct CustomerServiceView: View {
                             HStack{
                                 Text(menuText)
                                     .font(.pretendardMedium_18)
-                                    .foregroundStyle(Color.black)
+                                    .foregroundStyle(menuText == "카테고리" ? Color.black.opacity(0.2) : Color.black)
                                     .multilineTextAlignment(.leading)
                                 
                                 Spacer()
@@ -70,7 +70,7 @@ struct CustomerServiceView: View {
                         SettingListDivider()
                     }
                     .padding(.bottom, 20)
-                   
+                    
                     HStack {
                         Text("문의 내용")
                             .font(.pretendardSemiBold_18)
@@ -78,14 +78,14 @@ struct CustomerServiceView: View {
                         Spacer()
                     }
                     .modifier(CSViewModifier(height: 20))
-
+                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray.opacity(0.8), lineWidth: 3)
                             .cornerRadius(10)
                             .frame(height: 300)
                             .frame(maxWidth: .infinity)
-
+                        
                         if content == "" {
                             TextEditor(text: $placeholder)
                                 .font(.pretendardMedium_16)
@@ -93,7 +93,7 @@ struct CustomerServiceView: View {
                                 .disabled(true)
                                 .padding(10)
                         }
-
+                        
                         TextEditor(text: $content)
                             .foregroundStyle(Color.black)
                             .opacity(content.isEmpty ? 0.5 : 1)
@@ -102,13 +102,15 @@ struct CustomerServiceView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .modifier(CSViewModifier(height: 300))
-
+                    
                     CustomButton(title: "문의하기", background: Color.customGreen, fontStyle: .pretendardSemiBold_18, action: {
                         CSViewModel.sendMessage(menu: selectedItem, text: content)
                         presentationMode.wrappedValue.dismiss()
                     })
-                        .frame(height: 80)
-                        .frame(maxWidth: .infinity)
+                    .disableWithOpacity(content.isEmpty || menuText == "카테고리")
+                    .disabled(content.isEmpty || menuText == "카테고리")
+                    .frame(height: 80)
+                    .frame(maxWidth: .infinity)
                 }
                 Spacer()
             }
