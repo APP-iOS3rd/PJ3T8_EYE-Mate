@@ -13,6 +13,7 @@ struct CustomerServiceView: View {
     @State var content: String = ""
     var dropDownList = [CustomerServiceMenu.Name.report, CustomerServiceMenu.Name.error, CustomerServiceMenu.Name.inquiry]
     @State var selectedItem: CustomerServiceMenu.Name = .report
+    var subTitle = "이용 중 불편한 점이나 문의 사항을 보내주세요.\n확인 후 빠르고 정확하게 답변드리겠습니다.\n"
     @State var menuText: String = "카테고리"
     @State var placeholder = "무엇을 도와드릴까요?"
 
@@ -24,44 +25,66 @@ struct CustomerServiceView: View {
 
             ScrollView {
                 VStack(spacing: 10){
-                    Menu {
-                        ForEach(dropDownList, id: \.self) { item in
-                            Button {
-                                self.menuText = item.rawValue
-                                // 선택한 메뉴에 대한 item 선택
-                                selectedItem = item
-                            } label: {
-                                Text(item.rawValue)
-                            }
-                            
-                        }
-                    } label: {
-                        HStack{
-                            Text(menuText)
-                                .font(.pretendardRegular_18)
-                                .foregroundStyle(Color.black)
-                                .multilineTextAlignment(.leading)
-
-                            Spacer()
-                            Image(systemName: "chevron.down")
-                                .foregroundStyle(Color.black)
-                        }
-                        .padding(20)
-                        .frame(width: UIScreen.main.bounds.width - 40 ,height: 40)
-                        .background{
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(hex: "EEEEEE").opacity(0.8))
-
-                        }
+                    HStack {
+                        Text(subTitle)
+                            .font(.pretendardMedium_18)
+                            .foregroundStyle(Color.darkGray)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
                     }
-                    .menuStyle(.button)
-                    .padding(.bottom, 10)
+                    .padding(.horizontal, 20)
+                    
+                    HStack {
+                        Text("문의 유형")
+                            .font(.pretendardSemiBold_18)
+                            .foregroundStyle(Color.darkGray)
+                        Spacer()
+                    }
+                    .modifier(CSViewModifier(height: 20))
+                
+                    VStack {
+                        Menu {
+                            ForEach(dropDownList, id: \.self) { item in
+                                Button {
+                                    self.menuText = item.rawValue
+                                    selectedItem = item
+                                } label: {
+                                    Text(item.rawValue)
+                                }
+                            }
+                        } label: {
+                            HStack{
+                                Text(menuText)
+                                    .font(.pretendardMedium_18)
+                                    .foregroundStyle(Color.black)
+                                    .multilineTextAlignment(.leading)
+                                
+                                Spacer()
+                                Image(systemName: "chevron.down")
+                                    .foregroundStyle(Color.black)
+                            }
+                            .modifier(CSViewModifier(height: 20))
+                        }
+                        .menuStyle(.button)
+                        
+                        SettingListDivider()
+                    }
+                    .padding(.bottom, 20)
+                   
+                    HStack {
+                        Text("문의 내용")
+                            .font(.pretendardSemiBold_18)
+                            .foregroundStyle(Color.darkGray)
+                        Spacer()
+                    }
+                    .modifier(CSViewModifier(height: 20))
 
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray.opacity(0.8), lineWidth: 3)
                             .cornerRadius(10)
-                            .frame(width: UIScreen.main.bounds.width - 40 ,height: 300)
+                            .frame(height: 300)
+                            .frame(maxWidth: .infinity)
 
                         if content == "" {
                             TextEditor(text: $placeholder)
@@ -75,20 +98,33 @@ struct CustomerServiceView: View {
                             .foregroundStyle(Color.black)
                             .opacity(content.isEmpty ? 0.5 : 1)
                             .padding(10)
-                            .frame(width: UIScreen.main.bounds.width - 40 ,height: 300)
+                            .frame(height: 300)
+                            .frame(maxWidth: .infinity)
                     }
-                    .frame(width: UIScreen.main.bounds.width - 40 ,height: 300)
+                    .modifier(CSViewModifier(height: 300))
 
-                    CustomButton(title: "제출", background: Color.customGreen, fontStyle: .pretendardSemiBold_16, action: {
+                    CustomButton(title: "문의하기", background: Color.customGreen, fontStyle: .pretendardSemiBold_18, action: {
                         CSViewModel.sendMessage(menu: selectedItem, text: content)
+                        presentationMode.wrappedValue.dismiss()
                     })
-                        .frame(width: UIScreen.main.bounds.width - 10, height: 80)
+                        .frame(height: 80)
+                        .frame(maxWidth: .infinity)
                 }
-
                 Spacer()
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+}
+
+private struct CSViewModifier: ViewModifier {
+    var height: CGFloat = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(height: self.height)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 20)
     }
 }
 
