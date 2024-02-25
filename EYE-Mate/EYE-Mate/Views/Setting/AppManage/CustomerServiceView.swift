@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CustomerServiceView: View {
     @Environment(\.presentationMode) var presentationMode
+    @StateObject var CSViewModel = CustomerServiceViewModel()
     @State var content: String = ""
-    var dropDownList = ["신고", "장애/버그", "문의", "기타"]
-    @State var selectedItem = "고객센터 카테고리"
+    var dropDownList = [CustomerServiceMenu.Name.report, CustomerServiceMenu.Name.error, CustomerServiceMenu.Name.inquiry]
+    @State var selectedItem: CustomerServiceMenu.Name = .report
+    @State var menuText: String = "카테고리"
     @State var placeholder = "무엇을 도와드릴까요?"
 
     var body: some View {
@@ -25,15 +27,17 @@ struct CustomerServiceView: View {
                     Menu {
                         ForEach(dropDownList, id: \.self) { item in
                             Button {
-                                self.selectedItem = item
+                                self.menuText = item.rawValue
+                                // 선택한 메뉴에 대한 item 선택
+                                selectedItem = item
                             } label: {
-                                Text(item)
+                                Text(item.rawValue)
                             }
+                            
                         }
-
                     } label: {
                         HStack{
-                            Text(selectedItem)
+                            Text(menuText)
                                 .font(.pretendardRegular_18)
                                 .foregroundStyle(Color.black)
                                 .multilineTextAlignment(.leading)
@@ -75,7 +79,9 @@ struct CustomerServiceView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width - 40 ,height: 300)
 
-                    CustomButton(title: "제출", background: Color.customGreen, fontStyle: .pretendardSemiBold_16, action: {})
+                    CustomButton(title: "제출", background: Color.customGreen, fontStyle: .pretendardSemiBold_16, action: {
+                        CSViewModel.sendMessage(menu: selectedItem, text: content)
+                    })
                         .frame(width: UIScreen.main.bounds.width - 10, height: 80)
                 }
 

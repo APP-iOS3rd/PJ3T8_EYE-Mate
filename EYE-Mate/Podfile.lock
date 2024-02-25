@@ -786,8 +786,31 @@ PODS:
   - NMapsGeometry (1.0.1)
   - NMapsMap (3.17.0):
     - NMapsGeometry
-  - PromisesObjC (2.3.1)
+  - PromisesObjC (2.4.0)
   - RecaptchaInterop (100.0.0)
+  - SlackKit (4.7.0):
+    - SlackKit/SlackKit (= 4.7.0)
+  - SlackKit/SKClient (4.7.0):
+    - SlackKit/SKCore
+  - SlackKit/SKCore (4.7.0)
+  - SlackKit/SKRTMAPI (4.7.0):
+    - SlackKit/SKCore
+    - SlackKit/SKWebAPI
+    - Starscream (= 4.0.4)
+  - SlackKit/SKServer (4.7.0):
+    - SlackKit/SKCore
+    - SlackKit/SKWebAPI
+    - Swifter (= 1.5.0)
+  - SlackKit/SKWebAPI (4.7.0):
+    - SlackKit/SKCore
+  - SlackKit/SlackKit (4.7.0):
+    - SlackKit/SKClient
+    - SlackKit/SKCore
+    - SlackKit/SKRTMAPI
+    - SlackKit/SKServer
+    - SlackKit/SKWebAPI
+  - Starscream (4.0.4)
+  - Swifter (1.5.0)
 
 DEPENDENCIES:
   - AcknowList
@@ -799,6 +822,7 @@ DEPENDENCIES:
   - Kingfisher (~> 7.0)
   - lottie-ios
   - NMapsMap
+  - SlackKit
 
 SPEC REPOS:
   trunk:
@@ -830,6 +854,9 @@ SPEC REPOS:
     - NMapsMap
     - PromisesObjC
     - RecaptchaInterop
+    - SlackKit
+    - Starscream
+    - Swifter
 
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
@@ -858,9 +885,12 @@ SPEC CHECKSUMS:
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
   NMapsMap: a5b909a31b6f3d27a670f6eb2ddc913c38975474
-  PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  SlackKit: ed428cbc754b12eb38f976cecadaeb5b8407c688
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  Swifter: e71dd674404923d7f03ebb03f3f222d1c570bc8e
 
-PODFILE CHECKSUM: 2f847d8945ac67408945c426903a37e2f3c65db5
+PODFILE CHECKSUM: a03939b80a1a0d54ca865aa5e7a00f95b41c2b78
 
 COCOAPODS: 1.14.3

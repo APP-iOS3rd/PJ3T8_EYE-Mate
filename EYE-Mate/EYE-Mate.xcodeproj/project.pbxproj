@@ -66,8 +66,6 @@
 		33DA6AAE2B87460B006C4827 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */; };
 		33DA6AAF2B87460B006C4827 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */; };
 		33DA6AB02B87460B006C4827 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */; };
-		33DA6AB32B8759E3006C4827 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AB22B8759E3006C4827 /* CustomerInfoView.swift */; };
-		33DA6AB52B8759F4006C4827 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA6AB42B8759F4006C4827 /* LicenseView.swift */; };
 		33DD0A322B6246F4005296AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A312B6246F4005296AC /* ToastView.swift */; };
 		33DD0A342B624C11005296AC /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A332B624C11005296AC /* ToastModifier.swift */; };
 		33DD0A362B624D72005296AC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD0A352B624D72005296AC /* Toast.swift */; };
@@ -87,13 +85,14 @@
 		5278E3B12B69C8B600FC8109 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B02B69C8B600FC8109 /* LoginView.swift */; };
 		5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B42B69EC3500FC8109 /* SignInView.swift */; };
 		5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */; };
+		5294CD7C2B8A3346005A3BE9 /* CSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294CD7B2B8A3346005A3BE9 /* CSViewModel.swift */; };
+		5294CD7E2B8A3742005A3BE9 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294CD7D2B8A3742005A3BE9 /* LicenseView.swift */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
 		52A51ABE2B6B333E00C68566 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */; };
 		52A51AC02B6B3DC800C68566 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */; };
 		52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */; };
-		52A905642B8747C400F3CD32 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A905632B8747C400F3CD32 /* LicenseView.swift */; };
-		52A905662B8747CB00F3CD32 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A905652B8747CB00F3CD32 /* CustomerInfoView.swift */; };
+		52A905662B8747CB00F3CD32 /* CustomerServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A905652B8747CB00F3CD32 /* CustomerServiceView.swift */; };
 		52A9056E2B87510E00F3CD32 /* DeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9056D2B87510E00F3CD32 /* DeleteAlertView.swift */; };
 		52A9057A2B88590D00F3CD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A905792B88590D00F3CD32 /* GoogleService-Info.plist */; };
 		52A9057B2B8859C300F3CD32 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A905752B88590200F3CD32 /* APIKEY.plist */; };
@@ -249,8 +248,6 @@
 		33DA6AA82B87460B006C4827 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		33DA6AA92B87460B006C4827 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		33DA6AAA2B87460B006C4827 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
-		33DA6AB22B8759E3006C4827 /* CustomerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
-		33DA6AB42B8759F4006C4827 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		33DD0A312B6246F4005296AC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		33DD0A332B624C11005296AC /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		33DD0A352B624D72005296AC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -270,13 +267,14 @@
 		5278E3B02B69C8B600FC8109 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5278E3B42B69EC3500FC8109 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5294CD7B2B8A3346005A3BE9 /* CSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSViewModel.swift; sourceTree = "<group>"; };
+		5294CD7D2B8A3742005A3BE9 /* LicenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPage.swift; sourceTree = "<group>"; };
 		5296A1452B5F3EBC00299A0A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
 		52A51ABF2B6B3DC800C68566 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		52A51AC12B6B68DB00C68566 /* EditableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableProfileView.swift; sourceTree = "<group>"; };
-		52A905632B8747C400F3CD32 /* LicenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
-		52A905652B8747CB00F3CD32 /* CustomerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
+		52A905652B8747CB00F3CD32 /* CustomerServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceView.swift; sourceTree = "<group>"; };
 		52A905692B8747F400F3CD32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52A9056B2B8747FA00F3CD32 /* APIKEY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		52A9056D2B87510E00F3CD32 /* DeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertView.swift; sourceTree = "<group>"; };
@@ -475,15 +473,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		33DA6AB12B8759C4006C4827 /* AppManage */ = {
-			isa = PBXGroup;
-			children = (
-				33DA6AB22B8759E3006C4827 /* CustomerInfoView.swift */,
-				33DA6AB42B8759F4006C4827 /* LicenseView.swift */,
-			);
-			path = AppManage;
-			sourceTree = "<group>";
-		};
 		33DD0A302B6246A1005296AC /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,8 +514,9 @@
 		52A9055E2B87473200F3CD32 /* AppManage */ = {
 			isa = PBXGroup;
 			children = (
-				52A905632B8747C400F3CD32 /* LicenseView.swift */,
-				52A905652B8747CB00F3CD32 /* CustomerInfoView.swift */,
+				5294CD7D2B8A3742005A3BE9 /* LicenseView.swift */,
+				52A905652B8747CB00F3CD32 /* CustomerServiceView.swift */,
+				5294CD7B2B8A3346005A3BE9 /* CSViewModel.swift */,
 			);
 			path = AppManage;
 			sourceTree = "<group>";
@@ -534,7 +524,6 @@
 		52E991C12B6CCF89002D4689 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				33DA6AB12B8759C4006C4827 /* AppManage */,
 				52E991C22B6CD5C2002D4689 /* SettingListView.swift */,
 				710406EC2B7E3ADF00629AF9 /* SettingView.swift */,
 				52E991B92B6CBC62002D4689 /* SettingTitleModifier.swift */,
@@ -1125,7 +1114,6 @@
 				710406ED2B7E3ADF00629AF9 /* SettingView.swift in Sources */,
 				52A9056E2B87510E00F3CD32 /* DeleteAlertView.swift in Sources */,
 				52FB98CF2B62331900F6A284 /* MapImageModifier.swift in Sources */,
-				52A905642B8747C400F3CD32 /* LicenseView.swift in Sources */,
 				5278E3B52B69EC3500FC8109 /* SignInView.swift in Sources */,
 				71526A422B7253980000631E /* TestModel.swift in Sources */,
 				5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */,
@@ -1133,7 +1121,6 @@
 				5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */,
 				33DD0A3D2B6390ED005296AC /* HorizontalDivider.swift in Sources */,
 				33DA6AA42B872461006C4827 /* MovementViewModel.swift in Sources */,
-				33DA6AB52B8759F4006C4827 /* LicenseView.swift in Sources */,
 				3398D4922B73919000535E0C /* AddRecordView.swift in Sources */,
 				52EE56C52B5E2AFF00C6D423 /* EyeSenseView.swift in Sources */,
 				3391A1662B6A10210035E0A5 /* ColoredText.swift in Sources */,
@@ -1201,6 +1188,7 @@
 				71526A402B7242B10000631E /* PlaceCellView.swift in Sources */,
 				1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */,
 				3398D48A2B7369EB00535E0C /* CustomMenu.swift in Sources */,
+				5294CD7C2B8A3346005A3BE9 /* CSViewModel.swift in Sources */,
 				711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */,
 				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				52AFE7BC2B7DA8CB0007028F /* ProfileNameTextField.swift in Sources */,
@@ -1210,6 +1198,7 @@
 				52FB98912B5F861B00F6A284 /* Places.swift in Sources */,
 				52AFE7B82B769CBB0007028F /* Image+.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorViewModel.swift in Sources */,
+				5294CD7E2B8A3742005A3BE9 /* LicenseView.swift in Sources */,
 				52A51AC22B6B68DB00C68566 /* EditableProfileView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
 				52FB98D52B62B91F00F6A284 /* MapTabBarView.swift in Sources */,
@@ -1235,10 +1224,9 @@
 				339D39042B70B4D9005AC16B /* AddRecordSubtitleView.swift in Sources */,
 				3398D4842B73634200535E0C /* VisionSlider.swift in Sources */,
 				7107A40E2B6390D200944077 /* ColorViewModel.swift in Sources */,
-				52A905662B8747CB00F3CD32 /* CustomerInfoView.swift in Sources */,
+				52A905662B8747CB00F3CD32 /* CustomerServiceView.swift in Sources */,
 				71948DDC2B6CC88900316569 /* AstigmatismTestViewModel.swift in Sources */,
 				71A72B912B7DA1D1005E78F7 /* VisionTestViewModel.swift in Sources */,
-				33DA6AB32B8759E3006C4827 /* CustomerInfoView.swift in Sources */,
 				3398D4862B73698800535E0C /* CustomMenuButton.swift in Sources */,
 				71948DDE2B6D0CA100316569 /* BackgroundView.swift in Sources */,
 				52FB98D32B6240D200F6A284 /* ActionAreaView.swift in Sources */,
