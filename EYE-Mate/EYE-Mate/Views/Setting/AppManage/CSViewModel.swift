@@ -31,7 +31,7 @@ class CustomerServiceViewModel: ObservableObject {
     
     func sendMessage(menu: CustomerServiceMenu.Name, text: String) {
         let bot = SlackKit()
-        let token = "xoxb-6684311207396-6681310965543-QK3Gr4h0Sk4IQzEDwBpeh08j"
+        guard let token = Bundle.main.slackToken else { return }
         bot.addWebAPIAccessWithToken(token)
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
