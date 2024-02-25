@@ -18,8 +18,6 @@
 		1D59839A2B61596600762E4B /* CreateNewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5983992B61596600762E4B /* CreateNewPostView.swift */; };
 		1D73AD3F2B62BC4100DF431D /* CreateNewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */; };
 		1D73AD422B63872B00DF431D /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73AD412B63872B00DF431D /* PostView.swift */; };
-		1D8B318F2B8890BB006F4F5E /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B318D2B8890BB006F4F5E /* CustomerInfoView.swift */; };
-		1D8B31902B8890BB006F4F5E /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B318E2B8890BB006F4F5E /* LicenseView.swift */; };
 		1D98EC6B2B5FB58E00CC3AB2 /* FAQRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6A2B5FB58E00CC3AB2 /* FAQRowCellView.swift */; };
 		1D98EC6D2B5FCE3300CC3AB2 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC6C2B5FCE3300CC3AB2 /* ReusablePostsView.swift */; };
 		1D98EC712B5FDC1E00CC3AB2 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98EC702B5FDC1E00CC3AB2 /* PostCardView.swift */; };
@@ -346,7 +344,6 @@
 		710D40952B5FDBBA006C9FED /* CustomNavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitle.swift; sourceTree = "<group>"; };
 		710D40972B60DE97006C9FED /* TestOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOnboardingView.swift; sourceTree = "<group>"; };
 		710D409B2B613AC5006C9FED /* ExplanationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationTextView.swift; sourceTree = "<group>"; };
-		7114F3162B86593D00461DDC /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		7114F31A2B87139700461DDC /* TestResultTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultTitleView.swift; sourceTree = "<group>"; };
 		711F4A862B6959A2001C6B53 /* TestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestType.swift; sourceTree = "<group>"; };
 		711F4A882B6A1756001C6B53 /* VisionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTestView.swift; sourceTree = "<group>"; };
@@ -399,15 +396,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D34CA562B8649BD008A604E /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				7114F3162B86593D00461DDC /* APIKEY-Info.plist */,
-				1D34CA5F2B864DF9008A604E /* GoogleService-Info.plist */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		1D73AD402B6361F000DF431D /* CreateNewPost */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,15 +405,6 @@
 				1D73AD3E2B62BC4000DF431D /* CreateNewPostViewModel.swift */,
 			);
 			path = CreateNewPost;
-			sourceTree = "<group>";
-		};
-		1D8B318C2B8890A9006F4F5E /* AppManage */ = {
-			isa = PBXGroup;
-			children = (
-				1D8B318D2B8890BB006F4F5E /* CustomerInfoView.swift */,
-				1D8B318E2B8890BB006F4F5E /* LicenseView.swift */,
-			);
-			path = AppManage;
 			sourceTree = "<group>";
 		};
 		1DF8A7692B70CF8D00C57EBD /* Post */ = {
@@ -499,6 +478,8 @@
 				1D34CA5F2B864DF9008A604E /* GoogleService-Info.plist */,
 				52A905692B8747F400F3CD32 /* GoogleService-Info.plist */,
 				52A9056B2B8747FA00F3CD32 /* APIKEY.plist */,
+				1D8B318D2B8890BB006F4F5E /* CustomerInfoView.swift */,
+				1D8B318E2B8890BB006F4F5E /* LicenseView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1120,8 +1101,6 @@
 				710D40922B5FD89A006C9FED /* AstigmatismView.swift in Sources */,
 				711F4A872B6959A2001C6B53 /* TestType.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
-				3391A16C2B6A215D0035E0A5 /* AstigmatismDataView.swift in Sources */,
-				1D8B318F2B8890BB006F4F5E /* CustomerInfoView.swift in Sources */,
 				33DA6A9A2B7C97DF006C4827 /* AllRecordHeader.swift in Sources */,
 				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
@@ -1135,7 +1114,6 @@
 				1D575FCB2B6B7EEA00DDC652 /* PostContent.swift in Sources */,
 				1D575FCF2B6B92D900DDC652 /* ImageCardView.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
-				1D8B31902B8890BB006F4F5E /* LicenseView.swift in Sources */,
 				33DD0A362B624D72005296AC /* Toast.swift in Sources */,
 				331F8AB42B6BC72C0008D943 /* EmptyVisionChart.swift in Sources */,
 				3398D4902B736EE400535E0C /* VisionView.swift in Sources */,

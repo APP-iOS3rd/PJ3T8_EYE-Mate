@@ -1,5 +1,5 @@
 //
-//  CustomerInfoView.swift
+//  CustomerServiceView.swift
 //  EYE-Mate
 //
 //  Created by 이민영 on 2024/02/22.
