@@ -23,6 +23,8 @@ extension Color {
     static let warningGray = Color(hex: "#8A8A8A")
     // 시그니처 컬러
     static let customGreen = Color(hex: "#52CAA6")
+    // 좌 그래프 색깔
+    static let graphColor = Color(hex: "#7ECFE8")
     // 대부분의 빨간색
     static let customRed = Color(hex: "#FF1A1A")
     // 기록부분 빨간색

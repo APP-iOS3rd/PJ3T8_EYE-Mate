@@ -12,7 +12,6 @@ struct SettingView: View {
     @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
-
     @AppStorage("Login") private var login: Bool = false
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""

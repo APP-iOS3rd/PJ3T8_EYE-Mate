@@ -403,7 +403,7 @@ private struct AstigmatismTestResultView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
-        .animation(.easeInOut, value: showAlert)
+        .animation(.easeInOut(duration: 0.1), value: showAlert)
     }
 }
 
