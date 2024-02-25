@@ -22,12 +22,12 @@ enum Key: String {
     case lng = "lng"
 }
 
-enum encodingPlace: String {
+enum EncodingPlace: String {
     case hospital = "%EC%95%88%EA%B3%BC"
     case optician = "%EC%95%88%EA%B2%BD%EC%9B%90"
 }
 
-enum markerImageName: String {
+enum MarkerImageName: String {
     case hospital = "hospital_mark"
     case optician = "optician_mark"
 }
@@ -57,8 +57,8 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
     @Published var resultInfo: [placeList] = []
     @Published var sheetFlag = false
     @Published var selectedPicker: MapTopTapViewItem = .hospital
-    var queryPlace: String = encodingPlace.hospital.rawValue
-    var markerImage: String = markerImageName.hospital.rawValue
+    var queryPlace: String = EncodingPlace.hospital.rawValue
+    var markerImage: String = MarkerImageName.hospital.rawValue
     var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
     let view = NMFNaverMapView(frame: .zero)

@@ -55,12 +55,12 @@ struct MapTabBarView: View {
                         coordinator.selectedPicker = item
                         switch coordinator.selectedPicker {
                         case .hospital:
-                            coordinator.queryPlace = encodingPlace.hospital.rawValue
-                            coordinator.markerImage = markerImageName.hospital.rawValue
+                            coordinator.queryPlace = EncodingPlace.hospital.rawValue
+                            coordinator.markerImage = MarkerImageName.hospital.rawValue
                             coordinator.sheetFlag = false
                         case .optician:
-                            coordinator.queryPlace = encodingPlace.optician.rawValue
-                            coordinator.markerImage = markerImageName.optician.rawValue
+                            coordinator.queryPlace = EncodingPlace.optician.rawValue
+                            coordinator.markerImage = MarkerImageName.optician.rawValue
                             coordinator.sheetFlag = false
                         }
                     }
