@@ -52,7 +52,7 @@ struct SettingListView: View {
                 SettingListDivider()
             }
             
-            SettingCellView(title: "고객센터", destination: CustomerInfoView())
+            SettingCellView(title: "고객센터", destination: CustomerServiceView())
             SettingCellView(title: "오픈소스 라이선스", destination: AcknowListViewControllerView())
         }
         

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomerInfoView: View {
+struct CustomerServiceView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var content: String = ""
     var dropDownList = ["신고", "장애/버그", "문의", "기타"]
@@ -87,5 +87,5 @@ struct CustomerInfoView: View {
 }
 
 #Preview {
-    CustomerInfoView()
+    CustomerServiceView()
 }
