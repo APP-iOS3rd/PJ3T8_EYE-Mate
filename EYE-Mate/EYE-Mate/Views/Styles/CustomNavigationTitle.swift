@@ -29,8 +29,10 @@ struct CustomNavigationTitle: View {
                 })
             }
             VStack(alignment: .leading) {
-                Text("EYE-Mate")
-                    .font(.pretendardSemiBold_22)
+                if title == "" {
+                    Text("EYE-Mate")
+                        .font(.pretendardSemiBold_22)
+                }
                 Spacer()
                     .frame(height: 10)
                 if title == "" {
@@ -64,13 +66,15 @@ struct CustomNavigationTitle: View {
             Spacer()
 
 
-            Button(action: {
-                router.navigate(to: .profile)
-            }, label: {
-                profileViewModel.profileImage
-                    .ProfileImageModifier()
-                    .frame(width: 50, height: 50)
-            })
+            if title == "" {
+                Button(action: {
+                    router.navigate(to: .profile)
+                }, label: {
+                    profileViewModel.profileImage
+                        .ProfileImageModifier()
+                        .frame(width: 50, height: 50)
+                })
+            }
 
         }
         .padding(.horizontal, 20)
