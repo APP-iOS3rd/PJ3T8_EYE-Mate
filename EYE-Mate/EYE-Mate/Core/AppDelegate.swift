@@ -20,7 +20,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
 
         UNUserNotificationCenter.current().delegate = self
-        notificationManager.removeAllPendingNotifications()
+        notificationManager.removeAllNotifications()
+        
         
         // 권한 요청
         notificationManager.requestAuthorization { granted in
@@ -62,6 +63,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     // 알림이 도착했을 때 호출
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        notificationManager.updateBadge()
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner])
     }
 }
