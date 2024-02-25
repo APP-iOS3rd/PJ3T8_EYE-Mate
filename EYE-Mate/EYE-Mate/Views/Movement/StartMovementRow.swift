@@ -56,13 +56,11 @@ struct StartMovementRow: View {
                 router.navigate(to: .movementLottie(movementType: movementType))
             } label: {
                 Image(systemName: "chevron.right")
-                    .foregroundColor(.white)
+                    .foregroundColor(.customGreen)
+                    .font(.system(size: 30))
             }
             .buttonStyle(PlainButtonStyle())
             .padding()
-            .background(Color.customGreen)
-            .clipShape(Circle())
-            .frame(width: 44, height: 44)
         }
         .padding(16)
         .background(Color.white)
