@@ -13,6 +13,9 @@ struct EyeSenseOnboardingView: View {
     
     init(onboardingViewModel: EyeSenseOnBoardingViewModel) {
         self.onboardingViewModel = onboardingViewModel
+        
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
     }
     @State var showModal: Bool = false
     // Tabview page 넘기기에 관련된 변수
@@ -33,7 +36,7 @@ struct EyeSenseOnboardingView: View {
                             EyeSenseTitleView()
                                 .padding(.top, 15)
                                 .padding(.leading, 15)
-
+                            
                             HStack(alignment: .center) {
                                 Spacer()
                                 Text("\"\(Page.title)\"")
@@ -74,7 +77,7 @@ struct EyeSenseOnboardingView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(
-                        LinearGradient(gradient: Gradient(colors: [Color(hex: "62D8C5"), Color(hex: "70A8D6")]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [Color(hex: "74DFD3"), Color(hex: "29CEBA")]), startPoint: .top, endPoint: .bottom)
                     )
             )
             
@@ -84,31 +87,27 @@ struct EyeSenseOnboardingView: View {
                     .offset(y: -15)
             }
         }
-        .onAppear {
-            Task{
-                listOfPages.removeAll()
-                fakedPages.removeAll()
-                listOfPages = await onboardingViewModel.fetchData()
-                fakedPages.append(contentsOf: listOfPages)
+        .task{
+            listOfPages.removeAll()
+            fakedPages.removeAll()
+            listOfPages = await onboardingViewModel.fetchData()
+            fakedPages.append(contentsOf: listOfPages)
+            
+            if var firstPage = listOfPages.first, var lastPage = listOfPages.last {
+                currentPage = firstPage.id.uuidString
                 
-                if var firstPage = listOfPages.first, var lastPage = listOfPages.last {
-                    currentPage = firstPage.id.uuidString
-                    
-                    firstPage.id = .init()
-                    lastPage.id = .init()
-                    
-                    fakedPages.append(firstPage)
-                    fakedPages.insert(lastPage, at: 0)
-                }
-                // 페이지 변경 시 애니메이션 적용 - startTimer안에선 적용하면 X(이유 모름)
-                withAnimation{
-                    startTimer()
-                }
+                firstPage.id = .init()
+                lastPage.id = .init()
+                
+                fakedPages.append(firstPage)
+                fakedPages.insert(lastPage, at: 0)
             }
-
-            UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
-            UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
+            // 페이지 변경 시 애니메이션 적용
+            withAnimation{
+                startTimer()
+            }
         }
+        
         .onDisappear {
             // 뷰가 사라질 때 타이머 중지
             stopTimer()

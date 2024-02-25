@@ -11,8 +11,10 @@ struct SettingListDivider: View {
     
     var body: some View {
         Rectangle()
-            .frame(width: UIScreen.main.bounds.width - 80, height: 1)
+            .frame(height: 1)
+            .frame(maxWidth: .infinity)
             .foregroundStyle(Color.tabGray)
+            .padding(.horizontal, 20)
     }
 }
 

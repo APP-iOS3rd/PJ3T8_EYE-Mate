@@ -13,6 +13,8 @@ struct AllRecordHeader: View {
     @ObservedObject private var recordViewModel = RecordViewModel.shared
 
     @Binding var isDeleteMode: Bool
+    @Binding var isDeleteAlert: Bool
+
     @Binding var selectedVisionItems: [String]
     @Binding var selectedColorVisionItems: [String]
     @Binding var selectedAstigmatismItems: [String]
@@ -37,46 +39,6 @@ struct AllRecordHeader: View {
         router.navigateBack()
     }
 
-    private func deleteSelectedItems() {
-        switch recordType {
-        case .vision:
-            selectedVisionItems.forEach { id in
-                if let record = recordViewModel.visionRecords.first(where: { $0.id == id }) {
-                    recordViewModel.deleteVisionRecord(record: record)
-                }
-            }
-        case .colorVision:
-            selectedColorVisionItems.forEach { id in
-                if let record = recordViewModel.colorVisionRecords.first(where: { $0.id == id }) {
-                    recordViewModel.deleteColorVisionRecord(record: record)
-                }
-            }
-        case .astigmatism:
-            selectedAstigmatismItems.forEach { id in
-                if let record = recordViewModel.astigmatismRecords.first(where: { $0.id == id }) {
-                    recordViewModel.deleteAstigmatismVisionRecord(record: record)
-                }
-            }
-        case .eyesight:
-            selectedEyesightVisionItems.forEach { id in
-                if let record = recordViewModel.eyesightRecords.first(where: { $0.id == id }) {
-                    recordViewModel.deleteEyesightVisionRecord(record: record)
-                }
-            }
-        }
-
-        switch recordType {
-        case .vision:
-            selectedVisionItems.removeAll()
-        case .colorVision:
-            selectedColorVisionItems.removeAll()
-        case .astigmatism:
-            selectedAstigmatismItems.removeAll()
-        case .eyesight:
-            selectedEyesightVisionItems.removeAll()
-        }
-    }
-
     var body: some View {
         ZStack {
             HStack {
@@ -92,8 +54,7 @@ struct AllRecordHeader: View {
                 if !isRecordsEmpty {
                     Button {
                         if isDeleteMode {
-                            deleteSelectedItems()
-                            isDeleteMode = false
+                            isDeleteAlert = true
                         } else {
                             isDeleteMode = true
                         }

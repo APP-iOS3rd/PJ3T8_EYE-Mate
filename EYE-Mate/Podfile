@@ -17,6 +17,8 @@ target 'EYE-Mate' do
   pod 'lottie-ios'
   pod 'FirebaseCore'
   pod 'FirebaseMessaging'
+  pod 'AcknowList'
+  pod 'SlackKit'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

@@ -28,7 +28,7 @@ enum TabBarItem: Hashable {
         case .home:
             return "홈"
         case .movement:
-            return "눈운동"
+            return "눈 운동"
         case .community:
             return "게시판"
         case .eyeMap:

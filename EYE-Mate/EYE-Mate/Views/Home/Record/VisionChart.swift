@@ -29,11 +29,11 @@ struct VisionChart: View {
     private func calculateVisionData() -> [(side: String, data: [VisionRecordData])] {
         let visionData: [(side: String, data: [VisionRecordData])] = [
             (
-                side: "left",
+                side: "좌측 시력",
                 data: visionRecords.map { VisionRecordData(publishedDate: VisionChart.dateFormat.string(from: $0.publishedDate), point: Double($0.left)!) }
             ),
             (
-                side: "right",
+                side: "우측 시력",
                 data: visionRecords.map { VisionRecordData(publishedDate: VisionChart.dateFormat.string(from: $0.publishedDate), point: Double($0.right)!) }
             )
         ]
@@ -109,9 +109,8 @@ struct ChartView: View {
             }
         }
         .chartForegroundStyleScale([
-            "left" : Color(hex: "#7ECFE8"),
-            "right" : Color(hex: "#52CAA6"),
+            "좌측 시력" : Color(hex: "#3EA99F"),
+            "우측 시력" : Color.customGreen
         ])
-        .chartLegend(.hidden)
     }
 }

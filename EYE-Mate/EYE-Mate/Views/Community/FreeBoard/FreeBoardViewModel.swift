@@ -20,6 +20,8 @@ class FreeBoardViewModel: ObservableObject {
     
     @Published var isShowCreateView: Bool = false
     
+    @AppStorage("user_UID") var userUID: String = ""
+    
     /// - 게시물 Fetch
     func fetchPosts() async {
         do {
@@ -96,7 +98,7 @@ class FreeBoardViewModel: ObservableObject {
             
             let docs = try await query.getDocuments()
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
-                var post = try? doc.data(as: Post.self)
+                let post = try? doc.data(as: Post.self)
                 
                 if var post = post, post.postTitle.contains(searchText) || post.postContent.contains(searchText) {
                     
@@ -143,7 +145,7 @@ class FreeBoardViewModel: ObservableObject {
         }
     }
     
-    
+    /// - 게시물 refresh
     func refreshable() async {
         await MainActor.run {
             isFetching = true
@@ -155,6 +157,74 @@ class FreeBoardViewModel: ObservableObject {
             await fetchPosts(searchText: searchText)
         } else {
             await fetchPosts()
+        }
+    }
+    
+    /// - 내가 쓴 게시물 Fetch
+    func fetchMyPosts() async {
+        do {
+            var query: Query!
+            
+            if let paginationDoc {
+                query = Firestore.firestore().collection("Posts")
+                    .whereField("userUID", isEqualTo: userUID)
+                    .order(by: "publishedDate", descending: true)
+                    .start(afterDocument: paginationDoc)
+                    .limit(to: 20)
+            } else {
+                query = Firestore.firestore().collection("Posts")
+                    .whereField("userUID", isEqualTo: userUID)
+                    .order(by: "publishedDate", descending: true)
+                    .limit(to: 20)
+            }
+            
+            let docs = try await query.getDocuments()
+            let fetchedPosts = docs.documents.compactMap{
+                try? $0.data(as: Post.self)
+            }
+            
+            await MainActor.run {
+                posts.append(contentsOf: fetchedPosts)
+                paginationDoc = docs.documents.last
+                isFetching = false
+            }
+            
+        } catch {
+            print("FreeBoardViewModel - fetchMyPosts(): \(error.localizedDescription)")
+        }
+    }
+    
+    /// - 스크랩한 게시물 Fetch
+    func fetchScrapPosts() async {
+        do {
+            var query: Query!
+            
+            if let paginationDoc {
+                query = Firestore.firestore().collection("Posts")
+                    .whereField("scrapIDs", arrayContains: userUID)
+                    .order(by: "publishedDate", descending: true)
+                    .start(afterDocument: paginationDoc)
+                    .limit(to: 20)
+            } else {
+                query = Firestore.firestore().collection("Posts")
+                    .whereField("scrapIDs", arrayContains: userUID)
+                    .order(by: "publishedDate", descending: true)
+                    .limit(to: 20)
+            }
+            
+            let docs = try await query.getDocuments()
+            let fetchedPosts = docs.documents.compactMap{
+                try? $0.data(as: Post.self)
+            }
+            
+            await MainActor.run {
+                posts.append(contentsOf: fetchedPosts)
+                paginationDoc = docs.documents.last
+                isFetching = false
+            }
+            
+        } catch {
+            print("FreeBoardViewModel - fetchScrapPosts(): \(error.localizedDescription)")
         }
     }
 }

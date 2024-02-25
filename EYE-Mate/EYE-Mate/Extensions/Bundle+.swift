@@ -10,16 +10,23 @@ import Foundation
 // APIKEY 를 가져오기 위한 Bundle extension
 extension Bundle {
     var nmapClientId : String? {
-        guard let file = self.path(forResource: "APIKEY-Info", ofType: "plist"),
+        guard let file = self.path(forResource: "APIKEY", ofType: "plist"),
               let resource = NSDictionary(contentsOfFile: file),
               let key = resource["NmapClientId"] as? String else { return nil }
         return key
     }
     
     var nmapSecret : String? {
-        guard let file = self.path(forResource: "APIKEY-Info", ofType: "plist"),
+        guard let file = self.path(forResource: "APIKEY", ofType: "plist"),
               let resource = NSDictionary(contentsOfFile: file),
               let key = resource["NmapSecret"] as? String else { return nil }
+        return key
+    }
+    
+    var slackToken : String? {
+        guard let file = self.path(forResource: "APIKEY", ofType: "plist"),
+              let resource = NSDictionary(contentsOfFile: file),
+              let key = resource["SlackToken"] as? String else { return nil }
         return key
     }
     

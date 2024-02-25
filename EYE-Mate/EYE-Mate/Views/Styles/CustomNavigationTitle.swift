@@ -48,7 +48,7 @@ struct CustomNavigationTitle: View {
                                 .font(.pretendardBold_32)
                         }
                     case .movement:
-                        Text("눈운동")
+                        Text("눈 운동")
                             .font(.pretendardBold_32)
                     case .community:
                         Text("게시판")

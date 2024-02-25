@@ -14,12 +14,12 @@ struct SettingTitleModifier: ViewModifier {
                 RoundedRectangle(cornerRadius: 10.0)
                     .foregroundStyle(Color.tabGray)
                     .opacity(0.2)
-                    .frame(width: UIScreen.main.bounds.width - 70, height: 45)
+                    .frame(height: 45)
+                    .frame(maxWidth: .infinity)
             }
-            .frame(width: UIScreen.main.bounds.width - 70, height: 45)
     }
 }
 
-#Preview {
-    SettingTitleModifier() as! any View
-}
+//#Preview {
+//    SettingTitleModifier() as! any View
+//}

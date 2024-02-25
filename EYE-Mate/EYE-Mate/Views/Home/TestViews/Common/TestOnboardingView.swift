@@ -67,6 +67,10 @@ struct TestOnboardingView: View {
             .tabViewStyle(.page(indexDisplayMode: .always))
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
             .accentColor(.customGreen)
+            .onDisappear{
+                UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
+                UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
+            }
         } else {
             TabView {
                 VStack {
@@ -137,6 +141,10 @@ struct TestOnboardingView: View {
             .tabViewStyle(.page(indexDisplayMode: .always))
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
             .accentColor(.customGreen)
+            .onDisappear{
+                UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.white)
+                UIPageControl.appearance().pageIndicatorTintColor = UIColor(.white).withAlphaComponent(0.3)
+            }
         }
     }
 }
