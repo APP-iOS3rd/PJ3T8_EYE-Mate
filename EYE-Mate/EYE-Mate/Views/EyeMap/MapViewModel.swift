@@ -22,12 +22,12 @@ enum Key: String {
     case lng = "lng"
 }
 
-enum encodingPlace: String {
-    case hosiptal = "%EC%95%88%EA%B3%BC"
+enum EncodingPlace: String {
+    case hospital = "%EC%95%88%EA%B3%BC"
     case optician = "%EC%95%88%EA%B2%BD%EC%9B%90"
 }
 
-enum markerImageName: String {
+enum MarkerImageName: String {
     case hospital = "hospital_mark"
     case optician = "optician_mark"
 }
@@ -49,15 +49,15 @@ struct NaverMap: UIViewRepresentable {
 final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate {
     static let shared = MapCoordinator()
     // Coordinator 클래스 안의 코드
-    // 클래스 상단에 변수 설정을 해줘야 한다.
     @Published var coord: (Double, Double) = (0.0, 0.0)
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
     @Published var placeInfo: [String: String] = [:]
     @Published var resultInfo: [placeList] = []
     @Published var sheetFlag = false
-    var queryPlace: String = encodingPlace.hosiptal.rawValue
-    var markerImage: String = markerImageName.hospital.rawValue
+    @Published var selectedPicker: MapTopTapViewItem = .hospital
+    var queryPlace: String = EncodingPlace.hospital.rawValue
+    var markerImage: String = MarkerImageName.hospital.rawValue
     var hospitalsMarkers: [NMFMarker] = []
     var locationManager: CLLocationManager?
     let view = NMFNaverMapView(frame: .zero)

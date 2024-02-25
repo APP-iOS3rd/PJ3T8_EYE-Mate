@@ -31,22 +31,25 @@ struct SettingNavigationTitle: View {
     }
 
     var body: some View {
-        HStack(alignment: .center) {
-            Button(action: leftButtonAction) {
-                Image(systemName: leftButtonType.rawValue)
-                    .font(.system(size: 30))
-                    .foregroundColor(.black)
-                    .padding(.leading, 20)
-                
+        ZStack {
+            HStack {
+                Button(action: leftButtonAction) {
+                    Image(systemName: leftButtonType.rawValue)
+                        .font(.system(size: 30))
+                        .foregroundColor(.black)
+                        .padding(.leading, 20)
+                }
+                Spacer()
             }
-            Spacer()
             
-            if isDisplayTitle {
-                Text(title)
-                    .font(.pretendardSemiBold_24)
-                    .padding(.trailing, 20)
+            HStack {
+                Spacer()
+                if isDisplayTitle {
+                    Text(title)
+                        .font(.pretendardSemiBold_24)
+                }
+                Spacer()
             }
-            Spacer()
         }
         .padding(.bottom, 20)
     }

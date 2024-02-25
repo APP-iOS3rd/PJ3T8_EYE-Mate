@@ -15,7 +15,6 @@ enum MapTopTapViewItem : String, CaseIterable {
 struct MapTabBarView: View {
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
-    @State private var selectedPicker: MapTopTapViewItem = .hospital
     @Namespace private var animation
     
     var body: some View {
@@ -24,7 +23,7 @@ struct MapTabBarView: View {
             MapTopTabView()
             
             // 선택된 상단 Tab의 View Switching
-            switch selectedPicker {
+            switch coordinator.selectedPicker {
             case .hospital:
                 MapView()
             case .optician:
@@ -42,9 +41,9 @@ struct MapTabBarView: View {
                     Text(item.rawValue)
                         .frame(maxWidth: .infinity/2, minHeight: 30)
                         .font(.pretendardBold_24)
-                        .foregroundStyle(selectedPicker == item ? .black : .gray)
+                        .foregroundStyle(coordinator.selectedPicker == item ? .black : .gray)
                     
-                    if selectedPicker == item {
+                    if coordinator.selectedPicker == item {
                         Rectangle()
                             .foregroundStyle(Color.customGreen)
                             .frame(height: 3)
@@ -53,15 +52,15 @@ struct MapTabBarView: View {
                 }
                 .onTapGesture {
                     withAnimation {
-                        self.selectedPicker = item
-                        switch self.selectedPicker {
+                        coordinator.selectedPicker = item
+                        switch coordinator.selectedPicker {
                         case .hospital:
-                            coordinator.queryPlace = encodingPlace.hosiptal.rawValue
-                            coordinator.markerImage = markerImageName.hospital.rawValue
+                            coordinator.queryPlace = EncodingPlace.hospital.rawValue
+                            coordinator.markerImage = MarkerImageName.hospital.rawValue
                             coordinator.sheetFlag = false
                         case .optician:
-                            coordinator.queryPlace = encodingPlace.optician.rawValue
-                            coordinator.markerImage = markerImageName.optician.rawValue
+                            coordinator.queryPlace = EncodingPlace.optician.rawValue
+                            coordinator.markerImage = MarkerImageName.optician.rawValue
                             coordinator.sheetFlag = false
                         }
                     }
