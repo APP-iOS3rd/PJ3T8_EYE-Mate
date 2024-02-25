@@ -86,121 +86,110 @@ class ProfileViewModel: ObservableObject {
             }
             
         }
-}
-        
-        // MARK: - 닉네임 변경 - firestore update 함수
-        func updateNameToFirebase() {
-            let documentRef = db.collection("Users").document(self.userUID)
-            documentRef.updateData(["userName": self.userName]) { error in
-                if let error = error {
-                    print("Error updating document: \(error)")
-                } else {
-                    print("Username successfully updated")
-                }
+    }
+    
+    // MARK: - 닉네임 변경 - firestore update 함수
+    func updateNameToFirebase() {
+        let documentRef = db.collection("Users").document(self.userUID)
+        documentRef.updateData(["userName": self.userName]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("Username successfully updated")
             }
         }
-        
-        // MARK: - photospicker -> success 후 이미지 저장, userProfileURL도 저장
-        private func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
-            return imageSelection.loadTransferable(type: Data.self) { result in
-                DispatchQueue.main.async {
-                    guard imageSelection == self.imageSelection else { return }
-                    switch result {
-                    case let .success(data?):
-                        guard let uiImage = UIImage(data: data) else {
-                            self.imageState = .empty
-                            return
-                        }
-                        
-                        self.updateImageToStorage(image: uiImage) // 이미지 업로드 후 userProfileURL 까지 저장 완료
-                        self.imageState = .success
-                        self.profileImage = Image(uiImage: uiImage)
-                        
-                    case .success(.none):
-                        self.imageState = .empty
-                        
-                        // 기본이미지 넣기
-                    case let .failure(error):
-                        self.imageState = .failure(error)
-                        self.profileImage = Image(systemName: "exclamationmark.triangle.fill")
-                    }
-                }
-            }
-        }
-        
-        
-        // MARK: - 회원가입 - Firebase user정보 업로드
-        func uploadUserInfoToFirebase() {
-            Task {
-                do {
-                    let user = User(userName: self.userName, userUID: self.userUID, userImageURL: self.userProfileURL, left: "", right: "")
-                    
-                    let _ = try db.collection("Users").document(self.userUID).setData(from: user) { error in
-                        if error == nil {
-                            print("Saved Successfully")
-                            UserDefaults.standard.set(true, forKey: "Login")
-                        }
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        
-        // MARK: - 프로필 이미지 변경 시 이미지 업로드
-        @MainActor
-        func updateImageToStorage(image: UIImage) {
-            Task {
-                do {
-                    guard let imageData = image.pngData() else { return }
-                    let storageRef = Storage.storage().reference().child("Profile_Images").child("\(self.userUID).png")
-                    let _ = try await storageRef.putDataAsync(imageData)
-                    
-                    let downloadURL = try await storageRef.downloadURL()
-                    // 회원가입시 기본 url로 firestore에 저장된 경우, 값 업데이트
-                    if userProfileURL.contains("defaultImage.png") {
-                        self.userProfileURL = downloadURL.absoluteString
-                        updateImageURLToFirebase()
-                    }
-                    
-                } catch {
-                    print(error.localizedDescription)
-                }
-                return
-            }
-        }
-        
-        // MARK: - 회원가입 후 이미지 변경을 안했다면, URL update to firebase
-        func updateImageURLToFirebase() {
-            let documentRef = db.collection("Users").document(self.userUID)
-            documentRef.updateData(["userImageURL": self.userProfileURL]) { error in
-                if let error = error {
-                    print("Error updating document: \(error)")
-                } else {
-                    print("UserImageURL successfully updated", self.userProfileURL)
-                }
-            }
-            
-        }
-        
-        // MARK: - 로그인 된 상태에서 profileURL 이미지 다운 받는 함수
-        func downloadImageFromProfileURL() {
-            let downloader = ImageDownloader.default
-            let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 300))
-            
-            // uid가 저장 안된 기본 상태일 때는 기본 이미지 제공
-            guard let imageURL = URL(string: self.userProfileURL) else {
-                return print("Invalid image URL")
-            }
-            
-            downloader.downloadImage(with: imageURL, options: [.processor(processor)]) { result in
+    }
+    
+    // MARK: - photospicker -> success 후 이미지 저장, userProfileURL도 저장
+    private func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
+        return imageSelection.loadTransferable(type: Data.self) { result in
+            DispatchQueue.main.async {
+                guard imageSelection == self.imageSelection else { return }
                 switch result {
-                case .success(let value):
-                    self.profileImage = Image(uiImage: value.image)
-                    print("Current ImageURL:", self.userProfileURL)
-                case .failure(let error):
-                    print("Error downloading image: \(error)")
+                case let .success(data?):
+                    guard let uiImage = UIImage(data: data) else {
+                        self.imageState = .empty
+                        return
+                    }
+                    
+                    self.updateImageToStorage(image: uiImage) // 이미지 업로드 후 userProfileURL 까지 저장 완료
+                    self.imageState = .success
+                    self.profileImage = Image(uiImage: uiImage)
+                    
+                case .success(.none):
+                    self.imageState = .empty
+                    
+                    // 기본이미지 넣기
+                case let .failure(error):
+                    self.imageState = .failure(error)
+                    self.profileImage = Image(systemName: "exclamationmark.triangle.fill")
                 }
             }
         }
     }
+    
+    // MARK: - 회원가입 - Firebase user정보 업로드
+    @MainActor
+    func uploadUserInfoToFirebase() {
+        Task {
+            do {
+                if self.userProfileURL.contains("defaultImage.png") {
+                    let image = UIImage(named: "user")!
+                    guard let imageData = image.pngData() else { return }
+                    let storageRef = Storage.storage().reference().child("Profile_Images").child("\(self.userUID).png")
+                    let _ = try await storageRef.putDataAsync(imageData)
+                    // 아예 downloadURL을 가져와야함
+                    let downloadURL = try await storageRef.downloadURL()
+                    self.userProfileURL = downloadURL.absoluteString
+                }
+                
+                let user = User(userName: self.userName, userUID: self.userUID, userImageURL: self.userProfileURL, left: "", right: "")
+                
+                let _ = try db.collection("Users").document(self.userUID).setData(from: user) { error in
+                    if error == nil {
+                        print("Saved Successfully")
+                        UserDefaults.standard.set(true, forKey: "Login")
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - 프로필 이미지 변경 시 이미지 업로드
+    @MainActor
+    func updateImageToStorage(image: UIImage) {
+        Task {
+            do {
+                guard let imageData = image.pngData() else { return }
+                let storageRef = Storage.storage().reference().child("Profile_Images").child("\(self.userUID).png")
+                let _ = try await storageRef.putDataAsync(imageData)
+            } catch {
+                print(error.localizedDescription)
+            }
+            return
+        }
+    }
+    
+    // MARK: - 로그인 된 상태에서 profileURL 이미지 다운 받는 함수
+    func downloadImageFromProfileURL() {
+        let downloader = ImageDownloader.default
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 300))
+        
+        // uid가 저장 안된 기본 상태일 때는 기본 이미지 제공
+        guard let imageURL = URL(string: self.userProfileURL) else {
+            return print("Invalid image URL")
+        }
+        
+        downloader.downloadImage(with: imageURL, options: [.processor(processor)]) { result in
+            switch result {
+            case .success(let value):
+                self.profileImage = Image(uiImage: value.image)
+                print("Current ImageURL:", self.userProfileURL)
+            case .failure(let error):
+                print("Error downloading image: \(error)")
+            }
+        }
+    }
+}
