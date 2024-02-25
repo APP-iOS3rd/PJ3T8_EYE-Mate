@@ -44,50 +44,9 @@ struct CommentRowCellView: View {
                     .font(.pretendardSemiBold_12)
                 
                 Spacer()
-                
-                // MARK: 댓글 좋아요 Button
+              
                 HStack(spacing: 0) {
-                    Button {
-                        if loggedIn {
-                            commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
-                                onUpdateComment(postID, commentIndex)
-                            }
-                        } else {
-                            showAlert = true
-                        }
-                    } label: {
-                        Image(systemName: "heart")
-                            .font(.system(size: 12))
-                            .foregroundStyle(Color.white)
-                            .padding(5)
-                    }
-                    
-                    Image(systemName: "poweron")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.white)
-                    
-                    // MARK: 대댓글 기능 작성 필요
-                    // MARK: 대댓글 작성 Button
-                    Button {
-                        if loggedIn {
-                            commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
-                                startWritingReplyComment(commentID, commentIndex)
-                            }
-                        } else {
-                            showAlert = true
-                        }
-                    } label: {
-                        Image(systemName: "message")
-                            .font(.system(size: 12))
-                            .foregroundStyle(Color.white)
-                            .padding(5)
-                    }
-                    
-                    Image(systemName: "poweron")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.white)
-                    
-                    // TODO: 신고 기능 작성 필요
+                    // MARK: 신고 기능 작성 필요
                     // MARK: 댓글 신고, 삭제 메뉴
                     Menu {
                         if comment.userUID == commentVM.userUID {
@@ -117,11 +76,10 @@ struct CommentRowCellView: View {
                             .rotationEffect(.degrees(90))
                             .font(.system(size: 12))
                             .frame(height: 12)
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(Color(hex: "#5E6060"))
                             .padding(5)
                     }
                 }
-                .background(RoundedRectangle(cornerRadius: 6).foregroundStyle(Color.customGreen).opacity(1))
             }
             
             Text("\(comment.comment)")
@@ -131,19 +89,60 @@ struct CommentRowCellView: View {
             
             // MARK: 댓글 게시일, 좋아요 수
             HStack(alignment: .bottom){
+                // MARK: 댓글 게시일
                 Text("\(comment.publishedDate.formatted(date: .numeric, time: .shortened))")
                     .font(.pretendardRegular_12)
                     .foregroundStyle(.gray)
                     .padding(.leading, 15)
                     .padding(.top, 2)
                 
+                Text("∙")
+                    .font(.pretendardRegular_12)
+                    .foregroundStyle(Color(hex: "#898A8D"))
+                
+                // MARK: 좋아요 수
                 Image(systemName: comment.likedIDs.contains(commentVM.userUID) ? "heart.fill" : "heart")
-                    .foregroundStyle(Color.customRed)
+                    .foregroundStyle(comment.likedIDs.contains(commentVM.userUID) ? Color.customRed : Color(hex: "#929292"))
                     .padding(.trailing, -8)
                     .font(.system(size: 12))
                 
                 Text("\(comment.likedIDs.count)")
                     .font(.pretendardRegular_12)
+                    .foregroundStyle(Color(hex: "#898A8D"))
+                
+                // MARK: 좋아요 Button
+                Button {
+                    if loggedIn {
+                        commentVM.likeComment(commentID: comment.id){ postID, commentIndex in
+                            onUpdateComment(postID, commentIndex)
+                        }
+                    } else {
+                        showAlert = true
+                    }
+                } label: {
+                    Text(comment.likedIDs.contains(commentVM.userUID) ? "좋아요 취소" : "좋아요")
+                        .font(.pretendardRegular_12)
+                        .foregroundStyle(Color(hex: "#898A8D"))
+                }
+                
+                Text("∙")
+                    .font(.pretendardRegular_12)
+                    .foregroundStyle(Color(hex: "#898A8D"))
+
+                // MARK: 답글달기 Button
+                Button {
+                    if loggedIn {
+                        commentVM.startWritingReplyComment(commentID: comment.id) { commentID, commentIndex in
+                            startWritingReplyComment(commentID, commentIndex)
+                        }
+                    } else {
+                        showAlert = true
+                    }
+                } label: {
+                    Text("답글달기")
+                        .font(.pretendardRegular_12)
+                        .foregroundStyle(Color(hex: "#898A8D"))
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
