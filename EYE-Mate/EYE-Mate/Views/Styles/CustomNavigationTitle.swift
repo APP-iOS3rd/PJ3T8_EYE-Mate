@@ -13,8 +13,9 @@ struct CustomNavigationTitle: View {
     var isDisplayLeftButton: Bool = false
 
     @EnvironmentObject var router: Router
+    @EnvironmentObject var tabManager: TabManager
+    
     @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @ObservedObject var tabManager = TabManager.shared
 
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var tabManager = TabManager.shared
+    @EnvironmentObject var tabManager: TabManager
     
     @AppStorage("user_name") private var userName: String = "TestAccount"
     @AppStorage("user_UID") private var userUID: String = "mNnvAM9IlDdIu8fTZQpTICW37Np1"
@@ -48,12 +48,10 @@ struct MainView: View {
                 }
             }
         }
-        .environmentObject(tabManager)
     }
 }
 
 class TabManager: ObservableObject {
-    static let shared = TabManager()
     @Published var selection: TabBarItem = .home
 }
 

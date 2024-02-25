@@ -13,7 +13,8 @@ import FirebaseAuth
 struct EYE_MateApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @ObservedObject var router = Router()
+    @ObservedObject private var router = Router()
+    @ObservedObject private var tabManager = TabManager()
 
     var body: some Scene {
         WindowGroup {
@@ -58,6 +59,7 @@ struct EYE_MateApp: App {
                     }
             }
             .environmentObject(router)
+            .environmentObject(tabManager)
         }
     }
 }
