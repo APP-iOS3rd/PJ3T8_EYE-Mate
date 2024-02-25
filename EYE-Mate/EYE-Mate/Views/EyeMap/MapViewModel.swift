@@ -49,7 +49,6 @@ struct NaverMap: UIViewRepresentable {
 final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate {
     static let shared = MapCoordinator()
     // Coordinator 클래스 안의 코드
-    // 클래스 상단에 변수 설정을 해줘야 한다.
     @Published var coord: (Double, Double) = (0.0, 0.0)
     @Published var userLocation: (Double, Double) = (0.0, 0.0) // 현재 사용자 위치
     @Published var hospitals: [(Double, Double)] = []
