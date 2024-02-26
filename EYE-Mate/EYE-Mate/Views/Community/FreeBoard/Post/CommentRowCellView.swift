@@ -8,6 +8,7 @@
 import SwiftUI
 
 import Kingfisher
+import FirebaseFirestore
 
 // MARK: Firebase 설계 후 다시 작성 (지금은 View 확인용 틀)
 // MARK: 댓글 RowCell
@@ -17,8 +18,12 @@ struct CommentRowCellView: View {
     @ObservedObject var commentVM: CommentViewModel
     
     @Binding var showAlert: Bool
+    
+    @Binding var presentSheet: Bool
+    @Binding var declarationText: String
+    
     @AppStorage("Login") var loggedIn: Bool = false
-
+    
     // MARK: Local Data Update
     /// - 댓글 좋아요 업데이트
     var onUpdateComment: (String, Int) -> ()
@@ -40,6 +45,7 @@ struct CommentRowCellView: View {
                 
                 // MARK: 댓글 작성자 이름
                 Text("\(comment.userName)")
+//                Text("\(userName)")
                     .padding(.leading, 5)
                     .font(.pretendardSemiBold_12)
                 
@@ -63,7 +69,8 @@ struct CommentRowCellView: View {
                         } else {
                             Button(role: .destructive) {
                                 if loggedIn {
-                                    
+                                    presentSheet = true
+                                    declarationText = "commentDocumentID: \(String(describing: comment.id))\ncommentUserUID: \(comment.userUID)\ncommentText: \(comment.comment)\n"
                                 } else {
                                     showAlert = true
                                 }
@@ -90,7 +97,7 @@ struct CommentRowCellView: View {
             // MARK: 댓글 게시일, 좋아요 수
             HStack(alignment: .bottom){
                 // MARK: 댓글 게시일
-                Text("\(comment.publishedDate.formatted(date: .numeric, time: .shortened))")
+                Text("\(comment.publishedDate.getRelativeOrAbsoluteTime())")
                     .font(.pretendardRegular_12)
                     .foregroundStyle(.gray)
                     .padding(.leading, 15)
