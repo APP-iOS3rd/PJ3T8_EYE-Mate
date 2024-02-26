@@ -24,7 +24,7 @@ struct PostCardView: View {
                         .font(.pretendardSemiBold_14)
                         .lineLimit(1)
                     
-                    Text("\(post.publishedDate.formatted(date: .numeric, time: .shortened))")
+                    Text("\(post.publishedDate.getRelativeOrAbsoluteTime())")
                         .font(.pretendardRegular_10)
                         .foregroundStyle(.gray)
                 }
