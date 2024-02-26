@@ -96,7 +96,11 @@ struct OTPVerificationView: View {
                                 if isRegistered {
                                     loggedIn = true
                                     isDisplaySignUpText = false
-                                    router.navigateBack()
+                                    if loginViewModel.showFullScreenCover {
+                                        loginViewModel.showFullScreenCover.toggle()
+                                    } else {
+                                        router.navigateBack()
+                                    }
                                 }
                                 // 가입한 이력이 없는 경우
                                 else {

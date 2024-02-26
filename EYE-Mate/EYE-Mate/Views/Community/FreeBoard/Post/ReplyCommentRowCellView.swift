@@ -8,6 +8,7 @@
 import SwiftUI
 
 import Kingfisher
+import FirebaseFirestore
 
 // MARK: 대댓글 RowCell
 struct ReplyCommentRowCellView: View {
@@ -17,8 +18,12 @@ struct ReplyCommentRowCellView: View {
     @ObservedObject var commentVM: CommentViewModel
     
     @Binding var showAlert: Bool
+    
+    @Binding var presentSheet: Bool
+    @Binding var declarationText: String
+    
     @AppStorage("Login") var loggedIn: Bool = false
-
+    
     // MARK: Local Data Update
     /// - 대댓글 좋아요 업데이트
     var onUpdateReplyComment: (String, Int, Int) -> ()
@@ -64,7 +69,8 @@ struct ReplyCommentRowCellView: View {
                         } else {
                             Button(role: .destructive) {
                                 if loggedIn {
-                                    
+                                    presentSheet = true
+                                    declarationText = "\ncommentDocumentID: \(String(describing: commentID))\nreplyCommentUserUID: \(replyComment.userUID)\nreplyCommentText: \(replyComment.comment)\n"
                                 } else {
                                     showAlert = true
                                 }
@@ -92,7 +98,7 @@ struct ReplyCommentRowCellView: View {
             // MARK: 대댓글 게시일, 좋아요 수
             HStack(alignment: .bottom){
                 // MARK: 댓글 게시일
-                Text("\(replyComment.publishedDate.formatted(date: .numeric, time: .shortened))")
+                Text("\(replyComment.publishedDate.getRelativeOrAbsoluteTime())")
                     .font(.pretendardRegular_12)
                     .foregroundStyle(.gray)
                     .padding(.leading, 15)

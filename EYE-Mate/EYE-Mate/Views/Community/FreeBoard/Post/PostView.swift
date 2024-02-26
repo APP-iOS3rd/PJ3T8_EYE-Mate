@@ -8,6 +8,7 @@
 import SwiftUI
 
 import Kingfisher
+import SlackKit
 
 struct PostView: View {
     @StateObject var postVM: PostViewModel
@@ -32,6 +33,12 @@ struct PostView: View {
     /// - 게시물 수정
     var onEditPost: (String, String, String, [URL]?, [String]?) -> ()
     
+    private let declarationStrings: [String] = ["게시판 성격에 부적절함",
+                                        "같은 내용 도배",
+                                        "욕설/인신공격",
+                                        "음란/선정성",
+                                        "불법정보", "개인정보 노출", 
+                                        "상업적 광고 및 판매", "정당/정치인 비하 및 선거운동"]
     
     @FocusState var commentTextFieldIsFocused: Bool
     
@@ -40,7 +47,14 @@ struct PostView: View {
     @AppStorage("Login") var loggedIn: Bool = false
     @ObservedObject var loginViewModel = LoginViewModel.shared
     @State var showAlert: Bool = false
+
+    @State var presentSheet: Bool = false
+    @State var declarationIndex: Int = 0
+    @State var showDeclarationAlert: Bool = false
+    @ObservedObject var csViewModel: CustomerServiceViewModel = CustomerServiceViewModel()
+    @State var declarationText = ""
     
+    // MARK: - body
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -48,7 +62,7 @@ struct PostView: View {
                 
                 ScrollView{
                     // MARK: 게시물 내용
-                    PostContent(postVM: postVM, showAlert: $showAlert) { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
+                    PostContent(postVM: postVM, showAlert: $showAlert, presentSheet: $presentSheet, declarationText: $declarationText) { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
                         onEditPost(postID, postTitle, postContent, postImageURLs, imageReferenceIDs)
                     } onUpdate: { updatedPost in
                         /// 게시물 좋아요 업데이트
@@ -67,7 +81,7 @@ struct PostView: View {
                     
                     // MARK: 댓글
                     if !postVM.post.comments.isEmpty {
-                        CommentView(postVM: postVM, commentVM: CommentViewModel(comments: postVM.post.comments, selectedPostID: postVM.post.id, isLoading: $postVM.isLoading), showAlert: $showAlert)
+                        CommentView(postVM: postVM, commentVM: CommentViewModel(comments: postVM.post.comments, selectedPostID: postVM.post.id, isLoading: $postVM.isLoading), showAlert: $showAlert, presentSheet: $presentSheet, declarationText: $declarationText)
                         { postID, commentIndex, likedIDs in
                             /// 댓글 좋아요 업데이트
                             postVM.post.comments[commentIndex].likedIDs = likedIDs
@@ -121,6 +135,20 @@ struct PostView: View {
                         showAlert = false
                     })
             }
+            
+            if showDeclarationAlert {
+                CustomAlertView(
+                    title: "\(declarationStrings[declarationIndex])",
+                    message: "신고 사유에 해당하는지 검토 후 처리됩니다.",
+                    leftButtonTitle: "취소",
+                    leftButtonAction: { showDeclarationAlert = false },
+                    rightButtonTitle: "신고",
+                    rightButtonAction: {
+                        showDeclarationAlert = false
+                        // Slack 전송
+                        csViewModel.sendMessage(menu: CustomerServiceMenu.Name.report, text: "postDocumentID: \(String(describing: postVM.post.id!))\n\(declarationText)\n신고 사유: \(declarationStrings[declarationIndex])\n")
+                    })
+            }
         } // ZStack
         .vAlign(.top)
         .navigationBarTitleDisplayMode(.inline)
@@ -169,9 +197,16 @@ struct PostView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut(duration: 0.2), value: showAlert)
+        .onChange(of: loggedIn) { newValue in
+            print("\(loggedIn)")
+        }
+        .sheet(isPresented: $presentSheet, content: {
+            DeclarationView()
+        })
     }
     
-    // MARK: 댓글 입력 View
+    // MARK: - 댓글 입력 View
     @ViewBuilder
     func CommentInputView() -> some View {
         HStack(alignment: .bottom) {
@@ -235,5 +270,39 @@ struct PostView: View {
         .onTapGesture {
             commentTextFieldIsFocused = true
         }
+    }
+    
+    // MARK: - 신고 Sheet
+    @ViewBuilder
+    func DeclarationView() -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Image(systemName: "light.beacon.max.fill")
+                    .foregroundStyle(.red)
+                    .font(.system(size: 20))
+                Text("신고")
+                    .font(.pretendardBold_20)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, 15)
+            
+            ForEach(declarationStrings.indices, id: \.self) { index in
+                Button {
+                    declarationIndex = index
+                    presentSheet = false
+                    showDeclarationAlert = true
+                } label: {
+                    Text("\(declarationStrings[index])")
+                        .font(.pretendardMedium_16)
+                        .foregroundStyle(.black)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                HorizontalDivider(color: Color(hex: "#D9D9D9"), height: 1)
+            }
+        }
+        .padding(.horizontal)
+        .presentationDetents([.medium, .large])
     }
 }
