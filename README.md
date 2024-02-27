@@ -1,25 +1,21 @@
-# PJ3T8_EYE-Mate
+# EYE-Mate
 
 <p align="center">
-<img
-  src="readme-asset/main-picture.png" width = 100%/>
+<img src="readme-asset/main-picture.png" width = 100%/>
 </p>
 
-### 목차
-
-1. [📝 프로젝트 설명](#프로젝트-설명)
-2. [🛠️ 프로젝트 기능](#프로젝트-기능)
-3. [🌐 프로젝트 환경](#프로젝트-환경)
-4. [💻 프로젝트 기술](#프로젝트-기술)
+### 🗂️ 목차
+1. [앱 소개](#앱-소개)
+2. [개발 환경](#개발-환경)
    - [프로젝트 아키텍처](#프로젝트-아키텍처)
    - [사용한 기술](#사용한-기술)
    - [사용한 라이브러리](#사용한-라이브러리)
-5. [📁 프로젝트 파일 구조](#프로젝트-파일-구조)
-6. [👨‍💻 팀원 소개](#팀원-소개)
+3. [프로젝트 파일 구조](#프로젝트-파일-구조)
+4. [팀원 소개](#팀원-소개)
 
 </br>
 
-## 📝 프로젝트 설명
+## 📝 앱 소개
 
 ### 내 눈을 지켜주는 친구, EYE-Mate
 
@@ -31,8 +27,7 @@
 
 </br>
 
-## 🛠️ 프로젝트 기능
-
+### 👀 주요 기능
 - 거리 측정으로 시력, 색각, 난시, 시야 총 4가지 검사를 수행
 - Lottie를 활용해 눈 운동 기능 제공하여 눈 건강 개선
 - 사용자의 눈 상태를 기록하고 관리하는 개인 메뉴 제공
@@ -41,60 +36,30 @@
 
 </br>
 
-## 🌐 프로젝트 환경
+## 🌐 개발 환경
 
-### 개발 환경
+![XCode](https://img.shields.io/badge/Xcode-147EFB?style=for-the-badge&logo=Xcode&logoColor=white) ![Swift](https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=Swift&logoColor=white)
+![Github](https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white)  ![iOS](https://img.shields.io/badge/iOS-ffffff?style=for-the-badge&logo=iOS&logoColor=black)
+```markdown
+XCode: 15.2
+Swift: 5.9.2
+iOS: 16.0
+```
 
-<table>
-  <tr>
-    <td align="center">
-      <a>
-        <img src="https://github.com/htj7425/Algorithm/assets/43903354/e5c268ef-000a-43a8-a7fa-2a3cac1f0586" height = "35"/>
-      </a><br />
-      <sub><b>XCode</b></sub><br />15.2</a><br/>
-    </td>
-    <td align="center">
-      <a>
-        <img src="https://github.com/htj7425/Algorithm/assets/43903354/9d835823-f521-4381-80c2-db395f55b1ad" height = "30"/>
-      </a><br />
-      <sub><b>Swift</b></sub><br />5.9.2</a><br/>
-    </td>
-    <td align="center">
-      <a>
-        <img style="border-radius: 50%" src="https://github.com/htj7425/Algorithm/assets/43903354/8afec94f-9472-49f7-a9a9-ed49e02721af" height = "30" alt=""/>
-      </a><br />
-      <sub><b>Github</b></sub><br /></a><br/>
-    </td>
-  </tr>
-</table>
-
-### 앱 타겟
-
-<table>
-  <tr>
-    <td align="center">
-      <a>
-        <img src="https://github.com/htj7425/Algorithm/assets/43903354/a38f7778-01e9-4063-9398-d3688eccc2e5" height = "30"/>
-      </a><br />
-      <sub><b>iOS</b></sub><br />16.0</a><br/>
-    </td>
-  </tr>
-</table>
-
-</br>
-
-## 💻 프로젝트 기술
+## 💻 프로젝트 기술
 
 ### 프로젝트 아키텍처
 
-#### MVVM
+<div align="center">
+  
+| MVVM |  
+|:----------:|
+| <img src="readme-asset/pattern-picture.png" height = "300"/> |  
 
-<p align="center">
-<img src="readme-asset/pattern-picture.png" height = "300"/>
-</p>
+</div>
 
 ### 사용한 기술
-
+<hr>
 <details>
   <summary>SwiftUI</summary>
 
@@ -149,7 +114,7 @@
 </details>
 
 ### 사용한 라이브러리
-
+<hr>
 <details>
   <summary>AcknowList</summary>
 
@@ -210,7 +175,7 @@
 - 고객센터, 게시판 신고 기능 구현
 </details>
 
-## 📁 프로젝트 파일 구조
+## 📂 프로젝트 파일 구조
 
 <details>
   <summary>파일 트리</summary>
@@ -417,7 +382,7 @@
 ```
 </details>
 
-## 👨‍💻 팀원 소개
+## 👨‍💻 팀원 소개
 
 |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/07402f32-3af2-476a-9705-73398b284363" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/64d9618e-d4d6-43a2-89b1-a466839416ca" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/a2ee13cd-86dc-4e28-bddf-7ead973a20b3" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/4644a125-4d05-40e0-a798-715e3238a747" width="500">                |
 | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: |
