@@ -78,25 +78,27 @@ struct RecordView: View {
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .navigationBarBackButtonHidden()
         .task {
-            do {
-                try await recordViewModel.fetchVisionRecord(uid: userUID)
-            } catch {
-                print("Error fetching vision records: \(error)")
-            }
-            do {
-                try await recordViewModel.fetchColorVisionRecord(uid: userUID)
-            } catch {
-                print("Error fetching colorVision records: \(error)")
-            }
-            do {
-                try await recordViewModel.fetchAstigmatismRecord(uid: userUID)
-            } catch {
-                print("Error fetching astigmatism records: \(error)")
-            }
-            do {
-                try await recordViewModel.fetchEyesightRecord(uid: userUID)
-            } catch {
-                print("Error fetching eyesight records: \(error)")
+            if userUID != "" {
+                do {
+                    try await recordViewModel.fetchVisionRecord(uid: userUID)
+                } catch {
+                    print("Error fetching vision records: \(error)")
+                }
+                do {
+                    try await recordViewModel.fetchColorVisionRecord(uid: userUID)
+                } catch {
+                    print("Error fetching colorVision records: \(error)")
+                }
+                do {
+                    try await recordViewModel.fetchAstigmatismRecord(uid: userUID)
+                } catch {
+                    print("Error fetching astigmatism records: \(error)")
+                }
+                do {
+                    try await recordViewModel.fetchEyesightRecord(uid: userUID)
+                } catch {
+                    print("Error fetching eyesight records: \(error)")
+                }
             }
         }
     }
@@ -111,7 +113,9 @@ struct RecordView: View {
                         .font(.pretendardBold_20)
                     Spacer()
                     Button {
-                        router.navigate(to: .allRecord(recordType: recordType))
+                        if userUID != "" {
+                            router.navigate(to: .allRecord(recordType: recordType))
+                        }
                     } label: {
                         Text("모두보기")
                             .font(.pretendardRegular_14)
@@ -132,7 +136,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
                                             HStack{
@@ -168,7 +172,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         ColoredText(receivedText: "\(data.status)", font: .pretendardBold_20)
                                         Spacer()
@@ -191,7 +195,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
                                             HStack{
@@ -226,7 +230,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
                                             HStack{

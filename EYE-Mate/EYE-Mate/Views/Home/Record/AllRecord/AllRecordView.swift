@@ -197,8 +197,7 @@ struct AllRecordView: View {
                                 //                                    .font(.pretendardRegular_16)
                                 //                                    .foregroundStyle(.gray)
                             }
-
-                            Spacer().frame(width: 32)
+                            Spacer()
                             HStack(spacing: 16) {
                                 Text("좌")
                                     .font(.pretendardSemiBold_18)
@@ -210,7 +209,6 @@ struct AllRecordView: View {
                                     .font(.pretendardSemiBold_18)
                                 ColoredText(receivedText: "\(data.right)", font: .custom("NotoSansKR-Bold", size: 28))
                             }
-                            Spacer()
                         }
                         .swipeActions {
                             if !isDeleteMode {
