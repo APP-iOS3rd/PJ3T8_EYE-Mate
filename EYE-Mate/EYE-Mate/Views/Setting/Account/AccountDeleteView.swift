@@ -76,8 +76,8 @@ struct AccountDeleteView: View {
                     }, rightButtonTitle: "확인", rightButtonAction: {
                         // MARK: - 탈퇴하기(유저 정보 삭제)
                         // storage, store, auth, appstorage 삭제
-                        accountDeleteViewModel.deleteUserImageFromStorage()
-                        accountDeleteViewModel.deleteUserInfoFromStore()
+//                        accountDeleteViewModel.deleteUserImageFromStorage()
+//                        accountDeleteViewModel.deleteUserInfoFromStore()
                         accountDeleteViewModel.deleteUserDefaults()
                         presentationMode.wrappedValue.dismiss()
                         isSignoutAlert = false
