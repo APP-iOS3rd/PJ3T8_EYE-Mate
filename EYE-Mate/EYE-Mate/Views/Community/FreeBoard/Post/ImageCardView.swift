@@ -18,6 +18,7 @@ struct ImageCardView: View {
             HStack(spacing: 0) {
                 ForEach(imageURLs.indices, id: \.self) { index in
                     Button {
+                        hideKeyboard()
                         postVM.selectedImageIndex = index
                         withAnimation {
                             postVM.showImageViewer.toggle()
