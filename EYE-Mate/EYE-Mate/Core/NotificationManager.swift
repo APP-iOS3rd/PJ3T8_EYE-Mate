@@ -30,8 +30,8 @@ class NotificationManager {
         print("scheduleNotification called")
         
         let content = UNMutableNotificationContent()
-        content.title = "눈운동 할 시간이에요!"
-        content.body = "눈건강을 위해 EYE-Mate를 찾아주세요!"
+        content.title = "눈 운동 할 시간이에요!"
+        content.body = "눈 건강을 위해 EYE-Mate를 찾아주세요!"
         content.sound = .default
         
         // 특정 시간

@@ -54,7 +54,7 @@ struct CustomNavigationTitle: View {
                         Text("게시판")
                             .font(.pretendardBold_32)
                     case .eyeMap:
-                        Text("내주변")
+                        Text("내 주변")
                             .font(.pretendardBold_32)
                     }
                 } else {

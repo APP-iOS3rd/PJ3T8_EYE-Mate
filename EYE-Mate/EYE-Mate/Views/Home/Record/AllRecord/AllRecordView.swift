@@ -197,8 +197,7 @@ struct AllRecordView: View {
                                 //                                    .font(.pretendardRegular_16)
                                 //                                    .foregroundStyle(.gray)
                             }
-
-                            Spacer().frame(width: 32)
+                            Spacer()
                             HStack(spacing: 16) {
                                 Text("좌")
                                     .font(.pretendardSemiBold_18)
@@ -210,7 +209,6 @@ struct AllRecordView: View {
                                     .font(.pretendardSemiBold_18)
                                 ColoredText(receivedText: "\(data.right)", font: .custom("NotoSansKR-Bold", size: 28))
                             }
-                            Spacer()
                         }
                         .swipeActions {
                             if !isDeleteMode {
@@ -224,6 +222,7 @@ struct AllRecordView: View {
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
+                        .padding(.trailing, 24)
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
@@ -277,6 +276,7 @@ struct AllRecordView: View {
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
+                        .padding(.trailing, 24)
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
@@ -340,6 +340,7 @@ struct AllRecordView: View {
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
+                        .padding(.trailing, 24)
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)
@@ -403,6 +404,7 @@ struct AllRecordView: View {
                         .frame(height: 100)
                         .frame(maxWidth: .infinity)
                         .padding(.leading, 24)
+                        .padding(.trailing, 24)
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(color: .black.opacity(0.25), radius: 4, x: 2, y: 2)

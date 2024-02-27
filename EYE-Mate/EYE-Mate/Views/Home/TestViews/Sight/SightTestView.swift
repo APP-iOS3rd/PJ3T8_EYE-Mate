@@ -115,7 +115,7 @@ private struct SightRight: View {
                         VStack {
                             HStack(alignment: .lastTextBaseline) {
                                 Spacer()
-                                Text("현재거리 ")
+                                Text("현재 거리 ")
                                     .font(.pretendardRegular_30)
                                 Text("\(distance.distance)")
                                     .font(.pretendardRegular_40)
@@ -229,7 +229,7 @@ private struct SightLeft: View {
                         VStack {
                             HStack(alignment: .lastTextBaseline) {
                                 Spacer()
-                                Text("현재거리 ")
+                                Text("현재 거리 ")
                                     .font(.pretendardRegular_30)
                                 Text("\(distance.distance)")
                                     .font(.pretendardRegular_40)

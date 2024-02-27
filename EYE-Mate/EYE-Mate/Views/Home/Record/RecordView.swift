@@ -13,8 +13,9 @@ struct RecordView: View {
 
     @ObservedObject private var recordViewModel = RecordViewModel.shared
     @ObservedObject private var viewModel = HomeViewModel.shared
+    @ObservedObject var loginViewModel = LoginViewModel.shared
 
-    @State private var visions = []
+    @State var showLoginAlert: Bool = false
 
     private func goBack() {
         router.navigateBack()
@@ -30,75 +31,99 @@ struct RecordView: View {
     }()
 
     var body: some View {
-        VStack(spacing: 0) {
-            CustomNavigationTitle(title: "기록",
-                                  isDisplayLeftButton: true)
+        ZStack {
+            VStack(spacing: 0) {
+                CustomNavigationTitle(title: "기록",
+                                      isDisplayLeftButton: true)
 
-            Spacer()
+                Spacer()
 
-            HorizontalDivider(color: Color.customGreen, height: 4)
-            ScrollView {
-                VStack(spacing: 24) {
-                    HStack {
-                        Spacer()
-                        Button {
-                            router.navigate(to: .addRecord)
-                        } label: {
-                            RoundedRectangle(cornerRadius: 16)
-                                .frame(width: 132, height: 32)
-                                .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
-                                .foregroundStyle(Color.white)
-                                .overlay{
-                                    HStack {
-                                        Image(systemName: "plus")
-                                            .foregroundStyle(Color.customGreen)
-                                            .font(.system(size: 20))
-                                        Text("기록 추가하기")
-                                            .font(.pretendardRegular_16)
-                                            .foregroundColor(.black)
-                                    }
+                HorizontalDivider(color: Color.customGreen, height: 4)
+                ScrollView {
+                    VStack(spacing: 24) {
+                        HStack {
+                            Spacer()
+                            Button {
+                                if userUID == "" {
+                                    showLoginAlert = true
+                                } else {
+                                    router.navigate(to: .addRecord)
                                 }
+                            } label: {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .frame(width: 132, height: 32)
+                                    .shadow(color: Color(white: 0.0, opacity: 0.25), radius: 6, x: 2, y: 2)
+                                    .foregroundStyle(Color.white)
+                                    .overlay{
+                                        HStack {
+                                            Image(systemName: "plus")
+                                                .foregroundStyle(Color.customGreen)
+                                                .font(.system(size: 20))
+                                            Text("기록 추가하기")
+                                                .font(.pretendardRegular_16)
+                                                .foregroundColor(.black)
+                                        }
+                                    }
+                            }
                         }
-                    }
 
-                    RecordDataBox(recordType: .vision)
-                    if recordViewModel.recentVisionRecords.isEmpty {
-                        EmptyVisionChart()
-                    } else {
-                        VisionChart(visionRecords: recordViewModel.recentVisionRecords)
+                        RecordDataBox(recordType: .vision)
+                        if recordViewModel.recentVisionRecords.isEmpty {
+                            EmptyVisionChart()
+                        } else {
+                            VisionChart(visionRecords: recordViewModel.recentVisionRecords)
+                        }
+                        RecordDataBox(recordType: .colorVision)
+                        RecordDataBox(recordType: .astigmatism)
+                        RecordDataBox(recordType: .eyesight)
+                    }.padding(16)
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.lightGray)
+            .scrollIndicators(ScrollIndicatorVisibility.hidden)
+            .navigationBarBackButtonHidden()
+            .task {
+                if userUID != "" {
+                    do {
+                        try await recordViewModel.fetchVisionRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching vision records: \(error)")
                     }
-                    RecordDataBox(recordType: .colorVision)
-                    RecordDataBox(recordType: .astigmatism)
-                    RecordDataBox(recordType: .eyesight)
-                }.padding(16)
+                    do {
+                        try await recordViewModel.fetchColorVisionRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching colorVision records: \(error)")
+                    }
+                    do {
+                        try await recordViewModel.fetchAstigmatismRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching astigmatism records: \(error)")
+                    }
+                    do {
+                        try await recordViewModel.fetchEyesightRecord(uid: userUID)
+                    } catch {
+                        print("Error fetching eyesight records: \(error)")
+                    }
+                }
+            }
+            if showLoginAlert {
+                CustomAlertView(
+                    title: "저희 아직 친구가 아니네요.",
+                    message: "로그인이 필요해요!",
+                    leftButtonTitle: "취소",
+                    leftButtonAction: { showLoginAlert = false },
+                    rightButtonTitle: "로그인",
+                    rightButtonAction: {
+                        loginViewModel.showFullScreenCover.toggle()
+                        showLoginAlert = false
+                    })
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.lightGray)
-        .scrollIndicators(ScrollIndicatorVisibility.hidden)
-        .navigationBarBackButtonHidden()
-        .task {
-            do {
-                try await recordViewModel.fetchVisionRecord(uid: userUID)
-            } catch {
-                print("Error fetching vision records: \(error)")
-            }
-            do {
-                try await recordViewModel.fetchColorVisionRecord(uid: userUID)
-            } catch {
-                print("Error fetching colorVision records: \(error)")
-            }
-            do {
-                try await recordViewModel.fetchAstigmatismRecord(uid: userUID)
-            } catch {
-                print("Error fetching astigmatism records: \(error)")
-            }
-            do {
-                try await recordViewModel.fetchEyesightRecord(uid: userUID)
-            } catch {
-                print("Error fetching eyesight records: \(error)")
-            }
-        }
+        .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
+            LoginView(isAlertView: true)
+        })
+        .animation(.easeInOut(duration: 0.1), value: showLoginAlert)
     }
 
 
@@ -111,7 +136,11 @@ struct RecordView: View {
                         .font(.pretendardBold_20)
                     Spacer()
                     Button {
-                        router.navigate(to: .allRecord(recordType: recordType))
+                        if userUID == "" {
+                            showLoginAlert = true
+                        } else {
+                            router.navigate(to: .allRecord(recordType: recordType))
+                        }
                     } label: {
                         Text("모두보기")
                             .font(.pretendardRegular_14)
@@ -132,7 +161,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
                                             HStack{
@@ -168,7 +197,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         ColoredText(receivedText: "\(data.status)", font: .pretendardBold_20)
                                         Spacer()
@@ -191,7 +220,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
                                             HStack{
@@ -226,7 +255,7 @@ struct RecordView: View {
                                     HStack {
                                         Text("\(RecordView.dateFormat.string(from: data.publishedDate))")
                                             .font(.custom("NotoSansKR-Regular", size: 16))
-                                            .frame(width: 120, alignment: .leading)
+                                            .frame(alignment: .leading)
                                         Spacer()
                                         HStack(spacing: 32) {
                                             HStack{

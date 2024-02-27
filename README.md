@@ -1,17 +1,19 @@
 # PJ3T8_EYE-Mate
+
 <p align="center">
 <img
   src="readme-asset/main-picture.png" width = 100%/>
 </p>
 
 ### 목차
-1. [📝 프로젝트 설명](#프로젝트-설명)   
-2. [🛠️ 프로젝트 기능](#프로젝트-기능)   
-3. [🌐 프로젝트 환경](#프로젝트-환경)   
+
+1. [📝 프로젝트 설명](#프로젝트-설명)
+2. [🛠️ 프로젝트 기능](#프로젝트-기능)
+3. [🌐 프로젝트 환경](#프로젝트-환경)
 4. [💻 프로젝트 기술](#프로젝트-기술)
-    - [프로젝트 아키텍처](#프로젝트-아키텍처)
-    - [사용한 기술](#사용한-기술)
-    - [사용한 라이브러리](#사용한-라이브러리)   
+   - [프로젝트 아키텍처](#프로젝트-아키텍처)
+   - [사용한 기술](#사용한-기술)
+   - [사용한 라이브러리](#사용한-라이브러리)
 5. [📁 프로젝트 파일 구조](#프로젝트-파일-구조)
 6. [👨‍💻 팀원 소개](#팀원-소개)
 
@@ -20,17 +22,19 @@
 ## 📝 프로젝트 설명
 
 ### 내 눈을 지켜주는 친구, EYE-Mate
+
 > **EYE-Mate는 눈 건강 관리 및 커뮤니티 플랫폼입니다.**</br></br>
-> 
->❓현대인들의 눈에 대한 피로도는 갈수록 상승하고 있습니다!</br></br>
+>
+> ❓현대인들의 눈에 대한 피로도는 갈수록 상승하고 있습니다!</br></br>
 > 저희 EYE-Mate는 사용자들의 지속적인 눈 건강 로드맵을 통해 현대 사람들의 눈 건강 관리에 도움을 줄 수 있으며</br>
 > 내일의 하늘이 오늘의 하늘 만큼 밝기를 목표로 하고있습니다.
 
 </br>
 
 ## 🛠️ 프로젝트 기능
+
 - 거리 측정으로 시력, 색각, 난시, 시야 총 4가지 검사를 수행
-- Lotti를 활용해 눈 운동 기능 제공하여 눈 건강 개선
+- Lottie를 활용해 눈 운동 기능 제공하여 눈 건강 개선
 - 사용자의 눈 상태를 기록하고 관리하는 개인 메뉴 제공
 - 눈 건강과 관련된 정보 공유 및 소통을 위한 커뮤니티 제공
 - 내 주변 안경원 및 안과 정보 제공
@@ -38,6 +42,7 @@
 </br>
 
 ## 🌐 프로젝트 환경
+
 ### 개발 환경
 
 <table>
@@ -63,9 +68,8 @@
   </tr>
 </table>
 
-
-
 ### 앱 타겟
+
 <table>
   <tr>
     <td align="center">
@@ -82,24 +86,27 @@
 ## 💻 프로젝트 기술
 
 ### 프로젝트 아키텍처
+
 #### MVVM
+
 <p align="center">
 <img src="readme-asset/pattern-picture.png" height = "300"/>
 </p>
 
 ### 사용한 기술
+
 <details>
   <summary>SwiftUI</summary>
 
-  - 선언형, 자동화, 조합, 데이터 업데이트 및 최신화 4가지 원칙을 기반으로 설계되어 어디서든 더 적은 코드, 더 좋은 코드를 작성 가능
+- 선언형, 자동화, 조합, 데이터 업데이트 및 최신화 4가지 원칙을 기반으로 설계되어 어디서든 더 적은 코드, 더 좋은 코드를 작성 가능
 </details>
 
 <details>
   <summary>UIKit</summary>
 
-  - ARKit, NaverMap, Lottie를 사용하는데에 있어서 호환성을 제공하기 위해 UIKit이 사용되었음
-  - UIKit을 활용하여 선언적 UI 프레임워크인 SwiftUI에서 사용할 수 없는 코드나 기능을 구현하거나 기존에 개발된 UIKit 코드와 통합
-  - 이를 통해 SwiftUI로 개발하면서도 UIKit의 강력한 기능과 생태계를 활용할 수 있었음
+- ARKit, NaverMap, Lottie를 사용하는데에 있어서 호환성을 제공하기 위해 UIKit이 사용되었음
+- UIKit을 활용하여 선언적 UI 프레임워크인 SwiftUI에서 사용할 수 없는 코드나 기능을 구현하거나 기존에 개발된 UIKit 코드와 통합
+- 이를 통해 SwiftUI로 개발하면서도 UIKit의 강력한 기능과 생태계를 활용할 수 있었음
 </details>
 
 <details>
@@ -138,72 +145,73 @@
   
   - 애플리케이션에서 위치 기반 서비스를 활용하기 위한 기능을 제공하는 프레임워크
   - 사용자의 현재 위치 정보를 가져오고, 지리적인 위치 정보를 사용하여 애플레케이션에서 위치 기반 서비스를 제공하는데 사용됨
-  - 내주변 탭, 눈 검사 결과 화면에서 사용자 주변의 안과, 안경점 정보를 제공하기 위해 현재 사용자 위치를 파악하는데 사용
+  - 내 주변 탭, 눈 검사 결과 화면에서 사용자 주변의 안과, 안경점 정보를 제공하기 위해 현재 사용자 위치를 파악하는데 사용
 </details>
 
 ### 사용한 라이브러리
+
 <details>
   <summary>AcknowList</summary>
 
-  - 앱에서 사용된 오픈 소스 라이브러리나 이미지 등의 자산에 대한 정보를 앱의 설정 또는 정보 섹션에 표시하기 위해 사용한 라이브러리
-  - 오픈소스 라이선스 기능 구현
+- 앱에서 사용된 오픈 소스 라이브러리나 이미지 등의 자산에 대한 정보를 앱의 설정 또는 정보 섹션에 표시하기 위해 사용한 라이브러리
+- 오픈소스 라이선스 기능 구현
 </details>
 <details>
   <summary>FirebaseCore</summary>
 
-  - Firebase Authentication, Firebase Firestore, Firebase Storage, Firebase Cloud Messaging과 같은 Firebase 서비스 모듈을 사용하기 위한 라이브러리
+- Firebase Authentication, Firebase Firestore, Firebase Storage, Firebase Cloud Messaging과 같은 Firebase 서비스 모듈을 사용하기 위한 라이브러리
 </details>
 <details>
   <summary>FirebaseAuth</summary>
 
-   - 사용자 인증을 구현하기 위해 사용한 라이브러리
-   - 회원가입 및 로그인 기능 구현
+- 사용자 인증을 구현하기 위해 사용한 라이브러리
+- 회원가입 및 로그인 기능 구현
 </details>
 <details>
   <summary>FirebaseFirestore</summary>
 
-  - 실시간 데이터를 저장, 동기화 및 쿼리하기 위해 사용한 라이브러리
-  - 사용자의 데이터 관리
+- 실시간 데이터를 저장, 동기화 및 쿼리하기 위해 사용한 라이브러리
+- 사용자의 데이터 관리
 </details>
 <details>
   <summary>FirebaseStorage</summary>
 
-  - 사용자가 업로드한 파일을 안전하게 저장하고 관리하기 위해 사용한 라이브러리
-  - 프로필 이미지와 게시물 이미지 관리
+- 사용자가 업로드한 파일을 안전하게 저장하고 관리하기 위해 사용한 라이브러리
+- 프로필 이미지와 게시물 이미지 관리
 </details>
 <details>
   <summary>FirebaseMessaging</summary>
 
-  - 사용자에게 푸시 알림을 전송하기 위해 사용한 라이브러리
-  - 푸시 알림 기능 구현
+- 사용자에게 푸시 알림을 전송하기 위해 사용한 라이브러리
+- 푸시 알림 기능 구현
 </details>
 <details>
   <summary>Kingfisher</summary>
 
-  - 이미지 다운로드 및 캐싱을 담당하는 라이브러리
-  - 이미지 관련 작업을 간편하게 처리하고 성능 최적화
+- 이미지 다운로드 및 캐싱을 담당하는 라이브러리
+- 이미지 관련 작업을 간편하게 처리하고 성능 최적화
 </details>
 <details>
   <summary>lottie-ios</summary>
 
-  - 앱에 애니메이션을 추가하기 위해 사용한 라이브러리
-  - 눈 운동 기능 구현
+- 앱에 애니메이션을 추가하기 위해 사용한 라이브러리
+- 눈 운동 기능 구현
 </details>
 <details>
   <summary>NMapsMap</summary>
 
-  - 지도를 표시하고 사용자 위치를 표시하거나 추적, 마커를 추가하고 사용자 인터랙션을 처리하기 위한 라이브러리
-  - 내 주변 안과 및 안경원 기능 구현
+- 지도를 표시하고 사용자 위치를 표시하거나 추적, 마커를 추가하고 사용자 인터랙션을 처리하기 위한 라이브러리
+- 내 주변 안과 및 안경원 기능 구현
 </details>
 <details>
   <summary>SlackKit</summary>
 
-  - Slack 워크스페이스로 메시지를 보내기 위해 사용한 라이브러리
-  - 고객센터, 게시판 신고 기능 구현
+- Slack 워크스페이스로 메시지를 보내기 위해 사용한 라이브러리
+- 고객센터, 게시판 신고 기능 구현
 </details>
 
-
 ## 📁 프로젝트 파일 구조
+
 <details>
   <summary>파일 트리</summary>
   
@@ -410,7 +418,8 @@
 </details>
 
 ## 👨‍💻 팀원 소개
- <img src="https://github.com/htj7425/Algorithm/assets/43903354/07402f32-3af2-476a-9705-73398b284363" width="500"> | <img src="https://github.com/htj7425/Algorithm/assets/43903354/64d9618e-d4d6-43a2-89b1-a466839416ca" width="500"> | <img src="https://github.com/htj7425/Algorithm/assets/43903354/a2ee13cd-86dc-4e28-bddf-7ead973a20b3" width="500"> | <img src="https://github.com/htj7425/Algorithm/assets/43903354/4644a125-4d05-40e0-a798-715e3238a747" width="500">
- :---------:|:----------:|:---------:|:---------:
- [오성준](https://github.com/sunujun) | [이민영](https://github.com/Mminy62) | [이성현](https://github.com/zxl3651) | [하태준](https://github.com/htj7425)
-<a href="https://github.com/sunujun"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/Mminy62"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/zxl3651"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/htj7425"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
+
+|               <img src="https://github.com/htj7425/Algorithm/assets/43903354/07402f32-3af2-476a-9705-73398b284363" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/64d9618e-d4d6-43a2-89b1-a466839416ca" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/a2ee13cd-86dc-4e28-bddf-7ead973a20b3" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/4644a125-4d05-40e0-a798-715e3238a747" width="500">                |
+| :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                      [오성준](https://github.com/sunujun)                                                      |                                                      [이민영](https://github.com/Mminy62)                                                      |                                                      [이성현](https://github.com/zxl3651)                                                      |                                                      [하태준](https://github.com/htj7425)                                                      |
+| <a href="https://github.com/sunujun"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/Mminy62"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/zxl3651"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/htj7425"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> |
