@@ -51,7 +51,28 @@ struct SettingListView: View {
                 
                 SettingListDivider()
             }
-            
+            VStack(spacing: 0) {
+                Button(action: {
+                    NotificationManager.instance.openAppSettings()
+                }, label: {
+                    HStack(alignment: .bottom){
+                        Text("알림 설정")
+                            .padding(.leading, 20)
+                            .font(.pretendardRegular_18)
+                            .foregroundStyle(Color.black)
+                        
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                            .padding(.trailing, 10)
+                            .foregroundStyle(Color.gray)
+                    }
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
+                })
+                SettingListDivider()
+                
+            }
             SettingCellView(title: "고객센터", destination: CustomerServiceView())
             SettingCellView(title: "오픈소스 라이선스", destination: AcknowListViewControllerView())
         }

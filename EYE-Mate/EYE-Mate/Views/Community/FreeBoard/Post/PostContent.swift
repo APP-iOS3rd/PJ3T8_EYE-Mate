@@ -15,6 +15,9 @@ struct PostContent: View {
     @ObservedObject var postVM: PostViewModel
     
     @Binding var showAlert: Bool
+    @Binding var presentSheet: Bool
+    
+    @Binding var declarationText: String
     
     var onEditPost: (String, String, String, [URL]?, [String]?) -> ()
     var onUpdate: (Post) -> ()
@@ -82,7 +85,8 @@ struct PostContent: View {
                     .font(.pretendardSemiBold_18)
                     .padding(.horizontal, 5)
                 
-                Text("\(postVM.post.publishedDate.formatted(date: .numeric, time: .shortened))")
+//                Text("\(postVM.post.publishedDate.formatted(date: .numeric, time: .shortened))")
+                Text("\(postVM.post.publishedDate.getRelativeOrAbsoluteTime())")
                     .font(.pretendardRegular_12)
                     .foregroundStyle(.gray)
             }
@@ -120,7 +124,8 @@ struct PostContent: View {
                 } else {
                     Button(role: .destructive) {
                         if loggedIn {
-                            
+                            presentSheet = true
+                        declarationText = "postTitle: \(postVM.post.postTitle)\npostContent: \(postVM.post.postContent)\n"
                         } else {
                             showAlert = true
                         }
