@@ -12,7 +12,7 @@ struct SettingView: View {
     @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     @Environment(\.presentationMode) var presentationMode
-    @AppStorage("Login") private var login: Bool = false
+    @AppStorage("Login") private var loggedIn: Bool = false
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
@@ -57,7 +57,7 @@ struct SettingView: View {
                         rightButtonTitle: "로그아웃",
                         rightButtonAction: {
                             // MARK: - 로그아웃 처리
-                            login = false
+                            loggedIn = false
                             UserDefaults.standard.removeObject(forKey: "user_name")
                             UserDefaults.standard.removeObject(forKey: "user_UID")
                             UserDefaults.standard.removeObject(forKey: "user_profile_url")

@@ -7,9 +7,8 @@
 
 
 import SwiftUI
-import Combine
 import FirebaseAuth
-import UIKit
+import Combine
 
 struct PhoneNumberView: View {
     @ObservedObject var loginViewModel = LoginViewModel.shared

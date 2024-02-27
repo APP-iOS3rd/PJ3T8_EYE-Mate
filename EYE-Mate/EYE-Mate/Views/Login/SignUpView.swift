@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 import FirebaseAuth
 
 struct SignUpView: View {
@@ -34,7 +33,7 @@ struct SignUpView: View {
                 
                 // MARK: - OTP View
                 if openOTPView {
-                    OTPVerificationView(loginViewModel: loginViewModel, signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
+                    OTPVerificationView(signUpFlag: $signUpFlag, keyFocused: $keyFocused, mobileNumber: "\(countryCode)\(mobPhoneNumber)")
                 }
                 
             }

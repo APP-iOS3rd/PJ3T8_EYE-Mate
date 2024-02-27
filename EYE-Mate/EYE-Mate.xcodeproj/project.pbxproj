@@ -91,6 +91,7 @@
 		5278E3B92B6A271E00FC8109 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278E3B82B6A271E00FC8109 /* LoginViewModel.swift */; };
 		5294CD7C2B8A3346005A3BE9 /* CSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294CD7B2B8A3346005A3BE9 /* CSViewModel.swift */; };
 		5294CD7E2B8A3742005A3BE9 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294CD7D2B8A3742005A3BE9 /* LicenseView.swift */; };
+		5294CD802B8B8F8D005A3BE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A905792B88590D00F3CD32 /* GoogleService-Info.plist */; };
 		5296A1402B5EAD7E00299A0A /* CustomTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A13F2B5EAD7E00299A0A /* CustomTabPage.swift */; };
 		5296A1462B5F3EBC00299A0A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296A1452B5F3EBC00299A0A /* MapView.swift */; };
 		52A51ABE2B6B333E00C68566 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A51ABD2B6B333E00C68566 /* SignUpProfileView.swift */; };
@@ -159,8 +160,8 @@
 		711F4A912B6A19E0001C6B53 /* ColorTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F4A902B6A19E0001C6B53 /* ColorTestViewModel.swift */; };
 		7121E7482B77BE2900921317 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121E7472B77BE2900921317 /* CustomTabBar.swift */; };
 		7121E74A2B77C01500921317 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121E7492B77C01500921317 /* TabBarItem.swift */; };
-		713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */; };
-		713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF22B5E070700694F05 /* FontLiterals.swift */; };
+		713F4EF12B5E06FE00694F05 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF02B5E06FE00694F05 /* Color+.swift */; };
+		713F4EF32B5E070700694F05 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4EF22B5E070700694F05 /* Font+.swift */; };
 		713F4F072B5E082700694F05 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */; };
 		713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4EFF2B5E082700694F05 /* Pretendard-SemiBold.otf */; };
 		713F4F092B5E082700694F05 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 713F4F002B5E082700694F05 /* Pretendard-ExtraLight.otf */; };
@@ -348,8 +349,8 @@
 		711F4A902B6A19E0001C6B53 /* ColorTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTestViewModel.swift; sourceTree = "<group>"; };
 		7121E7472B77BE2900921317 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		7121E7492B77C01500921317 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
-		713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
-		713F4EF22B5E070700694F05 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
+		713F4EF02B5E06FE00694F05 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		713F4EF22B5E070700694F05 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		713F4EFE2B5E082700694F05 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		713F4EFF2B5E082700694F05 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		713F4F002B5E082700694F05 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -517,6 +518,14 @@
 				52A9056D2B87510E00F3CD32 /* DeleteAlertView.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		5294CD7F2B8B8425005A3BE9 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				718D298C2B8B674800FCEFC5 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		52A9055E2B87473200F3CD32 /* AppManage */ = {
@@ -712,7 +721,6 @@
 				71027A532B5DEAE000879DA7 /* Products */,
 				29B84FEE92C30B4B0FB86133 /* Pods */,
 				B339148249964F1DF6C49031 /* Frameworks */,
-				1DC9EEF32B8D0A4400941CF2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -911,9 +919,9 @@
 				52AFE7B92B78029F0007028F /* String+.swift */,
 				1DF7E7362B68C65500602BBB /* View+.swift */,
 				7192F7042B8325F100FFEA55 /* UINavigationController+.swift */,
+				713F4EF02B5E06FE00694F05 /* Color+.swift */,
+				713F4EF22B5E070700694F05 /* Font+.swift */,
 				1DD654622B8BBA490082F603 /* Date+.swift */,
-				713F4EF02B5E06FE00694F05 /* ColorLiterals.swift */,
-				713F4EF22B5E070700694F05 /* FontLiterals.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1010,7 +1018,6 @@
 				713F4F082B5E082700694F05 /* Pretendard-SemiBold.otf in Resources */,
 				713F4F0A2B5E082700694F05 /* Pretendard-Medium.otf in Resources */,
 				33DD0A432B63A25E005296AC /* line-movement.json in Resources */,
-				1DD6CBA82B8D7ECF00D345AB /* GoogleService-Info.plist in Resources */,
 				33DA6AB02B87460B006C4827 /* NotoSansKR-Light.otf in Resources */,
 				33DA6AAC2B87460B006C4827 /* NotoSansKR-Thin.otf in Resources */,
 			);
@@ -1089,7 +1096,7 @@
 				711F4A872B6959A2001C6B53 /* TestType.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
 				33DA6A9A2B7C97DF006C4827 /* AllRecordHeader.swift in Sources */,
-				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
+				713F4EF32B5E070700694F05 /* Font+.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
 				711F4A8B2B6A1779001C6B53 /* ColorTestView.swift in Sources */,
 				71956BC92B7B65E2006BD6F9 /* HapticManager.swift in Sources */,
@@ -1097,7 +1104,7 @@
 				710D40922B5FD89A006C9FED /* AstigmatismView.swift in Sources */,
 				33DA6A912B7B2F0B006C4827 /* EyeStatusButtonGroup.swift in Sources */,
 				52EE56D72B5E2D0A00C6D423 /* ProfileView.swift in Sources */,
-				713F4EF32B5E070700694F05 /* FontLiterals.swift in Sources */,
+				713F4EF32B5E070700694F05 /* Font+.swift in Sources */,
 				1D575FCB2B6B7EEA00DDC652 /* PostContent.swift in Sources */,
 				1D575FCF2B6B92D900DDC652 /* ImageCardView.swift in Sources */,
 				71027A582B5DEAE000879DA7 /* MainView.swift in Sources */,
@@ -1196,8 +1203,8 @@
 				3398D48A2B7369EB00535E0C /* CustomMenu.swift in Sources */,
 				5294CD7C2B8A3346005A3BE9 /* CSViewModel.swift in Sources */,
 				711F4A892B6A1756001C6B53 /* VisionTestView.swift in Sources */,
+				713F4EF12B5E06FE00694F05 /* Color+.swift in Sources */,
 				1DD654632B8BBA490082F603 /* Date+.swift in Sources */,
-				713F4EF12B5E06FE00694F05 /* ColorLiterals.swift in Sources */,
 				52AFE7BC2B7DA8CB0007028F /* ProfileNameTextField.swift in Sources */,
 				710D40962B5FDBBA006C9FED /* CustomNavigationTitle.swift in Sources */,
 				52E991C52B6CDAD8002D4689 /* ImageActionSheetView.swift in Sources */,
