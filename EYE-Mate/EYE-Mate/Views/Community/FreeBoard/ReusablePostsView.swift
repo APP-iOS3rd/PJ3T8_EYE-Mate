@@ -11,9 +11,13 @@ import SwiftUI
 
 struct ReusablePostsView: View {
     @ObservedObject var freeboardVM: FreeBoardViewModel
-
+    
     let fetchCase: FetchCase
     
+    @State var oldUserName: String = ""
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    @AppStorage("Login") var loggedIn: Bool = false
+
     var body: some View {
         // 게시물 목록
         ScrollView {
@@ -44,6 +48,8 @@ struct ReusablePostsView: View {
             }
         }
         .task {
+            self.oldUserName = userName
+            
             // MARK: 처음에 한번 Firebase에서 posts 받아오기
             guard freeboardVM.posts.isEmpty else {return}
             
@@ -56,13 +62,26 @@ struct ReusablePostsView: View {
                 await freeboardVM.fetchScrapPosts()
             }
         }
+        .onAppear {
+            // 닉네임 변경되었을 때 게시물 refresh
+            if loggedIn {
+                if oldUserName != userName {
+                    if fetchCase == .freeboard {
+                        hideKeyboard()
+                        Task {
+                            await freeboardVM.refreshable()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 extension ReusablePostsView {
     @ViewBuilder
     func PostList() -> some View {
-        ForEach(freeboardVM.posts) { post in
+        ForEach(freeboardVM.posts, id: \.id) { post in
             NavigationLink {
                 /// 게시물로 Navigation
                 PostView(postVM: PostViewModel(post: post)){ updatedPost in

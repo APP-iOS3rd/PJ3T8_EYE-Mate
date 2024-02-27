@@ -12,7 +12,6 @@ import FirebaseFirestore
 struct FreeBoardView: View {
     @StateObject var freeboardVM: FreeBoardViewModel = FreeBoardViewModel()
     
-    
     @FocusState var searchBarFocused: Bool
     var searchSignal: (Bool) -> ()
 
@@ -84,6 +83,7 @@ struct FreeBoardView: View {
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
             LoginView(isAlertView: true)
         })
+        .animation(.easeInOut(duration: 0.1), value: showAlert)
     }
 }
 
