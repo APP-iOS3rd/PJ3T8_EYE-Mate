@@ -13,8 +13,9 @@ struct CustomNavigationTitle: View {
     var isDisplayLeftButton: Bool = false
 
     @EnvironmentObject var router: Router
+    @EnvironmentObject var tabManager: TabManager
+    
     @ObservedObject var profileViewModel = ProfileViewModel.shared
-    @ObservedObject var tabManager = TabManager.shared
 
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
 
@@ -29,8 +30,10 @@ struct CustomNavigationTitle: View {
                 })
             }
             VStack(alignment: .leading) {
-                Text("EYE-Mate")
-                    .font(.pretendardSemiBold_22)
+                if title == "" {
+                    Text("EYE-Mate")
+                        .font(.pretendardSemiBold_22)
+                }
                 Spacer()
                     .frame(height: 10)
                 if title == "" {
@@ -64,13 +67,15 @@ struct CustomNavigationTitle: View {
             Spacer()
 
 
-            Button(action: {
-                router.navigate(to: .profile)
-            }, label: {
-                profileViewModel.profileImage
-                    .ProfileImageModifier()
-                    .frame(width: 50, height: 50)
-            })
+            if title == "" {
+                Button(action: {
+                    router.navigate(to: .profile)
+                }, label: {
+                    profileViewModel.profileImage
+                        .ProfileImageModifier()
+                        .frame(width: 50, height: 50)
+                })
+            }
 
         }
         .padding(.horizontal, 20)

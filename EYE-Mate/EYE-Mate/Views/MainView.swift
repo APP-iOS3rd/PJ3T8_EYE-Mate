@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var tabManager = TabManager.shared
+    @EnvironmentObject var tabManager: TabManager
     @State var eyeSenseOnBoardingViewModel = EyeSenseOnBoardingViewModel()
 
     var body: some View {
@@ -31,12 +31,10 @@ struct MainView: View {
                 }
             }
         }
-        .environmentObject(tabManager)
     }
 }
 
 class TabManager: ObservableObject {
-    static let shared = TabManager()
     @Published var selection: TabBarItem = .home
 }
 
