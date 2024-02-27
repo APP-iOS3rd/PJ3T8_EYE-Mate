@@ -336,7 +336,7 @@ private struct SightTestResultView: View {
                                 if loggedIn {
                                     viewModel.saveResult(userUID)
                                     tabManager.selection = .eyeMap
-                                    router.navigateBack()
+                                    router.navigateToRoot()
                                 } else {
                                     showAlert = true
                                 }
