@@ -18,6 +18,7 @@ class ProfileViewModel: ObservableObject {
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
+    @AppStorage("Login") var loggedIn: Bool = false
     
     @Published var profileImage: Image = Image("user")
     
@@ -148,7 +149,8 @@ class ProfileViewModel: ObservableObject {
                 let _ = try db.collection("Users").document(self.userUID).setData(from: user) { error in
                     if error == nil {
                         print("Saved Successfully")
-                        UserDefaults.standard.set(true, forKey: "Login")
+                        self.loggedIn = true
+//                        UserDefaults.standard.set(true, forKey: "Login")
                     }
                 }
             } catch {
