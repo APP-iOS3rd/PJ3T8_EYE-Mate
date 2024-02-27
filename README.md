@@ -2,26 +2,34 @@
 
 <p align="center">
 <img
-  src="readme-asset/main-picture.png" height = "500"/>
+  src="readme-asset/main-picture.png" width = 100%/>
 </p>
 
 ### 목차
 
-1. [프로젝트 설명](#프로젝트-설명)
-2. [🛠️ 프로젝트 기능](#🛠️-프로젝트-기능)
-3. [🌐 프로젝트 환경](#🌐-프로젝트-환경)
-4. [💻 프로젝트 기술](#💻-프로젝트-기술)
+1. [📝 프로젝트 설명](#프로젝트-설명)
+2. [🛠️ 프로젝트 기능](#프로젝트-기능)
+3. [🌐 프로젝트 환경](#프로젝트-환경)
+4. [💻 프로젝트 기술](#프로젝트-기술)
    - [프로젝트 아키텍처](#프로젝트-아키텍처)
    - [사용한 기술](#사용한-기술)
    - [사용한 라이브러리](#사용한-라이브러리)
-5. [📁 프로젝트 파일 구조](#📁-프로젝트-파일-구조)
-6. [👨‍💻 팀원 소개](#👨‍💻-팀원-소개)
+5. [📁 프로젝트 파일 구조](#프로젝트-파일-구조)
+6. [👨‍💻 팀원 소개](#팀원-소개)
+
+</br>
 
 ## 📝 프로젝트 설명
 
-### ❓현대인들의 눈에 대한 피로도는 갈수록 상승하고 있습니다!
+### 내 눈을 지켜주는 친구, EYE-Mate
 
-저희 **EYE-Mate**는 사용자들의 지속적인 눈 건강 로드맵을 통해 현대 사람들의 눈 건강 관리에 도움을 줄 수 있습니다!
+> **EYE-Mate는 눈 건강 관리 및 커뮤니티 플랫폼입니다.**</br></br>
+>
+> ❓현대인들의 눈에 대한 피로도는 갈수록 상승하고 있습니다!</br></br>
+> 저희 EYE-Mate는 사용자들의 지속적인 눈 건강 로드맵을 통해 현대 사람들의 눈 건강 관리에 도움을 줄 수 있으며</br>
+> 내일의 하늘이 오늘의 하늘 만큼 밝기를 목표로 하고있습니다.
+
+</br>
 
 ## 🛠️ 프로젝트 기능
 
@@ -31,17 +39,49 @@
 - 눈 건강과 관련된 정보 공유 및 소통을 위한 커뮤니티 제공
 - 내 주변 안경원 및 안과 정보 제공
 
+</br>
+
 ## 🌐 프로젝트 환경
 
 ### 개발 환경
 
-- XCode 15.2
-- Swift 5.9.2
-- Github
+<table>
+  <tr>
+    <td align="center">
+      <a>
+        <img src="https://github.com/htj7425/Algorithm/assets/43903354/e5c268ef-000a-43a8-a7fa-2a3cac1f0586" height = "35"/>
+      </a><br />
+      <sub><b>XCode</b></sub><br />15.2</a><br/>
+    </td>
+    <td align="center">
+      <a>
+        <img src="https://github.com/htj7425/Algorithm/assets/43903354/9d835823-f521-4381-80c2-db395f55b1ad" height = "30"/>
+      </a><br />
+      <sub><b>Swift</b></sub><br />5.9.2</a><br/>
+    </td>
+    <td align="center">
+      <a>
+        <img style="border-radius: 50%" src="https://github.com/htj7425/Algorithm/assets/43903354/8afec94f-9472-49f7-a9a9-ed49e02721af" height = "30" alt=""/>
+      </a><br />
+      <sub><b>Github</b></sub><br /></a><br/>
+    </td>
+  </tr>
+</table>
 
 ### 앱 타겟
 
-- iOS 16.0
+<table>
+  <tr>
+    <td align="center">
+      <a>
+        <img src="https://github.com/htj7425/Algorithm/assets/43903354/a38f7778-01e9-4063-9398-d3688eccc2e5" height = "30"/>
+      </a><br />
+      <sub><b>iOS</b></sub><br />16.0</a><br/>
+    </td>
+  </tr>
+</table>
+
+</br>
 
 ## 💻 프로젝트 기술
 
@@ -379,39 +419,7 @@
 
 ## 👨‍💻 팀원 소개
 
-<table align="center">
-  <tr>
-    <td align="center">
-    <a href="https://github.com/sunujun">
-        <img style = "border-radius: 50%" src="https://avatars.githubusercontent.com/u/98377339?v=4"width="100px;" alt="Avatar" />
-      </a><br />
-      <sub><b><a href="#오성준">오성준</b></sub></a><br />🚀</a><br/>
-      <a href="https://github.com/sunujun"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
-       <br/>
-      </td>
-    <td align="center">
-    <a href="https://github.com/Mminy62">
-        <img style = "border-radius: 50%" src="https://avatars.githubusercontent.com/u/66752398?v=4" width="100px;" alt=""/>
-      </a><br />
-      <sub><b><a href="#이민영">이민영</b></sub></a><br />🍜</a><br/>
-        <a href="https://github.com/Mminy62"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
-        <br>
-      </td>
-    <td align="center">
-    <a href="https://github.com/zxl3651">
-        <img style = "border-radius: 50%" src="https://avatars.githubusercontent.com/u/94293365?v=4" width="100px;" alt=""/>
-      </a><br />
-      <sub><b><a href="#이성현">이성현</b></sub></a><br />🧑‍💻</a><br/>
-        <a href="https://github.com/zxl3651"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
-        <br>
-      </td>
-    <td align="center">
-    <a href="https://github.com/htj7425">
-        <img style = "border-radius: 50%" src="https://avatars.githubusercontent.com/u/43903354?v=4" width="100px;" alt=""/>
-      </a><br />
-      <sub><b><a href="#하태준">하태준</b></sub></a><br />🧑‍💻</a><br/>
-        <a href="https://github.com/htj7425"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
-        <br>
-      </td>
-  </tr>
-</table>
+|               <img src="https://github.com/htj7425/Algorithm/assets/43903354/07402f32-3af2-476a-9705-73398b284363" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/64d9618e-d4d6-43a2-89b1-a466839416ca" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/a2ee13cd-86dc-4e28-bddf-7ead973a20b3" width="500">                |               <img src="https://github.com/htj7425/Algorithm/assets/43903354/4644a125-4d05-40e0-a798-715e3238a747" width="500">                |
+| :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                      [오성준](https://github.com/sunujun)                                                      |                                                      [이민영](https://github.com/Mminy62)                                                      |                                                      [이성현](https://github.com/zxl3651)                                                      |                                                      [하태준](https://github.com/htj7425)                                                      |
+| <a href="https://github.com/sunujun"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/Mminy62"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/zxl3651"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> | <a href="https://github.com/htj7425"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a> |
