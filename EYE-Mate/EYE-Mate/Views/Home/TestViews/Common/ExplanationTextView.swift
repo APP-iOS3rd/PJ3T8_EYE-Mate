@@ -17,7 +17,7 @@ struct ExplanationTextView: View {
     var body: some View {
         HStack {
             Text(str)
-                .font(.pretendardRegular_24)
+                .font(.pretendardRegular_22)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 30)
             Spacer()
