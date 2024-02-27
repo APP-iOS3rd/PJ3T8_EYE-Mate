@@ -1,19 +1,28 @@
 # PJ3T8_EYE-Mate
-<div style="text-align:center;">
+<p align="center">
 <img
-  class="fit-picture"
-  src="readme-asset/main-picture.png" height = "350"/>
-</div>
+  src="readme-asset/main-picture.png" height = "500"/>
+</p>
 
 ### 목차
+1. [프로젝트 설명](#프로젝트-설명)   
+2. [🛠️ 프로젝트 기능](#🛠️-프로젝트-기능)   
+3. [🌐 프로젝트 환경](#🌐-프로젝트-환경)   
+4. [💻 프로젝트 기술](#💻-프로젝트-기술)
+    - [프로젝트 아키텍처](#프로젝트-아키텍처)
+    - [사용한 기술](#사용한-기술)
+    - [사용한 라이브러리](#사용한-라이브러리)   
+6. [📁 프로젝트 파일 구조](#📁-프로젝트-파일-구조)
+7. [👨‍💻 팀원 소개](#👨‍💻-팀원-소개)
 
 
-## 프로젝트 설명
+
+## 📝 프로젝트 설명
 
 ### ❓현대인들의 눈에 대한 피로도는 갈수록 상승하고 있습니다!
 저희 **EYE-Mate**는 사용자들의 지속적인 눈 건강 로드맵을 통해 현대 사람들의 눈 건강 관리에 도움을 줄 수 있습니다!
 
-## 프로젝트 기능
+## 🛠️ 프로젝트 기능
 - 거리 측정으로 시력, 색각, 난시, 시야 총 4가지 검사를 수행
 - Lotti를 활용해 눈 운동 기능 제공하여 눈 건강 개선
 - 사용자의 눈 상태를 기록하고 관리하는 개인 메뉴 제공
@@ -21,7 +30,7 @@
 - 내 주변 안경원 및 안과 정보 제공
 
 
-## 프로젝트 환경
+## 🌐 프로젝트 환경
 ### 개발 환경
 * XCode 15.2
 * Swift 5.9.2
@@ -30,15 +39,13 @@
 ### 앱 타겟
 * iOS 16.0
 
-## 프로젝트 기술
+## 💻 프로젝트 기술
 
 ### 프로젝트 아키텍처
 #### MVVM
-<div style="text-align:center;">
-<img
-  class="fit-picture"
-  src="readme-asset/pattern-picture.png" height = "300"/>
-</div>
+<p align="center">
+<img src="readme-asset/pattern-picture.png" height = "300"/>
+</p>
 
 ### 사용한 기술
 <details>
@@ -156,10 +163,11 @@
 </details>
 
 
-## 프로젝트 파일 구조
+## 📁 프로젝트 파일 구조
 <details>
   <summary>파일 트리</summary>
-```
+  
+```markdown
 📦EYE-Mate
  ┣ 📂Core
  ┃ ┣ 📜AppDelegate.swift
@@ -361,7 +369,7 @@
 ```
 </details>
 
-## 팀원 소개
+## 👨‍💻 팀원 소개
 <table align="center">
   <tr>
     <td align="center">
