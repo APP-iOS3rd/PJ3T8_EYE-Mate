@@ -17,6 +17,9 @@ struct ColorTestView: View {
             ColorTest(viewModel: viewModel, isTestComplete: $isTestComplete)
         } else {
             ColorTestResultView(viewModel: viewModel)
+                .onAppear {
+                    MapCoordinator.shared.checkIfLocationServiceIsEnabled()
+                }
         }
     }
 }
@@ -24,7 +27,6 @@ struct ColorTestView: View {
 //MARK: - 테스트 화면
 private struct ColorTest: View {
     @EnvironmentObject var router: Router
-
     @ObservedObject var viewModel: ColorTestViewModel
     @FocusState private var isFocused: Bool
 
@@ -167,8 +169,6 @@ private struct ColorTestResultView: View {
                     .frame(height: 1)
                 
                 TestResultTitleView(type: .colorVision)
-                
-                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
 
                 ScrollView(showsIndicators: false) {
                     ColorTestResultTextView(viewModel: viewModel)
@@ -183,8 +183,8 @@ private struct ColorTestResultView: View {
 
                     Spacer()
 
-                    if total != 0 {
-                        Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                    if coordinator.total != 0 {
+                        Text("내 주변에 총 \(coordinator.total >= 5 ? "5개 이상의" : "\(coordinator.total)개의") 장소가 있어요!")
                             .font(.pretendardBold_20)
 
                             .foregroundColor(.customGreen)
@@ -192,7 +192,7 @@ private struct ColorTestResultView: View {
                             .frame(height: 3)
                             .padding(.horizontal, 10)
                         VStack {
-                            ForEach(0..<total, id: \.self) { index in
+                            ForEach(0..<coordinator.total, id: \.self) { index in
                                 PlaceCellView(place: coordinator.resultInfo[index])
                             }
 
@@ -251,9 +251,7 @@ private struct ColorTestResultView: View {
                 .frame(maxHeight: 75)
             }
             .navigationBarBackButtonHidden()
-            .onAppear {
-                MapCoordinator.shared.checkIfLocationServiceIsEnabled()
-            }
+
             TestAlertView(showAlert: $showAlert)
         }
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {

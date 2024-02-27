@@ -56,6 +56,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
     @Published var resultInfo: [placeList] = []
     @Published var sheetFlag = false
     @Published var selectedPicker: MapTopTapViewItem = .hospital
+    @Published var total = 0
     var queryPlace: String = EncodingPlace.hospital.rawValue
     var markerImage: String = MarkerImageName.hospital.rawValue
     var hospitalsMarkers: [NMFMarker] = []
@@ -139,6 +140,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
             
             fetchUserLocation()
             fetchApiData()
+            print("in, authorization")
             
         @unknown default:
             break
@@ -163,6 +165,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
             locationOverlay.iconHeight = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
             locationOverlay.anchor = CGPoint(x: 0.5, y: 1)
             view.mapView.moveCamera(cameraUpdate)
+            print("in, userLocation")
         }
     }
     
@@ -170,7 +173,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
     func fetchApiData() {
         // query = longitude, latitude 순서
         guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=\(queryPlace)&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=40&isPlaceRecommendationReplace=true&lang=ko") else { return }
-        
+        print("in, fetchApi")
         // Request
         let request = URLRequest(url: url)
         
@@ -198,7 +201,8 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
                 let resultArray = Array(array[0...19])
                 // 검사 결과에서 보여주기 위한 주변 정보 가져오기 추가
                 self.resultInfo = resultArray
-                
+                self.total = resultArray.count >= 5 ? 5 : resultArray.count
+
                 // 이전 마커 지우기
                 if self.hospitalsMarkers.count > 1 {
                     self.hospitalsMarkers.forEach { element in
