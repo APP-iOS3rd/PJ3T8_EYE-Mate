@@ -22,11 +22,6 @@ struct EYE_MateApp: App {
     @AppStorage("Login") var loggedIn: Bool = false
     @AppStorage("user_left") var userLeft: String = ""
     @AppStorage("user_right") var userRight: String = ""
-    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
-    
-    init(){
-        self.coordinator.checkIfLocationServiceIsEnabled()
-    }
 
     var body: some Scene {
         WindowGroup {
