@@ -140,7 +140,6 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
             
             fetchUserLocation()
             fetchApiData()
-            print("in, authorization")
             
         @unknown default:
             break
@@ -165,7 +164,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
             locationOverlay.iconHeight = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
             locationOverlay.anchor = CGPoint(x: 0.5, y: 1)
             view.mapView.moveCamera(cameraUpdate)
-            print("in, userLocation")
+
         }
     }
     
@@ -173,7 +172,7 @@ final class MapCoordinator: NSObject, ObservableObject, NMFMapViewCameraDelegate
     func fetchApiData() {
         // query = longitude, latitude 순서
         guard let url = URL(string: "https://map.naver.com/v5/api/search?caller=pcweb&query=\(queryPlace)&type=all&searchCoord=\(String(coord.1));\(String(coord.0))&page=1&displayCount=40&isPlaceRecommendationReplace=true&lang=ko") else { return }
-        print("in, fetchApi")
+        
         // Request
         let request = URLRequest(url: url)
         
