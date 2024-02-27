@@ -11,6 +11,7 @@ import PhotosUI
 struct SignUpProfileView: View {
     @EnvironmentObject var router: Router
     @ObservedObject var profileViewModel = ProfileViewModel.shared
+    @AppStorage("oldUser_name") private var oldUserName: String = "EYE-Mate"
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @State var selectedItem: PhotosPickerItem? = nil
     @State var textName: String = ""
@@ -46,6 +47,7 @@ struct SignUpProfileView: View {
             CustomButton(title: "시작하기", background: Color.customGreen, fontStyle: .pretendardRegular_20, action: {
                 keyFocused = false
                 self.userName = textName
+                self.oldUserName = textName
                 profileViewModel.imageSelection = selectedItem
                 profileViewModel.uploadUserInfoToFirebase()
                 if loginViewModel.showFullScreenCover {
