@@ -47,6 +47,7 @@ class FreeBoardViewModel: ObservableObject {
                 if let userUID = post?.userUID, !userUID.isEmpty {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
+                    post?.userImageURL = postUser.userImageURL!
                 }
                 
                 // Comment 가져오기
@@ -65,6 +66,7 @@ class FreeBoardViewModel: ObservableObject {
                     if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
                         let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                         comment?.userName = commentUser.userName
+                        comment?.userImageURL = commentUser.userImageURL!
                     }
                     
                     // 댓글의 대댓글 가져오기
@@ -84,6 +86,7 @@ class FreeBoardViewModel: ObservableObject {
                         if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
                             let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                             replyComment?.userName = replyCommentUser.userName
+                            replyComment?.userImageURL = replyCommentUser.userImageURL!
                         }
                         
                         return replyComment
@@ -124,6 +127,7 @@ class FreeBoardViewModel: ObservableObject {
                 if let userUID = post?.userUID, !userUID.isEmpty {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
+                    post?.userImageURL = postUser.userImageURL!
                 }
                 
                 if var post = post, post.postTitle.contains(searchText) || post.postContent.contains(searchText) {
@@ -144,6 +148,7 @@ class FreeBoardViewModel: ObservableObject {
                         if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
                             let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                             comment?.userName = commentUser.userName
+                            comment?.userImageURL = commentUser.userImageURL!
                         }
                         
                         // 댓글의 대댓글 가져오기
@@ -163,6 +168,7 @@ class FreeBoardViewModel: ObservableObject {
                             if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
                                 let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                                 replyComment?.userName = replyCommentUser.userName
+                                replyComment?.userImageURL = replyCommentUser.userImageURL!
                             }
                             
                             return replyComment
@@ -227,6 +233,7 @@ class FreeBoardViewModel: ObservableObject {
                 if let userUID = post?.userUID, !userUID.isEmpty {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
+                    post?.userImageURL = postUser.userImageURL!
                 }
                 
                 // Comment 가져오기
@@ -245,6 +252,7 @@ class FreeBoardViewModel: ObservableObject {
                     if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
                         let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                         comment?.userName = commentUser.userName
+                        comment?.userImageURL = commentUser.userImageURL!
                     }
                     
                     // 댓글의 대댓글 가져오기
@@ -264,6 +272,7 @@ class FreeBoardViewModel: ObservableObject {
                         if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
                             let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                             replyComment?.userName = replyCommentUser.userName
+                            replyComment?.userImageURL = replyCommentUser.userImageURL!
                         }
                         
                         return replyComment
@@ -312,6 +321,7 @@ class FreeBoardViewModel: ObservableObject {
                 if let userUID = post?.userUID, !userUID.isEmpty {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
+                    post?.userImageURL = postUser.userImageURL!
                 }
                 
                 // Comment 가져오기
@@ -330,6 +340,7 @@ class FreeBoardViewModel: ObservableObject {
                     if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
                         let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                         comment?.userName = commentUser.userName
+                        comment?.userImageURL = commentUser.userImageURL!
                     }
                     
                     // 댓글의 대댓글 가져오기
@@ -349,6 +360,7 @@ class FreeBoardViewModel: ObservableObject {
                         if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
                             let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                             replyComment?.userName = replyCommentUser.userName
+                            replyComment?.userImageURL = replyCommentUser.userImageURL!
                         }
                         
                         return replyComment
