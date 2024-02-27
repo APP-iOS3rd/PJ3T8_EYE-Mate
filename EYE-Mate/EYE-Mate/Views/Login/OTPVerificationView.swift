@@ -7,8 +7,6 @@
 
 import SwiftUI
 import FirebaseAuth
-import Combine
-import UIKit
 
 enum SignUpErrorText: String {
     case otp = "인증번호 숫자 6자리를 다시 입력해주세요"
@@ -72,6 +70,7 @@ struct OTPVerificationView: View {
                 Task{
                     do {
                         let success = try await loginViewModel.verifyOTP(otp: otp, signUpFlag: signUpFlag)
+//                        let success = loginViewModel.tempVerify(otp: otp, signUpFlag: signUpFlag)
                         
                         if success {
                             isDisplayotpErrorText = false

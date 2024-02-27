@@ -15,11 +15,23 @@ struct EYE_MateApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @ObservedObject private var router = Router()
     @ObservedObject private var tabManager = TabManager()
+    
+    @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
+    @AppStorage("Login") var loggedIn: Bool = false
+    @AppStorage("user_left") var userLeft: String = ""
+    @AppStorage("user_right") var userRight: String = ""
+    @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
+    
+    init(){
+        self.coordinator.checkIfLocationServiceIsEnabled()
+    }
 
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.navigationPath) {
-                 MainView()
+                MainView(userName: self.userName, userUID: self.userUID, userProfileURL: self.userProfileURL, loggedIn: self.loggedIn, userLeft: self.userLeft, userRight: self.userRight)
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {
                         case .record:
