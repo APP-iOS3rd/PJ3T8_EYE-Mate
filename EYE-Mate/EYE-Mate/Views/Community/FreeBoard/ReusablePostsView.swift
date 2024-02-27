@@ -14,7 +14,8 @@ struct ReusablePostsView: View {
     
     let fetchCase: FetchCase
     
-    @State var oldUserName: String = ""
+//    @State var oldUserName: String = ""
+    @AppStorage("oldUser_name") private var oldUserName: String = "EYE-Mate"
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("Login") var loggedIn: Bool = false
 
@@ -68,6 +69,7 @@ struct ReusablePostsView: View {
                 if oldUserName != userName {
                     if fetchCase == .freeboard {
                         hideKeyboard()
+                        oldUserName = userName
                         Task {
                             await freeboardVM.refreshable()
                         }

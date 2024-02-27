@@ -17,6 +17,7 @@ class LoginViewModel: ObservableObject {
     var user: AuthDataResult?
     @ObservedObject var profileViewModel = ProfileViewModel.shared
     
+    @AppStorage("oldUser_name") private var oldUserName: String = "EYE-Mate"
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("user_UID") private var userUID: String = ""
     @AppStorage("user_profile_url") private var userProfileURL: String = String.defaultProfileURL
@@ -97,6 +98,7 @@ class LoginViewModel: ObservableObject {
             for document in querySnapshot.documents {
                 let data = document.data()
                 if data["userUID"] as! String == userUID {
+                    oldUserName = data["userName"] as! String
                     userName = data["userName"] as! String
                     userProfileURL = data["userImageURL"] as! String
                     userLeft = data["left"] as! String
