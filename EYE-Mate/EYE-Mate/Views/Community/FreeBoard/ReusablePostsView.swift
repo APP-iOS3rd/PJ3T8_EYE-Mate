@@ -14,7 +14,6 @@ struct ReusablePostsView: View {
     
     let fetchCase: FetchCase
     
-//    @State var oldUserName: String = ""
     @AppStorage("oldUser_name") private var oldUserName: String = "EYE-Mate"
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
     @AppStorage("Login") var loggedIn: Bool = false
@@ -159,6 +158,7 @@ extension ReusablePostsView {
                     }
                 }
             }
+            .disabled(fetchCase != .freeboard)
         }
     }
 }

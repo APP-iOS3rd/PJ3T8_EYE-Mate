@@ -29,6 +29,7 @@
 		1DB6D97D2B875D8B0045FE3D /* MyPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6D97C2B875D8B0045FE3D /* MyPostsView.swift */; };
 		1DB6D9812B875DCF0045FE3D /* ScrapPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6D9802B875DCF0045FE3D /* ScrapPostsView.swift */; };
 		1DD654632B8BBA490082F603 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD654622B8BBA490082F603 /* Date+.swift */; };
+		1DD6CBA92B8DDA0400D345AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DD6CBA72B8D7ECF00D345AB /* GoogleService-Info.plist */; };
 		1DDA53372B85AFEB009CC786 /* ExpandImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA53362B85AFEB009CC786 /* ExpandImageView.swift */; };
 		1DE0302A2B5E3AE600BAD518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE030292B5E3AE600BAD518 /* HomeView.swift */; };
 		1DE0302C2B5E3AF300BAD518 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0302B2B5E3AF300BAD518 /* CommunityView.swift */; };
@@ -976,8 +977,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD6CBA92B8DDA0400D345AB /* GoogleService-Info.plist in Resources */,
 				336B472E2B8DD1FD006DCE58 /* APIKEY.plist in Resources */,
-				336B472D2B8DD1F7006DCE58 /* GoogleService-Info.plist in Resources */,
 				336B472C2B8DD1F1006DCE58 /* Pods-EYE-Mate-acknowledgements.plist in Resources */,
 				33DA6AAF2B87460B006C4827 /* NotoSansKR-Regular.otf in Resources */,
 				71027A5D2B5DEAE200879DA7 /* Preview Assets.xcassets in Resources */,
