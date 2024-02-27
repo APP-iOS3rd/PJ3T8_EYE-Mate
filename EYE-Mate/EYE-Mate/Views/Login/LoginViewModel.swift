@@ -123,20 +123,41 @@ class LoginViewModel: ObservableObject {
     // MARK: - 회원가입 시 회원 정보가 이미 있는 경우 -> 로그인으로 안내할 것
     @MainActor
     func checkLoginList() async throws -> Bool{
-        do {
-            let querySnapshot = try await db.collection("Users").getDocuments()
-            // for문 으로
-            for document in querySnapshot.documents {
-                let data = document.data()
-                if data["userUID"] as! String == userUID {
-                    return true
+//        do {
+//            let querySnapshot = try await db.collection("Users").getDocuments()
+//            // for문 으로
+//            for document in querySnapshot.documents {
+//                let data = document.data()
+//                if data["userUID"] as! String == userUID {
+//                    return true
+//                }
+//            }
+//        } catch {
+//            print("Error getting document: \(error)")
+//            throw error
+//        }
+//        return false
+        var fileNames: [String] = []
+        
+        let storageRef = Storage.storage().reference().child("Profile_Images")
+
+        // 모든 파일을 나열합니다.
+        storageRef.listAll { (result, error) in
+            if let error = error {
+                print("Error listing files: \(error)")
+            } else {
+                for item in result!.items {
+                    fileNames.append(item.name)
                 }
+                print("File names: \(fileNames)")
             }
-        } catch {
-            print("Error getting document: \(error)")
-            throw error
+        }
+        
+        if fileNames.contains(self.userUID) {
+            return true
         }
         return false
+        
     }
     
 }
