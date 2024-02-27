@@ -73,7 +73,7 @@ private struct DistanceView: View {
 
             HStack{
                 Spacer()
-                Text("현재거리 ")
+                Text("현재 거리 ")
                     .font(.pretendardRegular_30)
                 if type != .eyesight {
                     Text("\(viewModel.distance)")

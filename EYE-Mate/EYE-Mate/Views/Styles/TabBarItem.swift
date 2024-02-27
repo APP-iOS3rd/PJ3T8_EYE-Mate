@@ -32,7 +32,7 @@ enum TabBarItem: Hashable {
         case .community:
             return "게시판"
         case .eyeMap:
-            return "내주변"
+            return "내 주변"
         }
     }
 }
