@@ -64,7 +64,7 @@ class AstigmatismTestViewModel: ObservableObject {
     
     var explainText: String {
         if isLeftEye && isRightEye {
-            return "눈건강 유지를 위해\n주기적으로 정밀 눈 검사를 권장드려요."
+            return "눈 건강 유지를 위해\n주기적으로 정밀 눈 검사를 권장드려요."
         } else {
             return "정확한 진단을 위해\n정밀 눈 검사를 받아보는걸 추천드려요."
         }

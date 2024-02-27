@@ -32,8 +32,6 @@ class LoginViewModel: ObservableObject {
     
     init( verificationID: String = "temp") {
         self.verificationID = verificationID
-        UserDefaults.standard.set(false, forKey: "Login")
-        
     }
     
     func sendVerificationCode(phoneNumber: String) {
@@ -73,6 +71,13 @@ class LoginViewModel: ObservableObject {
             return false
         }
         
+    }
+    
+    func tempVerify(otp: String, signUpFlag: Bool) -> Bool {
+        if otp == "222222" {
+            return true
+        }
+        return false
     }
     
     func resendOTP(mobileNumber: String) {

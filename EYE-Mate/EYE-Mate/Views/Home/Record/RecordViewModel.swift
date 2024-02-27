@@ -68,11 +68,6 @@ struct EyesightRecord: Identifiable, Codable, Equatable, Hashable {
 final class RecordViewModel: ObservableObject {
     static let shared = RecordViewModel()
 
-    @Published var isPresentedVisionRecordListView = false
-    @Published var isPresentedColorVisionRecordListView = false
-    @Published var isPresentedAstigmatismRecordListView = false
-    @Published var isPresentedEyesightRecordListView = false
-
     @Published private(set) var visionRecords: [VisionRecord] = []
     @Published private(set) var recentVisionRecords: [VisionRecord] = []
 

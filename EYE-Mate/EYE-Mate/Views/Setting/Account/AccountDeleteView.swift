@@ -68,7 +68,7 @@ struct AccountDeleteView: View {
             if isCheckAlert {
                 
                 ZStack{
-                    Color.gray.opacity(0.8).edgesIgnoringSafeArea(.all)
+                    Color.gray.opacity(0.4).edgesIgnoringSafeArea(.all)
                     
                     DeleteAlertView(title: "회원 탈퇴", message: "회원님의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?", leftButtonTitle: "취소", leftButtonAction: {
                         isCheckAlert = false

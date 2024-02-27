@@ -35,6 +35,19 @@ struct AllRecordHeader: View {
         }
     }
 
+    var isSelectedRecordsEmpty: Bool {
+        switch recordType {
+        case .vision:
+            return selectedVisionItems.isEmpty
+        case .colorVision:
+            return selectedColorVisionItems.isEmpty
+        case .astigmatism:
+            return selectedAstigmatismItems.isEmpty
+        case .eyesight:
+            return selectedEyesightVisionItems.isEmpty
+        }
+    }
+
     private func goBack() {
         router.navigateBack()
     }
@@ -54,7 +67,11 @@ struct AllRecordHeader: View {
                 if !isRecordsEmpty {
                     Button {
                         if isDeleteMode {
-                            isDeleteAlert = true
+                            if isSelectedRecordsEmpty {
+                                isDeleteMode = false
+                            } else {
+                                isDeleteAlert = true
+                            }
                         } else {
                             isDeleteMode = true
                         }

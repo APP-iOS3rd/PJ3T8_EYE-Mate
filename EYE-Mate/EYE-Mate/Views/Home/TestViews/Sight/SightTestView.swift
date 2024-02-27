@@ -19,6 +19,9 @@ struct SightTestView: View {
                       isTestComplete: $isTestComplete)
         } else {
             SightTestResultView(viewModel: viewModel)
+                .onAppear {
+                    MapCoordinator.shared.checkIfLocationServiceIsEnabled()
+                }
         }
     }
 }
@@ -112,7 +115,7 @@ private struct SightRight: View {
                         VStack {
                             HStack(alignment: .lastTextBaseline) {
                                 Spacer()
-                                Text("현재거리 ")
+                                Text("현재 거리 ")
                                     .font(.pretendardRegular_30)
                                 Text("\(distance.distance)")
                                     .font(.pretendardRegular_40)
@@ -226,7 +229,7 @@ private struct SightLeft: View {
                         VStack {
                             HStack(alignment: .lastTextBaseline) {
                                 Spacer()
-                                Text("현재거리 ")
+                                Text("현재 거리 ")
                                     .font(.pretendardRegular_30)
                                 Text("\(distance.distance)")
                                     .font(.pretendardRegular_40)
@@ -312,13 +315,11 @@ private struct SightTestResultView: View {
                 
                 TestResultTitleView(type: .eyesight)
                 
-                let total = coordinator.resultInfo.count >= 5 ? 5 : coordinator.resultInfo.count
-                
-                if total != 0 {
+                if coordinator.total != 0 {
                     ScrollView(showsIndicators: false) {
                         ResultTextView(viewModel: viewModel)
                         
-                        Text("내 주변에 총 \(total >= 5 ? "5개 이상의" : "\(total)개의") 장소가 있어요!")
+                        Text("내 주변에 총 \(coordinator.total >= 5 ? "5개 이상의" : "\(coordinator.total)개의") 장소가 있어요!")
                             .font(.pretendardBold_20)
                         
                             .foregroundColor(.customGreen)
@@ -326,7 +327,7 @@ private struct SightTestResultView: View {
                             .frame(height: 3)
                             .padding(.horizontal, 10)
                         VStack {
-                            ForEach(0..<total, id: \.self) { index in
+                            ForEach(0..<coordinator.total, id: \.self) { index in
                                 PlaceCellView(place: coordinator.resultInfo[index])
                             }
                             
@@ -389,9 +390,7 @@ private struct SightTestResultView: View {
                 .frame(maxHeight: 75)
             }
             .navigationBarBackButtonHidden()
-            .onAppear {
-                MapCoordinator.shared.checkIfLocationServiceIsEnabled()
-            }
+            
             TestAlertView(showAlert: $showAlert)
         }
         .fullScreenCover(isPresented: $loginViewModel.showFullScreenCover, content: {
