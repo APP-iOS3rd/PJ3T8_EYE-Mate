@@ -43,8 +43,11 @@ class FreeBoardViewModel: ObservableObject {
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
                 var post = try? doc.data(as: Post.self)
                 
-                let postUser = try await Firestore.firestore().collection("Users").document(post!.userUID).getDocument(as: User.self)
-                post?.userName = postUser.userName
+                // userName 업데이트
+                if let userUID = post?.userUID, !userUID.isEmpty {
+                    let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+                    post?.userName = postUser.userName
+                }
                 
                 // Comment 가져오기
                 guard let postID = post?.id else { return nil }
@@ -58,8 +61,11 @@ class FreeBoardViewModel: ObservableObject {
                 post?.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
                     var comment = try? commentDoc.data(as: Comment.self)
                     
-                    let commentUser = try await Firestore.firestore().collection("Users").document(comment!.userUID).getDocument(as: User.self)
-                    comment?.userName = commentUser.userName
+                    // 댓글 userName 업데이트
+                    if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
+                        let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
+                        comment?.userName = commentUser.userName
+                    }
                     
                     // 댓글의 대댓글 가져오기
                     let replyCommentsQuerySnapshot = try await Firestore.firestore()
@@ -74,8 +80,11 @@ class FreeBoardViewModel: ObservableObject {
                     comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
                         var replyComment = try? replyDoc.data(as: ReplyComment.self)
                         
-                        let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyComment!.userUID).getDocument(as: User.self)
-                        replyComment?.userName = replyCommentUser.userName
+                        // 대댓글 userName 업데이트
+                        if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
+                            let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
+                            replyComment?.userName = replyCommentUser.userName
+                        }
                         
                         return replyComment
                     }.compactMap{ $0 }
@@ -111,8 +120,11 @@ class FreeBoardViewModel: ObservableObject {
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
                 var post = try? doc.data(as: Post.self)
                 
-                let postUser = try await Firestore.firestore().collection("Users").document(post!.userUID).getDocument(as: User.self)
-                post?.userName = postUser.userName
+                // userName 업데이트
+                if let userUID = post?.userUID, !userUID.isEmpty {
+                    let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+                    post?.userName = postUser.userName
+                }
                 
                 if var post = post, post.postTitle.contains(searchText) || post.postContent.contains(searchText) {
                     
@@ -128,8 +140,11 @@ class FreeBoardViewModel: ObservableObject {
                     post.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
                         var comment = try? commentDoc.data(as: Comment.self)
                         
-                        let commentUser = try await Firestore.firestore().collection("Users").document(comment!.userUID).getDocument(as: User.self)
-                        comment?.userName = commentUser.userName
+                        // 댓글 userName 업데이트
+                        if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
+                            let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
+                            comment?.userName = commentUser.userName
+                        }
                         
                         // 댓글의 대댓글 가져오기
                         let replyCommentsQuerySnapshot = try await Firestore.firestore()
@@ -144,8 +159,11 @@ class FreeBoardViewModel: ObservableObject {
                         comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
                             var replyComment = try? replyDoc.data(as: ReplyComment.self)
                             
-                            let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyComment!.userUID).getDocument(as: User.self)
-                            replyComment?.userName = replyCommentUser.userName
+                            // 대댓글 userName 업데이트
+                            if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
+                                let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
+                                replyComment?.userName = replyCommentUser.userName
+                            }
                             
                             return replyComment
                         }.compactMap{ $0 }
@@ -205,8 +223,11 @@ class FreeBoardViewModel: ObservableObject {
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
                 var post = try? doc.data(as: Post.self)
                 
-                let postUser = try await Firestore.firestore().collection("Users").document(post!.userUID).getDocument(as: User.self)
-                post?.userName = postUser.userName
+                // userName 업데이트
+                if let userUID = post?.userUID, !userUID.isEmpty {
+                    let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+                    post?.userName = postUser.userName
+                }
                 
                 // Comment 가져오기
                 guard let postID = post?.id else { return nil }
@@ -220,8 +241,11 @@ class FreeBoardViewModel: ObservableObject {
                 post?.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
                     var comment = try? commentDoc.data(as: Comment.self)
                     
-                    let commentUser = try await Firestore.firestore().collection("Users").document(comment!.userUID).getDocument(as: User.self)
-                    comment?.userName = commentUser.userName
+                    // 댓글 userName 업데이트
+                    if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
+                        let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
+                        comment?.userName = commentUser.userName
+                    }
                     
                     // 댓글의 대댓글 가져오기
                     let replyCommentsQuerySnapshot = try await Firestore.firestore()
@@ -236,8 +260,11 @@ class FreeBoardViewModel: ObservableObject {
                     comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
                         var replyComment = try? replyDoc.data(as: ReplyComment.self)
                         
-                        let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyComment!.userUID).getDocument(as: User.self)
-                        replyComment?.userName = replyCommentUser.userName
+                        // 대댓글 userName 업데이트
+                        if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
+                            let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
+                            replyComment?.userName = replyCommentUser.userName
+                        }
                         
                         return replyComment
                     }.compactMap{ $0 }
@@ -281,8 +308,11 @@ class FreeBoardViewModel: ObservableObject {
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
                 var post = try? doc.data(as: Post.self)
                 
-                let postUser = try await Firestore.firestore().collection("Users").document(post!.userUID).getDocument(as: User.self)
-                post?.userName = postUser.userName
+                // userName 업데이트
+                if let userUID = post?.userUID, !userUID.isEmpty {
+                    let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+                    post?.userName = postUser.userName
+                }
                 
                 // Comment 가져오기
                 guard let postID = post?.id else { return nil }
@@ -296,8 +326,11 @@ class FreeBoardViewModel: ObservableObject {
                 post?.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
                     var comment = try? commentDoc.data(as: Comment.self)
                     
-                    let commentUser = try await Firestore.firestore().collection("Users").document(comment!.userUID).getDocument(as: User.self)
-                    comment?.userName = commentUser.userName
+                    // 댓글 userName 업데이트
+                    if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
+                        let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
+                        comment?.userName = commentUser.userName
+                    }
                     
                     // 댓글의 대댓글 가져오기
                     let replyCommentsQuerySnapshot = try await Firestore.firestore()
@@ -312,8 +345,11 @@ class FreeBoardViewModel: ObservableObject {
                     comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
                         var replyComment = try? replyDoc.data(as: ReplyComment.self)
                         
-                        let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyComment!.userUID).getDocument(as: User.self)
-                        replyComment?.userName = replyCommentUser.userName
+                        // 대댓글 userName 업데이트
+                        if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
+                            let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
+                            replyComment?.userName = replyCommentUser.userName
+                        }
                         
                         return replyComment
                     }.compactMap{ $0 }
