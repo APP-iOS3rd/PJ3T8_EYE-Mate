@@ -86,6 +86,10 @@ struct OTPVerificationView: View {
                                     // 회원가입
                                     isDisplayNotiLoginText = false
                                     router.navigate(to: .signUpProfile)
+                                    
+                                    if loginViewModel.showFullScreenCover {
+                                        loginViewModel.showFullScreenCover.toggle()
+                                    }
                                 }
                             }
                             // 로그인 화면인 경우
