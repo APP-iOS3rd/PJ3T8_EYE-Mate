@@ -16,6 +16,7 @@ struct ReusablePostsView: View {
     
     @AppStorage("oldUser_name") private var oldUserName: String = "EYE-Mate"
     @AppStorage("user_name") private var userName: String = "EYE-Mate"
+    @AppStorage("user_UID") var userUID: String = ""
     @AppStorage("Login") var loggedIn: Bool = false
 
     var body: some View {
@@ -38,7 +39,7 @@ struct ReusablePostsView: View {
             .padding(.top, 10)
         }
         .scrollIndicators(.never)
-        .refreshable {
+        .refreshable {     
             /// 위로 스크롤 당겨서 새로고침
             if fetchCase == .freeboard {
                 hideKeyboard()
@@ -83,82 +84,83 @@ extension ReusablePostsView {
     @ViewBuilder
     func PostList() -> some View {
         ForEach(freeboardVM.posts, id: \.id) { post in
-            NavigationLink {
-                /// 게시물로 Navigation
-                PostView(postVM: PostViewModel(post: post)){ updatedPost in
-                    /// 게시물 좋아요 Local Data 업데이트
-                    if let index = freeboardVM.posts.firstIndex(where: { post in post.id == updatedPost.id }) {
-                        freeboardVM.posts[index].likedIDs = updatedPost.likedIDs
-                        freeboardVM.posts[index].scrapIDs = updatedPost.scrapIDs
-                    }
-                } onDelete: {
-                    /// 게시물 삭제 Local Data 업데이트
-                    withAnimation(.easeInOut(duration: 0.25)) {
-                        freeboardVM.posts.removeAll { post.id == $0.id }
-                    }
-                } writeComment: { updatedPost in
-                    /// 댓글 작성 Local Data 업데이트
-                    if let index = freeboardVM.posts.firstIndex(where: { $0.id == updatedPost.id }) {
-                        freeboardVM.posts[index].comments = updatedPost.comments
-                    }
-                } writeReplyComment: { postID, commentIndex, replyComment in
-                    /// 대댓글 작성 Local data 업데이트
-                    if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
-                        freeboardVM.posts[index].comments[commentIndex].replyComments.append(replyComment)
-                    }
-                } onUpdateComment: { postID, commentIndex, likedIDs in
-                    /// 댓글 좋아요 Local Data 업데이트
-                    if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
-                        freeboardVM.posts[index].comments[commentIndex].likedIDs = likedIDs
-                    }
-                } onUpdateReplyComment: { postID, commentIndex, replyCommentIndex, likedIDs in
-                    /// 대댓글 좋아요 Local Data 업데이트
-                    if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID}) {
-                        freeboardVM.posts[index].comments[commentIndex].replyComments[replyCommentIndex].likedIDs = likedIDs
-                    }
-                } deleteComment: { postID, commentIndex in
-                    /// 댓글 삭제
-                    if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }){
-                        freeboardVM.posts[index].comments.remove(at: commentIndex)
-                    }
-                } deleteReplyComment: { postID, commentIndex, replyCommentIndex in
-                    /// 대댓글 삭제
-                    if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
-                        freeboardVM.posts[index].comments[commentIndex].replyComments.remove(at: replyCommentIndex)
-                    }
-                } onEditPost: { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
-                    /// 게시물 수정
-                    if let postIndex = freeboardVM.posts.firstIndex(where: {$0.id == postID}) {
-                        freeboardVM.posts[postIndex].postTitle = postTitle
-                        freeboardVM.posts[postIndex].postContent = postContent
-                        freeboardVM.posts[postIndex].postImageURLs = postImageURLs
-                        freeboardVM.posts[postIndex].imageReferenceIDs = imageReferenceIDs
-                    }
-                }
-            } label: {
-                PostCardView(post: post)
-            }
-            .onAppear {
-                /// - 마지막 게시물이 나타나면 새 게시물 가져오기(있는 경우)
-                if post.id == freeboardVM.posts.last?.id && freeboardVM.paginationDoc != nil {
-                    if freeboardVM.isSearching {
-                        /// 검색중일 경우
-                        Task {
-                            await freeboardVM.fetchPosts(searchText: freeboardVM.searchText)
+            if fetchCase == .freeboard || fetchCase == .myPost || post.scrapIDs.contains(userUID) {
+                NavigationLink {
+                    /// 게시물로 Navigation
+                    PostView(postVM: PostViewModel(post: post)){ updatedPost in
+                        /// 게시물 좋아요 Local Data 업데이트
+                        if let index = freeboardVM.posts.firstIndex(where: { post in post.id == updatedPost.id }) {
+                            freeboardVM.posts[index].likedIDs = updatedPost.likedIDs
+                            freeboardVM.posts[index].scrapIDs = updatedPost.scrapIDs
                         }
-                    } else { 
-                        /// 검색중이 아닐 경우
-                        Task {
-                            switch fetchCase {
-                            case .freeboard: await freeboardVM.fetchPosts()
-                            case .myPost: await freeboardVM.fetchMyPosts()
-                            case .scrapPost: await freeboardVM.fetchScrapPosts()
+                    } onDelete: {
+                        /// 게시물 삭제 Local Data 업데이트
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            freeboardVM.posts.removeAll { post.id == $0.id }
+                        }
+                    } writeComment: { updatedPost in
+                        /// 댓글 작성 Local Data 업데이트
+                        if let index = freeboardVM.posts.firstIndex(where: { $0.id == updatedPost.id }) {
+                            freeboardVM.posts[index].comments = updatedPost.comments
+                        }
+                    } writeReplyComment: { postID, commentIndex, replyComment in
+                        /// 대댓글 작성 Local data 업데이트
+                        if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
+                            freeboardVM.posts[index].comments[commentIndex].replyComments.append(replyComment)
+                        }
+                    } onUpdateComment: { postID, commentIndex, likedIDs in
+                        /// 댓글 좋아요 Local Data 업데이트
+                        if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
+                            freeboardVM.posts[index].comments[commentIndex].likedIDs = likedIDs
+                        }
+                    } onUpdateReplyComment: { postID, commentIndex, replyCommentIndex, likedIDs in
+                        /// 대댓글 좋아요 Local Data 업데이트
+                        if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID}) {
+                            freeboardVM.posts[index].comments[commentIndex].replyComments[replyCommentIndex].likedIDs = likedIDs
+                        }
+                    } deleteComment: { postID, commentIndex in
+                        /// 댓글 삭제
+                        if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }){
+                            freeboardVM.posts[index].comments.remove(at: commentIndex)
+                        }
+                    } deleteReplyComment: { postID, commentIndex, replyCommentIndex in
+                        /// 대댓글 삭제
+                        if let index = freeboardVM.posts.firstIndex(where: { $0.id == postID }) {
+                            freeboardVM.posts[index].comments[commentIndex].replyComments.remove(at: replyCommentIndex)
+                        }
+                    } onEditPost: { postID, postTitle, postContent, postImageURLs, imageReferenceIDs in
+                        /// 게시물 수정
+                        if let postIndex = freeboardVM.posts.firstIndex(where: {$0.id == postID}) {
+                            freeboardVM.posts[postIndex].postTitle = postTitle
+                            freeboardVM.posts[postIndex].postContent = postContent
+                            freeboardVM.posts[postIndex].postImageURLs = postImageURLs
+                            freeboardVM.posts[postIndex].imageReferenceIDs = imageReferenceIDs
+                        }
+                    }
+                } label: {
+                    PostCardView(post: post)
+                }
+                .onAppear {
+                    /// - 마지막 게시물이 나타나면 새 게시물 가져오기(있는 경우)
+                    if post.id == freeboardVM.posts.last?.id && freeboardVM.paginationDoc != nil {
+                        if freeboardVM.isSearching {
+                            /// 검색중일 경우
+                            Task {
+                                await freeboardVM.fetchPosts(searchText: freeboardVM.searchText)
+                            }
+                        } else {
+                            /// 검색중이 아닐 경우
+                            Task {
+                                switch fetchCase {
+                                case .freeboard: await freeboardVM.fetchPosts()
+                                case .myPost: await freeboardVM.fetchMyPosts()
+                                case .scrapPost: await freeboardVM.fetchScrapPosts()
+                                }
                             }
                         }
                     }
-                }
-            }
-            .disabled(fetchCase != .freeboard)
+                } // NavigationLink
+            } // if
         }
     }
 }
