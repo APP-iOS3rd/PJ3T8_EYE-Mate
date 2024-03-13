@@ -24,86 +24,29 @@ class FreeBoardViewModel: ObservableObject {
     
     /// - 게시물 Fetch
     func fetchPosts() async {
-        do {
-            var query: Query!
+        var query: Query!
+        
+        // MARK: 게시물 Pagination
+        if let paginationDoc {
+            query = Firestore.firestore().collection("Posts")
+                .order(by: "publishedDate", descending: true)
+                .start(afterDocument: paginationDoc)
+                .limit(to: 20)
+        } else {
+            query = Firestore.firestore().collection("Posts")
+                .order(by: "publishedDate", descending: true)
+                .limit(to: 20)
+        }
+        
+        // 게시물 Data 20개와 마지막 document Getting
+        let (fetchedPosts, lastOfDocs) = await fetchPostsUsingQueries(query)
+        
+        await MainActor.run {
+            posts.append(contentsOf: fetchedPosts)
             
-            // MARK: 게시물 Pagination
-            if let paginationDoc {
-                query = Firestore.firestore().collection("Posts")
-                    .order(by: "publishedDate", descending: true)
-                    .start(afterDocument: paginationDoc)
-                    .limit(to: 20)
-            } else {
-                query = Firestore.firestore().collection("Posts")
-                    .order(by: "publishedDate", descending: true)
-                    .limit(to: 20)
-            }
-            
-            let docs = try await query.getDocuments()
-            let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
-                var post = try? doc.data(as: Post.self)
-                
-                // userName 업데이트
-                if let userUID = post?.userUID, !userUID.isEmpty {
-                    let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
-                    post?.userName = postUser.userName
-                }
-                
-                // Comment 가져오기
-                guard let postID = post?.id else { return nil }
-                let commentsQuerySnapshot = try await Firestore.firestore()
-                    .collection("Posts")
-                    .document(postID)
-                    .collection("Comments")
-                    .order(by: "publishedDate", descending: false)
-                    .getDocuments()
-                
-                post?.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
-                    var comment = try? commentDoc.data(as: Comment.self)
-                    
-                    // 댓글 userName 업데이트
-                    if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
-                        let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
-                        comment?.userName = commentUser.userName
-                    }
-                    
-                    // 댓글의 대댓글 가져오기
-                    let replyCommentsQuerySnapshot = try await Firestore.firestore()
-                        .collection("Posts")
-                        .document(postID)
-                        .collection("Comments")
-                        .document(commentDoc.documentID)
-                        .collection("ReplyComments")
-                        .order(by: "publishedDate", descending: false)
-                        .getDocuments()
-                    
-                    comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
-                        var replyComment = try? replyDoc.data(as: ReplyComment.self)
-                        
-                        // 대댓글 userName 업데이트
-                        if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
-                            let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
-                            replyComment?.userName = replyCommentUser.userName
-                        }
-                        
-                        return replyComment
-                    }.compactMap{ $0 }
-                    
-                    return comment
-                }.compactMap{ $0 }
-                
-                return post
-            }.compactMap{ $0 }
-            
-            await MainActor.run {
-                posts.append(contentsOf: fetchedPosts)
-                
-                // Pagination에 사용하기 위해 마지막에 가져온 Document를 저장
-                paginationDoc = docs.documents.last
-                isFetching = false
-            }
-        } catch {
-            print(error.localizedDescription)
+            // Pagination에 사용하기 위해 마지막에 가져온 Document를 저장
+            paginationDoc = lastOfDocs
+            isFetching = false
         }
     }
     
@@ -114,7 +57,7 @@ class FreeBoardViewModel: ObservableObject {
             
             query = Firestore.firestore().collection("Posts")
                 .order(by: "publishedDate", descending: true)
-           
+            
             
             let docs = try await query.getDocuments()
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
@@ -203,107 +146,58 @@ class FreeBoardViewModel: ObservableObject {
     
     /// - 내가 쓴 게시물 Fetch
     func fetchMyPosts() async {
-        do {
-            var query: Query!
-            
-            if let paginationDoc {
-                query = Firestore.firestore().collection("Posts")
-                    .whereField("userUID", isEqualTo: userUID)
-                    .order(by: "publishedDate", descending: true)
-                    .start(afterDocument: paginationDoc)
-                    .limit(to: 20)
-            } else {
-                query = Firestore.firestore().collection("Posts")
-                    .whereField("userUID", isEqualTo: userUID)
-                    .order(by: "publishedDate", descending: true)
-                    .limit(to: 20)
-            }
-            
-            let docs = try await query.getDocuments()
-            let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
-                var post = try? doc.data(as: Post.self)
-                
-                // userName 업데이트
-                if let userUID = post?.userUID, !userUID.isEmpty {
-                    let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
-                    post?.userName = postUser.userName
-                }
-                
-                // Comment 가져오기
-                guard let postID = post?.id else { return nil }
-                let commentsQuerySnapshot = try await Firestore.firestore()
-                    .collection("Posts")
-                    .document(postID)
-                    .collection("Comments")
-                    .order(by: "publishedDate", descending: false)
-                    .getDocuments()
-                
-                post?.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
-                    var comment = try? commentDoc.data(as: Comment.self)
-                    
-                    // 댓글 userName 업데이트
-                    if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
-                        let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
-                        comment?.userName = commentUser.userName
-                    }
-                    
-                    // 댓글의 대댓글 가져오기
-                    let replyCommentsQuerySnapshot = try await Firestore.firestore()
-                        .collection("Posts")
-                        .document(postID)
-                        .collection("Comments")
-                        .document(commentDoc.documentID)
-                        .collection("ReplyComments")
-                        .order(by: "publishedDate", descending: false)
-                        .getDocuments()
-                    
-                    comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
-                        var replyComment = try? replyDoc.data(as: ReplyComment.self)
-                        
-                        // 대댓글 userName 업데이트
-                        if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
-                            let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
-                            replyComment?.userName = replyCommentUser.userName
-                        }
-                        
-                        return replyComment
-                    }.compactMap{ $0 }
-                    
-                    return comment
-                }.compactMap{ $0 }
-                
-                return post
-            }.compactMap{ $0 }
-            
-            await MainActor.run {
-                posts.append(contentsOf: fetchedPosts)
-                paginationDoc = docs.documents.last
-                isFetching = false
-            }
-            
-        } catch {
-            print("FreeBoardViewModel - fetchMyPosts(): \(error.localizedDescription)")
+        var query: Query!
+        
+        if let paginationDoc {
+            query = Firestore.firestore().collection("Posts")
+                .whereField("userUID", isEqualTo: userUID)
+                .order(by: "publishedDate", descending: true)
+                .start(afterDocument: paginationDoc)
+                .limit(to: 20)
+        } else {
+            query = Firestore.firestore().collection("Posts")
+                .whereField("userUID", isEqualTo: userUID)
+                .order(by: "publishedDate", descending: true)
+                .limit(to: 20)
+        }
+        
+        let (fetchedPosts, lastOfDocs) = await fetchPostsUsingQueries(query)
+        
+        await MainActor.run {
+            posts.append(contentsOf: fetchedPosts)
+            paginationDoc = lastOfDocs
+            isFetching = false
         }
     }
     
     /// - 스크랩한 게시물 Fetch
     func fetchScrapPosts() async {
+        var query: Query!
+        
+        if let paginationDoc {
+            query = Firestore.firestore().collection("Posts")
+                .whereField("scrapIDs", arrayContains: userUID)
+                .order(by: "publishedDate", descending: true)
+                .start(afterDocument: paginationDoc)
+                .limit(to: 20)
+        } else {
+            query = Firestore.firestore().collection("Posts")
+                .whereField("scrapIDs", arrayContains: userUID)
+                .order(by: "publishedDate", descending: true)
+                .limit(to: 20)
+        }
+        
+        let (fetchedPosts, lastOfDocs) = await fetchPostsUsingQueries(query)
+        
+        await MainActor.run {
+            posts.append(contentsOf: fetchedPosts)
+            paginationDoc = lastOfDocs
+            isFetching = false
+        }
+    }
+    
+    func fetchPostsUsingQueries(_ query: Query) async -> ([Post], QueryDocumentSnapshot?) {
         do {
-            var query: Query!
-            
-            if let paginationDoc {
-                query = Firestore.firestore().collection("Posts")
-                    .whereField("scrapIDs", arrayContains: userUID)
-                    .order(by: "publishedDate", descending: true)
-                    .start(afterDocument: paginationDoc)
-                    .limit(to: 20)
-            } else {
-                query = Firestore.firestore().collection("Posts")
-                    .whereField("scrapIDs", arrayContains: userUID)
-                    .order(by: "publishedDate", descending: true)
-                    .limit(to: 20)
-            }
-            
             let docs = try await query.getDocuments()
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
                 var post = try? doc.data(as: Post.self)
@@ -312,6 +206,7 @@ class FreeBoardViewModel: ObservableObject {
                 if let userUID = post?.userUID, !userUID.isEmpty {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
+                    post?.userImageURL = postUser.userImageURL!
                 }
                 
                 // Comment 가져오기
@@ -330,6 +225,7 @@ class FreeBoardViewModel: ObservableObject {
                     if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
                         let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                         comment?.userName = commentUser.userName
+                        comment?.userImageURL = commentUser.userImageURL!
                     }
                     
                     // 댓글의 대댓글 가져오기
@@ -349,6 +245,7 @@ class FreeBoardViewModel: ObservableObject {
                         if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
                             let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                             replyComment?.userName = replyCommentUser.userName
+                            replyComment?.userImageURL = replyCommentUser.userImageURL!
                         }
                         
                         return replyComment
@@ -360,15 +257,11 @@ class FreeBoardViewModel: ObservableObject {
                 return post
             }.compactMap{ $0 }
             
-            await MainActor.run {
-                posts.append(contentsOf: fetchedPosts)
-                paginationDoc = docs.documents.last
-                isFetching = false
-            }
-            
+            return (fetchedPosts, docs.documents.last)
         } catch {
-            print("FreeBoardViewModel - fetchScrapPosts(): \(error.localizedDescription)")
+            print("FreeboardViewModel - fetchPostsUsingQueryes(): \(error.localizedDescription)")
         }
+        return ([], nil)
     }
 }
 
@@ -378,11 +271,11 @@ extension Sequence {
         _ transform: (Element) async throws -> T
     ) async rethrows -> [T] {
         var values = [T]()
-
+        
         for element in self {
             try await values.append(transform(element))
         }
-
+        
         return values
     }
 }
