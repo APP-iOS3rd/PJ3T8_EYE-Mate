@@ -58,15 +58,33 @@ class AccountDeleteViewModel: ObservableObject{
     }
     
     func deleteUserInfoFromStore() {
+        //        let db = Firestore.firestore()
+        //
+        //        db.collection("Users").document(self.userUID).delete { error in
+        //            if let error = error {
+        //                print("Error removing document: \(error)")
+        //            } else {
+        //                print("Document successfully removed!")
+        //            }
+        //
+        //        }
+        
+        
+        // MARK: - 임시로, 탈퇴 사용자의 정보를 기본으로 업데이트
         let db = Firestore.firestore()
         
-        db.collection("Users").document(self.userUID).delete { error in
+        let documentRef = db.collection("Users").document(self.userUID)
+        documentRef.updateData([
+            "userName": "EYE-Mate",
+            "userImageURL": String.defaultProfileURL,
+            "left": "",
+            "right": ""
+        ]) { error in
             if let error = error {
-                print("Error removing document: \(error)")
+                print("Error updating document: \(error)")
             } else {
-                print("Document successfully removed!")
+                print("Username successfully updated")
             }
-            
         }
     }
     

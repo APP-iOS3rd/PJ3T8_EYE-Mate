@@ -27,7 +27,7 @@ struct TestOnboardingView: View {
                     Spacer()
                     Text(title)
                         .multilineTextAlignment(.center)
-                        .font(.pretendardRegular_24)
+                        .font(.pretendardRegular_22)
                     Spacer()
                     img[0]
                         .resizable()

@@ -61,9 +61,11 @@ struct SettingView: View {
                             UserDefaults.standard.removeObject(forKey: "user_name")
                             UserDefaults.standard.removeObject(forKey: "user_UID")
                             UserDefaults.standard.removeObject(forKey: "user_profile_url")
+                            UserDefaults.standard.removeObject(forKey: "user_left")
+                            UserDefaults.standard.removeObject(forKey: "user_right")
                             UserDefaults.standard.synchronize()
                             profileViewModel.profileImage = Image("user")
-                            profileViewModel.downloadImageFromProfileURL()
+                            self.userProfileURL = String.defaultProfileURL
                             presentationMode.wrappedValue.dismiss()
                         })
                 }

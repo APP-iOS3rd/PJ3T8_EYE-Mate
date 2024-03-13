@@ -18,7 +18,7 @@ struct MainView: View {
     @AppStorage("user_left") var userLeft: String = ""
     @AppStorage("user_right") var userRight: String = ""
     @ObservedObject var coordinator: MapCoordinator = MapCoordinator.shared
-    
+
     init(userName: String, userUID: String, userProfileURL: String, loggedIn: Bool, userLeft: String, userRight: String) {
         self.userName = userName
         self.userUID = userUID
@@ -26,6 +26,7 @@ struct MainView: View {
         self.loggedIn = loggedIn
         self.userLeft = userLeft
         self.userRight = userRight
+        self.coordinator.checkIfLocationServiceIsEnabled()
     }
     
     var body: some View {

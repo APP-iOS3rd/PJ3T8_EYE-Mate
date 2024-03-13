@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class LoginViewModel: ObservableObject {
     static let shared = LoginViewModel()
-
+    
     var verificationID: String
     var user: AuthDataResult?
     @ObservedObject var profileViewModel = ProfileViewModel.shared
@@ -37,7 +37,7 @@ class LoginViewModel: ObservableObject {
     func sendVerificationCode(phoneNumber: String) {
         print(phoneNumber)
         // reCAPTCHA 기능 중지 - simulator용
-//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        //        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         Auth.auth().languageCode = "ko"
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
@@ -51,7 +51,7 @@ class LoginViewModel: ObservableObject {
                 }
             }
     }
-   
+    
     // MARK: - 번호, 인증코드 일치 확인 후 토큰 생성
     @MainActor
     func verifyOTP(otp: String, signUpFlag: Bool) async throws -> Bool {
@@ -97,46 +97,112 @@ class LoginViewModel: ObservableObject {
     // MARK: - 로그인 할 때 회원목록에서 확인 및 회원정보 세팅
     @MainActor
     func checkLoginAndSettingInfo() async throws -> Bool{
+        //                do {
+        //                    let querySnapshot = try await db.collection("Users").getDocuments()
+        //                    // for문 으로
+        //                    for document in querySnapshot.documents {
+        //                        let data = document.data()
+        //                        if data["userUID"] as! String == userUID {
+        //                            oldUserName = data["userName"] as! String
+        //                            userName = data["userName"] as! String
+        //                            userProfileURL = data["userImageURL"] as! String
+        //                            userLeft = data["left"] as! String
+        //                            userRight = data["right"] as! String
+        //                            profileViewModel.downloadImageFromProfileURL()
+        //                            return true
+        //                        }
+        //                    }
+        //                } catch {
+        //                    print("Error getting document: \(error)")
+        //                    throw error
+        //                }
+        //                return false
+        
+        
+        
+        var fileNames: [String] = []
+        
+        let storageRef = Storage.storage().reference().child("Profile_Images")
+        
         do {
-            let querySnapshot = try await db.collection("Users").getDocuments()
-            // for문 으로
-            for document in querySnapshot.documents {
-                let data = document.data()
-                if data["userUID"] as! String == userUID {
+            // 비동기로 파일 목록을 가져옵니다.
+            let result = try await storageRef.listAll()
+            
+            for item in result.items {
+                fileNames.append(item.name)
+            }
+            print("File names: \(fileNames)")
+            
+            // 파일 목록을 가져온 후에 처리해야 할 작업 작성
+            if fileNames.contains("\(self.userUID).png") {
+                print("already users")
+                do {
+                    let querySnapshot = try await db.collection("Users").document(self.userUID).getDocument()
+                    
+                    let data = querySnapshot.data()!
                     oldUserName = data["userName"] as! String
                     userName = data["userName"] as! String
                     userProfileURL = data["userImageURL"] as! String
                     userLeft = data["left"] as! String
                     userRight = data["right"] as! String
                     profileViewModel.downloadImageFromProfileURL()
+                    
                     return true
+                } catch {
+                    print("Error getting document: \(error)")
+                    throw error
                 }
+            } else {
+                print("User not found")
+                return false // 비동기 함수이기 때문에 여기서 반환됩니다.
             }
         } catch {
-            print("Error getting document: \(error)")
+            print("Error listing files: \(error)")
             throw error
         }
-        return false
     }
     
     
     // MARK: - 회원가입 시 회원 정보가 이미 있는 경우 -> 로그인으로 안내할 것
     @MainActor
     func checkLoginList() async throws -> Bool{
+//        do {
+//            let querySnapshot = try await db.collection("Users").getDocuments()
+//            // for문 으로
+//            for document in querySnapshot.documents {
+//                let data = document.data()
+//                if data["userUID"] as! String == userUID {
+//                    return true
+//                }
+//            }
+//        } catch {
+//            print("Error getting document: \(error)")
+//            throw error
+//        }
+//        return false
+        var fileNames: [String] = []
+        
+        let storageRef = Storage.storage().reference().child("Profile_Images")
+        
         do {
-            let querySnapshot = try await db.collection("Users").getDocuments()
-            // for문 으로
-            for document in querySnapshot.documents {
-                let data = document.data()
-                if data["userUID"] as! String == userUID {
-                    return true
+                let result = try await storageRef.listAll()
+                
+                for item in result.items {
+                    fileNames.append(item.name)
                 }
+                
+                if fileNames.contains("\(self.userUID).png") {
+                    print("already users")
+                    return true
+                    
+                } else {
+                    print("User not found")
+                    return false
+                }
+            } catch {
+                print("Error listing files: \(error)")
+                throw error
             }
-        } catch {
-            print("Error getting document: \(error)")
-            throw error
-        }
-        return false
     }
     
 }

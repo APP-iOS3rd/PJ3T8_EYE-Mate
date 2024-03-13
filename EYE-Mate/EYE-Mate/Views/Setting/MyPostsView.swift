@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MyPostsView: View {
     @StateObject var freeboardViewModel: FreeBoardViewModel = FreeBoardViewModel()
-    @Environment(\.dismiss) private var dismiss
-    
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         ReusablePostsView(freeboardVM: freeboardViewModel, fetchCase: .myPost)
             .navigationBarBackButtonHidden()
@@ -19,7 +19,7 @@ struct MyPostsView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         /// 현재 화면 dismiss
-                        dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
                             .foregroundStyle(.black)

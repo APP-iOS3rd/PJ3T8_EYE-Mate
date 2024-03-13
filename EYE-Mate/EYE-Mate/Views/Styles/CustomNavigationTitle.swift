@@ -25,7 +25,7 @@ struct CustomNavigationTitle: View {
                 Button(action: { router.navigateBack() },
                        label: {
                     Image(systemName: "chevron.backward")
-                        .font(.system(size: 35))
+                        .font(.system(size: 33))
                         .foregroundColor(.black)
                 })
             }
@@ -41,25 +41,25 @@ struct CustomNavigationTitle: View {
                     case .home:
                         HStack(spacing: 5) {
                             Text(userName)
-                                .font(.pretendardSemiBold_32)
+                                .font(.pretendardBold_30)
                                 .foregroundColor(.customGreen)
 
                             Text("님!")
-                                .font(.pretendardBold_32)
+                                .font(.pretendardBold_30)
                         }
                     case .movement:
                         Text("눈 운동")
-                            .font(.pretendardBold_32)
+                            .font(.pretendardBold_30)
                     case .community:
                         Text("게시판")
-                            .font(.pretendardBold_32)
+                            .font(.pretendardBold_30)
                     case .eyeMap:
                         Text("내 주변")
-                            .font(.pretendardBold_32)
+                            .font(.pretendardBold_30)
                     }
                 } else {
                     Text(title)
-                        .font(.pretendardBold_32)
+                        .font(.pretendardBold_30)
                 }
 
             }
