@@ -22,6 +22,9 @@ class FreeBoardViewModel: ObservableObject {
     
     @AppStorage("user_UID") var userUID: String = ""
     
+    let defaultUserImageURL = "https://firebasestorage.googleapis.com/v0/b/eye-mate-29855.appspot.com/o/Profile_Images%2FdefaultImage.png?alt=media&token=923656d8-3cd8-4098-b5aa-3628770e0256"
+
+    
     /// - 게시물 Fetch
     func fetchPosts() async {
         var query: Query!
@@ -63,11 +66,16 @@ class FreeBoardViewModel: ObservableObject {
             let fetchedPosts = try await docs.documents.asyncMap{ doc -> Post? in
                 var post = try? doc.data(as: Post.self)
                 
-                // userName 업데이트
+                // userName, Image 업데이트
                 if let userUID = post?.userUID, !userUID.isEmpty {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
+                    post?.userImageURL = postUser.userImageURL ?? defaultUserImageURL
+                } else {
+                    post?.userName = "EYE-Mate"
+                    post?.userImageURL = defaultUserImageURL
                 }
+
                 
                 if var post = post, post.postTitle.contains(searchText) || post.postContent.contains(searchText) {
                     
@@ -83,10 +91,14 @@ class FreeBoardViewModel: ObservableObject {
                     post.comments = try await commentsQuerySnapshot.documents.asyncMap{ commentDoc -> Comment? in
                         var comment = try? commentDoc.data(as: Comment.self)
                         
-                        // 댓글 userName 업데이트
+                        // 댓글 userName, Image 업데이트
                         if let commentUserUID = comment?.userUID, !commentUserUID.isEmpty {
                             let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                             comment?.userName = commentUser.userName
+                            comment?.userImageURL = commentUser.userImageURL ?? defaultUserImageURL
+                        } else {
+                            comment?.userName = "EYE-Mate"
+                            comment?.userImageURL = defaultUserImageURL
                         }
                         
                         // 댓글의 대댓글 가져오기
@@ -102,10 +114,14 @@ class FreeBoardViewModel: ObservableObject {
                         comment?.replyComments = try await replyCommentsQuerySnapshot.documents.asyncMap{ replyDoc -> ReplyComment? in
                             var replyComment = try? replyDoc.data(as: ReplyComment.self)
                             
-                            // 대댓글 userName 업데이트
+                            // 대댓글 userName, Image 업데이트
                             if let replyCommentUserUID = replyComment?.userUID, !replyCommentUserUID.isEmpty {
                                 let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                                 replyComment?.userName = replyCommentUser.userName
+                                replyComment?.userImageURL = replyCommentUser.userImageURL ?? defaultUserImageURL
+                            } else {
+                                replyComment?.userName = "EYE-Mate"
+                                replyComment?.userImageURL = defaultUserImageURL
                             }
                             
                             return replyComment
@@ -196,6 +212,7 @@ class FreeBoardViewModel: ObservableObject {
         }
     }
     
+    /// - query에 맞게 게시물 fetch
     func fetchPostsUsingQueries(_ query: Query) async -> ([Post], QueryDocumentSnapshot?) {
         do {
             let docs = try await query.getDocuments()
@@ -207,6 +224,9 @@ class FreeBoardViewModel: ObservableObject {
                     let postUser = try await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
                     post?.userName = postUser.userName
                     post?.userImageURL = postUser.userImageURL!
+                } else {
+                    post?.userName = "EYE-Mate"
+                    post?.userImageURL = "https://firebasestorage.googleapis.com/v0/b/eye-mate-29855.appspot.com/o/Profile_Images%2FdefaultImage.png?alt=media&token=923656d8-3cd8-4098-b5aa-3628770e0256"
                 }
                 
                 // Comment 가져오기
@@ -226,7 +246,11 @@ class FreeBoardViewModel: ObservableObject {
                         let commentUser = try await Firestore.firestore().collection("Users").document(commentUserUID).getDocument(as: User.self)
                         comment?.userName = commentUser.userName
                         comment?.userImageURL = commentUser.userImageURL!
+                    } else {
+                        comment?.userName = "EYE-Mate"
+                        comment?.userImageURL = "https://firebasestorage.googleapis.com/v0/b/eye-mate-29855.appspot.com/o/Profile_Images%2FdefaultImage.png?alt=media&token=923656d8-3cd8-4098-b5aa-3628770e0256"
                     }
+
                     
                     // 댓글의 대댓글 가져오기
                     let replyCommentsQuerySnapshot = try await Firestore.firestore()
@@ -246,7 +270,11 @@ class FreeBoardViewModel: ObservableObject {
                             let replyCommentUser = try await Firestore.firestore().collection("Users").document(replyCommentUserUID).getDocument(as: User.self)
                             replyComment?.userName = replyCommentUser.userName
                             replyComment?.userImageURL = replyCommentUser.userImageURL!
+                        } else {
+                            replyComment?.userName = "EYE-Mate"
+                            replyComment?.userImageURL = "https://firebasestorage.googleapis.com/v0/b/eye-mate-29855.appspot.com/o/Profile_Images%2FdefaultImage.png?alt=media&token=923656d8-3cd8-4098-b5aa-3628770e0256"
                         }
+
                         
                         return replyComment
                     }.compactMap{ $0 }
