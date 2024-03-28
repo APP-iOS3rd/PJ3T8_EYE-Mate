@@ -25,7 +25,6 @@ struct SettingListView: View {
         VStack(alignment: .center, spacing: 0) {
             SettingTitleView(title: "커뮤니티")
             SettingCellView(title: "작성한 게시글", destination: MyPostsView())
-//            SettingCellView(title: "작성한 댓글", destination: Text("작성한 댓글"))
             SettingCellView(title: "저장한 게시글", destination: ScrapPostsView())
         }
         
